@@ -1,0 +1,23 @@
+{
+  "clock": "5.00 s",
+  "controlsVisible": true,
+  "horizontalOverflow": false,
+  "monitors": [
+    {
+      "bottom": 577,
+      "selector": "#eye",
+      "top": 521,
+      "visible": true
+    },
+    {
+      "bottom": 578,
+      "selector": "#brain-plot",
+      "top": 520,
+      "visible": true
+    }
+  ],
+  "viewport": [
+    560,
+    640
+  ]
+}

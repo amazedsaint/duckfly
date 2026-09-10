@@ -4,6 +4,7 @@
 
 [What we built, what the experiments found, and the next plan](docs/experiments/playground/README.md). New guided scenes: Stop, wait, go; Find it again; Brain switchboard; Bump and recover. The temporal stop adapter is explicitly experimental and remains off in earlier presets.
 
+The [immersive workspace](docs/implementation/immersive-ui/README.md) adds Focus mode, collapsible controls, and a compact live brain monitor in both the web and Mac apps.
 
 An experiment workspace coupling a selected FlyWire neural circuit to a simulated Microduck robot. Camera pixels become sensory input; circuit activity selects movement intent; Microduck's pretrained walking policy controls the joints. MuJoCo and BAM calculate the physical response.
 

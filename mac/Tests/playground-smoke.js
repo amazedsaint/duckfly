@@ -70,6 +70,7 @@ check(
   inView($("#brain-plot")) && inView($("#eye")),
   "Connected brain and eyesight must both be visible",
 );
+$("#vision-controls").open = true;
 $("#cover-eyes").click();
 await wait(
   () => t().scene.ducks[0].eye === "none" && t().ducks[0].command[0] === 0,
@@ -105,6 +106,7 @@ check(
   t().time >= moveTime && t().connectedDuck === "duck-2",
   "Quick prop movement reset time or switched brains",
 );
+$("#body-details").open = true;
 $("#duck-settings").click();
 check(
   !$("#tools-panel").hidden && $("#selection-title").textContent === "Duck 2",
@@ -147,4 +149,41 @@ receipt.push({
   check:
     "add duck selects its brain, removal repairs selection, Continue preserves scene",
 });
+
+// Folding the workspace must change presentation without touching the experiment.
+const settleLayout = () => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+const beforeUI = JSON.stringify({time: t().time, scene: t().scene, ducks: t().ducks, connected: t().connectedDuck});
+const widthBefore = $('#arena').getBoundingClientRect().width;
+$('#compact-brain').click();
+await settleLayout();
+check($('#compact-brain').getAttribute('aria-expanded') === 'false', 'Compact state not exposed');
+check(inView($('#eye')) && inView($('#brain-plot')), 'Compact mode hid a live monitor');
+check($('#arena').getBoundingClientRect().width > widthBefore, 'Compact mode did not give space to the scene');
+$('#compact-brain').click();
+$('#objects-panel > summary').click();
+await settleLayout();
+check(!$('#objects-panel').open, 'Object panel did not collapse');
+$('#focus-mode').click();
+await settleLayout();
+check(document.body.classList.contains('focus-mode'), 'Focus mode did not open');
+check(!$('#objects-panel').open && $('#compact-brain').getAttribute('aria-expanded') === 'false', 'Focus mode did not minimize controls');
+check(inView($('#eye')) && inView($('#brain-plot')), 'Focus mode hid the brain or eye');
+document.dispatchEvent(new KeyboardEvent('keydown', {key:'Escape', bubbles:true}));
+await settleLayout();
+check(!document.body.classList.contains('focus-mode'), 'Escape did not leave Focus mode');
+check(!$('#objects-panel').open && $('#compact-brain').getAttribute('aria-expanded') === 'true', 'Focus did not restore prior panel state');
+check(beforeUI === JSON.stringify({time:t().time,scene:t().scene,ducks:t().ducks,connected:t().connectedDuck}), 'Presentation controls mutated the experiment');
+$('#objects-panel > summary').click();
+await preset('gaze');
+await wait(() => t().scene.lab?.id === 'gaze' && !$('#guided-lab').hidden);
+check(!$('#guided-lab').hidden, 'Guided experiment missing');
+const guidedTime = t().time;
+$('#experiment-controls > summary').click();
+await settleLayout();
+check(!$('#experiment-controls').open && t().time === guidedTime, 'Collapsing guided controls changed simulation time');
+$('#experiment-controls > summary').click();
+await settleLayout();
+check($('#experiment-controls').open && inView($('#eye')) && inView($('#brain-plot')), 'Restoring guided controls lost the live monitor');
+receipt.push({check:'compact and Focus layouts preserve the complete paused scene and selected duck; Escape restores panels; guided controls collapse without resetting time'});
+
 return receipt;

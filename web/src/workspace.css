@@ -1,0 +1,258 @@
+/* Shared Mac/web workspace. The visual monitors remain mounted in every layout. */
+:root { --surface: #1b2b23; --border-subtle: #354b3d; --radius: 10px; }
+button, summary, select { -webkit-tap-highlight-color: transparent; }
+button { transition: background-color 120ms, border-color 120ms; }
+button, input, select, summary { min-height: 32px; }
+input[type="checkbox"], input[type="range"] { min-height: 0; }
+.section-heading p { margin: 7px 0 0; font-size: 12px; color: var(--muted); }
+.scenario-filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 20px; }
+.scenario-filters button { background: transparent; border-color: transparent; color: var(--muted); padding: 8px 14px; }
+.scenario-filters button[aria-pressed="true"] { color: #e7f3e7; background: #283e30; border-color: #486451; }
+.home-intro { padding: 12px 0 8px; }
+.home-intro h1 { line-height: 1.14; }
+.home-intro p { max-width: 560px; }
+.tile-number { letter-spacing: .8px; }
+.scenario-tile:hover:enabled { transform: translateY(-2px); }
+.scenario-image { height: 172px; }
+.scenario-tile:focus-visible { outline-offset: 4px; }
+#scenario-count { white-space: nowrap; }
+.in-experiment { overflow: hidden; }
+.in-experiment #app { height: 100dvh; display: flex; flex-direction: column; }
+.topbar { flex-shrink: 0; }
+#experiment-page { min-height: 0; flex: 1; display: flex; flex-direction: column; }
+.scene-header { display: flex; align-items: center; gap: 18px; padding: 14px 20px; flex: none; }
+.experiment-heading { display: flex; align-items: center; gap: 14px; min-width: 0; flex: 1; }
+.experiment-heading > button { font-size: 12px; background: transparent; flex: none; }
+.experiment-heading > div { min-width: 0; }
+.experiment-heading h1 { font-size: 18px; letter-spacing: -.4px; font-weight: 600; margin: 0 0 4px; }
+.experiment-heading p { font-size: 11px; color: var(--muted); line-height: 1.4; margin: 0; max-width: 580px; }
+.toolbar { display: flex; align-items: center; gap: 7px; flex: none; }
+.toolbar button { font-size: 12px; }
+.toolbar-spacer { flex: 1; }
+#clock { font: 11px ui-monospace, SFMono-Regular, monospace; font-variant-numeric: tabular-nums; color: var(--muted); min-width: 60px; text-align: center; }
+.lab-layout { position: relative; display: grid; grid-template-columns: minmax(0,1fr) 320px; gap: 12px; padding: 0 16px 12px; flex: 1; min-height: 0; width: 100%; max-width: 2400px; margin: 0 auto; }
+.lab-layout.compact-monitor { grid-template-columns: minmax(0,1fr) 224px; }
+.workspace { position: relative; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 8px; }
+.arena { position: relative; isolation: isolate; overflow: hidden; background: #dce4df; border-radius: var(--radius); flex: 1 1 auto; min-height: 160px; color: #36583e; }
+.arena > canvas { width: 100%; height: 100%; display: block; touch-action: none; }
+.arena-label { position: absolute; top: 12px; left: 12px; right: 12px; display: flex; justify-content: space-between; gap: 8px; pointer-events: none; font-size: 11px; }
+.arena-label span { padding: 6px 9px; background: #f5f8f0e8; border: 1px solid #ffffff80; border-radius: 6px; }
+.arena-label #live { border-radius: 20px; font-size: 10px; }
+.arena-label #connected-label { max-width: 70%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.view-actions { position: absolute; right: 10px; bottom: 10px; display: flex; gap: 5px; }
+.view-actions button { color: #35553c; background: #f3f6eaf2; border-color: #b9c9ba; font-size: 11px; padding: 6px 9px; }
+.view-actions button:hover:enabled { color: #15361d; background: #fff; border-color: #56725b; }
+.view-actions button[aria-pressed="true"] { background: #d0e5bd; color: #24442b; }
+.arena-hint { position: absolute; bottom: 20px; left: 14px; max-width: calc(100% - 205px); font-size: 10px; line-height: 1.4; color: #405d46; pointer-events: none; }
+.loading { position: absolute; inset: 0; background: #dce4dff5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 24px; text-align: center; }
+.spinner { width: 26px; height: 26px; border: 2px solid #aabda4; border-top-color: #456e4e; border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.workspace-panel { flex: none; border: 1px solid var(--border-subtle); border-radius: var(--radius); background: var(--surface); margin: 0; padding: 0; }
+.workspace-panel > summary { padding: 10px 12px; margin: 0; font-size: 12px; font-weight: 550; color: #dce8de; user-select: none; border-radius: inherit; }
+.workspace-panel > summary:focus-visible { outline-offset: -3px; }
+.workspace-panel > summary:hover { background: #263b2e; }
+.workspace-panel > summary::marker, .monitor-controls > summary::marker, .tools-panel summary::marker { color: #9ab59e; font-size: 10px; }
+.workspace-panel[open] > summary { margin: 0; border-bottom: 1px solid var(--border-subtle); border-radius: var(--radius) var(--radius) 0 0; }
+.summary-note { font-size: 10px; color: var(--muted); font-weight: 400; margin-left: 10px; }
+.panel-content { padding: 10px 12px; }
+#objects-panel .panel-content { padding: 6px 10px; }
+.object-tray { display: flex; gap: 10px; align-items: center; min-height: 34px; }
+.object-chips { display: flex; gap: 6px; overflow-x: auto; flex: 1; min-width: 0; padding: 3px; }
+.object-chip { display: flex; align-items: center; gap: 7px; background: transparent; font-size: 11px; padding: 6px 9px; }
+.object-chip img { width: 17px; height: 17px; }
+.prop-dot { width: 9px; height: 9px; display: inline-block; border-radius: 50%; }
+.object-tray .menu-content { bottom: calc(100% + 8px); top: auto; }
+.prop-actions { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; border-top: 1px solid var(--border-subtle); padding-top: 7px; margin-top: 6px; font-size: 11px; }
+.prop-actions button { padding: 5px 9px; font-size: 11px; }
+.prop-actions #prop-label { margin-right: auto; }
+.statusbar { display: flex; justify-content: space-between; gap: 10px; color: #99b09e; font-size: 9px; min-height: 14px; align-items: center; flex: none; }
+.guided-lab { flex: none; min-height: 0; }
+#experiment-controls > .panel-content { max-height: min(32dvh, 300px); overflow-y: auto; overscroll-behavior: contain; }
+.lab-question { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.lab-question strong { font-size: 13px; font-weight: 550; line-height: 1.5; }
+.lab-question button, .lab-readout button { font-size: 11px; padding: 6px 9px; }
+.lab-controls { display: flex; flex-wrap: wrap; align-items: end; gap: 7px; margin: 10px 0; }
+.lab-controls label { flex: 1; min-width: 140px; max-width: 340px; font-size: 11px; margin-bottom: 0; }
+.lab-controls select { margin-top: 4px; font-size: 12px; }
+.lab-controls > .hint { flex-basis: 100%; font-size: 11px; }
+.lab-controls button { font-size: 12px; padding: 7px 10px; white-space: normal; }
+#lab-observation { margin: 8px 0; color: #cadcca; font-size: 12px; line-height: 1.5; }
+.lab-readout { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; color: #e9c899; font: 11px ui-monospace,monospace; line-height: 1.6; }
+.lab-notes { margin-top: 10px; font-size: 11px; color: var(--muted); border-color: var(--border-subtle); padding-top: 8px; }
+.lab-notes summary { min-height: 28px; font-size: 11px; }
+.lab-notes p { margin: 8px 0; line-height: 1.65; max-width: 80ch; }
+.brain-panel { align-self: start; max-height: 100%; min-height: 0; display: flex; flex-direction: column; padding: 0; overflow: auto; overscroll-behavior: contain; border: 1px solid var(--border-subtle); border-radius: var(--radius); background: var(--surface); }
+.brain-heading { position: sticky; top: 0; z-index: 2; background: var(--surface); display: flex; align-items: center; justify-content: space-between; padding: 12px; border-bottom: 1px solid var(--border-subtle); gap: 6px; }
+.brain-heading .eyebrow { font-size: 8px; letter-spacing: 1.1px; display: block; margin-bottom: 4px; }
+.brain-heading > div { min-width: 0; flex: 1; }
+.brain-heading select { width: auto; max-width: 100%; padding: 0 5px 0 0; font-size: 14px; font-weight: 600; background: transparent; border: none; min-height: 24px; }
+.brain-heading button { padding: 6px 8px; background: transparent; font-size: 11px; }
+#duck-inspector { display: flex; flex-direction: column; min-width: 0; }
+.vision-card, .neural-card, .body-response { padding: 12px; min-width: 0; }
+.neural-card, .body-response { border-top: 1px solid var(--border-subtle); }
+.eye-heading, .neural-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.eye-heading strong, .neural-heading strong { font-size: 12px; font-weight: 550; }
+.eye-heading select { width: 68px; padding: 4px; font-size: 11px; min-height: 28px; }
+.eye-frame { position: relative; background: #111e17; border: 1px solid #3a5341; border-radius: 6px; overflow: hidden; height: clamp(96px, 16dvh, 138px); display: flex; justify-content: center; }
+#eye { height: 100%; width: auto; max-width: 100%; image-rendering: pixelated; object-fit: contain; }
+#eye-empty { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--muted); text-align: center; }
+.vision-caption { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin: 7px 0 0; font-size: 10px; color: #b5cbb8; min-height: 16px; }
+.vision-caption .inline { margin: 0; font-size: 10px; gap: 4px; }
+.vision-actions { display: flex; gap: 6px; margin-top: 6px; }
+.vision-actions button { flex: 1; padding: 6px; font-size: 11px; }
+.neural-heading { flex-wrap: wrap; }
+.neural-heading > span { color: #b9cca5; font-size: 9px; }
+.neural-heading > span.bypassed { color: #f0c190; }
+#brain-plot { width: 100%; height: clamp(85px, 13dvh, 112px); display: block; }
+.neural-legend { display: flex; gap: 12px; font-size: 9px; color: #bfccbc; }
+.neural-legend span::before { content: ''; display: inline-block; width: 5px; height: 5px; background: #e8aa6a; border-radius: 50%; margin-right: 4px; }
+.neural-legend span:nth-child(2)::before { background: #7cc9b3; }
+.neural-legend span:nth-child(3)::before { background: #f87968; }
+.monitor-controls { border-top: 0; margin: 7px 0 0; padding: 0; }
+.monitor-controls > summary { font-size: 11px; padding: 7px 0; min-height: 30px; margin: 0; color: #b7cdbb; }
+.monitor-controls > summary:hover { color: #f0f7eb; }
+#trace { height: 32px; width: 100%; display: block; margin: 5px 0; }
+.pulse-label { font-size: 10px; color: var(--muted); margin: 8px 0; }
+.pulses { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.pulses button { font-size: 11px; padding: 6px; }
+.response-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.response-heading strong { font-size: 12px; font-weight: 550; color: #d8e8c0; line-height: 1.4; }
+.response-heading button { background: transparent; padding: 4px 7px; font-size: 11px; }
+.signal-bars { display: flex; gap: 14px; margin: 8px 0; }
+.signal-bars > div { flex: 1; min-width: 0; }
+.signal-bars span { display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); }
+.signal-bars b { font-weight: 450; color: #e0e8d7; }
+meter { width: 100%; height: 6px; display: block; margin-top: 4px; accent-color: #dfbb7d; }
+meter::-webkit-meter-bar { background: #102016; border: 0; }
+meter::-webkit-meter-optimum-value { background: #c4d6a7; }
+#forward-meter::-webkit-meter-optimum-value { background: #e8aa6a; }
+#metrics { font: 10px ui-monospace, SFMono-Regular, monospace; color: #b5c8b8; }
+.feedback-loop { color: #c4dfac; font-size: 11px; margin: 8px 0; line-height: 1.5; }
+#model-note { font-size: 10px; color: #a0b59d; line-height: 1.5; margin: 8px 0; }
+#duck-settings { width: 100%; font-size: 11px; }
+.connection-note { border-top: 1px solid var(--border-subtle); margin: 0; padding: 10px 12px; font-size: 9px; color: var(--muted); line-height: 1.5; }
+.is-compact .brain-heading { padding: 10px; }
+.is-compact .vision-card, .is-compact .neural-card, .is-compact .body-response { padding: 10px; }
+.is-compact .monitor-controls, .is-compact .neural-legend, .is-compact .vision-caption .inline { display: none; }
+.is-compact .eye-frame { height: 104px; }
+.is-compact #brain-plot { height: 88px; }
+.is-compact .neural-heading { gap: 4px; }
+.is-compact .neural-heading > span { font-size: 9px; }
+.is-compact .connection-note { font-size: 9px; padding: 9px 10px; }
+.tools-panel { position: absolute; z-index: 9; top: 0; bottom: 12px; left: 16px; width: min(345px, calc(100% - 32px)); background: #203228; border: 1px solid #68886d; border-radius: var(--radius); box-shadow: 0 12px 40px #0005; overflow: auto; overscroll-behavior: contain; padding: 0 16px 16px; }
+.tools-panel > .panel-title { position: sticky; top: 0; z-index: 2; background: #203228; padding: 14px 0; margin: 0; border-bottom: 1px solid var(--border-subtle); }
+.tools-panel summary { font-weight: 550; padding: 4px 0; }
+.tools-panel details { border-color: var(--border-subtle); }
+.tools-panel .scene-panel { margin-top: 16px; }
+.tools-panel .panel-title h2 { font-size: 15px; }
+.tools-panel button { min-height: 32px; }
+.focus-mode .topbar { display: none; }
+.focus-mode .experiment-heading p, .focus-mode .statusbar { display: none; }
+.focus-mode .scene-header { padding-top: 10px; padding-bottom: 10px; }
+.focus-mode .experiment-heading h1 { margin: 0; }
+@media (max-width: 1100px) {
+  .scene-header { align-items: stretch; flex-direction: column; gap: 10px; padding: 12px 16px; }
+  .toolbar { width: 100%; }
+  .lab-layout { grid-template-columns: minmax(0,1fr) 290px; }
+  .platform { display: none; }
+  .arena-hint { display: none; }
+}
+@media (max-width: 820px) {
+  .topbar { height: 48px; padding: 0 12px; }
+  .brand img { width: 26px; height: 26px; }
+  .brand { font-size: 18px; }
+  .top-actions { gap: 5px; }
+  .top-actions > button, .app-menu summary { font-size: 11px; padding: 7px 9px; }
+  .scene-header { gap: 8px; padding: 10px 10px 8px; }
+  .experiment-heading { gap: 10px; }
+  .experiment-heading h1 { font-size: 16px; }
+  .experiment-heading p { font-size: 10px; line-height: 1.35; }
+  .experiment-heading > button { font-size: 11px; padding: 6px 8px; }
+  .toolbar { gap: 5px; }
+  .toolbar button { padding: 6px 9px; font-size: 11px; }
+  #clock { font-size: 10px; min-width: 45px; }
+  .lab-layout, .lab-layout.compact-monitor { display: flex; flex-direction: column; padding: 0 8px 8px; gap: 8px; }
+  .workspace { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+  .arena { flex: 1 0 180px; min-height: 180px; }
+  .workspace-panel { flex-shrink: 0; }
+  .workspace-panel > summary { padding: 8px 10px; }
+  .summary-note { font-size: 10px; margin-left: 5px; }
+  #experiment-controls > .panel-content { max-height: 240px; }
+  .statusbar { display: none; }
+  .brain-panel { align-self: stretch; flex: none; max-height: 44dvh; }
+  .brain-heading { padding: 7px 10px; }
+  .brain-heading > div { display: flex; align-items: center; gap: 8px; }
+  .brain-heading .eyebrow { margin: 0; font-size: 8px; }
+  .brain-heading select { font-size: 13px; max-width: 160px; }
+  #duck-inspector { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+  .vision-card, .neural-card { padding: 8px 10px; }
+  .neural-card { border-top: 0; border-left: 1px solid var(--border-subtle); }
+  .body-response { grid-column: 1/-1; padding: 6px 10px; }
+  .eye-heading, .neural-heading { min-height: 28px; margin-bottom: 5px; }
+  .eye-heading strong, .neural-heading strong { font-size: 11px; }
+  .neural-heading { align-content: center; gap: 3px; }
+  .neural-heading > span { font-size: 8px; }
+  .eye-frame { height: 82px; }
+  #brain-plot { height: 82px; }
+  .neural-legend { font-size: 8px; gap: 7px; margin-top: 8px; }
+  .vision-caption { font-size: 9px; }
+  .vision-actions { flex-wrap: wrap; }
+  .connection-note { padding: 5px 10px; font-size: 8px; }
+  .brain-panel.is-compact { max-height: none; }
+  .is-compact .brain-heading { padding: 5px 10px; }
+  .is-compact .vision-card, .is-compact .neural-card { padding: 5px 10px; }
+  .is-compact .eye-heading { min-height: 24px; margin: 0; }
+  .is-compact .eye-heading select { min-height: 24px; padding: 2px; }
+  .is-compact .eye-frame, .is-compact #brain-plot { height: 58px; }
+  .is-compact .neural-heading { min-height: 24px; margin: 0; }
+  .is-compact .vision-caption { min-height: 12px; margin-top: 3px; }
+  .is-compact .body-response { padding: 3px 10px; }
+  .is-compact .response-heading strong { font-size: 11px; }
+  .is-compact .response-heading button { min-height: 26px; }
+  .is-compact .connection-note { display: none; }
+  .tools-panel { left: 8px; bottom: calc(var(--monitor-height, 198px) + 16px); width: min(345px, calc(100% - 16px)); }
+  .focus-mode .scene-header { flex-direction: row; align-items: center; flex-wrap: wrap; }
+  .focus-mode .experiment-heading { flex-basis: 100%; }
+}
+@media (max-width: 520px) {
+  .home-page { padding: 24px 18px 16px; }
+  .home-intro { padding-top: 4px; }
+  .home-intro h1 { font-size: 36px; letter-spacing: -1.4px; }
+  .home-intro p { font-size: 14px; }
+  .home-meta { flex-wrap: wrap; gap: 8px; }
+  .scenario-grid { grid-template-columns: 1fr; gap: 16px; }
+  .scenario-filters { gap: 4px; }
+  .scenario-filters button { padding: 7px 10px; font-size: 11px; }
+  .scenario-image { height: 188px; }
+  .home-footer { display: block; }
+  .home-footer span { display: block; margin-bottom: 10px; }
+  .section-heading { align-items: start; }
+  .section-heading p { max-width: 250px; }
+  .section-heading > span { font-size: 10px; }
+  .summary-note { display: none; }
+  .lab-question { align-items: start; }
+  .lab-question strong { font-size: 12px; }
+  .lab-question button { white-space: normal; max-width: 94px; }
+  .lab-controls label { min-width: 125px; }
+  .brain-heading .eyebrow { letter-spacing: .6px; }
+  .brain-heading select { max-width: 145px; }
+  .vision-caption .inline { font-size: 9px; }
+  .neural-heading > span { max-width: 100%; font-size: 8px; }
+  .neural-legend { flex-wrap: wrap; gap: 4px; }
+  .is-compact .neural-heading { align-items: start; justify-content: start; flex-direction: column; min-height: 24px; gap: 0; }
+  .is-compact #brain-plot { height: 58px; }
+  .is-compact .vision-caption { font-size: 8px; }
+}
+@media (max-height: 600px) and (min-width: 821px) {
+  .brain-heading { padding: 7px 10px; }
+  .eye-frame { height: 76px; }
+  #brain-plot { height: 70px; }
+  .vision-card, .neural-card, .body-response { padding: 8px 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation: none; }
+  button, .scenario-tile { transition: none; }
+  .scenario-tile:hover:enabled { transform: none; }
+}
+
+.arena #notice { position: absolute; bottom: auto; top: 50px; left: 50%; max-width: calc(100% - 24px); padding: 10px 14px; font-size: 11px; pointer-events: none; }

@@ -1,7 +1,9 @@
+import { mountWorkspaceLayout } from "./lab/workspace-layout.js";
 import { workspaceShell } from "./lab/workspace-ui.js";
 import { mountGuidedLab } from "./lab/guided-ui.js";
 import { SCENARIOS } from "./lab/scenarios.js";
 import "./style.css";
+import "./workspace.css";
 import { fetchBytes } from "./assets.js";
 import { BrainPlot, trace } from "./plots.js";
 import { LabArena } from "./lab/lab-arena.js";
@@ -88,6 +90,12 @@ const updateGuidedLab = mountGuidedLab({
   push: id => send("push", {id, strength:2.5}),
   save: report => download("duckfly-playground-trials.json", report),
 });
+const workspaceLayout = mountWorkspaceLayout({onResize: () => {
+  arena?.resize();
+  plot?.draw();
+  if ($("#trace").offsetWidth) trace($("#trace"), samples);
+  drawEye();
+}});
 if (window.duckflyHost)
   $("#platform").textContent = "Mac · on-device playground";
 function persistScene() {
@@ -171,6 +179,7 @@ function syncConnectedDuck() {
   );
 }
 function showExperiment() {
+  $("#arena").append($("#notice"));
   $("#home-page").hidden = true;
   $("#experiment-page").hidden = false;
   document.body.classList.add("in-experiment");
@@ -183,6 +192,8 @@ function showExperiment() {
   });
 }
 function showHome() {
+  $("#app").append($("#notice"));
+  workspaceLayout.setFocus(false);
   if (ready && room?.role !== "guest") send("pause", { value: true });
   $("#home-page").hidden = false;
   $("#experiment-page").hidden = true;
@@ -193,7 +204,10 @@ function showHome() {
 function setTools(open) {
   $("#tools-panel").hidden = !open;
   $("#tools-button").setAttribute("aria-expanded", String(open));
-  if (open) $("#close-tools").focus();
+  if (open) {
+    $("#selected-object-panel").open = true;
+    $("#close-tools").focus();
+  }
   else if (document.activeElement?.closest("#tools-panel"))
     $("#tools-button").focus();
 }
@@ -1000,7 +1014,7 @@ document.addEventListener("keydown", (e) => {
     $("#home-page").hidden === false ||
     !ready ||
     document.querySelector("dialog[open]") ||
-    ["INPUT", "SELECT", "TEXTAREA", "BUTTON"].includes(
+    ["INPUT", "SELECT", "TEXTAREA", "BUTTON", "SUMMARY"].includes(
       document.activeElement.tagName,
     )
   )

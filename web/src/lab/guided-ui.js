@@ -3,13 +3,13 @@ const button = (action, text) => `<button data-lab-action="${action}">${text}</b
 export function mountGuidedLab({restart, patch, move, push, save}) {
   const root = document.querySelector('#guided-lab');
   let scene, state, duck, finishedKey, desiredLab = null, runs = [];
-  root.innerHTML = `<div class="lab-question"><strong id="lab-question"></strong><button id="lab-retry">Restart experiment</button></div>
+  root.innerHTML = `<details id="experiment-controls" class="workspace-panel" data-panel open><summary>Experiment controls <span class="summary-note">Try a change</span></summary><div class="panel-content"><div class="lab-question"><strong id="lab-question"></strong><button id="lab-retry">Restart experiment</button></div>
     <div data-lab-panel="stop-go" class="lab-controls"><label>Object path<select id="lab-path">${choices([['incoming','Approach, wait, leave'],['near-miss','Pass beside it · false-alarm example'],['receding','Move away'],['retreat','Wait, then move away']])}</select></label><label>Stop response<select id="lab-stop">${choices([['hold','Wait until clear · experimental'],['timer','Original 1-second timer'],['gf-off','Disconnect GF neurons']])}</select></label><span class="hint">Changing a choice restarts the same 5-second trial.</span></div>
     <div data-lab-panel="gaze" class="lab-controls">${button('beacon-left','Beacon left')}${button('beacon-right','Beacon right')}${button('hide','Hide beacon')}${button('reveal','Reveal beacon')}${button('look','Active looking')}</div>
     <div data-lab-panel="switchboard" class="lab-controls">${button('connect','Connect all')}${button('forward','Cut forward neurons')}${button('left','Cut left turn')}${button('right','Cut right turn')}${button('output','Cut body commands')}</div>
     <div data-lab-panel="recovery" class="lab-controls">${button('push','Nudge duck')}${button('feedback','Feedback to fly brain')}</div>
     <p id="lab-observation"></p><div class="lab-readout"><span id="lab-measures"></span><button id="lab-save" hidden>Save trial</button></div>
-    <details class="lab-notes"><summary>What this experiment can tell us</summary><p id="lab-explanation"></p><p id="lab-previous" hidden></p></details>`;
+    <details class="lab-notes"><summary>What this experiment can tell us</summary><p id="lab-explanation"></p><p id="lab-previous" hidden></p></details></div></details>`;
   const $ = (selector) => root.querySelector(selector);
   const restartCurrent = (patch = {}) => {
     finishedKey = null;
