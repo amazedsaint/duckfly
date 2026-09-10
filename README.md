@@ -4,6 +4,8 @@
 
 [What we built, what the experiments found, and the next plan](docs/experiments/playground/README.md). New guided scenes: Stop, wait, go; Find it again; Brain switchboard; Bump and recover. The temporal stop adapter is explicitly experimental and remains off in earlier presets.
 
+The [scene and feedback audit](docs/experiments/scene-audit/README.md) makes every scene open-ended. It adds visible movement-block reasons and controls for the brain/body connection. Props can follow motion paths or behave as physical bodies.
+
 The [immersive workspace](docs/implementation/immersive-ui/README.md) adds Focus mode, collapsible controls, and a compact live brain monitor in both the web and Mac apps.
 
 An experiment workspace coupling a selected FlyWire neural circuit to a simulated Microduck robot. Camera pixels become sensory input; circuit activity selects movement intent; Microduck's pretrained walking policy controls the joints. MuJoCo and BAM calculate the physical response.
@@ -50,6 +52,12 @@ Start with a scenario tile on the home page. Each tile explains what to try and 
 
 The brain dock stays visible beside the scene, or below it in a compact window. Click a duck in the arena or its object chip to watch its eye view and neural activity. Selecting a prop keeps the same duck connected. **Cover eyes** is a one-click reversible intervention. The **Why?** button explains the latest visual input and resulting body command. Manual and reactive controllers are labeled as bypassing circuit control.
 
+The live monitor separates **Brain request** from **Body command** and shows measured speed. A firing circuit can request walking while the visual gate blocks it. A tiny beacon now reports its detected pixel count. Use **Bring beacon ahead** to recover a lost cue, or **Reveal beacon** to move an occluding wall. These are explicit scene edits, not target coordinates supplied to the controller.
+
+Every scene has **Experiment controls**, including independent **Body commands** and **Feedback** switches for the watched duck. **Command strength** scales delivered forward and turn commands from 0% to 100%; it does not change the neural request. Feedback returns measured speed and gait phase to the fly circuit. The walking policy continues to control balance. **Step** advances 0.1 seconds and pauses. Pulses sent while paused remain queued until Run or Step. Every open scene runs without a time limit. Switching browser tabs no longer automatically pauses it. Timed windows remain inside explicit comparison tools; the browser may throttle background work.
+
+**Select a prop → Behavior & physics** offers a light or heavy pushable body, a slippery surface, and bounded motion paths. Back-and-forth and circular motion apply without restarting the duck; their dotted guide appears only in the main scene. Changing weight or switching between a fixed prop and a free physical body uses **Apply physics & restart**. The Add object menu also offers ready-made moving props. Reset preserves your added objects and physics; assigning custom behavior replaces the preset object script.
+
 Drag props to reposition them, or select one and use the directional buttons below the arena. A running experiment resumes when the drag ends. **Add object** offers ducks and common props; adding one restarts the scene. New ducks connect to the brain dock immediately. **Scene tools** holds exact object settings and advanced experiment controls. Shape changes use **Apply and reset**; position edits use **Move in current run**.
 
 **Scene tools → Recordings & replay** retains the bounded timeline. Rewind to replay recorded input or change a cue and branch. **More → Save scene** exports the scene and seed. **Export recording** also includes physical/neural state and low-resolution frames. **More → Open file** accepts scenes, recordings and adapter reports. Returning to **Scenarios** pauses the local world; **Continue your scene** returns without restarting it.
@@ -66,6 +74,7 @@ Under **Scene tools → Experiment tools**, compare controllers on matched targe
 npm test --prefix web
 mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test
 mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-playground
+mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-scenarios
 npx vercel deploy --prod --scope contextmind
 ```
 

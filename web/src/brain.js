@@ -62,7 +62,8 @@ export class Brain {
     const yaw=stopped?0:clamp((difference-this.baseline)*.04,-.65,.65);
     if(s.simMs>this.eventUntil) this.event=this.silenced?'Output silenced':this.walking?'Neural walking drive':'Circuit at rest';
     return {neuralTime:s.simMs/1000,forward:s.rateFwd,left:s.rateDNaL,right:s.rateDNaR,loom:s.rateLoom,population:s.ratePop,
-      spikeCount:s.totalSpikes,fired:this.bus.popAll().map(e=>e.neuron),vx,yaw,event:this.event};
+      spikeCount:s.totalSpikes,fired:this.bus.popAll().map(e=>e.neuron),vx,yaw,event:this.event,
+      gfHeld:s.simMs<this.escapeUntil,feedback:{enabled:this.feedback,drive:s.gaitDrive,phase:s.gaitPhase}};
   }
   checkpoint(){
     const adapter=Object.fromEntries(['seed','silenced','feedback','baseline','walking','escapeUntil','loomUntil','event','eventUntil'].map(key=>[key,this[key]]));

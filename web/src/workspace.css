@@ -32,7 +32,7 @@ input[type="checkbox"], input[type="range"] { min-height: 0; }
 #clock { font: 11px ui-monospace, SFMono-Regular, monospace; font-variant-numeric: tabular-nums; color: var(--muted); min-width: 60px; text-align: center; }
 .lab-layout { position: relative; display: grid; grid-template-columns: minmax(0,1fr) 320px; gap: 12px; padding: 0 16px 12px; flex: 1; min-height: 0; width: 100%; max-width: 2400px; margin: 0 auto; }
 .lab-layout.compact-monitor { grid-template-columns: minmax(0,1fr) 224px; }
-.workspace { position: relative; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 8px; }
+.workspace { overflow: hidden; position: relative; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 8px; }
 .arena { position: relative; isolation: isolate; overflow: hidden; background: #dce4df; border-radius: var(--radius); flex: 1 1 auto; min-height: 160px; color: #36583e; }
 .arena > canvas { width: 100%; height: 100%; display: block; touch-action: none; }
 .arena-label { position: absolute; top: 12px; left: 12px; right: 12px; display: flex; justify-content: space-between; gap: 8px; pointer-events: none; font-size: 11px; }
@@ -47,6 +47,7 @@ input[type="checkbox"], input[type="range"] { min-height: 0; }
 .loading { position: absolute; inset: 0; background: #dce4dff5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 24px; text-align: center; }
 .spinner { width: 26px; height: 26px; border: 2px solid #aabda4; border-top-color: #456e4e; border-radius: 50%; animation: spin 1s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
+.scene-control-panels { position: relative; display: flex; flex-direction: column; gap: 8px; max-height: min(45dvh, 400px); min-height: 0; flex: 0 1 auto; overflow-y: auto; overscroll-behavior: contain; }
 .workspace-panel { flex: none; border: 1px solid var(--border-subtle); border-radius: var(--radius); background: var(--surface); margin: 0; padding: 0; }
 .workspace-panel > summary { padding: 10px 12px; margin: 0; font-size: 12px; font-weight: 550; color: #dce8de; user-select: none; border-radius: inherit; }
 .workspace-panel > summary:focus-visible { outline-offset: -3px; }
@@ -55,19 +56,29 @@ input[type="checkbox"], input[type="range"] { min-height: 0; }
 .workspace-panel[open] > summary { margin: 0; border-bottom: 1px solid var(--border-subtle); border-radius: var(--radius) var(--radius) 0 0; }
 .summary-note { font-size: 10px; color: var(--muted); font-weight: 400; margin-left: 10px; }
 .panel-content { padding: 10px 12px; }
+.open-scene-label { color: var(--muted); font-size: 10px; white-space: nowrap; }
+#prop-behavior-panel { flex-shrink: 0; }
+#prop-behavior-panel .panel-content { overflow: visible; }
+#prop-behavior-panel label { font-size: 11px; display: flex; gap: 12px; align-items: center; justify-content: space-between; max-width: 430px; }
+#prop-behavior-panel select { max-width: 240px; font-size: 11px; }
+#prop-live-state { display: block; margin-top: 8px; }
+@media (max-width: 820px) { .open-scene-label { display: none; } }
 #objects-panel .panel-content { padding: 6px 10px; }
-.object-tray { display: flex; gap: 10px; align-items: center; min-height: 34px; }
+.object-tray { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; min-height: 34px; }
 .object-chips { display: flex; gap: 6px; overflow-x: auto; flex: 1; min-width: 0; padding: 3px; }
 .object-chip { display: flex; align-items: center; gap: 7px; background: transparent; font-size: 11px; padding: 6px 9px; }
 .object-chip img { width: 17px; height: 17px; }
 .prop-dot { width: 9px; height: 9px; display: inline-block; border-radius: 50%; }
 .object-tray .menu-content { bottom: calc(100% + 8px); top: auto; }
+#quick-add[open] { flex-basis: 100%; }
+#quick-add[open] .menu-content { position: static; width: 100%; min-width: 0; margin-top: 8px; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); box-shadow: none; }
+#quick-add .menu-content .hint { grid-column: 1/-1; }
 .prop-actions { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; border-top: 1px solid var(--border-subtle); padding-top: 7px; margin-top: 6px; font-size: 11px; }
 .prop-actions button { padding: 5px 9px; font-size: 11px; }
 .prop-actions #prop-label { margin-right: auto; }
 .statusbar { display: flex; justify-content: space-between; gap: 10px; color: #99b09e; font-size: 9px; min-height: 14px; align-items: center; flex: none; }
 .guided-lab { flex: none; min-height: 0; }
-#experiment-controls > .panel-content { max-height: min(32dvh, 300px); overflow-y: auto; overscroll-behavior: contain; }
+#experiment-controls > .panel-content { overflow: visible; }
 .lab-question { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .lab-question strong { font-size: 13px; font-weight: 550; line-height: 1.5; }
 .lab-question button, .lab-readout button { font-size: 11px; padding: 6px 9px; }
@@ -128,6 +139,32 @@ meter::-webkit-meter-optimum-value { background: #c4d6a7; }
 #forward-meter::-webkit-meter-optimum-value { background: #e8aa6a; }
 #metrics { font: 10px ui-monospace, SFMono-Regular, monospace; color: #b5c8b8; }
 .feedback-loop { color: #c4dfac; font-size: 11px; margin: 8px 0; line-height: 1.5; }
+.loop-readout { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 10px; margin-top: 8px; }
+.loop-readout span { color: var(--muted); font-size: 9px; line-height: 1.5; }
+.loop-readout b { display: block; color: #e0e8d7; font: 10px ui-monospace, SFMono-Regular, monospace; overflow-wrap: anywhere; }
+.loop-reason { color: #e5c896; font-size: 10px; line-height: 1.4; margin: 8px 0 0; }
+.loop-controls { display: grid; gap: 6px; margin: 5px 0 12px; }
+.guided-lab .loop-controls { grid-template-columns: repeat(2, minmax(0,1fr)); border-top: 1px solid var(--border-subtle); padding-top: 10px; margin-top: 12px; max-width: 480px; }
+.guided-lab .loop-controls label, .guided-lab .loop-controls .hint { grid-column: 1/-1; }
+.loop-controls label { display: flex; align-items: center; justify-content: space-between; font-size: 11px; gap: 10px; }
+.loop-controls select { width: 100px; font-size: 11px; }
+.loop-controls button { font-size: 11px; }
+.is-compact .loop-readout { gap: 4px; }
+.is-compact .loop-readout b { font-size: 9px; }
+@media (min-width: 821px) and (max-height: 820px) {
+  .brain-heading { padding: 9px 10px; }
+  .vision-card, .neural-card, .body-response { padding: 9px 10px; }
+  .eye-frame { height: 96px; }
+  #brain-plot { height: 80px; }
+  .monitor-controls { margin-top: 4px; }
+  .monitor-controls > summary { min-height: 26px; padding: 5px 0; }
+}
+@media (max-width: 820px) {
+  .is-compact .loop-readout { grid-template-columns: 1fr 1fr; margin-top: 2px; }
+  .is-compact .loop-readout span:nth-child(n+3) { display: none; }
+  .is-compact .loop-readout b { display: inline; margin-left: 5px; }
+  .is-compact .loop-reason { margin-top: 3px; font-size: 9px; }
+}
 #model-note { font-size: 10px; color: #a0b59d; line-height: 1.5; margin: 8px 0; }
 #duck-settings { width: 100%; font-size: 11px; }
 .connection-note { border-top: 1px solid var(--border-subtle); margin: 0; padding: 10px 12px; font-size: 9px; color: var(--muted); line-height: 1.5; }
@@ -172,12 +209,12 @@ meter::-webkit-meter-optimum-value { background: #c4d6a7; }
   .toolbar button { padding: 6px 9px; font-size: 11px; }
   #clock { font-size: 10px; min-width: 45px; }
   .lab-layout, .lab-layout.compact-monitor { display: flex; flex-direction: column; padding: 0 8px 8px; gap: 8px; }
-  .workspace { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+  .workspace { flex: 1; min-height: 0; overflow: hidden; }
   .arena { flex: 1 0 180px; min-height: 180px; }
   .workspace-panel { flex-shrink: 0; }
   .workspace-panel > summary { padding: 8px 10px; }
   .summary-note { font-size: 10px; margin-left: 5px; }
-  #experiment-controls > .panel-content { max-height: 240px; }
+  #experiment-controls > .panel-content { max-height: none; }
   .statusbar { display: none; }
   .brain-panel { align-self: stretch; flex: none; max-height: 44dvh; }
   .brain-heading { padding: 7px 10px; }

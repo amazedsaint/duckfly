@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import {gunzipSync} from 'node:zlib';
 import loadMujoco from '@mujoco/mujoco';
 import * as ort from 'onnxruntime-web/wasm';
-import {defaultScene,encodeScene,decodeScene,validateScene} from '../src/lab/scene.js';
+import {defaultScene,encodeScene,decodeScene,validateScene,resetScene,changeEncounter} from '../src/lab/scene.js';
 import {stopCase,scheduledMotion} from '../src/lab/guided-labs.js';
 import {cases,sceneFor} from '../../experiments/temporal/scenes.js';
 import {TemporalDecoder} from '../../shared/vision/temporal/decoder.js';
@@ -19,6 +19,24 @@ const packet=(tick,source='eyes:duck-1')=>{
   const pixels=Uint8Array.from({length:96*64*4},(_,i)=>(i*17+tick*13)%256);
   return framePacket({pixels,views:{left:pixels,right:pixels},sourceId:source,frameId:tick,captureTime:tick*.02,simulationTime:tick*.02,pose:[0,0,.2,1,0,0,0]});
 };
+test('reset and encounter changes preserve the custom scene and respect user object physics',()=>{
+  const scene=defaultScene('stop-go');
+  scene.props.push({id:'my-ball',name:'My ball',kind:'ball',position:[0,.6,.2],movable:true});
+  scene.ducks[0].motorGain=.5;scene.ducks[0].feedback=false;
+  scene.props[0].position=[2,0,.16];scene.props[0].motion=[.4,0,0];
+  const reset=resetScene(scene);
+  assert.deepEqual(reset.props[0].position,defaultScene('stop-go').props[0].position);
+  assert.equal(reset.props.at(-1).id,'my-ball');assert.equal(reset.ducks[0].motorGain,.5);assert.equal(reset.ducks[0].feedback,false);
+  assert.equal(scene.props[0].position[0],2,'reset must not mutate the source');
+  Object.assign(scene.props[0],{movable:true,motion:[0,0,0],mass:1});
+  const custom=resetScene(scene);
+  assert.equal(custom.lab.scripted,false);assert.equal(custom.props[0].mass,1);assert.equal(custom.props[0].position[0],2);
+  assert.equal(scheduledMotion(custom.lab,185),null);
+  const changed=changeEncounter(custom,{variant:'retreat',condition:'timer'});
+  assert.equal(changed.lab.scripted,true);assert.equal(changed.props[0].movable,false);
+  assert.equal(changed.props.at(-1).id,'my-ball');assert.equal(changed.ducks[0].motorGain,.5);assert.equal(changed.ducks[0].feedback,false);
+  assert.equal(changed.ducks[0].temporal,'timer');
+});
 test('guided scenes round trip and preserve matched study geometry without enabling defaults',()=>{
   for(const id of ['stop-go','gaze','switchboard','recovery'])assert.deepEqual(decodeScene(encodeScene(defaultScene(id))),defaultScene(id));
   for(const variant of ['incoming','near-miss','receding','retreat']){

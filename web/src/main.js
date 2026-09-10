@@ -1,3 +1,6 @@
+import { mountPropControls } from "./lab/prop-controls.js";
+import { propProfile } from "./lab/prop-behavior.js";
+import { loopStatus } from "./lab/loop-status.js";
 import { mountWorkspaceLayout } from "./lab/workspace-layout.js";
 import { workspaceShell } from "./lab/workspace-ui.js";
 import { mountGuidedLab } from "./lab/guided-ui.js";
@@ -10,6 +13,7 @@ import { LabArena } from "./lab/lab-arena.js";
 import { ExperimentRoom } from "./lab/room.js";
 import {
   defaultScene,
+  changeEncounter,
   validateScene,
   encodeScene,
   decodeScene,
@@ -70,6 +74,7 @@ const remoteActions = new Set([
   "scene",
   "duck",
   "move-prop",
+  "prop-behavior",
   "stimulus",
   "push",
 ]);
@@ -84,12 +89,27 @@ const send = (type, extra = {}) => {
   worker.postMessage({ type, ...extra });
 };
 const updateGuidedLab = mountGuidedLab({
-  restart: (id, options) => {sceneChanged(defaultScene(id, options));send("pause", {value:false});},
+  restart: (id, options) => {sceneChanged(id==='stop-go'?changeEncounter(scene,options):defaultScene(id,options));send("pause", {value:false});},
   patch: patchConnected,
   move: (id, position, yaw) => {send("move-prop", {id, position:position.map(v=>Math.max(-10,Math.min(10,v))), yaw});},
   push: id => send("push", {id, strength:2.5}),
+  reset: () => {send("reset");send("pause", {value:false});},
+  add: kind => addObject(kind),
+  selectDuck: id => {$("#brain-duck").value=id;$("#brain-duck").dispatchEvent(new Event("change"));},
+  stimulus: kind => stimulate(kind),
+  configure: next => {sceneChanged(next);send("pause", {value:false});},
   save: report => download("duckfly-playground-trials.json", report),
 });
+const updatePropControls = mountPropControls({apply: (id, patch) => {
+  const prop=scene.props.find(p=>p.id===id);if(!prop)return;
+  const restart=patch.movable!==prop.movable||patch.movable&&(patch.mass!==prop.mass||patch.friction!==prop.friction);
+  if(restart){
+    const position=state?.body.props.find(p=>p.id===id)?.position??prop.position;
+    sceneChanged({...scene,props:scene.props.map(p=>p.id===id?{...p,...patch,position}:p)});
+    notify('Physics applied. The scene has restarted; use Run or Step to see the result.');
+  }else if(!prop.movable)send('prop-behavior',{id,behavior:patch.behavior});
+  else notify('This object already has those physical properties.');
+}});
 const workspaceLayout = mountWorkspaceLayout({onResize: () => {
   arena?.resize();
   plot?.draw();
@@ -142,6 +162,7 @@ function selectObject(id) {
   syncConnectedDuck();
   renderScene();
   renderInspector();
+  if(scene.props.some(p=>p.id===selected))$("#prop-behavior-panel").open=true;
   if (state) update(state);
   drawEye();
 }
@@ -170,12 +191,14 @@ function syncConnectedDuck() {
   const bypass = ["manual", "reactive", "reflex"].includes(duck.mode);
   $("#brain-connection").textContent = bypass
     ? "668 neurons · control bypassed"
+    : !duck.motorEnabled
+      ? "668 neurons · body disconnected"
     : duck.silence === "output"
       ? "668 neurons · output silenced"
       : "668 neurons · connected";
   $("#brain-connection").classList.toggle(
     "bypassed",
-    bypass || duck.silence === "output",
+    bypass || !duck.motorEnabled || duck.silence === "output",
   );
 }
 function showExperiment() {
@@ -273,7 +296,6 @@ function renderScene() {
     [["ducks", "Each duck"], ...scene.props.map((p) => [p.id, p.name])],
     scene.challenge.subject,
   );
-  $("#duration").value = scene.challenge.duration;
   $("#goal-x").value = scene.challenge.goal[0];
   $("#goal-y").value = scene.challenge.goal[1];
 }
@@ -432,6 +454,9 @@ function renderInspector() {
       if ($("#object-name")) object.name = $("#object-name").value;
       if ($("#movable")) object.movable = $("#movable").checked;
       if ($("#object-color")) object.color = $("#object-color").value;
+      if(object.movable){object.behavior=null;object.motion=[0,0,0];}
+      else if(object.motion?.some(Boolean))object.behavior=null;
+      if(next.lab?.id==='stop-go'&&object.id==='object')next.lab.scripted=false;
       sceneChanged(next);
     };
 }
@@ -496,6 +521,7 @@ function update(data) {
   const connectionKey = JSON.stringify([connectedDuck, scene.ducks]);
   if (update.connectionKey !== connectionKey) {syncConnectedDuck();update.connectionKey = connectionKey;}
   updateGuidedLab(scene, data, connectedDuck);
+  updatePropControls(scene, data, selected);
   if (
     pendingPropMove &&
     scene.props.some(
@@ -509,6 +535,7 @@ function update(data) {
     renderInspector();
   }
   $("#pause").textContent = paused ? "▶ Run" : "Ⅱ Pause";
+  $("#step").disabled = !ready || jobBusy;
   $("#clock").textContent = data.body.time.toFixed(2) + " s";
   $("#live").textContent = paused ? "Paused" : "● Running";
   $("#branch-label").textContent =
@@ -530,42 +557,23 @@ function update(data) {
   $("#feet").textContent = s.contacts
     .map((c, i) => `${i ? "R" : "L"} ${c ? "●" : "○"}`)
     .join("  ");
-  const v = a?.vision,
-    duck = scene.ducks.find((d) => d.id === s.id),
-    object = duck?.mode === "flock" ? v?.neighbor : v?.target;
-  $("#vision-status").textContent =
-    duck?.eye === "none"
-      ? "Eyes covered"
-      : a?.temporal
-        ? (a.temporal.fresh ? "Stereo sequence active" : "Stereo input unavailable")
-      : a?.input?.fresh === false
-        ? "Camera paused · waiting for a fresh frame"
-        : v
-          ? object?.visible
-            ? duck.mode === "flock"
-              ? "Companion in view"
-              : "Beacon in view"
-            : "No beacon in view"
-          : "Run to sample vision";
-  $("#body-response").textContent = s.fallen
-    ? "Duck fell · reset to stand"
-    : paused
-      ? "Paused"
-      : a?.input?.fresh === false
-        ? "Waiting for vision"
-        : Math.max(v?.loomL ?? 0, v?.loomR ?? 0) > 0.2 && s.command[0] < 0.04
-          ? "Stop response"
-          : Math.abs(s.command[1]) > 0.08
-            ? s.command[1] > 0
-              ? "Turning left"
-              : "Turning right"
-            : s.command[0] > 0.04
-              ? "Walking forward"
-              : "Holding position";
-  $("#feedback-loop").textContent = a?.temporal?.held
-    ? "↻ GF hold → body slowing → fresh stereo checks → release"
-    : duck.feedback ? "↻ Body speed + gait phase → fly circuit" : "↻ Body feedback to fly circuit is off";
-  if (a?.temporal?.held && !paused) $("#body-response").textContent = "GF hold · waiting until clear";
+  const duck = scene.ducks.find((d) => d.id === s.id);
+  const loop = loopStatus(data, s.id);
+  $("#body-response").textContent = loop.status;
+  $("#vision-status").textContent = loop.perception;
+  const pair = values => values ? `${values[0].toFixed(2)} m/s · ${values[1].toFixed(2)} rad/s` : 'No sample yet';
+  $("#loop-intent").textContent = pair(loop.neural);
+  $("#loop-command").textContent = pair(loop.command);
+  $("#loop-speed").textContent = `${loop.speed.toFixed(2)} m/s`;
+  $("#loop-feedback").textContent = !loop.feedback ? 'No sample yet' : loop.feedback.enabled ? `${Math.round(loop.feedback.drive*100)}% gait drive` : 'Disconnected';
+  $("#loop-reason").textContent = `${loop.reason}${paused ? ` · sampled at ${loop.sampledAt.toFixed(2)} s` : ''}`;
+  $("#feedback-loop").textContent = !loop.feedback ? "Run or Step to measure the returning body feedback." : loop.feedback.enabled ?
+    `↻ Measured speed sets gait drive to ${loop.feedback.drive.toFixed(2)}; gait phase ${loop.feedback.phase.toFixed(2)} returns to the fly circuit.` :
+    '↻ Speed and gait phase feedback to the fly circuit is off. The walking policy still balances the body.';
+  for (const [selector, value, label] of [['#motor-link',duck.motorEnabled,'Body commands'],['#feedback-link',duck.feedback,'Feedback']]) {
+    $(selector).setAttribute('aria-pressed', String(value));$(selector).textContent = `${label}: ${value?'on':'off'}`;
+  }
+  if(document.activeElement!==$("#motor-gain"))$("#motor-gain").value=String(duck.motorGain);
   $("#forward-meter").value = n?.forward ?? 0;
   $("#turn-meter").value = Math.abs(s.command[1]);
   $("#brain-plot").dataset.duck = s.id;
@@ -612,6 +620,7 @@ function update(data) {
   drawEye();
   window.duckflyTelemetry = {
     ready,
+    loop,
     connectedDuck,
     selected,
     screen: $("#home-page").hidden ? "experiment" : "home",
@@ -641,12 +650,14 @@ function update(data) {
 }
 const events = new Map();
 worker.onmessage = ({ data }) => {
+  if(data.type==='prop-behavior-applied'){
+    scene=data.scene;if(arena)arena.definition=scene;
+    persistScene();renderScene();renderInspector();updatePropControls(scene,state,selected);
+  }
   if (data.type === "loading") {
     $("#loading-detail").textContent = data.message;
     $("#home-status").textContent = data.message;
   }
-  if (data.type === "challenge-finished")
-    notify("Experiment finished. Reset to try again, or choose another scene.");
   if (data.type === "error") {
     notify(data.message);
     $("#loading-detail").textContent = data.message;
@@ -799,7 +810,13 @@ async function load() {
 }
 load();
 if (new URLSearchParams(location.hash.slice(1)).has("scene")) showExperiment();
-$("#pause").onclick = () => send("pause", { value: !paused });
+$("#pause").onclick = () => {
+  send("pause", { value: !paused });
+};
+$("#step").onclick = () => send("step");
+$("#motor-link").onclick = () => patchConnected({motorEnabled:!scene.ducks.find(d=>d.id===connectedDuck).motorEnabled});
+$("#feedback-link").onclick = () => patchConnected({feedback:!scene.ducks.find(d=>d.id===connectedDuck).feedback});
+$("#motor-gain").onchange = e => patchConnected({motorGain:Number(e.target.value)});
 $("#reset").onclick = () => send("reset");
 $("#view").onclick = () => arena?.home();
 $("#follow").onclick = () => {
@@ -820,11 +837,10 @@ $("#challenge-apply").onclick = () =>
     challenge: {
       ...scene.challenge,
       subject: $("#challenge-subject").value,
-      duration: Number($("#duration").value),
       goal: [Number($("#goal-x").value), Number($("#goal-y").value)],
     },
   });
-function addObject(kind) {
+function addObject(kind, profile) {
   const next = structuredClone(scene),
     id = kind + "-" + Date.now().toString(36);
   if (kind === "duck") {
@@ -852,9 +868,16 @@ function addObject(kind) {
       size: kind === "wall" ? [0.06, 0.35, 0.3] : [0.12, 0.12, 0.12],
       movable: kind === "ball",
     });
+  if(profile){
+    const prop=next.props.find(p=>p.id===id);
+    Object.assign(prop,propProfile(profile),{name:profile==='patrol'?'Patrol wall':profile==='orbit'?'Orbiting beacon':'Pushable ball'});
+    if(profile==='patrol'){prop.position=[.8,0,.17];prop.size=[.07,.25,.34];}
+    if(profile==='orbit')prop.position=[.9,0,.13];
+  }
   if (!sceneChanged(next)) return;
   selected = id;
   if (kind === "duck") connectedDuck = id;
+  else $("#prop-behavior-panel").open=true;
   showExperiment();
   $("#quick-add").open = false;
 }
@@ -918,9 +941,13 @@ $("#rewind").onchange = (e) => {
   const checkpoint = state.history[+e.target.value];
   if (checkpoint) send("rewind", { tick: checkpoint.tick });
 };
+function stimulate(kind) {
+  send("stimulus", { id: connectedDuck, kind });
+  if(paused)notify('Pulse queued for the connected duck. Use Run or Step to advance the brain and body.');
+  else if(state?.agents[connectedDuck]?.input?.gate)notify('Pulse sent. The vision gate still blocks forward movement; bring the cue into view or use the direct brain controller.');
+}
 for (const el of document.querySelectorAll("[data-stimulus]"))
-  el.onclick = () =>
-    send("stimulus", { id: connectedDuck, kind: el.dataset.stimulus });
+  el.onclick = () => stimulate(el.dataset.stimulus);
 $("#push").onclick = () => send("push", { id: connectedDuck });
 $("#flow-overlay").onchange = drawEye;
 $("#eye-view").onchange = drawEye;
@@ -1024,10 +1051,7 @@ document.addEventListener("keydown", (e) => {
     $("#pause").click();
   }
 });
-document.addEventListener("visibilitychange", () => {
-  if (document.hidden && ready && !paused && room?.role !== "host" && !jobBusy)
-    send("pause", { value: true });
-});
+
 
 function loomTable(report) {
   return (
@@ -1287,3 +1311,7 @@ document.addEventListener("click", (e) => {
     if (!menu.contains(e.target) || e.target.closest("button"))
       menu.open = false;
 });
+
+for(const el of document.querySelectorAll('[data-add-preset]'))el.onclick=()=>{
+  const [profile,kind]=el.dataset.addPreset.split('-');addObject(kind,profile);
+};

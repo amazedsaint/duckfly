@@ -97,6 +97,53 @@ test('editable shared physics',async t=>{
         assert.ok(Math.abs(replayed.sim.gaitDrive-expectedBrain.sim.gaitDrive)<1e-12);replayed.sim.gaitDrive=expectedBrain.sim.gaitDrive;assert.deepEqual(replayed,expectedBrain);
       }finally{e.dispose();}
     });
+    await t.test('live prop paths preserve the brain and clock, replay exactly, and stop when dragged',async()=>{
+      const circuit=JSON.parse(read('../../shared/assets/Brain/circuit.json'));
+      const e=new Experiment({mj,template,session,Tensor:ort.Tensor,circuit},defaultScene());
+      try{
+        const frames={'duck-1':new Uint8Array(96*64*4).fill(100)};
+        for(let i=0;i<30;i++)await e.step(frames);
+        const brain=e.agents.get('duck-1').brain.checkpoint(),position=e.world.state().props[0].position;
+        e.setPropBehavior('target-1',{kind:'orbit',speed:.2,range:.4,axis:'y'});
+        assert.equal(e.tick,30);assert.deepEqual(e.agents.get('duck-1').brain.checkpoint(),brain);
+        assert.deepEqual(e.world.state().props[0].position,position);
+        for(let i=0;i<30;i++)await e.step(frames);
+        assert.ok(Math.abs(e.world.state().props[0].position[1]-position[1])>.08);
+        const recording=JSON.parse(JSON.stringify(e.export()));
+        for(let i=0;i<20;i++)await e.step(frames);const expected=e.checkpoint();
+        e.import(recording);for(let i=0;i<20;i++)await e.step(frames);assert.deepEqual(e.checkpoint(),expected);
+        e.moveProp('target-1',[.7,.2,.13],0);assert.equal(e.scene.props[0].behavior,null);
+        for(let i=0;i<20;i++)await e.step(frames);
+        assert.deepEqual(e.world.state().props[0].position,[.7,.2,.13]);
+        e.scene.props[0].movable=true;
+        assert.throws(()=>e.setPropBehavior('target-1',{kind:'patrol'}),/restart/);
+      }finally{e.dispose();}
+    });
+    await t.test('body connection and strength change delivered commands while neural intent survives, including replay',async()=>{
+      const circuit=JSON.parse(read('../../shared/assets/Brain/circuit.json'));
+      const e=new Experiment({mj,template,session,Tensor:ort.Tensor,circuit},defaultScene('empty'));
+      try{
+        const frames={'duck-1':new Uint8Array(96*64*4).fill(100)};
+        e.stimulus('duck-1','walk');
+        for(let i=0;i<30;i++)await e.step(frames);
+        e.updateDuck('duck-1',{motorEnabled:false,feedback:false});
+        let s=await e.step(frames);
+        assert.equal(s.agents['duck-1'].neural.vx,.3);
+        assert.deepEqual(s.body.ducks[0].command,[0,0]);
+        assert.equal(s.agents['duck-1'].neural.feedback.drive,0);
+        assert.equal(s.agents['duck-1'].neural.feedback.phase,0);
+        assert.equal(s.event.causes[0].provenance.forward,'Body command connection off');
+        const recording=JSON.parse(JSON.stringify(e.export()));
+        await e.step(frames);const expected=e.checkpoint();e.import(recording);await e.step(frames);
+        assert.deepEqual(e.checkpoint(),expected);
+        e.updateDuck('duck-1',{motorEnabled:true,motorGain:.5,feedback:true});
+        s=await e.step(frames);
+        assert.equal(s.agents['duck-1'].neural.vx,.3);
+        assert.equal(s.body.ducks[0].command[0],.15);
+        assert.equal(s.event.causes[0].provenance.gain,.5);
+        assert.equal(s.agents['duck-1'].neural.feedback.enabled,true);
+      }finally{e.dispose();}
+    });
     await t.test('experiment rewind replays recorded visual inputs with identical brain and body state',async()=>{
       const circuit=JSON.parse(read('../../shared/assets/Brain/circuit.json'));
       const e=new Experiment({mj,template,session,Tensor:ort.Tensor,circuit},defaultScene());

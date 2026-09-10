@@ -1,5 +1,6 @@
 import { World,quaternion } from '../world.js';
 import { sceneXML,validateScene } from './scene.js';
+import { propPosition } from './prop-behavior.js';
 
 // mj_getState in 3.10's JS binding does not copy its temporary output back to
 // a JS typed array. Read the same ordered mjSTATE_INTEGRATION fields directly.
@@ -52,7 +53,7 @@ export class LabWorld {
     for(const r of this.robots){const c=commands[r.id]??{vx:0,yaw:0};await r.infer(c.vx,c.yaw,c.head);}
     d.xfrc_applied.fill(0);for(const r of this.robots)r.applyPush();
     for(let sub=0;sub<4;sub++){
-      for(const p of this.props){const mocap=m.body_mocapid[p.bodyId];if(mocap>=0)d.mocap_pos.set(p.position.map((v,i)=>v+p.motion[i]*(d.time+.005)),mocap*3);}
+      for(const p of this.props){const mocap=m.body_mocapid[p.bodyId];if(mocap>=0)d.mocap_pos.set(propPosition(p,d.time+.005),mocap*3);}
       for(const r of this.robots)r.bam.update();
       if(sub===3)this.replayAnchor=integrationState(d);
       mj.mj_step(m,d);
@@ -76,7 +77,7 @@ export class LabWorld {
   moveProp(id,position,yaw){
     const p=this.props.find(p=>p.id===id);if(!p)throw Error('Prop no longer exists');
     const quat=[Math.cos(yaw/2),0,0,Math.sin(yaw/2)],mocap=this.m.body_mocapid[p.bodyId];
-    p.position=[...position];p.yaw=yaw;p.motion=[0,0,0];
+    p.position=[...position];p.yaw=yaw;p.motion=[0,0,0];p.behavior=null;
     if(mocap>=0){this.d.mocap_pos.set(position,mocap*3);this.d.mocap_quat.set(quat,mocap*4);}
     else {const j=this.m.body_jntadr[p.bodyId],qa=this.m.jnt_qposadr[j],va=this.m.jnt_dofadr[j];this.d.qpos.set([...position,...quat],qa);this.d.qvel.fill(0,va,va+6);}
     this.mj.mj_forward(this.m,this.d);this.replayAnchor=null;

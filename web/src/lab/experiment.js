@@ -3,7 +3,7 @@ import { LabWorld } from './lab-world.js';
 import { SensoryAdapter } from './vision.js';
 import { VisualSystem } from './visual-system.js';
 import { serializeFrame,deserializeFrame } from '../../../shared/vision/frame.js';
-import { validateScene } from './scene.js';
+import { validateScene, resetScene } from './scene.js';
 import { clamp } from '../bam.js';
 import { TemporalLoop } from '../../../shared/vision/temporal/loop.js';
 import { scheduledMotion, labInput } from './guided-labs.js';
@@ -11,7 +11,8 @@ import { scheduledMotion, labInput } from './guided-labs.js';
 export class Experiment {
   constructor(runtime,scene){this.runtime=runtime;this.history=[];this.events=[];this.frameTape=new Map();this.branchNumber=0;this.configure(scene);}
   configure(scene){
-    const next=validateScene(scene),r=this.runtime;
+    const next=resetScene(scene),r=this.runtime;
+    for(const p of next.props)if(p.behavior)p.behavior.startedAt=0;
     const world=new LabWorld(r.mj,r.template,r.session,r.Tensor,next);
     this.world?.dispose();this.world=world;this.scene=next;this.tick=0;this.replaying=false;this.recordedUntilTick=0;this.cost=0;this.forceFrames=false;
     this.agents=new Map(next.ducks.map(d=>[d.id,{brain:new Brain(r.circuit,`${next.seed}/${d.id}`),eyes:new VisualSystem(),webcam:new VisualSystem(),adapter:new SensoryAdapter(d.adapter),vision:null,neural:null,input:null}]));
@@ -37,8 +38,20 @@ export class Experiment {
   }
   stimulus(id,kind){this.branch();this.agents.get(id)?.brain.stimulate(kind);}
   moveProp(id,position,yaw){
-    const next=validateScene({...this.scene,props:this.scene.props.map(p=>p.id===id?{...p,position,yaw,motion:[0,0,0]}:p)});
+    const next=validateScene({...this.scene,props:this.scene.props.map(p=>p.id===id?{...p,position,yaw,motion:[0,0,0],behavior:null}:p)});
     this.branch();this.scene=next;if(this.scene.lab&&id==='object')this.scene.lab.scripted=false;this.world.moveProp(id,position,yaw);this.forceFrames=true;
+  }
+  setPropBehavior(id,behavior){
+    const prop=this.scene.props.find(p=>p.id===id),body=this.world.state().props.find(p=>p.id===id);
+    if(!prop||!body)throw Error('Select an existing prop');
+    if(prop.movable)throw Error('Changing a free body to scripted motion requires a scene restart');
+    const patch={position:body.position,motion:[0,0,0],behavior:behavior?{...behavior,startedAt:this.world.d.time}:null};
+    const next=validateScene({...this.scene,props:this.scene.props.map(p=>p.id===id?{...p,...patch}:p)});
+    this.branch();this.scene=next;
+    if(this.scene.lab&&id==='object')this.scene.lab.scripted=false;
+    this.world.moveProp(id,body.position,prop.yaw);
+    Object.assign(this.world.props.find(p=>p.id===id),structuredClone(next.props.find(p=>p.id===id)));
+    this.forceFrames=true;
   }
   prepareTick(){
     if(this.preparedTick===this.tick)return;this.preparedTick=this.tick;
@@ -85,6 +98,9 @@ export class Experiment {
       if(d.mode==='reactive'||d.mode==='reflex'){provenance.forward=provenance.yaw='Reactive camera rule';command={vx:(d.mode==='reactive'?input.gate:!input.fresh)||input.loomL+input.loomR>.2?0:.3,yaw:d.mode==='reflex'?0:clamp((a.vision?.target.bearing??0)*.7,-.65,.65),head:input.head};}
       if(a.temporal){command=a.temporal.motor(command,body,state.time,gfEvent);if(a.temporal.feedback.state.held)provenance.forward=provenance.yaw='Experimental GF hazard hold';}
       if(d.silence==='output'){provenance.forward=provenance.yaw='Output intervention';command={...command,vx:0,yaw:0};}
+      if(!d.motorEnabled){provenance.forward=provenance.yaw='Body command connection off';command={...command,vx:0,yaw:0};}
+      else if(d.motorGain!==1){provenance.gain=d.motorGain;command={...command,vx:command.vx*d.motorGain,yaw:command.yaw*d.motorGain};
+        if(d.motorGain===0)provenance.forward=provenance.yaw='Body command strength is zero';}
       commands[d.id]=command;
       causes.push({id:d.id,provenance,input:structuredClone(input),vision:structuredClone(a.vision),neural:structuredClone(neural),command:structuredClone(command),gfEvent,temporal:a.temporal?.status(state.time)??null});
     }

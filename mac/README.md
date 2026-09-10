@@ -21,6 +21,8 @@ All experiment controls are documented in the [root README](../README.md). Nativ
 ```sh
 mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test
 mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-playground
+mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-scenarios
+mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-guided
 mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-vision
 ```
 

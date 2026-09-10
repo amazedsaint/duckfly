@@ -47,10 +47,10 @@ export function mountWorkspaceLayout({onResize}) {
       if (!focus) { prefs[panel.id] = panel.open; persist(); }
       requestAnimationFrame(() => {
         onResize();
-        if (small.matches && panel.open && panel.classList.contains('workspace-panel')) {
-          const workspace = $('.workspace');
+        if (panel.open && panel.classList.contains('workspace-panel')) {
+          const workspace = $('#scene-control-panels');
           // Reveal controls inside their own pane without scrolling the brain dock away.
-          workspace.scrollTop = Math.max(0, panel.offsetTop + panel.offsetHeight - workspace.clientHeight);
+          workspace.scrollTop = Math.max(0, panel.getBoundingClientRect().top - workspace.getBoundingClientRect().top + workspace.scrollTop);
         }
       });
     });

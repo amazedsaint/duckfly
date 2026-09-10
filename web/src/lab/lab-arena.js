@@ -3,6 +3,7 @@ import { Arena } from "../arena.js";
 import { EYE_WIDTH as W, EYE_HEIGHT as H } from "./vision.js";
 import { framePacket, EYE_CALIBRATION } from "../../../shared/vision/frame.js";
 import { COLORS } from "./scene.js";
+import { propPosition } from "./prop-behavior.js";
 export class LabArena extends Arena {
   constructor(host, assets) {
     super(host, assets);
@@ -37,6 +38,8 @@ export class LabArena extends Arena {
     this.propOutline.layers.set(1);
     this.propOutline.visible = false;
     this.scene.add(this.propOutline);
+    this.motionPath = new THREE.Line(new THREE.BufferGeometry(),new THREE.LineDashedMaterial({color:0x437fac,dashSize:.025,gapSize:.02,transparent:true,opacity:.8}));
+    this.motionPath.layers.set(1);this.motionPath.visible=false;this.scene.add(this.motionPath);
     this.installPropDragging();
     this.renderer.setAnimationLoop(() => {
       if (!this.host.clientWidth || !this.host.clientHeight) return;
@@ -172,6 +175,15 @@ export class LabArena extends Arena {
     const prop = this.props.get(objectId);
     this.propOutline.visible = !!prop;
     if (prop) this.propOutline.setFromObject(prop);
+    const definition=this.definition?.props.find(p=>p.id===objectId),behavior=definition?.behavior;
+    this.motionPath.visible=!!behavior;
+    const key=JSON.stringify([objectId,definition?.position,behavior]);
+    if(behavior&&key!==this.pathKey){
+      const duration=2*Math.PI*behavior.range/behavior.speed;
+      const points=Array.from({length:81},(_,i)=>{const p=propPosition(definition,behavior.startedAt+i/80*duration);return new THREE.Vector3(p[0],p[2],-p[1]);});
+      this.motionPath.geometry.dispose();this.motionPath.geometry=new THREE.BufferGeometry().setFromPoints(points);this.motionPath.computeLineDistances();
+    }
+    this.pathKey=key;
     const body = this.body?.ducks.find((d) => d.id === duckId);
     if (body)
       this.selectionRing.position.set(

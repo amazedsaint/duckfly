@@ -2,7 +2,7 @@ import { clamp } from '../bam.js';
 export const EYE_WIDTH=96,EYE_HEIGHT=64;
 const blankBlob=()=>({count:0,x:0,y:0,minX:Infinity,maxX:-Infinity,minY:Infinity,maxY:-Infinity});
 const pixel=(b,x,y)=>{b.count++;b.x+=x;b.y+=y;b.minX=Math.min(b.minX,x);b.maxX=Math.max(b.maxX,x);b.minY=Math.min(b.minY,y);b.maxY=Math.max(b.maxY,y);};
-function blob(b,w,h){return b.count<5?{visible:false,area:0,bearing:0}: {visible:true,area:b.count/(w*h),bearing:1-2*b.x/b.count/(w-1),
+function blob(b,w,h){return b.count<5?{visible:false,area:0,bearing:0,candidatePixels:b.count}: {visible:true,candidatePixels:b.count,area:b.count/(w*h),bearing:1-2*b.x/b.count/(w-1),
   center:[b.x/b.count,b.y/b.count],bounds:[b.minX,b.minY,b.maxX-b.minX+1,b.maxY-b.minY+1]};}
 export class VisionEncoder {
   constructor(){this.previous=null;this.previousThreat=[0,0];this.previousTime=null;}

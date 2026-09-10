@@ -11,7 +11,7 @@ const label=v=>{if(typeof v!=='string'||v.length>80)throw Error('Invalid label')
 const vec=(v,n,lo,hi,name)=>{if(!Array.isArray(v)||v.length!==n)throw Error(`Invalid ${name}`);return v.map(x=>number(x,lo,hi,name));};
 const choice=(v,values,name)=>{if(!values.has(v))throw Error(`Invalid ${name}`);return v;};
 export function validateScene(input){
-  if(!input||![1,2,3].includes(input.version))throw Error('Unsupported scene version');
+  if(!input||![1,2,3,4].includes(input.version))throw Error('Unsupported scene version');
   if(!Array.isArray(input.ducks)||input.ducks.length<1||input.ducks.length>8)throw Error('Use 1–8 ducks');
   if(!Array.isArray(input.props)||input.props.length>40)throw Error('Use at most 40 props');
   const scene={version:2,name:label(input.name??'Untitled arena'),seed:id(input.seed??'duckfly-v1'),
@@ -24,6 +24,7 @@ export function validateScene(input){
       gfGain:number(d.gfGain??6,1,12,'GF input gain'),headStabilization:!!d.headStabilization,
       temporal:choice(d.temporal??'off',new Set(['off','timer','hold']),'temporal research loop'),
       activeLook:!!d.activeLook,flowSteer:!!d.flowSteer,feedback:d.feedback!==false,
+      motorEnabled:d.motorEnabled!==false,motorGain:number(d.motorGain??1,0,1,'body command strength'),
       adapter:adapterWeights(d.adapter),
       eye:choice(d.eye??'both',new Set(['both','left','right','none']),'eye covering'),
       silence:choice(d.silence??'none',new Set(['none','output','forward','left','right','loom','gf','motion','lplc2']),'intervention'),
@@ -33,7 +34,10 @@ export function validateScene(input){
       yaw:number(p.yaw??0,-Math.PI,Math.PI,'rotation'),mass:number(p.mass??.08,.005,20,'mass'),
       friction:number(p.friction??.8,.05,3,'friction'),movable:!!p.movable,
       color:typeof p.color==='string'&&/^#[0-9a-f]{6}$/i.test(p.color)?p.color:COLORS[p.kind],
-      motion:vec(p.motion??[0,0,0],3,-2,2,'motion')})),
+      motion:vec(p.motion??[0,0,0],3,-2,2,'motion'),
+      behavior:p.behavior==null?null:{kind:choice(p.behavior.kind,new Set(['patrol','orbit']),'prop behavior'),
+        speed:number(p.behavior.speed??.2,.02,1,'motion speed'),range:number(p.behavior.range??.4,.05,2,'motion range'),
+        axis:choice(p.behavior.axis??'y',new Set(['x','y']),'motion direction'),startedAt:number(p.behavior.startedAt??0,0,1e9,'motion start')}})),
     fields:(input.fields??[]).map(f=>({id:id(f.id),kind:choice(f.kind,new Set(['light','odor']),'field'),
       position:vec(f.position,2,-10,10,'field position'),strength:number(f.strength??1,0,5,'strength'),
       radius:number(f.radius??.5,.05,5,'radius')})),
@@ -41,12 +45,35 @@ export function validateScene(input){
       subject:input.challenge?.subject??'ducks',
       goal:vec(input.challenge?.goal??[1,0],2,-10,10,'goal'),radius:number(input.challenge?.radius??.12,.03,2,'goal radius')}};
   if(input.version===3||scene.lab||scene.ducks.some(d=>d.temporal!=='off'))scene.version=3;
+  // Older clients must reject an edited motor connection rather than silently reconnect it.
+  if(input.version===4||scene.ducks.some(d=>!d.motorEnabled||d.motorGain!==1)||scene.props.some(p=>p.behavior))scene.version=4;
   if(scene.fields.length>16)throw Error('Use at most 16 sensory fields');
   const ids=[...scene.ducks,...scene.props,...scene.fields].map(x=>x.id);
   if(new Set(ids).size!==ids.length)throw Error('Object IDs must be unique');
   if(scene.challenge.subject!=='ducks'&&!scene.props.some(p=>p.id===scene.challenge.subject))throw Error('Challenge object is missing');
-  for(const p of scene.props)if(p.movable&&p.motion.some(Boolean))throw Error('A prop cannot be both freely moving and animated');
+  for(const p of scene.props){
+    if(p.movable&&(p.motion.some(Boolean)||p.behavior))throw Error('A prop cannot be both freely moving and animated');
+    if(p.behavior&&p.motion.some(Boolean))throw Error('Choose one motion path for a prop');
+  }
+  // User-assigned physics or a path takes ownership from the preset encounter.
+  const encounterObject=scene.props.find(p=>p.id==='object');
+  if(scene.lab?.id==='stop-go'&&(!encounterObject||encounterObject.movable||encounterObject.behavior))scene.lab.scripted=false;
   return scene;
+}
+export function resetScene(input){
+  const scene=validateScene(input);
+  if(scene.lab?.id==='stop-go'&&scene.lab.scripted){
+    const original=defaultScene('stop-go',scene.lab).props.find(p=>p.id==='object');
+    scene.props=scene.props.map(p=>p.id==='object'?{...p,position:original.position,motion:original.motion}:p);
+  }
+  return scene;
+}
+export function changeEncounter(input,options){
+  const scene=validateScene(input),preset=defaultScene('stop-go',options),object=preset.props.find(p=>p.id==='object');
+  scene.lab=preset.lab;scene.seed=preset.seed;
+  scene.props=scene.props.some(p=>p.id==='object')?scene.props.map(p=>p.id==='object'?object:p):[...scene.props,object];
+  scene.ducks=scene.ducks.map(d=>d.id==='duck-1'?{...d,temporal:preset.ducks[0].temporal,silence:preset.ducks[0].silence}:d);
+  return validateScene(scene);
 }
 export function defaultScene(preset='target',options){
   if(LAB_IDS.includes(preset))return validateScene(guidedScene(preset,options));
