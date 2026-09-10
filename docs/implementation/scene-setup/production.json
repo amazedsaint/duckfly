@@ -1,0 +1,23 @@
+{
+  "url": "https://duckfly.vercel.app",
+  "deployment": "dpl_8V3YW6uTijVHfpZCkujKmugXEEsQ",
+  "immutableUrl": "https://duckfly-c63ljtywb-contextmind.vercel.app",
+  "scope": "contextmind",
+  "target": "production",
+  "checkedAt": "2026-09-10T23:54:57.708181+00:00",
+  "status": 200,
+  "assets": [
+    {
+      "asset": "/assets/index-Om0bGD1o.js",
+      "status": 200,
+      "sha256": "90ce61ad4f19afe5d223add6d5af6b9af52b47e1b190a2c81fb016a8279f4797",
+      "matchesLocalBuild": true
+    },
+    {
+      "asset": "/assets/index-BF6O_UDn.css",
+      "status": 200,
+      "sha256": "a09d3bab3cac775a09e953b594d6b8cffde78f2deb1d9e045ec273cee3720693",
+      "matchesLocalBuild": true
+    }
+  ]
+}

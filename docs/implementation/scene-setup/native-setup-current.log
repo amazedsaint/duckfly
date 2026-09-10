@@ -1,0 +1,9 @@
+MAC_LAB_TEST_START SetupSmoke.js
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789084411230,"stage":"draft cancellation"}
+MAC_LAB_PROGRESS {"stage":"build a scene through the wizard","scene":"Follow the beacon","time":1789084411408,"tick":0}
+MAC_LAB_PROGRESS {"tick":169,"scene":"Wizard loop study","time":1789084417781,"stage":"edit setup without restarting for a mapping change"}
+MAC_LAB_PROGRESS {"tick":169,"scene":"Wizard loop study","time":1789084418780,"stage":"live selected-duck controls"}
+MAC_LAB_PROGRESS {"stage":"save and reload exact mappings and runtime","scene":"Wizard loop study","time":1789084425781,"tick":288}
+MAC_LAB_PROGRESS {"stage":"immersive panel layout","scene":"Wizard loop study","time":1789084426780,"tick":288}
+MAC_LAB_PROGRESS {"stage":"cancel from a running scene","scene":"Wizard loop study","time":1789084429780,"tick":288}
+MAC_LAB_RECEIPT {"version":1,"passed":true,"errors":[],"checks":[{"check":"tile opens isolated setup; cancellation preserves the scene and neural state"},{"deliveredEvents":169,"check":"wizard mappings reach independent neural controllers; added heavy ball falls under gravity","ballHeight":0.059783559537247219,"duck1Distance":0.4922534579416365},{"check":"later setup and live controls stay synchronized; mapping-only changes preserve time and the other brain","secondDuckMovement":0.35989614630335437},{"check":"scene schema 6 and recording preserve mappings, props, complete neural state, and physical state","sceneVersion":6,"recordingVersion":5,"tick":288},{"check":"computed DOM layout keeps brain and eyes inside the viewport when controls collapse or focus mode opens; no experiment change","nativePaintVerified":false},{"check":"cancelling setup resumes a previously running scene with its original objects"}],"format":"duckfly-native-setup"}

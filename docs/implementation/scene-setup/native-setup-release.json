@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "passed": true,
+  "errors": [],
+  "checks": [
+    {
+      "check": "tile opens isolated setup; cancellation preserves the scene and neural state"
+    },
+    {
+      "check": "wizard mappings reach independent neural controllers; added heavy ball falls under gravity",
+      "deliveredEvents": 176,
+      "ballHeight": 0.05978355953724722,
+      "duck1Distance": 0.5154940176668736
+    },
+    {
+      "secondDuckMovement": 0.3541575886010324,
+      "check": "later setup and live controls stay synchronized; mapping-only changes preserve time and the other brain"
+    },
+    {
+      "check": "scene schema 6 and recording preserve mappings, props, complete neural state, and physical state",
+      "sceneVersion": 6,
+      "recordingVersion": 5,
+      "tick": 293
+    },
+    {
+      "check": "computed DOM layout keeps brain and eyes inside the viewport when controls collapse or focus mode opens; no experiment change",
+      "nativePaintVerified": false
+    },
+    {
+      "check": "cancelling setup resumes a previously running scene with its original objects"
+    }
+  ],
+  "format": "duckfly-native-setup"
+}

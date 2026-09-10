@@ -1,4 +1,7 @@
 import { mountPropControls } from "./lab/prop-controls.js";
+import { mountSceneSetup } from "./lab/scene-setup.js";
+import { mountMappingControls } from "./lab/mapping-controls.js";
+import { patchBrainMapping } from "./lab/brain-mapping.js";
 import { propProfile } from "./lab/prop-behavior.js";
 import { loopStatus } from "./lab/loop-status.js";
 import { mountWorkspaceLayout } from "./lab/workspace-layout.js";
@@ -89,6 +92,60 @@ const send = (type, extra = {}) => {
   }
   worker.postMessage({ type, ...extra });
 };
+let setupSession, pendingSetupSelection;
+const physicalSceneKey = value => JSON.stringify({...value, version:undefined, ducks:value.ducks.map(({id,spawn}) => ({id,spawn}))});
+const sceneSetup = mountSceneSetup({
+  requiresRestart: draft => physicalSceneKey(validateScene(draft)) !== physicalSceneKey(setupSession.original),
+  onApply: (draft, {editing, selectedDuckId} = {}) => {
+    if (!ready || jobBusy || room?.role === 'guest') {notify('Wait for the local experiment to be ready. A shared room is configured by its host.');return false;}
+    const next = validateScene(draft);
+    const rebuild = !editing || physicalSceneKey(next) !== physicalSceneKey(setupSession.original);
+    const shouldRun = rebuild || setupSession?.wasRunning;
+    const nextDuck=next.ducks.some(d=>d.id===selectedDuckId) ? selectedDuckId : next.ducks[0].id;
+    if(nextDuck!==connectedDuck){samples=[];plot?.flashes.fill(0);}
+    connectedDuck = selected = nextDuck;
+    if (rebuild) {
+      if (!sceneChanged(next)) return false;
+      pendingSetupSelection=connectedDuck;
+    } else {
+      // Settings are worker actions, so they retain the physical state and enter
+      // the recording just like edits made from the live connection panel.
+      const patches=new Map();
+      for (const duck of next.ducks) {
+        const previous=setupSession.original.ducks.find(d=>d.id===duck.id);
+        const patch=Object.fromEntries(Object.entries(duck).filter(([key,value])=>JSON.stringify(value)!==JSON.stringify(previous[key])));
+        if (Object.keys(patch).length) {patches.set(duck.id,patch);send('duck',{id:duck.id,patch});}
+      }
+      // A last in-flight tick may have advanced a scripted prop while pause was
+      // queued. Keep that state rather than restoring the draft's old position.
+      scene=validateScene({...scene,version:6,ducks:scene.ducks.map(duck=>patchBrainMapping(duck,patches.get(duck.id)??{}))});
+      persistScene();
+    }
+    setupSession.applied = true;
+    setTools(false);
+    workspaceLayout.closePanels();
+    showExperiment();
+    renderScene();renderInspector();
+    if (shouldRun) send('pause',{value:false});
+    notify(rebuild ? 'Your scene is ready. Select a duck to watch its brain, or drag an object.' : 'Connections updated in this run. The scene clock and physical state were kept.');
+    return true;
+  },
+  onClose: () => {
+    if (setupSession?.wasRunning && !setupSession.applied && room?.role !== 'guest') send('pause',{value:false});
+    const applied=setupSession?.applied;
+    setupSession=undefined;
+    if(applied)$('#pause').focus();
+  },
+});
+function openSetup(next = scene, editing = true) {
+  if (!ready || jobBusy) {notify('Wait for the experiment to finish loading or running its comparison.');return;}
+  if (room?.role === 'guest') {notify('The host configures the shared scene. You can still edit its objects and duck controls.');return;}
+  if (sceneSetup.isOpen()) return;
+  setupSession={wasRunning:!paused,applied:false,original:structuredClone(validateScene(next))};
+  send('pause',{value:true});
+  sceneSetup.open(next,{editing,selectedDuckId:editing?connectedDuck:next.ducks[0].id});
+}
+const updateMappingControls = mountMappingControls({patch:patchConnected,editSetup:()=>openSetup()});
 const updateGuidedLab = mountGuidedLab({
   restart: (id, options) => {sceneChanged(id==='stop-go'?changeEncounter(scene,options):defaultScene(id,options));send("pause", {value:false});},
   patch: patchConnected,
@@ -164,7 +221,10 @@ function selectObject(id) {
   syncConnectedDuck();
   renderScene();
   renderInspector();
-  if(scene.props.some(p=>p.id===selected))$("#prop-behavior-panel").open=true;
+  if(scene.props.some(p=>p.id===selected)){
+    workspaceLayout.closePanels();
+    $("#prop-behavior-panel").open=true;
+  }
   if (state) update(state);
   drawEye();
 }
@@ -176,6 +236,7 @@ function syncConnectedDuck() {
     arena.setSelection?.(connectedDuck, selected);
   }
   const duck = scene.ducks.find((d) => d.id === connectedDuck);
+  updateMappingControls(duck);
   $("#brain-duck").innerHTML = options(
     scene.ducks.map((d) => [d.id, d.name]),
     connectedDuck,
@@ -238,18 +299,14 @@ function setTools(open) {
   else if (document.activeElement?.closest("#tools-panel"))
     $("#tools-button").focus();
 }
-function chooseScenario(id, run = true) {
-  connectedDuck = selected = "duck-1";
-  showExperiment();
-  setTools(false);
-  sceneChanged(defaultScene(id));
-  if (run) send("pause", { value: false });
+function chooseScenario(id) {
+  openSetup(defaultScene(id),false);
 }
 function patchConnected(patch) {
   scene = validateScene({
     ...scene,
     ducks: scene.ducks.map((d) =>
-      d.id === connectedDuck ? { ...d, ...patch } : d,
+      d.id === connectedDuck ? patchBrainMapping(d,patch) : d,
     ),
   });
   send("duck", { id: connectedDuck, patch });
@@ -382,7 +439,7 @@ function renderInspector() {
   const patch = (value) => {
     scene = validateScene({
       ...scene,
-      ducks: scene.ducks.map((d) => (d.id === o.id ? { ...d, ...value } : d)),
+      ducks: scene.ducks.map((d) => (d.id === o.id ? patchBrainMapping(d,value) : d)),
     });
     send("duck", { id: o.id, patch: value });
     persistScene();
@@ -681,6 +738,10 @@ worker.onmessage = ({ data }) => {
   }
   if (data.type === "scene") {
     scene = data.scene;
+    if(pendingSetupSelection){
+      if(scene.ducks.some(duck=>duck.id===pendingSetupSelection))selected=connectedDuck=pendingSetupSelection;
+      pendingSetupSelection=undefined;
+    }
     arena.setScene(scene);
     if (!current()) selected = scene.ducks[0].id;
     renderScene();
@@ -1274,6 +1335,7 @@ $("#continue-scene").onclick = showExperiment;
 for (const tile of document.querySelectorAll("[data-scenario]"))
   tile.onclick = () => chooseScenario(tile.dataset.scenario);
 $("#tools-button").onclick = () => setTools($("#tools-panel").hidden);
+$("#edit-setup").onclick = () => openSetup();
 $("#close-tools").onclick = () => setTools(false);
 $("#brain-duck").onchange = (e) => selectObject(e.target.value);
 $("#duck-settings").onclick = () => {

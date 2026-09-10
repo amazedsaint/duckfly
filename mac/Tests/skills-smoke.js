@@ -2,7 +2,7 @@ const $=s=>document.querySelector(s),t=()=>window.duckflyTelemetry;
 const wait=async(p,ms=25000)=>{const start=Date.now();while(!p()){if(Date.now()-start>ms)throw Error('Skill UI timeout: '+$('#notice')?.textContent);await new Promise(r=>setTimeout(r,20));}};
 const check=(p,m)=>{if(!p)throw Error(m);};
 await wait(()=>t()?.ready);
-if($('#home-page').hidden)$('#back-home').click();$('[data-scenario="kick"]').click();
+if($('#home-page').hidden)$('#back-home').click();await launchScenario("kick");
 await wait(()=>t().scene.lab?.id==='kick'&&t().tick>0);
 const samples=[];
 await wait(()=>{const s=t();samples.push({tick:s.tick,position:s.ducks[0].position,fallen:s.ducks[0].fallen,ball:s.props.find(p=>p.id==='kick-ball').position,skill:s.agents['duck-1'].skill,visible:s.agents['duck-1'].vision?.target.visible,forward:s.agents['duck-1'].neural?.forward});return s.tick>=225;});

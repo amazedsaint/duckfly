@@ -1,5 +1,6 @@
 // Scenes are portable data. No executable content or arbitrary MJCF is accepted.
 import { LAB_IDS, STOP_CASES, STOP_MODES, guidedScene } from './guided-labs.js';
+import { normalizeBrainMapping } from './brain-mapping.js';
 const kinds=new Set(['wall','block','ball','target']);
 const modes=new Set(['brain','target','flock','reactive','manual','odor','light','reflex']);
 const sources=new Set(['eyes','webcam']);
@@ -11,7 +12,7 @@ const label=v=>{if(typeof v!=='string'||v.length>80)throw Error('Invalid label')
 const vec=(v,n,lo,hi,name)=>{if(!Array.isArray(v)||v.length!==n)throw Error(`Invalid ${name}`);return v.map(x=>number(x,lo,hi,name));};
 const choice=(v,values,name)=>{if(!values.has(v))throw Error(`Invalid ${name}`);return v;};
 export function validateScene(input){
-  if(!input||![1,2,3,4,5].includes(input.version))throw Error('Unsupported scene version');
+  if(!input||![1,2,3,4,5,6].includes(input.version))throw Error('Unsupported scene version');
   if(!Array.isArray(input.ducks)||input.ducks.length<1||input.ducks.length>8)throw Error('Use 1–8 ducks');
   if(!Array.isArray(input.props)||input.props.length>40)throw Error('Use at most 40 props');
   const scene={version:2,name:label(input.name??'Untitled arena'),seed:id(input.seed??'duckfly-v1'),
@@ -24,7 +25,10 @@ export function validateScene(input){
       gfGain:number(d.gfGain??6,1,12,'GF input gain'),headStabilization:!!d.headStabilization,
       temporal:choice(d.temporal??'off',new Set(['off','timer','hold']),'temporal research loop'),
       activeLook:!!d.activeLook,flowSteer:!!d.flowSteer,feedback:d.feedback!==false,
-      kickOnSight:!!d.kickOnSight,
+      // The old alias is derived when a mapping exists. Keep old scenes in
+      // their original schema until wiring is explicitly edited.
+      kickOnSight:normalizeBrainMapping(d).forward==='kick',
+      ...(d.mapping!=null||input.version===6?{mapping:normalizeBrainMapping(d)}:{}),
       motorEnabled:d.motorEnabled!==false,motorGain:number(d.motorGain??1,0,1,'body command strength'),
       adapter:adapterWeights(d.adapter),
       eye:choice(d.eye??'both',new Set(['both','left','right','none']),'eye covering'),
@@ -49,6 +53,10 @@ export function validateScene(input){
   // Older clients must reject an edited motor connection rather than silently reconnect it.
   if(input.version===4||scene.ducks.some(d=>!d.motorEnabled||d.motorGain!==1)||scene.props.some(p=>p.behavior))scene.version=4;
   if(input.version===5||scene.ducks.some(d=>d.kickOnSight))scene.version=5;
+  if(input.version===6||scene.ducks.some(d=>d.mapping)){
+    scene.version=6;
+    for(const d of scene.ducks){d.mapping=normalizeBrainMapping(d);d.kickOnSight=d.mapping.forward==='kick';}
+  }
   if(scene.fields.length>16)throw Error('Use at most 16 sensory fields');
   const ids=[...scene.ducks,...scene.props,...scene.fields].map(x=>x.id);
   if(new Set(ids).size!==ids.length)throw Error('Object IDs must be unique');

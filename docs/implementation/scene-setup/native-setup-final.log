@@ -1,0 +1,6 @@
+MAC_LAB_TEST_START SetupSmoke.js
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789084086931,"stage":"draft cancellation"}
+MAC_LAB_PROGRESS {"stage":"build a scene through the wizard","scene":"Follow the beacon","time":1789084087110,"tick":0}
+MAC_LAB_PROGRESS {"tick":170,"scene":"Follow the beacon","time":1789084093549,"stage":"edit setup without restarting for a mapping change"}
+MAC_LAB_PROGRESS {"tick":170,"scene":"Follow the beacon","time":1789084094548,"stage":"live selected-duck controls"}
+MAC_LAB_FAIL A JavaScript exception occurred: ["WKJavaScriptExceptionColumnNumber": 0, "WKJavaScriptExceptionMessage": Error: No layout animation frame at live selected-duck controls. Native display may be locked or suspended., "NSLocalizedDescription": A JavaScript exception occurred, "WKJavaScriptExceptionLineNumber": 0]

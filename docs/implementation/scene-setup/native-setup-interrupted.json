@@ -1,0 +1,8 @@
+{
+  "format": "duckfly-native-setup-attempt",
+  "status": "interrupted-without-receipt",
+  "timestamp": "2026-09-10T23:46:39.964561+00:00",
+  "bundle": "mac/build/DuckFlyWizard.app",
+  "binarySha256": "74ac58f228bb1b9578e5aeaf2b7d2af5ca0d3e43966af6ca1ab0ab87ba18b761",
+  "reason": "No receipt after about two minutes. Mac lock independently confirmed by CUA. Test process terminated; no pass claimed. Added bounded animation-frame waits for next run."
+}

@@ -13,6 +13,20 @@ export function mountWorkspaceLayout({onResize}) {
   let focus = false, savedPanels;
   const small = matchMedia('(max-width: 820px)');
   const panels = [...document.querySelectorAll('details[data-panel]')];
+  const stagePanels = panels.filter(panel => panel.classList.contains('workspace-panel'));
+  const rail = [['#panel-connections','brain-mapping-panel'],['#panel-objects','objects-panel'],['#panel-experiment','experiment-controls']];
+  function syncRail() {
+    rail.forEach(([selector,id])=>$(selector).setAttribute('aria-expanded',String($('#'+id)?.open??false)));
+    $('#close-stage-settings').hidden=!stagePanels.some(panel=>panel.open&&!panel.hidden&&!panel.parentElement.hidden);
+  }
+  function closePanels() {stagePanels.forEach(panel=>panel.open=false);syncRail();}
+  rail.forEach(([selector,id])=>$(selector).onclick=()=>{
+    const panel=$('#'+id),next=!panel.open;
+    if(focus)setFocus(false);
+    closePanels();panel.open=next;syncRail();
+    if(next)requestAnimationFrame(()=>panel.querySelector('summary').focus());
+  });
+  $('#close-stage-settings').onclick=()=>{closePanels();$('#panel-connections').focus();};
   const persist = () => { try { localStorage.setItem(PREFS_KEY, JSON.stringify(prefs)); } catch { /* Private browsing may deny storage. */ } };
   const compactKey = () => small.matches ? 'compactSmall' : 'compactWide';
   const isCompact = () => focus || (typeof prefs[compactKey()] === 'boolean' ? prefs[compactKey()] : small.matches);
@@ -41,9 +55,11 @@ export function mountWorkspaceLayout({onResize}) {
     render();
   }
   panels.forEach(panel => {
-    if (typeof prefs[panel.id] === 'boolean') panel.open = prefs[panel.id];
+    if (panel.classList.contains('workspace-panel')) panel.open=false;
+    else if (typeof prefs[panel.id] === 'boolean') panel.open = prefs[panel.id];
     else if (small.matches && panel.classList.contains('workspace-panel')) panel.open = false;
     panel.addEventListener('toggle', () => {
+      syncRail();
       if (!focus) { prefs[panel.id] = panel.open; persist(); }
       requestAnimationFrame(() => {
         onResize();
@@ -95,5 +111,6 @@ export function mountWorkspaceLayout({onResize}) {
     requestAnimationFrame(onResize);
   }).observe($('#brain-panel'));
   render();
-  return {setFocus};
+  syncRail();
+  return {setFocus,closePanels};
 }

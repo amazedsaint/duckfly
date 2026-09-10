@@ -1,0 +1,14 @@
+MAC_LAB_TEST_START PlaygroundSmoke.js
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789084548494,"stage":"wizard step 0"}
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789084548507,"stage":"wizard step 1"}
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789084548510,"stage":"wizard step 2"}
+MAC_LAB_PROGRESS {"stage":"wizard launch complete","scene":"Follow the beacon","time":1789084548535,"tick":0}
+MAC_LAB_PROGRESS {"tick":111,"scene":"Follow the beacon","time":1789084552429,"stage":"wizard step 0"}
+MAC_LAB_PROGRESS {"stage":"wizard step 1","scene":"Follow the beacon","time":1789084552436,"tick":111}
+MAC_LAB_PROGRESS {"tick":111,"scene":"Follow the beacon","time":1789084552439,"stage":"wizard step 2"}
+MAC_LAB_PROGRESS {"stage":"wizard launch complete","scene":"Follow the flock","time":1789084553425,"tick":36}
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the flock","time":1789084563429,"stage":"wizard step 0"}
+MAC_LAB_PROGRESS {"stage":"wizard step 1","scene":"Follow the flock","time":1789084563436,"tick":0}
+MAC_LAB_PROGRESS {"stage":"wizard step 2","scene":"Follow the flock","time":1789084563440,"tick":0}
+MAC_LAB_PROGRESS {"stage":"wizard launch complete","scene":"Find it again","time":1789084564426,"tick":37}
+MAC_LAB_RECEIPT [{"check":"scenario home, reviewed wizard launch, visible vision and brain, eye covering, independent duck selection, prop movement and controller provenance"},{"check":"add duck selects its brain, removal repairs selection, Continue preserves scene"},{"check":"compact and Focus layouts preserve the complete paused scene and selected duck; Escape restores panels; guided controls collapse without resetting time"}]

@@ -30,8 +30,7 @@ const select = (selector, value) => {
   el.dispatchEvent(new Event("change", { bubbles: true }));
 };
 const preset = async (value) => {
-  select("#preset", value);
-  await wait(() => t().time === 0 && t().paused);
+  await loadPresetScene(value);
 };
 const run = async (seconds) => {
   const start = t().time;
@@ -48,7 +47,7 @@ check(
   "App must start on scenario tiles",
 );
 check(
-  document.querySelectorAll("[data-scenario]").length === 10,
+  document.querySelectorAll("[data-scenario]").length === 11,
   "Scenario catalog is incomplete",
 );
 await wait(() =>
@@ -56,7 +55,7 @@ await wait(() =>
     (i) => i.complete && i.naturalWidth > 0,
   ),
 );
-$('[data-scenario="target"]').click();
+await launchScenario("target");
 await wait(() => t().time > 0.3 && !t().paused);
 check(
   $("#home-page").hidden && !$("#experiment-page").hidden,
@@ -84,7 +83,7 @@ await wait(() => t().scene.ducks[0].eye === "both");
 $("#back-home").click();
 await wait(() => t().paused);
 check(!$("#home-page").hidden, "Back did not return to scenarios");
-$('[data-scenario="flock"]').click();
+await launchScenario("flock");
 await wait(() => t().ducks.length === 3 && t().time > 0.2);
 select("#brain-duck", "duck-2");
 check(
@@ -124,7 +123,7 @@ $("#pause").click();
 await wait(() => t().paused);
 receipt.push({
   check:
-    "scenario home, automatic launch, visible vision and brain, eye covering, independent duck selection, prop movement and controller provenance",
+    "scenario home, reviewed wizard launch, visible vision and brain, eye covering, independent duck selection, prop movement and controller provenance",
 });
 
 $('[data-add-kind="duck"]').click();
@@ -151,7 +150,10 @@ receipt.push({
 });
 
 // Folding the workspace must change presentation without touching the experiment.
-const settleLayout = () => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+const settleLayout = async () => {
+  await new Promise(resolve => setTimeout(resolve, 50));
+  $('#experiment-page').getBoundingClientRect();
+};
 const beforeUI = JSON.stringify({time: t().time, scene: t().scene, ducks: t().ducks, connected: t().connectedDuck});
 const widthBefore = $('#arena').getBoundingClientRect().width;
 $('#compact-brain').click();
@@ -160,7 +162,12 @@ check($('#compact-brain').getAttribute('aria-expanded') === 'false', 'Compact st
 check(inView($('#eye')) && inView($('#brain-plot')), 'Compact mode hid a live monitor');
 check($('#arena').getBoundingClientRect().width > widthBefore, 'Compact mode did not give space to the scene');
 $('#compact-brain').click();
-$('#objects-panel > summary').click();
+// The immersive stage starts with panels collapsed. Establish an open panel
+// through its visible rail before testing that it closes and stays restored.
+if (!$('#objects-panel').open) $('#panel-objects').click();
+await settleLayout();
+check($('#objects-panel').open, 'Object rail did not open its panel');
+$('#panel-objects').click();
 await settleLayout();
 check(!$('#objects-panel').open, 'Object panel did not collapse');
 $('#focus-mode').click();
@@ -173,15 +180,18 @@ await settleLayout();
 check(!document.body.classList.contains('focus-mode'), 'Escape did not leave Focus mode');
 check(!$('#objects-panel').open && $('#compact-brain').getAttribute('aria-expanded') === 'true', 'Focus did not restore prior panel state');
 check(beforeUI === JSON.stringify({time:t().time,scene:t().scene,ducks:t().ducks,connected:t().connectedDuck}), 'Presentation controls mutated the experiment');
-$('#objects-panel > summary').click();
+$('#panel-objects').click();
 await preset('gaze');
 await wait(() => t().scene.lab?.id === 'gaze' && !$('#guided-lab').hidden);
 check(!$('#guided-lab').hidden, 'Guided experiment missing');
 const guidedTime = t().time;
-$('#experiment-controls > summary').click();
+if (!$('#experiment-controls').open) $('#panel-experiment').click();
+await settleLayout();
+check($('#experiment-controls').open, 'Experiment rail did not open guided controls');
+$('#panel-experiment').click();
 await settleLayout();
 check(!$('#experiment-controls').open && t().time === guidedTime, 'Collapsing guided controls changed simulation time');
-$('#experiment-controls > summary').click();
+$('#panel-experiment').click();
 await settleLayout();
 check($('#experiment-controls').open && inView($('#eye')) && inView($('#brain-plot')), 'Restoring guided controls lost the live monitor');
 receipt.push({check:'compact and Focus layouts preserve the complete paused scene and selected duck; Escape restores panels; guided controls collapse without resetting time'});

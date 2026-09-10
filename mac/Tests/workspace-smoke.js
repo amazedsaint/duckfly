@@ -30,10 +30,10 @@ const select = (selector, value) => {
   el.dispatchEvent(new Event("change", { bubbles: true }));
 };
 const preset = async (value) => {
-  select("#preset", value);
-  await wait(() => t().time === 0 && t().paused);
+  await loadPresetScene(value);
 };
 const run = async (seconds) => {
+  reportAcceptanceStage("physical run " + seconds + "s");
   const start = t().time;
   $("#pause").click();
   await wait(() => t().time >= start + seconds);
@@ -263,17 +263,21 @@ challenge.challenge = {
 };
 await load(challenge);
 $("#pause").click();
-await wait(() => t().paused && t().time >= 1);
+await wait(() => t().time >= 1.2);
+check(!t().paused, "Imported scenes must remain open after their observation window");
+$("#pause").click();
+await wait(() => t().paused);
 check(
   t().scores["goal-ball"].reachedAt !== null && t().props[0].position[2] < 0.08,
   "Native prop challenge failed",
 );
 receipt.push({
-  check: "physical prop goal and automatic stop",
+  check: "physical prop goal in an open-ended scene",
   time: t().time,
 });
 await load({ ...base, name: "Native batch source" });
 for (const job of ["compare", "learn"]) {
+  reportAcceptanceStage("workspace " + job);
   downloadPromise = null;
   $("#" + job).click();
   await wait(() => !$("#save-report").hidden, 180000);

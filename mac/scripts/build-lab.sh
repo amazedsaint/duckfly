@@ -11,6 +11,8 @@ npm run build --prefix ../web
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources/Web" "$MAC_ROOT/.build/swift-cache"
 rsync -a --delete --exclude assets/Simulation/microduck.mjb.gz ../web/dist/ "$APP/Contents/Resources/Web/"
 cp AppIcon.icns "$APP/Contents/Resources/"
+cp Tests/setup-helpers.js "$APP/Contents/Resources/SetupHelpers.js"
+cp Tests/setup-smoke.js "$APP/Contents/Resources/SetupSmoke.js"
 cp Tests/skills-smoke.js "$APP/Contents/Resources/SkillsSmoke.js"
 cp Tests/scenario-audit.js "$APP/Contents/Resources/ScenarioAudit.js"
 cp Tests/guided-smoke.js "$APP/Contents/Resources/GuidedSmoke.js"
@@ -28,8 +30,8 @@ cat > "$APP/Contents/Info.plist" <<'PLIST'
 <key>CFBundleDisplayName</key><string>DuckFly</string>
 <key>CFBundleIconFile</key><string>AppIcon</string>
 <key>CFBundlePackageType</key><string>APPL</string>
-<key>CFBundleShortVersionString</key><string>0.8.0</string>
-<key>CFBundleVersion</key><string>8</string>
+<key>CFBundleShortVersionString</key><string>0.9.0</string>
+<key>CFBundleVersion</key><string>9</string>
 <key>LSMinimumSystemVersion</key><string>14.0</string>
 <key>NSHighResolutionCapable</key><true/>
 <key>NSCameraUsageDescription</key><string>Use your camera as a local sensory input for the duck experiment. Frames are not uploaded.</string>

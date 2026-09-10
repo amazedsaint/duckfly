@@ -3,7 +3,7 @@ const wait=async fn=>{const start=Date.now();while(!fn()){if(Date.now()-start>25
 const check=(v,m)=>{if(!v)throw Error(m);};
 const select=(id,value)=>{const e=$(id);e.value=value;e.dispatchEvent(new Event('change',{bubbles:true}));};
 await wait(()=>t()?.ready);
-$('[data-scenario="stop-go"]').click();
+await launchScenario("stop-go");
 await wait(()=>t().scene.lab?.id==='stop-go'&&t().time>.1);
 const trials=[];
 for(const condition of ['hold','timer','gf-off']){
@@ -30,7 +30,7 @@ check(t().scene.props.some(p=>p.id===added)&&t().scene.props.find(p=>p.id==='obj
 select('#lab-path','retreat');
 await wait(()=>t().scene.lab.variant==='retreat'&&t().time>.1);
 check(t().scene.props.some(p=>p.id===added),'Changing encounters must preserve added props');
-$('#back-home').click();$('[data-scenario="switchboard"]').click();
+$('#back-home').click();await launchScenario("switchboard");
 await wait(()=>t().scene.lab?.id==='switchboard'&&t().time>.3);
 $('[data-lab-action="output"]').click();await wait(()=>t().scene.ducks[0].silence==='output'&&t().ducks[0].command.every(v=>v===0));
 check(t().agents['duck-1'].neural.spikeCount>0,'Neural activity stopped with output');

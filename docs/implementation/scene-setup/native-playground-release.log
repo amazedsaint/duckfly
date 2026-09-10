@@ -1,0 +1,10 @@
+MAC_LAB_TEST_START PlaygroundSmoke.js
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789084446138,"stage":"wizard step 0"}
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789084446151,"stage":"wizard step 1"}
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789084446154,"stage":"wizard step 2"}
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789084446180,"stage":"wizard launch complete"}
+MAC_LAB_PROGRESS {"tick":125,"scene":"Follow the beacon","time":1789084450435,"stage":"wizard step 0"}
+MAC_LAB_PROGRESS {"stage":"wizard step 1","scene":"Follow the beacon","time":1789084450440,"tick":125}
+MAC_LAB_PROGRESS {"stage":"wizard step 2","scene":"Follow the beacon","time":1789084450442,"tick":125}
+MAC_LAB_PROGRESS {"tick":37,"scene":"Follow the flock","time":1789084451433,"stage":"wizard launch complete"}
+MAC_LAB_FAIL A JavaScript exception occurred: ["WKJavaScriptExceptionLineNumber": 0, "WKJavaScriptExceptionColumnNumber": 0, "WKJavaScriptExceptionMessage": Error: Object panel did not collapse, "NSLocalizedDescription": A JavaScript exception occurred]

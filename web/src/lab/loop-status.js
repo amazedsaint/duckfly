@@ -1,4 +1,5 @@
 // Describe the last delivered command, never infer it from firing or a UI switch.
+import { normalizeBrainMapping, brainMappingEnabled, brainMappingSummary } from './brain-mapping.js';
 export function loopStatus(state, id) {
   const duck = state.scene.ducks.find(d => d.id === id);
   const body = state.body.ducks.find(d => d.id === id);
@@ -20,6 +21,7 @@ export function loopStatus(state, id) {
     Math.abs(body.command[0]) > .01 ? body.speed > .025 ? 'Walking · body responding' : 'Command sent · body settling' :
     Math.abs(body.command[1]) > .08 ? 'Turning in place' : reason;
   return {status, perception, reason, neural:neural ? [neural.vx,neural.yaw] : null,
+    mapping:normalizeBrainMapping(duck),mappingActive:brainMappingEnabled(duck),mappingSummary:brainMappingSummary(duck),
     command:body.command, speed:body.speed, feedback:neural?.feedback ?? null,
     sampledAt:state.event?.time ?? 0, pixels:pixels ?? null};
 }

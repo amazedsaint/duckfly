@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "engine": "Codex in-app browser",
+  "viewports": [
+    {
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "stageHeight": 400.40625,
+      "brainBottom": 836
+    }
+  ],
+  "checks": [
+    "Scene tile opens wizard without starting the simulation",
+    "Brain mapping choices visible above desktop fold",
+    "Add ball and select heavy physics, 1 kg",
+    "Typed object name survives one Continue click and appears in review",
+    "Typed scene name survives one Start click and appears in stage title",
+    "Running scene displays 0.30 m/s brain request with 0 body command after both mappings are disabled",
+    "Later setup retains live disabled mappings and configured objects",
+    "Mobile layout shortcut reveals the scene map",
+    "Dragging duck updates exact map position to X 0.238 Y 0.062 and Continue accepts it",
+    "Structural layout change reports a restart; cancellation returns to stage",
+    "Selected brain and eyes stay visible at phone width"
+  ],
+  "consoleErrors": []
+}

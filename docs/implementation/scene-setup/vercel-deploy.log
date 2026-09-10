@@ -1,0 +1,58 @@
+Vercel CLI 59.15.1 (Node.js 24.19.0)
+Deploying duckfly
+Uploading [--------------------] (0.0B/222.7KB)
+Uploading [=====---------------] (59.6KB/222.7KB)
+Uploading [==========----------] (119.9KB/222.7KB)
+Uploading [===============-----] (175.4KB/222.7KB)
+Uploading [====================] (222.7KB/222.7KB)
+  Inspect         https://vercel.com/contextmind/duckfly/8V3YW6uTijVHfpZCkujKmugXEEsQ
+  Production      https://duckfly-c63ljtywb-contextmind.vercel.app
+Building…
+Building…
+Running build in Washington, D.C., USA (East) – iad1
+Build machine configuration: 4 cores, 8 GB
+Retrieving list of deployment files...
+Downloading 158 deployment files...
+Restored build cache from previous deployment (EwyzSTco7Vn1GVHNZehTn84QShiA)
+Running "vercel build"
+Vercel CLI 59.11.7
+Running "install" command: `npm ci --prefix web`...
+added 35 packages, and audited 36 packages in 3s
+8 packages are looking for funding
+run `npm fund` for details
+found 0 vulnerabilities
+npm warn allow-scripts 1 package has install scripts not yet covered by allowScripts:
+npm warn allow-scripts   protobufjs@7.6.6 (postinstall: node scripts/postinstall)
+npm warn allow-scripts
+npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.
+> duckfly-web@0.1.0 build
+> npm run prepare:assets && vite build
+[2K[1A[2K[G  Production      https://duckfly-c63ljtywb-contextmind.vercel.app
+Completing…
+▲ Aliased         https://duckfly.vercel.app
+{
+  "status": "ok",
+  "deployment": {
+    "id": "dpl_8V3YW6uTijVHfpZCkujKmugXEEsQ",
+    "url": "https://duckfly-c63ljtywb-contextmind.vercel.app",
+    "inspectorUrl": "https://vercel.com/contextmind/duckfly/8V3YW6uTijVHfpZCkujKmugXEEsQ",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_8V3YW6uTijVHfpZCkujKmugXEEsQ"
+  },
+  "message": "Deployment duckfly-c63ljtywb-contextmind.vercel.app ready.",
+  "next": [
+    {
+      "command": "vercel curl https://duckfly-c63ljtywb-contextmind.vercel.app",
+      "when": "Verify deployment, including when Deployment Protection is enabled"
+    },
+    {
+      "command": "vercel inspect duckfly-c63ljtywb-contextmind.vercel.app --scope contextmind",
+      "when": "Inspect deployment"
+    },
+    {
+      "command": "vercel deploy --prod --scope contextmind",
+      "when": "Promote to production"
+    }
+  ]
+}

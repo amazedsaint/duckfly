@@ -8,7 +8,7 @@ const sample=()=>{const s=t();return {time:s.time,tick:s.tick,paused:s.paused,lo
 for(const scenario of scenarios){
   if($('#home-page').hidden)$('#back-home').click();
   const name=scenario.id==='empty'?'Open arena':scenario.title;
-  document.querySelector(`[data-scenario="${scenario.id}"]`).click();
+  await launchScenario(scenario.id);
   await wait(()=>t().scene.name===name&&t().time>.05);
   const row={...scenario,samples:[]};
   for(let at=.5;at<=5;at+=.5){await wait(()=>t().tick>=Math.round(at/.02));row.samples.push(sample());}
@@ -41,7 +41,7 @@ for(const scenario of scenarios){
   check(Math.abs(t().ducks[0].command[0])<=.15+1e-9,scenario.id+' gain was ignored');
   result.controls.at(-1).reconnected=sample();
 }
-$('#back-home').click();document.querySelector('[data-scenario="target"]').click();await wait(()=>t().scene.name==='Follow the beacon'&&t().time>.05);
+$('#back-home').click();await launchScenario("target");await wait(()=>t().scene.name==='Follow the beacon'&&t().time>.05);
 $('#pause').click();await wait(()=>t().paused);
 $('#scene-objects [data-object="target-1"]').click();$('#edit-object').click();
 const set=(selector,value)=>{const el=$(selector);el.value=String(value);el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}));};
@@ -66,7 +66,7 @@ $('[data-stimulus="walk"]').click();await new Promise(r=>setTimeout(r,100));
 check(t().paused&&t().tick===tick+5,'Queued pulse advanced a paused clock');
 check($('#notice').textContent.includes('queued'),'Queued pulse had no explanation');
 // Apply motion without restarting the clock or neural state, then switch to real gravity.
-$('#back-home').click();document.querySelector('[data-scenario="target"]').click();
+$('#back-home').click();await launchScenario("target");
 await wait(()=>t().scene.name==='Follow the beacon'&&t().tick>5&&t().tick<50&&!t().paused);$('#pause').click();await wait(()=>t().paused);
 $('#scene-objects [data-object="target-1"]').click();
 const choose=(id,value)=>{const el=$(id);el.value=value;el.dispatchEvent(new Event('change',{bubbles:true}));};

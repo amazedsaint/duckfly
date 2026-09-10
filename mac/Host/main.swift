@@ -81,7 +81,7 @@ final class AssetServer {
     var testStarted = false
     var downloads: [ObjectIdentifier: (temporary: URL, destination: URL)] = [:]
     var testDeadline = Date().addingTimeInterval(90)
-    let testing = CommandLine.arguments.contains("--self-test-skills") || CommandLine.arguments.contains("--self-test-scenarios") || CommandLine.arguments.contains("--self-test-guided") || CommandLine.arguments.contains("--self-test-playground") || CommandLine.arguments.contains("--self-test") || CommandLine.arguments.contains("--self-test-room") || CommandLine.arguments.contains("--self-test-vision")
+    let testing = CommandLine.arguments.contains("--self-test-setup") || CommandLine.arguments.contains("--self-test-skills") || CommandLine.arguments.contains("--self-test-scenarios") || CommandLine.arguments.contains("--self-test-guided") || CommandLine.arguments.contains("--self-test-playground") || CommandLine.arguments.contains("--self-test") || CommandLine.arguments.contains("--self-test-room") || CommandLine.arguments.contains("--self-test-vision")
     func applicationDidFinishLaunching(_ notification: Notification) {
         let menu = NSMenu()
         let appItem = NSMenuItem(); menu.addItem(appItem)
@@ -96,6 +96,7 @@ final class AssetServer {
         if testing { configuration.websiteDataStore = .nonPersistent() }
         configuration.mediaTypesRequiringUserActionForPlayback = []
         configuration.userContentController.add(self, name: "scene")
+        if testing { configuration.userContentController.add(self, name: "acceptance") }
         let saved = testing ? nil : UserDefaults.standard.string(forKey: "duckfly.scene.v1")
         var script = "window.duckflyHost = {platform:'mac'};"
         if let saved, let encoded = try? JSONSerialization.data(withJSONObject: [saved]), let array = String(data: encoded, encoding: .utf8) {
@@ -129,6 +130,13 @@ final class AssetServer {
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { true }
     func applicationWillTerminate(_ notification: Notification) { server?.stop() }
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        if testing && message.name == "acceptance" && message.frameInfo.isMainFrame,
+           let data = try? JSONSerialization.data(withJSONObject: message.body), data.count < 10000,
+           let json = String(data: data, encoding: .utf8) {
+            print("MAC_LAB_PROGRESS " + json)
+            fflush(stdout)
+            return
+        }
         guard !testing, message.frameInfo.isMainFrame, message.frameInfo.securityOrigin.host == "127.0.0.1", message.frameInfo.securityOrigin.port == Int(server.port),
               let data = try? JSONSerialization.data(withJSONObject: message.body), data.count < 50000,
               let json = String(data: data, encoding: .utf8) else { return }
@@ -182,8 +190,11 @@ final class AssetServer {
                 guard (try? await self.web.evaluateJavaScript("window.duckflyTelemetry?.ready === true")) as? Bool == true else { return }
                 self.testStarted = true; self.testTimer?.invalidate()
                 do {
-                    let path = Bundle.main.resourceURL!.appendingPathComponent(CommandLine.arguments.contains("--self-test-skills") ? "SkillsSmoke.js" : CommandLine.arguments.contains("--self-test-scenarios") ? "ScenarioAudit.js" : CommandLine.arguments.contains("--self-test-guided") ? "GuidedSmoke.js" : CommandLine.arguments.contains("--self-test-playground") ? "PlaygroundSmoke.js" : CommandLine.arguments.contains("--self-test-room") ? "RoomSmoke.js" : CommandLine.arguments.contains("--self-test-vision") ? "VisionSmoke.js" : "NativeSmoke.js")
-                    let script = try String(contentsOf: path, encoding: .utf8)
+                    let path = Bundle.main.resourceURL!.appendingPathComponent(CommandLine.arguments.contains("--self-test-setup") ? "SetupSmoke.js" : CommandLine.arguments.contains("--self-test-skills") ? "SkillsSmoke.js" : CommandLine.arguments.contains("--self-test-scenarios") ? "ScenarioAudit.js" : CommandLine.arguments.contains("--self-test-guided") ? "GuidedSmoke.js" : CommandLine.arguments.contains("--self-test-playground") ? "PlaygroundSmoke.js" : CommandLine.arguments.contains("--self-test-room") ? "RoomSmoke.js" : CommandLine.arguments.contains("--self-test-vision") ? "VisionSmoke.js" : "NativeSmoke.js")
+                    let helperPath = Bundle.main.resourceURL!.appendingPathComponent("SetupHelpers.js")
+                    let script = try String(contentsOf: helperPath, encoding: .utf8) + "\n" + String(contentsOf: path, encoding: .utf8)
+                    print("MAC_LAB_TEST_START " + path.lastPathComponent)
+                    fflush(stdout)
                     let result = try await self.web.callAsyncJavaScript(script, arguments: [:], in: nil, contentWorld: .page)
                     let data = try JSONSerialization.data(withJSONObject: result ?? [])
                     print("MAC_LAB_RECEIPT " + String(data: data, encoding: .utf8)!)

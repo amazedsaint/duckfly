@@ -1,0 +1,25 @@
+
+> duckfly-web@0.1.0 build
+> npm run prepare:assets && vite build
+
+
+> duckfly-web@0.1.0 prepare:assets
+> node scripts/prepare-assets.mjs
+
+Prepared shared assets and local WASM runtimes.
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 41 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                        0.60 kB │ gzip:     0.40 kB
+dist/assets/flyvis.worker-a1GsZaB0.js                  8.99 kB
+dist/assets/lab.worker-Ce0GwNFj.js                   161.88 kB
+dist/assets/no-pose-C0bo0SAe.js                    1,734.31 kB
+dist/assets/ort-wasm-simd-threaded-1QYQn1Hs.wasm  12,361.74 kB │ gzip: 3,197.89 kB
+dist/assets/index-BF6O_UDn.css                        43.17 kB │ gzip:     9.92 kB
+dist/assets/index-Om0bGD1o.js                        747.50 kB │ gzip:   202.45 kB
+
+✓ built in 426ms
+/Users/madhusudanaa/Documents/GitHub/duckfly/mac/build/.duckfly-stage.H0z5Mc/DuckFly.app: replacing existing signature
+Built /Users/madhusudanaa/Documents/GitHub/duckfly/mac/build/DuckFlyVerified.app

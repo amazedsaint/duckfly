@@ -6,6 +6,8 @@
 
 The [scene and feedback audit](docs/experiments/scene-audit/README.md) makes every scene open-ended. It adds visible movement-block reasons and controls for the brain/body connection. Props can follow motion paths or behave as physical bodies.
 
+The [visual setup wizard](docs/implementation/scene-setup/README.md) lets users map brain signals to actions, add independent ducks, and arrange object physics before launching. The same settings remain editable on the stage.
+
 The [immersive workspace](docs/implementation/immersive-ui/README.md) adds Focus mode, collapsible controls, and a compact live brain monitor in both the web and Mac apps.
 
 The [brain and body experiments](experiments/embodied/RESULTS.md) add **See it, kick it** and **Help stand**. Recovery passed 15/16 simulated fall setups; the visual kick is gated by measured forward-neuron activity. The same study rejected unhelpful pursuit candidates and kept full Flyvis in its separate bench.
@@ -50,7 +52,9 @@ Node 22.12+ is required for development. The resulting Mac app can be copied to 
 
 ## Conduct an experiment
 
-Start with a scenario tile on the home page. Each tile explains what to try and opens a running experiment. **Follow the beacon** uses camera input to follow a magenta target; **Out of sight** lets you block that view with a wall. **Follow the flock** gives every duck its own circuit in the same physical world.
+Start with a scenario tile on the home page. Each tile opens a visual setup wizard. Choose the ducks, map brain signals to body actions, then arrange objects and their physics on a draggable top-down map. Review the complete scene before starting it. Cancelling leaves the previous experiment intact. **Follow the beacon** uses camera input to follow a magenta target; **Out of sight** lets you block that view with a wall. **Follow the flock** gives every duck its own circuit in the same physical world.
+
+Use **Edit setup** to revisit every wizard choice. **Brain → duck** opens live controls for the selected duck: forward neurons can request walking, a visual kick, or no forward action; turning can follow, reverse, or stay disconnected. Settings-only changes preserve the clock and physical state. The review explains when a change requires rebuilding the world. **Objects & physics** and **Experiment** open collapsible panels over the stage so the arena keeps its space.
 
 The brain dock stays visible beside the scene, or below it in a compact window. Click a duck in the arena or its object chip to watch its eye view and neural activity. Selecting a prop keeps the same duck connected. **Cover eyes** is a one-click reversible intervention. The **Why?** button explains the latest visual input and resulting body command. Manual and reactive controllers are labeled as bypassing circuit control.
 
@@ -60,11 +64,11 @@ Every scene has **Experiment controls**, including independent **Body commands**
 
 **Select a prop → Behavior & physics** offers a light or heavy pushable body, a slippery surface, and bounded motion paths. Back-and-forth and circular motion apply without restarting the duck; their dotted guide appears only in the main scene. Changing weight or switching between a fixed prop and a free physical body uses **Apply physics & restart**. The Add object menu also offers ready-made moving props. Reset preserves your added objects and physics; assigning custom behavior replaces the preset object script.
 
-Drag props to reposition them, or select one and use the directional buttons below the arena. A running experiment resumes when the drag ends. **Add object** offers ducks and common props; adding one restarts the scene. New ducks connect to the brain dock immediately. **Scene tools** holds exact object settings and advanced experiment controls. Shape changes use **Apply and reset**; position edits use **Move in current run**.
+Drag props to reposition them, or select one and use the directional buttons below the arena. A running experiment resumes when the drag ends. **Add object** offers ducks and common props; adding one restarts the scene. New ducks connect to the brain dock immediately. **Advanced** holds exact object settings and advanced experiment controls. Shape changes use **Apply and reset**; position edits use **Move in current run**.
 
-**Scene tools → Recordings & replay** retains the bounded timeline. Rewind to replay recorded input or change a cue and branch. **More → Save scene** exports the scene and seed. **Export recording** also includes physical/neural state and low-resolution frames. **More → Open file** accepts scenes, recordings and adapter reports. Returning to **Scenarios** pauses the local world; **Continue your scene** returns without restarting it.
+**Advanced → Recordings & replay** retains the bounded timeline. Rewind to replay recorded input or change a cue and branch. **More → Save scene** exports the scene and seed. **Export recording** also includes physical/neural state and low-resolution frames. **More → Open file** accepts scenes, recordings and adapter reports. Returning to **Scenarios** pauses the local world; **Continue your scene** returns without restarting it.
 
-Under **Scene tools → Experiment tools**, compare controllers on matched target trials or search sensory-adapter weights. Learning uses held-out placements and retains the original weights if the promotion gate fails. These bounded experiments do not establish biological validity or general superiority.
+Under **Advanced → Experiment tools**, compare controllers on matched target trials or search sensory-adapter weights. Learning uses held-out placements and retains the original weights if the promotion gate fails. These bounded experiments do not establish biological validity or general superiority.
 
 **Use my camera** requests access and connects the camera to the watched duck immediately. Frames stay on the device unless you export a recording. **Stop webcam** releases the camera and returns connected ducks to their own eye cameras.
 
@@ -75,6 +79,7 @@ Under **Scene tools → Experiment tools**, compare controllers on matched targe
 ```sh
 npm test --prefix web
 mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test
+mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-setup
 mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-playground
 mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-scenarios
 npx vercel deploy --prod --scope contextmind
@@ -84,7 +89,7 @@ Deploy from the repository root. `vercel.json` installs `web/` dependencies and 
 
 ## Vision laboratory
 
-Open **Scene tools → Experiment tools → Retinal stimulus bench** to compare the compact motion
+Open **Advanced → Experiment tools → Retinal stimulus bench** to compare the compact motion
 baseline with the full Flyvis reference. The viewer shows a calibrated image and
 its 721 retinal samples; Flyvis runs all 45,669 modeled cells locally and displays
 T4/T5 activity. The full reference has not been promoted to body control.

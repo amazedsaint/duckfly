@@ -3,7 +3,7 @@ const wait=async(fn,timeout=60000)=>{const start=Date.now();while(!fn()){if(Date
 const $=s=>document.querySelector(s),select=(el,value)=>{el.value=value;el.dispatchEvent(new Event('change'));};
 const check=(v,message)=>{if(!v)throw Error(message);};
 await wait(()=>window.duckflyTelemetry?.ready);
-select($('#preset'),'target');await wait(()=>duckflyTelemetry.time===0&&duckflyTelemetry.scene.name==='Follow the beacon');
+await loadPresetScene('target');
 const iframe=document.createElement('iframe');iframe.style.cssText='position:fixed;left:0;top:0;width:960px;height:760px;opacity:0;pointer-events:none';iframe.src=location.href;document.body.append(iframe);
 await wait(()=>iframe.contentWindow.duckflyTelemetry?.ready);
 const guest=iframe.contentWindow,g=s=>guest.document.querySelector(s);
