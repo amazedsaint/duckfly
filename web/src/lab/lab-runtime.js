@@ -1,6 +1,7 @@
 import * as ort from 'onnxruntime-web/wasm';
 import { fetchBytes } from '../assets.js';
 import { mountTemplate } from './lab-world.js';
+import { TemporalDecoder } from '../../../shared/vision/temporal/decoder.js';
 export async function loadLabRuntime(base,progress=()=>{}){
   const url=path=>new URL(path,base).href;
   progress('Loading physics and walking policy');
@@ -10,5 +11,6 @@ export async function loadLabRuntime(base,progress=()=>{}){
   const template=JSON.parse(new TextDecoder().decode(compressed));mountTemplate(mj,template);
   ort.env.wasm.numThreads=1;ort.env.wasm.proxy=false;ort.env.wasm.wasmPaths=url('runtime/');
   const session=await ort.InferenceSession.create(policy,{executionProviders:['wasm']});
-  return {mj,template,circuit,session,Tensor:ort.Tensor};
+  const {default:model}=await import('../../../shared/vision/temporal/no-pose.json');
+  return {mj,template,circuit,session,Tensor:ort.Tensor,temporalDecoder:new TemporalDecoder(model)};
 }

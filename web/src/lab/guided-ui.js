@@ -1,0 +1,90 @@
+const choices = (items) => items.map(([value, title]) => `<option value="${value}">${title}</option>`).join('');
+const button = (action, text) => `<button data-lab-action="${action}">${text}</button>`;
+export function mountGuidedLab({restart, patch, move, push, save}) {
+  const root = document.querySelector('#guided-lab');
+  let scene, state, duck, finishedKey, desiredLab = null, runs = [];
+  root.innerHTML = `<div class="lab-question"><strong id="lab-question"></strong><button id="lab-retry">Restart experiment</button></div>
+    <div data-lab-panel="stop-go" class="lab-controls"><label>Object path<select id="lab-path">${choices([['incoming','Approach, wait, leave'],['near-miss','Pass beside it · false-alarm example'],['receding','Move away'],['retreat','Wait, then move away']])}</select></label><label>Stop response<select id="lab-stop">${choices([['hold','Wait until clear · experimental'],['timer','Original 1-second timer'],['gf-off','Disconnect GF neurons']])}</select></label><span class="hint">Changing a choice restarts the same 5-second trial.</span></div>
+    <div data-lab-panel="gaze" class="lab-controls">${button('beacon-left','Beacon left')}${button('beacon-right','Beacon right')}${button('hide','Hide beacon')}${button('reveal','Reveal beacon')}${button('look','Active looking')}</div>
+    <div data-lab-panel="switchboard" class="lab-controls">${button('connect','Connect all')}${button('forward','Cut forward neurons')}${button('left','Cut left turn')}${button('right','Cut right turn')}${button('output','Cut body commands')}</div>
+    <div data-lab-panel="recovery" class="lab-controls">${button('push','Nudge duck')}${button('feedback','Feedback to fly brain')}</div>
+    <p id="lab-observation"></p><div class="lab-readout"><span id="lab-measures"></span><button id="lab-save" hidden>Save trial</button></div>
+    <details class="lab-notes"><summary>What this experiment can tell us</summary><p id="lab-explanation"></p><p id="lab-previous" hidden></p></details>`;
+  const $ = (selector) => root.querySelector(selector);
+  const restartCurrent = (patch = {}) => {
+    finishedKey = null;
+    desiredLab = {...(desiredLab ?? scene.lab), ...patch};
+    restart(desiredLab.id, {variant: desiredLab.variant, condition: desiredLab.condition});
+  };
+  $('#lab-retry').onclick = () => restartCurrent();
+  $('#lab-path').onchange = e => restartCurrent({variant: e.target.value});
+  $('#lab-stop').onchange = e => restartCurrent({condition: e.target.value});
+  $('#lab-save').onclick = () => save({format: 'duckfly-playground-trials', version: 1,
+    interpretation: 'Interactive demonstrations, not independent validation. Edited runs are not matched trials.', runs});
+  root.addEventListener('click', (event) => {
+    const action = event.target.closest('[data-lab-action]')?.dataset.labAction;
+    if (!action || !duck) return;
+    if (action === 'push') return push(duck.id);
+    if (action === 'feedback') return patch({feedback: !duck.feedback});
+    if (action === 'look') return patch({activeLook: !duck.activeLook});
+    if (['connect','forward','left','right','output'].includes(action)) return patch({silence: action === 'connect' ? 'none' : action});
+    const body = state?.body.ducks.find(d => d.id === duck.id);
+    if (!body) return;
+    if (action.startsWith('beacon-')) {
+      const side = action === 'beacon-left' ? .58 : -.58, h = body.heading;
+      return move('target-1', [body.position[0]+.65*Math.cos(h)-side*Math.sin(h), body.position[1]+.65*Math.sin(h)+side*Math.cos(h), .13], 0);
+    }
+    const target = state.body.props.find(p => p.id === 'target-1');
+    if (action === 'hide' && target) {
+      const dx = target.position[0]-body.position[0], dy = target.position[1]-body.position[1];
+      return move('wall-1', [body.position[0]+dx*.5,body.position[1]+dy*.5,.17], Math.atan2(dy,dx));
+    }
+    if (action === 'reveal') return move('wall-1', [body.position[0]+.5,body.position[1]-1,.17], 0);
+  });
+  return (nextScene, nextState, id) => {
+    scene = nextScene; state = nextState; duck = scene.ducks.find(d => d.id === id);
+    const lab = scene.lab; root.hidden = !lab;
+    if (!lab) {desiredLab = null;return;}
+    if (desiredLab && (lab.id !== desiredLab.id || (lab.variant === desiredLab.variant && lab.condition === desiredLab.condition))) desiredLab = null;
+    root.querySelectorAll('[data-lab-panel]').forEach(el => el.hidden = el.dataset.labPanel !== lab.id);
+    $('#lab-path').value = (desiredLab ?? lab).variant; $('#lab-stop').value = (desiredLab ?? lab).condition;
+    const body = state?.body.ducks.find(d => d.id === id), agent = state?.agents[id], score = state?.scores[id], loop = agent?.temporal;
+    const questions = {'stop-go':'When is it safe to start walking again?',gaze:'Can moving the head help find a lost beacon?',switchboard:'Which pathway actually moves the duck?',recovery:'Does feedback to the fly circuit change recovery?'};
+    const explanations = {
+      'stop-go':'Research only. A learned image-sequence adapter sends a pulse into the fly visual pathway. Only a measured Giant Fiber (GF) event can latch the hold. It releases after fresh low scores and measured slowing. The score is not a collision probability. Our retained study had 0/64 hazard contacts, but GF events in 12/64 control trials exceeded the 10% limit. These scenes replay examples from that study; they are not new validation. Covering an eye invalidates the decoder and cannot clear an existing hold.',
+      gaze:'Active looking is a modeled head controller. It can change what reaches the camera, but the body still follows the fly circuit. In our held-out pursuit study it reduced final target error by 1.67 cm on average, below our 3 cm adoption gate. A single successful search cannot establish a general improvement.',
+      switchboard:'Cut forward or turn neurons to test their causal role. Cut body commands to keep neural activity visible while stopping commands to the walking policy. The camera adapter is engineered; the selected fly circuit has 668 neurons. This is not a whole fly brain or learned biped balance.',
+      recovery:'The nudge applies 2.5 N sideways for 0.2 seconds. This toggle removes gait phase and speed feedback to the fly circuit. Microduck’s walking policy still receives its body observations and controls balance. Compare identical resets before judging the feedback effect. If the duck falls, use Restart; this walking policy has no automatic get-up mode.'
+    };
+    $('#lab-question').textContent = questions[lab.id]; $('#lab-explanation').textContent = explanations[lab.id];
+    const pressed = (action, value, text) => {const el = $(`[data-lab-action="${action}"]`);el.setAttribute('aria-pressed', String(value));if(text)el.textContent=text;};
+    pressed('look', duck.activeLook, `Active looking: ${duck.activeLook?'on':'off'}`);
+    pressed('feedback', duck.feedback, `Feedback to fly brain: ${duck.feedback?'on':'off'}`);
+    for (const action of ['connect','forward','left','right','output']) pressed(action, duck.silence === (action==='connect'?'none':action));
+    let observation = 'Run the scene to see a response.';
+    if (body) {
+      if (lab.id === 'stop-go') observation = id !== 'duck-1' ? 'The scripted trial drives Duck 1. This panel follows your selected duck.' : !loop ? 'Temporal adapter is disabled in settings.' :
+        loop.held ? loop.fresh ? 'GF hold is active. Waiting for low visual scores and a slow body.' : 'GF hold is active. Fresh stereo vision is missing; clear evidence is discarded.' :
+        !loop.fresh ? 'Stereo input is missing. No new decoder pulses; tonic walking drive remains active.' :
+        loop.gfEvents ? 'The GF reflex fired. Watch whether movement resumes before the object clears.' : 'Watching the camera sequence. A high score can stimulate GF through the fly circuit.';
+      if (lab.id === 'gaze') observation = agent?.vision?.target.visible ? 'Beacon visible. Watch retinal position change the turn signal.' : 'Beacon lost. Forward target drive is gated; active looking can search with the head.';
+      if (lab.id === 'switchboard') observation = duck.silence === 'output' ? 'Neurons still run. Both body movement commands are forced to zero.' : duck.silence === 'none' ? 'All pathways connected. Move the beacon or send a pulse.' : `Selected neurons are silenced (${duck.silence}). Compare firing with the resulting body command.`;
+      if (lab.id === 'recovery') observation = body.fallen ? 'Duck fell. Restart to try the same nudge again.' : `The walking policy is balancing. ${duck.feedback?'Speed and gait phase return to the fly circuit.':'Feedback to the fly circuit is disconnected.'}`;
+    }
+    $('#lab-observation').textContent = observation;
+    $('#lab-measures').textContent = !body ? 'Waiting for measurements' : lab.id === 'stop-go' ?
+      `Score ${loop?.risk==null?'unavailable':loop.risk.toFixed(3)} / trigger ${loop?.threshold??'.98'} · GF ${loop?.gfEvents??0} · releases ${loop?.releases??0} · ${state.body.collisionCount} contacts · ${(body.position[0]*100).toFixed(1)} cm forward` :
+      lab.id === 'recovery' ? `${body.speed.toFixed(2)} m/s · tilt ${body.tilt.toFixed(1)}° · peak ${score?.maxTilt?.toFixed(1)??'0'}° · feet ${body.contacts.map((c,i)=>(i?'R':'L')+(c?' on':' off')).join(' / ')}` :
+      `Beacon visible ${score?.ticks?Math.round(score.visibleTicks/score.ticks*100):0}% of run · forward ${body.command[0].toFixed(2)} m/s · turn ${body.command[1].toFixed(2)} rad/s`;
+    if (lab.id === 'stop-go' && state?.paused && state.body.time >= 5 && finishedKey !== state) {
+      // One result per reset. Preserve configuration so edited demonstrations are identifiable.
+      if (!finishedKey) {runs.push({scene: structuredClone(scene), time: state.body.time, selected: id,
+        loop, scores: state.scores, contacts: state.body.collisionCount, position: body.position, fallen: body.fallen});if(runs.length>20)runs.shift();}
+      finishedKey = state;
+    }
+    if (state?.body.time === 0) finishedKey = null;
+    $('#lab-save').hidden = lab.id !== 'stop-go' || !runs.length;
+    $('#lab-previous').hidden = lab.id !== 'stop-go' || !runs.length;
+    $('#lab-previous').textContent = runs.slice(-4).map(r=>`${r.scene.lab.variant} / ${r.scene.lab.condition}: ${r.contacts} contacts, ${r.loop?.gfEvents??0} GF events${r.fallen?', fell':''}`).join(' · ');
+  };
+}

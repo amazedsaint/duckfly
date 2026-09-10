@@ -1,4 +1,5 @@
 import { workspaceShell } from "./lab/workspace-ui.js";
+import { mountGuidedLab } from "./lab/guided-ui.js";
 import { SCENARIOS } from "./lab/scenarios.js";
 import "./style.css";
 import { fetchBytes } from "./assets.js";
@@ -80,6 +81,13 @@ const send = (type, extra = {}) => {
   }
   worker.postMessage({ type, ...extra });
 };
+const updateGuidedLab = mountGuidedLab({
+  restart: (id, options) => {sceneChanged(defaultScene(id, options));send("pause", {value:false});},
+  patch: patchConnected,
+  move: (id, position, yaw) => {send("move-prop", {id, position:position.map(v=>Math.max(-10,Math.min(10,v))), yaw});},
+  push: id => send("push", {id, strength:2.5}),
+  save: report => download("duckfly-playground-trials.json", report),
+});
 if (window.duckflyHost)
   $("#platform").textContent = "Mac · on-device playground";
 function persistScene() {
@@ -146,7 +154,9 @@ function syncConnectedDuck() {
     duck.eye === "none" ? "Uncover eyes" : "Cover eyes";
   $("#cover-eyes").setAttribute("aria-pressed", String(duck.eye === "none"));
   $("#model-note").textContent =
-    duck.visionModel === "marker-v1"
+    duck.temporal !== "off"
+      ? "Research: learned image sequence → fly GF → stop loop. Failed false-alarm gate; not Flyvis."
+      : duck.visionModel === "marker-v1"
       ? "Modeled marker vision → fly circuit → walking policy"
       : "Experimental motion adapter → fly circuit → walking policy. Full Flyvis stays in the reference bench.";
   const bypass = ["manual", "reactive", "reflex"].includes(duck.mode);
@@ -289,7 +299,7 @@ function renderInspector() {
         ["marker-v1", "Original marker baseline"],
       ],
       o.visionModel,
-    )}</select></label><label>Vision source<select id="source">${options(
+    )}</select></label><label>Research stop loop<select id="temporal-loop">${options([["off","Off"],["timer","Temporal adapter + GF timer"],["hold","Temporal adapter + wait until clear"]],o.temporal)}</select></label><label>Vision source<select id="source">${options(
       [
         ["eyes", "Duck-eye camera"],
         ["webcam", "Mac / device webcam"],
@@ -344,6 +354,7 @@ function renderInspector() {
     ["eyes", "eye"],
     ["silence", "silence"],
     ["vision-model", "visionModel"],
+    ["temporal-loop", "temporal"],
   ])
     if ($("#" + selector))
       $("#" + selector).onchange = (e) => {
@@ -466,7 +477,11 @@ function update(data) {
   state = data;
   paused = data.paused;
   scene = data.scene;
+  if (arena) arena.definition = scene;
   arena?.updateLab(data.body);
+  const connectionKey = JSON.stringify([connectedDuck, scene.ducks]);
+  if (update.connectionKey !== connectionKey) {syncConnectedDuck();update.connectionKey = connectionKey;}
+  updateGuidedLab(scene, data, connectedDuck);
   if (
     pendingPropMove &&
     scene.props.some(
@@ -507,6 +522,8 @@ function update(data) {
   $("#vision-status").textContent =
     duck?.eye === "none"
       ? "Eyes covered"
+      : a?.temporal
+        ? (a.temporal.fresh ? "Stereo sequence active" : "Stereo input unavailable")
       : a?.input?.fresh === false
         ? "Camera paused · waiting for a fresh frame"
         : v
@@ -531,6 +548,10 @@ function update(data) {
             : s.command[0] > 0.04
               ? "Walking forward"
               : "Holding position";
+  $("#feedback-loop").textContent = a?.temporal?.held
+    ? "↻ GF hold → body slowing → fresh stereo checks → release"
+    : duck.feedback ? "↻ Body speed + gait phase → fly circuit" : "↻ Body feedback to fly circuit is off";
+  if (a?.temporal?.held && !paused) $("#body-response").textContent = "GF hold · waiting until clear";
   $("#forward-meter").value = n?.forward ?? 0;
   $("#turn-meter").value = Math.abs(s.command[1]);
   $("#brain-plot").dataset.duck = s.id;
@@ -590,6 +611,7 @@ function update(data) {
       cameraPose: d.cameraPose,
       command: d.command,
       distance: d.distance,
+      speed: d.speed, tilt: d.tilt, contacts: d.contacts,
       fallen: d.fallen,
     })),
     agents: data.agents,

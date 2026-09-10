@@ -27,7 +27,7 @@ export class World {
     this.bam.reset();this.lastAction=new Float32Array(14);this.command=[0,0];this.headCommand=[0,0,0,0];
     mj.mj_forward(m,d);
     this.distance=0;this.lastPosition=spawn.slice(0,2);this.fallen=false;
-    this.contacts=[false,false];this.onsets=[0,0];this.pushTicks=0;
+    this.contacts=[false,false];this.onsets=[0,0];this.pushTicks=0;this.pushForce=.8;
     return this.state(0);
   }
   gravity() {
@@ -59,7 +59,7 @@ export class World {
   }
   applyPush(){
     const {d,c}=this;
-    if(this.pushTicks>0){d.xfrc_applied[c.trunk*6+1]=.8;this.pushTicks--;}
+    if(this.pushTicks>0){d.xfrc_applied[c.trunk*6+1]=this.pushForce;this.pushTicks--;}
   }
   sampleContacts(pairs){
     const contacts=this.c.feet.map(foot=>pairs.some(([a,b])=>(a===foot&&b===this.c.floor)||(b===foot&&a===this.c.floor)));
@@ -107,9 +107,10 @@ export class World {
   checkpoint(){
     return {lastAction:Array.from(this.lastAction),targets:Array.from(this.bam.targets),previous:Array.from(this.bam.previous),
       command:[...this.command],headCommand:[...this.headCommand],distance:this.distance,lastPosition:[...this.lastPosition],
-      fallen:this.fallen,contacts:[...this.contacts],onsets:[...this.onsets],pushTicks:this.pushTicks};
+      fallen:this.fallen,contacts:[...this.contacts],onsets:[...this.onsets],pushTicks:this.pushTicks,pushForce:this.pushForce};
   }
   restore(s){
+    this.pushForce=s.pushForce??.8;
     this.lastAction.set(s.lastAction);this.bam.targets.set(s.targets);this.bam.previous.set(s.previous);
     for(const key of ['command','headCommand','distance','lastPosition','fallen','contacts','onsets','pushTicks'])this[key]=structuredClone(s[key]);
   }

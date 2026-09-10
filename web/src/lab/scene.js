@@ -1,4 +1,5 @@
 // Scenes are portable data. No executable content or arbitrary MJCF is accepted.
+import { LAB_IDS, STOP_CASES, STOP_MODES, guidedScene } from './guided-labs.js';
 const kinds=new Set(['wall','block','ball','target']);
 const modes=new Set(['brain','target','flock','reactive','manual','odor','light','reflex']);
 const sources=new Set(['eyes','webcam']);
@@ -10,14 +11,18 @@ const label=v=>{if(typeof v!=='string'||v.length>80)throw Error('Invalid label')
 const vec=(v,n,lo,hi,name)=>{if(!Array.isArray(v)||v.length!==n)throw Error(`Invalid ${name}`);return v.map(x=>number(x,lo,hi,name));};
 const choice=(v,values,name)=>{if(!values.has(v))throw Error(`Invalid ${name}`);return v;};
 export function validateScene(input){
-  if(!input||![1,2].includes(input.version))throw Error('Unsupported scene version');
+  if(!input||![1,2,3].includes(input.version))throw Error('Unsupported scene version');
   if(!Array.isArray(input.ducks)||input.ducks.length<1||input.ducks.length>8)throw Error('Use 1–8 ducks');
   if(!Array.isArray(input.props)||input.props.length>40)throw Error('Use at most 40 props');
   const scene={version:2,name:label(input.name??'Untitled arena'),seed:id(input.seed??'duckfly-v1'),
+    lab:input.lab==null?null:{id:choice(input.lab.id,new Set(LAB_IDS),'guided experiment'),
+      variant:choice(input.lab.variant??'incoming',new Set(STOP_CASES),'test object trajectory'),
+      condition:choice(input.lab.condition??'hold',new Set(STOP_MODES),'stop loop condition'),scripted:input.lab.scripted!==false},
     ducks:input.ducks.map(d=>({id:id(d.id),name:label(d.name??d.id),spawn:vec(d.spawn,3,-10,10,'spawn'),
       mode:choice(d.mode??'target',modes,'controller'),source:choice(d.source??'eyes',sources,'camera source'),
       visionModel:choice(d.visionModel??'marker-v1',new Set(['marker-v1','motion-opponency-v1']),'vision model'),
       gfGain:number(d.gfGain??6,1,12,'GF input gain'),headStabilization:!!d.headStabilization,
+      temporal:choice(d.temporal??'off',new Set(['off','timer','hold']),'temporal research loop'),
       activeLook:!!d.activeLook,flowSteer:!!d.flowSteer,feedback:d.feedback!==false,
       adapter:adapterWeights(d.adapter),
       eye:choice(d.eye??'both',new Set(['both','left','right','none']),'eye covering'),
@@ -35,6 +40,7 @@ export function validateScene(input){
     challenge:{duration:number(input.challenge?.duration??30,1,600,'duration'),
       subject:input.challenge?.subject??'ducks',
       goal:vec(input.challenge?.goal??[1,0],2,-10,10,'goal'),radius:number(input.challenge?.radius??.12,.03,2,'goal radius')}};
+  if(input.version===3||scene.lab||scene.ducks.some(d=>d.temporal!=='off'))scene.version=3;
   if(scene.fields.length>16)throw Error('Use at most 16 sensory fields');
   const ids=[...scene.ducks,...scene.props,...scene.fields].map(x=>x.id);
   if(new Set(ids).size!==ids.length)throw Error('Object IDs must be unique');
@@ -42,7 +48,8 @@ export function validateScene(input){
   for(const p of scene.props)if(p.movable&&p.motion.some(Boolean))throw Error('A prop cannot be both freely moving and animated');
   return scene;
 }
-export function defaultScene(preset='target'){
+export function defaultScene(preset='target',options){
+  if(LAB_IDS.includes(preset))return validateScene(guidedScene(preset,options));
   const ducks=[{id:'duck-1',name:'Duck 1',spawn:[0,0,0],mode:preset==='flock'?'flock':preset==='empty'?'brain':'target'}];
   if(preset==='vision')ducks[0].visionModel='motion-opponency-v1';
   const props=preset==='empty'?[]:[{id:'target-1',kind:'target',position:[.9,0,.13],size:[.07,.07,.07]}];

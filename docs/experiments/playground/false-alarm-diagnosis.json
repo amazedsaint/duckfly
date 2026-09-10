@@ -1,0 +1,82 @@
+{
+  "source": "experiments/temporal/reports/temporal-physical-confirm-v1.json.gz",
+  "condition": "temporal-hazard",
+  "controlGFTrials": 12,
+  "withVisualPulse": 10,
+  "pulseAtStartup": 1,
+  "rows": [
+    {
+      "id": "tv-confirm-near-miss-0",
+      "firstVisualPulse": 0.8,
+      "firstGF": 0.8,
+      "initialRisk": 1.777497912891321e-05
+    },
+    {
+      "id": "tv-confirm-near-miss-8",
+      "firstVisualPulse": 3.52,
+      "firstGF": 3.52,
+      "initialRisk": 0.0017344266482620157
+    },
+    {
+      "id": "tv-confirm-near-miss-11",
+      "firstVisualPulse": 4.5600000000000005,
+      "firstGF": 4.5600000000000005,
+      "initialRisk": 0.0033557164229416256
+    },
+    {
+      "id": "tv-confirm-near-miss-14",
+      "firstVisualPulse": 3.96,
+      "firstGF": 3.96,
+      "initialRisk": 0.0003255865385545194
+    },
+    {
+      "id": "tv-confirm-near-miss-15",
+      "firstVisualPulse": 1.12,
+      "firstGF": 1.12,
+      "initialRisk": 0.004271520841405438
+    },
+    {
+      "id": "tv-confirm-receding-4",
+      "firstVisualPulse": 4.24,
+      "firstGF": 4.24,
+      "initialRisk": 0.012028755220786133
+    },
+    {
+      "id": "tv-confirm-receding-7",
+      "firstVisualPulse": 3.12,
+      "firstGF": 3.12,
+      "initialRisk": 4.72019669030413e-06
+    },
+    {
+      "id": "tv-confirm-receding-8",
+      "firstVisualPulse": 0,
+      "firstGF": 0,
+      "initialRisk": 0.9878819284756926
+    },
+    {
+      "id": "tv-confirm-receding-12",
+      "firstVisualPulse": 4.8,
+      "firstGF": 4.8,
+      "initialRisk": 0.00026579661500069994
+    },
+    {
+      "id": "tv-confirm-empty-2",
+      "firstVisualPulse": 3.88,
+      "firstGF": 3.88,
+      "initialRisk": 0.0016398610482128053
+    },
+    {
+      "id": "tv-confirm-scan-6",
+      "firstVisualPulse": null,
+      "firstGF": 1.16,
+      "initialRisk": 0.0016398610482128053
+    },
+    {
+      "id": "tv-confirm-scan-15",
+      "firstVisualPulse": null,
+      "firstGF": 0.92,
+      "initialRisk": 0.0016398610482128053
+    }
+  ],
+  "interpretation": "Descriptive diagnosis on retained data, not a prospective improvement test. Startup feature history pads with the first image."
+}

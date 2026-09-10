@@ -1,0 +1,93 @@
+{
+  "pass": true,
+  "sources": [
+    "browser.json (all except superseded near-miss-0)",
+    "browser-final.json (near-miss-15)"
+  ],
+  "comparisons": [
+    {
+      "case": "tv-confirm-incoming-1",
+      "condition": "temporal-hazard",
+      "maxPositionError": 0.0,
+      "contactsMatch": true,
+      "gfMatches": true
+    },
+    {
+      "case": "tv-confirm-incoming-1",
+      "condition": "temporal-timed",
+      "maxPositionError": 0.0,
+      "contactsMatch": true,
+      "gfMatches": true
+    },
+    {
+      "case": "tv-confirm-incoming-1",
+      "condition": "temporal-gf-silenced",
+      "maxPositionError": 0.0,
+      "contactsMatch": true,
+      "gfMatches": true
+    },
+    {
+      "case": "tv-confirm-receding-1",
+      "condition": "temporal-hazard",
+      "maxPositionError": 0.0,
+      "contactsMatch": true,
+      "gfMatches": true
+    },
+    {
+      "case": "tv-confirm-receding-1",
+      "condition": "temporal-timed",
+      "maxPositionError": 0.0,
+      "contactsMatch": true,
+      "gfMatches": true
+    },
+    {
+      "case": "tv-confirm-receding-1",
+      "condition": "temporal-gf-silenced",
+      "maxPositionError": 0.0,
+      "contactsMatch": true,
+      "gfMatches": true
+    },
+    {
+      "case": "tv-confirm-retreat-0",
+      "condition": "temporal-hazard",
+      "maxPositionError": 0.0,
+      "contactsMatch": true,
+      "gfMatches": true
+    },
+    {
+      "case": "tv-confirm-retreat-0",
+      "condition": "temporal-timed",
+      "maxPositionError": 0.0,
+      "contactsMatch": true,
+      "gfMatches": true
+    },
+    {
+      "case": "tv-confirm-retreat-0",
+      "condition": "temporal-gf-silenced",
+      "maxPositionError": 0.0,
+      "contactsMatch": true,
+      "gfMatches": true
+    },
+    {
+      "case": "tv-confirm-near-miss-15",
+      "condition": "temporal-hazard",
+      "maxPositionError": 0.0,
+      "contactsMatch": true,
+      "gfMatches": true
+    },
+    {
+      "case": "tv-confirm-near-miss-15",
+      "condition": "temporal-timed",
+      "maxPositionError": 0.0,
+      "contactsMatch": true,
+      "gfMatches": true
+    },
+    {
+      "case": "tv-confirm-near-miss-15",
+      "condition": "temporal-gf-silenced",
+      "maxPositionError": 0.0,
+      "contactsMatch": true,
+      "gfMatches": true
+    }
+  ]
+}

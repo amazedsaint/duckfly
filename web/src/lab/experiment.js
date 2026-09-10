@@ -5,6 +5,8 @@ import { VisualSystem } from './visual-system.js';
 import { serializeFrame,deserializeFrame } from '../../../shared/vision/frame.js';
 import { validateScene } from './scene.js';
 import { clamp } from '../bam.js';
+import { TemporalLoop } from '../../../shared/vision/temporal/loop.js';
+import { scheduledMotion, labInput } from './guided-labs.js';
 
 export class Experiment {
   constructor(runtime,scene){this.runtime=runtime;this.history=[];this.events=[];this.frameTape=new Map();this.branchNumber=0;this.configure(scene);}
@@ -13,13 +15,19 @@ export class Experiment {
     const world=new LabWorld(r.mj,r.template,r.session,r.Tensor,next);
     this.world?.dispose();this.world=world;this.scene=next;this.tick=0;this.replaying=false;this.recordedUntilTick=0;this.cost=0;this.forceFrames=false;
     this.agents=new Map(next.ducks.map(d=>[d.id,{brain:new Brain(r.circuit,`${next.seed}/${d.id}`),eyes:new VisualSystem(),webcam:new VisualSystem(),adapter:new SensoryAdapter(d.adapter),vision:null,neural:null,input:null}]));
-    this.history=[];this.events=[];this.frameTape.clear();this.scores={};this.branchNumber=0;
+    this.history=[];this.events=[];this.frameTape.clear();this.scores={};this.branchNumber=0;this.preparedTick=-1;
     this.applySettings();this.remember();
   }
-  applySettings(){for(const d of this.scene.ducks){const a=this.agents.get(d.id);a.brain.feedback=d.feedback;a.brain.intervene(d.silence);a.brain.sim.setGFGain(d.gfGain);a.adapter.weights={...d.adapter};}}
+  applySettings(){for(const d of this.scene.ducks){const a=this.agents.get(d.id);a.brain.feedback=d.feedback;a.brain.intervene(d.silence);a.brain.sim.setGFGain(d.gfGain);a.adapter.weights={...d.adapter};
+    if(d.temporal==='off')a.temporal=null;
+    else if(a.temporal?.mode!==d.temporal){if(!this.runtime.temporalDecoder)throw Error('Temporal research model unavailable');a.temporal=new TemporalLoop(this.runtime.temporalDecoder,d.temporal);}
+  }}
   updateDuck(id,patch){
     const next=validateScene({...this.scene,ducks:this.scene.ducks.map(d=>d.id===id?{...d,...patch}:d)});
     this.branch();this.scene=next;this.applySettings();
+    const a=this.agents.get(id),d=this.scene.ducks.find(d=>d.id===id);
+    if(a?.temporal&&(d.eye!=='both'||d.source!=='eyes'))a.temporal.invalidate(this.tick*.02);
+    this.forceFrames=true;
   }
   branch(){
     if(!this.replaying)return;
@@ -30,11 +38,21 @@ export class Experiment {
   stimulus(id,kind){this.branch();this.agents.get(id)?.brain.stimulate(kind);}
   moveProp(id,position,yaw){
     const next=validateScene({...this.scene,props:this.scene.props.map(p=>p.id===id?{...p,position,yaw,motion:[0,0,0]}:p)});
-    this.branch();this.scene=next;this.world.moveProp(id,position,yaw);this.forceFrames=true;
+    this.branch();this.scene=next;if(this.scene.lab&&id==='object')this.scene.lab.scripted=false;this.world.moveProp(id,position,yaw);this.forceFrames=true;
   }
-  frameInterval(){return this.scene.ducks.some(d=>d.visionModel!=='marker-v1')?2:5;}
+  prepareTick(){
+    if(this.preparedTick===this.tick)return;this.preparedTick=this.tick;
+    const motion=scheduledMotion(this.scene.lab,this.tick),p=this.world.props.find(p=>p.id==='object');
+    if(!motion||!p)return;
+    const position=this.world.state().props.find(s=>s.id===p.id).position;
+    this.world.moveProp(p.id,position,p.yaw);
+    p.motion=[...motion];p.position=position.map((v,i)=>v-motion[i]*this.world.d.time);
+    Object.assign(this.scene.props.find(s=>s.id===p.id),{motion:[...motion],position:[...p.position]});
+    this.forceFrames=true;
+  }
+  frameInterval(){return this.scene.ducks.some(d=>d.visionModel!=='marker-v1'||d.temporal!=='off')?2:5;}
   resetLiveInput(){if(!this.replaying){for(const d of this.scene.ducks)if(d.source==='webcam'){const a=this.agents.get(d.id);a.webcam.reset();a.vision=null;}this.forceFrames=true;}}
-  needsFrames(){return (this.forceFrames||this.tick%this.frameInterval()===0)&&!(this.replaying&&this.frameTape.has(this.tick));}
+  needsFrames(){this.prepareTick();return (this.forceFrames||this.tick%this.frameInterval()===0)&&!(this.replaying&&this.frameTape.has(this.tick));}
   fields(body){
     const samples={odor:[0,0],light:[0,0]};
     for(let side=0;side<2;side++){
@@ -45,26 +63,30 @@ export class Experiment {
     return samples;
   }
   async step(frames=null){
+    this.prepareTick();
     if(frames||this.tick%this.frameInterval()===0||(this.replaying&&this.frameTape.has(this.tick))){
       if(this.replaying&&this.frameTape.has(this.tick))frames=this.frameTape.get(this.tick);
       if(!frames)throw Error('Missing camera frames for this simulation tick');
       if(!this.replaying){this.frameTape.set(this.tick,structuredClone(frames));this.trimFrames();}
       for(const d of this.scene.ducks){const a=this.agents.get(d.id),pixels=d.source==='webcam'?frames.webcam:frames[d.id];
         a.vision=pixels?(d.source==='webcam'?a.webcam:a.eyes).encode(pixels,this.tick*.02,d):null;
+        if(a.temporal){const body=this.world.state().ducks.find(b=>b.id===d.id);a.temporal.observe(pixels,{...body,time:this.tick*.02},d);}
       }
       this.forceFrames=false;
     }
     const state=this.world.state(),commands={},causes=[];
     for(const d of this.scene.ducks){const a=this.agents.get(d.id),body=state.ducks.find(b=>b.id===d.id);
-      const input=a.adapter.sense(a.vision,d,state.time,this.fields(body),body);
-      const neural=a.brain.step(body,input);a.input=input;a.neural=neural;
+      let input=labInput(this.scene.lab,d,state.time,a.adapter.sense(a.vision,d,state.time,this.fields(body),body));
+      if(a.temporal){input={...input,...a.temporal.sensory(state.time)};if(d.silence==='motion')input={...input,loomL:0,loomR:0};}
+      const before=a.brain.escapeUntil,neural=a.brain.step(body,input),gfEvent=a.brain.escapeUntil>before;a.input=input;a.neural=neural;
       const provenance={forward:input.gate?input.gateReason:'Fly circuit intent',yaw:'Fly circuit intent',head:input.headReason,vision:a.vision?.model??'absent',gfGain:d.gfGain};
       let command={vx:input.gate?0:neural.vx,yaw:neural.yaw,head:input.head};
       if(d.mode==='manual'){provenance.forward=provenance.yaw='Manual override';command={vx:d.manual[0],yaw:d.manual[1],head:input.head};}
       if(d.mode==='reactive'||d.mode==='reflex'){provenance.forward=provenance.yaw='Reactive camera rule';command={vx:(d.mode==='reactive'?input.gate:!input.fresh)||input.loomL+input.loomR>.2?0:.3,yaw:d.mode==='reflex'?0:clamp((a.vision?.target.bearing??0)*.7,-.65,.65),head:input.head};}
+      if(a.temporal){command=a.temporal.motor(command,body,state.time,gfEvent);if(a.temporal.feedback.state.held)provenance.forward=provenance.yaw='Experimental GF hazard hold';}
       if(d.silence==='output'){provenance.forward=provenance.yaw='Output intervention';command={...command,vx:0,yaw:0};}
       commands[d.id]=command;
-      causes.push({id:d.id,provenance,input:structuredClone(input),vision:structuredClone(a.vision),neural:structuredClone(neural),command:structuredClone(command)});
+      causes.push({id:d.id,provenance,input:structuredClone(input),vision:structuredClone(a.vision),neural:structuredClone(neural),command:structuredClone(command),gfEvent,temporal:a.temporal?.status(state.time)??null});
     }
     const next=await this.world.step(commands);this.cost=next.cost;this.tick++;
     if(!this.replaying)this.recordedUntilTick=this.tick;
@@ -72,6 +94,8 @@ export class Experiment {
     for(const d of next.ducks){
       const distance=Math.hypot(d.position[0]-this.scene.challenge.goal[0],d.position[1]-this.scene.challenge.goal[1]);
       const score=this.scores[d.id]??{reachedAt:null,minGoalDistance:Infinity};
+      const cause=causes.find(c=>c.id===d.id);score.ticks=(score.ticks??0)+1;score.visibleTicks=(score.visibleTicks??0)+Number(!!cause.vision?.target?.visible);
+      score.gfEvents=(score.gfEvents??0)+Number(cause.gfEvent);score.maxTilt=Math.max(score.maxTilt??0,d.tilt);
       if(distance<this.scene.challenge.radius&&score.reachedAt===null)score.reachedAt=next.time;
       score.minGoalDistance=Math.min(score.minGoalDistance,distance);score.distance=d.distance;score.fallen=d.fallen;this.scores[d.id]=score;
     }
@@ -88,14 +112,14 @@ export class Experiment {
     return this.state();
   }
   state(){return {body:this.world.state(this.cost??0),tick:this.tick,scene:this.scene,branch:this.branchNumber,replaying:this.replaying,
-    agents:Object.fromEntries([...this.agents].map(([id,a])=>[id,{vision:a.vision,input:a.input,neural:a.neural}])),
+    agents:Object.fromEntries([...this.agents].map(([id,a])=>[id,{vision:a.vision,input:a.input,neural:a.neural,temporal:a.temporal?.status(this.tick*.02)??null}])),
     scores:this.scores,history:this.history.map(h=>({tick:h.tick,time:h.tick*.02})),event:this.events.findLast(e=>e.tick<=this.tick)??null};}
   recordingView(){
     const tick=[...this.frameTape.keys()].filter(t=>t<this.tick).sort((a,b)=>b-a)[0];
     return {frames:tick===undefined?{}:this.frameTape.get(tick),events:this.events.filter(e=>e.tick<=this.tick)};
   }
-  checkpoint(){return {version:2,scene:structuredClone(this.scene),tick:this.tick,branch:this.branchNumber,forceFrames:this.forceFrames,world:this.world.checkpoint(),scores:structuredClone(this.scores),
-    agents:Object.fromEntries([...this.agents].map(([id,a])=>[id,{brain:a.brain.checkpoint(),eyes:a.eyes.checkpoint(),webcam:a.webcam.checkpoint(),adapter:a.adapter.checkpoint(),vision:structuredClone(a.vision),input:structuredClone(a.input),neural:structuredClone(a.neural)}]))};}
+  checkpoint(){return {version:3,scene:structuredClone(this.scene),tick:this.tick,branch:this.branchNumber,forceFrames:this.forceFrames,world:this.world.checkpoint(),scores:structuredClone(this.scores),
+    agents:Object.fromEntries([...this.agents].map(([id,a])=>[id,{brain:a.brain.checkpoint(),eyes:a.eyes.checkpoint(),webcam:a.webcam.checkpoint(),adapter:a.adapter.checkpoint(),vision:structuredClone(a.vision),input:structuredClone(a.input),neural:structuredClone(a.neural),temporal:a.temporal?.checkpoint()??null}]))};}
   trimFrames(){
     // Forced captures can be more frequent than the regular cadence. Keep a
     // complete replay window below the recording format's frame-count bound.
@@ -111,22 +135,23 @@ export class Experiment {
     this.events=this.events.filter(e=>e.tick>=oldest);
   }
   restore(checkpoint){
-    if(![1,2].includes(checkpoint.version))throw Error('Unsupported experiment checkpoint');
+    if(![1,2,3].includes(checkpoint.version))throw Error('Unsupported experiment checkpoint');
     const scene=validateScene(checkpoint.scene);
     if(scene.ducks.length!==this.scene.ducks.length||scene.ducks.some((d,i)=>d.id!==this.scene.ducks[i].id))throw Error('Checkpoint belongs to another arena');
     this.scene=scene;this.world.scene=structuredClone(scene);
     for(const p of this.world.props)Object.assign(p,structuredClone(scene.props.find(s=>s.id===p.id)));
     this.world.restore(checkpoint.world);this.tick=checkpoint.tick;this.branchNumber=checkpoint.branch;this.forceFrames=checkpoint.forceFrames===true;this.scores=structuredClone(checkpoint.scores);
-    for(const [id,a] of this.agents){const s=checkpoint.agents[id];a.brain.restore(s.brain);a.eyes.restore(s.eyes);a.webcam.restore(s.webcam);a.adapter.restore(s.adapter);a.vision=structuredClone(s.vision);a.input=structuredClone(s.input);a.neural=structuredClone(s.neural);}
+    this.preparedTick=-1;this.applySettings();
+    for(const [id,a] of this.agents){const s=checkpoint.agents[id];a.brain.restore(s.brain);a.eyes.restore(s.eyes);a.webcam.restore(s.webcam);a.adapter.restore(s.adapter);a.vision=structuredClone(s.vision);a.input=structuredClone(s.input);a.neural=structuredClone(s.neural);if(a.temporal)a.temporal.restore(s.temporal);}
     this.replaying=true;this.replayUntil=this.recordedUntilTick;return this.state();
   }
   rewind(tick){const checkpoint=this.history.find(h=>h.tick===tick);if(!checkpoint)throw Error('That checkpoint is no longer retained');return this.restore(checkpoint);}
   export(){
-    return {format:'duckfly-recording',version:2,checkpoint:this.checkpoint(),recordedUntilTick:this.recordedUntilTick,history:this.history,events:this.events,
+    return {format:'duckfly-recording',version:3,checkpoint:this.checkpoint(),recordedUntilTick:this.recordedUntilTick,history:this.history,events:this.events,
       frames:[...this.frameTape].map(([tick,frames])=>[tick,Object.fromEntries(Object.entries(frames).filter(([,v])=>v).map(([id,v])=>[id,serializeFrame(v)]))])};
   }
   import(recording){
-    if(recording.format!=='duckfly-recording'||![1,2].includes(recording.version)||!Array.isArray(recording.history)||recording.history.length>121||!Array.isArray(recording.frames)||recording.frames.length>610)throw Error('Invalid recording');
+    if(recording.format!=='duckfly-recording'||![1,2,3].includes(recording.version)||!Array.isArray(recording.history)||recording.history.length>121||!Array.isArray(recording.frames)||recording.frames.length>610)throw Error('Invalid recording');
     this.configure(recording.checkpoint.scene);this.recordedUntilTick=recording.recordedUntilTick??recording.checkpoint.tick;this.restore(recording.checkpoint);this.history=recording.history;this.events=recording.events??[];
     this.frameTape=new Map(recording.frames.map(([tick,frames])=>[tick,Object.fromEntries(Object.entries(frames).map(([id,value])=>{
       return [id,deserializeFrame(value)];

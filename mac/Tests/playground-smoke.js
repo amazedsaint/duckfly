@@ -48,7 +48,7 @@ check(
   "App must start on scenario tiles",
 );
 check(
-  document.querySelectorAll("[data-scenario]").length === 6,
+  document.querySelectorAll("[data-scenario]").length === 10,
   "Scenario catalog is incomplete",
 );
 await wait(() =>

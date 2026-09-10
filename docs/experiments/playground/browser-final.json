@@ -1,0 +1,284 @@
+{
+  "pass": true,
+  "trials": [
+    {
+      "variant": "near-miss",
+      "condition": "hold",
+      "tick": 250,
+      "contacts": 0,
+      "body": {
+        "id": "duck-1",
+        "position": [
+          0.1995796910953337,
+          0.05481739765931825,
+          0.11777283323583634
+        ],
+        "headPose": [
+          0.2056134850354986,
+          0.05252475994840934,
+          0.23462965074889985,
+          -0.7489274654291579,
+          -0.19356083121798906,
+          0.6018183309242392,
+          -0.19863673554411201
+        ],
+        "cameraPose": [
+          0.26914984384632834,
+          0.09222461415599084,
+          0.23507801986091087,
+          0.6700290721178117,
+          0.5624179991652442,
+          -0.28868164651255446,
+          -0.38911430672581077
+        ],
+        "command": [
+          0.3,
+          0.37352983392295963
+        ],
+        "distance": 0.3649342799818996,
+        "speed": 0.21367493979628277,
+        "tilt": 3.0700103611122636,
+        "contacts": [
+          false,
+          true
+        ],
+        "fallen": false
+      },
+      "loop": {
+        "mode": "hold",
+        "risk": 0.15725297167105529,
+        "fresh": true,
+        "threshold": 0.98,
+        "held": false,
+        "triggers": 2,
+        "gfEvents": 2,
+        "releases": 2,
+        "clearSeconds": 1.12
+      }
+    },
+    {
+      "variant": "near-miss",
+      "condition": "timer",
+      "tick": 250,
+      "contacts": 0,
+      "body": {
+        "id": "duck-1",
+        "position": [
+          0.22685569289059226,
+          0.069320110051462,
+          0.11684084902251975
+        ],
+        "headPose": [
+          0.2270009550831379,
+          0.07317737129159708,
+          0.23298629378154578,
+          -0.7434850036371466,
+          -0.1429359084237361,
+          0.6241132563283809,
+          -0.19308552179005123
+        ],
+        "cameraPose": [
+          0.2932918842942236,
+          0.1080269743750971,
+          0.2350274256135559,
+          0.6622553695890198,
+          0.542385665899699,
+          -0.34024376565673276,
+          -0.38919120597564305
+        ],
+        "command": [
+          0.3,
+          0.17926544900685443
+        ],
+        "distance": 0.41494416943660817,
+        "speed": 0.19135215508208886,
+        "tilt": 1.8854366065281554,
+        "contacts": [
+          true,
+          false
+        ],
+        "fallen": false
+      },
+      "loop": {
+        "mode": "timer",
+        "risk": 0.7340669905454702,
+        "fresh": true,
+        "threshold": 0.98,
+        "held": false,
+        "triggers": 2,
+        "gfEvents": 2,
+        "releases": 0,
+        "clearSeconds": 0
+      }
+    },
+    {
+      "variant": "near-miss",
+      "condition": "gf-off",
+      "tick": 250,
+      "contacts": 0,
+      "body": {
+        "id": "duck-1",
+        "position": [
+          0.4112102959225464,
+          0.25652265313810574,
+          0.11671456543937567
+        ],
+        "headPose": [
+          0.4158034011300663,
+          0.253891542776883,
+          0.2333038853360454,
+          -0.6964817101821449,
+          -0.2967336755875448,
+          0.5731650323718614,
+          -0.31359878638193583
+        ],
+        "cameraPose": [
+          0.4630223253197415,
+          0.31198093151566975,
+          0.2363278668548628,
+          0.7142347686647368,
+          0.6151112753435124,
+          -0.19546648691478824,
+          -0.27073911181966
+        ],
+        "command": [
+          0.3,
+          0.10279677328126205
+        ],
+        "distance": 0.7514577887396621,
+        "speed": 0.21232373439818544,
+        "tilt": 2.563764078073326,
+        "contacts": [
+          false,
+          true
+        ],
+        "fallen": false
+      },
+      "loop": {
+        "mode": "hold",
+        "risk": 2.055028487811262e-07,
+        "fresh": true,
+        "threshold": 0.98,
+        "held": false,
+        "triggers": 1,
+        "gfEvents": 0,
+        "releases": 0,
+        "clearSeconds": 2.64
+      }
+    }
+  ],
+  "layouts": [
+    {
+      "width": 1400,
+      "height": 960,
+      "boxes": {
+        "eye": {
+          "top": 278,
+          "bottom": 433,
+          "height": 155
+        },
+        "brain-plot": {
+          "top": 527.5,
+          "bottom": 659.5,
+          "height": 132
+        },
+        "guided-lab": {
+          "top": 688.90625,
+          "bottom": 927,
+          "height": 238.09375
+        },
+        "arena": {
+          "top": 182,
+          "bottom": 623.90625,
+          "height": 441.90625
+        }
+      },
+      "uncovered": true,
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "boxes": {
+        "eye": {
+          "top": 270,
+          "bottom": 368,
+          "height": 98
+        },
+        "brain-plot": {
+          "top": 454.5,
+          "bottom": 534.5,
+          "height": 80
+        },
+        "guided-lab": {
+          "top": 496.90625,
+          "bottom": 735,
+          "height": 238.09375
+        },
+        "arena": {
+          "top": 182,
+          "bottom": 431.90625,
+          "height": 249.90625
+        }
+      },
+      "uncovered": true,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "boxes": {
+        "eye": {
+          "top": 615,
+          "bottom": 702,
+          "height": 87
+        },
+        "brain-plot": {
+          "top": 597.5,
+          "bottom": 678.5,
+          "height": 81
+        },
+        "guided-lab": {
+          "top": 371,
+          "bottom": 653.6875,
+          "height": 282.6875
+        },
+        "arena": {
+          "top": 158,
+          "bottom": 318,
+          "height": 160
+        }
+      },
+      "uncovered": true,
+      "overflow": false
+    },
+    {
+      "width": 560,
+      "height": 640,
+      "boxes": {
+        "eye": {
+          "top": 417,
+          "bottom": 504,
+          "height": 87
+        },
+        "brain-plot": {
+          "top": 399.5,
+          "bottom": 480.5,
+          "height": 81
+        },
+        "guided-lab": {
+          "top": 371,
+          "bottom": 618.09375,
+          "height": 247.09375
+        },
+        "arena": {
+          "top": 158,
+          "bottom": 318,
+          "height": 160
+        }
+      },
+      "uncovered": true,
+      "overflow": false
+    }
+  ]
+}

@@ -368,7 +368,7 @@ export class LabArena extends Arena {
           const pixels = read(duck, duck.camera),
             definition = this.definition.ducks.find((d) => d.id === id);
           const views =
-            definition.visionModel === "marker-v1"
+            definition.visionModel === "marker-v1" && definition.temporal === "off"
               ? undefined
               : {
                   left: read(duck, duck.eyes[0]),

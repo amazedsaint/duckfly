@@ -2,6 +2,7 @@ import { loadLabRuntime } from './lab-runtime.js';
 import { Experiment } from './experiment.js';
 import { compareControllers,learnAdapter,trialScore } from './benchmarks.js';
 import { compareLooming,StoppingMeasure } from './loom-benchmarks.js';
+import { defaultScene } from './scene.js';
 let experiment,paused=true,timer,running=false,frameWait=null,ticket=0,runtime;
 let cancelled=false;
 const send=x=>self.postMessage(x);
@@ -18,7 +19,7 @@ async function requestFrames(){
 async function tick(){
   if(paused||running)return;running=true;const start=performance.now();
   try{const frames=experiment.needsFrames()?await requestFrames():null;await experiment.step(frames);
-    if(experiment.world.d.time>=experiment.scene.challenge.duration){paused=true;send({type:'challenge-finished'});}snapshot();}
+    if(experiment.tick>=Math.ceil(experiment.scene.challenge.duration/.02-1e-9)){paused=true;send({type:'challenge-finished'});}snapshot();}
   catch(e){paused=true;send({type:'error',message:e.message});}
   finally{running=false;if(!paused)timer=setTimeout(tick,Math.max(0,20-(performance.now()-start)));}
 }
@@ -37,11 +38,11 @@ async function drain(){
       if(!experiment)continue;
       if(msg.type==='pause'){if(paused&&!msg.value&&!experiment.replaying){experiment.resetLiveInput();send({type:'capture-reset'});}paused=msg.value;}
       if(msg.type==='scene'){experiment.configure(msg.scene);paused=true;send({type:'scene',scene:experiment.scene});}
-      if(msg.type==='reset'){experiment.configure(experiment.scene);paused=true;send({type:'scene',scene:experiment.scene});}
+      if(msg.type==='reset'){const s=experiment.scene;experiment.configure(s.lab?.id==='stop-go'?defaultScene('stop-go',s.lab):s);paused=true;send({type:'scene',scene:experiment.scene});}
       if(msg.type==='duck')experiment.updateDuck(msg.id,msg.patch);
       if(msg.type==='move-prop')experiment.moveProp(msg.id,msg.position,msg.yaw);
       if(msg.type==='stimulus')experiment.stimulus(msg.id,msg.kind);
-      if(msg.type==='push'){experiment.branch();const r=experiment.world.robots.find(r=>r.id===msg.id);if(r)r.pushTicks=10;}
+      if(msg.type==='push'){const strength=msg.strength??.8;if(typeof strength!=='number'||!Number.isFinite(strength)||strength<0||strength>3)throw Error('Push force must be between 0 and 3 N');experiment.branch();const r=experiment.world.robots.find(r=>r.id===msg.id);if(r){r.pushTicks=10;r.pushForce=strength;}}
       if(msg.type==='rewind'){paused=true;experiment.rewind(msg.tick);recordingView();}
       if(msg.type==='branch'){experiment.branch();recordingView();}
       if(msg.type==='export')send({type:'export',recording:experiment.export()});

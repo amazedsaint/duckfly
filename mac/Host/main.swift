@@ -81,7 +81,7 @@ final class AssetServer {
     var testStarted = false
     var downloads: [ObjectIdentifier: (temporary: URL, destination: URL)] = [:]
     var testDeadline = Date().addingTimeInterval(90)
-    let testing = CommandLine.arguments.contains("--self-test-playground") || CommandLine.arguments.contains("--self-test") || CommandLine.arguments.contains("--self-test-room") || CommandLine.arguments.contains("--self-test-vision")
+    let testing = CommandLine.arguments.contains("--self-test-guided") || CommandLine.arguments.contains("--self-test-playground") || CommandLine.arguments.contains("--self-test") || CommandLine.arguments.contains("--self-test-room") || CommandLine.arguments.contains("--self-test-vision")
     func applicationDidFinishLaunching(_ notification: Notification) {
         let menu = NSMenu()
         let appItem = NSMenuItem(); menu.addItem(appItem)
@@ -182,7 +182,7 @@ final class AssetServer {
                 guard (try? await self.web.evaluateJavaScript("window.duckflyTelemetry?.ready === true")) as? Bool == true else { return }
                 self.testStarted = true; self.testTimer?.invalidate()
                 do {
-                    let path = Bundle.main.resourceURL!.appendingPathComponent(CommandLine.arguments.contains("--self-test-playground") ? "PlaygroundSmoke.js" : CommandLine.arguments.contains("--self-test-room") ? "RoomSmoke.js" : CommandLine.arguments.contains("--self-test-vision") ? "VisionSmoke.js" : "NativeSmoke.js")
+                    let path = Bundle.main.resourceURL!.appendingPathComponent(CommandLine.arguments.contains("--self-test-guided") ? "GuidedSmoke.js" : CommandLine.arguments.contains("--self-test-playground") ? "PlaygroundSmoke.js" : CommandLine.arguments.contains("--self-test-room") ? "RoomSmoke.js" : CommandLine.arguments.contains("--self-test-vision") ? "VisionSmoke.js" : "NativeSmoke.js")
                     let script = try String(contentsOf: path, encoding: .utf8)
                     let result = try await self.web.callAsyncJavaScript(script, arguments: [:], in: nil, contentWorld: .page)
                     let data = try JSONSerialization.data(withJSONObject: result ?? [])

@@ -2,6 +2,9 @@
 
 **Web app:** [duckfly.vercel.app](https://duckfly.vercel.app) · Vercel organization: `contextmind`.
 
+[What we built, what the experiments found, and the next plan](docs/experiments/playground/README.md). New guided scenes: Stop, wait, go; Find it again; Brain switchboard; Bump and recover. The temporal stop adapter is explicitly experimental and remains off in earlier presets.
+
+
 An experiment workspace coupling a selected FlyWire neural circuit to a simulated Microduck robot. Camera pixels become sensory input; circuit activity selects movement intent; Microduck's pretrained walking policy controls the joints. MuJoCo and BAM calculate the physical response.
 
 ## Repository layout
