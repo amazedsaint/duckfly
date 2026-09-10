@@ -1,0 +1,80 @@
+
+> duckfly-web@0.1.0 test
+> node --test tests/*.test.mjs
+
+✔ compressed asset loader accepts raw gzip and browser-decoded responses (63.912209ms)
+✔ held-out promotion rejects a regression or new fall even with positive average gain (0.570834ms)
+✔ BAM voltage, back-EMF and directional friction match 128 native vectors (1.251542ms)
+✔ independent fly brains replay deterministically, with output silence and loom reflex (447.260292ms)
+WASM walking receipt {"distance":1.5340549299049147,"onsets":[24,25],"tilt":3.0321548865271786}
+WASM brain receipt {"distance":1.8358326995774328,"walkingTicks":578,"tilt":0.4579955236952981}
+▶ WebAssembly physics and policy integration
+  ✔ ONNX WASM matches native outputs on independent inputs (16.882ms)
+  ✔ initial state and short trajectory match native MuJoCo (28.994916ms)
+  ✔ physical walking, contact cycles and deterministic reset (456.958542ms)
+  ✔ fly circuit drives real robot and silence zeros both commands (769.959292ms)
+✔ WebAssembly physics and policy integration (2104.768333ms)
+✔ full Flyvis WASM preserves pinned oracle, long continuation and independent eyes (2864.059542ms)
+✔ guided scenes round trip and preserve matched study geometry without enabling defaults (4.516083ms)
+✔ packaged decoder and feature extraction match retained research artifacts (99.411333ms)
+✔ temporal loop invalidates raw stereo for covered eyes and webcams, retains a GF hold (4.372125ms)
+Matched 2.5 N nudge [{"force":0,"tilt":6.156382213606862,"y":-0.033245038639982384,"fallen":false},{"force":2.5,"tilt":12.563287602335775,"y":0.066706932975819,"fallen":false}]
+✔ integrated GF loop checkpoints replay exactly, and silence prevents a hold (4100.080625ms)
+✔ scene round trips and rejects invalid or executable fields (1.719458ms)
+Editable world walking {"distance":0.7378630481966547,"tilt":1.0817321227652308,"onsets":[12,13]}
+Head command receipt {"before":-0.009708725132682927,"after":0.23070697307256421,"tilt":0.8643403041054311}
+Shared world contacts 49
+Physical prop response {"light":0.018999999999999906,"heavy":0.0009500000000000064,"slippery":0.8049463206809584,"grippy":0.13757750833613525}
+▶ editable shared physics
+  ✔ template preserves native geometry and physical walking (1161.57325ms)
+  ✔ checkpoint restores an identical continuation after JSON export (28.724958ms)
+  ✔ bounded head commands move the physical camera while the body stays upright (141.657167ms)
+  ✔ two ducks share collisions and have separate motor histories (302.688292ms)
+  ✔ prop mass changes acceleration and edited friction changes sliding (119.941417ms)
+  ✔ frequent forced captures retain an importable replay window (2152.463042ms)
+  ✔ version 1 recording migrates and replays retained legacy camera input (117.805917ms)
+  ✔ body connection and strength change delivered commands while neural intent survives, including replay (184.297916ms)
+  ✔ experiment rewind replays recorded visual inputs with identical brain and body state (373.295333ms)
+✔ editable shared physics (5681.019083ms)
+✔ a firing brain cannot be mislabeled as a delivered walk command (6.829958ms)
+✔ completion uses motor ticks; a 4.999999 second terminal sample is finished (2.09875ms)
+✔ per-duck output controls are portable, bounded, and default to old behavior (1.936959ms)
+✔ lowering the marker threshold to two fails a stray-pixel falsifier (10.148125ms)
+✔ risk pulses enter the neural route; only a GF event engages a hold (1.942083ms)
+✔ fresh low risk and sustained measured slowing are both required to release (0.135166ms)
+✔ stale, covered and source-changed cameras cannot reuse clear evidence (0.161375ms)
+✔ clear evidence has hysteresis; duplicate frames do not advance it (0.091334ms)
+✔ covering an eye invalidates clear evidence even when the frame clock is unchanged (0.080875ms)
+✔ GF silence and disabled feedback do not create a hold; release never creates a command (0.4705ms)
+✔ feedback resumes identically after a JSON round trip (1.0755ms)
+✔ temporal feature history uses the same stride as training and survives JSON replay (0.452542ms)
+✔ Python/browser numerical parity: temporal (34.291292ms)
+✔ Python/browser numerical parity: static (13.131042ms)
+✔ Python/browser numerical parity: no-pose (27.757208ms)
+✔ served modules carry the digest of their actual source (3.282958ms)
+✔ a missing or cached source receipt cannot start another study (146.515417ms)
+✔ physical receipts also check the loaded decoder artifact (170.464583ms)
+✔ At explicit gain 10, ON/OFF expansion recruits the bounded bridge; flash, translation and appearance do not (1402.513667ms)
+✔ upstream motion/LPLC2 interventions and GF ablation have distinct causal effects (388.264875ms)
+✔ source labels and simulation slowdown cannot alter calibrated motion estimates (77.99225ms)
+✔ duplicate camera frames become stale without advancing motion state; out of order input is rejected (28.744625ms)
+✔ independent eye histories and covered-eye motion (57.129666ms)
+✔ camera packet and full visual state replay after JSON round trip (234.969666ms)
+✔ retinal index mapping is a coordinate bijection with true hex neighbors (2.143625ms)
+✔ scene migration preserves old model semantics; head stabilization has a bounded independent command (0.805042ms)
+✔ camera pixels produce target bearing, disappear under occlusion and respect eye covering (28.169583ms)
+✔ optical flow follows independently translated image texture (33.206416ms)
+✔ asymmetric optical flow changes steering input only when enabled (92.645417ms)
+✔ active looking searches after a target disappears within the supported head range (13.907791ms)
+✔ webcam motion loom responds to radial expansion of an uncolored texture (61.416541ms)
+✔ expanding visual threat causes neural stop, and GF intervention removes it (375.870209ms)
+✔ complete neural/RNG checkpoint replays after JSON serialization (226.681458ms)
+✔ sensory adapter loses forward intent when camera input is absent or stale (0.896625ms)
+ℹ tests 59
+ℹ suites 0
+ℹ pass 59
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6054.60175

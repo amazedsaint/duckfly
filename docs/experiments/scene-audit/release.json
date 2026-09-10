@@ -1,0 +1,39 @@
+{
+  "releasedAt": "2026-09-10T22:25:40.559146+00:00",
+  "sourceCommit": "11cdb8f4f34912c0ada3cf91b862c3d0e7634812",
+  "web": {
+    "scope": "contextmind",
+    "url": "https://duckfly.vercel.app/",
+    "immutableUrl": "https://duckfly-kbk1tm0yi-contextmind.vercel.app",
+    "deploymentId": "dpl_3FrxFi8osTzhYoiENt5cdR6kzNbk",
+    "state": "READY",
+    "publicIndexAnd11AssetsMatchLocalBuild": true,
+    "liveUISmoke": "Stop, wait, go was still running at 31.52 seconds; object selection exposed Behavior & physics; no console errors"
+  },
+  "mac": {
+    "version": "0.7.0",
+    "build": 7,
+    "installedPath": "/Users/madhusudanaa/Applications/DuckFly.app",
+    "matchingFiles": 62,
+    "codesignVerified": true,
+    "liveUISmoke": "Installed app opened successfully; circular motion applied at 20.12 seconds without resetting; still running at 47.44 seconds with the eye view and fly brain visible"
+  },
+  "checks": {
+    "nodeTests": 63,
+    "catalogScenes": 10,
+    "openEndedAllScenes": true,
+    "targetContinuedPast30Seconds": true,
+    "feedbackAndMotorControlsEveryScene": true,
+    "livePropPathsAndRealGravity": true,
+    "nativeGuided": true,
+    "nativePlayground": true,
+    "resetPreservesCustomPropsAndPhysics": true
+  },
+  "limits": [
+    "A cue can still be lost, and the existing walking policy has no automatic get-up behavior",
+    "Browser scheduling may throttle background work; replay is a bounded rolling window",
+    "Scripted motion is an environmental stimulus, not learned object behavior",
+    "Physical model changes require the explicitly labeled scene restart",
+    "This is a locally signed Apple Silicon Mac build, not a notarized public release"
+  ]
+}

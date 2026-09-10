@@ -1,0 +1,31 @@
+{
+  "verifiedAt": "2026-09-10T22:21:01.532537+00:00",
+  "surface": "Codex in-app browser, local Vite production preview on 5193",
+  "viewports": [
+    [
+      1280,
+      720
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      560,
+      640
+    ]
+  ],
+  "observations": [
+    "Follow the beacon continued beyond 43 seconds without the former 30-second stop",
+    "Stop, wait, go continued beyond 13 seconds with Save observations available",
+    "Mobile Add object palette supports Orbiting beacon and selects its behavior editor",
+    "Object controls scroll within their own pane, preserving the arena and connected eye/brain view",
+    "Changing a motion path preserves the clock; changing physical body properties explains and performs a restart",
+    "Hide/reveal, flock selection and independent body commands, free-play beacon connection, motion steering and left-eye controls were exercised",
+    "Browser console had no errors during the inspected workflow"
+  ],
+  "limits": [
+    "These are observed UI smoke checks, not autonomous pursuit validation",
+    "Background browsers can throttle simulation; recording history is bounded"
+  ]
+}

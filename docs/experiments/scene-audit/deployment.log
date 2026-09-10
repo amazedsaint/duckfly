@@ -1,0 +1,63 @@
+Vercel CLI 59.15.1 (Node.js 24.19.0)
+Deploying duckfly
+Uploading [--------------------] (0.0B/213.7KB)
+Uploading [======--------------] (66.5KB/213.7KB)
+Uploading [==========----------] (109.4KB/213.7KB)
+Uploading [===============-----] (160.5KB/213.7KB)
+Uploading [====================] (213.7KB/213.7KB)
+  Inspect         https://vercel.com/contextmind/duckfly/3FrxFi8osTzhYoiENt5cdR6kzNbk
+  Production      https://duckfly-kbk1tm0yi-contextmind.vercel.app
+Building…
+Building…
+Running build in Washington, D.C., USA (East) – iad1
+Build machine configuration: 4 cores, 8 GB
+Retrieving list of deployment files...
+Downloading 141 deployment files...
+Restored build cache from previous deployment (9m9pffQmME7stwkEaQnoEjXBcFBK)
+Running "vercel build"
+Vercel CLI 59.11.7
+Running "install" command: `npm ci --prefix web`...
+added 35 packages, and audited 36 packages in 4s
+8 packages are looking for funding
+run `npm fund` for details
+found 0 vulnerabilities
+npm warn allow-scripts 1 package has install scripts not yet covered by allowScripts:
+npm warn allow-scripts   protobufjs@7.6.6 (postinstall: node scripts/postinstall)
+npm warn allow-scripts
+npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.
+> duckfly-web@0.1.0 build
+> npm run prepare:assets && vite build
+> duckfly-web@0.1.0 prepare:assets
+> node scripts/prepare-assets.mjs
+Prepared shared assets and local WASM runtimes.
+vite v8.3.0 building client environment for production...
+transforming...
+[2K[1A[2K[G  Production      https://duckfly-kbk1tm0yi-contextmind.vercel.app
+Completing…
+▲ Aliased         https://duckfly.vercel.app
+{
+  "status": "ok",
+  "deployment": {
+    "id": "dpl_3FrxFi8osTzhYoiENt5cdR6kzNbk",
+    "url": "https://duckfly-kbk1tm0yi-contextmind.vercel.app",
+    "inspectorUrl": "https://vercel.com/contextmind/duckfly/3FrxFi8osTzhYoiENt5cdR6kzNbk",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_3FrxFi8osTzhYoiENt5cdR6kzNbk"
+  },
+  "message": "Deployment duckfly-kbk1tm0yi-contextmind.vercel.app ready.",
+  "next": [
+    {
+      "command": "vercel curl https://duckfly-kbk1tm0yi-contextmind.vercel.app",
+      "when": "Verify deployment, including when Deployment Protection is enabled"
+    },
+    {
+      "command": "vercel inspect duckfly-kbk1tm0yi-contextmind.vercel.app --scope contextmind",
+      "when": "Inspect deployment"
+    },
+    {
+      "command": "vercel deploy --prod --scope contextmind",
+      "when": "Promote to production"
+    }
+  ]
+}

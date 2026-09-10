@@ -1,0 +1,19 @@
+{
+  "verifiedAt": "2026-09-10T22:23:56.923436+00:00",
+  "url": "https://duckfly.vercel.app",
+  "indexMatches": true,
+  "matchingAssets": 11,
+  "sha256": {
+    "/assets/Brain/circuit.json": "da53640e4dc7071c26892870ec5b28984c4cfc74c1c44d3a3cde0a2913579d0f",
+    "/assets/Policies/alpha_walking.onnx": "e36332d383997d51401897734cd3e79cf5038406feddb18b4d57ecfb141daa6c",
+    "/assets/flyvis.worker-a1GsZaB0.js": "ee25c4c8fe332ac685ae752d11c06109cbf7b1c5b54ce083f38620459b9d72f4",
+    "/assets/index-ChdjDAo1.js": "9fdf0de2b407c4f940485d7b0e267adc19924c032080293c9eaf0e9655daec07",
+    "/assets/index-qDj7Nom2.css": "d494af95dc42a2845fc33d0e9e4928fdfd7e9ab2d0ce481c636bbefa9697c47f",
+    "/assets/lab.worker-AJWfN2Gh.js": "7b00a9595fdfaeabbcb367a9d8e4590687626198bf03f3ec44da5365a8f026f3",
+    "/assets/no-pose-C0bo0SAe.js": "6cce70ed9ae234d78bb787ad29ef80ec6487536249f45434c15e412285e85146",
+    "/runtime/mujoco.js": "45e8e0e1617c19fbf7f00b36a6a72d1c0c980c0a4f38523e04f0641e8fbab7b9",
+    "/runtime/mujoco.wasm": "832597ae0a0e306c97ed43d2a9bbca033cf3e547eced410fb9011d87a68d4207",
+    "/runtime/ort-wasm-simd-threaded.mjs": "5687566b1bc1c8cf628d76c2ddb16b2a3b81a7997273d4666564880495088e57",
+    "/runtime/ort-wasm-simd-threaded.wasm": "be0e129949062ad50290ef94683fac8be5bb6156f709e030b7a5f1661a2f6c17"
+  }
+}

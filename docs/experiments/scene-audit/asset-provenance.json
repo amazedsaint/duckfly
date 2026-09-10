@@ -1,0 +1,15 @@
+{
+  "shared/assets/Brain/circuit.json": {
+    "sha256": "da53640e4dc7071c26892870ec5b28984c4cfc74c1c44d3a3cde0a2913579d0f",
+    "unchangedFromParent": true
+  },
+  "shared/assets/Policies/alpha_walking.onnx": {
+    "sha256": "e36332d383997d51401897734cd3e79cf5038406feddb18b4d57ecfb141daa6c",
+    "unchangedFromParent": true
+  },
+  "web/src/world.js": {
+    "sha256": "2fa5aaebbb55849ded99bd85b7dfe832a0225d9fe6f72153190d0949c6f536db",
+    "unchangedFromParent": true
+  },
+  "historicalManifestNote": "The older feedback fixed-controller manifest still matches circuit and policy. world.js changed in commit 9126e84 to make nudge strength configurable and serializable; this predates the present audit. The manifest was retained, not rewritten."
+}
