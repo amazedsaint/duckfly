@@ -17,3 +17,11 @@ Research limitations remain in the visible experiment notes and in `README.md`. 
 For narrow windows, the scene pane scrolls independently so experiment controls cannot cover the connected brain. The worst-case stop panel is checked at 390 × 844 and 560 × 640, as well as desktop sizes.
 
 Reproduction: run `npm test --prefix web`, build with `mac/scripts/build.sh`, then launch the built executable with `--self-test-guided` and `--self-test-playground`. The Playwright function files under `web/tests/browser-guided*.js` exercise the browser UI against a local preview. The retained CLI logs show the executed scripts and results. Browser screenshots are in the local ignored `output/playwright/` folder; the four scenario thumbnails are checked in under `web/public/scenarios/`.
+
+## Release
+
+Code commit: `9126e84`, on `codex/vision-lab`. Published to the existing ContextMind project at [duckfly.vercel.app](https://duckfly.vercel.app). Deployment `dpl_B41JMuxFyUYvHzuNR4wgcEkpJNS8`; immutable URL: [duckfly-jex1sb7dw-contextmind.vercel.app](https://duckfly-jex1sb7dw-contextmind.vercel.app).
+
+`production.json` verifies byte equality of the public HTML and app bundles, including the model chunk, with the tested local output. Physical assets and the new thumbnails are also checked. This verifies served build identity; the interaction checks were run against the local production preview, not repeated against production while the Mac was locked.
+
+The installed `/Users/madhusudanaa/Applications/DuckFly.app` is version 0.5.0 (build 5). Its signature verifies and all 52 web payload files match the build. The application was launched and its process was confirmed running. The Mac was locked when foreground inspection was attempted, so visibility after installation was not checked. Native self-tests had passed against the same packaged app.

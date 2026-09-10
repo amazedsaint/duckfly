@@ -46,7 +46,8 @@
     "web/src/vendor/desktop-fly/locomotor.js": "a00ad3935a555c09192f835a54ca89edc6173e5cf93c83797cd6b5bfc6123d2d",
     "web/src/vendor/desktop-fly/sim.js": "df4a8eb3caf670cc4aca2230ba1d0c442535e25b65bb53f8d2c59c2c17265afe",
     "web/src/world.js": "2fa5aaebbb55849ded99bd85b7dfe832a0225d9fe6f72153190d0949c6f536db",
-    "web/vite.config.js": "6ed1566cdfa2c89ac886d5b0f1fce8fb9757b963dbbffcaef14d954c9f8873df"
+    "web/vite.config.js": "6ed1566cdfa2c89ac886d5b0f1fce8fb9757b963dbbffcaef14d954c9f8873df",
+    "web/src/style.css": "44c4cbcbff685204efb312e71993e6fbb2db69ead4b62cec06cdbbf83ca36dbf"
   },
   "unchangedPhysicalAndCircuitAssets": {
     "shared/assets/Brain/circuit.json": "da53640e4dc7071c26892870ec5b28984c4cfc74c1c44d3a3cde0a2913579d0f",
@@ -112,5 +113,102 @@
     "failed": 0,
     "skipped": 0
   },
-  "experimentalDefaultPromoted": false
+  "experimentalDefaultPromoted": false,
+  "codeCommit": "9126e84",
+  "deployment": {
+    "pass": true,
+    "url": "https://duckfly.vercel.app/",
+    "deploymentId": "dpl_B41JMuxFyUYvHzuNR4wgcEkpJNS8",
+    "deploymentUrl": "https://duckfly-jex1sb7dw-contextmind.vercel.app",
+    "verification": "HTTP byte equality with the locally tested build. Production browser interaction not repeated while Mac is locked.",
+    "files": [
+      {
+        "path": "index.html",
+        "status": 200,
+        "sha256": "15cc1f9b37f810fbf048ba747f36888442828414df342468d629c1ab40f54ad5",
+        "bytes": 605
+      },
+      {
+        "path": "assets/lab.worker-D1Pn6729.js",
+        "status": 200,
+        "sha256": "7f5fb537c82896cd6775c9b927b01ebae076f4a6a745e2de94f1f165f9125686",
+        "bytes": 150643
+      },
+      {
+        "path": "assets/no-pose-C0bo0SAe.js",
+        "status": 200,
+        "sha256": "6cce70ed9ae234d78bb787ad29ef80ec6487536249f45434c15e412285e85146",
+        "bytes": 1734315
+      },
+      {
+        "path": "assets/flyvis.worker-a1GsZaB0.js",
+        "status": 200,
+        "sha256": "ee25c4c8fe332ac685ae752d11c06109cbf7b1c5b54ce083f38620459b9d72f4",
+        "bytes": 8990
+      },
+      {
+        "path": "assets/index-CQWxvpWU.js",
+        "status": 200,
+        "sha256": "d49809a6f293190841d065ced5b606fb92eaa8fb0b815fa16d36393262e0b2a7",
+        "bytes": 682629
+      },
+      {
+        "path": "assets/index-BeYUaCJg.css",
+        "status": 200,
+        "sha256": "23fd2df933e580e31138626bf36be93004495a83c2f3ca0f7d5bbbcb836ccab0",
+        "bytes": 20914
+      },
+      {
+        "path": "scenarios/stop-go.png",
+        "status": 200,
+        "sha256": "a919b03dba07e004345f1e23ebf40a998c4f034005e73068a69118f245f9cfd8",
+        "bytes": 161641
+      },
+      {
+        "path": "scenarios/gaze.png",
+        "status": 200,
+        "sha256": "59babd81361b500fcde8efd97705e81e864f133ba6da695fdecc1207bc76c38a",
+        "bytes": 146757
+      },
+      {
+        "path": "scenarios/switchboard.png",
+        "status": 200,
+        "sha256": "349e57c63d1b558778d50c1371f6e43e9007d82e358e8c7abdbefdb10711d473",
+        "bytes": 142320
+      },
+      {
+        "path": "scenarios/recovery.png",
+        "status": 200,
+        "sha256": "78eb600c709e3255e0b7491fb511206178ef1c42d5f7a1165c68aa98dcc7f035",
+        "bytes": 115036
+      },
+      {
+        "path": "assets/Brain/circuit.json",
+        "status": 200,
+        "sha256": "da53640e4dc7071c26892870ec5b28984c4cfc74c1c44d3a3cde0a2913579d0f",
+        "bytes": 408374
+      },
+      {
+        "path": "assets/Policies/alpha_walking.onnx",
+        "status": 200,
+        "sha256": "e36332d383997d51401897734cd3e79cf5038406feddb18b4d57ecfb141daa6c",
+        "bytes": 793705
+      },
+      {
+        "path": "assets/Simulation/lab-template.json.gz",
+        "status": 200,
+        "sha256": "6509127c8488defa68e761a202ac91a8b123049059641e1baf859e2b5423e6e6",
+        "bytes": 4881632
+      }
+    ]
+  },
+  "installedMac": {
+    "path": "/Users/madhusudanaa/Applications/DuckFly.app",
+    "version": "0.5.0",
+    "build": "5",
+    "webPayloadMatches": true,
+    "verifiedFiles": 52,
+    "running": true,
+    "foregroundInspection": "Unavailable after launch because the Mac was locked. Packaged native self-tests passed before installation."
+  }
 }

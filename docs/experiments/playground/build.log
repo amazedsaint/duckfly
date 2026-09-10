@@ -14,10 +14,12 @@ rendering chunks...
 computing gzip size...
 dist/index.html                                        0.60 kB │ gzip:     0.40 kB
 dist/assets/flyvis.worker-a1GsZaB0.js                  8.99 kB
-dist/assets/lab.worker-BhMFhYIw.js                   150.20 kB
+dist/assets/lab.worker-D1Pn6729.js                   150.64 kB
 dist/assets/no-pose-C0bo0SAe.js                    1,734.31 kB
 dist/assets/ort-wasm-simd-threaded-1QYQn1Hs.wasm  12,361.74 kB │ gzip: 3,197.89 kB
-dist/assets/index-DJE_4vwS.css                        20.63 kB │ gzip:     5.58 kB
-dist/assets/index-DVSDE2Gm.js                        682.12 kB │ gzip:   181.39 kB
+dist/assets/index-BeYUaCJg.css                        20.91 kB │ gzip:     5.65 kB
+dist/assets/index-CQWxvpWU.js                        682.62 kB │ gzip:   181.60 kB
 
-✓ built in 523ms
+✓ built in 430ms
+/Users/madhusudanaa/Documents/GitHub/duckfly/mac/build/.duckfly-stage.2APML8/DuckFly.app: replacing existing signature
+Built /Users/madhusudanaa/Documents/GitHub/duckfly/mac/build/DuckFly.app
