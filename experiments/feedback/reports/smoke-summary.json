@@ -1,0 +1,118 @@
+{
+  "split": "smoke",
+  "summary": {
+    "original": {
+      "trials": 4,
+      "finalError": 0.27482457212179856,
+      "lateError": 0.37378369188949767,
+      "visibleFraction": 0.925,
+      "headingError": 0.14431939793181126,
+      "falls": 0,
+      "contactTrials": 0,
+      "unsafeTicks": 0
+    },
+    "body-coordinates": {
+      "trials": 4,
+      "finalError": 0.3108999598550359,
+      "lateError": 0.40347963010591037,
+      "visibleFraction": 0.9416666666666667,
+      "headingError": 0.14958842438785014,
+      "falls": 0,
+      "contactTrials": 0,
+      "unsafeTicks": 0
+    },
+    "coordinated": {
+      "trials": 4,
+      "finalError": 0.33530859459332274,
+      "lateError": 0.4303341384290563,
+      "visibleFraction": 0.9416666666666667,
+      "headingError": 0.12579117447623506,
+      "falls": 0,
+      "contactTrials": 0,
+      "unsafeTicks": 0
+    },
+    "no-pose": {
+      "trials": 4,
+      "finalError": 0.28006034218699977,
+      "lateError": 0.37899847440473283,
+      "visibleFraction": 0.9375,
+      "headingError": 0.21777897059480109,
+      "falls": 0,
+      "contactTrials": 0,
+      "unsafeTicks": 0
+    }
+  },
+  "paired": [
+    {
+      "candidate": "body-coordinates",
+      "baseline": "original",
+      "improvement": -0.03607538773323732,
+      "ci95": [
+        -0.03607538773323732,
+        -0.03607538773323732
+      ],
+      "family": {
+        "moving": 0.009742643980214738,
+        "occlusion": -0.03797754013813537,
+        "offset": -0.07118091070811483,
+        "reposition": -0.04488574406691381
+      }
+    },
+    {
+      "candidate": "coordinated",
+      "baseline": "original",
+      "improvement": -0.06048402247152415,
+      "ci95": [
+        -0.06048402247152415,
+        -0.06048402247152415
+      ],
+      "family": {
+        "moving": -0.0637727632211193,
+        "occlusion": -0.0426441559756332,
+        "offset": -0.07562920319882016,
+        "reposition": -0.05988996749052394
+      }
+    },
+    {
+      "candidate": "no-pose",
+      "baseline": "original",
+      "improvement": -0.005235770065201213,
+      "ci95": [
+        -0.005235770065201213,
+        -0.005235770065201213
+      ],
+      "family": {
+        "moving": 0.04645481909725513,
+        "occlusion": -0.0011797205508856656,
+        "offset": -0.012784642156497883,
+        "reposition": -0.05343353665067643
+      }
+    }
+  ],
+  "causal": {
+    "candidate": "coordinated",
+    "baseline": "no-pose",
+    "improvement": -0.05524825240632294,
+    "ci95": [
+      -0.05524825240632294,
+      -0.05524825240632294
+    ],
+    "family": {
+      "moving": -0.11022758231837443,
+      "occlusion": -0.04146443542474754,
+      "offset": -0.06284456104232228,
+      "reposition": -0.00645643083984751
+    }
+  },
+  "gates": {
+    "effectSize": false,
+    "positiveInterval": false,
+    "familyNonRegression": false,
+    "noExtraFalls": true,
+    "contacts": true,
+    "causalPose": false,
+    "forwardGate": true
+  },
+  "physicalPromotion": false,
+  "note": "Physical gates only; production requires guard and replay verification."
+}

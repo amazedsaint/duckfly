@@ -1,0 +1,118 @@
+{
+  "split": "heldout",
+  "summary": {
+    "original": {
+      "trials": 96,
+      "finalError": 0.2681546931221024,
+      "lateError": 0.3648273253292469,
+      "visibleFraction": 0.9157986111111112,
+      "headingError": 0.1490345851678691,
+      "falls": 0,
+      "contactTrials": 0,
+      "unsafeTicks": 0
+    },
+    "active-head": {
+      "trials": 96,
+      "finalError": 0.2514735217898013,
+      "lateError": 0.35328103131835226,
+      "visibleFraction": 0.9284722222222223,
+      "headingError": 0.15702951867242834,
+      "falls": 0,
+      "contactTrials": 0,
+      "unsafeTicks": 0
+    },
+    "body-coordinates": {
+      "trials": 96,
+      "finalError": 0.29729482912193367,
+      "lateError": 0.39173262949018023,
+      "visibleFraction": 0.9394097222222222,
+      "headingError": 0.13648755737859378,
+      "falls": 0,
+      "contactTrials": 0,
+      "unsafeTicks": 0
+    },
+    "body-no-pose": {
+      "trials": 96,
+      "finalError": 0.26925309172987244,
+      "lateError": 0.3668544043388945,
+      "visibleFraction": 0.9302083333333333,
+      "headingError": 0.15489936049779862,
+      "falls": 0,
+      "contactTrials": 0,
+      "unsafeTicks": 0
+    }
+  },
+  "paired": [
+    {
+      "candidate": "active-head",
+      "baseline": "original",
+      "improvement": 0.016681171332301056,
+      "ci95": [
+        0.008208467905968145,
+        0.026628667378057684
+      ],
+      "family": {
+        "moving": 0.009100118135817374,
+        "occlusion": 0.022879582797513738,
+        "offset": 0.0024527730898205153,
+        "reposition": 0.032292211306052594
+      }
+    },
+    {
+      "candidate": "body-coordinates",
+      "baseline": "original",
+      "improvement": -0.02914013599983131,
+      "ci95": [
+        -0.04141010281531207,
+        -0.014311252124127132
+      ],
+      "family": {
+        "moving": -0.006409287898679669,
+        "occlusion": -0.03725465187415415,
+        "offset": -0.06555642733452487,
+        "reposition": -0.007340176891966549
+      }
+    },
+    {
+      "candidate": "body-no-pose",
+      "baseline": "original",
+      "improvement": -0.0010983986077700415,
+      "ci95": [
+        -0.014267353761838138,
+        0.011927874240251627
+      ],
+      "family": {
+        "moving": 0.0030955208175655357,
+        "occlusion": -0.003427804784871732,
+        "offset": -0.018867189199005686,
+        "reposition": 0.014805878735231716
+      }
+    }
+  ],
+  "causal": {
+    "candidate": "body-coordinates",
+    "baseline": "body-no-pose",
+    "improvement": -0.028041737392061266,
+    "ci95": [
+      -0.04015612476713914,
+      -0.015168557039081544
+    ],
+    "family": {
+      "moving": -0.009504808716245206,
+      "occlusion": -0.03382684708928242,
+      "offset": -0.04668923813551917,
+      "reposition": -0.022146055627198263
+    }
+  },
+  "gates": {
+    "effectSize": false,
+    "positiveInterval": false,
+    "familyNonRegression": false,
+    "noExtraFalls": true,
+    "contacts": true,
+    "causalPose": false,
+    "forwardGate": true
+  },
+  "physicalPromotion": false,
+  "note": "Physical gates only; production requires guard and replay verification."
+}

@@ -1,0 +1,218 @@
+{
+  "split": "pilot",
+  "summary": {
+    "original": {
+      "trials": 16,
+      "finalError": 0.2603521423362844,
+      "lateError": 0.35858444782061005,
+      "visibleFraction": 0.9291666666666667,
+      "headingError": 0.14019055453956372,
+      "falls": 0,
+      "contactTrials": 0,
+      "unsafeTicks": 0
+    },
+    "active-head": {
+      "trials": 16,
+      "finalError": 0.26616347391203815,
+      "lateError": 0.36388548451021063,
+      "visibleFraction": 0.9364583333333334,
+      "headingError": 0.14821823777847226,
+      "falls": 0,
+      "contactTrials": 0,
+      "unsafeTicks": 0
+    },
+    "old-stabilization": {
+      "trials": 16,
+      "finalError": 0.28204842187059237,
+      "lateError": 0.3742523723689919,
+      "visibleFraction": 0.9322916666666666,
+      "headingError": 0.15543195072613541,
+      "falls": 0,
+      "contactTrials": 0,
+      "unsafeTicks": 0
+    },
+    "body-coordinates": {
+      "trials": 16,
+      "finalError": 0.2976838408082973,
+      "lateError": 0.389896772890749,
+      "visibleFraction": 0.9416666666666667,
+      "headingError": 0.13377341819794522,
+      "falls": 0,
+      "contactTrials": 0,
+      "unsafeTicks": 0
+    },
+    "coordinated": {
+      "trials": 16,
+      "finalError": 0.29847206608550964,
+      "lateError": 0.3879889783588101,
+      "visibleFraction": 0.9416666666666667,
+      "headingError": 0.1333954424665443,
+      "falls": 0,
+      "contactTrials": 0,
+      "unsafeTicks": 0
+    },
+    "no-pose": {
+      "trials": 16,
+      "finalError": 0.2668989304431072,
+      "lateError": 0.3603630134303862,
+      "visibleFraction": 0.9385416666666667,
+      "headingError": 0.230954780337246,
+      "falls": 0,
+      "contactTrials": 0,
+      "unsafeTicks": 0
+    },
+    "no-feedback": {
+      "trials": 16,
+      "finalError": 0.29577528293711985,
+      "lateError": 0.38871532667961584,
+      "visibleFraction": 0.9416666666666667,
+      "headingError": 0.13351335749631377,
+      "falls": 0,
+      "contactTrials": 0,
+      "unsafeTicks": 0
+    },
+    "unrelated-phase": {
+      "trials": 16,
+      "finalError": 0.2926946456882278,
+      "lateError": 0.38530420985563674,
+      "visibleFraction": 0.9416666666666667,
+      "headingError": 0.13535353444862133,
+      "falls": 0,
+      "contactTrials": 0,
+      "unsafeTicks": 0
+    }
+  },
+  "paired": [
+    {
+      "candidate": "active-head",
+      "baseline": "original",
+      "improvement": -0.005811331575753709,
+      "ci95": [
+        -0.043832898995005753,
+        0.017513315399954495
+      ],
+      "family": {
+        "moving": 0.010375043967406655,
+        "occlusion": -0.06336076775868978,
+        "offset": 0.012997240164024957,
+        "reposition": 0.016743157324243328
+      }
+    },
+    {
+      "candidate": "old-stabilization",
+      "baseline": "original",
+      "improvement": -0.021696279534307934,
+      "ci95": [
+        -0.02686525069400958,
+        -0.01619177191960594
+      ],
+      "family": {
+        "moving": -0.037560315696140364,
+        "occlusion": -0.006494593167224241,
+        "offset": -0.02581707982708843,
+        "reposition": -0.016913129446778703
+      }
+    },
+    {
+      "candidate": "body-coordinates",
+      "baseline": "original",
+      "improvement": -0.03733169847201287,
+      "ci95": [
+        -0.047978321226301246,
+        -0.028470665941768863
+      ],
+      "family": {
+        "moving": -0.011502900689269971,
+        "occlusion": -0.046203824365261104,
+        "offset": -0.05352020045345243,
+        "reposition": -0.038099868380067965
+      }
+    },
+    {
+      "candidate": "coordinated",
+      "baseline": "original",
+      "improvement": -0.0381199237492252,
+      "ci95": [
+        -0.047915073776416836,
+        -0.02917081578485443
+      ],
+      "family": {
+        "moving": -0.007628716414060349,
+        "occlusion": -0.04017375080181665,
+        "offset": -0.05863248660747373,
+        "reposition": -0.046044741173550084
+      }
+    },
+    {
+      "candidate": "no-pose",
+      "baseline": "original",
+      "improvement": -0.006546788106822773,
+      "ci95": [
+        -0.0193858417800208,
+        0.00602787927885485
+      ],
+      "family": {
+        "moving": 0.029230023297698714,
+        "occlusion": -0.007149662377073623,
+        "offset": -0.020145586149689258,
+        "reposition": -0.028121927198226926
+      }
+    },
+    {
+      "candidate": "no-feedback",
+      "baseline": "original",
+      "improvement": -0.03542314060083541,
+      "ci95": [
+        -0.04952610354941498,
+        -0.022478634523585485
+      ],
+      "family": {
+        "moving": -0.007132633976573877,
+        "occlusion": -0.040818541858318444,
+        "offset": -0.05282664042378477,
+        "reposition": -0.040914746144664546
+      }
+    },
+    {
+      "candidate": "unrelated-phase",
+      "baseline": "original",
+      "improvement": -0.03234250335194336,
+      "ci95": [
+        -0.03873017237492225,
+        -0.02580938842226263
+      ],
+      "family": {
+        "moving": -0.006455735876035387,
+        "occlusion": -0.026295596164603488,
+        "offset": -0.05241792906067387,
+        "reposition": -0.044200752306460686
+      }
+    }
+  ],
+  "causal": {
+    "candidate": "coordinated",
+    "baseline": "no-pose",
+    "improvement": -0.03157313564240243,
+    "ci95": [
+      -0.04251758147875743,
+      -0.020701576948711477
+    ],
+    "family": {
+      "moving": -0.03685873971175906,
+      "occlusion": -0.033024088424743026,
+      "offset": -0.03848690045778447,
+      "reposition": -0.01792281397532316
+    }
+  },
+  "gates": {
+    "effectSize": false,
+    "positiveInterval": false,
+    "familyNonRegression": false,
+    "noExtraFalls": true,
+    "contacts": true,
+    "causalPose": false,
+    "forwardGate": true
+  },
+  "physicalPromotion": false,
+  "note": "Physical gates only; production requires guard and replay verification."
+}

@@ -1,0 +1,141 @@
+{
+  "completeTrials": 624,
+  "motorTicks": 170400,
+  "simulatedSeconds": 3408.0,
+  "sameInstalledMacBundles": true,
+  "checks": "Unique paired cases; complete 20 ms traces; raw/gzip equality; camera poses finite; gate metric recomputed; unchanged release bundles.",
+  "studies": {
+    "pilot-v1": {
+      "trials": 128,
+      "motorTicks": 38400,
+      "falls": 0,
+      "sha256": "cd2ae6c3978b077c298264b9a7c86564e9ae5ec22cfa071ee3dd555784e58df4",
+      "events": [
+        {
+          "event": "start",
+          "data": {
+            "format": "duckfly-feedback-study",
+            "split": "pilot",
+            "seeds": 4,
+            "conditions": [
+              "original",
+              "active-head",
+              "old-stabilization",
+              "body-coordinates",
+              "coordinated",
+              "no-pose",
+              "no-feedback",
+              "unrelated-phase"
+            ],
+            "run": "pilot-v1"
+          }
+        },
+        {
+          "event": "complete",
+          "data": {
+            "complete": true,
+            "elapsedSeconds": 75.62559999990464
+          }
+        }
+      ]
+    },
+    "pursuit-heldout-v1": {
+      "trials": 384,
+      "motorTicks": 115200,
+      "falls": 0,
+      "sha256": "f6d94d44a526175747a8c8f9e480a5ed898fa79703d37a399b6b7425913189f5",
+      "events": [
+        {
+          "event": "start",
+          "data": {
+            "format": "duckfly-feedback-study",
+            "split": "heldout",
+            "seeds": 24,
+            "conditions": [
+              "original",
+              "active-head",
+              "body-coordinates",
+              "body-no-pose"
+            ],
+            "run": "pursuit-heldout-v1"
+          }
+        },
+        {
+          "event": "resume",
+          "data": {
+            "at": "2026-09-10T19:48:27.898Z",
+            "retained": 284
+          }
+        },
+        {
+          "event": "complete",
+          "data": {
+            "complete": true,
+            "elapsedSeconds": 45.83020000004768
+          }
+        }
+      ]
+    },
+    "motion-pilot-v1": {
+      "trials": 48,
+      "motorTicks": 7200,
+      "falls": 0,
+      "sha256": "3fa656b574b4793cc64780a0f17918b2005a2f88eb32584afc5bee762bb5d980",
+      "events": [
+        {
+          "event": "start",
+          "data": {
+            "format": "duckfly-rotation-study",
+            "split": "pilot",
+            "seeds": 4,
+            "conditions": [
+              "original",
+              "rotation",
+              "inverted"
+            ],
+            "run": "motion-pilot-v1",
+            "gfGain": 6
+          }
+        },
+        {
+          "event": "complete",
+          "data": {
+            "complete": true,
+            "elapsedSeconds": 48.9465
+          }
+        }
+      ]
+    },
+    "motion-gain10-pilot-v1": {
+      "trials": 64,
+      "motorTicks": 9600,
+      "falls": 0,
+      "sha256": "b928a4e16ec4a7084cf30a104c1a76c20095c5d6c3f57557a1ece69c3480472c",
+      "events": [
+        {
+          "event": "start",
+          "data": {
+            "format": "duckfly-rotation-study",
+            "split": "gainpilot",
+            "seeds": 4,
+            "conditions": [
+              "baseline",
+              "original",
+              "rotation",
+              "inverted"
+            ],
+            "run": "motion-gain10-pilot-v1",
+            "gfGain": 10
+          }
+        },
+        {
+          "event": "complete",
+          "data": {
+            "complete": true,
+            "elapsedSeconds": 44.536
+          }
+        }
+      ]
+    }
+  }
+}

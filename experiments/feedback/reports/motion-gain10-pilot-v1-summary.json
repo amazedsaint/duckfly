@@ -1,0 +1,166 @@
+{
+  "split": "gainpilot",
+  "summary": {
+    "baseline": {
+      "trials": 16,
+      "falls": 0,
+      "controlTrials": 12,
+      "falseGF": 0,
+      "approachTrials": 4,
+      "approachContacts": 4,
+      "approachPreContactStops": 0,
+      "families": {
+        "scan": {
+          "trials": 4,
+          "gfAlarms": 0,
+          "meanPeakLoom": 0.4825063172768505
+        },
+        "walking": {
+          "trials": 4,
+          "gfAlarms": 0,
+          "meanPeakLoom": 0.5795613116072839
+        },
+        "approach": {
+          "trials": 4,
+          "gfAlarms": 0,
+          "meanPeakLoom": 0.7956628701884086
+        },
+        "lateral": {
+          "trials": 4,
+          "gfAlarms": 0,
+          "meanPeakLoom": 0.539403903274635
+        }
+      }
+    },
+    "original": {
+      "trials": 16,
+      "falls": 0,
+      "controlTrials": 12,
+      "falseGF": 11,
+      "approachTrials": 4,
+      "approachContacts": 0,
+      "approachPreContactStops": 4,
+      "families": {
+        "scan": {
+          "trials": 4,
+          "gfAlarms": 3,
+          "meanPeakLoom": 0.4825063172768505
+        },
+        "walking": {
+          "trials": 4,
+          "gfAlarms": 4,
+          "meanPeakLoom": 0.5012480180198317
+        },
+        "approach": {
+          "trials": 4,
+          "gfAlarms": 4,
+          "meanPeakLoom": 0.8506320130885872
+        },
+        "lateral": {
+          "trials": 4,
+          "gfAlarms": 4,
+          "meanPeakLoom": 0.4577165117802508
+        }
+      }
+    },
+    "rotation": {
+      "trials": 16,
+      "falls": 0,
+      "controlTrials": 12,
+      "falseGF": 12,
+      "approachTrials": 4,
+      "approachContacts": 3,
+      "approachPreContactStops": 4,
+      "families": {
+        "scan": {
+          "trials": 4,
+          "gfAlarms": 4,
+          "meanPeakLoom": 0.431882375039239
+        },
+        "walking": {
+          "trials": 4,
+          "gfAlarms": 4,
+          "meanPeakLoom": 0.5084750524779484
+        },
+        "approach": {
+          "trials": 4,
+          "gfAlarms": 4,
+          "meanPeakLoom": 1
+        },
+        "lateral": {
+          "trials": 4,
+          "gfAlarms": 4,
+          "meanPeakLoom": 0.5579368021597465
+        }
+      }
+    },
+    "inverted": {
+      "trials": 16,
+      "falls": 0,
+      "controlTrials": 12,
+      "falseGF": 12,
+      "approachTrials": 4,
+      "approachContacts": 0,
+      "approachPreContactStops": 4,
+      "families": {
+        "scan": {
+          "trials": 4,
+          "gfAlarms": 4,
+          "meanPeakLoom": 0.4970880719479017
+        },
+        "walking": {
+          "trials": 4,
+          "gfAlarms": 4,
+          "meanPeakLoom": 0.4532665907805945
+        },
+        "approach": {
+          "trials": 4,
+          "gfAlarms": 4,
+          "meanPeakLoom": 0.7945640520338715
+        },
+        "lateral": {
+          "trials": 4,
+          "gfAlarms": 4,
+          "meanPeakLoom": 0.5158171158904983
+        }
+      }
+    }
+  },
+  "paired": [
+    {
+      "baseline": "baseline",
+      "falseAlarmReduction": -1,
+      "ci95": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "baseline": "inverted",
+      "falseAlarmReduction": 0,
+      "ci95": [
+        0,
+        0
+      ]
+    },
+    {
+      "baseline": "original",
+      "falseAlarmReduction": -0.08333333333333333,
+      "ci95": [
+        -0.25,
+        0
+      ]
+    }
+  ],
+  "gates": {
+    "falseAlarmReduction": false,
+    "falseAlarmCI": false,
+    "poseSpecificCI": false,
+    "matchedGainCI": false,
+    "approachContacts": true,
+    "approachDetection": true,
+    "noExtraFalls": true
+  },
+  "physicalPromotion": false,
+  "note": "Perceptual filtering cannot promote a controller that misses real approach stops."
+}

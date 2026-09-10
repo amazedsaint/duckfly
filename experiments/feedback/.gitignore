@@ -1,0 +1,5 @@
+# Incremental working logs are represented by the completed compressed studies
+# and compact receipts in Git. They remain on disk for audit/resumption.
+reports/*.jsonl
+reports/smoke.json
+__pycache__/
