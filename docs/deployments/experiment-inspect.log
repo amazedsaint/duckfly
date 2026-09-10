@@ -1,0 +1,25 @@
+Vercel CLI 59.15.1 (Node.js 24.19.0)
+Fetching deployment "duckfly-1e3wq2g98-contextmind.vercel.app" in contextmind
+> Fetched deployment "duckfly-1e3wq2g98-contextmind.vercel.app" in contextmind [491ms]
+
+  General
+
+    id		dpl_H7ivJS7A26geVpDzSvmbMrJPHpqA
+    name	duckfly
+    target	production
+    status	● Ready
+    url		https://duckfly-1e3wq2g98-contextmind.vercel.app
+    created	Thu Sep 10 2026 12:54:16 GMT-0400 (Eastern Daylight Time) [2m ago]
+
+
+  Aliases
+
+    ╶ https://duckfly.vercel.app
+    ╶ https://duckfly-contextmind.vercel.app
+    
+
+  Builds
+
+    ╶ .        [0ms]
+    
+

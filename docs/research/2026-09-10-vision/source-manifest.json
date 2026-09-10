@@ -1,0 +1,69 @@
+{
+  "retrieved_date": "2026-09-10",
+  "sources": [
+    {
+      "repo": "TuragaLab/flyvis",
+      "commit": "92b3845cc426dd309a1a0e1b3890156c42e14021",
+      "path": "pyproject.toml",
+      "url": "https://raw.githubusercontent.com/TuragaLab/flyvis/92b3845cc426dd309a1a0e1b3890156c42e14021/pyproject.toml",
+      "bytes": 4492,
+      "sha256": "4884734153222648d3dfe798070454aaf2224a5c92dd15b07c08d02930fb1f42"
+    },
+    {
+      "repo": "TuragaLab/flyvis",
+      "commit": "92b3845cc426dd309a1a0e1b3890156c42e14021",
+      "path": "flyvis/network/network.py",
+      "url": "https://raw.githubusercontent.com/TuragaLab/flyvis/92b3845cc426dd309a1a0e1b3890156c42e14021/flyvis/network/network.py",
+      "bytes": 32126,
+      "sha256": "eb172be7db1727a2b1af9f4211c2e1a8655004e8602a4db677e56702a3dfeb43"
+    },
+    {
+      "repo": "TuragaLab/flyvis",
+      "commit": "92b3845cc426dd309a1a0e1b3890156c42e14021",
+      "path": "flyvis/network/dynamics.py",
+      "url": "https://raw.githubusercontent.com/TuragaLab/flyvis/92b3845cc426dd309a1a0e1b3890156c42e14021/flyvis/network/dynamics.py",
+      "bytes": 8291,
+      "sha256": "e77d9e049661321798f213b9c7e98b58945214ad94ab11c5c1ee930bfaacbc86"
+    },
+    {
+      "repo": "TuragaLab/flyvis",
+      "commit": "92b3845cc426dd309a1a0e1b3890156c42e14021",
+      "path": "flyvis_cli/download_pretrained_models.py",
+      "url": "https://raw.githubusercontent.com/TuragaLab/flyvis/92b3845cc426dd309a1a0e1b3890156c42e14021/flyvis_cli/download_pretrained_models.py",
+      "bytes": 4692,
+      "sha256": "ce48e7d6571f0738aafda6ab2e38614899b6fb699814f0c2b2696d29dc490be9"
+    },
+    {
+      "repo": "NeLy-EPFL/flygym",
+      "commit": "c7affce924cb1c6add16619adf83be5c6b223e89",
+      "path": "flygym/examples/vision/realistic_vision.py",
+      "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/c7affce924cb1c6add16619adf83be5c6b223e89/flygym/examples/vision/realistic_vision.py",
+      "bytes": 5480,
+      "sha256": "04ed5cd7468a75e67a057c3c1f4df2efdaf8c25d5741b654ad3f5fc074a5a37a"
+    },
+    {
+      "repo": "NeLy-EPFL/flygym",
+      "commit": "c7affce924cb1c6add16619adf83be5c6b223e89",
+      "path": "flygym/examples/vision/vision_network.py",
+      "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/c7affce924cb1c6add16619adf83be5c6b223e89/flygym/examples/vision/vision_network.py",
+      "bytes": 13434,
+      "sha256": "cc9d3278fd58e34cfb20a8085f12358a26b3fe1e4572454a4fdd7bc5b9386121"
+    },
+    {
+      "repo": "NeLy-EPFL/flygym",
+      "commit": "c7affce924cb1c6add16619adf83be5c6b223e89",
+      "path": "flygym/vision/retina.py",
+      "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/c7affce924cb1c6add16619adf83be5c6b223e89/flygym/vision/retina.py",
+      "bytes": 11104,
+      "sha256": "2a7f32bcaf2d131bec890ae76f61f9d45d1c3cd752d2c3666f17541adca055bd"
+    },
+    {
+      "repo": "TuragaLab/flyvis",
+      "commit": "92b3845cc426dd309a1a0e1b3890156c42e14021",
+      "path": "flyvis/connectome/fib25-fib19_v2.2.json",
+      "url": "https://raw.githubusercontent.com/TuragaLab/flyvis/92b3845cc426dd309a1a0e1b3890156c42e14021/flyvis/connectome/fib25-fib19_v2.2.json",
+      "bytes": 618148,
+      "sha256": "bfbb0766251ff09e22723d0ebbf7b14793e70b3ae8ad0eea64eac9d28223351a"
+    }
+  ]
+}

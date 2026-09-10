@@ -1,0 +1,32 @@
+async page => {
+  const results=[],assert=(v,m)=>{if(!v)throw Error(m);};
+  const upload=async value=>page.evaluate(value=>{const transfer=new DataTransfer();transfer.items.add(new File([JSON.stringify(value)],'test.json',{type:'application/json'}));const input=document.querySelector('#file');input.files=transfer.files;input.dispatchEvent(new Event('change'));},value);
+  await page.getByRole('combobox',{name:'Experiment preset'}).selectOption('target');
+  await page.waitForFunction(()=>window.duckflyTelemetry?.time===0&&duckflyTelemetry.scene.name==='Follow the beacon');
+  await page.getByRole('combobox',{name:'Object to add'}).selectOption('block');await page.getByRole('button',{name:'＋ Add',exact:true}).click();
+  await page.waitForFunction(()=>duckflyTelemetry.scene.props.length===2);
+  await page.getByLabel('Mass (kg)',{exact:true}).fill('.3');await page.getByLabel('Friction',{exact:true}).fill('.12');
+  await page.getByRole('button',{name:'Apply and reset',exact:true}).click();await page.waitForFunction(()=>duckflyTelemetry.scene.props.some(p=>p.mass===.3&&p.friction===.12));
+  const download=page.waitForEvent('download');await page.getByRole('button',{name:'Save',exact:true}).click();await(await download).saveAs('docs/implementation/roundtrip-scene.json');
+  await page.getByRole('button',{name:'Remove selected object'}).click();await page.waitForFunction(()=>duckflyTelemetry.scene.props.length===1);
+  await page.locator('#file').setInputFiles('docs/implementation/roundtrip-scene.json');await page.waitForFunction(()=>duckflyTelemetry.scene.props.length===2);
+  results.push({check:'prop edit/remove and scene file round trip'});
+  await page.evaluate(()=>{window.__savedClipboard=navigator.clipboard.writeText.bind(navigator.clipboard);navigator.clipboard.writeText=async text=>{window.__sharedSceneURL=text;};});
+  await page.getByRole('button',{name:'Share scene',exact:true}).click();const url=await page.evaluate(()=>window.__sharedSceneURL);
+  await page.evaluate(()=>navigator.clipboard.writeText=window.__savedClipboard);
+  assert(url.includes('#scene='),'Share action did not produce a scene URL');
+  await page.goto(url);await page.waitForFunction(()=>window.duckflyTelemetry?.ready&&duckflyTelemetry.scene.props.length===2);
+  const original=await page.evaluate(()=>duckflyTelemetry.scene);
+  assert(original.props.some(p=>p.mass===.3&&p.friction===.12),'Shared URL did not retain prop settings');
+  results.push({check:'scene share link reopens exact parameters',seed:original.seed});
+  await upload({...original,ducks:[]});await page.waitForFunction(()=>document.querySelector('#notice').textContent.includes('1–8 ducks'));
+  assert(await page.evaluate(()=>duckflyTelemetry.scene.ducks.length===1),'Malformed scene replaced the arena');
+  results.push({check:'malformed scene rejected without replacing arena'});
+  const downloaded=page.waitForEvent('download');await page.getByRole('button',{name:'Export recording',exact:true}).click();const saved=await downloaded;await saved.saveAs('docs/implementation/initial-recording.json');
+  await upload({format:'duckfly-recording',version:1,checkpoint:{scene:original},history:[],frames:[]});
+  await page.waitForFunction(()=>document.querySelector('#notice').textContent.includes('Unsupported experiment checkpoint'));
+  assert(await page.evaluate(()=>duckflyTelemetry.scene.props.length===2),'Malformed recording replaced the arena');
+  results.push({check:'malformed recording leaves original arena intact'});
+  await page.getByRole('combobox',{name:'Experiment preset'}).selectOption('target');await page.waitForFunction(()=>duckflyTelemetry.scene.props.length===1);
+  return results;
+}

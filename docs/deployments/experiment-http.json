@@ -1,0 +1,25 @@
+{
+  "verifiedUTC": "2026-09-10T16:55:11.864379+00:00",
+  "checks": {
+    "/": {
+      "status": 200,
+      "bytes": 605,
+      "sha256": "849cee89e59bcea428d08c592e779080ae6331b362dfaa83d67c97858ce02ff1"
+    },
+    "/assets/Simulation/lab-template.json.gz": {
+      "status": 200,
+      "bytes": 4881632,
+      "sha256": "6509127c8488defa68e761a202ac91a8b123049059641e1baf859e2b5423e6e6"
+    },
+    "/assets/Policies/alpha_walking.onnx": {
+      "status": 200,
+      "bytes": 793705,
+      "sha256": "e36332d383997d51401897734cd3e79cf5038406feddb18b4d57ecfb141daa6c"
+    },
+    "/runtime/mujoco.wasm": {
+      "status": 200,
+      "bytes": 10143561,
+      "sha256": "832597ae0a0e306c97ed43d2a9bbca033cf3e547eced410fb9011d87a68d4207"
+    }
+  }
+}

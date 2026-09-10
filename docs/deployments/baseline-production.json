@@ -1,0 +1,55 @@
+{
+  "verifiedUTC": "2026-09-10T15:47:37.035406+00:00",
+  "organization": "contextmind",
+  "project": "duckfly",
+  "projectId": "prj_83JSTtElEh9WMUhoQI2txdqxfRs3",
+  "deploymentId": "dpl_Gt4zRKUgbv6RcoJYzXTEjxhFq94A",
+  "readyState": "READY",
+  "target": "production",
+  "url": "https://duckfly.vercel.app",
+  "immutableURL": "https://duckfly-4xqa0z7ug-contextmind.vercel.app",
+  "dashboardURL": "https://vercel.com/contextmind/duckfly/Gt4zRKUgbv6RcoJYzXTEjxhFq94A",
+  "publicHTTPChecks": {
+    "/": 200,
+    "/assets/Simulation/microduck.mjb.gz": 200,
+    "/runtime/mujoco.wasm": 200
+  },
+  "browser": {
+    "pass": true,
+    "neuralWalking": {
+      "ready": true,
+      "paused": false,
+      "mode": "brain",
+      "time": 1.1999999999999964,
+      "position": [
+        0.10255422424164269,
+        -0.003923404432442034,
+        0.11970666487232602
+      ],
+      "distance": 0.15046987656260563,
+      "fallen": false,
+      "command": [
+        0.3,
+        -0.2804741814016144
+      ],
+      "brain": {
+        "forward": 112.37985481906861,
+        "event": "DNp09 \u00b7 walk stimulus"
+      }
+    },
+    "checks": [
+      "pause freezes time",
+      "reset pose",
+      "neural walking",
+      "loom stop",
+      "silence",
+      "manual walk and steering",
+      "manual stop",
+      "follow",
+      "camera reset",
+      "about dialog"
+    ]
+  },
+  "sourceReceipt": "../validation/web/receipt.json",
+  "vercelConfigSHA256": "7c756a3ebf1fe69a55e5e1bf533148cfed60f3c2e1d7fe5e5906b52e10e478bd"
+}

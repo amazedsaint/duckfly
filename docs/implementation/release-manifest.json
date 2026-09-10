@@ -1,0 +1,21 @@
+{
+  "capturedUTC": "2026-09-10T16:58:50.606048+00:00",
+  "nativeInstalled": "/Users/madhusudanaa/Applications/DuckFly.app",
+  "webNativeIndexParity": true,
+  "publicIndexParity": true,
+  "hashes": {
+    "web/src/main.js": "d4848ba6167eef77e328bf9eab283946fd3c19a8a3ac182ee52ee2f930b36888",
+    "web/src/style.css": "ccea890469f61ca685ae86d7dc9fa261a1d095dca336554dfb0f285f8af37c76",
+    "web/src/lab/scene.js": "d09c368392914989a88fcf32c49592e753bb8f59c7d981aa90943e21f85a3e0a",
+    "web/src/lab/experiment.js": "4fefd439fb519f7af0c03cd840212747360af57a1f9245b3ea411c387448481b",
+    "web/src/lab/lab.worker.js": "265db9a1c226e4c2701c612455647c52341e321660d4f13a9c181c6d2eae5d43",
+    "web/src/lab/lab-world.js": "09165885d546a1f4b2f08954695d741f25b9aad2491525b8f0f315c48e2170e1",
+    "web/src/lab/lab-arena.js": "d7a7ccb823bc573a4afcfd2ebd6aef469f7db2f839513b2d0b77d30ff0aa3005",
+    "web/src/lab/vision.js": "8999e4e882ca2c6a19964bc681fcb87a5c87e55701c9d9bb4924f1c38213bf25",
+    "web/src/lab/room.js": "c5591f9697aa93610db905f748a89d2db8c0b257a50e3d88348c2c4c08848dcf",
+    "web/src/lab/benchmarks.js": "f3dbe28664066c1d3125fcf62b20acbb8c3ede47710f7e24c4b631a266118e9b",
+    "shared/assets/Simulation/lab-template.json.gz": "6509127c8488defa68e761a202ac91a8b123049059641e1baf859e2b5423e6e6",
+    "mac/Host/main.swift": "3b7a38a96fcee3004c9aca85d3686695c96c14f9568db16a7b0b5e7cb330513a",
+    "mac/build/DuckFly.app/Contents/MacOS/DuckFly": "1c65f760c6f10218acaef7df79f01f06adfefc0d583a201715e9b701f9aeadcc"
+  }
+}

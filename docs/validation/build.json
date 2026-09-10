@@ -1,0 +1,18 @@
+{
+  "app": "/Users/madhusudanaa/Applications/DuckFly.app",
+  "version": "0.1.0",
+  "validation": "Native integrated test passed with all network access denied and source repositories unreadable. Code signature verified after the test. Engine tests: 5 passed. RealityKit robot view and live controls inspected on screen.",
+  "source_sha256": {
+    "App/Simulation.swift": "760e310c652da184a79cda30dfe4099849f0a79bb37c067051b6893f818c8ba2",
+    "App/Arena.swift": "6dd9712b27a3b7a544626408e611a2e131240cbc56214f83e367fd4cecaf7ece",
+    "App/Interface.swift": "082cf4ee0567dcef77348e700e77ce7df65feec3541c331fc85e99691e407172",
+    "App/main.swift": "8aa9ef273111ab06580f731ac12e48e505ef5ee86fc8fafcacbcfd869e903b6c",
+    "Engine/worker.py": "e00ab1071f41ebf3ae135e1676463644eba0b096df2ea6ef9b84bf5ea9d9a55c",
+    "Engine/requirements.lock": "2078b5a5c77c3bf8af80eb3591298d16de804d71f68447827f73032fc166a411",
+    "scripts/build.sh": "9398057b0a802b0eaffc91188d7d8b0aadd6dfd1e597c8df36f39acc85f9b401"
+  },
+  "receipts": [
+    "standalone.json",
+    "engine-tests.log"
+  ]
+}

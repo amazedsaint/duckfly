@@ -1,0 +1,20 @@
+{
+  "name": "duckfly-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare:assets": "node scripts/prepare-assets.mjs",
+    "dev": "npm run prepare:assets && vite --host 127.0.0.1",
+    "build": "npm run prepare:assets && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@mujoco/mujoco": "3.10.0",
+    "onnxruntime-web": "1.24.3",
+    "three": "0.186.0"
+  },
+  "devDependencies": { "vite": "8.3.0" },
+  "engines": { "node": ">=22.12.0" }
+}

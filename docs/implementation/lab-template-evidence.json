@@ -1,0 +1,29 @@
+{
+  "templateSHA256": "9ea4d455edb6edea30d30d2af86acf1d8541c350ebc7e0bc55075f3a157c2b08",
+  "compressedBytes": 4881632,
+  "collisionMeshes": 9,
+  "retainedVisualFrames": 70,
+  "nativeParity": {
+    "body_mass": 0.0,
+    "body_inertia": 0.0,
+    "body_ipos": 0.0,
+    "body_iquat": 0.0,
+    "body_pos": 0.0,
+    "body_quat": 0.0,
+    "jnt_pos": 0.0,
+    "jnt_axis": 0.0,
+    "jnt_range": 0.0,
+    "dof_armature": 0.0,
+    "dof_damping": 0.0,
+    "dof_frictionloss": 0.0,
+    "actuator_gainprm": 0.0,
+    "actuator_biasprm": 0.0,
+    "actuator_forcerange": 0.0,
+    "geom_contype": 0.0,
+    "geom_conaffinity": 0.0,
+    "geom_friction": 0.0,
+    "geom_solref": 0.0,
+    "geom_xpos": 0.0,
+    "geom_xmat": 0.0
+  }
+}

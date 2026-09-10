@@ -1,0 +1,21 @@
+
+> duckfly-web@0.1.0 build
+> npm run prepare:assets && vite build
+
+
+> duckfly-web@0.1.0 prepare:assets
+> node scripts/prepare-assets.mjs
+
+Prepared shared assets and local WASM runtimes.
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 16 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                        0.60 kB │ gzip:     0.40 kB
+dist/assets/lab.worker-DXqYHMuV.js                   123.81 kB
+dist/assets/ort-wasm-simd-threaded-1QYQn1Hs.wasm  12,361.74 kB │ gzip: 3,197.89 kB
+dist/assets/index-B_wJuu4G.css                        12.17 kB │ gzip:     3.61 kB
+dist/assets/index-CLBDB3MZ.js                        612.38 kB │ gzip:   157.27 kB
+
+✓ built in 522ms

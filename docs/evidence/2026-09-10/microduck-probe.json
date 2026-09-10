@@ -1,0 +1,270 @@
+{
+  "scope": "Single-body CPU simulation and inference. No fly bridge, rendering, training, or hardware validation. BAM and XML-PD use upstream inference defaults; actuator delay disabled. Fall threshold is a diagnostic, not a certified gate.",
+  "python": "3.12.11 (main, Jun  3 2025, 15:41:47) [Clang 17.0.0 (clang-1700.0.13.3)]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "mujoco": "3.10.0",
+  "onnxruntime": "1.24.4",
+  "policy_sha256": "e36332d383997d51401897734cd3e79cf5038406feddb18b4d57ecfb141daa6c",
+  "policy_inputs": [
+    [
+      "obs",
+      [
+        1,
+        61
+      ]
+    ]
+  ],
+  "policy_outputs": [
+    [
+      "actions",
+      [
+        1,
+        14
+      ]
+    ]
+  ],
+  "policy_metadata": {
+    "run_path": "None",
+    "joint_names": "left_hip_yaw,left_hip_roll,left_hip_pitch,left_knee,left_ankle,neck_pitch,head_pitch,head_yaw,head_roll,right_hip_yaw,right_hip_roll,right_hip_pitch,right_knee,right_ankle",
+    "observation_names": "base_ang_vel,projected_gravity,joint_pos,joint_vel,actions,command,head_command,body_command",
+    "joint_stiffness": "1.000,1.000,1.000,1.000,1.000,1.000,1.000,1.000,1.000,1.000,1.000,1.000,1.000,1.000",
+    "default_joint_pos": "0.000,-0.087,-0.458,-0.005,0.453,0.349,0.349,0.000,0.000,0.000,0.087,0.458,0.005,-0.453",
+    "command_names": "twist,head_pose,body_pose",
+    "joint_damping": "0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000",
+    "action_scale": "1.0"
+  },
+  "trials": [
+    {
+      "actuators": "xml_pd",
+      "condition": "idle",
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "simulated_s": 10.000000000000163,
+      "wall_compute_s": 0.09162248997017741,
+      "real_time_factor": 109.14350835973903,
+      "tick_ms": {
+        "p50": 0.1749375369399786,
+        "p95": 0.23364585358649467,
+        "p99": 0.310314199887216
+      },
+      "tick_max_ms": 0.7194159552454948,
+      "missed_20ms": 0,
+      "first_fall_s": null,
+      "finite": true,
+      "minimum_trunk_z": 0.11464314488956863,
+      "max_tilt_degrees": 0.5898348689079285,
+      "final_xyz": [
+        0.0015902951240000629,
+        0.00031788475302892827,
+        0.11643298076050104
+      ],
+      "actuator_count": 14
+    },
+    {
+      "actuators": "xml_pd",
+      "condition": "forward",
+      "command": [
+        0.1,
+        0.0,
+        0.0
+      ],
+      "simulated_s": 10.000000000000163,
+      "wall_compute_s": 0.09703638008795679,
+      "real_time_factor": 103.05413279984118,
+      "tick_ms": {
+        "p50": 0.18124992493540049,
+        "p95": 0.2856416394934058,
+        "p99": 0.4049219586886465
+      },
+      "tick_max_ms": 0.4878330510109663,
+      "missed_20ms": 0,
+      "first_fall_s": null,
+      "finite": true,
+      "minimum_trunk_z": 0.11453988485786598,
+      "max_tilt_degrees": 0.5528469085693359,
+      "final_xyz": [
+        0.006263975653068947,
+        0.0034919341650976967,
+        0.11576919104403398
+      ],
+      "actuator_count": 14
+    },
+    {
+      "actuators": "xml_pd",
+      "condition": "backward",
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "simulated_s": 10.000000000000163,
+      "wall_compute_s": 0.08882079808972776,
+      "real_time_factor": 112.58624348205082,
+      "tick_ms": {
+        "p50": 0.16897893510758877,
+        "p95": 0.23207049816846836,
+        "p99": 0.35657902713865036
+      },
+      "tick_max_ms": 0.5255420692265034,
+      "missed_20ms": 0,
+      "first_fall_s": null,
+      "finite": true,
+      "minimum_trunk_z": 0.11494483389610693,
+      "max_tilt_degrees": 0.5961046814918518,
+      "final_xyz": [
+        0.0014974884241520559,
+        0.0003556828669637145,
+        0.11639392054624846
+      ],
+      "actuator_count": 14
+    },
+    {
+      "actuators": "xml_pd",
+      "condition": "turn",
+      "command": [
+        0.0,
+        0.0,
+        0.3
+      ],
+      "simulated_s": 10.000000000000163,
+      "wall_compute_s": 0.08802526420913637,
+      "real_time_factor": 113.60374876287207,
+      "tick_ms": {
+        "p50": 0.17285451758652925,
+        "p95": 0.21375823998823762,
+        "p99": 0.24948120350018138
+      },
+      "tick_max_ms": 0.3364579752087593,
+      "missed_20ms": 0,
+      "first_fall_s": null,
+      "finite": true,
+      "minimum_trunk_z": 0.11468043470735052,
+      "max_tilt_degrees": 0.6305603981018066,
+      "final_xyz": [
+        0.003980948701955987,
+        0.004353651425578059,
+        0.115848823186849
+      ],
+      "actuator_count": 14
+    },
+    {
+      "actuators": "bam",
+      "condition": "idle",
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "simulated_s": 10.000000000000163,
+      "wall_compute_s": 0.18899088795296848,
+      "real_time_factor": 52.91260392664393,
+      "tick_ms": {
+        "p50": 0.3668965073302388,
+        "p95": 0.46795882517471904,
+        "p99": 0.5482677114196122
+      },
+      "tick_max_ms": 0.5912079941481352,
+      "missed_20ms": 0,
+      "first_fall_s": null,
+      "finite": true,
+      "minimum_trunk_z": 0.11483653604064077,
+      "max_tilt_degrees": 0.9177056550979614,
+      "final_xyz": [
+        0.002019648038831779,
+        0.0002387823438269022,
+        0.11651716595934732
+      ],
+      "actuator_count": 14
+    },
+    {
+      "actuators": "bam",
+      "condition": "forward",
+      "command": [
+        0.1,
+        0.0,
+        0.0
+      ],
+      "simulated_s": 10.000000000000163,
+      "wall_compute_s": 0.18991554179228842,
+      "real_time_factor": 52.654984977149546,
+      "tick_ms": {
+        "p50": 0.37058303132653236,
+        "p95": 0.4550478770397603,
+        "p99": 0.5402265838347371
+      },
+      "tick_max_ms": 0.6410421337932348,
+      "missed_20ms": 0,
+      "first_fall_s": null,
+      "finite": true,
+      "minimum_trunk_z": 0.11452387800197676,
+      "max_tilt_degrees": 0.9026564955711365,
+      "final_xyz": [
+        0.005835718209000927,
+        0.0019260342031595515,
+        0.11579679000960698
+      ],
+      "actuator_count": 14
+    },
+    {
+      "actuators": "bam",
+      "condition": "backward",
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "simulated_s": 10.000000000000163,
+      "wall_compute_s": 0.18614852707833052,
+      "real_time_factor": 53.72054325088592,
+      "tick_ms": {
+        "p50": 0.36468799225986004,
+        "p95": 0.4347524838522076,
+        "p99": 0.4943706956692039
+      },
+      "tick_max_ms": 0.6505839992314577,
+      "missed_20ms": 0,
+      "first_fall_s": null,
+      "finite": true,
+      "minimum_trunk_z": 0.11490527743365542,
+      "max_tilt_degrees": 0.6467982530593872,
+      "final_xyz": [
+        0.0012447884546595825,
+        -5.529069082833211e-05,
+        0.11646345267335427
+      ],
+      "actuator_count": 14
+    },
+    {
+      "actuators": "bam",
+      "condition": "turn",
+      "command": [
+        0.0,
+        0.0,
+        0.3
+      ],
+      "simulated_s": 10.000000000000163,
+      "wall_compute_s": 0.1813789086882025,
+      "real_time_factor": 55.13320193799687,
+      "tick_ms": {
+        "p50": 0.35656196996569633,
+        "p95": 0.42010368779301643,
+        "p99": 0.4842020804062485
+      },
+      "tick_max_ms": 0.590041046962142,
+      "missed_20ms": 0,
+      "first_fall_s": null,
+      "finite": true,
+      "minimum_trunk_z": 0.1146688701801613,
+      "max_tilt_degrees": 0.8182883262634277,
+      "final_xyz": [
+        0.0045115928445400594,
+        0.0028122529884920967,
+        0.1159380183384575
+      ],
+      "actuator_count": 14
+    }
+  ]
+}

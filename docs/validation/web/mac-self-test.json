@@ -1,0 +1,12 @@
+{
+  "circuit_neurons" : 668,
+  "distance_m" : 1.8237926959991455,
+  "loom_reflex_pass" : true,
+  "max_tilt_degrees" : 4.3498311042785645,
+  "maximum_forward_rate_hz" : 200.73355102539062,
+  "pass" : true,
+  "reset_exact" : true,
+  "scope" : "Headless native fly circuit to CPU Microduck worker; forward and steering bridge, output silencing, looming reflex, reset. No biological or hardware validation.",
+  "silence_pass" : true,
+  "walking_ticks" : 572
+}

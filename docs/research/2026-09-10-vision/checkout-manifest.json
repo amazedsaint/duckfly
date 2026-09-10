@@ -1,0 +1,49 @@
+{
+  "date": "2026-09-10",
+  "files": {
+    "web/src/lab/vision.js": {
+      "sha256": "8999e4e882ca2c6a19964bc681fcb87a5c87e55701c9d9bb4924f1c38213bf25",
+      "bytes": 6247
+    },
+    "web/src/lab/experiment.js": {
+      "sha256": "4fefd439fb519f7af0c03cd840212747360af57a1f9245b3ea411c387448481b",
+      "bytes": 9682
+    },
+    "web/src/lab/lab-arena.js": {
+      "sha256": "d7a7ccb823bc573a4afcfd2ebd6aef469f7db2f839513b2d0b77d30ff0aa3005",
+      "bytes": 8547
+    },
+    "web/src/lab/benchmarks.js": {
+      "sha256": "f3dbe28664066c1d3125fcf62b20acbb8c3ede47710f7e24c4b631a266118e9b",
+      "bytes": 4251
+    },
+    "web/src/brain.js": {
+      "sha256": "11dd90dcfa0048e5c5b8b91b8c13d52e4d6e2461b689d7a2ed851a2e74ccdbdb",
+      "bytes": 4791
+    },
+    "web/src/world.js": {
+      "sha256": "75a942c98cbf3550ca6ac71d83650ba76c27b640d85dfcbf6dd2d6cb43f1db9d",
+      "bytes": 6125
+    },
+    "web/src/main.js": {
+      "sha256": "d4848ba6167eef77e328bf9eab283946fd3c19a8a3ac182ee52ee2f930b36888",
+      "bytes": 35548
+    },
+    "web/src/vendor/desktop-fly/sim.js": {
+      "sha256": "967a061f3c35b095aced6433b9b7e85eb480b943c2d7165e5293d63ad80fb801",
+      "bytes": 15558
+    },
+    "shared/assets/Brain/circuit.json": {
+      "sha256": "da53640e4dc7071c26892870ec5b28984c4cfc74c1c44d3a3cde0a2913579d0f",
+      "bytes": 408374
+    },
+    "shared/assets/Policies/alpha_walking.onnx": {
+      "sha256": "e36332d383997d51401897734cd3e79cf5038406feddb18b4d57ecfb141daa6c",
+      "bytes": 793705
+    },
+    "mac/Host/main.swift": {
+      "sha256": "3b7a38a96fcee3004c9aca85d3686695c96c14f9568db16a7b0b5e7cb330513a",
+      "bytes": 13871
+    }
+  }
+}

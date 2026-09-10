@@ -1,0 +1,45 @@
+
+> duckfly-web@0.1.0 test
+> node --test tests/*.test.mjs
+
+✔ compressed asset loader accepts raw gzip and browser-decoded responses (41.841875ms)
+✔ held-out promotion rejects a regression or new fall even with positive average gain (0.582625ms)
+✔ BAM voltage, back-EMF and directional friction match 128 native vectors (2.188833ms)
+✔ independent fly brains replay deterministically, with output silence and loom reflex (215.492666ms)
+WASM walking receipt {"distance":1.5340549299049147,"onsets":[24,25],"tilt":3.0321548865271786}
+WASM brain receipt {"distance":1.8358326995774328,"walkingTicks":578,"tilt":0.4579955236952981}
+▶ WebAssembly physics and policy integration
+  ✔ ONNX WASM matches native outputs on independent inputs (8.600791ms)
+  ✔ initial state and short trajectory match native MuJoCo (31.09025ms)
+  ✔ physical walking, contact cycles and deterministic reset (281.670167ms)
+  ✔ fly circuit drives real robot and silence zeros both commands (578.446084ms)
+✔ WebAssembly physics and policy integration (1503.883625ms)
+✔ scene round trips and rejects invalid or executable fields (2.088917ms)
+Editable world walking {"distance":0.7378630481966547,"tilt":1.0817321227652308,"onsets":[12,13]}
+Head command receipt {"before":-0.009708725132682927,"after":0.23070697307256421,"tilt":0.8643403041054311}
+Shared world contacts 49
+Physical prop response {"light":0.018999999999999906,"heavy":0.0009500000000000064,"slippery":0.8049463206809584,"grippy":0.13757750833613525}
+▶ editable shared physics
+  ✔ template preserves native geometry and physical walking (831.941542ms)
+  ✔ checkpoint restores an identical continuation after JSON export (31.873875ms)
+  ✔ bounded head commands move the physical camera while the body stays upright (129.021458ms)
+  ✔ two ducks share collisions and have separate motor histories (269.023917ms)
+  ✔ prop mass changes acceleration and edited friction changes sliding (119.236083ms)
+  ✔ experiment rewind replays recorded visual inputs with identical brain and body state (440.576375ms)
+✔ editable shared physics (2551.019042ms)
+✔ camera pixels produce target bearing, disappear under occlusion and respect eye covering (14.036583ms)
+✔ optical flow follows independently translated image texture (16.797417ms)
+✔ asymmetric optical flow changes steering input only when enabled (16.855291ms)
+✔ active looking searches after a target disappears within the supported head range (8.327083ms)
+✔ webcam motion loom responds to radial expansion of an uncolored texture (16.5745ms)
+✔ expanding visual threat causes neural stop, and GF intervention removes it (218.706041ms)
+✔ complete neural/RNG checkpoint replays after JSON serialization (162.885584ms)
+✔ sensory adapter loses forward intent when camera input is absent or stale (0.940458ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2784.100417

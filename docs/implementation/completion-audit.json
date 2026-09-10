@@ -1,0 +1,38 @@
+{
+  "verifiedUTC": "2026-09-10T17:02:34.755234+00:00",
+  "requirements": [
+    "UI",
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    "Mac",
+    "Web"
+  ],
+  "nativeFileDialogs": "passed",
+  "engineTests": 25,
+  "nativeWorkspaceChecks": 14,
+  "sourceManifestMatches": true,
+  "nativeWebFilesCompared": 29,
+  "publicHTMLAndBundlesMatch": true,
+  "requiredItemsOpen": [],
+  "scopeLimits": [
+    "Synthetic webcam input used for acceptance; no physical camera activated",
+    "Collaboration verified via authenticated loopback TURN; external-network behavior unverified",
+    "Sensory and social adapters are explicit modeling assumptions",
+    "Finite adapter search found no promotable gain"
+  ],
+  "ledger": "experiment-workspace.md"
+}

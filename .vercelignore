@@ -1,0 +1,14 @@
+mac
+shared/assets/Robot
+web/node_modules
+web/dist
+web/public/assets
+web/public/runtime
+output
+.playwright-cli
+.git
+.vercel
+.env*
+
+docs
+shared/assets/Simulation/microduck.mjb.gz

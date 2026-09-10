@@ -1,0 +1,18 @@
+BAM m6 actuators on 14 joints: kt=0.3660 R=2.8114 vin=7.40V kp_fw=200 vin_drop_gain=0.1 vin_min=6.0 max_current=None forcerange=+/-0.963Nm armature=1.81e-03
+Loading walking policy from: /Users/madhusudanaa/Documents/GitHub/duckfly/shared/assets/Policies/alpha_walking.onnx
+Walking policy input: obs, shape: [1, 61]
+Walking policy output: actions, shape: [1, 14]
+Sensors found:
+  imu_ang_vel: id=2
+Body IDs:
+  trunk_base: id=1
+Number of actuators: 14
+Default pose: [ 0.     -0.0873 -0.4579 -0.0049  0.453   0.3491  0.3491  0.      0.
+  0.      0.0873  0.4579  0.0049 -0.453 ]
+Action scale: 1.0
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 1.019s
+
+OK
+forward receipt {"position": [0.9363897247791959, -0.37678906068892565, 0.11983809220321318], "heading": -0.6730798926743634, "distance": 1.5353960452786297, "tilt": 3.016425371170044, "onsets": [24, 25]}

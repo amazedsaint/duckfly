@@ -1,0 +1,47 @@
+async (page) => {
+  const results=[];
+  const check=(condition,message)=>{if(!condition)throw Error(message);};
+  await page.addInitScript(()=>{
+    window.__cameraRequests=0;
+    Object.defineProperty(navigator.mediaDevices,'getUserMedia',{configurable:true,value:async()=>{
+      window.__cameraRequests++;
+      if(!window.__useSyntheticCamera)throw new DOMException('Camera denied for test','NotAllowedError');
+      const canvas=document.createElement('canvas');canvas.width=96;canvas.height=64;
+      const c=canvas.getContext('2d');c.fillStyle='#666';c.fillRect(0,0,96,64);c.fillStyle='#f02882';c.fillRect(28,20,18,20);
+      const stream=canvas.captureStream(20);window.__syntheticCamera=stream;return stream;
+    }});
+  });
+  await page.goto('http://127.0.0.1:4173/');
+  await page.waitForFunction(()=>window.duckflyTelemetry?.ready);
+  await page.getByRole('combobox',{name:'Experiment preset'}).selectOption('target');
+  await page.waitForFunction(()=>duckflyTelemetry.scene.ducks.length===1&&duckflyTelemetry.time===0);
+  await page.getByRole('button',{name:'Enable webcam',exact:true}).click();
+  await page.waitForFunction(()=>document.querySelector('#notice').textContent.includes('Camera unavailable'));
+  check(await page.evaluate(()=>window.__cameraRequests===1),'Camera should be requested only after explicit action');
+  results.push({check:'denied camera state'});
+  await page.evaluate(()=>window.__useSyntheticCamera=true);
+  await page.getByRole('button',{name:'Enable webcam',exact:true}).click();
+  await page.getByRole('button',{name:'Stop webcam',exact:true}).waitFor();
+  await page.getByRole('combobox',{name:'Vision source',exact:true}).selectOption('webcam');
+  await page.getByRole('button',{name:'▶ Run',exact:true}).click();
+  await page.waitForFunction(()=>duckflyTelemetry.time>.4&&duckflyTelemetry.agents['duck-1'].vision?.target.visible);
+  await page.getByRole('button',{name:'Ⅱ Pause',exact:true}).click();
+  check(await page.evaluate(()=>duckflyTelemetry.agents['duck-1'].input.forward>0),'Synthetic webcam pixels must reach the neural input');
+  results.push({check:'webcam frame reaches neural adapter'});
+  await page.getByRole('button',{name:'Stop webcam',exact:true}).click();
+  check(await page.evaluate(()=>window.__syntheticCamera.getTracks().every(t=>t.readyState==='ended')),'Stop must release every camera track');
+  await page.getByRole('button',{name:'▶ Run',exact:true}).click();
+  await page.waitForFunction(()=>duckflyTelemetry.agents['duck-1'].vision===null&&duckflyTelemetry.ducks[0].command[0]===0);
+  await page.getByRole('button',{name:'Ⅱ Pause',exact:true}).click();
+  results.push({check:'camera stop removes vision and forward intent'});
+  await page.getByRole('combobox',{name:'Experiment preset'}).selectOption('loom');
+  await page.waitForFunction(()=>duckflyTelemetry.scene.name==='Approaching threat'&&duckflyTelemetry.time===0);
+  await page.getByRole('button',{name:'▶ Run',exact:true}).click();
+  await page.waitForFunction(()=>duckflyTelemetry.agents['duck-1'].neural?.event.includes('stop reflex'),{timeout:30000});
+  const threat=await page.evaluate(()=>({time:duckflyTelemetry.time,loom:duckflyTelemetry.agents['duck-1'].vision,command:duckflyTelemetry.ducks[0].command}));
+  await page.getByRole('button',{name:'Ⅱ Pause',exact:true}).click();
+  check(threat.command[0]===0,'Rendered visual threat must stop forward intent');
+  results.push({check:'rendered looming threat',time:threat.time,loom:Math.max(threat.loom.loomL,threat.loom.loomR)});
+  await page.screenshot({path:'output/playwright/vision-threat.png'});
+  return results;
+}

@@ -1,0 +1,10 @@
+test RNG: desktop-fly-tests, seed 0x4305055b
+circuit: 668 neurons | loom L/R: 162/152 | GF: 2 | DNa L/R: 2/2 | MDN: 4 | DNp09: 2 | DNg11: 6 | escW: 6 | ascend: 27 | sens: 16
+spontaneous 4s: pop 5.21 Hz/neuron, LC 0.0 Hz, DNa02 L/R 6.2/7.8 Hz, MDN 4.1 Hz, GF spikes: 0
+abrupt loom 0.4s: LC rate 179.7 Hz, GF spikes 2, first at 4 ms
+behavior 20s: walk-drive on 42%, groom-drive on 11%, DNp09 0.0-12.1 Hz, pop 5.7 Hz
+siesta 15s (scale 0.84): walk-drive on 17%
+air puff 1s: GF spikes 13
+left-eye loom: DNa L-R rate diff +0.1 -> -3.0 Hz, LC 31.2 Hz
+click probes: GF cluster -> spike yes, DNg11 cluster -> groom rate 193 Hz
+PASS: GF silent at rest, fires on loom; locomotor drive fluctuates; stim works; siesta alive

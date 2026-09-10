@@ -1,0 +1,6 @@
+### Result
+{"before":[0.9,0,0.13],"after":[0.6781259393625628,0.06395484178754063,0.13],"time":0,"paused":true,"editor":0.6781259393625628}
+### Ran Playwright code
+```js
+await (async page => { await page.waitForFunction(()=>duckflyTelemetry.scene.name==='Follow the beacon'); const before=await page.evaluate(()=>duckflyTelemetry.scene.props[0].position); await page.mouse.move(868,533); await page.mouse.down(); await page.mouse.move(780,475,{steps:12}); await page.mouse.up(); await page.waitForFunction(old=>duckflyTelemetry.scene.props[0].position.some((v,i)=>v!==old[i]),before); const result=await page.evaluate(()=>({before:null,after:duckflyTelemetry.scene.props[0].position,time:duckflyTelemetry.time,paused:duckflyTelemetry.paused,editor:Number(document.querySelector('[data-number="position.0"]').value)})); result.before=before; await page.screenshot({path:'output/playwright/drag-after.png'}); return result; })(page);
+```

@@ -1,0 +1,19 @@
+PASS MaleCNS quiet without descending or sensory drive: motor spikes 0, drift 0.0
+PASS MaleCNS recruits motor neurons in all six legs: peak Hz 34.9,41.9,29.7,48.3,42.5,78.8
+PASS MaleCNS sustains walking after settling: forward 10.64, late path 60.55, contacts [20, 22, 19, 11, 16, 14], elapsed 0.14s
+PASS cutting synapses abolishes descending-to-motor response: motor spikes 0
+PASS motor lesion abolishes body propulsion: late path 0.0
+PASS bilateral steering perturbations change motor-driven yaw: straight -1.248, left -0.661, right -1.459 rad
+PASS MDN produces physical backward stepping: late forward -12.66 units
+PASS physical feedback changes native circuit activity: sensory spikes 34593, motor closed/open 12868/13605
+PASS coupled model is independent of 60/120 Hz display: forward 10.643657 / 10.643657, spikes 12868 / 12868
+PASS complete live brain-to-body chain sustains stepping: late path 81.26, contacts [57, 69, 19, 36, 40, 22]
+PASS legacy speed and turning cannot bypass motor silence: position (0.0, 0.0), heading 0.0
+PASS rendered toes agree with physical feedback: maximum error 0.00000289 units
+PASS thermal tempo reaches active motor mechanics: joint error 0.0000000000
+PASS active pose continuity: groom and resume: joint 0.112 rad, toe 1.031 units, heading 0.015 rad, pitch 0.000 rad per tick; states [DesktopFly.Fly.State.walking, DesktopFly.Fly.State.grooming, DesktopFly.Fly.State.idle, DesktopFly.Fly.State.walking]
+PASS active pose continuity: idle sleep and wake: joint 0.102 rad, toe 0.833 units, heading 0.018 rad, pitch 0.000 rad per tick; states [DesktopFly.Fly.State.walking, DesktopFly.Fly.State.idle, DesktopFly.Fly.State.sleeping, DesktopFly.Fly.State.grooming, DesktopFly.Fly.State.idle, DesktopFly.Fly.State.walking]
+PASS active pose continuity: flight and landing: joint 0.120 rad, toe 0.730 units, heading 0.067 rad, pitch 0.061 rad per tick; states [DesktopFly.Fly.State.walking, DesktopFly.Fly.State.flying, DesktopFly.Fly.State.idle, DesktopFly.Fly.State.walking]
+PASS active pose continuity: nervous turn: joint 0.117 rad, toe 0.955 units, heading 0.076 rad, pitch 0.000 rad per tick; states [DesktopFly.Fly.State.walking]
+PASS active pose continuity: ledge endpoint: joint 0.071 rad, toe 0.905 units, heading 0.067 rad, pitch 0.021 rad per tick; states [DesktopFly.Fly.State.walking, DesktopFly.Fly.State.flying]; endpoint reversed yes, moved support takeoff yes, position delta 0.000
+ALL LOCOMOTOR TESTS PASS

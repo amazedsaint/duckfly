@@ -1,0 +1,58 @@
+### Result
+{"pass":true,"neuralWalking":{"ready":true,"paused":false,"mode":"brain","time":1.1999999999999964,"position":[0.10255422424164269,-0.003923404432442034,0.11970666487232602],"distance":0.15046987656260563,"fallen":false,"command":[0.3,-0.2804741814016144],"brain":{"forward":112.37985481906861,"event":"DNp09 · walk stimulus"}},"checks":["pause freezes time","reset pose","neural walking","loom stop","silence","manual walk and steering","manual stop","follow","camera reset","about dialog"]}
+### Ran Playwright code
+```js
+await (async (page) => {
+  const check=(ok,message)=>{if(!ok)throw Error(message);};
+  const read=()=>page.evaluate(()=>window.duckflyTelemetry);
+  await page.waitForFunction(()=>window.duckflyTelemetry?.ready,{},{timeout:30000});
+  if(!(await read()).paused)await page.getByRole('button',{name:'Ⅱ Pause',exact:true}).click();
+  await page.waitForFunction(()=>window.duckflyTelemetry.paused);
+  const frozen=await read();await page.waitForTimeout(250);check((await read()).time===frozen.time,'Pause advanced the simulation');
+  await page.getByRole('button',{name:'↺ Reset',exact:true}).click();
+  await page.waitForFunction(()=>window.duckflyTelemetry.time===0);
+  check(JSON.stringify((await read()).position)==='[0,0,0.125]','Reset pose differs');
+  await page.getByRole('button',{name:'↑ Walk',exact:true}).click();
+  await page.getByRole('button',{name:'▶ Resume',exact:true}).click();
+  await page.waitForFunction(()=>window.duckflyTelemetry.command[0]===0.3);
+  await page.waitForFunction(()=>window.duckflyTelemetry.distance>.15,{},{timeout:10000});
+  const neural=await read();check(!neural.fallen,'Neural walking fell');
+  await page.getByRole('button',{name:'◎ Loom',exact:true}).click();
+  await page.waitForFunction(()=>window.duckflyTelemetry.brain.event.includes('stop reflex'));
+  check((await read()).command.every(v=>v===0),'Loom failed to stop');
+  await page.getByRole('switch',{name:/Silence fly output/}).check();
+  await page.getByRole('button',{name:'↑ Walk',exact:true}).click();
+  await page.waitForTimeout(180);
+  check((await read()).command.every(v=>v===0),'Silence leaked commands');
+  await page.getByRole('switch',{name:/Silence fly output/}).uncheck();
+  await page.getByRole('button',{name:'Ⅱ Pause',exact:true}).click();
+  await page.getByRole('button',{name:'↺ Reset',exact:true}).click();
+  await page.waitForFunction(()=>window.duckflyTelemetry.time===0);
+  await page.getByRole('button',{name:'Manual',exact:true}).click();
+  await page.getByRole('button',{name:'↑ Walk',exact:true}).click();
+  await page.getByRole('button',{name:'▶ Resume',exact:true}).click();
+  await page.waitForFunction(()=>window.duckflyTelemetry.mode==='manual'&&window.duckflyTelemetry.command[0]===0.3);
+  await page.getByRole('button',{name:'↰ Left',exact:true}).click();
+  await page.waitForFunction(()=>window.duckflyTelemetry.command[1]===0.65);
+  await page.getByRole('button',{name:'↱ Right',exact:true}).click();
+  await page.waitForFunction(()=>window.duckflyTelemetry.command[1]===-0.65);
+  await page.getByRole('button',{name:'■ Stop',exact:true}).click();
+  await page.waitForFunction(()=>window.duckflyTelemetry.command.every(v=>v===0));
+  await page.getByRole('button',{name:'◉ Follow',exact:true}).click();
+  check(await page.getByRole('button',{name:'◉ Follow',exact:true}).getAttribute('aria-pressed')==='false','Follow toggle failed');
+  await page.getByRole('button',{name:'◉ Follow',exact:true}).click();
+  await page.getByRole('button',{name:'⌖ View',exact:true}).click();
+  await page.getByRole('button',{name:'About the experiment',exact:true}).click();
+  check(await page.getByRole('dialog').isVisible(),'About dialog failed');
+  await page.getByRole('button',{name:'Close about',exact:true}).click();
+  await page.getByRole('button',{name:'Ⅱ Pause',exact:true}).click();
+  await page.getByRole('button',{name:'↺ Reset',exact:true}).click();
+  await page.getByRole('button',{name:'Fly brain',exact:true}).click();
+  await page.getByRole('button',{name:'↑ Walk',exact:true}).click();
+  await page.getByRole('button',{name:'▶ Resume',exact:true}).click();
+  await page.waitForFunction(()=>window.duckflyTelemetry.distance>.1,{},{timeout:10000});
+  await page.screenshot({path:'docs/deployments/vercel-desktop.png'});
+  return {pass:true,neuralWalking:neural,checks:['pause freezes time','reset pose','neural walking','loom stop','silence','manual walk and steering','manual stop','follow','camera reset','about dialog']};
+}
+)(page);
+```

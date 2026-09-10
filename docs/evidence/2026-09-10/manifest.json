@@ -1,0 +1,67 @@
+{
+  "date": "2026-09-10",
+  "scope": "Repository exploration and headless feasibility probes. No integrated DuckFly app, closed-loop fly-to-duck experiment, native renderer benchmark, or hardware test.",
+  "sources": [
+    {
+      "name": "desktop-fly",
+      "url": "https://github.com/DenisSergeevitch/desktop-fly",
+      "commit": "32b00011e83c3dc85fa3ea0b3934155b04f1635d"
+    },
+    {
+      "name": "microduck runtime",
+      "url": "https://github.com/pollen-robotics/microduck",
+      "commit": "4f795a6795e02808f999bca9e483bf08fca03e55"
+    },
+    {
+      "name": "microduck_rl public",
+      "url": "https://github.com/pollen-robotics/microduck_rl",
+      "commit": "53b8971b61baf5b7f3c16d135dd7cac37623de4b"
+    },
+    {
+      "name": "microduck local",
+      "path": "/Users/madhusudanaa/Documents/GitHub/microduck",
+      "commit": "55a539c98cc5c1478d3b1edcd01ff50712a018eb",
+      "note": "Read-only orientation and reuse of its existing Python environment. Probe source/model are public upstream, not this fork."
+    },
+    {
+      "name": "official walking policy",
+      "url": "https://huggingface.co/pollen-robotics/microduck-policies",
+      "revision": "916c1e1ee11f8460506532e037a4cf1aa110aca6",
+      "file": "alpha_walking.onnx",
+      "sha256": "e36332d383997d51401897734cd3e79cf5038406feddb18b4d57ecfb141daa6c"
+    },
+    {
+      "name": "BAM installed source",
+      "url": "https://github.com/Rhoban/bam",
+      "commit": "62bd8ce12154340be97e06f7f41a0ca8f116d967"
+    }
+  ],
+  "environment": {
+    "cpu": "Apple M2 Max",
+    "macos": "26.5.2",
+    "swift": "6.2",
+    "python": "3.12",
+    "mujoco": "3.10.0",
+    "onnxruntime": "1.24.4",
+    "numpy": "2.4.1",
+    "better-actuator-models": "1.0.1"
+  },
+  "probe_notes": [
+    "500 control ticks per trial; 50 Hz policy, 200 Hz physics; no actuator delay, nominal 7.4 V, voltage sag gain 0.1.",
+    "Projected gravity and initial command slots asserted. First preliminary probe accidentally used the PolicyInference raw-accelerometer default; its results were invalidated and are excluded from conclusions. Retained separately in the temporary exploration directory as microduck-probe-invalid-sensor-mode.json.",
+    "The higher-command probe is a follow-up to weak movement at the first command settings. It is diagnostic, not a preregistered efficacy comparison.",
+    "Timing excludes model loading, native neural simulation, rendering, IPC and OS pacing. No CPU-only fresh-install or .app packaging claim.",
+    "Probe scripts contain the temporary source root /tmp/duckfly-research.wzrXXM; restore clones and policy there or update ROOT before rerunning. Source commits and policy revision are pinned above."
+  ],
+  "files": {
+    "fly-build.log": "e7bca9033796bc1d764ac772888e36f674d345b3eb52919a83ffdaa081fbf272",
+    "fly-simtest.log": "988610bbfd6fbae7b31bc0c0d9d29300003082e8e39e23941ee506836d9c1740",
+    "fly-behaviortest.log": "87a3f9d2fddc3da573071781b8f671bea2ee2412fcdd2e2fac02fd0218fbad9a",
+    "fly-locomotortest.log": "301d94d558d4def08b581489aa351c3e563e6146b80f90776c72fabd0f3aa0c9",
+    "microduck-probe.json": "00529a49a02ecd37b2f72c15afbf6df6eb09a1eabfe3f0fd5049fdc2bd3c49e0",
+    "microduck-probe-higher-commands.json": "9229e7228121c46da8c24c7d72d424cb8f54aaf2d0297afb1433baec3e7fa950",
+    "microduck_probe.py": "f96f4977b049ab8beebac3525b69e43286657cdb9855b906f38113d8c16d1e0a",
+    "microduck_probe_followup.py": "6c1ec205f4c2a264a65cd32fde01f276dd464e89e6bb8253c7cdcd984e25cc68",
+    "hf-policy-info.json": "d55f3e8dfffc1fd850ccdd2825fdc6a29fa6938c793653626b6ce3c14393ec03"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "verifiedUTC": "2026-09-10T17:02:34.755234+00:00",
+  "app": "/Users/madhusudanaa/Applications/DuckFly.app",
+  "method": "CUA native UI interaction and file-content inspection",
+  "checks": [
+    {
+      "action": "Save scene",
+      "dialog": "NSSavePanel",
+      "output": "native-scene-dialog.json",
+      "validJSON": true,
+      "scene": "Approaching threat",
+      "ducks": 1,
+      "props": 2,
+      "sha256": "26073a6a5e027f8b554055a1237e467790cf87eea23bdef203f9266007617def"
+    },
+    {
+      "action": "Open recorded run",
+      "dialog": "NSOpenPanel",
+      "observedScene": "Follow the beacon",
+      "observedTimeSeconds": 2.14,
+      "expectedTick": 107,
+      "observedUI": [
+        "Recording Branch 0 replay",
+        "Target detected",
+        "106.5 Hz forward activity"
+      ]
+    },
+    {
+      "action": "Open scene fixture by exact path",
+      "dialog": "NSOpenPanel",
+      "input": "native-scene-import-check.json",
+      "observedScene": "Native dialog round trip",
+      "observedTimeSeconds": 0,
+      "observedObjectCount": 3
+    },
+    {
+      "action": "Restore original scene by exact path",
+      "dialog": "NSOpenPanel",
+      "input": "native-scene-dialog.json",
+      "observedScene": "Approaching threat",
+      "observedTimeSeconds": 0,
+      "observedObjectCount": 3,
+      "paused": true
+    }
+  ],
+  "result": "passed"
+}

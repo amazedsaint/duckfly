@@ -1,0 +1,74 @@
+### Result
+{"connected":true,"transport":"Local authenticated TURN relay","independentBrowserContexts":true,"remotePropAccepted":true,"identicalPhysicsPoses":true,"hostTime":1.0599999999999994,"reconnected":true,"hostOwnershipPreserved":true}
+### Ran Playwright code
+```js
+await (async (host) => {
+  const base=host.url().split('/').slice(0,3).join('/');
+  const context=await host.context().browser().newContext({viewport:{width:1280,height:860}});
+  const guest=await context.newPage();
+  let stage='setup';
+  const recordRTC=()=>{const RTC=window.RTCPeerConnection;window.__roomTestPeers=[];window.RTCPeerConnection=class extends RTC{constructor(...args){super(...args);window.__roomTestPeers.push(this);}};};
+  await host.addInitScript(recordRTC);await guest.addInitScript(recordRTC);
+  const assert=(v,message)=>{if(!v)throw Error(message);};
+  const pair=async()=>{
+    await host.getByRole('button',{name:/^(Collaborate|Room · host)$/}).click();
+    if(!await host.getByLabel('TURN server',{exact:true}).isVisible())await host.getByText('Connection settings',{exact:true}).click();
+    await host.getByLabel('TURN server',{exact:true}).fill('turn:127.0.0.1:3499');
+    await host.getByLabel('Username',{exact:true}).fill('duckfly-test');
+    await host.getByLabel('Password',{exact:true}).fill('local-loopback-only');
+    await host.getByRole('button',{name:'Create invitation',exact:true}).click();
+    await host.waitForFunction(()=>document.querySelector('#room-output').value.length>100);
+    const offer=await host.getByLabel('Your pairing code', {exact:true}).inputValue();
+    await guest.getByRole('button',{name:/^(Collaborate|Room · guest)$/}).click();
+    if(!await guest.getByLabel('TURN server',{exact:true}).isVisible())await guest.getByText('Connection settings',{exact:true}).click();
+    await guest.getByLabel('TURN server',{exact:true}).fill('turn:127.0.0.1:3499');
+    await guest.getByLabel('Username',{exact:true}).fill('duckfly-test');
+    await guest.getByLabel('Password',{exact:true}).fill('local-loopback-only');
+    await guest.getByLabel('Invitation or reply',{exact:true}).fill(offer);
+    await guest.getByRole('button',{name:'Join with invitation',exact:true}).click();
+    await guest.waitForFunction(()=>document.querySelector('#room-output').value.length>100);
+    const answer=await guest.getByLabel('Your pairing code',{exact:true}).inputValue();
+    await host.getByLabel('Invitation or reply',{exact:true}).fill(answer);
+    await host.getByRole('button',{name:'Accept collaborator reply',exact:true}).click();
+    await Promise.all([host.waitForFunction(()=>window.duckflyRoomTelemetry?.state==='connected'),guest.waitForFunction(()=>window.duckflyRoomTelemetry?.state==='connected')]);
+    await host.getByRole('button',{name:'Close collaboration'}).click();
+    await guest.getByRole('button',{name:'Close collaboration'}).click();
+  };
+  try {
+    await host.goto(base);await guest.goto(base);
+    await Promise.all([host.waitForFunction(()=>window.duckflyTelemetry?.ready),guest.waitForFunction(()=>window.duckflyTelemetry?.ready)]);
+    await host.getByRole('combobox',{name:'Experiment preset'}).selectOption('target');
+    await host.waitForFunction(()=>window.duckflyTelemetry.scene.name==='Follow the beacon'&&window.duckflyTelemetry.time===0);
+    stage='initial pairing';await pair();
+    assert(await guest.getByRole('button',{name:'▶ Run',exact:true}).isDisabled(),'Guest must not own the clock');
+    stage='remote editing';await guest.getByRole('combobox',{name:'Object to add'}).selectOption('ball');
+    await guest.getByRole('button',{name:'＋ Add',exact:true}).click();
+    await host.waitForFunction(()=>window.duckflyTelemetry.scene.props.some(p=>p.kind==='ball'));
+    await guest.waitForFunction(()=>window.duckflyTelemetry.scene.props.some(p=>p.kind==='ball'));
+    const hostIds=await host.evaluate(()=>duckflyTelemetry.scene.props.map(p=>p.id));
+    const guestIds=await guest.evaluate(()=>duckflyTelemetry.scene.props.map(p=>p.id));
+    assert(JSON.stringify(hostIds)===JSON.stringify(guestIds),'Remote prop edit must be accepted by the host');
+    stage='shared simulation';await host.getByRole('button',{name:'▶ Run',exact:true}).click();
+    await guest.waitForFunction(()=>window.duckflyTelemetry.time>1);
+    await host.getByRole('button',{name:'Ⅱ Pause',exact:true}).click();
+    await host.waitForFunction(()=>window.duckflyTelemetry.paused);
+    const time=await host.evaluate(()=>duckflyTelemetry.time);
+    await guest.waitForFunction(time=>Math.abs(duckflyTelemetry.time-time)<1e-8,time);
+    const bodyHost=await host.evaluate(()=>duckflyTelemetry.ducks.map(d=>d.position));
+    const bodyGuest=await guest.evaluate(()=>duckflyTelemetry.ducks.map(d=>d.position));
+    assert(JSON.stringify(bodyHost)===JSON.stringify(bodyGuest),'Guest must display host physics poses');
+    await guest.getByRole('button',{name:'Room · guest'}).click();
+    await guest.getByRole('button',{name:'Leave room',exact:true}).click();
+    await guest.getByRole('button',{name:'Close collaboration'}).click();
+    await host.waitForFunction(()=>window.duckflyRoomTelemetry.state==='disconnected');
+    assert(await host.evaluate(()=>duckflyRoomTelemetry.role==='host'),'Disconnect must preserve host ownership');
+    stage='reconnect';await pair();
+    await guest.waitForFunction(time=>Math.abs(duckflyTelemetry.time-time)<1e-8,time);
+    await host.screenshot({path:'output/playwright/room-host.png'});
+    await guest.screenshot({path:'output/playwright/room-guest.png'});
+    return {connected:true,transport:'Local authenticated TURN relay',independentBrowserContexts:true,remotePropAccepted:true,identicalPhysicsPoses:true,hostTime:time,reconnected:true,hostOwnershipPreserved:true};
+  } catch(error){const diagnostics=async page=>page.evaluate(async()=>{const p=window.__roomTestPeers?.at(-1);if(!p)return {};const stats=await p.getStats();return {room:window.duckflyRoomTelemetry,signaling:p.signalingState,ice:p.iceConnectionState,connection:p.connectionState,localCandidates:(p.localDescription?.sdp.match(/a=candidate:/g)||[]).length,remoteCandidates:(p.remoteDescription?.sdp.match(/a=candidate:/g)||[]).length,pairs:[...stats.values()].filter(s=>s.type==='candidate-pair').map(s=>({state:s.state,requestsSent:s.requestsSent,responsesReceived:s.responsesReceived}))};});throw Error(stage+': '+error.message+' '+JSON.stringify({host:await diagnostics(host),guest:await diagnostics(guest)}));} finally {await context.close();}
+})(page);
+```
+### Events
+- New console entries: .playwright-cli/console-2026-09-10T16-54-47-990Z.log#L2

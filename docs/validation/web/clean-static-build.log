@@ -1,0 +1,33 @@
+
+added 36 packages, and audited 37 packages in 2s
+
+8 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm warn allow-scripts 2 packages have install scripts not yet covered by allowScripts:
+npm warn allow-scripts   fsevents@2.3.3 (install: (install scripts present))
+npm warn allow-scripts   protobufjs@7.6.6 (postinstall: node scripts/postinstall)
+npm warn allow-scripts
+npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.
+
+> duckfly-web@0.1.0 build
+> npm run prepare:assets && vite build
+
+
+> duckfly-web@0.1.0 prepare:assets
+> node scripts/prepare-assets.mjs
+
+Prepared shared assets and local WASM runtimes.
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 11 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                        0.60 kB │ gzip:     0.39 kB
+dist/assets/simulation.worker-B1TwziDx.js             94.99 kB
+dist/assets/ort-wasm-simd-threaded-1QYQn1Hs.wasm  12,361.74 kB │ gzip: 3,197.89 kB
+dist/assets/index-C9XJLcl4.css                        12.24 kB │ gzip:     3.71 kB
+dist/assets/index-0UTnkU5G.js                        570.84 kB │ gzip:   143.57 kB
+
+✓ built in 752ms

@@ -1,0 +1,25 @@
+test RNG: FNV-1a(test name), LCG32
+PASS  GF stim -> escape flight: state=flying
+PASS  DNg11 stim -> grooming: state=grooming
+PASS  DNp09 stim -> walks, speed rises (capped): state=walking speed=41
+PASS  MDN stim (from idle) -> backward walk: backwardTimer=0.50
+PASS  DNa-left stim -> left (CCW) turn while walking: heading change +0.27 rad
+PASS  moderate loom -> fear response (dart or escape): state=flying speed=0
+PASS  tap near fly -> startle escape via sensory pathway: state=flying
+PASS  ledge attach + follow window edge: attached, y=-47
+PASS  window closes underfoot -> takeoff: took off
+PASS  sleep signal -> sleeping; wake -> grooming: woke to grooming
+PASS  thermal tempo scales walking speed: cool 46 -> hot 70 pt/s
+PASS  flight: altitude drives scale; escape flies higher than casual: escape alt 0.76 scale 1.85 | casual alt 0.41 scale 1.52
+PASS  flight: wings actually beat: wing sweep 0.68 rad over 0.5 s
+PASS  escape-DN activity mid-flight raises wing-beat effort: effort 0.50 -> 1.02
+PASS  threat while grounded raises the wings (no takeoff): raise 1.00, wing tilt -0.50 rad
+PASS  landing is smooth: no scale/height snap at touchdown: landed=yes, max per-frame Δscale 0.05, Δz 5.0
+PASS  circadian curve: siesta + night dips, dawn/dusk peaks: 3h 0.25, 9h 1.00, 14h 0.55, 18h 1.00
+PASS  body timestep is frame-rate independent: 60Hz exact=yes, lag 8x12.5ms 0.665102 vs 1x100ms 0.665102, wander sd 0.169 @60Hz vs 0.170 @120Hz
+PASS  beetle: elytra spread in flight and hold steady: closed 0.00 -> open -0.62 rad, drive 1.00, jitter 0.013
+PASS  beetle: threat opens the elytra without takeoff: open 0.99, elytron 0.00 -> -0.61 rad
+PASS  body swap keeps behavior state, position and the model contract: contract=true state kept=true reparented=true fly form had elytra=false
+PASS  [fruit fly] gait advances and the wings still beat: gait moved=yes leg swing 0.30 rad, wing sweep 0.68 rad
+PASS  [stag beetle] gait advances and the wings still beat: gait moved=yes leg swing 0.30 rad, wing sweep 0.35 rad
+ALL BEHAVIOR TESTS PASS

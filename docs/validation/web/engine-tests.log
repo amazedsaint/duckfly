@@ -1,0 +1,23 @@
+
+> duckfly-web@0.1.0 test
+> node --test tests/*.test.mjs
+
+✔ compressed asset loader accepts raw gzip and browser-decoded responses (17.337541ms)
+✔ BAM voltage, back-EMF and directional friction match 128 native vectors (1.323709ms)
+✔ independent fly brains replay deterministically, with output silence and loom reflex (132.224041ms)
+WASM walking receipt {"distance":1.5340549299049147,"onsets":[24,25],"tilt":3.0321548865271786}
+WASM brain receipt {"distance":1.8358326995774328,"walkingTicks":578,"tilt":0.4579955236952981}
+▶ WebAssembly physics and policy integration
+  ✔ ONNX WASM matches native outputs on independent inputs (6.815041ms)
+  ✔ initial state and short trajectory match native MuJoCo (17.979875ms)
+  ✔ physical walking, contact cycles and deterministic reset (208.729166ms)
+  ✔ fly circuit drives real robot and silence zeros both commands (427.754791ms)
+✔ WebAssembly physics and policy integration (1065.081041ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1285.658083

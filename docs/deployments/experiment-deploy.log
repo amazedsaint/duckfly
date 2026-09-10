@@ -1,0 +1,48 @@
+Vercel CLI 59.15.1 (Node.js 24.19.0)
+Deploying duckfly
+Uploading [--------------------] (0.0B/4.8MB)
+Uploading [=====---------------] (1.2MB/4.8MB)
+Uploading [==========----------] (2.4MB/4.8MB)
+Uploading [===============-----] (3.6MB/4.8MB)
+Uploading [====================] (4.8MB/4.8MB)
+  Inspect         https://vercel.com/contextmind/duckfly/H7ivJS7A26geVpDzSvmbMrJPHpqA
+  Production      https://duckfly-1e3wq2g98-contextmind.vercel.app
+Building…
+Building…
+Running build in Washington, D.C., USA (East) – iad1
+Build machine configuration: 4 cores, 8 GB
+Retrieving list of deployment files...
+Downloading 65 deployment files...
+Restored build cache from previous deployment (Gt4zRKUgbv6RcoJYzXTEjxhFq94A)
+Running "vercel build"
+Vercel CLI 59.11.7
+Running "install" command: `npm ci --prefix web`...
+[2K[1A[2K[G  Production      https://duckfly-1e3wq2g98-contextmind.vercel.app
+Completing…
+▲ Aliased         https://duckfly.vercel.app
+{
+  "status": "ok",
+  "deployment": {
+    "id": "dpl_H7ivJS7A26geVpDzSvmbMrJPHpqA",
+    "url": "https://duckfly-1e3wq2g98-contextmind.vercel.app",
+    "inspectorUrl": "https://vercel.com/contextmind/duckfly/H7ivJS7A26geVpDzSvmbMrJPHpqA",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_H7ivJS7A26geVpDzSvmbMrJPHpqA"
+  },
+  "message": "Deployment duckfly-1e3wq2g98-contextmind.vercel.app ready.",
+  "next": [
+    {
+      "command": "vercel curl https://duckfly-1e3wq2g98-contextmind.vercel.app",
+      "when": "Verify deployment, including when Deployment Protection is enabled"
+    },
+    {
+      "command": "vercel inspect duckfly-1e3wq2g98-contextmind.vercel.app --scope contextmind",
+      "when": "Inspect deployment"
+    },
+    {
+      "command": "vercel deploy --prod --scope contextmind",
+      "when": "Promote to production"
+    }
+  ]
+}

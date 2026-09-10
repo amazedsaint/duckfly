@@ -1,0 +1,92 @@
+{
+  "format": "duckfly-research-probes",
+  "version": 1,
+  "scope": "Synthetic image probes of unchanged current code; no physical webcam or full-body trial.",
+  "redDiskExpansion": {
+    "loom": [
+      1,
+      0
+    ],
+    "flowExpansion": 1.4285714285714284,
+    "flowX": -0.41666666666666663,
+    "vectors": 1
+  },
+  "blackDiskExpansion": {
+    "loom": [
+      0,
+      0
+    ],
+    "flowExpansion": 0,
+    "flowX": 0,
+    "vectors": 0
+  },
+  "redDiskAppearanceWithoutExpansion": {
+    "loom": [
+      1,
+      0
+    ],
+    "flowExpansion": 0,
+    "flowX": 0,
+    "vectors": 0
+  },
+  "redDiskTranslation": {
+    "loom": [
+      0,
+      0
+    ],
+    "flowExpansion": 0,
+    "flowX": 0,
+    "vectors": 0
+  },
+  "radialTextureDuckEyeMode": {
+    "loom": [
+      0,
+      0
+    ],
+    "flowExpansion": 0.7297190522178582,
+    "flowX": 1.982541115402065e-18,
+    "vectors": 28
+  },
+  "radialTextureWebcamMode": {
+    "loom": [
+      0.9755504835485731,
+      0.9755504835485731
+    ],
+    "flowExpansion": 0.7297190522178582,
+    "flowX": 1.982541115402065e-18,
+    "vectors": 28
+  },
+  "uniformRedFlash": {
+    "loom": [
+      1,
+      1
+    ],
+    "neuralStopTriggered": true
+  },
+  "identicalMotionDifferentAssignedDt": {
+    "assigned100ms": {
+      "loom": [
+        0,
+        0
+      ],
+      "flowExpansion": -0.0320714104585169,
+      "flowX": 0.2083333333333333,
+      "vectors": 28
+    },
+    "assigned200ms": {
+      "loom": [
+        0,
+        0
+      ],
+      "flowExpansion": -0.01603570522925845,
+      "flowX": 0.10416666666666664,
+      "vectors": 28
+    }
+  },
+  "oldFrameRelabeledWithCurrentSimulationTime": {
+    "assignedTime": 10,
+    "forward": 0.12,
+    "gate": false,
+    "limitation": "Code has no capture timestamp/frame ID; this proves relabeling is accepted, not a physical camera freeze."
+  }
+}
