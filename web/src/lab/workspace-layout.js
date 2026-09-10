@@ -2,8 +2,8 @@
 const PREFS_KEY = 'duckfly.workspace.v1';
 const FILTERS = {
   start: ['target', 'occlusion', 'flock', 'empty'],
-  vision: ['target', 'gaze', 'occlusion', 'vision', 'loom', 'stop-go'],
-  brain: ['switchboard', 'recovery', 'flock', 'empty', 'stop-go'],
+  vision: ['target', 'gaze', 'occlusion', 'vision', 'loom', 'stop-go', 'kick'],
+  brain: ['switchboard', 'recovery', 'flock', 'empty', 'stop-go', 'kick'],
 };
 export function mountWorkspaceLayout({onResize}) {
   const $ = selector => document.querySelector(selector);

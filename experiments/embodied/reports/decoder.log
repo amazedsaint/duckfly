@@ -1,0 +1,47 @@
+{
+  "format": "duckfly-flyvis-decoder-gate",
+  "version": 1,
+  "method": "64 features, two outputs, identical ridge=10; no validation tuning; whole-trajectory train/validation split",
+  "results": {
+    "raw/aligned": {
+      "mse": 0.02022181021271691,
+      "frames": 480,
+      "visibilityMAE": 0.10108981222860418,
+      "visibleBearingMAE": 0.06541369416439115
+    },
+    "raw/reverse-time": {
+      "mse": 0.10527307184329308,
+      "frames": 480,
+      "visibilityMAE": 0.24531478173686563,
+      "visibleBearingMAE": 0.14724084031678625
+    },
+    "raw/shuffled": {
+      "mse": 0.1319129157880122,
+      "frames": 480,
+      "visibilityMAE": 0.2983600686229811,
+      "visibleBearingMAE": 0.14219564757111852
+    },
+    "flyvis/aligned": {
+      "mse": 0.027525883667465396,
+      "frames": 480,
+      "visibilityMAE": 0.12858324937602833,
+      "visibleBearingMAE": 0.08507296695170485
+    },
+    "flyvis/reverse-time": {
+      "mse": 0.09937575534764256,
+      "frames": 480,
+      "visibilityMAE": 0.25654456039952306,
+      "visibleBearingMAE": 0.13171270956001346
+    },
+    "flyvis/shuffled": {
+      "mse": 0.11835371687751572,
+      "frames": 480,
+      "visibilityMAE": 0.29089515865368487,
+      "visibleBearingMAE": 0.12912796100666118
+    }
+  },
+  "relativeImprovement": -0.3611978046433828,
+  "gate": false,
+  "biologicalValidation": false,
+  "closedLoopValidation": false
+}

@@ -47,6 +47,7 @@ async function drain(){
       if(msg.type==='move-prop')experiment.moveProp(msg.id,msg.position,msg.yaw);
       if(msg.type==='prop-behavior'){experiment.setPropBehavior(msg.id,msg.behavior);send({type:'prop-behavior-applied',scene:experiment.scene});}
       if(msg.type==='stimulus')experiment.stimulus(msg.id,msg.kind);
+      if(msg.type==='skill')experiment.skill(msg.id,msg.kind);
       if(msg.type==='push'){const strength=msg.strength??.8;if(typeof strength!=='number'||!Number.isFinite(strength)||strength<0||strength>3)throw Error('Push force must be between 0 and 3 N');experiment.branch();const r=experiment.world.robots.find(r=>r.id===msg.id);if(r){r.pushTicks=10;r.pushForce=strength;}}
       if(msg.type==='rewind'){paused=true;experiment.rewind(msg.tick);recordingView();}
       if(msg.type==='branch'){experiment.branch();recordingView();}

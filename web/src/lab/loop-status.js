@@ -12,7 +12,8 @@ export function loopStatus(state, id) {
     pixels > 0 && pixels < 5 ? `Cue too small · ${pixels}/5 pixels` : 'No cue detected';
   let reason = cause ? cause.provenance.forward : 'Waiting for the first step';
   if (reason === 'Fly circuit intent') reason = neural?.gfHeld ? 'GF stop reflex active' : neural?.vx ? 'Fly circuit drives walking' : 'Forward neurons below walking threshold';
-  const status = body.fallen ? 'Duck fell · reset to stand' :
+  const skill=agent?.skill;
+  const status = skill&&skill.phase!=='walk' ? skill.message : body.fallen ? 'Duck fell · try Help stand' :
     state.paused ? 'Paused · Run or Step to advance' :
     cause?.command.vx === 0 && input?.gate && !['manual','reactive','reflex'].includes(duck.mode) && reason === input.gateReason ?
       (input.gateReason === 'Target absent' ? `${duck.mode === 'flock' ? 'Companion' : 'Beacon'} lost · forward blocked` : `${reason} · forward blocked`) :

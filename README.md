@@ -8,6 +8,8 @@ The [scene and feedback audit](docs/experiments/scene-audit/README.md) makes eve
 
 The [immersive workspace](docs/implementation/immersive-ui/README.md) adds Focus mode, collapsible controls, and a compact live brain monitor in both the web and Mac apps.
 
+The [brain and body experiments](experiments/embodied/RESULTS.md) add **See it, kick it** and **Help stand**. Recovery passed 15/16 simulated fall setups; the visual kick is gated by measured forward-neuron activity. The same study rejected unhelpful pursuit candidates and kept full Flyvis in its separate bench.
+
 An experiment workspace coupling a selected FlyWire neural circuit to a simulated Microduck robot. Camera pixels become sensory input; circuit activity selects movement intent; Microduck's pretrained walking policy controls the joints. MuJoCo and BAM calculate the physical response.
 
 ## Repository layout

@@ -1,0 +1,91 @@
+
+> duckfly-web@0.1.0 test
+> node --test tests/*.test.mjs
+
+✔ compressed asset loader accepts raw gzip and browser-decoded responses (28.5445ms)
+✔ held-out promotion rejects a regression or new fall even with positive average gain (0.650042ms)
+✔ visual kick needs sustained neural response; absent or stale input never triggers (1.916916ms)
+✔ recovery clears the fall latch only after a full second of actual stable posture (0.135583ms)
+✔ output disconnection and GF immediately cancel pending skills (0.154417ms)
+✔ visual skill settings survive a scene link and losing sight cancels a queued kick (2.180667ms)
+✔ memory affects search direction but cannot invent forward drive or bypass stale/covered eyes (0.989708ms)
+✔ graded intent respects acceleration and immediate GF stop; state replays exactly (3.180792ms)
+✔ experimental ascending feedback is bounded and disconnectable (0.519667ms)
+✔ BAM voltage, back-EMF and directional friction match 128 native vectors (1.977209ms)
+✔ independent fly brains replay deterministically, with output silence and loom reflex (203.596791ms)
+WASM walking receipt {"distance":1.5340549299049147,"onsets":[24,25],"tilt":3.0321548865271786}
+WASM brain receipt {"distance":1.8358326995774328,"walkingTicks":578,"tilt":0.4579955236952981}
+▶ WebAssembly physics and policy integration
+  ✔ ONNX WASM matches native outputs on independent inputs (13.941917ms)
+  ✔ initial state and short trajectory match native MuJoCo (32.990292ms)
+  ✔ physical walking, contact cycles and deterministic reset (226.150125ms)
+  ✔ fly circuit drives real robot and silence zeros both commands (550.131833ms)
+✔ WebAssembly physics and policy integration (1540.889958ms)
+✔ full Flyvis WASM preserves pinned oracle, long continuation and independent eyes (2052.522833ms)
+✔ reset and encounter changes preserve the custom scene and respect user object physics (1.763041ms)
+✔ guided scenes round trip and preserve matched study geometry without enabling defaults (2.745417ms)
+✔ packaged decoder and feature extraction match retained research artifacts (41.980083ms)
+✔ temporal loop invalidates raw stereo for covered eyes and webcams, retains a GF hold (3.168917ms)
+Matched 2.5 N nudge [{"force":0,"tilt":6.156382213606862,"y":-0.033245038639982384,"fallen":false},{"force":2.5,"tilt":12.563287602335775,"y":0.066706932975819,"fallen":false}]
+✔ integrated GF loop checkpoints replay exactly, and silence prevents a hold (3143.55875ms)
+✔ scene round trips and rejects invalid or executable fields (1.760833ms)
+Editable world walking {"distance":0.7378630481966547,"tilt":1.0817321227652308,"onsets":[12,13]}
+Head command receipt {"before":-0.009708725132682927,"after":0.23070697307256421,"tilt":0.8643403041054311}
+Shared world contacts 49
+Physical prop response {"light":0.018999999999999906,"heavy":0.0009500000000000064,"slippery":0.8049463206809584,"grippy":0.13757750833613525}
+▶ editable shared physics
+  ✔ template preserves native geometry and physical walking (863.596458ms)
+  ✔ checkpoint restores an identical continuation after JSON export (26.44ms)
+  ✔ bounded head commands move the physical camera while the body stays upright (111.457167ms)
+  ✔ two ducks share collisions and have separate motor histories (243.985917ms)
+  ✔ prop mass changes acceleration and edited friction changes sliding (107.351625ms)
+  ✔ frequent forced captures retain an importable replay window (1936.729917ms)
+  ✔ version 1 recording migrates and replays retained legacy camera input (101.984959ms)
+  ✔ live prop paths preserve the brain and clock, replay exactly, and stop when dragged (314.280958ms)
+  ✔ body connection and strength change delivered commands while neural intent survives, including replay (149.787333ms)
+  ✔ experiment rewind replays recorded visual inputs with identical brain and body state (345.348875ms)
+✔ editable shared physics (4976.209791ms)
+✔ a firing brain cannot be mislabeled as a delivered walk command (6.001458ms)
+✔ elapsed scoring horizons never label an open scene as finished (1.327375ms)
+✔ per-duck output controls are portable, bounded, and default to old behavior (3.701542ms)
+✔ lowering the marker threshold to two fails a stray-pixel falsifier (4.338083ms)
+✔ patrol and orbit start without a jump and stay bounded over an open run (13.416042ms)
+✔ physical and scripted profiles are exclusive; invalid motion cannot enter a scene (2.343625ms)
+✔ risk pulses enter the neural route; only a GF event engages a hold (0.866583ms)
+✔ fresh low risk and sustained measured slowing are both required to release (0.1695ms)
+✔ stale, covered and source-changed cameras cannot reuse clear evidence (0.164209ms)
+✔ clear evidence has hysteresis; duplicate frames do not advance it (0.093334ms)
+✔ covering an eye invalidates clear evidence even when the frame clock is unchanged (0.082709ms)
+✔ GF silence and disabled feedback do not create a hold; release never creates a command (0.423959ms)
+✔ feedback resumes identically after a JSON round trip (0.429625ms)
+✔ temporal feature history uses the same stride as training and survives JSON replay (1.643709ms)
+✔ Python/browser numerical parity: temporal (14.336542ms)
+✔ Python/browser numerical parity: static (9.578292ms)
+✔ Python/browser numerical parity: no-pose (14.515334ms)
+✔ served modules carry the digest of their actual source (1.305166ms)
+✔ a missing or cached source receipt cannot start another study (47.648083ms)
+✔ physical receipts also check the loaded decoder artifact (104.110833ms)
+✔ At explicit gain 10, ON/OFF expansion recruits the bounded bridge; flash, translation and appearance do not (933.370083ms)
+✔ upstream motion/LPLC2 interventions and GF ablation have distinct causal effects (274.202625ms)
+✔ source labels and simulation slowdown cannot alter calibrated motion estimates (59.714292ms)
+✔ duplicate camera frames become stale without advancing motion state; out of order input is rejected (20.712333ms)
+✔ independent eye histories and covered-eye motion (37.812084ms)
+✔ camera packet and full visual state replay after JSON round trip (197.427084ms)
+✔ retinal index mapping is a coordinate bijection with true hex neighbors (1.418875ms)
+✔ scene migration preserves old model semantics; head stabilization has a bounded independent command (1.82075ms)
+✔ camera pixels produce target bearing, disappear under occlusion and respect eye covering (26.227792ms)
+✔ optical flow follows independently translated image texture (26.54275ms)
+✔ asymmetric optical flow changes steering input only when enabled (21.995834ms)
+✔ active looking searches after a target disappears within the supported head range (2.378167ms)
+✔ webcam motion loom responds to radial expansion of an uncolored texture (12.867958ms)
+✔ expanding visual threat causes neural stop, and GF intervention removes it (226.487917ms)
+✔ complete neural/RNG checkpoint replays after JSON serialization (168.673208ms)
+✔ sensory adapter loses forward intent when camera input is absent or stale (0.689583ms)
+ℹ tests 70
+ℹ suites 0
+ℹ pass 70
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5187.74925

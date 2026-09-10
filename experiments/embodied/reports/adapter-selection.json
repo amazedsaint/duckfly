@@ -1,0 +1,25 @@
+{
+  "method": "Fixed candidate bank selected by mean late target distance; no gradient or connectome training",
+  "metric": "lateError",
+  "training": "experiments/embodied/reports/adapter-train-v1.json.gz",
+  "selected": "original",
+  "permutedSelected": "weight-high-turn",
+  "seed": 9143,
+  "trainingScores": {
+    "original": 0.3997730116905519,
+    "weight-low-turn": 0.47041087622663524,
+    "weight-low-drive": 0.454396252681766,
+    "weight-high-drive": 0.4693678594921591,
+    "weight-high-turn": 0.4232464148926987
+  },
+  "permutedScores": {
+    "original": 0.4422217967275433,
+    "weight-low-turn": 0.49760839216653396,
+    "weight-low-drive": 0.4624399097067535,
+    "weight-high-drive": 0.4340267628935732,
+    "weight-high-turn": 0.38089755348940685
+  },
+  "confirmationSplit": "adapter-confirm",
+  "confirmationSeedsPerFamily": 8,
+  "confirmation": "Not run: training selected unchanged baseline; no candidate to promote"
+}

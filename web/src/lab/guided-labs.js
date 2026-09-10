@@ -1,6 +1,6 @@
 // Playable examples from the retained study. They are demonstrations, not new
 // held-out evidence. Geometry never enters the online temporal decoder.
-export const LAB_IDS = ['stop-go', 'gaze', 'switchboard', 'recovery'];
+export const LAB_IDS = ['stop-go', 'gaze', 'switchboard', 'recovery', 'kick'];
 export const STOP_CASES = ['incoming', 'near-miss', 'receding', 'retreat'];
 export const STOP_MODES = ['hold', 'timer', 'gf-off'];
 
@@ -28,6 +28,11 @@ export function guidedScene(id, {variant = 'incoming', condition = 'hold'} = {})
   }
   if (id === 'switchboard') {scene.name = 'Brain switchboard'; scene.props[0].position = [.85,.25,.13];}
   if (id === 'recovery') {scene.name = 'Bump and recover'; scene.props[0].position = [1.2,0,.13]; scene.props[0].size = [.12,.12,.12];}
+  if (id === 'kick') {
+    scene.name='See it, kick it';scene.ducks[0].kickOnSight=true;
+    scene.props[0].position=[.7,0,.14];scene.props[0].size=[.09,.09,.09];
+    scene.props.push({id:'kick-ball',name:'Kick ball',kind:'ball',position:[.09,.042,.035],size:[.07,.07,.07],movable:true,mass:.025,friction:.6});
+  }
   if (id === 'stop-go') {
     const c = stopCase(variant);
     scene.name = 'Stop, wait, go'; scene.seed = c.id; scene.challenge = {duration: 5, goal: [1.5,0]};

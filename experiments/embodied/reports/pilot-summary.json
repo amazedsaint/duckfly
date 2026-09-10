@@ -1,0 +1,134 @@
+{
+  "baseline": "8d7d64a",
+  "completedTrials": 84,
+  "summaries": {
+    "original": {
+      "lateError": 0.37707242591200935,
+      "progress": 0.5965781340085522,
+      "commandVariation": 0.625,
+      "reacquisition": 0.8283333333333528,
+      "falls": 4,
+      "contactTrials": 2,
+      "unsafeForward": 0,
+      "families": {
+        "moving": 0.0,
+        "occlusion": 0.0,
+        "blocked": 0.0,
+        "fixed": 0.0,
+        "slippery": 0.0,
+        "reposition": 0.0
+      }
+    },
+    "scan": {
+      "lateError": 0.42408543277635574,
+      "progress": 0.5388075599322351,
+      "commandVariation": 0.725,
+      "reacquisition": 1.155,
+      "falls": 3,
+      "contactTrials": 2,
+      "unsafeForward": 0,
+      "families": {
+        "moving": -0.04651450394068607,
+        "occlusion": 0.05919308315016733,
+        "blocked": 0.3235132252955662,
+        "fixed": -0.00722686282936183,
+        "slippery": -0.04029077759307009,
+        "reposition": -0.006596122896537188
+      }
+    },
+    "memory": {
+      "lateError": 0.37481129416795034,
+      "progress": 0.60743532466845,
+      "commandVariation": 0.7999999999999999,
+      "reacquisition": 1.4700000000000057,
+      "falls": 3,
+      "contactTrials": 2,
+      "unsafeForward": 0,
+      "families": {
+        "moving": -0.04651450394068607,
+        "occlusion": -0.017957802197535733,
+        "blocked": 0.08827633036655097,
+        "fixed": -0.00505142106763716,
+        "slippery": -0.025637262040047792,
+        "reposition": -0.006682131584998419
+      }
+    },
+    "wrong-memory": {
+      "lateError": 0.4074048560928492,
+      "progress": 0.5695134819234051,
+      "commandVariation": 0.5499999999999999,
+      "reacquisition": 1.4766666666666846,
+      "falls": 3,
+      "contactTrials": 2,
+      "unsafeForward": 0,
+      "families": {
+        "moving": -0.04651450394068607,
+        "occlusion": -0.03686840894606902,
+        "blocked": 0.29501920957494066,
+        "fixed": -0.003530894264037257,
+        "slippery": -0.01853805275585324,
+        "reposition": -0.007572768583256034
+      }
+    },
+    "graded": {
+      "lateError": 0.4795429730975167,
+      "progress": 0.5150568108235286,
+      "commandVariation": 1.9906648312574051,
+      "reacquisition": 0.8700000000000185,
+      "falls": 4,
+      "contactTrials": 2,
+      "unsafeForward": 0,
+      "families": {
+        "moving": 0.0486431246464705,
+        "occlusion": 0.1633213756387612,
+        "blocked": 0.15444825437369275,
+        "fixed": 0.08166510812568627,
+        "slippery": -0.004646786432571104,
+        "reposition": 0.1713922067610043
+      }
+    },
+    "body-feedback": {
+      "lateError": 0.4322684846468746,
+      "progress": 0.5354408120613435,
+      "commandVariation": 0.525,
+      "reacquisition": 1.5500000000000287,
+      "falls": 4,
+      "contactTrials": 2,
+      "unsafeForward": 0,
+      "families": {
+        "moving": -0.03940643223554827,
+        "occlusion": -0.006486305031156797,
+        "blocked": 0.3872259419183867,
+        "fixed": 0.00531876375752012,
+        "slippery": -0.010603195900326379,
+        "reposition": -0.004872420099683736
+      }
+    },
+    "wrong-feedback": {
+      "lateError": 0.4182460305055165,
+      "progress": 0.5685347946764614,
+      "commandVariation": 0.45,
+      "reacquisition": 0.7766666666666996,
+      "falls": 4,
+      "contactTrials": 2,
+      "unsafeForward": 0,
+      "families": {
+        "moving": -0.04464646545203077,
+        "occlusion": 0.0027674026100205362,
+        "blocked": 0.3491974374493681,
+        "fixed": -0.0031363520531260125,
+        "slippery": -0.05582161372460098,
+        "reposition": -0.001318781268588004
+      }
+    }
+  },
+  "decisions": {
+    "memory": "No promotion: overall error benefit below 3 cm; reacquisition worse than baseline",
+    "graded": "Reject: higher command variation and lower progress",
+    "body-feedback": "Reject: worse pursuit and more contacts"
+  },
+  "abortedRuns": [
+    "pilot-v1: development reload after 6 trials",
+    "eye-train-v1: development reload after 9 trajectories"
+  ]
+}

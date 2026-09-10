@@ -11,6 +11,10 @@ export async function loadLabRuntime(base,progress=()=>{}){
   const template=JSON.parse(new TextDecoder().decode(compressed));mountTemplate(mj,template);
   ort.env.wasm.numThreads=1;ort.env.wasm.proxy=false;ort.env.wasm.wasmPaths=url('runtime/');
   const session=await ort.InferenceSession.create(policy,{executionProviders:['wasm']});
+  const skillSessions={};
+  for(const [name,file] of Object.entries({standing:'alpha_stand.onnx',kick:'ball_kick_left.onnx'})){
+    skillSessions[name]=await ort.InferenceSession.create(await fetchBytes(url('assets/Policies/'+file)),{executionProviders:['wasm']});
+  }
   const {default:model}=await import('../../../shared/vision/temporal/no-pose.json');
-  return {mj,template,circuit,session,Tensor:ort.Tensor,temporalDecoder:new TemporalDecoder(model)};
+  return {mj,template,circuit,session,skillSessions,Tensor:ort.Tensor,temporalDecoder:new TemporalDecoder(model)};
 }

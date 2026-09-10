@@ -1,0 +1,40 @@
+{
+  "version": "0.8.0",
+  "build": 8,
+  "baselineCommit": "8d7d64a",
+  "production": "https://duckfly.vercel.app/",
+  "deploymentId": "dpl_EwyzSTco7Vn1GVHNZehTn84QShiA",
+  "immutableUrl": "https://duckfly-molbdtz9d-contextmind.vercel.app",
+  "vercelScope": "contextmind",
+  "checkedAt": "2026-09-10T23:07:13.213129+00:00",
+  "tests": {
+    "automated": 70,
+    "catalogScenarios": 11,
+    "physicalTrials": 244,
+    "eyeMovieTrajectories": 24,
+    "recoverySuccesses": 15,
+    "recoveryTrials": 16,
+    "nativeRenderedKick": true,
+    "nativeRearmed": true,
+    "nativeCoveredKick": false,
+    "nativeFinalRecordedKickTicks": 25,
+    "nativePollingGap": true
+  },
+  "mac": {
+    "installed": "/Users/madhusudanaa/Applications/DuckFly.app",
+    "filesMatched": 66,
+    "version": "0.8.0",
+    "signing": "ad-hoc; existing Apple Silicon macOS 14+ packaging",
+    "desktopVisualCheck": "Mac locked; packaged WebKit self-tests and browser visual checks performed"
+  },
+  "evidence": {
+    "test-log.txt": "1d04ba0fd6a1a57e6260553b9c949d9633a3e03a58847631617465999fc73946",
+    "mac-release-skills.json": "3070fbaa938b6601a4a6ecc2cb014df89278fe0dbbc4284a421f30592ee76594",
+    "mac-scenarios.json.gz": "43a832824c2d83d2924f4ad23f4f14a2dfb70a27dd74a2ab5e43ecce3e3c156f",
+    "mac-install.json": "95b989e3703e2ba4cb2d954c6d2ea0b3b362bc377252d06063187208952bf2c0",
+    "production-assets.json": "23800b191afded8bc89f9259dc5896310a709c208e078e34546a692344191e23",
+    "pilot-v2.json.gz": "0d14e0a24087dbd8fb6305ff209c4ceb933b94f2ffaf2f641406c652913d0683",
+    "skills-confirm.json.gz": "34cdec250904eb643c35f0b1733c5df992f4c0f6e50eb43e683e0b0e479c03c2",
+    "decoder.json": "13905e668a0b0de4cb64341d2db4f5c1de9b6ac9b1c596973016287910015655"
+  }
+}

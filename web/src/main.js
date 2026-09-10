@@ -77,6 +77,7 @@ const remoteActions = new Set([
   "prop-behavior",
   "stimulus",
   "push",
+  "skill",
 ]);
 const send = (type, extra = {}) => {
   if (room?.role === "guest") {
@@ -93,6 +94,7 @@ const updateGuidedLab = mountGuidedLab({
   patch: patchConnected,
   move: (id, position, yaw) => {send("move-prop", {id, position:position.map(v=>Math.max(-10,Math.min(10,v))), yaw});},
   push: id => send("push", {id, strength:2.5}),
+  skill: kind => send("skill", {id:connectedDuck,kind}),
   reset: () => {send("reset");send("pause", {value:false});},
   add: kind => addObject(kind),
   selectDuck: id => {$("#brain-duck").value=id;$("#brain-duck").dispatchEvent(new Event("change"));},
@@ -183,7 +185,9 @@ function syncConnectedDuck() {
     duck.eye === "none" ? "Uncover eyes" : "Cover eyes";
   $("#cover-eyes").setAttribute("aria-pressed", String(duck.eye === "none"));
   $("#model-note").textContent =
-    duck.temporal !== "off"
+    duck.kickOnSight
+      ? "Camera → forward neurons → engineered skill selector → Microduck kick policy"
+      : duck.temporal !== "off"
       ? "Research: learned image sequence → fly GF → stop loop. Failed false-alarm gate; not Flyvis."
       : duck.visionModel === "marker-v1"
       ? "Modeled marker vision → fly circuit → walking policy"
@@ -547,7 +551,7 @@ function update(data) {
   $("#metrics").textContent =
     `${s.speed.toFixed(2)} m/s · ${s.distance.toFixed(2)} m · ${data.body.collisionCount} contacts`;
   $("#inspect-event").title = s.fallen
-    ? "Duck fell. Reset to stand."
+    ? "Duck fell. Try Help stand in Experiment controls."
     : n?.event.includes("stop reflex")
       ? n.event
       : (a?.input?.reason ?? "Paused at starting state");
@@ -569,7 +573,7 @@ function update(data) {
   $("#loop-reason").textContent = `${loop.reason}${paused ? ` · sampled at ${loop.sampledAt.toFixed(2)} s` : ''}`;
   $("#feedback-loop").textContent = !loop.feedback ? "Run or Step to measure the returning body feedback." : loop.feedback.enabled ?
     `↻ Measured speed sets gait drive to ${loop.feedback.drive.toFixed(2)}; gait phase ${loop.feedback.phase.toFixed(2)} returns to the fly circuit.` :
-    '↻ Speed and gait phase feedback to the fly circuit is off. The walking policy still balances the body.';
+    '↻ Speed and gait phase feedback to the fly circuit is off. The active Microduck policy still receives body observations.';
   for (const [selector, value, label] of [['#motor-link',duck.motorEnabled,'Body commands'],['#feedback-link',duck.feedback,'Feedback']]) {
     $(selector).setAttribute('aria-pressed', String(value));$(selector).textContent = `${label}: ${value?'on':'off'}`;
   }
@@ -1021,7 +1025,7 @@ function showEvent(index) {
   $("#event-content").innerHTML = event.causes
     .map(
       (c) =>
-        `<section><h3>${escapeHTML(scene.ducks.find((d) => d.id === c.id)?.name ?? c.id)}</h3><p>${escapeHTML(c.input.reason)}</p><table><tbody><tr><td>Vision</td><td>target ${c.vision?.target.visible ? "seen" : "absent"}, bearing ${(c.vision?.target.bearing ?? 0).toFixed(2)}</td></tr><tr><td>Sensory input</td><td>forward ${c.input.forward.toFixed(3)}, turn ${c.input.turn.toFixed(3)}</td></tr><tr><td>Loom left / right</td><td>${c.input.loomL.toFixed(2)} / ${c.input.loomR.toFixed(2)}</td></tr><tr><td>Neural rates</td><td>DNp09 ${c.neural.forward.toFixed(1)} Hz, DNa ${c.neural.left.toFixed(1)} / ${c.neural.right.toFixed(1)} Hz</td></tr><tr><td>Neural intent</td><td>${c.neural.vx.toFixed(2)} m/s, ${c.neural.yaw.toFixed(2)} rad/s</td></tr><tr><td>Command source</td><td>${escapeHTML(c.provenance?.forward ?? "Legacy recording")}<br>${escapeHTML(c.provenance?.head ?? "Legacy head adapter")}</td></tr><tr><td>Capture</td><td>${escapeHTML(c.vision?.capture?.sourceId ?? "Legacy")} · frame ${c.vision?.capture?.frameId ?? "?"} · ${c.vision?.capture?.captureTime?.toFixed(3) ?? "?"} s capture clock</td></tr><tr><td>Body command</td><td>${c.command.vx.toFixed(2)} m/s, ${c.command.yaw.toFixed(2)} rad/s</td></tr></tbody></table></section>`,
+        `<section><h3>${escapeHTML(scene.ducks.find((d) => d.id === c.id)?.name ?? c.id)}</h3><p>${escapeHTML(c.input.reason)}</p><table><tbody><tr><td>Vision</td><td>target ${c.vision?.target.visible ? "seen" : "absent"}, bearing ${(c.vision?.target.bearing ?? 0).toFixed(2)}</td></tr><tr><td>Sensory input</td><td>forward ${c.input.forward.toFixed(3)}, turn ${c.input.turn.toFixed(3)}</td></tr><tr><td>Loom left / right</td><td>${c.input.loomL.toFixed(2)} / ${c.input.loomR.toFixed(2)}</td></tr><tr><td>Neural rates</td><td>DNp09 ${c.neural.forward.toFixed(1)} Hz, DNa ${c.neural.left.toFixed(1)} / ${c.neural.right.toFixed(1)} Hz</td></tr><tr><td>Neural intent</td><td>${c.neural.vx.toFixed(2)} m/s, ${c.neural.yaw.toFixed(2)} rad/s</td></tr><tr><td>Command source</td><td>${escapeHTML(c.provenance?.forward ?? "Legacy recording")}<br>${escapeHTML(c.provenance?.head ?? "Legacy head adapter")}</td></tr><tr><td>Capture</td><td>${escapeHTML(c.vision?.capture?.sourceId ?? "Legacy")} · frame ${c.vision?.capture?.frameId ?? "?"} · ${c.vision?.capture?.captureTime?.toFixed(3) ?? "?"} s capture clock</td></tr><tr><td>Body policy</td><td>${escapeHTML(c.command.policy??"walking")}${c.skill?" · "+escapeHTML(c.skill.message):""}</td></tr><tr><td>Body command</td><td>${c.command.vx.toFixed(2)} m/s, ${c.command.yaw.toFixed(2)} rad/s</td></tr></tbody></table></section>`,
     )
     .join("");
 }

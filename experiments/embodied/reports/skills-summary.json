@@ -1,0 +1,559 @@
+{
+  "format": "duckfly-body-skill-screen",
+  "version": 1,
+  "assets": {
+    "walking": {
+      "path": "../../shared/assets/Policies/alpha_walking.onnx",
+      "sha256": "e36332d383997d51401897734cd3e79cf5038406feddb18b4d57ecfb141daa6c",
+      "inputs": [
+        {
+          "name": "obs",
+          "isTensor": true,
+          "type": "float32",
+          "shape": [
+            1,
+            61
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "actions",
+          "isTensor": true,
+          "type": "float32",
+          "shape": [
+            1,
+            14
+          ]
+        }
+      ]
+    },
+    "standing": {
+      "path": "policies/alpha_stand.onnx",
+      "sha256": "1569268713e40deea795dd2922dba50d3621e15a872855408b6b1b125b1c094b",
+      "inputs": [
+        {
+          "name": "obs",
+          "isTensor": true,
+          "type": "float32",
+          "shape": [
+            1,
+            61
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "actions",
+          "isTensor": true,
+          "type": "float32",
+          "shape": [
+            1,
+            14
+          ]
+        }
+      ]
+    },
+    "kick": {
+      "path": "policies/ball_kick_left.onnx",
+      "sha256": "d6928284dccd3dd61e08bf2f760effa74309fbefd97b2b31afb2a60f526d196a",
+      "inputs": [
+        {
+          "name": "obs",
+          "isTensor": true,
+          "type": "float32",
+          "shape": [
+            1,
+            61
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "actions",
+          "isTensor": true,
+          "type": "float32",
+          "shape": [
+            1,
+            14
+          ]
+        }
+      ]
+    }
+  },
+  "sourceSha256": "0943f24a417515bcc2ce6f85d46230f940dbeb9d4cd3b4edd5b402c8f3801a48",
+  "contract": {
+    "pose": [
+      0,
+      -0.08730000257492065,
+      -0.4578999876976013,
+      -0.004900000058114529,
+      0.453000009059906,
+      0.3490999937057495,
+      0.3490999937057495,
+      0,
+      0,
+      0,
+      0.08730000257492065,
+      0.4578999876976013,
+      0.004900000058114529,
+      -0.453000009059906
+    ],
+    "order": [
+      "left_hip_yaw",
+      "left_hip_roll",
+      "left_hip_pitch",
+      "left_knee",
+      "left_ankle",
+      "neck_pitch",
+      "head_pitch",
+      "head_yaw",
+      "head_roll",
+      "right_hip_yaw",
+      "right_hip_roll",
+      "right_hip_pitch",
+      "right_knee",
+      "right_ankle"
+    ],
+    "command": "Zero 13D during one-shot; 0.5 seconds; previous action retained across handoff as upstream does",
+    "physics": "Existing BAM and MuJoCo; sideways initial recovery fixture only; no teleport during recovery"
+  },
+  "gates": {
+    "kick": true,
+    "recovery": true
+  },
+  "trials": [
+    {
+      "family": "kick",
+      "seed": 0,
+      "condition": "walking",
+      "fallen": false,
+      "lateTilt": 0.5812528703566566,
+      "upright": true,
+      "ballDistance": 0
+    },
+    {
+      "family": "kick",
+      "seed": 0,
+      "condition": "kick",
+      "fallen": false,
+      "lateTilt": 0.8164675247374502,
+      "upright": true,
+      "ballDistance": 4.812745003851619
+    },
+    {
+      "family": "kick",
+      "seed": 1,
+      "condition": "walking",
+      "fallen": false,
+      "lateTilt": 0.5812528703566566,
+      "upright": true,
+      "ballDistance": 0
+    },
+    {
+      "family": "kick",
+      "seed": 1,
+      "condition": "kick",
+      "fallen": false,
+      "lateTilt": 0.7904285348604633,
+      "upright": true,
+      "ballDistance": 4.624844079415291
+    },
+    {
+      "family": "kick",
+      "seed": 2,
+      "condition": "walking",
+      "fallen": false,
+      "lateTilt": 0.5812528703566566,
+      "upright": true,
+      "ballDistance": 0
+    },
+    {
+      "family": "kick",
+      "seed": 2,
+      "condition": "kick",
+      "fallen": false,
+      "lateTilt": 0.8289107750633633,
+      "upright": true,
+      "ballDistance": 4.09985373640585
+    },
+    {
+      "family": "kick",
+      "seed": 3,
+      "condition": "walking",
+      "fallen": false,
+      "lateTilt": 0.5812528703566566,
+      "upright": true,
+      "ballDistance": 0
+    },
+    {
+      "family": "kick",
+      "seed": 3,
+      "condition": "kick",
+      "fallen": false,
+      "lateTilt": 0.8235059668997176,
+      "upright": true,
+      "ballDistance": 3.542058196625868
+    },
+    {
+      "family": "kick",
+      "seed": 4,
+      "condition": "walking",
+      "fallen": false,
+      "lateTilt": 0.5812528703566566,
+      "upright": true,
+      "ballDistance": 0
+    },
+    {
+      "family": "kick",
+      "seed": 4,
+      "condition": "kick",
+      "fallen": false,
+      "lateTilt": 0.7846323668398993,
+      "upright": true,
+      "ballDistance": 4.981965999185948
+    },
+    {
+      "family": "kick",
+      "seed": 5,
+      "condition": "walking",
+      "fallen": false,
+      "lateTilt": 0.5812528703566566,
+      "upright": true,
+      "ballDistance": 0
+    },
+    {
+      "family": "kick",
+      "seed": 5,
+      "condition": "kick",
+      "fallen": false,
+      "lateTilt": 0.8180632310978241,
+      "upright": true,
+      "ballDistance": 4.725167376538224
+    },
+    {
+      "family": "kick",
+      "seed": 6,
+      "condition": "walking",
+      "fallen": false,
+      "lateTilt": 0.5812528703566566,
+      "upright": true,
+      "ballDistance": 0
+    },
+    {
+      "family": "kick",
+      "seed": 6,
+      "condition": "kick",
+      "fallen": false,
+      "lateTilt": 0.8312524716098317,
+      "upright": true,
+      "ballDistance": 4.3091598588460815
+    },
+    {
+      "family": "kick",
+      "seed": 7,
+      "condition": "walking",
+      "fallen": false,
+      "lateTilt": 0.5812528703566566,
+      "upright": true,
+      "ballDistance": 0
+    },
+    {
+      "family": "kick",
+      "seed": 7,
+      "condition": "kick",
+      "fallen": false,
+      "lateTilt": 0.8164451285117927,
+      "upright": true,
+      "ballDistance": 3.8446175798886006
+    },
+    {
+      "family": "standing",
+      "seed": 0,
+      "condition": "walking",
+      "fallen": false,
+      "lateTilt": 0.8970539927134457,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "standing",
+      "seed": 0,
+      "condition": "standing",
+      "fallen": false,
+      "lateTilt": 0.060892715262840943,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "standing",
+      "seed": 1,
+      "condition": "walking",
+      "fallen": false,
+      "lateTilt": 0.8970517784222247,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "standing",
+      "seed": 1,
+      "condition": "standing",
+      "fallen": false,
+      "lateTilt": 0.060892715262840943,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "standing",
+      "seed": 2,
+      "condition": "walking",
+      "fallen": false,
+      "lateTilt": 0.8970539927134457,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "standing",
+      "seed": 2,
+      "condition": "standing",
+      "fallen": false,
+      "lateTilt": 0.060892715262840943,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "standing",
+      "seed": 3,
+      "condition": "walking",
+      "fallen": false,
+      "lateTilt": 0.8970517784222247,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "standing",
+      "seed": 3,
+      "condition": "standing",
+      "fallen": false,
+      "lateTilt": 0.060892715262840943,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "standing",
+      "seed": 4,
+      "condition": "walking",
+      "fallen": false,
+      "lateTilt": 0.8970517784222247,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "standing",
+      "seed": 4,
+      "condition": "standing",
+      "fallen": false,
+      "lateTilt": 0.060892715262840943,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "standing",
+      "seed": 5,
+      "condition": "walking",
+      "fallen": false,
+      "lateTilt": 0.8970517784222247,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "standing",
+      "seed": 5,
+      "condition": "standing",
+      "fallen": false,
+      "lateTilt": 0.060892715262840943,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "standing",
+      "seed": 6,
+      "condition": "walking",
+      "fallen": false,
+      "lateTilt": 0.8970539927134457,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "standing",
+      "seed": 6,
+      "condition": "standing",
+      "fallen": false,
+      "lateTilt": 0.060892715262840943,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "standing",
+      "seed": 7,
+      "condition": "walking",
+      "fallen": false,
+      "lateTilt": 0.8970517784222247,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "standing",
+      "seed": 7,
+      "condition": "standing",
+      "fallen": false,
+      "lateTilt": 0.060892715262840943,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "recovery",
+      "seed": 0,
+      "condition": "walking",
+      "fallen": true,
+      "lateTilt": 82.66245147189555,
+      "upright": false,
+      "ballDistance": null
+    },
+    {
+      "family": "recovery",
+      "seed": 0,
+      "condition": "standing",
+      "fallen": true,
+      "lateTilt": 0.5880773698933861,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "recovery",
+      "seed": 1,
+      "condition": "walking",
+      "fallen": true,
+      "lateTilt": 82.83107235936937,
+      "upright": false,
+      "ballDistance": null
+    },
+    {
+      "family": "recovery",
+      "seed": 1,
+      "condition": "standing",
+      "fallen": true,
+      "lateTilt": 0.39357071706519037,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "recovery",
+      "seed": 2,
+      "condition": "walking",
+      "fallen": true,
+      "lateTilt": 83.05439893864654,
+      "upright": false,
+      "ballDistance": null
+    },
+    {
+      "family": "recovery",
+      "seed": 2,
+      "condition": "standing",
+      "fallen": true,
+      "lateTilt": 0.5878252112559469,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "recovery",
+      "seed": 3,
+      "condition": "walking",
+      "fallen": true,
+      "lateTilt": 82.83107084479057,
+      "upright": false,
+      "ballDistance": null
+    },
+    {
+      "family": "recovery",
+      "seed": 3,
+      "condition": "standing",
+      "fallen": true,
+      "lateTilt": 0.3928937815699861,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "recovery",
+      "seed": 4,
+      "condition": "walking",
+      "fallen": true,
+      "lateTilt": 83.17200240759342,
+      "upright": false,
+      "ballDistance": null
+    },
+    {
+      "family": "recovery",
+      "seed": 4,
+      "condition": "standing",
+      "fallen": true,
+      "lateTilt": 0.5878152643850185,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "recovery",
+      "seed": 5,
+      "condition": "walking",
+      "fallen": true,
+      "lateTilt": 82.83107222193642,
+      "upright": false,
+      "ballDistance": null
+    },
+    {
+      "family": "recovery",
+      "seed": 5,
+      "condition": "standing",
+      "fallen": true,
+      "lateTilt": 0.39348974812499615,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "recovery",
+      "seed": 6,
+      "condition": "walking",
+      "fallen": true,
+      "lateTilt": 82.07570925061589,
+      "upright": false,
+      "ballDistance": null
+    },
+    {
+      "family": "recovery",
+      "seed": 6,
+      "condition": "standing",
+      "fallen": true,
+      "lateTilt": 0.5878288553403908,
+      "upright": true,
+      "ballDistance": null
+    },
+    {
+      "family": "recovery",
+      "seed": 7,
+      "condition": "walking",
+      "fallen": true,
+      "lateTilt": 82.8310755243519,
+      "upright": false,
+      "ballDistance": null
+    },
+    {
+      "family": "recovery",
+      "seed": 7,
+      "condition": "standing",
+      "fallen": true,
+      "lateTilt": 0.3928937815699861,
+      "upright": true,
+      "ballDistance": null
+    }
+  ]
+}

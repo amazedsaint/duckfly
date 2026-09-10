@@ -1,0 +1,52 @@
+{
+  "url": "https://duckfly.vercel.app/",
+  "checkedAt": 1789081567.632532,
+  "allMatched": true,
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "5e38619686c492c687896faf972b69269602e79b50801b64cdf28f12d5998e85",
+      "bytes": 605
+    },
+    {
+      "path": "scenarios/kick.svg",
+      "sha256": "1972bdcc04e2e14d413235fa172a7119634d27e141de616afefa6d1c2ed74a78",
+      "bytes": 1216
+    },
+    {
+      "path": "assets/Policies/alpha_stand.onnx",
+      "sha256": "1569268713e40deea795dd2922dba50d3621e15a872855408b6b1b125b1c094b",
+      "bytes": 793705
+    },
+    {
+      "path": "assets/Policies/ball_kick_left.onnx",
+      "sha256": "d6928284dccd3dd61e08bf2f760effa74309fbefd97b2b31afb2a60f526d196a",
+      "bytes": 793685
+    },
+    {
+      "path": "assets/no-pose-C0bo0SAe.js",
+      "sha256": "6cce70ed9ae234d78bb787ad29ef80ec6487536249f45434c15e412285e85146",
+      "bytes": 1734315
+    },
+    {
+      "path": "assets/index-qDj7Nom2.css",
+      "sha256": "d494af95dc42a2845fc33d0e9e4928fdfd7e9ab2d0ce481c636bbefa9697c47f",
+      "bytes": 26637
+    },
+    {
+      "path": "assets/lab.worker-sssnPnNq.js",
+      "sha256": "ec7acb4829aa1ca5bb934d9fe56a17a52e15f5315f2a968950638e809bccd4c0",
+      "bytes": 158129
+    },
+    {
+      "path": "assets/flyvis.worker-a1GsZaB0.js",
+      "sha256": "ee25c4c8fe332ac685ae752d11c06109cbf7b1c5b54ce083f38620459b9d72f4",
+      "bytes": 8990
+    },
+    {
+      "path": "assets/index-BlGM2QsE.js",
+      "sha256": "1e2e23167c72d246e81f639c41082d390a6c93a4baa6805ba75b24a081b07062",
+      "bytes": 706793
+    }
+  ]
+}

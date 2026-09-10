@@ -16,7 +16,8 @@ export function mountTemplate(mj,template){
   }
 }
 export class LabWorld {
-  constructor(mj,template,session,Tensor,scene){
+  constructor(mj,template,session,Tensor,scene,skillSessions={}){
+    this.policies={walking:session,...skillSessions};
     this.mj=mj;this.scene=validateScene(scene);this.template=template;
     this.m=mj.MjModel.from_xml_string(sceneXML(template,this.scene));this.d=new mj.MjData(this.m);
     // This template has no equality constraints. The pinned WASM binding cannot
@@ -50,7 +51,12 @@ export class LabWorld {
   async step(commands){
     const start=performance.now(),{mj,m,d}=this;
     // Serial session calls avoid provider-specific inference reentrancy.
-    for(const r of this.robots){const c=commands[r.id]??{vx:0,yaw:0};await r.infer(c.vx,c.yaw,c.head);}
+    for(const r of this.robots){const c=commands[r.id]??{vx:0,yaw:0},policy=c.policy??'walking';
+      if(!this.policies[policy])throw Error('Body policy unavailable: '+policy);
+      r.session=this.policies[policy];
+      if(c.clearFall){const b=r.state(0);if(b.tilt>=12||b.position[2]<=.09||b.speed>=.04)throw Error('Recovery posture is not stable');r.fallen=false;}
+      await r.infer(c.vx,c.yaw,c.head);
+    }
     d.xfrc_applied.fill(0);for(const r of this.robots)r.applyPush();
     for(let sub=0;sub<4;sub++){
       for(const p of this.props){const mocap=m.body_mocapid[p.bodyId];if(mocap>=0)d.mocap_pos.set(propPosition(p,d.time+.005),mocap*3);}

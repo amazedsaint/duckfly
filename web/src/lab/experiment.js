@@ -7,15 +7,16 @@ import { validateScene, resetScene } from './scene.js';
 import { clamp } from '../bam.js';
 import { TemporalLoop } from '../../../shared/vision/temporal/loop.js';
 import { scheduledMotion, labInput } from './guided-labs.js';
+import { BodySkills } from './body-skills.js';
 
 export class Experiment {
   constructor(runtime,scene){this.runtime=runtime;this.history=[];this.events=[];this.frameTape=new Map();this.branchNumber=0;this.configure(scene);}
   configure(scene){
     const next=resetScene(scene),r=this.runtime;
     for(const p of next.props)if(p.behavior)p.behavior.startedAt=0;
-    const world=new LabWorld(r.mj,r.template,r.session,r.Tensor,next);
+    const world=new LabWorld(r.mj,r.template,r.session,r.Tensor,next,r.skillSessions);
     this.world?.dispose();this.world=world;this.scene=next;this.tick=0;this.replaying=false;this.recordedUntilTick=0;this.cost=0;this.forceFrames=false;
-    this.agents=new Map(next.ducks.map(d=>[d.id,{brain:new Brain(r.circuit,`${next.seed}/${d.id}`),eyes:new VisualSystem(),webcam:new VisualSystem(),adapter:new SensoryAdapter(d.adapter),vision:null,neural:null,input:null}]));
+    this.agents=new Map(next.ducks.map(d=>[d.id,{brain:new Brain(r.circuit,`${next.seed}/${d.id}`),skills:new BodySkills(),eyes:new VisualSystem(),webcam:new VisualSystem(),adapter:new SensoryAdapter(d.adapter),vision:null,neural:null,input:null}]));
     this.history=[];this.events=[];this.frameTape.clear();this.scores={};this.branchNumber=0;this.preparedTick=-1;
     this.applySettings();this.remember();
   }
@@ -37,6 +38,12 @@ export class Experiment {
     this.replaying=false;this.branchNumber++;
   }
   stimulus(id,kind){this.branch();this.agents.get(id)?.brain.stimulate(kind);}
+  skill(id,kind){
+    if(!this.runtime.skillSessions?.[kind==='recover'?'standing':'kick'])throw Error('Body skill unavailable');
+    const d=this.scene.ducks.find(d=>d.id===id);if(!d)throw Error('Select a duck');
+    if(!d.motorEnabled||d.motorGain===0||d.silence==='output')throw Error('Connect body commands before requesting a skill');
+    this.branch();return this.agents.get(id).skills.request(kind,this.world.state().ducks.find(b=>b.id===id));
+  }
   moveProp(id,position,yaw){
     const next=validateScene({...this.scene,props:this.scene.props.map(p=>p.id===id?{...p,position,yaw,motion:[0,0,0],behavior:null}:p)});
     this.branch();this.scene=next;if(this.scene.lab&&id==='object')this.scene.lab.scripted=false;this.world.moveProp(id,position,yaw);this.forceFrames=true;
@@ -101,8 +108,13 @@ export class Experiment {
       if(!d.motorEnabled){provenance.forward=provenance.yaw='Body command connection off';command={...command,vx:0,yaw:0};}
       else if(d.motorGain!==1){provenance.gain=d.motorGain;command={...command,vx:command.vx*d.motorGain,yaw:command.yaw*d.motorGain};
         if(d.motorGain===0)provenance.forward=provenance.yaw='Body command strength is zero';}
+      const skill=a.skills.step(body,neural,{...input,targetVisible:!!a.vision?.target.visible},{enabled:d.motorEnabled&&d.motorGain>0&&d.silence!=='output',kickOnSight:d.kickOnSight});
+      if(skill.active||d.kickOnSight&&d.motorEnabled&&d.motorGain>0&&d.silence!=='output'){
+        command={vx:0,yaw:0,head:[0,0,0,0],policy:skill.policy,clearFall:!!skill.clearFall};
+        provenance.forward=provenance.yaw=skill.active?a.skills.message:neural.gfHeld?'GF stop reflex active':!input.fresh?'Visual kick waits for a fresh image':!a.skills.armed?'Hide and reveal the cue to kick again':'Visual kick experiment · waiting for a neural response';
+      }
       commands[d.id]=command;
-      causes.push({id:d.id,provenance,input:structuredClone(input),vision:structuredClone(a.vision),neural:structuredClone(neural),command:structuredClone(command),gfEvent,temporal:a.temporal?.status(state.time)??null});
+      causes.push({id:d.id,provenance,input:structuredClone(input),vision:structuredClone(a.vision),neural:structuredClone(neural),command:structuredClone(command),gfEvent,skill:a.skills.checkpoint(),temporal:a.temporal?.status(state.time)??null});
     }
     const next=await this.world.step(commands);this.cost=next.cost;this.tick++;
     if(!this.replaying)this.recordedUntilTick=this.tick;
@@ -128,14 +140,14 @@ export class Experiment {
     return this.state();
   }
   state(){return {body:this.world.state(this.cost??0),tick:this.tick,scene:this.scene,branch:this.branchNumber,replaying:this.replaying,
-    agents:Object.fromEntries([...this.agents].map(([id,a])=>[id,{vision:a.vision,input:a.input,neural:a.neural,temporal:a.temporal?.status(this.tick*.02)??null}])),
+    agents:Object.fromEntries([...this.agents].map(([id,a])=>[id,{vision:a.vision,input:a.input,neural:a.neural,skill:a.skills.checkpoint(),temporal:a.temporal?.status(this.tick*.02)??null}])),
     scores:this.scores,history:this.history.map(h=>({tick:h.tick,time:h.tick*.02})),event:this.events.findLast(e=>e.tick<=this.tick)??null};}
   recordingView(){
     const tick=[...this.frameTape.keys()].filter(t=>t<this.tick).sort((a,b)=>b-a)[0];
     return {frames:tick===undefined?{}:this.frameTape.get(tick),events:this.events.filter(e=>e.tick<=this.tick)};
   }
-  checkpoint(){return {version:3,scene:structuredClone(this.scene),tick:this.tick,branch:this.branchNumber,forceFrames:this.forceFrames,world:this.world.checkpoint(),scores:structuredClone(this.scores),
-    agents:Object.fromEntries([...this.agents].map(([id,a])=>[id,{brain:a.brain.checkpoint(),eyes:a.eyes.checkpoint(),webcam:a.webcam.checkpoint(),adapter:a.adapter.checkpoint(),vision:structuredClone(a.vision),input:structuredClone(a.input),neural:structuredClone(a.neural),temporal:a.temporal?.checkpoint()??null}]))};}
+  checkpoint(){return {version:4,scene:structuredClone(this.scene),tick:this.tick,branch:this.branchNumber,forceFrames:this.forceFrames,world:this.world.checkpoint(),scores:structuredClone(this.scores),
+    agents:Object.fromEntries([...this.agents].map(([id,a])=>[id,{brain:a.brain.checkpoint(),skills:a.skills.checkpoint(),eyes:a.eyes.checkpoint(),webcam:a.webcam.checkpoint(),adapter:a.adapter.checkpoint(),vision:structuredClone(a.vision),input:structuredClone(a.input),neural:structuredClone(a.neural),temporal:a.temporal?.checkpoint()??null}]))};}
   trimFrames(){
     // Forced captures can be more frequent than the regular cadence. Keep a
     // complete replay window below the recording format's frame-count bound.
@@ -151,23 +163,23 @@ export class Experiment {
     this.events=this.events.filter(e=>e.tick>=oldest);
   }
   restore(checkpoint){
-    if(![1,2,3].includes(checkpoint.version))throw Error('Unsupported experiment checkpoint');
+    if(![1,2,3,4].includes(checkpoint.version))throw Error('Unsupported experiment checkpoint');
     const scene=validateScene(checkpoint.scene);
     if(scene.ducks.length!==this.scene.ducks.length||scene.ducks.some((d,i)=>d.id!==this.scene.ducks[i].id))throw Error('Checkpoint belongs to another arena');
     this.scene=scene;this.world.scene=structuredClone(scene);
     for(const p of this.world.props)Object.assign(p,structuredClone(scene.props.find(s=>s.id===p.id)));
     this.world.restore(checkpoint.world);this.tick=checkpoint.tick;this.branchNumber=checkpoint.branch;this.forceFrames=checkpoint.forceFrames===true;this.scores=structuredClone(checkpoint.scores);
     this.preparedTick=-1;this.applySettings();
-    for(const [id,a] of this.agents){const s=checkpoint.agents[id];a.brain.restore(s.brain);a.eyes.restore(s.eyes);a.webcam.restore(s.webcam);a.adapter.restore(s.adapter);a.vision=structuredClone(s.vision);a.input=structuredClone(s.input);a.neural=structuredClone(s.neural);if(a.temporal)a.temporal.restore(s.temporal);}
+    for(const [id,a] of this.agents){const s=checkpoint.agents[id];a.brain.restore(s.brain);a.skills.restore(s.skills);a.eyes.restore(s.eyes);a.webcam.restore(s.webcam);a.adapter.restore(s.adapter);a.vision=structuredClone(s.vision);a.input=structuredClone(s.input);a.neural=structuredClone(s.neural);if(a.temporal)a.temporal.restore(s.temporal);}
     this.replaying=true;this.replayUntil=this.recordedUntilTick;return this.state();
   }
   rewind(tick){const checkpoint=this.history.find(h=>h.tick===tick);if(!checkpoint)throw Error('That checkpoint is no longer retained');return this.restore(checkpoint);}
   export(){
-    return {format:'duckfly-recording',version:3,checkpoint:this.checkpoint(),recordedUntilTick:this.recordedUntilTick,history:this.history,events:this.events,
+    return {format:'duckfly-recording',version:4,checkpoint:this.checkpoint(),recordedUntilTick:this.recordedUntilTick,history:this.history,events:this.events,
       frames:[...this.frameTape].map(([tick,frames])=>[tick,Object.fromEntries(Object.entries(frames).filter(([,v])=>v).map(([id,v])=>[id,serializeFrame(v)]))])};
   }
   import(recording){
-    if(recording.format!=='duckfly-recording'||![1,2,3].includes(recording.version)||!Array.isArray(recording.history)||recording.history.length>121||!Array.isArray(recording.frames)||recording.frames.length>610)throw Error('Invalid recording');
+    if(recording.format!=='duckfly-recording'||![1,2,3,4].includes(recording.version)||!Array.isArray(recording.history)||recording.history.length>121||!Array.isArray(recording.frames)||recording.frames.length>610)throw Error('Invalid recording');
     this.configure(recording.checkpoint.scene);this.recordedUntilTick=recording.recordedUntilTick??recording.checkpoint.tick;this.restore(recording.checkpoint);this.history=recording.history;this.events=recording.events??[];
     this.frameTape=new Map(recording.frames.map(([tick,frames])=>[tick,Object.fromEntries(Object.entries(frames).map(([id,value])=>{
       return [id,deserializeFrame(value)];

@@ -1,7 +1,7 @@
 import { SCENARIOS } from './scenarios.js';
 const choices = (items) => items.map(([value, title]) => `<option value="${value}">${title}</option>`).join('');
 const button = (action, text) => `<button data-lab-action="${action}">${text}</button>`;
-export function mountGuidedLab({restart, patch, move, push, save, reset, add, stimulus, configure, selectDuck}) {
+export function mountGuidedLab({restart, patch, move, push, save, reset, add, stimulus, configure, selectDuck, skill}) {
   const root = document.querySelector('#guided-lab');
   let scene, state, duck, finishedKey, desiredLab = null, runs = [];
   root.innerHTML = `<details id="experiment-controls" class="workspace-panel" data-panel open><summary>Experiment controls <span class="summary-note">Try a change</span></summary><div class="panel-content"><div class="lab-question"><strong id="lab-question"></strong><button id="lab-retry">Restart experiment</button></div>
@@ -9,7 +9,7 @@ export function mountGuidedLab({restart, patch, move, push, save, reset, add, st
     <div data-lab-panel="gaze" class="lab-controls">${button('beacon-left','Beacon left')}${button('beacon-right','Beacon right')}${button('hide','Hide beacon')}${button('reveal','Reveal beacon')}${button('look','Active looking')}</div>
     <div data-lab-panel="switchboard" class="lab-controls">${button('connect','Connect all')}${button('forward','Cut forward neurons')}${button('left','Cut left turn')}${button('right','Cut right turn')}${button('output','Cut body commands')}</div>
     <div data-lab-panel="recovery" class="lab-controls">${button('push','Nudge duck')}${button('feedback','Feedback to fly brain')}</div>
-    <div class="loop-controls"><button id="motor-link" aria-pressed="true" data-control disabled>Body commands: on</button><button id="feedback-link" aria-pressed="true" data-control disabled>Feedback: on</button><label>Command strength <select id="motor-gain"><option value="1">100%</option><option value="0.5">50%</option><option value="0.25">25%</option><option value="0">0% · hold</option></select></label><span class="hint">Changes apply on the next step. Balance stays under the walking policy.</span></div><p id="lab-observation"></p><div class="lab-readout"><span id="lab-measures"></span><button id="lab-save" hidden>Save observations</button></div>
+    <div class="lab-controls body-skill-controls">${button('skill-kick','Kick left')}${button('skill-recover','Help stand')}<span id="body-skill-status" role="status">Walking policy</span></div><div data-lab-panel="kick" class="lab-controls">${button('beacon-away','Hide cue')}${button('beacon-ahead','Bring cue ahead')}${button('place-ball','Place ball by left foot')}${button('visual-kick','Visual kick: on')}</div><div class="loop-controls"><button id="motor-link" aria-pressed="true" data-control disabled>Body commands: on</button><button id="feedback-link" aria-pressed="true" data-control disabled>Feedback: on</button><label>Command strength <select id="motor-gain"><option value="1">100%</option><option value="0.5">50%</option><option value="0.25">25%</option><option value="0">0% · hold</option></select></label><span class="hint">Strength scales walking. Skills use their own learned motion. Changes apply on the next step.</span></div><p id="lab-observation"></p><div class="lab-readout"><span id="lab-measures"></span><button id="lab-save" hidden>Save observations</button></div>
     <details class="lab-notes"><summary>What this experiment can tell us</summary><p id="lab-explanation"></p><p id="lab-previous" hidden></p></details></div></details>`;
   const $ = (selector) => root.querySelector(selector);
   const restartCurrent = (patch = {}) => {
@@ -25,6 +25,10 @@ export function mountGuidedLab({restart, patch, move, push, save, reset, add, st
   root.addEventListener('click', (event) => {
     const action = event.target.closest('[data-lab-action]')?.dataset.labAction;
     if (!action || !duck) return;
+    if (action.startsWith('skill-')) return skill(action.slice(6));
+    if (action === 'visual-kick') return patch({kickOnSight:!duck.kickOnSight});
+    if (action === 'place-ball') {const b=state?.body.ducks.find(d=>d.id===duck.id);if(b)return move('kick-ball',[b.position[0]+Math.cos(b.heading)*.09-Math.sin(b.heading)*.042,b.position[1]+Math.sin(b.heading)*.09+Math.cos(b.heading)*.042,.035],0);}
+    if (action === 'beacon-away') {const b=state?.body.ducks.find(d=>d.id===duck.id);if(b)return move('target-1',[b.position[0]-Math.cos(b.heading)*.7,b.position[1]-Math.sin(b.heading)*.7,.14],0);}
     if (action === 'next-duck') return selectDuck(scene.ducks[(scene.ducks.findIndex(d=>d.id===duck.id)+1)%scene.ducks.length].id);
     if (action === 'add-duck' || action === 'add-target') return add(action.slice(4));
     if (action.startsWith('pulse-')) return stimulus(action.slice(6));
@@ -58,6 +62,13 @@ export function mountGuidedLab({restart, patch, move, push, save, reset, add, st
     scene = nextScene; state = nextState; duck = scene.ducks.find(d => d.id === id);
     const lab = scene.lab; root.hidden = !duck;
     if(!duck)return;
+    const skillState=state?.agents[id]?.skill,skillBody=state?.body.ducks.find(d=>d.id===id);
+    $('#body-skill-status').textContent=skillState?.message??'Walking policy';
+    const skillBlocked=!skillBody||!duck.motorEnabled||duck.motorGain===0||duck.silence==='output'||skillState?.phase!=='walk';
+    $('[data-lab-action="skill-kick"]').disabled=skillBlocked||!!skillBody?.fallen;
+    $('[data-lab-action="skill-recover"]').disabled=skillBlocked||!skillBody?.fallen;
+    $('[data-lab-action="visual-kick"]').textContent=`Visual kick: ${duck.kickOnSight?'on':'off'}`;
+    $('[data-lab-action="visual-kick"]').setAttribute('aria-pressed',String(duck.kickOnSight));
     const kind = lab?.id ?? SCENARIOS.find(s=>s.title===scene.name)?.id ?? (scene.name==='Open arena'?'empty':'custom');
     const generic = !lab;
     const target = scene.props.some(p=>p.kind==='target');
@@ -96,12 +107,13 @@ export function mountGuidedLab({restart, patch, move, push, save, reset, add, st
     $('#lab-path').value = (desiredLab ?? lab).variant; $('#lab-stop').value = (desiredLab ?? lab).condition;
     $('#lab-encounter-note').textContent=lab.scripted?'Changing a choice restarts this encounter. Added objects stay in the scene.':'Custom object behavior is active. Choosing a path or stop response restores the preset encounter and restarts. Added objects stay.';
     const body = state?.body.ducks.find(d => d.id === id), agent = state?.agents[id], score = state?.scores[id], loop = agent?.temporal;
-    const questions = {'stop-go':'When is it safe to start walking again?',gaze:'Can moving the head help find a lost beacon?',switchboard:'Which pathway actually moves the duck?',recovery:'Does feedback to the fly circuit change recovery?'};
+    const questions = {'stop-go':'When is it safe to start walking again?',gaze:'Can moving the head help find a lost beacon?',switchboard:'Which pathway actually moves the duck?',recovery:'Can a standing policy recover this fall?',kick:'Can a visual response trigger a body skill?'};
     const explanations = {
+      kick:'The real camera must detect the pink cue, and forward neurons must exceed 6 Hz for five motor ticks. An engineered selector waits for a steady stance, runs the upstream left-kick policy for 0.5 seconds, then returns to walking. Hide and reveal the cue to rearm. Covering the eyes, cutting forward neurons or disconnecting body commands prevents a new visual kick. Place ball is your explicit scene edit; ball coordinates never trigger the skill.',
       'stop-go':'Research only. A learned image-sequence adapter sends a pulse into the fly visual pathway. Only a measured Giant Fiber (GF) event can latch the hold. It releases after fresh low scores and measured slowing. The score is not a collision probability. Our retained study had 0/64 hazard contacts, but GF events in 12/64 control trials exceeded the 10% limit. These open scenes start from examples in that study and continue until you pause. A five-second observation is retained; it is not new validation. Covering an eye invalidates the decoder and cannot clear an existing hold.',
       gaze:'Active looking is a modeled head controller. It can change what reaches the camera, but the body still follows the fly circuit. In our held-out pursuit study it reduced final target error by 1.67 cm on average, below our 3 cm adoption gate. A single successful search cannot establish a general improvement.',
       switchboard:'Cut forward or turn neurons to test their causal role. Cut body commands to keep neural activity visible while stopping commands to the walking policy. The camera adapter is engineered; the selected fly circuit has 668 neurons. This is not a whole fly brain or learned biped balance.',
-      recovery:'The nudge applies 2.5 N sideways for 0.2 seconds. This toggle removes gait phase and speed feedback to the fly circuit. Microduck’s walking policy still receives its body observations and controls balance. Compare identical resets before judging the feedback effect. If the duck falls, use Restart; this walking policy has no automatic get-up mode.'
+      recovery:'The nudge applies 2.5 N sideways for 0.2 seconds. This toggle removes gait phase and speed feedback to the fly circuit. Microduck’s walking policy still receives its body observations and controls balance. Compare identical resets before judging the feedback effect. If the duck falls, Help stand tries the upstream standing policy for up to eight seconds. Walking resumes only after one second of measured steady posture. This recovery comes from the Microduck policy, not newly learned fly behavior.'
     };
     $('#lab-question').textContent = questions[lab.id]; $('#lab-explanation').textContent = explanations[lab.id];
     const pressed = (action, value, text) => {const el = $(`[data-lab-action="${action}"]`);el.setAttribute('aria-pressed', String(value));if(text)el.textContent=text;};
@@ -116,7 +128,8 @@ export function mountGuidedLab({restart, patch, move, push, save, reset, add, st
         loop.gfEvents ? 'The GF reflex fired. Watch whether movement resumes before the object clears.' : 'Watching the camera sequence. A high score can stimulate GF through the fly circuit.';
       if (lab.id === 'gaze') observation = agent?.vision?.target.visible ? 'Beacon visible. Watch retinal position change the turn signal.' : 'Beacon lost. Forward target drive is gated; active looking can search with the head.';
       if (lab.id === 'switchboard') observation = duck.silence === 'output' ? 'Neurons still run. Both body movement commands are forced to zero.' : duck.silence === 'none' ? 'All pathways connected. Move the beacon or send a pulse.' : `Selected neurons are silenced (${duck.silence}). Compare firing with the resulting body command.`;
-      if (lab.id === 'recovery') observation = body.fallen ? 'Duck fell. Restart to try the same nudge again.' : `The walking policy is balancing. ${duck.feedback?'Speed and gait phase return to the fly circuit.':'Feedback to the fly circuit is disconnected.'}`;
+      if (lab.id === 'kick') observation = agent?.skill?.message??'Waiting for the visual response';
+      if (lab.id === 'recovery') observation = body.fallen ? 'Duck fell. Try Help stand, or restart for an identical nudge.' : `The walking policy is balancing. ${duck.feedback?'Speed and gait phase return to the fly circuit.':'Feedback to the fly circuit is disconnected.'}`;
     }
     $('#lab-observation').textContent = observation;
     $('#lab-measures').textContent = !body ? 'Waiting for measurements' : lab.id === 'stop-go' ?
