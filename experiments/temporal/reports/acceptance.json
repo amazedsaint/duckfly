@@ -1,0 +1,34 @@
+{
+  "tests": 50,
+  "passed": 50,
+  "failed": 0,
+  "skipped": 0,
+  "webBuild": "passed",
+  "neuralBridgeRuns": 120,
+  "pythonBrowserParityTolerance": 1e-05,
+  "guardedBrowserSmokeTrajectories": 8,
+  "staleBrowserModuleRejectedBeforeHeader": true,
+  "primaryPhysicalTrials": 768,
+  "physicalPromotion": false,
+  "failedGate": "controlFalseStops",
+  "applicationBundles": [
+    {
+      "name": "index-CODtnlZL.js",
+      "sha256": "300e2270bdd8d41d4cfc96c66dc1ff4a333491ec5b6d25f7eb91b322485cf737",
+      "installedMacIdentical": true
+    },
+    {
+      "name": "index-B_P9AJdR.css",
+      "sha256": "30dfe192ab8ece9803ba4aae03e9284d56f94a5ba855dccd31f08a7516991779",
+      "installedMacIdentical": true
+    },
+    {
+      "name": "lab.worker-BHhtWCca.js",
+      "sha256": "4c946be231fdc861f35b8aee4fc6b5439aa49b12d433b668694ae1d77abf09b1",
+      "installedMacIdentical": true
+    }
+  ],
+  "productionDeploymentPerformed": false,
+  "macRebuildPerformed": false,
+  "claim": "Research candidates and evidence; application runtime unchanged"
+}

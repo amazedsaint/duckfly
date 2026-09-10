@@ -1,0 +1,1687 @@
+{
+  "seed": 20260910,
+  "trainSha256": "125f278007bc6e110a5d0963868786d3f155b147a5f1daedd5317d69916b1964",
+  "validationSha256": "e3b5c9813db82c87704f670ad3e3366e1e1c43af7c891e8ea234f88325e8a6d8",
+  "models": {
+    "temporal": {
+      "auroc": 0.9919087456294272,
+      "averagePrecision": 0.9769210268052088,
+      "frames": 7492,
+      "positiveFrames": 1680,
+      "selected": null,
+      "thresholds": [
+        {
+          "threshold": 0.6,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 1.0,
+          "falseTrigger": 0.25
+        },
+        {
+          "threshold": 0.7,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 1.0,
+          "falseTrigger": 0.2
+        },
+        {
+          "threshold": 0.8,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 1.0,
+          "falseTrigger": 0.15
+        },
+        {
+          "threshold": 0.9,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 1.0,
+          "falseTrigger": 0.125
+        },
+        {
+          "threshold": 0.95,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.9583333333333334,
+          "falseTrigger": 0.125
+        },
+        {
+          "threshold": 0.98,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.9166666666666666,
+          "falseTrigger": 0.125
+        }
+      ],
+      "mode": "temporal",
+      "bestEpoch": 7,
+      "epochs": [
+        {
+          "epoch": 1,
+          "trainLoss": 0.32735276272741415,
+          "validationLoss": 0.24443736672401428
+        },
+        {
+          "epoch": 2,
+          "trainLoss": 0.17369319006042966,
+          "validationLoss": 0.17602171003818512
+        },
+        {
+          "epoch": 3,
+          "trainLoss": 0.10789273391967102,
+          "validationLoss": 0.14496196806430817
+        },
+        {
+          "epoch": 4,
+          "trainLoss": 0.07393045306710874,
+          "validationLoss": 0.116905577480793
+        },
+        {
+          "epoch": 5,
+          "trainLoss": 0.05450862112565566,
+          "validationLoss": 0.1309867948293686
+        },
+        {
+          "epoch": 6,
+          "trainLoss": 0.043351797000268255,
+          "validationLoss": 0.11324212700128555
+        },
+        {
+          "epoch": 7,
+          "trainLoss": 0.03352619755729023,
+          "validationLoss": 0.10821744799613953
+        },
+        {
+          "epoch": 8,
+          "trainLoss": 0.03117925837888556,
+          "validationLoss": 0.10974821448326111
+        },
+        {
+          "epoch": 9,
+          "trainLoss": 0.023986805384284108,
+          "validationLoss": 0.13549374043941498
+        },
+        {
+          "epoch": 10,
+          "trainLoss": 0.020541226199307178,
+          "validationLoss": 0.184651717543602
+        },
+        {
+          "epoch": 11,
+          "trainLoss": 0.023838669093231023,
+          "validationLoss": 0.12505608797073364
+        },
+        {
+          "epoch": 12,
+          "trainLoss": 0.01628689829386392,
+          "validationLoss": 0.1389741152524948
+        },
+        {
+          "epoch": 13,
+          "trainLoss": 0.013911608291860923,
+          "validationLoss": 0.14011602103710175
+        },
+        {
+          "epoch": 14,
+          "trainLoss": 0.014464515324492576,
+          "validationLoss": 0.15314948558807373
+        },
+        {
+          "epoch": 15,
+          "trainLoss": 0.01097734568155197,
+          "validationLoss": 0.1536058783531189
+        },
+        {
+          "epoch": 16,
+          "trainLoss": 0.01146080866416569,
+          "validationLoss": 0.1978137493133545
+        },
+        {
+          "epoch": 17,
+          "trainLoss": 0.010979834154753362,
+          "validationLoss": 0.18062132596969604
+        },
+        {
+          "epoch": 18,
+          "trainLoss": 0.010577317577849884,
+          "validationLoss": 0.16190987825393677
+        },
+        {
+          "epoch": 19,
+          "trainLoss": 0.008081191131584661,
+          "validationLoss": 0.15451429784297943
+        },
+        {
+          "epoch": 20,
+          "trainLoss": 0.010458796171637221,
+          "validationLoss": 0.16468940675258636
+        },
+        {
+          "epoch": 21,
+          "trainLoss": 0.016338300955840938,
+          "validationLoss": 0.18662947416305542
+        },
+        {
+          "epoch": 22,
+          "trainLoss": 0.008527465456192998,
+          "validationLoss": 0.16866809129714966
+        },
+        {
+          "epoch": 23,
+          "trainLoss": 0.007434181648531487,
+          "validationLoss": 0.19553731381893158
+        },
+        {
+          "epoch": 24,
+          "trainLoss": 0.0076442343257841164,
+          "validationLoss": 0.201372891664505
+        },
+        {
+          "epoch": 25,
+          "trainLoss": 0.007765808341022328,
+          "validationLoss": 0.20491772890090942
+        },
+        {
+          "epoch": 26,
+          "trainLoss": 0.008706616742883698,
+          "validationLoss": 0.2088554948568344
+        },
+        {
+          "epoch": 27,
+          "trainLoss": 0.006245689342287764,
+          "validationLoss": 0.19793400168418884
+        },
+        {
+          "epoch": 28,
+          "trainLoss": 0.0059976346146560005,
+          "validationLoss": 0.21375446021556854
+        },
+        {
+          "epoch": 29,
+          "trainLoss": 0.0047765212879374115,
+          "validationLoss": 0.2184557020664215
+        },
+        {
+          "epoch": 30,
+          "trainLoss": 0.00519660109766538,
+          "validationLoss": 0.21049845218658447
+        },
+        {
+          "epoch": 31,
+          "trainLoss": 0.004692659465452041,
+          "validationLoss": 0.21483395993709564
+        },
+        {
+          "epoch": 32,
+          "trainLoss": 0.0054324895458718195,
+          "validationLoss": 0.22823333740234375
+        },
+        {
+          "epoch": 33,
+          "trainLoss": 0.015038163580742302,
+          "validationLoss": 0.2760055363178253
+        },
+        {
+          "epoch": 34,
+          "trainLoss": 0.0056783264075944565,
+          "validationLoss": 0.23957417905330658
+        },
+        {
+          "epoch": 35,
+          "trainLoss": 0.004018644636651793,
+          "validationLoss": 0.23578298091888428
+        },
+        {
+          "epoch": 36,
+          "trainLoss": 0.004785351420188386,
+          "validationLoss": 0.2586386203765869
+        },
+        {
+          "epoch": 37,
+          "trainLoss": 0.004541460481636084,
+          "validationLoss": 0.22358115017414093
+        },
+        {
+          "epoch": 38,
+          "trainLoss": 0.0049465872592517664,
+          "validationLoss": 0.24937671422958374
+        },
+        {
+          "epoch": 39,
+          "trainLoss": 0.0045678475269874145,
+          "validationLoss": 0.29330533742904663
+        },
+        {
+          "epoch": 40,
+          "trainLoss": 0.010743825918757081,
+          "validationLoss": 0.2478678822517395
+        }
+      ],
+      "perceptionGate": false
+    },
+    "static": {
+      "auroc": 0.9596880136380219,
+      "averagePrecision": 0.8833347405168135,
+      "frames": 7492,
+      "positiveFrames": 1680,
+      "selected": {
+        "threshold": 0.95,
+        "hazardTrajectories": 24,
+        "harmlessTrajectories": 40,
+        "timelyDetection": 0.4583333333333333,
+        "falseTrigger": 0.075,
+        "trajectories": [
+          {
+            "id": "tv-validation-incoming-0",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-1",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-incoming-2",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-3",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-incoming-4",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-5",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-6",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-7",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-0",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-parked-1",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-2",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-parked-3",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-4",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-parked-5",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-parked-6",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-parked-7",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-crossing-0",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-1",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-2",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-3",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-4",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-5",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-6",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-7",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-0",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-1",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-2",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-3",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-4",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-5",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-6",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-7",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-0",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-1",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-2",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-3",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-4",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-5",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-6",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-7",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-0",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-1",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-2",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-3",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-4",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-5",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-6",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-7",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-0",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-1",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-2",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-3",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-4",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-5",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-6",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-7",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-0",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-1",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-2",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-3",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-4",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-5",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-6",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-7",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          }
+        ]
+      },
+      "thresholds": [
+        {
+          "threshold": 0.6,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 1.0,
+          "falseTrigger": 0.375
+        },
+        {
+          "threshold": 0.7,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 1.0,
+          "falseTrigger": 0.35
+        },
+        {
+          "threshold": 0.8,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.9166666666666666,
+          "falseTrigger": 0.3
+        },
+        {
+          "threshold": 0.9,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.75,
+          "falseTrigger": 0.175
+        },
+        {
+          "threshold": 0.95,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.4583333333333333,
+          "falseTrigger": 0.075
+        },
+        {
+          "threshold": 0.98,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.2916666666666667,
+          "falseTrigger": 0.075
+        }
+      ],
+      "mode": "static",
+      "bestEpoch": 10,
+      "epochs": [
+        {
+          "epoch": 1,
+          "trainLoss": 0.34618224936016534,
+          "validationLoss": 0.29961615800857544
+        },
+        {
+          "epoch": 2,
+          "trainLoss": 0.2670103590619766,
+          "validationLoss": 0.26884162425994873
+        },
+        {
+          "epoch": 3,
+          "trainLoss": 0.23380367394726156,
+          "validationLoss": 0.27987906336784363
+        },
+        {
+          "epoch": 4,
+          "trainLoss": 0.21395541853823904,
+          "validationLoss": 0.24530643224716187
+        },
+        {
+          "epoch": 5,
+          "trainLoss": 0.19572513739941483,
+          "validationLoss": 0.23939558863639832
+        },
+        {
+          "epoch": 6,
+          "trainLoss": 0.1853633646111367,
+          "validationLoss": 0.2380886971950531
+        },
+        {
+          "epoch": 7,
+          "trainLoss": 0.17785777397832628,
+          "validationLoss": 0.24738973379135132
+        },
+        {
+          "epoch": 8,
+          "trainLoss": 0.16489218409031126,
+          "validationLoss": 0.23948854207992554
+        },
+        {
+          "epoch": 9,
+          "trainLoss": 0.15859929181761662,
+          "validationLoss": 0.23737642168998718
+        },
+        {
+          "epoch": 10,
+          "trainLoss": 0.15789944350214327,
+          "validationLoss": 0.23686787486076355
+        },
+        {
+          "epoch": 11,
+          "trainLoss": 0.14910524881492226,
+          "validationLoss": 0.2583828270435333
+        },
+        {
+          "epoch": 12,
+          "trainLoss": 0.14771077447270942,
+          "validationLoss": 0.2480931431055069
+        },
+        {
+          "epoch": 13,
+          "trainLoss": 0.13903124005360118,
+          "validationLoss": 0.2517111003398895
+        },
+        {
+          "epoch": 14,
+          "trainLoss": 0.1350145249043481,
+          "validationLoss": 0.2604700028896332
+        },
+        {
+          "epoch": 15,
+          "trainLoss": 0.13130700424060984,
+          "validationLoss": 0.25950419902801514
+        },
+        {
+          "epoch": 16,
+          "trainLoss": 0.12520176292223445,
+          "validationLoss": 0.27160799503326416
+        },
+        {
+          "epoch": 17,
+          "trainLoss": 0.1257204597784301,
+          "validationLoss": 0.26559919118881226
+        },
+        {
+          "epoch": 18,
+          "trainLoss": 0.11926695957022199,
+          "validationLoss": 0.2781071662902832
+        },
+        {
+          "epoch": 19,
+          "trainLoss": 0.12038599819702617,
+          "validationLoss": 0.2801741659641266
+        },
+        {
+          "epoch": 20,
+          "trainLoss": 0.11404067565197662,
+          "validationLoss": 0.2813722789287567
+        },
+        {
+          "epoch": 21,
+          "trainLoss": 0.1126605012154175,
+          "validationLoss": 0.2828502655029297
+        },
+        {
+          "epoch": 22,
+          "trainLoss": 0.1103190186796552,
+          "validationLoss": 0.30129575729370117
+        },
+        {
+          "epoch": 23,
+          "trainLoss": 0.10593243037997666,
+          "validationLoss": 0.29526975750923157
+        },
+        {
+          "epoch": 24,
+          "trainLoss": 0.10520878314214238,
+          "validationLoss": 0.2958355247974396
+        },
+        {
+          "epoch": 25,
+          "trainLoss": 0.101669933236504,
+          "validationLoss": 0.32406795024871826
+        },
+        {
+          "epoch": 26,
+          "trainLoss": 0.10551345405184616,
+          "validationLoss": 0.29457059502601624
+        },
+        {
+          "epoch": 27,
+          "trainLoss": 0.10036160563260822,
+          "validationLoss": 0.2994884252548218
+        },
+        {
+          "epoch": 28,
+          "trainLoss": 0.09481388958707704,
+          "validationLoss": 0.3079993426799774
+        },
+        {
+          "epoch": 29,
+          "trainLoss": 0.09661144144454245,
+          "validationLoss": 0.31998181343078613
+        },
+        {
+          "epoch": 30,
+          "trainLoss": 0.08964615289942693,
+          "validationLoss": 0.3208581209182739
+        },
+        {
+          "epoch": 31,
+          "trainLoss": 0.09119176798326484,
+          "validationLoss": 0.3418614864349365
+        },
+        {
+          "epoch": 32,
+          "trainLoss": 0.08831648793766055,
+          "validationLoss": 0.3363591730594635
+        },
+        {
+          "epoch": 33,
+          "trainLoss": 0.08448871518722025,
+          "validationLoss": 0.3686736822128296
+        },
+        {
+          "epoch": 34,
+          "trainLoss": 0.08423025082102266,
+          "validationLoss": 0.3330901265144348
+        },
+        {
+          "epoch": 35,
+          "trainLoss": 0.08153673621304965,
+          "validationLoss": 0.37364426255226135
+        },
+        {
+          "epoch": 36,
+          "trainLoss": 0.07998737803328845,
+          "validationLoss": 0.3852466642856598
+        },
+        {
+          "epoch": 37,
+          "trainLoss": 0.07654389843218408,
+          "validationLoss": 0.3957740068435669
+        },
+        {
+          "epoch": 38,
+          "trainLoss": 0.07861884042494378,
+          "validationLoss": 0.3614445924758911
+        },
+        {
+          "epoch": 39,
+          "trainLoss": 0.07610263337649531,
+          "validationLoss": 0.36597740650177
+        },
+        {
+          "epoch": 40,
+          "trainLoss": 0.08046424142637496,
+          "validationLoss": 0.37917280197143555
+        }
+      ],
+      "perceptionGate": false
+    },
+    "no-pose": {
+      "auroc": 0.9906774872309546,
+      "averagePrecision": 0.9729142804387951,
+      "frames": 7492,
+      "positiveFrames": 1680,
+      "selected": {
+        "threshold": 0.98,
+        "hazardTrajectories": 24,
+        "harmlessTrajectories": 40,
+        "timelyDetection": 0.875,
+        "falseTrigger": 0.1,
+        "trajectories": [
+          {
+            "id": "tv-validation-incoming-0",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-1",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-2",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-3",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-4",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-5",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-6",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-7",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-0",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-1",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-2",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-3",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-4",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-5",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-6",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-7",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-crossing-0",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-1",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-2",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-3",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-4",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-5",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-6",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-7",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-0",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-1",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-2",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-3",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-4",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-5",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-6",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-7",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-0",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-1",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-2",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-3",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-4",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-5",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-6",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-7",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-0",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-1",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-2",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-3",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-4",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-5",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-6",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-7",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-0",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-1",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-2",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-3",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-4",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-5",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-6",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-7",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-0",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-1",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-2",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-3",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-4",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-5",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-6",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-7",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          }
+        ]
+      },
+      "thresholds": [
+        {
+          "threshold": 0.6,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 1.0,
+          "falseTrigger": 0.225
+        },
+        {
+          "threshold": 0.7,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 1.0,
+          "falseTrigger": 0.2
+        },
+        {
+          "threshold": 0.8,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.9583333333333334,
+          "falseTrigger": 0.175
+        },
+        {
+          "threshold": 0.9,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.9583333333333334,
+          "falseTrigger": 0.175
+        },
+        {
+          "threshold": 0.95,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.9583333333333334,
+          "falseTrigger": 0.125
+        },
+        {
+          "threshold": 0.98,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.875,
+          "falseTrigger": 0.1
+        }
+      ],
+      "mode": "no-pose",
+      "bestEpoch": 8,
+      "epochs": [
+        {
+          "epoch": 1,
+          "trainLoss": 0.32824175729084826,
+          "validationLoss": 0.24727195501327515
+        },
+        {
+          "epoch": 2,
+          "trainLoss": 0.17486411825580112,
+          "validationLoss": 0.18075406551361084
+        },
+        {
+          "epoch": 3,
+          "trainLoss": 0.10894133690428937,
+          "validationLoss": 0.16069243848323822
+        },
+        {
+          "epoch": 4,
+          "trainLoss": 0.0752970856630196,
+          "validationLoss": 0.12256933748722076
+        },
+        {
+          "epoch": 5,
+          "trainLoss": 0.056408164991160574,
+          "validationLoss": 0.13583660125732422
+        },
+        {
+          "epoch": 6,
+          "trainLoss": 0.044805011538378264,
+          "validationLoss": 0.12609653174877167
+        },
+        {
+          "epoch": 7,
+          "trainLoss": 0.034541559516120764,
+          "validationLoss": 0.1248733177781105
+        },
+        {
+          "epoch": 8,
+          "trainLoss": 0.03303241699744584,
+          "validationLoss": 0.12188653647899628
+        },
+        {
+          "epoch": 9,
+          "trainLoss": 0.026067833068891096,
+          "validationLoss": 0.17764084041118622
+        },
+        {
+          "epoch": 10,
+          "trainLoss": 0.02242614182454171,
+          "validationLoss": 0.1804526299238205
+        },
+        {
+          "epoch": 11,
+          "trainLoss": 0.023222162538223852,
+          "validationLoss": 0.125660702586174
+        },
+        {
+          "epoch": 12,
+          "trainLoss": 0.0172331727117742,
+          "validationLoss": 0.17502109706401825
+        },
+        {
+          "epoch": 13,
+          "trainLoss": 0.014528325565506593,
+          "validationLoss": 0.20878295600414276
+        },
+        {
+          "epoch": 14,
+          "trainLoss": 0.014234175132113999,
+          "validationLoss": 0.17978022992610931
+        },
+        {
+          "epoch": 15,
+          "trainLoss": 0.012030670559428379,
+          "validationLoss": 0.21133428812026978
+        },
+        {
+          "epoch": 16,
+          "trainLoss": 0.012825254043090647,
+          "validationLoss": 0.23072879016399384
+        },
+        {
+          "epoch": 17,
+          "trainLoss": 0.01210471595858492,
+          "validationLoss": 0.22997838258743286
+        },
+        {
+          "epoch": 18,
+          "trainLoss": 0.010868634283739947,
+          "validationLoss": 0.20063459873199463
+        },
+        {
+          "epoch": 19,
+          "trainLoss": 0.008420931732763488,
+          "validationLoss": 0.17845390737056732
+        },
+        {
+          "epoch": 20,
+          "trainLoss": 0.010061024909546022,
+          "validationLoss": 0.17620722949504852
+        },
+        {
+          "epoch": 21,
+          "trainLoss": 0.01191071331820656,
+          "validationLoss": 0.22733603417873383
+        },
+        {
+          "epoch": 22,
+          "trainLoss": 0.010082609421707753,
+          "validationLoss": 0.1886146068572998
+        },
+        {
+          "epoch": 23,
+          "trainLoss": 0.00636051745761691,
+          "validationLoss": 0.2097775936126709
+        },
+        {
+          "epoch": 24,
+          "trainLoss": 0.006468078373611699,
+          "validationLoss": 0.24958109855651855
+        },
+        {
+          "epoch": 25,
+          "trainLoss": 0.00747132993508446,
+          "validationLoss": 0.22476796805858612
+        },
+        {
+          "epoch": 26,
+          "trainLoss": 0.006157910316379473,
+          "validationLoss": 0.2673397660255432
+        },
+        {
+          "epoch": 27,
+          "trainLoss": 0.008558101760434634,
+          "validationLoss": 0.2545338571071625
+        },
+        {
+          "epoch": 28,
+          "trainLoss": 0.007112032645682891,
+          "validationLoss": 0.23955728113651276
+        },
+        {
+          "epoch": 29,
+          "trainLoss": 0.006067127245749639,
+          "validationLoss": 0.24830971658229828
+        },
+        {
+          "epoch": 30,
+          "trainLoss": 0.007189378294288733,
+          "validationLoss": 0.2230614274740219
+        },
+        {
+          "epoch": 31,
+          "trainLoss": 0.0046184820883169424,
+          "validationLoss": 0.21898221969604492
+        },
+        {
+          "epoch": 32,
+          "trainLoss": 0.004023076189357306,
+          "validationLoss": 0.24040399491786957
+        },
+        {
+          "epoch": 33,
+          "trainLoss": 0.006375881342830973,
+          "validationLoss": 0.28304898738861084
+        },
+        {
+          "epoch": 34,
+          "trainLoss": 0.011429319988642187,
+          "validationLoss": 0.2624953091144562
+        },
+        {
+          "epoch": 35,
+          "trainLoss": 0.00587109140240315,
+          "validationLoss": 0.27086278796195984
+        },
+        {
+          "epoch": 36,
+          "trainLoss": 0.005968289462513077,
+          "validationLoss": 0.21657535433769226
+        },
+        {
+          "epoch": 37,
+          "trainLoss": 0.0043735429965220075,
+          "validationLoss": 0.25708770751953125
+        },
+        {
+          "epoch": 38,
+          "trainLoss": 0.004544320435882783,
+          "validationLoss": 0.25128886103630066
+        },
+        {
+          "epoch": 39,
+          "trainLoss": 0.003749533801317862,
+          "validationLoss": 0.30437758564949036
+        },
+        {
+          "epoch": 40,
+          "trainLoss": 0.010935980826554626,
+          "validationLoss": 0.2913796901702881
+        }
+      ],
+      "perceptionGate": true
+    }
+  }
+}

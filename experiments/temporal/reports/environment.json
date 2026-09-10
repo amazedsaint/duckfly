@@ -1,0 +1,12 @@
+{
+  "python": "3.11.9",
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "machine": "arm64",
+  "numpy": "1.26.2",
+  "torch": "2.7.1",
+  "sklearn": "1.7.0",
+  "node": "v24.19.0",
+  "threads": 4,
+  "trainingDevice": "cpu",
+  "fixedBaselineCommit": "8107e3b"
+}

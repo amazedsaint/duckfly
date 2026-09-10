@@ -1,0 +1,631 @@
+{
+  "promote": false,
+  "gates": {
+    "fullStudy": true,
+    "contactReduction": true,
+    "noExtraFalls": true,
+    "controlFalseStops": false,
+    "controlProgress": true,
+    "feedbackContacts": true
+  },
+  "summaries": {
+    "motion": {
+      "hazards": {
+        "trials": 64,
+        "contact": 0.28125,
+        "fallen": 0.0,
+        "progress": 0.3891231504700694,
+        "gf": 0.265625,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "controls": {
+        "trials": 64,
+        "contact": 0.015625,
+        "fallen": 0.0,
+        "progress": 0.32850461092995353,
+        "gf": 0.25,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "crossing": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.44159091349451407,
+        "gf": 0.125,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "empty": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.4438628691658751,
+        "gf": 0.25,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "incoming": {
+        "trials": 16,
+        "contact": 0.9375,
+        "fallen": 0.0,
+        "progress": 0.24006513899061016,
+        "gf": 0.375,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "near-miss": {
+        "trials": 16,
+        "contact": 0.0625,
+        "fallen": 0.0,
+        "progress": 0.4196729278702222,
+        "gf": 0.1875,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "parked": {
+        "trials": 16,
+        "contact": 0.1875,
+        "fallen": 0.0,
+        "progress": 0.4147514137061863,
+        "gf": 0.375,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "receding": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.44876021315487113,
+        "gf": 0.3125,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "retreat": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.46008513568896686,
+        "gf": 0.1875,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "scan": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.0017224335288457044,
+        "gf": 0.25,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      }
+    },
+    "motion-both": {
+      "hazards": {
+        "trials": 64,
+        "contact": 0.015625,
+        "fallen": 0.0,
+        "progress": 0.0854254776920024,
+        "gf": 1.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "controls": {
+        "trials": 64,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.06253335465470794,
+        "gf": 1.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "crossing": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.08435656061944041,
+        "gf": 1.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "empty": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.08826336482708472,
+        "gf": 1.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "incoming": {
+        "trials": 16,
+        "contact": 0.0625,
+        "fallen": 0.0,
+        "progress": 0.06374528568926296,
+        "gf": 1.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "near-miss": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.07768212118499244,
+        "gf": 1.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "parked": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.10230480352971058,
+        "gf": 1.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "receding": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.08246549907790886,
+        "gf": 1.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "retreat": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.09129526092959558,
+        "gf": 1.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "scan": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.0017224335288457044,
+        "gf": 1.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      }
+    },
+    "temporal-timed": {
+      "hazards": {
+        "trials": 64,
+        "contact": 0.21875,
+        "fallen": 0.0,
+        "progress": 0.33635240591587023,
+        "gf": 0.75,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "controls": {
+        "trials": 64,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.329017942804509,
+        "gf": 0.1875,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "crossing": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.4340528407069977,
+        "gf": 0.375,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "empty": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.45096142487649205,
+        "gf": 0.0625,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "incoming": {
+        "trials": 16,
+        "contact": 0.875,
+        "fallen": 0.0,
+        "progress": 0.2011724133929393,
+        "gf": 1.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "near-miss": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.4145340195019538,
+        "gf": 0.3125,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "parked": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.34865186414553984,
+        "gf": 0.875,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "receding": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.44885389331074466,
+        "gf": 0.25,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "retreat": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.3615325054180041,
+        "gf": 0.75,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "scan": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.0017224335288457044,
+        "gf": 0.125,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      }
+    },
+    "temporal-hazard": {
+      "hazards": {
+        "trials": 64,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.24629967178551243,
+        "gf": 0.75,
+        "heldSeconds": 2.115625,
+        "releases": 0.75
+      },
+      "controls": {
+        "trials": 64,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.3283386916078926,
+        "gf": 0.1875,
+        "heldSeconds": 0.1525,
+        "releases": 0.171875
+      },
+      "crossing": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.43314753701589787,
+        "gf": 0.375,
+        "heldSeconds": 0.2725,
+        "releases": 0.375
+      },
+      "empty": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.45096142487649205,
+        "gf": 0.0625,
+        "heldSeconds": 0.0575,
+        "releases": 0.0625
+      },
+      "incoming": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.04943753076059999,
+        "gf": 1.0,
+        "heldSeconds": 4.23,
+        "releases": 1.0625
+      },
+      "near-miss": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.411817014715488,
+        "gf": 0.3125,
+        "heldSeconds": 0.35250000000000004,
+        "releases": 0.3125
+      },
+      "parked": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.20519464914112612,
+        "gf": 0.875,
+        "heldSeconds": 2.44,
+        "releases": 0.75
+      },
+      "receding": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.44885389331074466,
+        "gf": 0.25,
+        "heldSeconds": 0.185,
+        "releases": 0.1875
+      },
+      "retreat": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.29741897022442576,
+        "gf": 0.75,
+        "heldSeconds": 1.52,
+        "releases": 0.8125
+      },
+      "scan": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.0017224335288457044,
+        "gf": 0.125,
+        "heldSeconds": 0.015,
+        "releases": 0.125
+      }
+    },
+    "static-hazard": {
+      "hazards": {
+        "trials": 64,
+        "contact": 0.046875,
+        "fallen": 0.0,
+        "progress": 0.25957849822146734,
+        "gf": 0.71875,
+        "heldSeconds": 1.9778125000000002,
+        "releases": 0.609375
+      },
+      "controls": {
+        "trials": 64,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.3300237592237253,
+        "gf": 0.203125,
+        "heldSeconds": 0.11125,
+        "releases": 0.21875
+      },
+      "crossing": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.41461178222943124,
+        "gf": 0.5,
+        "heldSeconds": 0.38250000000000006,
+        "releases": 0.5
+      },
+      "empty": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.4502809628689396,
+        "gf": 0.0625,
+        "heldSeconds": 0.035,
+        "releases": 0.0625
+      },
+      "incoming": {
+        "trials": 16,
+        "contact": 0.1875,
+        "fallen": 0.0,
+        "progress": 0.045100799639962275,
+        "gf": 1.0,
+        "heldSeconds": 4.24125,
+        "releases": 0.875
+      },
+      "near-miss": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.4091170793485362,
+        "gf": 0.4375,
+        "heldSeconds": 0.2975,
+        "releases": 0.5
+      },
+      "parked": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.24745706019205727,
+        "gf": 0.75,
+        "heldSeconds": 2.0525,
+        "releases": 0.4375
+      },
+      "receding": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.4589745611485797,
+        "gf": 0.1875,
+        "heldSeconds": 0.0975,
+        "releases": 0.1875
+      },
+      "retreat": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.3311443508244184,
+        "gf": 0.625,
+        "heldSeconds": 1.235,
+        "releases": 0.625
+      },
+      "scan": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.0017224335288457044,
+        "gf": 0.125,
+        "heldSeconds": 0.015,
+        "releases": 0.125
+      }
+    },
+    "temporal-gf-silenced": {
+      "hazards": {
+        "trials": 64,
+        "contact": 0.3125,
+        "fallen": 0.0,
+        "progress": 0.4140572926926581,
+        "gf": 0.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "controls": {
+        "trials": 64,
+        "contact": 0.015625,
+        "fallen": 0.0,
+        "progress": 0.34381217602746383,
+        "gf": 0.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "crossing": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.47785207972541155,
+        "gf": 0.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "empty": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.4553483037456941,
+        "gf": 0.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "incoming": {
+        "trials": 16,
+        "contact": 0.9375,
+        "fallen": 0.0,
+        "progress": 0.23790783299840423,
+        "gf": 0.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "near-miss": {
+        "trials": 16,
+        "contact": 0.0625,
+        "fallen": 0.0,
+        "progress": 0.4418906415779629,
+        "gf": 0.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "parked": {
+        "trials": 16,
+        "contact": 0.3125,
+        "fallen": 0.0,
+        "progress": 0.4600868979216964,
+        "gf": 0.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "receding": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.4762873252573528,
+        "gf": 0.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "retreat": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.4803823601251204,
+        "gf": 0.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      },
+      "scan": {
+        "trials": 16,
+        "contact": 0.0,
+        "fallen": 0.0,
+        "progress": 0.0017224335288457044,
+        "gf": 0.0,
+        "heldSeconds": 0.0,
+        "releases": 0.0
+      }
+    }
+  },
+  "contactReductionVsMotion": {
+    "motion-both": {
+      "pairs": 64,
+      "mean": 0.265625,
+      "ci95": [
+        0.15625,
+        0.375
+      ]
+    },
+    "temporal-timed": {
+      "pairs": 64,
+      "mean": 0.0625,
+      "ci95": [
+        0.015625,
+        0.125
+      ]
+    },
+    "temporal-hazard": {
+      "pairs": 64,
+      "mean": 0.28125,
+      "ci95": [
+        0.171875,
+        0.390625
+      ]
+    },
+    "static-hazard": {
+      "pairs": 64,
+      "mean": 0.234375,
+      "ci95": [
+        0.125,
+        0.34375
+      ]
+    },
+    "temporal-gf-silenced": {
+      "pairs": 64,
+      "mean": -0.03125,
+      "ci95": [
+        -0.09375,
+        0.03125
+      ]
+    }
+  },
+  "feedbackContactReductionVsTimer": {
+    "pairs": 64,
+    "mean": 0.21875,
+    "ci95": [
+      0.125,
+      0.328125
+    ]
+  },
+  "temporalContactReductionVsStatic": {
+    "pairs": 64,
+    "mean": 0.046875,
+    "ci95": [
+      0.0,
+      0.109375
+    ]
+  },
+  "gfAblationContactIncrease": {
+    "pairs": 64,
+    "mean": 0.3125,
+    "ci95": [
+      0.203125,
+      0.4222656249999943
+    ]
+  }
+}

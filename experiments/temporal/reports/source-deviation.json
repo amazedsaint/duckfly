@@ -1,0 +1,11 @@
+{
+  "intendedSha256": "04080930421a3b9a0269fc1d891fdf4670b698bdf93082f27523ee1b519785e3",
+  "executedSha256": "abdcf2b4762b9f68aadb9d6bd8d22d35b98bcaff4058eb15cf037388e12f89f3",
+  "servedModuleSha256": "6d3fbf7985cfdfa9f71b4394e98edeb13e818c90f0c47d3a9bced6e0b76d8d8d",
+  "recoveredFrom": "Vite inline source map sourcesContent, reversing only the two known Vite import URL rewrites",
+  "difference": "Incoming-object motion changes ran at motor ticks rather than being rounded to regular camera ticks. Forced capture adds 41 training and 9 validation samples.",
+  "trainingFrames": 32041,
+  "validationFrames": 8009,
+  "retunedAfterDiscovery": false,
+  "workingSourceRestoredToExecutedVersion": true
+}

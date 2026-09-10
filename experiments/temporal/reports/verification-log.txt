@@ -1,0 +1,60 @@
+{
+  "sourceGuardAcceptedFreshAndRejectedStale": true,
+  "completePhysicalStudy": true,
+  "stereoTrainingValidationFrames": 40050,
+  "receipts": [
+    {
+      "path": "experiments/temporal/reports/temporal-train-v1.json.gz",
+      "sha256": "125f278007bc6e110a5d0963868786d3f155b147a5f1daedd5317d69916b1964",
+      "trials": 256,
+      "complete": true,
+      "incrementalSha256": "b9b3ab78b046eb9a9875997c5a0478a516ad75e1d050f529b558a1ae1003df94",
+      "losslessWorkingLogMatch": true,
+      "stereoFrames": 32041
+    },
+    {
+      "path": "experiments/temporal/reports/temporal-validation-v1.json.gz",
+      "sha256": "e3b5c9813db82c87704f670ad3e3366e1e1c43af7c891e8ea234f88325e8a6d8",
+      "trials": 64,
+      "complete": true,
+      "incrementalSha256": "5359a462bf73814b0b2dbd12a54ca8201acef0fd08f0b6595a782951c8df3088",
+      "losslessWorkingLogMatch": true,
+      "stereoFrames": 8009
+    },
+    {
+      "path": "experiments/temporal/reports/temporal-physical-confirm-v1.json.gz",
+      "sha256": "3963af4d913712f9dda94de42b3cb77355e11edb4ace52f45fa0b7bc00b440f1",
+      "trials": 768,
+      "complete": true,
+      "incrementalSha256": "27309967029fb7fdfeb9aa6cccfd03760c31cf0ab2ae1b66457dae48d43ab562",
+      "losslessWorkingLogMatch": true,
+      "motorTicks": 192000,
+      "simulatedSeconds": 3840.0,
+      "artifactHashMatches": true
+    },
+    {
+      "path": "experiments/temporal/reports/temporal-guard-check-v1.json.gz",
+      "sha256": "0ca58579acd08f877efe338e6221519db419b049be940cff2ed4ea032af60d03",
+      "trials": 8,
+      "complete": true,
+      "incrementalSha256": "2df82046e09585005cae86e33ce2a26a1dcd979ef2af1e52d4999d2fd1314852",
+      "losslessWorkingLogMatch": true,
+      "executedSourceReceiptVerified": true
+    }
+  ],
+  "intendedSourcesArchived": true,
+  "executedSourcesMatch": true,
+  "verifiedAgainstArchivedStudySources": true,
+  "sourceDeviation": {
+    "intendedSha256": "04080930421a3b9a0269fc1d891fdf4670b698bdf93082f27523ee1b519785e3",
+    "executedSha256": "abdcf2b4762b9f68aadb9d6bd8d22d35b98bcaff4058eb15cf037388e12f89f3",
+    "servedModuleSha256": "6d3fbf7985cfdfa9f71b4394e98edeb13e818c90f0c47d3a9bced6e0b76d8d8d",
+    "recoveredFrom": "Vite inline source map sourcesContent, reversing only the two known Vite import URL rewrites",
+    "difference": "Incoming-object motion changes ran at motor ticks rather than being rounded to regular camera ticks. Forced capture adds 41 training and 9 validation samples.",
+    "trainingFrames": 32041,
+    "validationFrames": 8009,
+    "retunedAfterDiscovery": false,
+    "workingSourceRestoredToExecutedVersion": true
+  },
+  "circuitAndWalkingPolicyUnchanged": true
+}

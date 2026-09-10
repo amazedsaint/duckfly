@@ -91,6 +91,11 @@ Webcam angular calibration is explicitly unknown until measured.
 See [validation and limitations](docs/implementation/vision-v2/implementation.md)
 and the [reference reproduction instructions](research/fly-vision/README.md).
 
+The [temporal vision study](experiments/temporal/README.md) trains a small decoder on
+recorded walking-camera sequences and tests a GF-triggered stop/resume loop against
+matched controls. It includes an interactive retinal replay and retained experimental
+evidence. Research candidates are separate from the app's default controllers.
+
 ## Sources and scope
 
 Based on [DesktopFly](https://github.com/DenisSergeevitch/desktop-fly) and [Microduck RL](https://github.com/pollen-robotics/microduck_rl). Original DuckFly code is Apache-2.0. DesktopFly code is MIT. Included FlyWire-derived data is **CC BY-NC 4.0**, requiring attribution and noncommercial use. See [third-party notices](THIRD_PARTY_NOTICES.md).

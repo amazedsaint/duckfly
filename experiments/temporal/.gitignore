@@ -1,0 +1,4 @@
+# Exact completed payloads and audit receipts are retained in compressed reports.
+# Incremental append-only logs remain on disk for inspection.
+reports/*.jsonl
+__pycache__/

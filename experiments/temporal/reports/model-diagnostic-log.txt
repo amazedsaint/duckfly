@@ -1,0 +1,17 @@
+{
+  "temporal": {
+    "auroc": 0.9919,
+    "timely": 0.9166666666666666,
+    "falseTrigger": 0.125
+  },
+  "wrong-pose": {
+    "auroc": 0.9914,
+    "timely": 0.875,
+    "falseTrigger": 0.1
+  },
+  "reverse-time": {
+    "auroc": 0.7884,
+    "timely": 0.4583333333333333,
+    "falseTrigger": 0.3
+  }
+}

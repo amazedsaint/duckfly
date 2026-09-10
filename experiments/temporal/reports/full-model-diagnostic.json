@@ -1,0 +1,1526 @@
+{
+  "status": "Failed-model diagnostic, fixed threshold 0.98, not eligible for promotion",
+  "conditions": {
+    "temporal": {
+      "auroc": 0.9919087456294272,
+      "averagePrecision": 0.9769210268052088,
+      "frames": 7492,
+      "positiveFrames": 1680,
+      "selected": {
+        "threshold": 0.98,
+        "hazardTrajectories": 24,
+        "harmlessTrajectories": 40,
+        "timelyDetection": 0.9166666666666666,
+        "falseTrigger": 0.125,
+        "trajectories": [
+          {
+            "id": "tv-validation-incoming-0",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-1",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-2",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-3",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-4",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-5",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-6",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-7",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-0",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-1",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-2",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-3",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-4",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-5",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-6",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-7",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-crossing-0",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-1",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-2",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-3",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-4",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-5",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-6",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-7",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-0",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-1",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-2",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-3",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-4",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-5",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-6",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-7",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-0",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-1",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-2",
+            "family": "receding",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-3",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-4",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-5",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-6",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-7",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-0",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-1",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-2",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-3",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-4",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-5",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-6",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-7",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-0",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-1",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-2",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-3",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-4",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-5",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-6",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-7",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-0",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-1",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-2",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-3",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-4",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-5",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-6",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-7",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          }
+        ]
+      },
+      "thresholds": [
+        {
+          "threshold": 0.6,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 1.0,
+          "falseTrigger": 0.25
+        },
+        {
+          "threshold": 0.7,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 1.0,
+          "falseTrigger": 0.2
+        },
+        {
+          "threshold": 0.8,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 1.0,
+          "falseTrigger": 0.15
+        },
+        {
+          "threshold": 0.9,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 1.0,
+          "falseTrigger": 0.125
+        },
+        {
+          "threshold": 0.95,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.9583333333333334,
+          "falseTrigger": 0.125
+        },
+        {
+          "threshold": 0.98,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.9166666666666666,
+          "falseTrigger": 0.125
+        }
+      ]
+    },
+    "wrong-pose": {
+      "auroc": 0.991365999633041,
+      "averagePrecision": 0.9748646374853203,
+      "frames": 7492,
+      "positiveFrames": 1680,
+      "selected": {
+        "threshold": 0.98,
+        "hazardTrajectories": 24,
+        "harmlessTrajectories": 40,
+        "timelyDetection": 0.875,
+        "falseTrigger": 0.1,
+        "trajectories": [
+          {
+            "id": "tv-validation-incoming-0",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-1",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-2",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-3",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-4",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-5",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-6",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-7",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-0",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-1",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-2",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-3",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-4",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-5",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-6",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-parked-7",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-crossing-0",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-1",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-2",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-3",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-4",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-5",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-6",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-7",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-0",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-1",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-2",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-3",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-4",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-5",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-6",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-7",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-0",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-1",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-2",
+            "family": "receding",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-3",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-4",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-5",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-6",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-7",
+            "family": "receding",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-0",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-1",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-2",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-3",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-4",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-5",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-6",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-7",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-0",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-1",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-2",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-3",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-4",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-5",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-6",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-7",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-0",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-1",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-2",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-3",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-4",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-5",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-6",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-7",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          }
+        ]
+      },
+      "thresholds": [
+        {
+          "threshold": 0.6,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 1.0,
+          "falseTrigger": 0.25
+        },
+        {
+          "threshold": 0.7,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 1.0,
+          "falseTrigger": 0.2
+        },
+        {
+          "threshold": 0.8,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 1.0,
+          "falseTrigger": 0.175
+        },
+        {
+          "threshold": 0.9,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 1.0,
+          "falseTrigger": 0.15
+        },
+        {
+          "threshold": 0.95,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 1.0,
+          "falseTrigger": 0.125
+        },
+        {
+          "threshold": 0.98,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.875,
+          "falseTrigger": 0.1
+        }
+      ]
+    },
+    "reverse-time": {
+      "auroc": 0.7883669668309154,
+      "averagePrecision": 0.5255396829046494,
+      "frames": 7492,
+      "positiveFrames": 1680,
+      "selected": {
+        "threshold": 0.98,
+        "hazardTrajectories": 24,
+        "harmlessTrajectories": 40,
+        "timelyDetection": 0.4583333333333333,
+        "falseTrigger": 0.3,
+        "trajectories": [
+          {
+            "id": "tv-validation-incoming-0",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-1",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-2",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-3",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-4",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-5",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-6",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-incoming-7",
+            "family": "incoming",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-parked-0",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-parked-1",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-parked-2",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-parked-3",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-parked-4",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-parked-5",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-parked-6",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-parked-7",
+            "family": "parked",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-0",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-1",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-2",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-3",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-4",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-5",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-6",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-crossing-7",
+            "family": "crossing",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-0",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-1",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-2",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-3",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-4",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-5",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-6",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-near-miss-7",
+            "family": "near-miss",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-0",
+            "family": "receding",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-1",
+            "family": "receding",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-2",
+            "family": "receding",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-3",
+            "family": "receding",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-4",
+            "family": "receding",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-5",
+            "family": "receding",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-6",
+            "family": "receding",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-receding-7",
+            "family": "receding",
+            "hazard": false,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-0",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-1",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-2",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-3",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-4",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-5",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-6",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-empty-7",
+            "family": "empty",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-0",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-1",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-2",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-3",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-4",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-5",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-6",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-scan-7",
+            "family": "scan",
+            "hazard": false,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-0",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-1",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": false,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-2",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-3",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-4",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-5",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          },
+          {
+            "id": "tv-validation-retreat-6",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": true
+          },
+          {
+            "id": "tv-validation-retreat-7",
+            "family": "retreat",
+            "hazard": true,
+            "trigger": true,
+            "timely": false
+          }
+        ]
+      },
+      "thresholds": [
+        {
+          "threshold": 0.6,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.7916666666666666,
+          "falseTrigger": 0.425
+        },
+        {
+          "threshold": 0.7,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.75,
+          "falseTrigger": 0.375
+        },
+        {
+          "threshold": 0.8,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.7083333333333334,
+          "falseTrigger": 0.35
+        },
+        {
+          "threshold": 0.9,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.625,
+          "falseTrigger": 0.325
+        },
+        {
+          "threshold": 0.95,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.5416666666666666,
+          "falseTrigger": 0.325
+        },
+        {
+          "threshold": 0.98,
+          "hazardTrajectories": 24,
+          "harmlessTrajectories": 40,
+          "timelyDetection": 0.4583333333333333,
+          "falseTrigger": 0.3
+        }
+      ]
+    }
+  }
+}

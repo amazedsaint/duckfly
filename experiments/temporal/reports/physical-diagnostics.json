@@ -1,0 +1,94 @@
+{
+  "status": "Post-study diagnostic, not a new gate or selected model",
+  "controlStops": [
+    {
+      "id": "tv-confirm-near-miss-0",
+      "firstGF": 0.8,
+      "firstVisualPulse": 0.8,
+      "anyPositiveRiskLabel": false,
+      "heldSeconds": 1.48
+    },
+    {
+      "id": "tv-confirm-near-miss-8",
+      "firstGF": 3.52,
+      "firstVisualPulse": 3.52,
+      "anyPositiveRiskLabel": false,
+      "heldSeconds": 0.88
+    },
+    {
+      "id": "tv-confirm-near-miss-11",
+      "firstGF": 4.5600000000000005,
+      "firstVisualPulse": 4.5600000000000005,
+      "anyPositiveRiskLabel": false,
+      "heldSeconds": 0.44
+    },
+    {
+      "id": "tv-confirm-near-miss-14",
+      "firstGF": 3.96,
+      "firstVisualPulse": 3.96,
+      "anyPositiveRiskLabel": false,
+      "heldSeconds": 0.68
+    },
+    {
+      "id": "tv-confirm-near-miss-15",
+      "firstGF": 1.12,
+      "firstVisualPulse": 1.12,
+      "anyPositiveRiskLabel": false,
+      "heldSeconds": 2.16
+    },
+    {
+      "id": "tv-confirm-receding-4",
+      "firstGF": 4.24,
+      "firstVisualPulse": 4.24,
+      "anyPositiveRiskLabel": false,
+      "heldSeconds": 0.76
+    },
+    {
+      "id": "tv-confirm-receding-7",
+      "firstGF": 3.12,
+      "firstVisualPulse": 3.12,
+      "anyPositiveRiskLabel": false,
+      "heldSeconds": 0.92
+    },
+    {
+      "id": "tv-confirm-receding-8",
+      "firstGF": 0,
+      "firstVisualPulse": 0,
+      "anyPositiveRiskLabel": false,
+      "heldSeconds": 1.08
+    },
+    {
+      "id": "tv-confirm-receding-12",
+      "firstGF": 4.8,
+      "firstVisualPulse": 4.8,
+      "anyPositiveRiskLabel": false,
+      "heldSeconds": 0.2
+    },
+    {
+      "id": "tv-confirm-empty-2",
+      "firstGF": 3.88,
+      "firstVisualPulse": 3.88,
+      "anyPositiveRiskLabel": false,
+      "heldSeconds": 0.92
+    },
+    {
+      "id": "tv-confirm-scan-6",
+      "firstGF": 1.16,
+      "firstVisualPulse": null,
+      "anyPositiveRiskLabel": false,
+      "heldSeconds": 0.12
+    },
+    {
+      "id": "tv-confirm-scan-15",
+      "firstGF": 0.92,
+      "firstVisualPulse": null,
+      "anyPositiveRiskLabel": false,
+      "heldSeconds": 0.12
+    }
+  ],
+  "visualPulseAssociatedStops": 10,
+  "GFWithoutVisualPulse": 2,
+  "newFallsVsBaseline": [],
+  "traceExample": "tv-confirm-incoming-1",
+  "exampleSelection": "First lexicographic case with timer contact and no hazard-hold contact"
+}

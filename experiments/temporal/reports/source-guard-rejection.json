@@ -1,0 +1,5 @@
+{
+  "test": "Cached harness after a harmless on-disk comment change",
+  "status": "ERROR: Error: Stale research module: web/tests/temporal-harness.js. Restart the server before a new study.\n    at retain (http://127.0.0.1:5190/tests/temporal-harness.js:11:183)\n    at async http://127.0.0.1:5190/tests/temporal-harness.js:15:57",
+  "expected": "Rejected before writing a study header"
+}
