@@ -21,3 +21,9 @@ The MuJoCo environment, fly circuit, walking policy, camera adapters, and resear
 Screenshots record the current-run review and its refinements. `before-narrow.png` is the previous production interface. `focus-desktop.png` and `narrow.png` show the new layout; `guided-560.png` shows controls deliberately opened inside the compact workspace. Opening controls in a short window can scroll the arena out of that pane until the controls are folded again. The brain stays in its own dock.
 
 Keyboard and layout checks are bounded checks, not a full accessibility certification. This release changes the interface, not the scientific validation status of the experiments.
+
+## Release
+
+Published to the existing ContextMind project at https://duckfly.vercel.app/. Production HTML and its main JavaScript/CSS files match the tested local build byte for byte. Verified a running scene and Focus mode on the public page, then left the scenario chooser open. The installed Mac app is version 0.6.0, build 6; all 61 packaged files match the signed build, and the installed app's new controls were inspected through its native accessibility tree.
+
+`before-comparison.png` and `after-comparison.png` show the same paused Follow the beacon starting state at 563×811. The arena grows from about 314 to 426 pixels tall with controls folded, while both live monitors remain in the dock.

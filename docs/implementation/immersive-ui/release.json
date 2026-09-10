@@ -1,0 +1,22 @@
+{
+  "verifiedAt": "2026-09-10T21:33:10.651099+00:00",
+  "sourceCommit": "37b2d18144b247b02ac07c760aadfa0957acbf77",
+  "publicUrl": "https://duckfly.vercel.app/",
+  "deployment": {
+    "id": "dpl_9m9pffQmME7stwkEaQnoEjXBcFBK",
+    "url": "https://duckfly-afc7inqtr-contextmind.vercel.app",
+    "inspectorUrl": "https://vercel.com/contextmind/duckfly/9m9pffQmME7stwkEaQnoEjXBcFBK",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_9m9pffQmME7stwkEaQnoEjXBcFBK"
+  },
+  "mac": {
+    "version": "0.6.0",
+    "build": "6",
+    "installedPath": "/Users/madhusudanaa/Applications/DuckFly.app",
+    "matchedFiles": 61,
+    "identical": true
+  },
+  "productionBundlesMatch": true,
+  "browserVerified": "Live production scenario, physical movement, camera view, neural canvas and Focus mode verified through the in-app browser. Returned to scenario home."
+}
