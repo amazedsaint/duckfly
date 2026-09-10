@@ -14,18 +14,19 @@ open mac/build/DuckFly.app
 
 The signed local build is written to `mac/build/DuckFly.app`. It contains its web assets and engines. Copy it to `~/Applications` to use it independently of the checkout. It is an Apple Silicon build targeting macOS 14+, signed locally rather than notarized for public distribution.
 
-All experiment controls are documented in the [root README](../README.md). Native **Save/Open** use macOS file dialogs. The latest scene is retained in the app's preferences. **Enable webcam** requests camera access after an explicit click; **Stop webcam** releases all tracks. The native permission delegate permits camera requests only from the app's own main frame and denies microphone capture.
+All experiment controls are documented in the [root README](../README.md). Native **Save scene/Open file** use macOS file dialogs. The latest scene is retained in the app's preferences. **Use my camera** requests camera access after an explicit click; **Stop webcam** releases all tracks. The native permission delegate permits camera requests only from the app's own main frame and denies microphone capture.
 
 ## Verification
 
 ```sh
 mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test
+mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-playground
 mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-vision
 ```
 
 The packaged self-test launches the actual WKWebView and drives the bundled workspace. It uses a nonpersistent data store and does not alter the user's saved scene. Camera checks use a denied stub and synthetic canvas stream; they do not activate the physical camera. Test receipts and visual review are tracked in `docs/implementation/`.
 
-`Host/main.swift` implements the shell, origin restrictions and native downloads. `Tests/workspace-smoke.js` supplies native workspace acceptance checks.
+`Host/main.swift` implements the shell, origin restrictions and native downloads. `Tests/playground-smoke.js` checks the simplified home and persistent brain dock. `Tests/workspace-smoke.js` supplies native workspace acceptance checks.
 `Tests/vision-smoke.js` checks the retinal bench and full Flyvis inference. The
 verified model is bundled; Python and Rust are needed only to regenerate the
 research export, not to build or use the app.

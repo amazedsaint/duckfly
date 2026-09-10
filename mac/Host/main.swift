@@ -61,7 +61,7 @@ final class AssetServer {
             guard file.path.hasPrefix(self.root.path + "/"), let bytes = try? Data(contentsOf: file, options: .mappedIfSafe) else {
                 self.reply(connection, status: "404 Not Found", data: Data("Not found".utf8), mime: "text/plain", head: first[0] == "HEAD"); return
             }
-            let mime = ["html":"text/html; charset=utf-8", "js":"text/javascript", "mjs":"text/javascript", "css":"text/css", "json":"application/json", "wasm":"application/wasm", "gz":"application/gzip", "svg":"image/svg+xml", "md":"text/plain; charset=utf-8"][file.pathExtension] ?? "application/octet-stream"
+            let mime = ["html":"text/html; charset=utf-8", "js":"text/javascript", "mjs":"text/javascript", "css":"text/css", "json":"application/json", "wasm":"application/wasm", "gz":"application/gzip", "svg":"image/svg+xml", "png":"image/png", "jpg":"image/jpeg", "jpeg":"image/jpeg", "webp":"image/webp", "md":"text/plain; charset=utf-8"][file.pathExtension] ?? "application/octet-stream"
             self.reply(connection, status: "200 OK", data: bytes, mime: mime, head: first[0] == "HEAD")
         }
     }
@@ -81,7 +81,7 @@ final class AssetServer {
     var testStarted = false
     var downloads: [ObjectIdentifier: (temporary: URL, destination: URL)] = [:]
     var testDeadline = Date().addingTimeInterval(90)
-    let testing = CommandLine.arguments.contains("--self-test") || CommandLine.arguments.contains("--self-test-room") || CommandLine.arguments.contains("--self-test-vision")
+    let testing = CommandLine.arguments.contains("--self-test-playground") || CommandLine.arguments.contains("--self-test") || CommandLine.arguments.contains("--self-test-room") || CommandLine.arguments.contains("--self-test-vision")
     func applicationDidFinishLaunching(_ notification: Notification) {
         let menu = NSMenu()
         let appItem = NSMenuItem(); menu.addItem(appItem)
@@ -106,8 +106,8 @@ final class AssetServer {
         web.navigationDelegate = self; web.uiDelegate = self
         web.isInspectable = true
         window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 1320, height: 860), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
-        window.title = "DuckFly · Experiment Workspace"
-        window.minSize = NSSize(width: 900, height: 670)
+        window.title = "DuckFly · Fly Brain Playground"
+        window.minSize = NSSize(width: 560, height: 640)
         window.contentView = web; window.center(); window.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
         guard let root = Bundle.main.resourceURL?.appendingPathComponent("Web") else { fatalError("Bundled workspace missing") }
@@ -182,7 +182,7 @@ final class AssetServer {
                 guard (try? await self.web.evaluateJavaScript("window.duckflyTelemetry?.ready === true")) as? Bool == true else { return }
                 self.testStarted = true; self.testTimer?.invalidate()
                 do {
-                    let path = Bundle.main.resourceURL!.appendingPathComponent(CommandLine.arguments.contains("--self-test-room") ? "RoomSmoke.js" : CommandLine.arguments.contains("--self-test-vision") ? "VisionSmoke.js" : "NativeSmoke.js")
+                    let path = Bundle.main.resourceURL!.appendingPathComponent(CommandLine.arguments.contains("--self-test-playground") ? "PlaygroundSmoke.js" : CommandLine.arguments.contains("--self-test-room") ? "RoomSmoke.js" : CommandLine.arguments.contains("--self-test-vision") ? "VisionSmoke.js" : "NativeSmoke.js")
                     let script = try String(contentsOf: path, encoding: .utf8)
                     let result = try await self.web.callAsyncJavaScript(script, arguments: [:], in: nil, contentWorld: .page)
                     let data = try JSONSerialization.data(withJSONObject: result ?? [])

@@ -42,25 +42,26 @@ Node 22.12+ is required for development. The resulting Mac app can be copied to 
 
 ## Conduct an experiment
 
-Choose **Follow the beacon** and press **Run**. The duck uses its head camera to detect the magenta target. **Out of sight** adds a physical wall; **Approaching threat** introduces a moving visual hazard. **Follow the flock** gives each duck an independent circuit and camera in the same physical world.
+Start with a scenario tile on the home page. Each tile explains what to try and opens a running experiment. **Follow the beacon** uses camera input to follow a magenta target; **Out of sight** lets you block that view with a wall. **Follow the flock** gives every duck its own circuit in the same physical world.
 
-The left panel edits the scene. Drag props in the arena to reposition them, or select an object to edit exact properties in the right inspector. **Apply and reset** rebuilds the arena; **Move in current run** changes a prop without restarting. Add light or odor fields and choose the matching controller to explore modeled sensory responses.
+The brain dock stays visible beside the scene, or below it in a compact window. Click a duck in the arena or its object chip to watch its eye view and neural activity. Selecting a prop keeps the same duck connected. **Cover eyes** is a one-click reversible intervention. The **Why?** button explains the latest visual input and resulting body command. Manual and reactive controllers are labeled as bypassing circuit control.
 
-The inspector exposes eye covering and neuron silencing. Open **Neural activity** for the circuit view. Click the explanation below the arena to inspect the visual signal, neural response and resulting command from a recorded tick.
+Drag props to reposition them, or select one and use the directional buttons below the arena. A running experiment resumes when the drag ends. **Add object** offers ducks and common props; adding one restarts the scene. New ducks connect to the brain dock immediately. **Scene tools** holds exact object settings and advanced experiment controls. Shape changes use **Apply and reset**; position edits use **Move in current run**.
 
-The timeline keeps a bounded recent history. Rewind to a checkpoint and run to replay recorded visual input, or change a cue and branch. **Save** exports the scene and seed; **Export recording** includes complete physical/neural state and low-resolution camera frames. **Open** accepts scenes, recordings and saved adapter reports.
+**Scene tools → Recordings & replay** retains the bounded timeline. Rewind to replay recorded input or change a cue and branch. **More → Save scene** exports the scene and seed. **Export recording** also includes physical/neural state and low-resolution frames. **More → Open file** accepts scenes, recordings and adapter reports. Returning to **Scenarios** pauses the local world; **Continue your scene** returns without restarting it.
 
-Under **Experiment tools**, compare controllers on matched target trials or search sensory-adapter weights. Learning uses separate training and held-out target placements and retains the original weights if its promotion gate fails. These are bounded experiments, not evidence of biological validity or general superiority.
+Under **Scene tools → Experiment tools**, compare controllers on matched target trials or search sensory-adapter weights. Learning uses held-out placements and retains the original weights if the promotion gate fails. These bounded experiments do not establish biological validity or general superiority.
 
-**Enable webcam** requests camera access only when clicked. Choose the webcam as a duck's vision source. Frames are processed locally and are included only if you export a recording. **Stop webcam** releases the camera.
+**Use my camera** requests access and connects the camera to the watched duck immediately. Frames stay on the device unless you export a recording. **Stop webcam** releases the camera and returns connected ducks to their own eye cameras.
 
-**Collaborate** pairs a host with one guest through manually exchanged invitation/reply codes. The host owns the physics clock; both can edit the scene. Restricted networks may require a TURN relay configured in the connection settings. No shared room directory or hosted relay is included. See the retained [acceptance ledger](docs/implementation/experiment-workspace.md) for measured coverage and remaining checks.
+**More → Collaborate** pairs a host with one guest through manually exchanged invitation/reply codes. The host owns the physics clock; both can edit the scene. Restricted networks may require a TURN relay configured in the connection settings. No shared room directory or hosted relay is included. See the retained [acceptance ledger](docs/implementation/experiment-workspace.md) for measured coverage and remaining checks.
 
 ## Deploy and verify
 
 ```sh
 npm test --prefix web
 mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test
+mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-playground
 npx vercel deploy --prod --scope contextmind
 ```
 
@@ -68,7 +69,7 @@ Deploy from the repository root. `vercel.json` installs `web/` dependencies and 
 
 ## Vision laboratory
 
-Open **Experiment tools → Retinal stimulus bench** to compare the compact motion
+Open **Scene tools → Experiment tools → Retinal stimulus bench** to compare the compact motion
 baseline with the full Flyvis reference. The viewer shows a calibrated image and
 its 721 retinal samples; Flyvis runs all 45,669 modeled cells locally and displays
 T4/T5 activity. The full reference has not been promoted to body control.

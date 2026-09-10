@@ -1,0 +1,37 @@
+{
+  "url": "https://duckfly.vercel.app",
+  "localEntryAssets": [
+    "/assets/index-CODtnlZL.js",
+    "/assets/index-B_P9AJdR.css"
+  ],
+  "productionEntryAssets": [
+    "/assets/index-CODtnlZL.js",
+    "/assets/index-B_P9AJdR.css"
+  ],
+  "entryAssetsMatch": true,
+  "engineTests": 36,
+  "nativeWorkspace": "passed",
+  "nativePlayground": "passed",
+  "viewports": [
+    {
+      "width": 390,
+      "height": 844,
+      "brainVisible": true,
+      "eyeVisible": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 563,
+      "height": 811,
+      "brainTop": 570.5,
+      "toolsBottom": 514,
+      "eyeBottom": 675,
+      "horizontalOverflow": false
+    }
+  ],
+  "installedMacEntryAssets": [
+    "/assets/index-CODtnlZL.js",
+    "/assets/index-B_P9AJdR.css"
+  ],
+  "macMatchesProduction": true
+}
