@@ -1,0 +1,8 @@
+### Result
+{"model":"motion-opponency-v1","flashQuiet":true,"buttonEnabled":true,"defaultModel":"marker-v1"}
+### Ran Playwright code
+```js
+await (async (page) => {await page.reload();await page.waitForFunction(()=>window.duckflyTelemetry?.ready);await page.getByText('Experiment tools',{exact:true}).click();await page.locator('#vision-bench').click();await page.locator('#bench-model').selectOption('flyvis-000');await page.locator('#bench-run').click();await page.locator('#bench-close').click();await page.locator('#vision-bench').click();await page.locator('#bench-model').selectOption('motion-opponency-v1');await page.locator('#bench-stimulus').selectOption('flash');await page.locator('#bench-run').click();await page.waitForFunction(()=>window.duckflyVisionBench?.stimulus==='flash');return await page.evaluate(()=>({model:window.duckflyVisionBench.model,flashQuiet:window.duckflyVisionBench.trace.every(t=>t.loomL===0),buttonEnabled:!document.querySelector('#bench-run').disabled,defaultModel:window.duckflyTelemetry.scene.ducks[0].visionModel}));})(page);
+```
+### Events
+- New console entries: .playwright-cli/console-2026-09-10T17-45-59-314Z.log#L5

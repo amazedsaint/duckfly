@@ -1,0 +1,6 @@
+### Result
+{"ready":true,"defaultModel":"marker-v1","model":"flyvis-000","frames":31,"positiveT5":true,"validation":{"numericalParity":true,"physiologicalReproduction":false,"bodyBridge":false}}
+### Ran Playwright code
+```js
+await (async (page) => {await page.waitForFunction(()=>window.duckflyTelemetry?.ready);await page.getByText('Experiment tools',{exact:true}).click();await page.locator('#vision-bench').click();await page.locator('#bench-model').selectOption('flyvis-000');await page.locator('#bench-run').click();await page.waitForFunction(()=>window.duckflyVisionBench?.model==='flyvis-000',null,{timeout:45000});await page.screenshot({path:'output/playwright/vision-v3-production.png'});return await page.evaluate(()=>({ready:window.duckflyTelemetry.ready,defaultModel:window.duckflyTelemetry.scene.ducks[0].visionModel,model:window.duckflyVisionBench.model,frames:window.duckflyVisionBench.trace.length,positiveT5:window.duckflyVisionBench.trace.some(t=>t.populations.T5d>.01),validation:window.duckflyVisionBench.validation}));})(page);
+```

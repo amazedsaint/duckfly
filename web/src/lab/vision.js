@@ -66,7 +66,7 @@ export class VisionEncoder {
 export const DEFAULT_WEIGHTS={forward:.12,turn:.18,flow:.08,field:.12};
 export class SensoryAdapter {
   constructor(weights=DEFAULT_WEIGHTS){this.weights={...weights};this.lastSeen=0;this.lastBearing=0;}
-  sense(vision,duck,time,fields={odor:[0,0],light:[0,0]}){
+  sense(vision,duck,time,fields={odor:[0,0],light:[0,0]},body=null){
     const v=vision??{target:{visible:false},neighbor:{visible:false},flow:{left:0,right:0},brightness:[0,0],loomL:0,loomR:0};
     const object=duck.mode==='flock'?v.neighbor:v.target;
     const following=['target','flock','reactive'].includes(duck.mode),fieldMode=['odor','light'].includes(duck.mode);
@@ -83,13 +83,23 @@ export class SensoryAdapter {
       forward=clamp((sides[0]+sides[1])*this.weights.field,0,.15);turn=clamp((sides[0]-sides[1])*this.weights.turn,-.2,.2);
     }
     if(duck.flowSteer)turn+=clamp((v.flow.right-v.flow.left)*this.weights.flow,-.12,.12);
-    const fresh=vision&&time-vision.time<=.3;
+    const age=vision?Math.max(vision.capture?.age??0,time-vision.time):Infinity;
+    const fresh=!!vision&&age<=.3;
     if(!fresh&&duck.source==='webcam'){forward=0;turn=0;}
     const head=duck.activeLook?[0,0,object.visible?clamp(object.bearing*.3,-.35,.35):Math.sin(time*1.3)*.3,0]:[0,0,0,0];
-    return {forward,turn,loomL:fresh?v.loomL:0,loomR:fresh?v.loomR:0,head,
+    let headReason=duck.activeLook?(object.visible?'Marker tracking':'Search oscillator'):'Neutral head';
+    if(duck.headStabilization&&body){
+      const wrap=x=>Math.atan2(Math.sin(x),Math.cos(x));
+      this.headingReference??=body.heading;
+      const delta=wrap(body.heading-this.headingReference);
+      this.headingReference=wrap(this.headingReference+delta*.05);
+      head[2]=clamp(head[2]-delta,-.35,.35);headReason+=' + bounded yaw stabilization';
+    }else this.headingReference=null;
+    return {forward,turn,loomL:fresh?v.loomL:0,loomR:fresh?v.loomR:0,loomPathway:v.loomPathway??'both',head,headReason,fresh,age:Number.isFinite(age)?age:null,
+      gateReason:!fresh?'Camera stale or absent':following&&!object.visible?'Target absent':following&&forward===0?'Target near':'None',
       gate:following&&(!object.visible||!fresh||forward===0),
-      reason:following?(object.visible?'Target visible through camera':'Target absent from camera'):fieldMode?`${duck.mode} sensory adapter`:'Direct neural experiment'};
+      reason:!fresh?'Camera stale or absent':following?(object.visible?'Target visible through camera':'Target absent from camera'):fieldMode?`${duck.mode} sensory adapter`:'Direct neural experiment'};
   }
-  checkpoint(){return {weights:{...this.weights},lastSeen:this.lastSeen,lastBearing:this.lastBearing};}
+  checkpoint(){return {weights:{...this.weights},lastSeen:this.lastSeen,lastBearing:this.lastBearing,headingReference:this.headingReference??null};}
   restore(s){Object.assign(this,structuredClone(s));}
 }

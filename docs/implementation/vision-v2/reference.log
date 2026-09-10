@@ -1,0 +1,24 @@
+Loading verified published checkpoint
+[2026-09-10 19:51:42] network_view:122 Initialized network view at /Users/madhusudanaa/Documents/GitHub/duckfly/research/fly-vision/.cache/reference/results/flow/0000/000
+[2026-09-10 19:51:42] logging_utils:23 epe not in /Users/madhusudanaa/Documents/GitHub/duckfly/research/fly-vision/.cache/reference/results/flow/0000/000/validation, but 'loss' is. Falling back to 'loss'. You can rerun the ensemble validation to make appropriate recordings of the losses.
+[2026-09-10 19:51:45] network:222 Initialized network with NumberOfParams(free=734, fixed=2959) parameters.
+[2026-09-10 19:51:45] chkpt_utils:36 Recovered network state.
+Network 45669 1513231
+Tuning -1 0
+Tuning -1 90
+Tuning -1 180
+Tuning -1 270
+Tuning 1 0
+Tuning 1 90
+Tuning 1 180
+Tuning 1 270
+{
+  "nodes": 45669,
+  "edges": 1513231,
+  "timing": {
+    "median": 4.941500490531325,
+    "p95": 5.7484379038214675,
+    "threads": 1
+  },
+  "output": "/Users/madhusudanaa/Documents/GitHub/duckfly/research/fly-vision/artifacts"
+}

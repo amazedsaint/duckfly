@@ -11,4 +11,6 @@ output
 .env*
 
 docs
+research
+experiments
 shared/assets/Simulation/microduck.mjb.gz

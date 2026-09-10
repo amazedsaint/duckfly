@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { Arena } from '../arena.js';
 import { EYE_WIDTH as W,EYE_HEIGHT as H } from './vision.js';
+import { framePacket,EYE_CALIBRATION } from '../../../shared/vision/frame.js';
 import { COLORS } from './scene.js';
 export class LabArena extends Arena {
   constructor(host,assets){
@@ -56,7 +57,8 @@ export class LabArena extends Arena {
       const camera=new THREE.PerspectiveCamera(75,W/H,.004,12),target=new THREE.WebGLRenderTarget(W,H,{depthBuffer:true});
       // Readback pixels use the same sRGB encoding as webcam ImageData.
       target.texture.colorSpace=THREE.SRGBColorSpace;
-      this.ducks.set(duck.id,{group,meshes,marker,camera,target});
+      const eyes=[camera.clone(),camera.clone()];
+      this.ducks.set(duck.id,{group,meshes,marker,camera,eyes,target});
     }
     for(const prop of scene.props){
       const sphere=['ball','target'].includes(prop.kind);
@@ -78,6 +80,7 @@ export class LabArena extends Arena {
     for(const s of body.ducks){const duck=this.ducks.get(s.id);if(!duck)continue;
       s.poses.forEach((p,i)=>this.pose(duck.meshes[i],p));
       this.pose(duck.camera,s.cameraPose);
+      duck.eyes.forEach((eye,i)=>{this.pose(eye,s.cameraPose);eye.translateX(i===0?-.018:.018);eye.rotateY((i===0?1:-1)*EYE_CALIBRATION.eyeYaw*Math.PI/180);});
       this.pose(duck.marker,s.headPose);duck.marker.translateX(.08);duck.marker.translateZ(.025);
     }
     for(const p of body.props){const object=this.props.get(p.id);if(object&&this.draggedProp!==p.id)this.pose(object,[...p.position,...p.quaternion]);}
@@ -88,18 +91,23 @@ export class LabArena extends Arena {
     }
     if(this.fitPending){this.home();this.fitPending=false;}
   }
-  captureEyes(){
+  captureEyes(time=this.body?.time??0,frameId=Math.round(time*50)){
     const frames={};
-    for(const [id,duck] of this.ducks){
-      duck.group.visible=false;
-      this.renderer.setRenderTarget(duck.target);this.renderer.render(this.scene,duck.camera);
+    const read=(duck,camera)=>{
+      this.renderer.setRenderTarget(duck.target);this.renderer.render(this.scene,camera);
       const raw=new Uint8Array(W*H*4);this.renderer.readRenderTargetPixels(duck.target,0,0,W,H,raw);
-      // WebGL's framebuffer begins at the bottom; the encoder uses top-left.
       const pixels=new Uint8Array(raw.length);
       for(let y=0;y<H;y++)pixels.set(raw.subarray((H-1-y)*W*4,(H-y)*W*4),y*W*4);
-      frames[id]=pixels;duck.group.visible=true;
-    }
-    this.renderer.setRenderTarget(null);return frames;
+      return pixels;
+    };
+    try{for(const [id,duck] of this.ducks){
+      duck.group.visible=false;
+      try{const pixels=read(duck,duck.camera),definition=this.definition.ducks.find(d=>d.id===id);
+        const views=definition.visionModel==='marker-v1'?undefined:{left:read(duck,duck.eyes[0]),right:read(duck,duck.eyes[1])};
+        frames[id]=framePacket({pixels,views,sourceId:`eyes:${id}`,frameId,captureTime:time,simulationTime:time,pose:this.body?.ducks.find(d=>d.id===id)?.cameraPose});
+      }finally{duck.group.visible=true;}
+    }}finally{this.renderer.setRenderTarget(null);}
+    return frames;
   }
   home(){
     if(!this.controls)return;

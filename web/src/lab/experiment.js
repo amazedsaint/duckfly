@@ -1,6 +1,8 @@
 import { Brain } from '../brain.js';
 import { LabWorld } from './lab-world.js';
-import { VisionEncoder,SensoryAdapter,EYE_WIDTH,EYE_HEIGHT } from './vision.js';
+import { SensoryAdapter } from './vision.js';
+import { VisualSystem } from './visual-system.js';
+import { serializeFrame,deserializeFrame } from '../../../shared/vision/frame.js';
 import { validateScene } from './scene.js';
 import { clamp } from '../bam.js';
 
@@ -10,11 +12,11 @@ export class Experiment {
     const next=validateScene(scene),r=this.runtime;
     const world=new LabWorld(r.mj,r.template,r.session,r.Tensor,next);
     this.world?.dispose();this.world=world;this.scene=next;this.tick=0;this.replaying=false;this.recordedUntilTick=0;this.cost=0;this.forceFrames=false;
-    this.agents=new Map(next.ducks.map(d=>[d.id,{brain:new Brain(r.circuit,`${next.seed}/${d.id}`),eyes:new VisionEncoder(),webcam:new VisionEncoder(),adapter:new SensoryAdapter(d.adapter),vision:null,neural:null,input:null}]));
+    this.agents=new Map(next.ducks.map(d=>[d.id,{brain:new Brain(r.circuit,`${next.seed}/${d.id}`),eyes:new VisualSystem(),webcam:new VisualSystem(),adapter:new SensoryAdapter(d.adapter),vision:null,neural:null,input:null}]));
     this.history=[];this.events=[];this.frameTape.clear();this.scores={};this.branchNumber=0;
     this.applySettings();this.remember();
   }
-  applySettings(){for(const d of this.scene.ducks){const a=this.agents.get(d.id);a.brain.feedback=d.feedback;a.brain.intervene(d.silence);a.adapter.weights={...d.adapter};}}
+  applySettings(){for(const d of this.scene.ducks){const a=this.agents.get(d.id);a.brain.feedback=d.feedback;a.brain.intervene(d.silence);a.brain.sim.setGFGain(d.gfGain);a.adapter.weights={...d.adapter};}}
   updateDuck(id,patch){
     const next=validateScene({...this.scene,ducks:this.scene.ducks.map(d=>d.id===id?{...d,...patch}:d)});
     this.branch();this.scene=next;this.applySettings();
@@ -30,7 +32,9 @@ export class Experiment {
     const next=validateScene({...this.scene,props:this.scene.props.map(p=>p.id===id?{...p,position,yaw,motion:[0,0,0]}:p)});
     this.branch();this.scene=next;this.world.moveProp(id,position,yaw);this.forceFrames=true;
   }
-  needsFrames(){return (this.forceFrames||this.tick%5===0)&&!(this.replaying&&this.frameTape.has(this.tick));}
+  frameInterval(){return this.scene.ducks.some(d=>d.visionModel!=='marker-v1')?2:5;}
+  resetLiveInput(){if(!this.replaying){for(const d of this.scene.ducks)if(d.source==='webcam'){const a=this.agents.get(d.id);a.webcam.reset();a.vision=null;}this.forceFrames=true;}}
+  needsFrames(){return (this.forceFrames||this.tick%this.frameInterval()===0)&&!(this.replaying&&this.frameTape.has(this.tick));}
   fields(body){
     const samples={odor:[0,0],light:[0,0]};
     for(let side=0;side<2;side++){
@@ -41,25 +45,26 @@ export class Experiment {
     return samples;
   }
   async step(frames=null){
-    if(frames||this.tick%5===0||(this.replaying&&this.frameTape.has(this.tick))){
+    if(frames||this.tick%this.frameInterval()===0||(this.replaying&&this.frameTape.has(this.tick))){
       if(this.replaying&&this.frameTape.has(this.tick))frames=this.frameTape.get(this.tick);
       if(!frames)throw Error('Missing camera frames for this simulation tick');
-      if(!this.replaying)this.frameTape.set(this.tick,structuredClone(frames));
+      if(!this.replaying){this.frameTape.set(this.tick,structuredClone(frames));this.trimFrames();}
       for(const d of this.scene.ducks){const a=this.agents.get(d.id),pixels=d.source==='webcam'?frames.webcam:frames[d.id];
-        a.vision=pixels?(d.source==='webcam'?a.webcam:a.eyes).encode(pixels,EYE_WIDTH,EYE_HEIGHT,this.tick*.02,d.eye,d.source==='webcam'):null;
+        a.vision=pixels?(d.source==='webcam'?a.webcam:a.eyes).encode(pixels,this.tick*.02,d):null;
       }
       this.forceFrames=false;
     }
     const state=this.world.state(),commands={},causes=[];
     for(const d of this.scene.ducks){const a=this.agents.get(d.id),body=state.ducks.find(b=>b.id===d.id);
-      const input=a.adapter.sense(a.vision,d,state.time,this.fields(body));
+      const input=a.adapter.sense(a.vision,d,state.time,this.fields(body),body);
       const neural=a.brain.step(body,input);a.input=input;a.neural=neural;
+      const provenance={forward:input.gate?input.gateReason:'Fly circuit intent',yaw:'Fly circuit intent',head:input.headReason,vision:a.vision?.model??'absent',gfGain:d.gfGain};
       let command={vx:input.gate?0:neural.vx,yaw:neural.yaw,head:input.head};
-      if(d.mode==='manual')command={vx:d.manual[0],yaw:d.manual[1],head:input.head};
-      if(d.mode==='reactive')command={vx:input.gate||input.loomL+input.loomR>.2?0:.25,yaw:clamp((a.vision?.target.bearing??0)*.7,-.65,.65),head:input.head};
-      if(d.silence==='output')command={...command,vx:0,yaw:0};
+      if(d.mode==='manual'){provenance.forward=provenance.yaw='Manual override';command={vx:d.manual[0],yaw:d.manual[1],head:input.head};}
+      if(d.mode==='reactive'||d.mode==='reflex'){provenance.forward=provenance.yaw='Reactive camera rule';command={vx:(d.mode==='reactive'?input.gate:!input.fresh)||input.loomL+input.loomR>.2?0:.3,yaw:d.mode==='reflex'?0:clamp((a.vision?.target.bearing??0)*.7,-.65,.65),head:input.head};}
+      if(d.silence==='output'){provenance.forward=provenance.yaw='Output intervention';command={...command,vx:0,yaw:0};}
       commands[d.id]=command;
-      causes.push({id:d.id,input:structuredClone(input),vision:structuredClone(a.vision),neural:structuredClone(neural),command:structuredClone(command)});
+      causes.push({id:d.id,provenance,input:structuredClone(input),vision:structuredClone(a.vision),neural:structuredClone(neural),command:structuredClone(command)});
     }
     const next=await this.world.step(commands);this.cost=next.cost;this.tick++;
     if(!this.replaying)this.recordedUntilTick=this.tick;
@@ -89,15 +94,24 @@ export class Experiment {
     const tick=[...this.frameTape.keys()].filter(t=>t<this.tick).sort((a,b)=>b-a)[0];
     return {frames:tick===undefined?{}:this.frameTape.get(tick),events:this.events.filter(e=>e.tick<=this.tick)};
   }
-  checkpoint(){return {version:1,scene:structuredClone(this.scene),tick:this.tick,branch:this.branchNumber,forceFrames:this.forceFrames,world:this.world.checkpoint(),scores:structuredClone(this.scores),
+  checkpoint(){return {version:2,scene:structuredClone(this.scene),tick:this.tick,branch:this.branchNumber,forceFrames:this.forceFrames,world:this.world.checkpoint(),scores:structuredClone(this.scores),
     agents:Object.fromEntries([...this.agents].map(([id,a])=>[id,{brain:a.brain.checkpoint(),eyes:a.eyes.checkpoint(),webcam:a.webcam.checkpoint(),adapter:a.adapter.checkpoint(),vision:structuredClone(a.vision),input:structuredClone(a.input),neural:structuredClone(a.neural)}]))};}
+  trimFrames(){
+    // Forced captures can be more frequent than the regular cadence. Keep a
+    // complete replay window below the recording format's frame-count bound.
+    while(this.frameTape.size>600&&this.history.length>1){
+      this.history.shift();const oldest=this.history[0].tick;
+      for(const tick of this.frameTape.keys())if(tick<oldest)this.frameTape.delete(tick);
+      this.events=this.events.filter(e=>e.tick>=oldest);
+    }
+  }
   remember(){
-    this.history.push(this.checkpoint());if(this.history.length>Math.max(16,Math.floor(121/this.scene.ducks.length)))this.history.shift();
+    this.history.push(this.checkpoint());if(this.history.length>Math.max(16,Math.floor((this.frameInterval()===2?49:121)/this.scene.ducks.length)))this.history.shift();
     const oldest=this.history[0].tick;for(const t of this.frameTape.keys())if(t<oldest)this.frameTape.delete(t);
     this.events=this.events.filter(e=>e.tick>=oldest);
   }
   restore(checkpoint){
-    if(checkpoint.version!==1)throw Error('Unsupported experiment checkpoint');
+    if(![1,2].includes(checkpoint.version))throw Error('Unsupported experiment checkpoint');
     const scene=validateScene(checkpoint.scene);
     if(scene.ducks.length!==this.scene.ducks.length||scene.ducks.some((d,i)=>d.id!==this.scene.ducks[i].id))throw Error('Checkpoint belongs to another arena');
     this.scene=scene;this.world.scene=structuredClone(scene);
@@ -108,16 +122,14 @@ export class Experiment {
   }
   rewind(tick){const checkpoint=this.history.find(h=>h.tick===tick);if(!checkpoint)throw Error('That checkpoint is no longer retained');return this.restore(checkpoint);}
   export(){
-    const bytes=v=>btoa(Array.from(v,n=>String.fromCharCode(n)).join(''));
-    return {format:'duckfly-recording',version:1,checkpoint:this.checkpoint(),recordedUntilTick:this.recordedUntilTick,history:this.history,events:this.events,
-      frames:[...this.frameTape].map(([tick,frames])=>[tick,Object.fromEntries(Object.entries(frames).filter(([,v])=>v).map(([id,v])=>[id,bytes(v)]))])};
+    return {format:'duckfly-recording',version:2,checkpoint:this.checkpoint(),recordedUntilTick:this.recordedUntilTick,history:this.history,events:this.events,
+      frames:[...this.frameTape].map(([tick,frames])=>[tick,Object.fromEntries(Object.entries(frames).filter(([,v])=>v).map(([id,v])=>[id,serializeFrame(v)]))])};
   }
   import(recording){
-    if(recording.format!=='duckfly-recording'||recording.version!==1||!Array.isArray(recording.history)||recording.history.length>121||!Array.isArray(recording.frames)||recording.frames.length>610)throw Error('Invalid recording');
+    if(recording.format!=='duckfly-recording'||![1,2].includes(recording.version)||!Array.isArray(recording.history)||recording.history.length>121||!Array.isArray(recording.frames)||recording.frames.length>610)throw Error('Invalid recording');
     this.configure(recording.checkpoint.scene);this.recordedUntilTick=recording.recordedUntilTick??recording.checkpoint.tick;this.restore(recording.checkpoint);this.history=recording.history;this.events=recording.events??[];
     this.frameTape=new Map(recording.frames.map(([tick,frames])=>[tick,Object.fromEntries(Object.entries(frames).map(([id,value])=>{
-      if(typeof value!=='string'||value.length!==EYE_WIDTH*EYE_HEIGHT*4*4/3)throw Error('Invalid recorded camera frame');
-      return [id,Uint8Array.from(atob(value),c=>c.charCodeAt(0))];
+      return [id,deserializeFrame(value)];
     }))]));
     return this.state();
   }

@@ -20,11 +20,17 @@ All experiment controls are documented in the [root README](../README.md). Nativ
 
 ```sh
 mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test
+mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-vision
 ```
 
 The packaged self-test launches the actual WKWebView and drives the bundled workspace. It uses a nonpersistent data store and does not alter the user's saved scene. Camera checks use a denied stub and synthetic canvas stream; they do not activate the physical camera. Test receipts and visual review are tracked in `docs/implementation/`.
 
-`Host/main.swift` implements the shell, origin restrictions and native downloads. `Tests/workspace-smoke.js` supplies native workspace acceptance checks. `scripts/build-lab.sh` builds the web workspace into a staging app, verifies its signature and replaces the destination bundle.
+`Host/main.swift` implements the shell, origin restrictions and native downloads. `Tests/workspace-smoke.js` supplies native workspace acceptance checks.
+`Tests/vision-smoke.js` checks the retinal bench and full Flyvis inference. The
+verified model is bundled; Python and Rust are needed only to regenerate the
+research export, not to build or use the app.
+Decoded sources with unusable media timestamps use a declared decode-arrival
+clock. This is an arrival-time estimate, not recovered exposure timing. `scripts/build-lab.sh` builds the web workspace into a staging app, verifies its signature and replaces the destination bundle.
 
 ## Retained native reference implementation
 

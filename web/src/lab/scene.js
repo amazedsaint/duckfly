@@ -1,6 +1,6 @@
 // Scenes are portable data. No executable content or arbitrary MJCF is accepted.
 const kinds=new Set(['wall','block','ball','target']);
-const modes=new Set(['brain','target','flock','reactive','manual','odor','light']);
+const modes=new Set(['brain','target','flock','reactive','manual','odor','light','reflex']);
 const sources=new Set(['eyes','webcam']);
 const adapterWeights=value=>Object.fromEntries(Object.entries({forward:.12,turn:.18,flow:.08,field:.12}).map(([key,fallback])=>[key,number(value?.[key]??fallback,0,.3,`${key} adapter weight`)]));
 export const COLORS={target:'#ee4581',neighbor:'#35b9d3',wall:'#75837c',block:'#dfac5c',ball:'#6d7cec'};
@@ -10,16 +10,18 @@ const label=v=>{if(typeof v!=='string'||v.length>80)throw Error('Invalid label')
 const vec=(v,n,lo,hi,name)=>{if(!Array.isArray(v)||v.length!==n)throw Error(`Invalid ${name}`);return v.map(x=>number(x,lo,hi,name));};
 const choice=(v,values,name)=>{if(!values.has(v))throw Error(`Invalid ${name}`);return v;};
 export function validateScene(input){
-  if(!input||input.version!==1)throw Error('Unsupported scene version');
+  if(!input||![1,2].includes(input.version))throw Error('Unsupported scene version');
   if(!Array.isArray(input.ducks)||input.ducks.length<1||input.ducks.length>8)throw Error('Use 1–8 ducks');
   if(!Array.isArray(input.props)||input.props.length>40)throw Error('Use at most 40 props');
-  const scene={version:1,name:label(input.name??'Untitled arena'),seed:id(input.seed??'duckfly-v1'),
+  const scene={version:2,name:label(input.name??'Untitled arena'),seed:id(input.seed??'duckfly-v1'),
     ducks:input.ducks.map(d=>({id:id(d.id),name:label(d.name??d.id),spawn:vec(d.spawn,3,-10,10,'spawn'),
       mode:choice(d.mode??'target',modes,'controller'),source:choice(d.source??'eyes',sources,'camera source'),
+      visionModel:choice(d.visionModel??'marker-v1',new Set(['marker-v1','motion-opponency-v1']),'vision model'),
+      gfGain:number(d.gfGain??6,1,12,'GF input gain'),headStabilization:!!d.headStabilization,
       activeLook:!!d.activeLook,flowSteer:!!d.flowSteer,feedback:d.feedback!==false,
       adapter:adapterWeights(d.adapter),
       eye:choice(d.eye??'both',new Set(['both','left','right','none']),'eye covering'),
-      silence:choice(d.silence??'none',new Set(['none','output','forward','left','right','loom','gf']),'intervention'),
+      silence:choice(d.silence??'none',new Set(['none','output','forward','left','right','loom','gf','motion','lplc2']),'intervention'),
       manual:vec(d.manual??[0,0],2,-.8,.8,'manual command')})),
     props:input.props.map(p=>({id:id(p.id),name:label(p.name??p.kind),kind:choice(p.kind,kinds,'prop'),
       position:vec(p.position,3,-10,10,'position'),size:vec(p.size??[.12,.12,.12],3,.01,2,'size'),
@@ -42,6 +44,7 @@ export function validateScene(input){
 }
 export function defaultScene(preset='target'){
   const ducks=[{id:'duck-1',name:'Duck 1',spawn:[0,0,0],mode:preset==='flock'?'flock':preset==='empty'?'brain':'target'}];
+  if(preset==='vision')ducks[0].visionModel='motion-opponency-v1';
   const props=preset==='empty'?[]:[{id:'target-1',kind:'target',position:[.9,0,.13],size:[.07,.07,.07]}];
   if(preset==='flock'){
     ducks[0].mode='target';
@@ -49,7 +52,7 @@ export function defaultScene(preset='target'){
   }
   if(preset==='occlusion')props.push({id:'wall-1',kind:'wall',position:[.45,0,.17],size:[.045,.3,.34]});
   if(preset==='loom')props.push({id:'threat-1',kind:'ball',color:'#d6434a',position:[1.3,.03,.2],size:[.25,.25,.25],motion:[-.25,0,0]});
-  return validateScene({version:1,name:({target:'Follow the beacon',empty:'Open arena',flock:'Follow the flock',occlusion:'Out of sight',loom:'Approaching threat'})[preset]??'Arena',seed:'duckfly-v1',ducks,props});
+  return validateScene({version:2,name:({target:'Follow the beacon',empty:'Open arena',flock:'Follow the flock',occlusion:'Out of sight',loom:'Approaching threat',vision:'Retinal motion lab'})[preset]??'Arena',seed:'duckfly-v1',ducks,props});
 }
 export function encodeScene(scene){
   const json=JSON.stringify(validateScene(scene));

@@ -1,6 +1,7 @@
 import { loadLabRuntime } from './lab-runtime.js';
 import { Experiment } from './experiment.js';
 import { compareControllers,learnAdapter,trialScore } from './benchmarks.js';
+import { compareLooming,StoppingMeasure } from './loom-benchmarks.js';
 let experiment,paused=true,timer,running=false,frameWait=null,ticket=0,runtime;
 let cancelled=false;
 const send=x=>self.postMessage(x);
@@ -34,7 +35,7 @@ async function drain(){
     try{
       if(msg.type==='init'){runtime=await loadLabRuntime(msg.base,message=>send({type:'loading',message}));experiment=new Experiment(runtime,msg.scene);send({type:'ready',scene:experiment.scene});}
       if(!experiment)continue;
-      if(msg.type==='pause')paused=msg.value;
+      if(msg.type==='pause'){if(paused&&!msg.value&&!experiment.replaying){experiment.resetLiveInput();send({type:'capture-reset'});}paused=msg.value;}
       if(msg.type==='scene'){experiment.configure(msg.scene);paused=true;send({type:'scene',scene:experiment.scene});}
       if(msg.type==='reset'){experiment.configure(experiment.scene);paused=true;send({type:'scene',scene:experiment.scene});}
       if(msg.type==='duck')experiment.updateDuck(msg.id,msg.patch);
@@ -50,21 +51,22 @@ async function drain(){
         experiment.dispose();experiment=candidate;paused=true;send({type:'scene',scene:experiment.scene});recordingView();
       }
       if(msg.type==='weights')experiment.updateDuck(msg.id,{adapter:msg.weights});
-      if(msg.type==='compare'||msg.type==='learn'){
+      if(msg.type==='compare'||msg.type==='learn'||msg.type==='loom-compare'){
         const original=experiment;paused=true;cancelled=false;
         const progress=(label,done,total)=>send({type:'job-progress',label,done,total});
-        const runTrial=async(scene,steps)=>{
+        const runTrial=async(scene,steps,options={})=>{
           if(cancelled)throw Error('Experiment batch cancelled');
-          const trial=new Experiment(runtime,scene);experiment=trial;send({type:'scene',scene});snapshot();let turnEffort=0;
+          const trial=new Experiment(runtime,scene);experiment=trial;send({type:'scene',scene});snapshot();let turnEffort=0;const stopping=new StoppingMeasure();if(options.looming)trial.stimulus(scene.ducks[0].id,'walk');
           try{for(let i=0;i<steps;i++){
             if(cancelled)throw Error('Experiment batch cancelled');
             await trial.step(trial.needsFrames()?await requestFrames():null);
+            if(options.looming)stopping.observe(trial.state());
             turnEffort+=Math.abs(trial.world.robots[0].command[1]);if(i%5===0)snapshot();
-          }return trialScore(scene,trial.state(),turnEffort);}finally{trial.dispose();}
+          }return {...trialScore(scene,trial.state(),turnEffort),...(options.looming?stopping.result():{})};}finally{trial.dispose();}
         };
         try{
           const initial=original.scene.ducks.find(d=>d.id===msg.id)?.adapter;
-          const report=await (msg.type==='learn'?learnAdapter(runTrial,progress,initial):compareControllers(runTrial,progress,msg.intervention??'gf',initial));
+          const report=await (msg.type==='loom-compare'?compareLooming(runTrial,progress,{seeds:msg.seeds??30,gfGain:original.scene.ducks.find(d=>d.id===msg.id)?.gfGain??6}):msg.type==='learn'?learnAdapter(runTrial,progress,initial):compareControllers(runTrial,progress,msg.intervention??'gf',initial));
           if(msg.type==='learn'&&report.gate.promote)original.updateDuck(msg.id,{adapter:report.weights});
           send({type:'job-result',report});
         }catch(e){send({type:'job-error',message:e.message});}

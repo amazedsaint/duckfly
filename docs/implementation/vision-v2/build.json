@@ -1,0 +1,9 @@
+{
+  "version": "0.3.0",
+  "baseline": "7efa96f",
+  "branch": "codex/vision-lab",
+  "policyChanged": false,
+  "modelManifestSha256": "33e007097fc3c539ebd817a297be38dfca113ab42a3fc6b24052575f0d403218",
+  "wasmSha256": "7225b966d087253f204f50f1ec1fc85cb76286466d8e94b8af3e6a911a81f9b0",
+  "sourceSha256": "c7d468e13c4ce5797929ab5377aadb5051b94860ba73e8f2e36cdab95ef089d4"
+}

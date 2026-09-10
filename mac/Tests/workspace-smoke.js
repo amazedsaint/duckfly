@@ -15,7 +15,7 @@ const pausedTime=state.time;await new Promise(r=>setTimeout(r,100));check(t().ti
 select('#eyes','none');state=await run(.25);check(!state.agents['duck-1'].vision.target.visible&&state.ducks[0].command[0]===0,'Eye covering failed');
 receipt.push({check:'eye intervention'});
 await preset('occlusion');state=await run(.3);check(!state.agents['duck-1'].vision.target.visible,'Physical wall did not occlude target');receipt.push({check:'wall occlusion'});
-await preset('loom');$('#pause').click();await wait(()=>t().agents['duck-1'].neural?.event.includes('stop reflex'));$('#pause').click();await wait(()=>t().paused);receipt.push({check:'rendered visual threat',time:t().time});
+await preset('loom');select('#vision-model','marker-v1');$('#pause').click();await wait(()=>t().agents['duck-1'].neural?.event.includes('stop reflex'));$('#pause').click();await wait(()=>t().paused);receipt.push({check:'rendered visual threat',time:t().time});
 await preset('flock');state=await run(2);check(state.ducks.length===3&&state.ducks.slice(1).some(d=>state.agents[d.id].vision.neighbor.visible),'Native companion vision failed');receipt.push({check:'independent ducks and companion vision'});
 select('#add-kind','ball');$('#add').click();await wait(()=>t().scene.props.some(p=>p.kind==='ball'));check(t().scene.props.find(p=>p.kind==='ball').movable,'Ball is not a physical body');
 await run(1);const before=t().time;const ball=t().scene.props.find(p=>p.kind==='ball');

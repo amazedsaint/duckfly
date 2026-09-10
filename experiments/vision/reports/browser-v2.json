@@ -1,0 +1,413 @@
+[
+  {
+    "check": "stereo camera approach",
+    "position": [
+      0.3293809385824977,
+      0.0067854376564633265,
+      0.11853086526194935
+    ],
+    "capture": {
+      "sourceId": "eyes:duck-1",
+      "frameId": 150,
+      "captureTime": 3,
+      "simulationTime": 3,
+      "clock": "simulation",
+      "age": 0,
+      "accepted": true,
+      "calibration": "duckfly-pinhole-v2",
+      "calibrated": true,
+      "pose": [
+        0.4018010159704265,
+        -0.011953776650332645,
+        0.23838257568302945,
+        -0.4962325811671063,
+        -0.46086499174037027,
+        0.43907131705121544,
+        0.5904007650056786
+      ]
+    }
+  },
+  {
+    "check": "eye covering and wall occlusion"
+  },
+  {
+    "check": "real decoded-frame freeze and resume freshness",
+    "lastFrameId": 17,
+    "after": null,
+    "input": {
+      "forward": 0,
+      "turn": 0,
+      "loomL": 0,
+      "loomR": 0,
+      "loomPathway": "both",
+      "head": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "headReason": "Neutral head",
+      "fresh": false,
+      "age": null,
+      "gateReason": "Camera stale or absent",
+      "gate": true,
+      "reason": "Camera stale or absent"
+    }
+  },
+  {
+    "check": "live retinal bench and GF",
+    "peak": 1
+  },
+  {
+    "check": "full Flyvis WASM in Chromium",
+    "timing": {
+      "median": 33.5,
+      "p95": 35.299999952316284
+    }
+  },
+  {
+    "check": "16 matched physical trials",
+    "report": {
+      "format": "duckfly-looming-comparison",
+      "version": 1,
+      "seeds": 2,
+      "gfGain": 6,
+      "limits": {
+        "forward": 0.3,
+        "yaw": 0.65
+      },
+      "rows": [
+        {
+          "condition": "Motion pathway",
+          "trials": [
+            {
+              "seed": 0,
+              "score": 0.10446049394272283,
+              "remaining": 1.3427571091921309,
+              "progress": 0.15724289080786913,
+              "fallen": false,
+              "contacts": 0,
+              "distance": 0.25290746395113345,
+              "time": 2.9999999999999583,
+              "reachedAt": null,
+              "stopIntentAt": 1.4399999999999913,
+              "physicallyStoppedAt": 1.639999999999987,
+              "stoppingDistance": 0.01511645600957932,
+              "residualTravel": 0.01511645600957932,
+              "firstContactAt": null,
+              "minSeparation": 0.24486469497713279,
+              "maxSpeed": 0.23831986254804916,
+              "family": "approach"
+            },
+            {
+              "seed": 1,
+              "score": 0.10726084676686767,
+              "remaining": 1.3008968468068365,
+              "progress": 0.19910315319316352,
+              "fallen": false,
+              "contacts": 1,
+              "distance": 0.4305230211630453,
+              "time": 2.9999999999999583,
+              "reachedAt": null,
+              "stopIntentAt": null,
+              "physicallyStoppedAt": null,
+              "stoppingDistance": null,
+              "residualTravel": 0,
+              "firstContactAt": 2.599999999999967,
+              "minSeparation": 0.10594246378379035,
+              "maxSpeed": 0.37119495514425926,
+              "family": "approach"
+            },
+            {
+              "seed": 0,
+              "score": 0.19112008219010038,
+              "remaining": 1.2124245230419373,
+              "progress": 0.28757547695806274,
+              "fallen": false,
+              "contacts": 0,
+              "distance": 0.42804381892091353,
+              "time": 2.9999999999999583,
+              "reachedAt": null,
+              "stopIntentAt": null,
+              "physicallyStoppedAt": null,
+              "stoppingDistance": null,
+              "residualTravel": 0,
+              "firstContactAt": null,
+              "minSeparation": 1.0013979517600247,
+              "maxSpeed": 0.2318430265676298,
+              "family": "lateral-control"
+            },
+            {
+              "seed": 1,
+              "score": 0.18930713461625645,
+              "remaining": 1.2152929124376948,
+              "progress": 0.2847070875623052,
+              "fallen": false,
+              "contacts": 0,
+              "distance": 0.42626163796922245,
+              "time": 2.9999999999999583,
+              "reachedAt": null,
+              "stopIntentAt": null,
+              "physicallyStoppedAt": null,
+              "stoppingDistance": null,
+              "residualTravel": 0,
+              "firstContactAt": null,
+              "minSeparation": 1.0014140448731566,
+              "maxSpeed": 0.22898381961210398,
+              "family": "lateral-control"
+            }
+          ],
+          "meanScore": 0.14803713937898683
+        },
+        {
+          "condition": "Reactive motion",
+          "trials": [
+            {
+              "seed": 0,
+              "score": 0.139752156685919,
+              "remaining": 1.2903717649711215,
+              "progress": 0.2096282350288785,
+              "fallen": false,
+              "contacts": 0,
+              "distance": 0.35931162888569684,
+              "time": 2.9999999999999583,
+              "reachedAt": null,
+              "stopIntentAt": 0.6600000000000005,
+              "physicallyStoppedAt": 1.3799999999999926,
+              "stoppingDistance": 0.10485153697452447,
+              "residualTravel": 0.10485153697452447,
+              "firstContactAt": null,
+              "minSeparation": 0.19195237854803968,
+              "maxSpeed": 0.20818226475659016,
+              "family": "approach"
+            },
+            {
+              "seed": 1,
+              "score": 0.09482181715592361,
+              "remaining": 1.3202672742661146,
+              "progress": 0.17973272573388543,
+              "fallen": false,
+              "contacts": 1,
+              "distance": 0.330416396807632,
+              "time": 2.9999999999999583,
+              "reachedAt": null,
+              "stopIntentAt": 0.6600000000000005,
+              "physicallyStoppedAt": 1.3799999999999926,
+              "stoppingDistance": 0.10485153697452447,
+              "residualTravel": 0.10485153697452447,
+              "firstContactAt": 2.7999999999999625,
+              "minSeparation": 0.1156809934156146,
+              "maxSpeed": 0.21363550065644044,
+              "family": "approach"
+            },
+            {
+              "seed": 0,
+              "score": 0.12884790265344068,
+              "remaining": 1.306728146019839,
+              "progress": 0.193271853980161,
+              "fallen": false,
+              "contacts": 0,
+              "distance": 0.35558522433662865,
+              "time": 2.9999999999999583,
+              "reachedAt": null,
+              "stopIntentAt": 0.6600000000000005,
+              "physicallyStoppedAt": 1.119999999999998,
+              "stoppingDistance": 0.056144839194846224,
+              "residualTravel": 0.056144839194846224,
+              "firstContactAt": null,
+              "minSeparation": 1.0013979517600247,
+              "maxSpeed": 0.21597508295382922,
+              "family": "lateral-control"
+            },
+            {
+              "seed": 1,
+              "score": 0.1298084175961726,
+              "remaining": 1.305287373605741,
+              "progress": 0.1947126263942589,
+              "fallen": false,
+              "contacts": 0,
+              "distance": 0.35014354592593255,
+              "time": 2.9999999999999583,
+              "reachedAt": null,
+              "stopIntentAt": 0.6600000000000005,
+              "physicallyStoppedAt": 2.4599999999999698,
+              "stoppingDistance": 0.23259475022461848,
+              "residualTravel": 0.23259475022461848,
+              "firstContactAt": null,
+              "minSeparation": 1.0014140448731566,
+              "maxSpeed": 0.21564784690172886,
+              "family": "lateral-control"
+            }
+          ],
+          "meanScore": 0.12330757352286398
+        },
+        {
+          "condition": "LPLC2 intervention",
+          "trials": [
+            {
+              "seed": 0,
+              "score": 0.16484548964775764,
+              "remaining": 1.2145683670620158,
+              "progress": 0.28543163293798424,
+              "fallen": false,
+              "contacts": 1,
+              "distance": 0.4280596951682977,
+              "time": 2.9999999999999583,
+              "reachedAt": null,
+              "stopIntentAt": null,
+              "physicallyStoppedAt": null,
+              "stoppingDistance": null,
+              "residualTravel": 0,
+              "firstContactAt": 2.91999999999996,
+              "minSeparation": 0.12236048112953388,
+              "maxSpeed": 0.23184997270547084,
+              "family": "approach"
+            },
+            {
+              "seed": 1,
+              "score": 0.10873887611200009,
+              "remaining": 1.2986547227791114,
+              "progress": 0.20134527722088857,
+              "fallen": false,
+              "contacts": 1,
+              "distance": 0.42897804571609643,
+              "time": 2.9999999999999583,
+              "reachedAt": null,
+              "stopIntentAt": null,
+              "physicallyStoppedAt": null,
+              "stoppingDistance": null,
+              "residualTravel": 0,
+              "firstContactAt": 2.6199999999999664,
+              "minSeparation": 0.10512962504855113,
+              "maxSpeed": 0.3577960199532761,
+              "family": "approach"
+            },
+            {
+              "seed": 0,
+              "score": 0.19161020255376038,
+              "remaining": 1.2119160558995024,
+              "progress": 0.28808394410049765,
+              "fallen": false,
+              "contacts": 0,
+              "distance": 0.4293947460077926,
+              "time": 2.9999999999999583,
+              "reachedAt": null,
+              "stopIntentAt": null,
+              "physicallyStoppedAt": null,
+              "stoppingDistance": null,
+              "residualTravel": 0,
+              "firstContactAt": null,
+              "minSeparation": 1.0013979517600247,
+              "maxSpeed": 0.23184997270547084,
+              "family": "lateral-control"
+            },
+            {
+              "seed": 1,
+              "score": 0.1882632053776066,
+              "remaining": 1.216843664584274,
+              "progress": 0.28315633541572605,
+              "fallen": false,
+              "contacts": 0,
+              "distance": 0.4247092673333667,
+              "time": 2.9999999999999583,
+              "reachedAt": null,
+              "stopIntentAt": null,
+              "physicallyStoppedAt": null,
+              "stoppingDistance": null,
+              "residualTravel": 0,
+              "firstContactAt": null,
+              "minSeparation": 1.0014140448731566,
+              "maxSpeed": 0.2289708665965214,
+              "family": "lateral-control"
+            }
+          ],
+          "meanScore": 0.16336444342278117
+        },
+        {
+          "condition": "GF intervention",
+          "trials": [
+            {
+              "seed": 0,
+              "score": 0.16438137221333768,
+              "remaining": 1.2152101260593768,
+              "progress": 0.28478987394062316,
+              "fallen": false,
+              "contacts": 1,
+              "distance": 0.4266640647745157,
+              "time": 2.9999999999999583,
+              "reachedAt": null,
+              "stopIntentAt": null,
+              "physicallyStoppedAt": null,
+              "stoppingDistance": null,
+              "residualTravel": 0,
+              "firstContactAt": 2.91999999999996,
+              "minSeparation": 0.12213808134750052,
+              "maxSpeed": 0.23831986254804916,
+              "family": "approach"
+            },
+            {
+              "seed": 1,
+              "score": 0.10726084676686767,
+              "remaining": 1.3008968468068365,
+              "progress": 0.19910315319316352,
+              "fallen": false,
+              "contacts": 1,
+              "distance": 0.4305230211630453,
+              "time": 2.9999999999999583,
+              "reachedAt": null,
+              "stopIntentAt": null,
+              "physicallyStoppedAt": null,
+              "stoppingDistance": null,
+              "residualTravel": 0,
+              "firstContactAt": 2.599999999999967,
+              "minSeparation": 0.10594246378379035,
+              "maxSpeed": 0.37119495514425926,
+              "family": "approach"
+            },
+            {
+              "seed": 0,
+              "score": 0.19112008219010038,
+              "remaining": 1.2124245230419373,
+              "progress": 0.28757547695806274,
+              "fallen": false,
+              "contacts": 0,
+              "distance": 0.42804381892091353,
+              "time": 2.9999999999999583,
+              "reachedAt": null,
+              "stopIntentAt": null,
+              "physicallyStoppedAt": null,
+              "stoppingDistance": null,
+              "residualTravel": 0,
+              "firstContactAt": null,
+              "minSeparation": 1.0013979517600247,
+              "maxSpeed": 0.2318430265676298,
+              "family": "lateral-control"
+            },
+            {
+              "seed": 1,
+              "score": 0.18930713461625645,
+              "remaining": 1.2152929124376948,
+              "progress": 0.2847070875623052,
+              "fallen": false,
+              "contacts": 0,
+              "distance": 0.42626163796922245,
+              "time": 2.9999999999999583,
+              "reachedAt": null,
+              "stopIntentAt": null,
+              "physicallyStoppedAt": null,
+              "stoppingDistance": null,
+              "residualTravel": 0,
+              "firstContactAt": null,
+              "minSeparation": 1.0014140448731566,
+              "maxSpeed": 0.22898381961210398,
+              "family": "lateral-control"
+            }
+          ],
+          "meanScore": 0.16301735894664054
+        }
+      ],
+      "calibration": "Fixed gains, no per-condition tuning. Held-out physical scenes; all outcomes retained.",
+      "interpretation": "Matched physical looming and lateral controls. Inspect collisions and actual stopping distance. Neural fidelity and superiority are not inferred from these scores."
+    }
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "sourceCommit": "92b3845cc426dd309a1a0e1b3890156c42e14021",
+  "checkpointSha256": "d8a57a022aa18ca338599be713af9db29b89cde4b00098ffe42b78f0d583e46a",
+  "dt": 0.002,
+  "steps": 1000,
+  "atol": 0.00002,
+  "rtol": 0.00002,
+  "input": "oracle-input.bin.gz",
+  "states": {
+    "0": {
+      "file": "oracle-state-0.bin.gz"
+    },
+    "119": {
+      "file": "oracle-state-119.bin.gz"
+    },
+    "499": {
+      "file": "oracle-state-499.bin.gz"
+    },
+    "999": {
+      "file": "oracle-state-999.bin.gz"
+    }
+  }
+}

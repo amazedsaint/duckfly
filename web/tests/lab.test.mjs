@@ -75,6 +75,28 @@ test('editable shared physics',async t=>{
       assert.ok(light>heavy*10,'Lighter prop must accelerate more under the same force');
       assert.ok(slippery>grippy*2&&slippery>.4,'Low contact friction must permit longer sliding');
     });
+    await t.test('frequent forced captures retain an importable replay window',async()=>{
+      const circuit=JSON.parse(read('../../shared/assets/Brain/circuit.json'));
+      const e=new Experiment({mj,template,session,Tensor:ort.Tensor,circuit},defaultScene());
+      try{const frames={'duck-1':new Uint8Array(96*64*4).fill(100)};
+        for(let i=0;i<625;i++)await e.step(frames);
+        assert.ok(e.frameTape.size<=600);const record=JSON.parse(JSON.stringify(e.export()));e.import(record);assert.equal(e.tick,625);
+        e.rewind(e.history[0].tick);await e.step();
+      }finally{e.dispose();}
+    });
+    await t.test('version 1 recording migrates and replays retained legacy camera input',async()=>{
+      const circuit=JSON.parse(read('../../shared/assets/Brain/circuit.json'));
+      const recording=JSON.parse(read('../../docs/implementation/roundtrip-recording.json'));
+      const e=new Experiment({mj,template,session,Tensor:ort.Tensor,circuit},defaultScene());
+      try{
+        e.import(recording);assert.equal(e.scene.ducks[0].visionModel,'marker-v1');assert.equal(e.tick,107);
+        const expected=Array.from(e.world.d.qpos),expectedBrain=e.agents.get(e.scene.ducks[0].id).brain.checkpoint();
+        e.rewind(100);while(e.tick<107)await e.step();
+        // Archived file was produced in Chromium. Permit cross-engine roundoff only.
+        Array.from(e.world.d.qpos).forEach((v,i)=>assert.ok(Math.abs(v-expected[i])<1e-12));const replayed=e.agents.get(e.scene.ducks[0].id).brain.checkpoint();
+        assert.ok(Math.abs(replayed.sim.gaitDrive-expectedBrain.sim.gaitDrive)<1e-12);replayed.sim.gaitDrive=expectedBrain.sim.gaitDrive;assert.deepEqual(replayed,expectedBrain);
+      }finally{e.dispose();}
+    });
     await t.test('experiment rewind replays recorded visual inputs with identical brain and body state',async()=>{
       const circuit=JSON.parse(read('../../shared/assets/Brain/circuit.json'));
       const e=new Experiment({mj,template,session,Tensor:ort.Tensor,circuit},defaultScene());
@@ -83,7 +105,7 @@ test('editable shared physics',async t=>{
         for(let y=20;y<38;y++)for(let x=30;x<48;x++)pixels.set([240,40,130,255],(y*96+x)*4);
         const frames={'duck-1':pixels},trace=[];
         for(let i=0;i<150;i++){
-          await e.step(i%5===0?frames:null);
+          await e.step(e.needsFrames()?frames:null);
           if(i>=100)trace.push({qpos:Array.from(e.world.d.qpos),brain:e.agents.get('duck-1').brain.checkpoint()});
         }
         e.rewind(100);

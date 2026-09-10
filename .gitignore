@@ -12,3 +12,6 @@ output/playwright/
 .playwright-cli/
 .vercel
 .env*
+.venv/
+.cache/
+research/fly-vision/artifacts/

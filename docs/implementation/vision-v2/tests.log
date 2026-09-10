@@ -1,0 +1,56 @@
+
+> duckfly-web@0.1.0 test
+> node --test tests/*.test.mjs
+
+✔ compressed asset loader accepts raw gzip and browser-decoded responses (36.427ms)
+✔ held-out promotion rejects a regression or new fall even with positive average gain (0.72975ms)
+✔ BAM voltage, back-EMF and directional friction match 128 native vectors (3.8835ms)
+✔ independent fly brains replay deterministically, with output silence and loom reflex (298.970208ms)
+WASM walking receipt {"distance":1.5340549299049147,"onsets":[24,25],"tilt":3.0321548865271786}
+WASM brain receipt {"distance":1.8358326995774328,"walkingTicks":578,"tilt":0.4579955236952981}
+▶ WebAssembly physics and policy integration
+  ✔ ONNX WASM matches native outputs on independent inputs (13.475333ms)
+  ✔ initial state and short trajectory match native MuJoCo (59.479709ms)
+  ✔ physical walking, contact cycles and deterministic reset (603.343167ms)
+  ✔ fly circuit drives real robot and silence zeros both commands (1309.041958ms)
+✔ WebAssembly physics and policy integration (3055.218584ms)
+✔ full Flyvis WASM preserves pinned oracle, long continuation and independent eyes (3807.157125ms)
+✔ scene round trips and rejects invalid or executable fields (3.165292ms)
+Editable world walking {"distance":0.7378630481966547,"tilt":1.0817321227652308,"onsets":[12,13]}
+Head command receipt {"before":-0.009708725132682927,"after":0.23070697307256421,"tilt":0.8643403041054311}
+Shared world contacts 49
+Physical prop response {"light":0.018999999999999906,"heavy":0.0009500000000000064,"slippery":0.8049463206809584,"grippy":0.13757750833613525}
+▶ editable shared physics
+  ✔ template preserves native geometry and physical walking (1756.175417ms)
+  ✔ checkpoint restores an identical continuation after JSON export (61.472084ms)
+  ✔ bounded head commands move the physical camera while the body stays upright (220.672167ms)
+  ✔ two ducks share collisions and have separate motor histories (438.487292ms)
+  ✔ prop mass changes acceleration and edited friction changes sliding (148.924667ms)
+  ✔ frequent forced captures retain an importable replay window (2519.034875ms)
+  ✔ version 1 recording migrates and replays retained legacy camera input (135.882833ms)
+  ✔ experiment rewind replays recorded visual inputs with identical brain and body state (464.067ms)
+✔ editable shared physics (7000.645541ms)
+✔ At explicit gain 10, ON/OFF expansion recruits the bounded bridge; flash, translation and appearance do not (1639.877125ms)
+✔ upstream motion/LPLC2 interventions and GF ablation have distinct causal effects (500.371167ms)
+✔ source labels and simulation slowdown cannot alter calibrated motion estimates (100.716917ms)
+✔ duplicate camera frames become stale without advancing motion state; out of order input is rejected (39.419791ms)
+✔ independent eye histories and covered-eye motion (76.623542ms)
+✔ camera packet and full visual state replay after JSON round trip (431.534541ms)
+✔ retinal index mapping is a coordinate bijection with true hex neighbors (4.489041ms)
+✔ scene migration preserves old model semantics; head stabilization has a bounded independent command (0.935458ms)
+✔ camera pixels produce target bearing, disappear under occlusion and respect eye covering (15.026125ms)
+✔ optical flow follows independently translated image texture (21.280375ms)
+✔ asymmetric optical flow changes steering input only when enabled (17.176458ms)
+✔ active looking searches after a target disappears within the supported head range (4.558416ms)
+✔ webcam motion loom responds to radial expansion of an uncolored texture (15.441417ms)
+✔ expanding visual threat causes neural stop, and GF intervention removes it (350.853542ms)
+✔ complete neural/RNG checkpoint replays after JSON serialization (287.634875ms)
+✔ sensory adapter loses forward intent when camera input is absent or stale (1.609208ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7221.693

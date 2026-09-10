@@ -12,6 +12,7 @@ mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources/Web" "$MAC_ROOT/.build/s
 rsync -a --delete --exclude assets/Simulation/microduck.mjb.gz ../web/dist/ "$APP/Contents/Resources/Web/"
 cp AppIcon.icns "$APP/Contents/Resources/"
 cp Tests/workspace-smoke.js "$APP/Contents/Resources/NativeSmoke.js"
+cp Tests/vision-smoke.js "$APP/Contents/Resources/VisionSmoke.js"
 cp Tests/room-smoke.js "$APP/Contents/Resources/RoomSmoke.js"
 cat > "$APP/Contents/Info.plist" <<'PLIST'
 <?xml version="1.0" encoding="UTF-8"?>
@@ -23,8 +24,8 @@ cat > "$APP/Contents/Info.plist" <<'PLIST'
 <key>CFBundleDisplayName</key><string>DuckFly</string>
 <key>CFBundleIconFile</key><string>AppIcon</string>
 <key>CFBundlePackageType</key><string>APPL</string>
-<key>CFBundleShortVersionString</key><string>0.2.0</string>
-<key>CFBundleVersion</key><string>2</string>
+<key>CFBundleShortVersionString</key><string>0.3.0</string>
+<key>CFBundleVersion</key><string>3</string>
 <key>LSMinimumSystemVersion</key><string>14.0</string>
 <key>NSHighResolutionCapable</key><true/>
 <key>NSCameraUsageDescription</key><string>Use your camera as a local sensory input for the duck experiment. Frames are not uploaded.</string>

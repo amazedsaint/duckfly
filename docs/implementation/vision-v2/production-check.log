@@ -1,0 +1,8 @@
+### Result
+{"ready":true,"hasRetinalLab":true,"defaultModel":"marker-v1"}
+### Ran Playwright code
+```js
+await (async (page) => {await page.reload();await page.waitForFunction(()=>window.duckflyTelemetry?.ready);return await page.evaluate(()=>({ready:window.duckflyTelemetry.ready,hasRetinalLab:Array.from(document.querySelector('#preset').options).some(o=>o.value==='vision'),defaultModel:window.duckflyTelemetry.scene.ducks[0].visionModel}));})(page);
+```
+### Events
+- New console entries: .playwright-cli/console-2026-09-10T18-04-12-930Z.log#L2

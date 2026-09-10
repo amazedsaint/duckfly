@@ -13,6 +13,8 @@ await writeFile(`${pub}/assets/scene.json.gz`,gzipSync(await readFile(`${root}/s
 for(const name of ['mujoco.js','mujoco.wasm']) await cp(`${root}/web/node_modules/@mujoco/mujoco/${name}`,`${pub}/runtime/${name}`);
 for(const name of ['ort-wasm-simd-threaded.mjs','ort-wasm-simd-threaded.wasm']) await cp(`${root}/web/node_modules/onnxruntime-web/dist/${name}`,`${pub}/runtime/${name}`);
 await cp(`${root}/THIRD_PARTY_NOTICES.md`,`${pub}/assets/THIRD_PARTY_NOTICES.md`);
+await cp(`${root}/shared/vision/models`,`${pub}/assets/Vision`,{recursive:true});
+await cp(`${root}/shared/vision/wasm/core.wasm`,`${pub}/assets/Vision/core.wasm`);
 await cp(`${root}/LICENSE`,`${pub}/assets/LICENSE`);
 await cp(`${root}/shared/licenses`,`${pub}/assets/licenses`,{recursive:true});
 console.log('Prepared shared assets and local WASM runtimes.');

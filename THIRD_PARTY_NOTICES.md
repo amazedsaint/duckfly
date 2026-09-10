@@ -29,3 +29,18 @@ Source: https://github.com/Rhoban/bam
 The retained reference application contains a Python Build Standalone interpreter, NumPy, MuJoCo and ONNX Runtime with their runtime dependencies. Its notices remain inside `Contents/Resources/Python`. SwiftUI and RealityKit are supplied by macOS. `mac/Engine/requirements.txt` specifies the reference versions. The current standalone workspace uses the same WASM dependencies as the browser, hosted by macOS AppKit/WebKit; it does not bundle Python.
 
 The browser and standalone Mac workspace bundle `@mujoco/mujoco` 3.10.0 (Apache-2.0), `onnxruntime-web` 1.24.3 (MIT), and Three.js 0.186.0 (MIT). Their versions and transitive dependencies are locked in `web/package-lock.json`. Runtime license files are served under `/assets/licenses/`.
+
+## Flyvis reference visual model
+
+The optional retinal bench includes the full early-vision model from
+[TuragaLab/flyvis](https://github.com/TuragaLab/flyvis), pinned to commit
+`92b3845cc426dd309a1a0e1b3890156c42e14021`, and the published `flow/0000/000`
+checkpoint. Upstream code is MIT; its license is retained at
+`shared/vision/models/flyvis-000/LICENSE`. The source archive SHA-256 is
+`71c78d4070556a536b13b23ee3139cd2788aa2a9d07d430a223b4edead281db1`.
+See [Lappalainen et al., Nature 2024](https://www.nature.com/articles/s41586-024-07939-3).
+
+DuckFly's sparse runtime is an equivalent implementation of the published
+continuous-state equations. The compact motion-opponency detector and its
+LPLC2 current mapping are DuckFly modeling assumptions, not the Flyvis model.
+No FlyGym, Clark Lab or Murthy Lab code is redistributed by this upgrade.

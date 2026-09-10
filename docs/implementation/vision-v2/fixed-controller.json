@@ -1,0 +1,14 @@
+{
+  "shared/assets/Brain/circuit.json": {
+    "sha256": "da53640e4dc7071c26892870ec5b28984c4cfc74c1c44d3a3cde0a2913579d0f",
+    "unchanged": true
+  },
+  "shared/assets/Policies/alpha_walking.onnx": {
+    "sha256": "e36332d383997d51401897734cd3e79cf5038406feddb18b4d57ecfb141daa6c",
+    "unchanged": true
+  },
+  "web/src/world.js": {
+    "sha256": "75a942c98cbf3550ca6ac71d83650ba76c27b640d85dfcbf6dd2d6cb43f1db9d",
+    "unchanged": true
+  }
+}

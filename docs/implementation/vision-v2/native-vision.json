@@ -1,0 +1,59 @@
+[
+  {
+    "check": "stereo approach",
+    "position": [
+      0.3293809372565657,
+      0.006785436935307069,
+      0.11853086616145579
+    ]
+  },
+  {
+    "check": "full Flyvis in WKWebView",
+    "timing": {
+      "p95": 31,
+      "median": 29.999999999999886
+    },
+    "dt": 0.002
+  },
+  {
+    "check": "flash falsifier"
+  },
+  {
+    "check": "OFF expansion at explicit gain 10"
+  },
+  {
+    "input": {
+      "headReason": "Neutral head",
+      "loomL": 0,
+      "age": 0.336,
+      "head": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "loomPathway": "lplc2",
+      "gate": true,
+      "reason": "Camera stale or absent",
+      "gateReason": "Camera stale or absent",
+      "loomR": 0,
+      "fresh": false,
+      "forward": 0,
+      "turn": 0
+    },
+    "check": "decoded camera stall while physics keeps running",
+    "capture": {
+      "simulationTime": 3.92,
+      "frameId": 24,
+      "reason": "Repeated or out-of-order frame",
+      "accepted": false,
+      "age": 0.336,
+      "calibrated": false,
+      "pose": null,
+      "sourceId": "webcam-798824bf-b24a-44a3-a178-43d82d7d40b3",
+      "calibration": "webcam-uncalibrated-v1",
+      "captureTime": 10.798,
+      "clock": "decode-arrival"
+    }
+  }
+]

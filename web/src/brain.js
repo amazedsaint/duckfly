@@ -38,13 +38,14 @@ export class Brain {
   }
   intervene(group){
     this.silenced=group==='output';const s=this.sim;s.silencedNeurons.fill(0);
-    const indices={forward:s.fwd,left:s.dnaL,right:s.dnaR,loom:[...s.loomLeft,...s.loomRight],gf:s.gf}[group]??[];
+    const indices={forward:s.fwd,left:s.dnaL,right:s.dnaR,loom:[...s.loomLeft,...s.loomRight],gf:s.gf,lplc2:[...s.loomLeft,...s.loomRight].filter(i=>s.roles[i]==='lplc2')}[group]??[];
     for(const i of indices)s.silencedNeurons[i]=1;
   }
   step(body,sensory={}) {
     const s=this.sim;
     s.gaitDrive=this.feedback&&body?Math.min(1,body.speed/.2):0;
     s.gaitPhase=this.feedback&&body?body.phase:0;
+    s.loomPathway=s.simMs<this.loomUntil?'both':sensory.loomPathway??'both';
     s.loomL=Math.max(s.simMs<this.loomUntil?1:0,clamp(sensory.loomL??0,0,1));
     s.loomR=Math.max(s.simMs<this.loomUntil?1:0,clamp(sensory.loomR??0,0,1));
     if(sensory.forward>0)s.stimulate(s.fwd,clamp(sensory.forward,0,.25),20);
@@ -60,16 +61,17 @@ export class Brain {
     const vx=this.walking&&!stopped?.3:0;
     const yaw=stopped?0:clamp((difference-this.baseline)*.04,-.65,.65);
     if(s.simMs>this.eventUntil) this.event=this.silenced?'Output silenced':this.walking?'Neural walking drive':'Circuit at rest';
-    return {forward:s.rateFwd,left:s.rateDNaL,right:s.rateDNaR,loom:s.rateLoom,population:s.ratePop,
+    return {neuralTime:s.simMs/1000,forward:s.rateFwd,left:s.rateDNaL,right:s.rateDNaR,loom:s.rateLoom,population:s.ratePop,
       spikeCount:s.totalSpikes,fired:this.bus.popAll().map(e=>e.neuron),vx,yaw,event:this.event};
   }
   checkpoint(){
     const adapter=Object.fromEntries(['seed','silenced','feedback','baseline','walking','escapeUntil','loomUntil','event','eventUntil'].map(key=>[key,this[key]]));
-    return {version:1,adapter,random:this.random.getState(),events:plain(this.bus.events),sim:Object.fromEntries(simStateFields.map(key=>[key,plain(this.sim[key])]))};
+    return {version:1,adapter,gfGain:this.sim.gfGain,loomPathway:this.sim.loomPathway,random:this.random.getState(),events:plain(this.bus.events),sim:Object.fromEntries(simStateFields.map(key=>[key,plain(this.sim[key])]))};
   }
   restore(state){
     if(state.version!==1)throw Error('Unsupported neural checkpoint');
     for(const key of ['seed','silenced','feedback','baseline','walking','escapeUntil','loomUntil','event','eventUntil'])this[key]=state.adapter[key];
+    this.sim.setGFGain(state.gfGain??6);this.sim.loomPathway=state.loomPathway??'both';
     this.random.setState(state.random);
     for(const key of simStateFields){if(!(key in state.sim))throw Error(`Neural checkpoint missing ${key}`);this.sim[key]=restoreValue(this.sim[key],state.sim[key]);}
     this.bus.events=structuredClone(state.events);

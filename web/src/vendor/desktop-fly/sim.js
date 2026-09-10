@@ -170,10 +170,12 @@ export class LIFSim {
     for (let i = 0; i < n; i++) this.rowStart[i + 1] = this.rowStart[i] + counts[i];
     this.colIdx = new Int32Array(edges.length);
     this.w = new Float32Array(edges.length);
-    // LC4/LPLC2 -> GF and the wind pathway (JO sensory) -> GF couple via
-    // electrical (gap-junction) synapses, which chemical synapse counts
-    // under-represent; boost that drive.
-    const gapJunctionBoost = 6.0;
+    this.baseWeights = new Float32Array(edges.length);this.gfInputs = new Uint8Array(edges.length);
+    // Retained DesktopFly coupling multiplier. This is an explicit modeling
+    // parameter, not a measured conversion from chemical synapse counts to
+    // electrical coupling. DuckFly exposes it for sensitivity experiments.
+    this.gfGain = 6.0;
+    const gapJunctionBoost = this.gfGain;
     const fill = Int32Array.from(this.rowStart.subarray(0, n));
     for (const e of edges) {
       const pre = e[0] | 0, post = e[1] | 0;
@@ -181,6 +183,7 @@ export class LIFSim {
       const preRole = this.roles[pre];
       const electrical = preRole === 'lc4' || preRole === 'lplc2'
         || (preRole === 'other' && this.types[pre] === 'sensory');
+      this.baseWeights[fill[pre]]=weight;this.gfInputs[fill[pre]]=electrical&&this.roles[post]==='gf'?1:0;
       if (electrical && this.roles[post] === 'gf') weight *= gapJunctionBoost;
       this.colIdx[fill[pre]] = post;
       this.w[fill[pre]] = weight;
@@ -188,6 +191,7 @@ export class LIFSim {
     }
 
     // inputs (0..1), set each frame by the coordinator
+    this.loomPathway = 'both';
     this.loomL = 0;
     this.loomR = 0;
     this.gaitDrive = 0;      // body walking intensity -> ascending neurons
@@ -243,6 +247,12 @@ export class LIFSim {
     if (this.pendingStims.length > 8) this.pendingStims.shift();
   }
 
+  setGFGain(gain){
+    if(!Number.isFinite(gain)||gain<1||gain>12)throw Error('GF gain must be 1–12');
+    if(gain===this.gfGain)return;this.gfGain=gain;
+    for(let i=0;i<this.w.length;i++)this.w[i]=this.baseWeights[i]*(this.gfInputs[i]?gain:1);
+  }
+
   consumeGF() { const s = this.gfLatch; this.gfLatch = false; return s; }
 
   step(ms) {
@@ -276,11 +286,11 @@ export class LIFSim {
       }
       if (this.loomL > 0.001) {
         const d = this.loomL * this.loomGain * this.sensoryGate;
-        for (const i of this.loomLeft) v[i] += d;
+        for (const i of this.loomLeft) if(this.loomPathway==='both'||this.roles[i]==='lplc2') v[i] += d;
       }
       if (this.loomR > 0.001) {
         const d = this.loomR * this.loomGain * this.sensoryGate;
-        for (const i of this.loomRight) v[i] += d;
+        for (const i of this.loomRight) if(this.loomPathway==='both'||this.roles[i]==='lplc2') v[i] += d;
       }
       // body -> brain: gait rhythm into ascending (proprioceptive) neurons
       if (!this.locomotor && this.gaitDrive > 0.001) {

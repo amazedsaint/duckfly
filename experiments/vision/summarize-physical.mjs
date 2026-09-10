@@ -1,0 +1,6 @@
+import fs from 'node:fs';
+const file=new URL('./reports/physical-30-seeds.json',import.meta.url),report=JSON.parse(fs.readFileSync(file));
+function rate(values,predicate){const count=values.filter(predicate).length,n=values.length,p=count/n,z=1.96,d=1+z*z/n,center=(p+z*z/(2*n))/d,half=z*Math.sqrt(p*(1-p)/n+z*z/(4*n*n))/d;return {count,n,rate:p,CI95:[center-half,center+half]};}
+const summary=report.rows.map(row=>{const a=row.trials.filter(t=>t.family==='approach'),c=row.trials.filter(t=>t.family==='lateral-control');return {condition:row.condition,contacts:rate(a,t=>t.firstContactAt!==null),missedAlarms:rate(a,t=>t.firstContactAt!==null&&(t.stopIntentAt===null||t.stopIntentAt>=t.firstContactAt)),lateralStops:rate(c,t=>t.stopIntentAt!==null),falls:rate(row.trials,t=>t.fallen)};});
+fs.writeFileSync(new URL('./reports/physical-summary.json',import.meta.url),JSON.stringify({observationSeconds:3,gfGain:report.gfGain,summary,promotion:false,reason:'Frequent approach contacts and false stops. No controller superiority or physiological validity is established.'},null,2));
+console.log(summary.map(r=>({condition:r.condition,contacts:r.contacts.count,missedAlarms:r.missedAlarms.count,falseStops:r.lateralStops.count,falls:r.falls.count})));

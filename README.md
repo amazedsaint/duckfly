@@ -10,7 +10,9 @@ An experiment workspace coupling a selected FlyWire neural circuit to a simulate
 | --- | --- |
 | `mac/` | Native AppKit/WebKit host, standalone app packaging and native acceptance checks; retained SwiftUI/RealityKit reference implementation |
 | `web/` | Shared experiment UI, camera encoder, neural/physics worker, scene editor and browser checks |
-| `shared/` | Robot geometry, physical model template, ONNX policy and attributed circuit data |
+| `shared/` | Robot assets and common visual models, retinal maps, WASM kernel and reference fixtures |
+| `research/fly-vision/` | Pinned Python oracle, verified checkpoint export and numerical parity tools |
+| `experiments/vision/` | Synthetic falsifiers and retained matched-trial reports |
 | `docs/` | Research, deployment records and experiment acceptance evidence |
 
 Both apps run the same experiment workspace. The Mac package includes all runtime assets; it does not require the deployed website or a separately installed Python runtime.
@@ -63,6 +65,30 @@ npx vercel deploy --prod --scope contextmind
 ```
 
 Deploy from the repository root. `vercel.json` installs `web/` dependencies and publishes `web/dist`; it does not build the native executable. Runtime simulation needs no API key or backend. The website continues running after its assets have loaded, but has no service worker for offline reloads.
+
+## Vision laboratory
+
+Open **Experiment tools → Retinal stimulus bench** to compare the compact motion
+baseline with the full Flyvis reference. The viewer shows a calibrated image and
+its 721 retinal samples; Flyvis runs all 45,669 modeled cells locally and displays
+T4/T5 activity. The full reference has not been promoted to body control.
+
+The established marker controller remains the default after the new pathway failed
+its physical promotion gate. Choose **Retinal motion lab** to try the candidate.
+The compact experimental pathway detects ON/OFF expansion and injects modeled
+LPLC2 current without also driving LC4. It has an explicit GF gain control and
+upstream interventions. Its neural-to-body calibration remains sensitive to gain.
+The original marker model is available for comparison and old recordings.
+
+The **Retinal motion lab** preset uses separate left/right views with explicit geometry. This
+is a bounded retinal window, not a complete anatomical reconstruction of fly eyes.
+Optional head yaw stabilization is a separate engineered controller. Decoded webcam
+frames carry their capture clock; duplicated/frozen frames cannot renew freshness.
+Pause/resume requires a new camera observation and discards flow across the gap.
+Webcam angular calibration is explicitly unknown until measured.
+
+See [validation and limitations](docs/implementation/vision-v2/implementation.md)
+and the [reference reproduction instructions](research/fly-vision/README.md).
 
 ## Sources and scope
 
