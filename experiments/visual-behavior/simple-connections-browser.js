@@ -5,7 +5,7 @@ async page => {
   await page.goto(origin);await page.setViewportSize({width:1440,height:1000});
   await page.waitForFunction(()=>window.duckflyTelemetry?.ready,null,{timeout:60000});
   await page.getByRole('button',{name:'Open studio',exact:true}).click();
-  await page.locator('[data-scenario="target"]').click();
+  await page.locator('[data-customize-scenario="target"]').click();
   await page.getByRole('button',{name:'Continue →',exact:true}).click();
   const wizard=page.locator('#scene-setup');
   check(await wizard.locator('.trigger-connections').count()===1,'Wizard has competing connection editors');
@@ -21,7 +21,7 @@ async page => {
   await page.setViewportSize({width:1440,height:1000});
   await wizard.locator('.connection-composer > summary').click();
   check(await wizard.getByRole('button',{name:'Add connection',exact:true}).isDisabled(),'A blank connection can be added');
-  check(await wizard.locator('[data-connection="draft-trigger"] option').count()===14,'Not all 13 signals are available');
+  check(await wizard.locator('[data-connection="draft-trigger"] option').count()===20,'Not all 19 signals are available');
   check(await wizard.locator('[data-connection="draft-action"] option').count()===11,'Not all 10 actions are available');
   await wizard.getByLabel('New signal',{exact:true}).selectOption('forward');
   await wizard.getByLabel('New action',{exact:true}).selectOption('look-left');
@@ -85,7 +85,7 @@ async page => {
   }
   await page.setViewportSize({width:1440,height:1000});
   const preserved=await page.evaluate(()=>JSON.stringify(window.duckflyTelemetry.scene));
-  await page.locator('#back-home').click();await page.locator('[data-scenario="flock"]').click();
+  await page.locator('#back-home').click();await page.locator('[data-customize-scenario="flock"]').click();
   await page.getByRole('button',{name:'Continue →',exact:true}).click();
   await wizard.locator('#setup-duck-select').selectOption('duck-2');
   await wizard.locator('#setup-forward').selectOption('look-left');

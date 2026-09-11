@@ -1,0 +1,41 @@
+{
+  "format": "duckfly-ar-web-entry",
+  "passed": true,
+  "origin": "http://127.0.0.1:5195",
+  "options": {
+    "xrDisabled": true,
+    "cameraDisabled": false,
+    "message": "This browser does not offer room tracking. Camera preview places the simulation over video, without anchoring it to the room."
+  },
+  "directScene": {
+    "tick": 100,
+    "distance": 0.28594502541234645
+  },
+  "scent": {
+    "eye": "none",
+    "senses": {
+      "model": "duckfly-sensors-v1",
+      "time": 1.9999999999999793,
+      "scent": {
+        "available": true,
+        "antennae": "both",
+        "left": 0.6119606625192833,
+        "right": 0.634209059324227,
+        "strength": 0.6230848609217552,
+        "contrast": -0.017853424308874037,
+        "detected": true
+      },
+      "air": {
+        "available": true,
+        "strength": 0
+      },
+      "touch": {
+        "available": true,
+        "active": false,
+        "objects": []
+      }
+    },
+    "distance": 0.31071140565940186
+  },
+  "errors": []
+}

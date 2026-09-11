@@ -7,7 +7,7 @@ export class Arena {
     this.host = host;
     this.follow = true;
     this.target = new THREE.Vector3(0, 0.12, 0);
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFShadowMap;
@@ -50,6 +50,7 @@ export class Arena {
     floor.rotation.x = -Math.PI / 2;
     floor.position.y = -0.001;
     floor.receiveShadow = true;
+    this.floor = floor;
     this.scene.add(floor);
     this.grid = new THREE.GridHelper(10, 100, 0x9eafa5, 0xb7c5bb);
     this.grid.position.y = 0.0001;
@@ -107,6 +108,7 @@ export class Arena {
     this.controls.update();
   }
   resize() {
+    if(this.ar?.active){this.ar.resize();return;}
     const w = this.host.clientWidth,
       h = this.host.clientHeight;
     if (!w || !h) return;

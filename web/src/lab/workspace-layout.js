@@ -3,6 +3,7 @@ const PREFS_KEY = 'duckfly.workspace.v1';
 const FILTERS = {
   start: ['target', 'occlusion', 'flock', 'empty'],
   vision: ['target', 'gaze', 'occlusion', 'vision', 'loom', 'stop-go', 'kick'],
+  senses: ['scent','air','touch','vision'],
   brain: ['switchboard', 'recovery', 'flock', 'empty', 'stop-go', 'kick'],
 };
 export function mountWorkspaceLayout({onResize}) {
@@ -25,7 +26,7 @@ export function mountWorkspaceLayout({onResize}) {
   tools.dataset.inspectorPanel = 'advanced';
   const panels = [...document.querySelectorAll('details[data-panel]')];
   const stagePanels = panels.filter(panel => panel.classList.contains('workspace-panel'));
-  const rail = [['#panel-connections',['brain-mapping-panel'],'connections'],['#panel-objects',['objects-panel','prop-behavior-panel'],'objects'],['#panel-experiment',['experiment-controls'],'experiment']];
+  const rail = [['#panel-connections',['brain-mapping-panel'],'connections'],['#panel-objects',['objects-panel','prop-behavior-panel','sensory-source-panel'],'objects'],['#panel-experiment',['experiment-controls'],'experiment']];
   let lastRail = '#panel-connections';
   let resizeQueued = false;
   const resize = () => {
@@ -195,6 +196,7 @@ export function mountWorkspaceLayout({onResize}) {
       let count = 0;
       document.querySelectorAll('[data-scenario]').forEach(tile => {
         tile.hidden = filter !== 'all' && !FILTERS[filter]?.includes(tile.dataset.scenario);
+        if(tile.closest('.scenario-card'))tile.closest('.scenario-card').hidden=tile.hidden;
         if (!tile.hidden) count++;
       });
       $('#scenario-count').textContent = `${count} scenes`;

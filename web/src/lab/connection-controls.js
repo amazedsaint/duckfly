@@ -4,7 +4,7 @@ import './connection-controls.css';
 
 const esc=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const options=(values,selected)=>values.map(value=>`<option value="${value.id}" ${value.id===selected?'selected':''} ${value.disabled?'disabled':''}>${esc(value.label)}</option>`).join('');
-const signalOptions=selected=>['Fly circuit','Camera rule','Vision adapter','Body feedback'].map(group=>`<optgroup label="${group}">${options(TRIGGERS.filter(t=>t.source===group),selected)}</optgroup>`).join('');
+const signalOptions=selected=>[...new Set(TRIGGERS.map(t=>t.source))].map(group=>`<optgroup label="${group}">${options(TRIGGERS.filter(t=>t.source===group),selected)}</optgroup>`).join('');
 export const connectionEditorKey=duck=>JSON.stringify([duck.id,duck.mode,duck.mapping,duck.kickOnSight,duck.connections]);
 
 function brainRows(duck,prefix){
@@ -39,9 +39,9 @@ export function connectionsMarkup(duck,{live=false,prefix='mapping'}={}) {
     <details class="connection-composer" data-setup-panel="add-connection"><summary ${config.rules.length>=12?'aria-disabled="true"':''}>＋ Add a connection</summary><div class="connection-composer-body">
       <p>Pick a signal and a response. Your other connections stay in place.</p>
       <div class="connection-pair"><label>When<select data-connection="draft-trigger" aria-label="New signal"><option value="">Choose a signal…</option>${signalOptions('')}</select></label><span class="connection-arrow" aria-hidden="true">→</span><label>Duck does<select data-connection="draft-action" aria-label="New action"><option value="">Choose a response…</option>${options(ACTIONS,'')}</select></label></div>
-      <p class="connection-preview" aria-live="polite">${config.rules.length>=12?'This duck has reached the limit of 12 added connections.':'13 signals · 10 actions'}</p><button type="button" data-connection="add" disabled>Add connection</button>
+      <p class="connection-preview" aria-live="polite">${config.rules.length>=12?'This duck has reached the limit of 12 added connections.':`${TRIGGERS.length} signals · ${ACTIONS.length} actions`}</p><button type="button" data-connection="add" disabled>Add connection</button>
     </div></details></fieldset>
-    <details class="connection-help" data-setup-panel="connection-help"><summary>When responses overlap</summary><p>A signal connection takes control of the action it uses while active. Other actions keep their current connections. Opposing turns cancel; a pause stops walking and turning.</p><p>The stop reflex and body limits always apply. A fallen duck can only use Stand up. Signals are labeled so you can tell fly activity from camera rules.</p></details>
+    <details class="connection-help" data-setup-panel="connection-help"><summary>When responses overlap</summary><p>A signal connection takes control of the action it uses while active. Other actions keep their current connections. Opposing turns cancel; a pause stops walking and turning.</p><p>The stop reflex and body limits always apply. A fallen duck can only use Stand up. Signals are labeled by source. Scent and touch do not need a camera image.</p></details>
     ${live?'<p class="connection-runtime" role="status"></p>':''}</section>`;
 }
 

@@ -1,5 +1,6 @@
 // User-authored functional connections, not anatomical synapses. Each signal
 // keeps its measured source; the body policy still owns every joint action.
+import { SENSOR_TRIGGERS, sensorBlock } from './senses.js';
 export const TRIGGERS = Object.freeze([
   {id:'forward',label:'Walking activity · DNp09',description:'Firing rate of the circuit’s walking pathway.',source:'Fly circuit',unit:'Hz',threshold:6,max:200,read:n=>n.neural.forward},
   {id:'left',label:'Left steering · DNa',description:'How much left-turn activity exceeds right-turn activity.',source:'Fly circuit',unit:'Hz difference',threshold:6,max:200,read:n=>n.neural.left-n.neural.right},
@@ -14,6 +15,12 @@ export const TRIGGERS = Object.freeze([
   {id:'expansion',label:'Visual expansion',description:'The vision adapter’s estimate of objects growing in the image.',source:'Vision adapter',unit:'model response',threshold:.2,max:1,read:n=>Math.max(n.input.loomL??0,n.input.loomR??0)},
   {id:'bright',label:'Bright image',description:'Average image brightness, from 0 (dark) to 1 (bright).',source:'Camera rule',unit:'brightness',threshold:.6,max:1,read:n=>(n.vision?.brightness??[0,0]).reduce((a,b)=>a+b,0)/2},
   {id:'fallen',label:'Duck has fallen',description:'Active when the body reports a fall. Only the standing action can run in this state.',source:'Body feedback',unit:'on/off',threshold:1,max:1,read:n=>Number(n.body.fallen)},
+  {id:'scent',label:'Scent detected',description:'Concentration at the duck’s two simulated antennae. This is a scent-field measurement, not olfactory neuron activity.',source:'Scent sensor',unit:'concentration',threshold:.02,max:1,read:n=>n.input.senses?.scent.strength??0},
+  {id:'scent-left',label:'Scent stronger on the left',description:'Left concentration exceeds right concentration. The reading is relative to the duck’s head.',source:'Scent sensor',unit:'relative difference',threshold:.015,max:1,read:n=>Math.max(0,n.input.senses?.scent.contrast??0)},
+  {id:'scent-right',label:'Scent stronger on the right',description:'Right concentration exceeds left concentration. The reading is relative to the duck’s head.',source:'Scent sensor',unit:'relative difference',threshold:.015,max:1,read:n=>Math.max(0,-(n.input.senses?.scent.contrast??0))},
+  {id:'scent-lost',label:'No scent detected',description:'Active when enabled scent sensors read below the detection threshold. Turning the sensors off does not trigger this response.',source:'Scent sensor',unit:'on/off',threshold:1,max:1,read:n=>Number(!!n.input.senses?.scent.available&&!n.input.senses.scent.detected)},
+  {id:'air',label:'Air current felt',description:'Local strength of a simulated air current. It also stimulates DesktopFly’s sensory pathway while air sensing is enabled.',source:'Air sensor',unit:'strength',threshold:.2,max:1,read:n=>n.input.senses?.air.strength??0},
+  {id:'contact',label:'Touching an object',description:'Physical contact with a prop or another duck. Foot contact with the floor does not count.',source:'Body feedback',unit:'on/off',threshold:1,max:1,read:n=>Number(n.input.senses?.touch.active)},
 ]);
 export const ACTIONS = Object.freeze([
   {id:'walk',label:'Walk forward',description:'Request forward movement at up to 0.3 m/s. Actual speed depends on the body response.'},
@@ -65,11 +72,15 @@ export class TriggerActions {
     const requests=[],signals=[],next=Object.create(null),command={vx:0,yaw:0,head:[0,0,0,0]};
     let pause=false,skill=null;
     const owns={forward:false,turn:false,head:false};
-    const gate=!duck.motorEnabled||duck.motorGain===0?'Body disconnected':duck.silence==='output'?'Output silenced':!input.fresh?'Camera stale or absent':neural.gfHeld?'Giant-fiber stop':null;
+    const brainFresh=input.brainFresh??input.fresh;
+    const gate=!duck.motorEnabled||duck.motorGain===0?'Body disconnected':duck.silence==='output'?'Output silenced':neural.gfHeld?'Giant-fiber stop':
+      !brainFresh&&!config.rules.some(r=>r.enabled&&SENSOR_TRIGGERS.has(r.trigger))?'Camera stale or absent':null;
     for(const rule of config.rules){
       const trigger=TRIGGERS.find(t=>t.id===rule.trigger),value=trigger.read(context),key=JSON.stringify(rule),previous=this.states[rule.id];
       const matched=rule.enabled&&Number.isFinite(value)&&value>=rule.threshold;
-      const blocked=gate||(body.fallen&&rule.action!=='recover'?'Body has fallen':null);
+      const environmental=SENSOR_TRIGGERS.has(rule.trigger);
+      const stale=environmental?sensorBlock(rule.trigger,input):!(trigger.source==='Fly circuit'?brainFresh:input.fresh)?'Camera stale or absent':null;
+      const blocked=gate||stale||(body.fallen&&rule.action!=='recover'?'Body has fallen':null);
       const until=blocked||!rule.enabled?time:matched?time+rule.hold:previous?.key===key?previous.until:time;
       const active=!blocked&&rule.enabled&&(matched||time<until);
       const rising=active&&!(previous?.key===key&&previous.active);
@@ -81,13 +92,13 @@ export class TriggerActions {
       if(rule.action==='stop')pause=true;
       if(rule.action==='walk'){
         owns.forward=true;
-        if(input.gate){record.blocked=input.gateReason;continue;}
+        if(input.gate&&!environmental){record.blocked=input.gateReason;continue;}
         command.vx=Math.max(command.vx,.3*rule.strength);
       }
       if(['left','right'].includes(rule.action)){
         owns.forward=owns.turn=true;
         command.yaw+=(rule.action==='left'?1:-1)*.65*rule.strength;
-        if(!input.gate)command.vx=Math.max(command.vx,rule.strength>0?.3:0);
+        if(!input.gate||environmental)command.vx=Math.max(command.vx,rule.strength>0?.3:0);
         else record.limited='Forward held: '+input.gateReason;
       }
       if(rule.action==='steer'){owns.turn=true;command.yaw+=neural.yaw*rule.strength;}
@@ -95,13 +106,13 @@ export class TriggerActions {
       if(rule.action==='look-right'){owns.head=true;command.head[2]-=.35*rule.strength;}
       if(rule.action==='look-cue'){
         owns.head=true;
-        if(context.vision?.target?.visible)command.head[2]+=clamp(context.vision.target.bearing*.3,-.35,.35)*rule.strength;
+        if(input.fresh&&context.vision?.target?.visible)command.head[2]+=clamp(context.vision.target.bearing*.3,-.35,.35)*rule.strength;
         else record.blocked='Pink cue is not visible';
       }
       if(rising&&rule.strength>0&&['kick','recover'].includes(rule.action)&&!skill)skill={kind:rule.action,connection:rule.id};
     }
     this.states=next;
-    const inherited=config.includeBrainMapping&&!gate&&!body.fallen?context.baseCommand:null;
+    const inherited=config.includeBrainMapping&&!gate&&brainFresh&&!body.fallen?context.baseCommand:null;
     if(inherited){
       if(!owns.forward)command.vx=inherited.vx;
       if(!owns.turn)command.yaw=inherited.yaw;

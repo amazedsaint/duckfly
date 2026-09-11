@@ -4,6 +4,7 @@ import { validateScene } from './scene.js';
 import { PROP_PROFILES, profileFor } from './prop-behavior.js';
 import { normalizeBrainMapping, patchBrainMapping, brainMappingSummary } from './brain-mapping.js';
 import { includesBrainMapping } from './trigger-actions.js';
+import { FIELD_LABELS, FIELD_COLORS, normalizeSenses } from './senses.js';
 import { SETUP_MODES, cloneSetupScene, setupEntity, addSetupDuck, addSetupProp, addSetupField, removeSetupEntity, setSetupProfile, setSetupValue, setupWarnings } from './scene-setup-draft.js';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[char]));
@@ -15,7 +16,7 @@ const number = (path, label, value, {min = -10, max = 10} = {}) => `<label>${lab
 const select = (path, label, items, value, id = '') => `<label>${label}<select ${id ? `id="${id}"` : ''} data-setup-path="${path}">${options(items, value)}</select></label>`;
 const toggle = (path, title, description, checked, id = '') => `<label class="setup-toggle"><span><strong>${title}</strong><small>${description}</small></span><input type="checkbox" ${id ? `id="${id}"` : ''} data-setup-path="${path}" ${checked ? 'checked' : ''}></label>`;
 const duckIcon = '<svg viewBox="0 0 42 34" aria-hidden="true"><path d="M5 21c0-7 6-11 14-9 0-8 4-11 9-9 6 2 6 9 3 13 1 8-5 13-13 13S5 26 5 21Z" fill="currentColor"/><path d="m32 8 8 4-9 3" fill="#eea65c"/><circle cx="28" cy="8" r="1.8" fill="#203526"/></svg>';
-const entityName = entity => entity?.name === 'target' ? 'Beacon' : entity?.name || ({odor:'Scent field', light:'Light field'}[entity?.kind] ?? entity?.kind ?? 'Select an object');
+const entityName = entity => entity?.name === 'target' ? 'Beacon' : entity?.name || (FIELD_LABELS[entity?.kind] ?? entity?.kind ?? 'Select an object');
 
 /** Isolated scene editing. onApply receives a normalized draft and may return
  * false (or reject) to keep the dialog open without losing any user changes. */
@@ -39,7 +40,7 @@ export function mountSceneSetup({onApply, onClose = () => {}, requiresRestart = 
     render();return true;
   }
   function entityList(entities) {
-    return `<div class="setup-entity-list">${entities.map(entity => `<button type="button" class="setup-entity ${selected === entity.id ? 'is-selected' : ''}" data-setup-select="${esc(entity.id)}" aria-pressed="${selected === entity.id}"><span class="setup-entity-icon ${entity.spawn ? 'is-duck' : ''}" ${entity.color ? `style="--object-color:${entity.color}"` : ''}>${entity.spawn ? duckIcon : `<span class="setup-object-glyph ${entity.kind}"></span>`}</span><span><strong>${esc(entityName(entity))}</strong><small>${entity.spawn ? brainMappingSummary(entity) : entity.kind === 'odor' || entity.kind === 'light' ? `${entity.radius} m sensory field` : PROP_PROFILES.find(([id]) => id === profileFor(entity))?.[1] ?? 'Preset motion'}</small></span><span aria-hidden="true">›</span></button>`).join('')}</div>`;
+    return `<div class="setup-entity-list">${entities.map(entity => `<button type="button" class="setup-entity ${selected === entity.id ? 'is-selected' : ''}" data-setup-select="${esc(entity.id)}" aria-pressed="${selected === entity.id}"><span class="setup-entity-icon ${entity.spawn ? 'is-duck' : ''}" ${entity.color ? `style="--object-color:${entity.color}"` : ''}>${entity.spawn ? duckIcon : `<span class="setup-object-glyph ${entity.kind}"></span>`}</span><span><strong>${esc(entityName(entity))}</strong><small>${entity.spawn ? brainMappingSummary(entity) : FIELD_LABELS[entity.kind] ? `${entity.radius} m sensory field` : PROP_PROFILES.find(([id]) => id === profileFor(entity))?.[1] ?? 'Preset motion'}</small></span><span aria-hidden="true">›</span></button>`).join('')}</div>`;
   }
   function positionControls(entity) {
     const isDuck = !!entity.spawn, key = isDuck ? 'spawn' : 'position', position = entity[key];
@@ -59,6 +60,9 @@ export function mountSceneSetup({onApply, onClose = () => {}, requiresRestart = 
       ${select('source','Camera input',[['eyes','Duck camera'],['webcam','Device camera']],d.source)}
       ${select('visionModel','Vision adapter',[['marker-v1','Color tracking'],['motion-opponency-v1','Motion detection · experimental']],d.visionModel)}
       ${select('eye','Camera input',[['both','Both eyes open'],['left','Left eye only'],['right','Right eye only'],['none','Both eyes covered']],d.eye)}
+      ${select('senses.antennae','Scent sensors',[['both','Both antennae'],['left','Left only'],['right','Right only'],['none','Off']],normalizeSenses(d.senses).antennae)}
+      ${toggle('senses.air','Sense air currents','Air sources stimulate the fly’s existing sensory-current input.',normalizeSenses(d.senses).air)}
+      ${toggle('senses.touch','Sense object contact','Use physical contact as a signal in Brain → duck.',normalizeSenses(d.senses).touch)}
       ${select('silence','Disable a pathway',[['none','All pathways active'],['output','Silence all body output'],['forward','Silence forward neurons'],['left','Silence left turning'],['right','Silence right turning'],['loom','Suppress looming input'],['gf','Silence giant-fiber output'],['motion','Silence motion input'],['lplc2','Silence LPLC2 input']],d.silence)}
       ${select('temporal','Experimental stop response',[['off','Off'],['timer','Image sequence + timed stop'],['hold','Wait until clear']],d.temporal)}
       ${toggle('headStabilization','Stabilize head rotation','Compensate for body rotation. Experimental.',d.headStabilization)}
@@ -90,7 +94,7 @@ export function mountSceneSetup({onApply, onClose = () => {}, requiresRestart = 
       ${profile==='existing-motion' ? `<p class="setup-help">This object moves in a straight line. Choose a different behavior above to give it a repeating path.</p><div class="setup-coordinate-grid">${p.motion.map((v,i)=>number(`motion.${i}`,`${['X','Y','Z'][i]} speed · m/s`,v,{min:-2,max:2})).join('')}</div>` : ''}</div></details></section>`;
   }
   function renderFieldEditor(f) {
-    return `<section class="setup-editor"><div class="setup-editor-title"><h3>${esc(entityName(f))}</h3><button type="button" data-setup-action="remove-entity">Remove</button></div><p class="setup-help">${f.kind==='odor'?'A scent gradient can drive a duck set to “Follow a scent.”':'A simulated light source changes scene illumination. Brightness-seeking ducks respond through their eye images.'}</p>${positionControls(f)}<div class="setup-two-columns">${number('strength','Field strength',f.strength,{min:0,max:5,step:.1})}${number('radius','Reach · m',f.radius,{min:.05,max:5,step:.05})}</div></section>`;
+    return `<section class="setup-editor"><div class="setup-editor-title"><h3>${esc(entityName(f))}</h3><button type="button" data-setup-action="remove-entity">Remove</button></div><p class="setup-help">${f.kind==='odor'?'A scent gradient feeds a duck set to “Follow a scent.” No camera is needed.':f.kind==='air'?'Air strength feeds the existing fly sensory pathway. It can activate the stop reflex.':'A simulated light source changes scene illumination. Brightness-seeking ducks respond through their eye images.'}</p>${positionControls(f)}<div class="setup-two-columns">${number('strength','Field strength',f.strength,{min:0,max:5,step:.1})}${number('radius','Reach · m',f.radius,{min:.05,max:5,step:.05})}</div></section>`;
   }
   function renderObjects() {
     if (draft.ducks.some(d=>d.id===selected)) selected = draft.props[0]?.id ?? draft.fields[0]?.id ?? null;
@@ -98,7 +102,7 @@ export function mountSceneSetup({onApply, onClose = () => {}, requiresRestart = 
     return `<div class="setup-step-heading"><p class="setup-kicker">03 / OBJECTS</p><h2>Set up the scene</h2><p>Add objects and choose how they move. Drag them on the layout to set their starting positions.</p></div>
       <div class="setup-add-grid">${[['target','Beacon','A pink visual cue'],['ball','Ball','Roll and kick'],['block','Block','Push or obstruct'],['wall','Wall','Hide a cue']].map(([kind,title,help])=>`<button type="button" data-add-prop="${kind}" ${draft.props.length>=40?'disabled':''}><span class="setup-object-glyph ${kind}"></span><strong>+ ${title}</strong><small>${help}</small></button>`).join('')}</div>
       <div class="setup-count-line"><span>Objects</span><span>${draft.props.length} / 40</span></div>${entityList(draft.props)}
-      <details class="setup-details" data-setup-panel="sensory-fields"><summary>Sensory fields <span>${draft.fields.length ? `(${draft.fields.length})` : ''}</span></summary><div class="setup-details-content"><p class="setup-help">Optional inputs for scent or brightness experiments.</p><div class="setup-two-columns"><button type="button" data-add-field="odor" ${draft.fields.length>=16?'disabled':''}>+ Scent field</button><button type="button" data-add-field="light" ${draft.fields.length>=16?'disabled':''}>+ Light field</button></div>${entityList(draft.fields)}</div></details>
+      <details class="setup-details" data-setup-panel="sensory-fields"><summary>Sensory fields <span>${draft.fields.length ? `(${draft.fields.length})` : ''}</span></summary><div class="setup-details-content"><p class="setup-help">Place sensory sources, then choose their responses in Brain → duck.</p><div class="setup-two-columns"><button type="button" data-add-field="odor" ${draft.fields.length>=16?'disabled':''}>+ Scent source</button><button type="button" data-add-field="air" ${draft.fields.length>=16?'disabled':''}>+ Air current</button><button type="button" data-add-field="light" ${draft.fields.length>=16?'disabled':''}>+ Light field</button></div>${entityList(draft.fields)}</div></details>
       ${entity ? (draft.fields.includes(entity) ? renderFieldEditor(entity) : renderPropEditor(entity)) : '<div class="setup-empty">No objects added. Add one above or continue with an empty scene.</div>'}`;
   }
   function renderReview() {
@@ -136,13 +140,13 @@ export function mountSceneSetup({onApply, onClose = () => {}, requiresRestart = 
     const grid = [];
     for (let x=Math.ceil(b.minX/.25)*.25;x<b.minX+560*b.scale;x+=.25) grid.push(`<path d="M${xy([x,0])[0]} 0V390"/>`);
     for (let y=Math.ceil((b.maxY-390*b.scale)/.25)*.25;y<b.maxY;y+=.25) grid.push(`<path d="M0 ${xy([0,y])[1]}H560"/>`);
-    const fields = draft.fields.map(f=>{const [x,y]=xy(f.position);return `<circle cx="${x}" cy="${y}" r="${f.radius*unit}" fill="${f.kind==='odor'?'#c6a2e8':'#e7d18a'}" fill-opacity=".07" stroke="${f.kind==='odor'?'#a886c6':'#d7c785'}" stroke-opacity=".4" stroke-dasharray="4 5"/>`;}).join('');
+    const fields = draft.fields.map(f=>{const [x,y]=xy(f.position);return `<circle cx="${x}" cy="${y}" r="${f.radius*unit}" fill="${FIELD_COLORS[f.kind]}" fill-opacity=".07" stroke="${FIELD_COLORS[f.kind]}" stroke-opacity=".4" stroke-dasharray="4 5"/>`;}).join('');
     const paths = draft.props.filter(p=>p.behavior).map(p=>{const [x,y]=xy(p.position),r=p.behavior.range*unit;if(p.behavior.kind==='orbit')return `<circle cx="${x-r}" cy="${y}" r="${r}" class="setup-motion-path"/>`;return `<path d="${p.behavior.axis==='x'?`M${x-r} ${y}H${x+r}`:`M${x} ${y-r}V${y+r}`}" class="setup-motion-path"/>`;}).join('');
     const objects = [...draft.props,...draft.fields,...draft.ducks].map(entity=>{
       const isDuck=!!entity.spawn, point=entity.spawn??entity.position, [x,y]=xy(point), active=entity.id===selected;
       let glyph;
       if(isDuck) glyph=`<g transform="rotate(${-point[2]*180/Math.PI})"><ellipse rx="${Math.max(12,.095*unit)}" ry="${Math.max(9,.062*unit)}" fill="${active?'#deecb7':'#c5d9a9'}"/><path d="M${Math.max(13,.105*unit)} -5l11 5-11 5Z" fill="#e7a261"/><circle cx="${Math.max(6,.046*unit)}" cy="-4" r="2" fill="#253c2b"/></g>`;
-      else if(entity.kind==='odor'||entity.kind==='light') glyph=`<circle r="11" fill="${entity.kind==='odor'?'#b899d8':'#e7d18a'}"/><text text-anchor="middle" y="4" fill="#213027" font-size="13">${entity.kind==='odor'?'≈':'☀'}</text>`;
+      else if(FIELD_LABELS[entity.kind]) glyph=`<circle r="11" fill="${FIELD_COLORS[entity.kind]}"/><text text-anchor="middle" y="4" fill="#213027" font-size="13">${entity.kind==='odor'?'≈':entity.kind==='air'?'〰':'☀'}</text>`;
       else if(entity.kind==='target'||entity.kind==='ball') glyph=`<circle r="${Math.max(8,entity.size[0]*unit/2)}" fill="${entity.color}"/>${entity.kind==='target'?'<circle r="3" fill="#ffe4ef"/>':''}`;
       else glyph=`<rect x="${-Math.max(7,entity.size[0]*unit/2)}" y="${-Math.max(7,entity.size[1]*unit/2)}" width="${Math.max(14,entity.size[0]*unit)}" height="${Math.max(14,entity.size[1]*unit)}" rx="3" fill="${entity.color}" transform="rotate(${-entity.yaw*180/Math.PI})"/>`;
       return `<g data-map-entity="${esc(entity.id)}" role="button" tabindex="0" aria-label="${esc(entityName(entity))}, X ${round(point[0])}, Y ${round(point[1])} metres. Drag or use arrow keys to move." aria-pressed="${active}" transform="translate(${x} ${y})" class="setup-map-entity ${active?'is-selected':''}"><circle r="${isDuck?Math.max(26,.14*unit):23}" fill="transparent" class="setup-map-hit"/>${active?'<circle r="25" fill="none" stroke="#e7f3c7" stroke-width="2" stroke-dasharray="3 3"/>':''}${glyph}<text y="${isDuck?35:32}" text-anchor="middle" class="setup-map-label">${esc(entityName(entity))}</text></g>`;

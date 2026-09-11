@@ -1,0 +1,777 @@
+{
+  "format": "duckfly-xr-continuity",
+  "passed": true,
+  "support": {
+    "xr": true,
+    "planes": 10
+  },
+  "checks": [
+    {
+      "name": "tracking loss pauses, recovery waits for Run",
+      "tick": 112
+    },
+    {
+      "name": "rotated, half-scale XR and studio produce identical vision, neural state and body at tick 100",
+      "distance": 0.2974075047869727
+    },
+    {
+      "name": "rapid placement pause and second XR session; add a pushable ball and a scent source from hit tests",
+      "ball": {
+        "id": "ball-1",
+        "name": "Ball",
+        "kind": "ball",
+        "position": [
+          0.017660379409790483,
+          -1.6000000238418581,
+          0.06
+        ],
+        "size": [
+          0.12,
+          0.12,
+          0.12
+        ],
+        "yaw": 0,
+        "mass": 0.08,
+        "friction": 0.8,
+        "movable": true,
+        "color": "#6d7cec",
+        "motion": [
+          0,
+          0,
+          0
+        ],
+        "behavior": null
+      }
+    },
+    {
+      "name": "unsupported required XR features return to a usable mode picker"
+    }
+  ],
+  "errors": [],
+  "xr": {
+    "tick": 100,
+    "ducks": [
+      {
+        "id": "duck-1",
+        "position": [
+          0.20800359187856382,
+          -0.001112057965194723,
+          0.1184179801464072
+        ],
+        "headPose": [
+          0.20591563063217103,
+          -0.0037229682353430945,
+          0.23400092089972874,
+          -0.7485754735593704,
+          -0.0023739617373890985,
+          0.6598393204028857,
+          0.06512446499813117
+        ],
+        "cameraPose": [
+          0.2802127047518907,
+          -0.011412524591645636,
+          0.23982877214993037,
+          -0.48327284276243754,
+          -0.46825550239318897,
+          0.46489821350761856,
+          0.5753727444050862
+        ],
+        "command": [
+          0.3,
+          0.2500289871662546
+        ],
+        "distance": 0.2974075047869727,
+        "speed": 0.1382812213498276,
+        "tilt": 1.979716852250084,
+        "contacts": [
+          false,
+          true
+        ],
+        "fallen": false
+      }
+    ],
+    "vision": {
+      "time": 1.9000000000000001,
+      "target": {
+        "visible": true,
+        "candidatePixels": 16,
+        "area": 0.0026041666666666665,
+        "bearing": 0.10526315789473684,
+        "center": [
+          42.5,
+          33.5
+        ],
+        "bounds": [
+          41,
+          32,
+          4,
+          4
+        ]
+      },
+      "neighbor": {
+        "visible": false,
+        "area": 0,
+        "bearing": 0,
+        "candidatePixels": 0
+      },
+      "loomL": 0,
+      "loomR": 0,
+      "threat": [
+        0,
+        0
+      ],
+      "flow": {
+        "x": -1.1895246692412391e-17,
+        "y": 0.04464285714285711,
+        "left": 0.37859407982938414,
+        "right": 0.4079224722887331,
+        "divergence": -0.022786458333333315,
+        "expansion": -0.29904557969116546,
+        "vectors": [
+          {
+            "x": 8,
+            "y": 32,
+            "dx": -2,
+            "dy": 1
+          },
+          {
+            "x": 20,
+            "y": 32,
+            "dx": 3,
+            "dy": -1
+          },
+          {
+            "x": 32,
+            "y": 32,
+            "dx": 0,
+            "dy": -1
+          },
+          {
+            "x": 44,
+            "y": 32,
+            "dx": 4,
+            "dy": -3
+          },
+          {
+            "x": 56,
+            "y": 32,
+            "dx": 4,
+            "dy": 1
+          },
+          {
+            "x": 68,
+            "y": 32,
+            "dx": -4,
+            "dy": 1
+          },
+          {
+            "x": 80,
+            "y": 32,
+            "dx": -4,
+            "dy": 1
+          },
+          {
+            "x": 8,
+            "y": 44,
+            "dx": 4,
+            "dy": -3
+          },
+          {
+            "x": 20,
+            "y": 44,
+            "dx": 1,
+            "dy": 1
+          },
+          {
+            "x": 32,
+            "y": 44,
+            "dx": -2,
+            "dy": 2
+          },
+          {
+            "x": 44,
+            "y": 44,
+            "dx": 4,
+            "dy": 1
+          },
+          {
+            "x": 56,
+            "y": 44,
+            "dx": -1,
+            "dy": 0
+          },
+          {
+            "x": 68,
+            "y": 44,
+            "dx": -3,
+            "dy": 3
+          },
+          {
+            "x": 80,
+            "y": 44,
+            "dx": -4,
+            "dy": 1
+          }
+        ]
+      },
+      "brightness": [
+        0.909973370784428,
+        0.9143462122107545
+      ],
+      "eye": "both",
+      "model": "marker-v1",
+      "capture": {
+        "sourceId": "eyes:duck-1",
+        "frameId": 95,
+        "captureTime": 1.9000000000000001,
+        "simulationTime": 1.9000000000000001,
+        "clock": "simulation",
+        "age": 0,
+        "accepted": true,
+        "calibration": "duckfly-pinhole-v2",
+        "calibrated": true,
+        "pose": [
+          0.2705793289237364,
+          0.01257208778822793,
+          0.2417064694359375,
+          -0.4937172445275868,
+          -0.4306792245509141,
+          0.5019955356205044,
+          0.5645876107508856
+        ]
+      }
+    },
+    "input": {
+      "forward": 0.12,
+      "turn": 0.01894736842105263,
+      "loomL": 0,
+      "loomR": 0,
+      "loomPathway": "both",
+      "head": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "headReason": "Neutral head",
+      "fresh": true,
+      "age": 0.07999999999997964,
+      "senses": {
+        "model": "duckfly-sensors-v1",
+        "time": 1.9799999999999798,
+        "scent": {
+          "available": true,
+          "antennae": "both",
+          "left": 0,
+          "right": 0,
+          "strength": 0,
+          "contrast": 0,
+          "detected": false
+        },
+        "air": {
+          "available": true,
+          "strength": 0
+        },
+        "touch": {
+          "available": true,
+          "active": false,
+          "objects": []
+        }
+      },
+      "air": 0,
+      "brainFresh": true,
+      "gateReason": "None",
+      "gate": false,
+      "reason": "Target visible through camera"
+    },
+    "neural": {
+      "neuralTime": 2,
+      "forward": 112.00899883690613,
+      "left": 19.258053724503302,
+      "right": 12.811125806009759,
+      "loom": 0,
+      "backward": 1.0080948659700872,
+      "population": 7.476632919843933,
+      "spikeCount": 9553,
+      "fired": [
+        352,
+        392,
+        412,
+        432,
+        491,
+        566,
+        578,
+        62,
+        531,
+        284,
+        347,
+        356,
+        406,
+        422,
+        428,
+        563,
+        667,
+        415,
+        427,
+        471,
+        602,
+        343,
+        449,
+        610,
+        426,
+        431,
+        543,
+        592,
+        408,
+        409,
+        420,
+        590,
+        657,
+        216,
+        424,
+        490,
+        509,
+        603,
+        62,
+        344,
+        350,
+        389,
+        425,
+        485,
+        495,
+        498,
+        551,
+        605,
+        284,
+        329,
+        364,
+        418,
+        463,
+        555,
+        633,
+        662,
+        369,
+        396,
+        497,
+        534,
+        585,
+        624,
+        630,
+        658,
+        266,
+        372,
+        375,
+        453,
+        511,
+        608,
+        371,
+        392,
+        550,
+        410,
+        412,
+        512,
+        618,
+        643,
+        645,
+        648,
+        469,
+        514,
+        415,
+        448,
+        451,
+        465,
+        499,
+        519,
+        659,
+        363,
+        393,
+        395,
+        408,
+        438,
+        454,
+        620,
+        628,
+        62,
+        507,
+        639,
+        426,
+        427
+      ],
+      "vx": 0.3,
+      "yaw": 0.2500289871662546,
+      "event": "Neural walking drive",
+      "gfHeld": false,
+      "feedback": {
+        "enabled": true,
+        "drive": 0.7965676092533336,
+        "phase": 0.049157315777005994
+      }
+    }
+  },
+  "studio": {
+    "tick": 100,
+    "ducks": [
+      {
+        "id": "duck-1",
+        "position": [
+          0.20800359187856382,
+          -0.001112057965194723,
+          0.1184179801464072
+        ],
+        "headPose": [
+          0.20591563063217103,
+          -0.0037229682353430945,
+          0.23400092089972874,
+          -0.7485754735593704,
+          -0.0023739617373890985,
+          0.6598393204028857,
+          0.06512446499813117
+        ],
+        "cameraPose": [
+          0.2802127047518907,
+          -0.011412524591645636,
+          0.23982877214993037,
+          -0.48327284276243754,
+          -0.46825550239318897,
+          0.46489821350761856,
+          0.5753727444050862
+        ],
+        "command": [
+          0.3,
+          0.2500289871662546
+        ],
+        "distance": 0.2974075047869727,
+        "speed": 0.1382812213498276,
+        "tilt": 1.979716852250084,
+        "contacts": [
+          false,
+          true
+        ],
+        "fallen": false
+      }
+    ],
+    "vision": {
+      "time": 1.9000000000000001,
+      "target": {
+        "visible": true,
+        "candidatePixels": 16,
+        "area": 0.0026041666666666665,
+        "bearing": 0.10526315789473684,
+        "center": [
+          42.5,
+          33.5
+        ],
+        "bounds": [
+          41,
+          32,
+          4,
+          4
+        ]
+      },
+      "neighbor": {
+        "visible": false,
+        "area": 0,
+        "bearing": 0,
+        "candidatePixels": 0
+      },
+      "loomL": 0,
+      "loomR": 0,
+      "threat": [
+        0,
+        0
+      ],
+      "flow": {
+        "x": -1.1895246692412391e-17,
+        "y": 0.04464285714285711,
+        "left": 0.37859407982938414,
+        "right": 0.4079224722887331,
+        "divergence": -0.022786458333333315,
+        "expansion": -0.29904557969116546,
+        "vectors": [
+          {
+            "x": 8,
+            "y": 32,
+            "dx": -2,
+            "dy": 1
+          },
+          {
+            "x": 20,
+            "y": 32,
+            "dx": 3,
+            "dy": -1
+          },
+          {
+            "x": 32,
+            "y": 32,
+            "dx": 0,
+            "dy": -1
+          },
+          {
+            "x": 44,
+            "y": 32,
+            "dx": 4,
+            "dy": -3
+          },
+          {
+            "x": 56,
+            "y": 32,
+            "dx": 4,
+            "dy": 1
+          },
+          {
+            "x": 68,
+            "y": 32,
+            "dx": -4,
+            "dy": 1
+          },
+          {
+            "x": 80,
+            "y": 32,
+            "dx": -4,
+            "dy": 1
+          },
+          {
+            "x": 8,
+            "y": 44,
+            "dx": 4,
+            "dy": -3
+          },
+          {
+            "x": 20,
+            "y": 44,
+            "dx": 1,
+            "dy": 1
+          },
+          {
+            "x": 32,
+            "y": 44,
+            "dx": -2,
+            "dy": 2
+          },
+          {
+            "x": 44,
+            "y": 44,
+            "dx": 4,
+            "dy": 1
+          },
+          {
+            "x": 56,
+            "y": 44,
+            "dx": -1,
+            "dy": 0
+          },
+          {
+            "x": 68,
+            "y": 44,
+            "dx": -3,
+            "dy": 3
+          },
+          {
+            "x": 80,
+            "y": 44,
+            "dx": -4,
+            "dy": 1
+          }
+        ]
+      },
+      "brightness": [
+        0.909973370784428,
+        0.9143462122107545
+      ],
+      "eye": "both",
+      "model": "marker-v1",
+      "capture": {
+        "sourceId": "eyes:duck-1",
+        "frameId": 95,
+        "captureTime": 1.9000000000000001,
+        "simulationTime": 1.9000000000000001,
+        "clock": "simulation",
+        "age": 0,
+        "accepted": true,
+        "calibration": "duckfly-pinhole-v2",
+        "calibrated": true,
+        "pose": [
+          0.2705793289237364,
+          0.01257208778822793,
+          0.2417064694359375,
+          -0.4937172445275868,
+          -0.4306792245509141,
+          0.5019955356205044,
+          0.5645876107508856
+        ]
+      }
+    },
+    "input": {
+      "forward": 0.12,
+      "turn": 0.01894736842105263,
+      "loomL": 0,
+      "loomR": 0,
+      "loomPathway": "both",
+      "head": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "headReason": "Neutral head",
+      "fresh": true,
+      "age": 0.07999999999997964,
+      "senses": {
+        "model": "duckfly-sensors-v1",
+        "time": 1.9799999999999798,
+        "scent": {
+          "available": true,
+          "antennae": "both",
+          "left": 0,
+          "right": 0,
+          "strength": 0,
+          "contrast": 0,
+          "detected": false
+        },
+        "air": {
+          "available": true,
+          "strength": 0
+        },
+        "touch": {
+          "available": true,
+          "active": false,
+          "objects": []
+        }
+      },
+      "air": 0,
+      "brainFresh": true,
+      "gateReason": "None",
+      "gate": false,
+      "reason": "Target visible through camera"
+    },
+    "neural": {
+      "neuralTime": 2,
+      "forward": 112.00899883690613,
+      "left": 19.258053724503302,
+      "right": 12.811125806009759,
+      "loom": 0,
+      "backward": 1.0080948659700872,
+      "population": 7.476632919843933,
+      "spikeCount": 9553,
+      "fired": [
+        352,
+        392,
+        412,
+        432,
+        491,
+        566,
+        578,
+        62,
+        531,
+        284,
+        347,
+        356,
+        406,
+        422,
+        428,
+        563,
+        667,
+        415,
+        427,
+        471,
+        602,
+        343,
+        449,
+        610,
+        426,
+        431,
+        543,
+        592,
+        408,
+        409,
+        420,
+        590,
+        657,
+        216,
+        424,
+        490,
+        509,
+        603,
+        62,
+        344,
+        350,
+        389,
+        425,
+        485,
+        495,
+        498,
+        551,
+        605,
+        284,
+        329,
+        364,
+        418,
+        463,
+        555,
+        633,
+        662,
+        369,
+        396,
+        497,
+        534,
+        585,
+        624,
+        630,
+        658,
+        266,
+        372,
+        375,
+        453,
+        511,
+        608,
+        371,
+        392,
+        550,
+        410,
+        412,
+        512,
+        618,
+        643,
+        645,
+        648,
+        469,
+        514,
+        415,
+        448,
+        451,
+        465,
+        499,
+        519,
+        659,
+        363,
+        393,
+        395,
+        408,
+        438,
+        454,
+        620,
+        628,
+        62,
+        507,
+        639,
+        426,
+        427
+      ],
+      "vx": 0.3,
+      "yaw": 0.2500289871662546,
+      "event": "Neural walking drive",
+      "gfHeld": false,
+      "feedback": {
+        "enabled": true,
+        "drive": 0.7965676092533336,
+        "phase": 0.049157315777005994
+      }
+    }
+  },
+  "environment": {
+    "runtime": "IWER 2.4.0 and SEM 2.4.0",
+    "fixture": "office_small.json",
+    "device": "emulated Meta Quest 3, mono display, DOM overlay exposed for the harness",
+    "hardwareTested": false
+  }
+}

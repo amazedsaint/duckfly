@@ -6,6 +6,10 @@ import { mountSceneSetup } from "./lab/scene-setup.js";
 import { mountMappingControls } from "./lab/mapping-controls.js";
 import { patchBrainMapping } from "./lab/brain-mapping.js";
 import { propProfile } from "./lab/prop-behavior.js";
+import { normalizeSenses, FIELD_LABELS, FIELD_COLORS } from './lab/senses.js';
+import { mountSensoryControls, updateSensoryMonitor } from './lab/sensory-controls.js';
+import { ARView } from './lab/ar-view.js';
+import { createARScene, addARObject } from './lab/ar-scene.js';
 import { loopStatus } from "./lab/loop-status.js";
 import { mountWorkspaceLayout } from "./lab/workspace-layout.js";
 import { workspaceShell } from "./lab/workspace-ui.js";
@@ -51,6 +55,7 @@ let scene = defaultScene(),
   selected = "duck-1",
   connectedDuck = "duck-1",
   arena,
+  arView,
   plot,
   state,
   ready = false,
@@ -64,11 +69,13 @@ let scene = defaultScene(),
 try {
   const encoded = new URLSearchParams(location.hash.slice(1)).get("scene");
   if (encoded) scene = decodeScene(encoded);
+  else if(new URLSearchParams(location.search).get('ar')==='1')scene=createARScene();
   else if (localStorage.getItem("duckfly.scene.v1"))
     scene = validateScene(JSON.parse(localStorage.getItem("duckfly.scene.v1")));
 } catch (e) {
   webcamError = e.message;
 }
+let pendingLinkedAR=(new URLSearchParams(location.hash.slice(1)).has('scene')||new URLSearchParams(location.search).get('ar')==='1')&&scene.presentation?.view==='ar';
 $("#app").innerHTML =
   workspaceShell(W, H) +
   `<dialog id="room-dialog"><div class="dialog-top"><strong>Shared scene</strong><button data-close="room-dialog" aria-label="Close collaboration">✕</button></div><p id="room-status">Invite one person to edit the scene with you. Your device runs the simulation; both of you can change objects and duck settings.</p><div class="pair"><button id="room-host">Create invitation</button><button id="room-join">Join with invitation</button></div><label>Invitation or reply<textarea id="room-input" rows="3" spellcheck="false" placeholder="Paste a pairing code"></textarea></label><button id="room-accept">Accept collaborator reply</button><label>Your pairing code<textarea id="room-output" rows="3" readonly spellcheck="false"></textarea></label><button id="room-copy">Copy pairing code</button><button id="room-leave">Leave room</button><details><summary>Connection settings</summary><p class="hint">Direct WebRTC connection. If your networks require a relay, supply a TURN server. Pair again after a disconnect. Webcam frames are not shared.</p><label>TURN server<input id="turn-url" placeholder="turn:your-server:3478"></label><div class="pair"><label>Username<input id="turn-user" autocomplete="off"></label><label>Password<input id="turn-password" type="password" autocomplete="off"></label></div></details></dialog><dialog id="job-dialog"><div class="dialog-top"><strong id="job-title">Batch tests</strong><button id="cancel-job">Cancel</button></div><p id="job-progress">Preparing test scenes…</p><progress id="job-meter" max="1" value="0"></progress><div id="job-results"></div><button id="save-report" hidden>Save report</button><button id="close-job" hidden>Close</button></dialog>${actionInspectorMarkup()}
@@ -87,6 +94,7 @@ const worker = new Worker(new URL("./lab/lab.worker.js", import.meta.url), {
 const remoteActions = new Set([
   "scene",
   "duck",
+  "field",
   "move-prop",
   "prop-behavior",
   "stimulus",
@@ -192,6 +200,7 @@ const updatePropControls = mountPropControls({apply: (id, patch) => {
   }else if(!prop.movable)send('prop-behavior',{id,behavior:patch.behavior});
   else notify('This object already has those physical properties.');
 }});
+const updateSensoryControls=mountSensoryControls({apply:(id,patch)=>send('field',{id,patch}),patchDuck:patchConnected});
 const workspaceLayout = mountWorkspaceLayout({onResize: () => {
   arena?.resize();
   plot?.draw();
@@ -245,7 +254,7 @@ function selectObject(id, revealPanel = true) {
   renderScene();
   renderInspector();
   if (state) update(state);
-  if(revealPanel&&scene.props.some(p=>p.id===selected))workspaceLayout.openPanel('objects-panel');
+  if(revealPanel&&[...scene.props,...scene.fields].some(p=>p.id===selected))workspaceLayout.openPanel('objects-panel');
   drawEye();
 }
 function syncConnectedDuck() {
@@ -266,7 +275,9 @@ function syncConnectedDuck() {
     duck.eye === "none" ? "Uncover eyes" : "Cover eyes";
   $("#cover-eyes").setAttribute("aria-pressed", String(duck.eye === "none"));
   $("#model-note").textContent =
-    duck.kickOnSight
+    duck.mode==='odor'
+      ? 'Simulated scent sensors → modeled input to fly movement neurons → duck walking policy'
+    : duck.kickOnSight
       ? "Camera → forward neurons → engineered skill selector → Microduck kick policy"
       : duck.temporal !== "off"
       ? "Research: learned image sequence → fly GF → stop loop. Failed false-alarm gate; not Flyvis."
@@ -302,6 +313,7 @@ function showExperiment() {
   });
 }
 function showHome() {
+  if(arView?.active)arView.stop();
   $("#app").append($("#notice"));
   workspaceLayout.setFocus(false);
   workspaceLayout.closePanels();
@@ -327,9 +339,43 @@ function setTools(open) {
   workspaceLayout.setTools(open);
 }
 function chooseScenario(id) {
-  openSetup(defaultScene(id),false);
+  if(id==='empty'){openSetup(defaultScene(id),false);return;}
+  if(!ready||jobBusy){notify('Wait for the simulator to be ready.');return;}
+  if(room?.role==='guest'){notify('The host chooses the shared scene.');return;}
+  if(!sceneChanged(defaultScene(id)))return;
+  connectedDuck=selected=scene.ducks[0].id;
+  pendingSetupSelection=connectedDuck;
+  setTools(false);workspaceLayout.closePanels();
+  showExperiment();renderScene();renderInspector();
+  send('pause',{value:false});
+  $('#pause').focus({preventScroll:true});
+}
+function openAR(create=false) {
+  if(!ready||jobBusy){notify('Wait for the simulator to be ready.');return;}
+  if(room?.role==='guest'){notify('The host runs AR in a shared scene.');return;}
+  if(create){
+    if(!sceneChanged(createARScene()))return;
+    selected=connectedDuck='duck-1';pendingSetupSelection=connectedDuck;
+  }
+  showExperiment();arView.open();
+}
+function currentARScene() {
+  const next=structuredClone(scene);
+  for(const duck of next.ducks){
+    const body=state?.body.ducks.find(d=>d.id===duck.id);
+    if(body)duck.spawn=[body.position[0],body.position[1],body.heading];
+  }
+  for(const prop of next.props){
+    const body=state?.body.props.find(p=>p.id===prop.id);
+    if(body){
+      prop.position=[...body.position];const [w,x,y,z]=body.quaternion;
+      prop.yaw=Math.atan2(2*(w*z+x*y),1-2*(y*y+z*z));
+    }
+  }
+  return next;
 }
 function patchConnected(patch) {
+  if(patch.mode==='odor'&&!patch.senses)patch={...patch,senses:normalizeSenses(scene.ducks.find(d=>d.id===connectedDuck)?.senses)};
   scene = validateScene({
     ...scene,
     ducks: scene.ducks.map((d) =>
@@ -363,13 +409,13 @@ function renderScene() {
   ]
     .map(
       ([label, items]) =>
-        `<div class="tree-group">${label}</div>${items.map((o) => `<button class="tree-item" data-object="${o.id}" aria-pressed="${o.id === selected}"><span>${scene.ducks.includes(o) ? "◈" : o.kind === "light" ? "☀" : o.kind === "odor" ? "◌" : "◇"}</span><span>${escapeHTML(o.name === 'target' ? 'Beacon' : o.name ?? ({odor:'Scent field',light:'Light field'}[o.kind]??o.kind))}</span><small>${escapeHTML(SETUP_MODES.find(([id])=>id===o.mode)?.[1] ?? ({target:'Beacon',wall:'Wall',ball:'Ball',block:'Block',light:'Light field',odor:'Scent field'}[o.kind]??o.kind))}</small></button>`).join("")}`,
+        `<div class="tree-group">${label}</div>${items.map((o) => `<button class="tree-item" data-object="${o.id}" aria-pressed="${o.id === selected}"><span>${scene.ducks.includes(o) ? "◈" : o.kind === "light" ? "☀" : o.kind === "odor" ? "◌" : "◇"}</span><span>${escapeHTML(o.name === 'target' ? 'Beacon' : o.name ?? (FIELD_LABELS[o.kind]??o.kind))}</span><small>${escapeHTML(SETUP_MODES.find(([id])=>id===o.mode)?.[1] ?? ({target:'Beacon',wall:'Wall',ball:'Ball',block:'Block',light:'Light source',odor:'Scent source',air:'Air current'}[o.kind]??o.kind))}</small></button>`).join("")}`,
     )
     .join("");
-  $("#scene-objects").innerHTML = [...scene.ducks, ...scene.props]
+  $("#scene-objects").innerHTML = [...scene.ducks, ...scene.props, ...scene.fields]
     .map(
       (o) =>
-        `<button class="object-chip" data-object="${o.id}" aria-pressed="${o.id === selected}">${scene.ducks.includes(o) ? '<img src="/duck.svg" alt="">' : `<span class="prop-dot" style="background:${o.color}"></span>`}${escapeHTML(o.name === "target" ? "Beacon" : o.name)}</button>`,
+        `<button class="object-chip" data-object="${o.id}" aria-pressed="${o.id === selected}">${scene.ducks.includes(o) ? '<img src="/duck.svg" alt="">' : `<span class="prop-dot" style="background:${o.color??FIELD_COLORS[o.kind]}"></span>`}${escapeHTML(o.name === "target" ? "Beacon" : o.name??FIELD_LABELS[o.kind])}</button>`,
     )
     .join("");
   const prop = scene.props.find((p) => p.id === selected);
@@ -468,10 +514,12 @@ function renderInspector() {
   } else if (scene.props.includes(o)) {
     html = `<label>Name<input id="object-name" value="${escapeHTML(o.name)}" maxlength="80"></label><div class="pair">${o.position.map((v, i) => numeric("position." + i, ["X (m)", "Y (m)", "Z (m)"][i], v)).join("")}${numeric("yaw", "Yaw (rad)", o.yaw)}</div><details><summary>Physical shape</summary><div class="pair">${o.size.map((v, i) => numeric("size." + i, ["Width / diameter", "Depth", "Height"][i], v)).join("")}${numeric("mass", "Mass (kg)", o.mass)}${numeric("friction", "Friction", o.friction)}</div><label class="check"><input id="movable" type="checkbox" ${o.movable ? "checked" : ""}>Respond to physics</label><label>Color<input id="object-color" type="color" value="${o.color}"></label></details><details><summary>Animated motion (m/s)</summary><p class="hint">Sets a path for fixed objects. Movable objects respond to gravity and collisions.</p><div class="pair">${o.motion.map((v, i) => numeric("motion." + i, ["X speed", "Y speed", "Z speed"][i], v)).join("")}</div></details><button id="move-prop">Move object</button><button id="apply-object" class="primary">Apply & restart</button>`;
   } else {
-    html = `<p class="hint">${o.kind === "odor" ? "A simulated scent field measured near the duck’s head." : "Lights the scene. Camera brightness supplies input to the vision adapter."}</p><div class="pair">${o.position.map((v, i) => numeric("position." + i, ["X (m)", "Y (m)"][i], v)).join("")}${numeric("strength", "Strength", o.strength)}${numeric("radius", "Radius (m)", o.radius)}</div><button id="apply-object" class="primary">Apply & restart</button>`;
+    html = `<p class="hint">Change this ${FIELD_LABELS[o.kind].toLowerCase()} from its source controls. Position and strength update while the scene runs.</p><button id="edit-field" class="primary">Edit source</button>`;
   }
   $("#object-editor").innerHTML = html;
+  if($("#edit-field"))$("#edit-field").onclick=()=>workspaceLayout.openPanel('sensory-source-panel');
   const patch = (value) => {
+    if(value.mode==='odor'&&!value.senses)value={...value,senses:normalizeSenses(o.senses)};
     scene = validateScene({
       ...scene,
       ducks: scene.ducks.map((d) => (d.id === o.id ? patchBrainMapping(d,value) : d)),
@@ -619,6 +667,9 @@ function update(data) {
   if (update.connectionKey !== connectionKey) {syncConnectedDuck();update.connectionKey = connectionKey;}
   updateGuidedLab(scene, data, connectedDuck);
   updatePropControls(scene, data, selected);
+  updateSensoryControls(scene,data,selected,connectedDuck);
+  updateSensoryMonitor(scene,data,connectedDuck);
+  arView?.update(scene,data,connectedDuck,selected,paused);
   if (
     pendingPropMove &&
     scene.props.some(
@@ -754,6 +805,9 @@ const actionInspector = mountActionInspector({
 });
 worker.onmessage = ({ data }) => {
   if (data.type === 'action-evidence') { actionInspector.receive(data); return; }
+  if(data.type==='field-applied'){
+    scene=data.scene;arena?.updateFields(scene);persistScene();renderScene();
+  }
   if(data.type==='prop-behavior-applied'){
     scene=data.scene;if(arena)arena.definition=scene;
     persistScene();renderScene();renderInspector();updatePropControls(scene,state,selected);
@@ -783,6 +837,7 @@ worker.onmessage = ({ data }) => {
     document
       .querySelectorAll("[data-control]")
       .forEach((el) => (el.disabled = false));
+    if(pendingLinkedAR){pendingLinkedAR=false;arView.open();}
   }
   if (data.type === "scene") {
     actionInspector.reset();
@@ -897,6 +952,41 @@ async function load() {
       $("#arena"),
       JSON.parse(new TextDecoder().decode(bytes)),
     );
+    arView=new ARView(arena,{
+      pause:value=>send('pause',{value}),isPaused:()=>pendingPause?.value??paused,
+      step:()=>send('step'),reset:()=>send('reset'),
+      redraw:()=>{plot?.draw();drawEye();},select:id=>selectObject(id,false),
+      add:(kind,point,profile)=>{
+        const result=addARObject(currentARScene(),kind,point,profile);
+        if(!sceneChanged(result.scene))return false;
+        selected=result.id;
+        if(kind==='duck'){connectedDuck=result.id;pendingSetupSelection=result.id;}
+        return result.id;
+      },
+      move:(id,point)=>{
+        const next=currentARScene(),duck=next.ducks.find(d=>d.id===id),prop=next.props.find(p=>p.id===id);
+        if(duck){duck.spawn=[...point,duck.spawn[2]];return sceneChanged(next);}
+        if(prop){send('move-prop',{id,position:[...point,prop.position[2]],yaw:prop.yaw});return true;}
+        if(next.fields.some(f=>f.id===id)){send('field',{id,patch:{position:point}});return true;}
+        throw Error('Select an object to move.');
+      },
+      physics:(id,profile)=>{
+        const next=currentARScene(),prop=next.props.find(p=>p.id===id);
+        if(!prop)throw Error('Select a prop to change its physics.');
+        Object.assign(prop,propProfile(profile));return sceneChanged(next);
+      },
+      remove:id=>{
+        const next=currentARScene();
+        if(next.ducks.length===1&&next.ducks[0].id===id)throw Error('Keep at least one duck in the scene.');
+        next.ducks=next.ducks.filter(d=>d.id!==id);next.props=next.props.filter(p=>p.id!==id);next.fields=next.fields.filter(f=>f.id!==id);
+        if(next.challenge.subject===id)next.challenge.subject='ducks';
+        if(!sceneChanged(next))return false;
+        selected=next.ducks[0].id;
+        if(connectedDuck===id)connectedDuck=selected;
+        return true;
+      }
+    });
+    arena.ar=arView;
     arena.onDuckSelect = selectObject;
     let resumeAfterDrag = false;
     arena.onPropDragStart = (id) => {
@@ -905,6 +995,11 @@ async function load() {
       if (resumeAfterDrag) send("pause", { value: true });
     };
     arena.onPropDrop = (id, position) => {
+      if(scene.fields.some(field=>field.id===id)){
+        send('field',{id,patch:{position:position.slice(0,2)}});
+        if(resumeAfterDrag)send('pause',{value:false});
+        resumeAfterDrag=false;return;
+      }
       pendingPropMove = { id, position };
       send("move-prop", {
         id,
@@ -933,7 +1028,7 @@ async function load() {
   }
 }
 load();
-if (new URLSearchParams(location.hash.slice(1)).has("scene")) showExperiment();
+if (new URLSearchParams(location.hash.slice(1)).has("scene")||new URLSearchParams(location.search).get('ar')==='1') showExperiment();
 $("#pause").onclick = () => {
   send("pause", { value: !(pendingPause?.value??paused) });
 };
@@ -976,7 +1071,7 @@ function addObject(kind, profile) {
       spawn: [-0.3 * scene.ducks.length, 0.2, 0],
       mode: "flock",
     });
-  } else if (["odor", "light"].includes(kind))
+  } else if (["odor", "light", "air"].includes(kind))
     next.fields.push({
       id,
       kind,
@@ -1001,8 +1096,9 @@ function addObject(kind, profile) {
   if (!sceneChanged(next)) return;
   selected = id;
   if (kind === "duck") connectedDuck = id;
-  else if(scene.props.some(p=>p.id===selected)){
+  else if([...scene.props,...scene.fields].some(p=>p.id===selected)){
     updatePropControls(scene,state,selected);
+    updateSensoryControls(scene,state,selected,connectedDuck);
     workspaceLayout.openPanel('objects-panel');
   }
   showExperiment();
@@ -1141,6 +1237,7 @@ document
   .querySelectorAll("[data-close]")
   .forEach((el) => (el.onclick = () => $("#" + el.dataset.close).close()));
 document.addEventListener("keydown", (e) => {
+  if(arView?.active)return;
   if (e.defaultPrevented || document.querySelector("dialog[open]")) return;
   if (e.key === "Escape" && !$("#tools-panel").hidden) {
     e.preventDefault();
@@ -1390,10 +1487,14 @@ $("#room-leave").onclick = () => {
 $("#home-button").onclick = showHome;
 $("#show-launch").onclick = showLaunch;
 $("#new-scene").onclick = event => openSetup({...defaultScene('empty'),name:'Blank scene'},false,event.currentTarget);
+$('#new-ar-scene').onclick=()=>openAR(true);
+$('#view-ar').onclick=()=>openAR();
 $("#back-home").onclick = showHome;
 $("#continue-scene").onclick = showExperiment;
 for (const tile of document.querySelectorAll("[data-scenario]"))
   tile.onclick = () => chooseScenario(tile.dataset.scenario);
+for(const button of document.querySelectorAll('[data-customize-scenario]'))
+  button.onclick=()=>openSetup(defaultScene(button.dataset.customizeScenario),false,button);
 $("#tools-button").onclick = () => setTools($("#tools-panel").hidden);
 $("#edit-setup").onclick = () => openSetup();
 $("#close-tools").onclick = () => setTools(false);

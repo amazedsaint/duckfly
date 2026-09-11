@@ -1,0 +1,71 @@
+.ar-launch-card { display: flex; align-items: center; gap: 20px; margin: 22px 0; padding: 19px 22px; border: 1px solid #92b5aa; border-radius: 14px; background: linear-gradient(115deg,#d9f5ec,#e9e5ff 75%,#fff1c9); }
+.ar-launch-card > svg { width: 100px; height: 80px; flex: 0 0 auto; }
+.ar-launch-card h2 { margin: 0 0 5px; font-size: 20px; }
+.ar-launch-card p { margin: 0; max-width: 560px; color: #52605a; line-height: 1.5; }
+.ar-launch-card button { margin-left: auto; flex: 0 0 auto; }
+#ar-dialog { width: min(430px,calc(100vw - 28px)); padding: 22px; }
+#ar-dialog > button { width: 100%; margin-top: 10px; min-height: 44px; }
+.ar-choice-art { display: flex; justify-content: space-around; align-items: center; margin: 16px 0; border-radius: 12px; height: 90px; background: linear-gradient(130deg,#c3eee1,#eddef9,#fff1ac); color: #274e42; font-size: 30px; }
+.ar-choice-art span { font-size: 23px; font-weight: 750; }
+#ar-view { position: fixed; inset: 0; z-index: 2000; color: #173b30; background: transparent; font-size: 12px; }
+#ar-view[hidden] { display: none; }
+#ar-view button,#ar-view select { min-height: 42px; font-size: 12px; }
+#ar-view select { color: #213b31; background: #fffbed; border: 1px solid #9dafa5; }
+#ar-view summary,#ar-view label { color: #294b3b; }
+#ar-view details { border-color: #b5c9b9; }
+#ar-view .hint { color: #617266; }
+#ar-view button { background: #fffbed; border: 1px solid #9dafa5; color: #213b31; }
+#ar-view button.primary { background: #ffe85d; border-color: #806722; font-weight: 700; }
+#ar-viewport { position: absolute; inset: 0; overflow: hidden; background: #13261f; }
+#ar-viewport video { position: absolute; width: 100%; height: 100%; object-fit: cover; inset: 0; }
+#ar-viewport > canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; }
+#ar-view[data-mode=xr] #ar-viewport { background: transparent; pointer-events: none; }
+#ar-view[data-mode=xr] #ar-viewport > canvas { visibility: hidden; }
+.ar-top { position: absolute; left: max(12px,env(safe-area-inset-left)); top: max(10px,env(safe-area-inset-top)); right: max(12px,env(safe-area-inset-right)); display: flex; align-items: center; gap: 10px; pointer-events: none; }
+.ar-top > * { pointer-events: auto; }
+.ar-top > div { padding: 8px 12px; border-radius: 9px; background: #fffbefee; display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0; }
+.ar-top strong { font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ar-top span { font-size: 10px; }
+.ar-monitor { position: absolute; right: max(12px,env(safe-area-inset-right)); top: calc(80px + env(safe-area-inset-top)); width: 210px; padding: 9px; border: 1px solid #a5c7b5; border-radius: 12px; background: #fffbeff2; box-shadow: 0 3px 12px #13251c24; }
+.ar-monitor-heading { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 6px; }
+#ar-view .ar-monitor select { min-width: 0; max-width: 90px; min-height: 30px; padding: 3px 5px; font-size: 10px; }
+.ar-monitor-heading strong { white-space: nowrap; font-size: 11px; }
+#ar-brain-slot #brain-plot { width: 100%; height: 76px; display: block; border-radius: 7px; background: #142a20; }
+#ar-neural-readout { margin: 6px 0 0; font-size: 10px; }
+.ar-monitor details { margin-top: 7px; }
+.ar-monitor details summary { cursor: pointer; font-size: 10px; }
+#ar-eye-slot #eye { width: 96px; height: 64px; margin: 6px 0; border-radius: 4px; display: block; }
+#ar-senses-readout { margin: 2px 0; font-size: 10px; }
+.ar-monitor details > span { color: #67746c; font-size: 9px; }
+.ar-bottom { position: absolute; bottom: max(12px,env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); width: min(420px,calc(100% - 24px)); padding: 11px; background: #fffbf0f2; border: 1px solid #a7bcae; border-radius: 12px; box-shadow: 0 3px 12px #13251c24; }
+#ar-status { margin: 0 0 8px; line-height: 1.45; font-size: 12px; }
+#ar-place { width: 100%; }
+#ar-place[hidden] { display: none; }
+#ar-tools { margin-top: 8px; }
+#ar-tools > summary { cursor: pointer; font-weight: 650; padding: 5px 1px; }
+.ar-tools-content { max-height: min(44dvh,400px); overflow: auto; padding-top: 8px; display: grid; gap: 9px; }
+.ar-form-row { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; align-items: end; }
+.ar-tools-content label { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.ar-tools-content select { width: 100%; min-width: 0; }
+body.ar-active { overflow: hidden; }
+body.ar-active #app { visibility: hidden; }
+@media(max-width:600px) {
+  .ar-launch-card { flex-wrap: wrap; gap: 12px; padding: 15px; }
+  .ar-launch-card > svg { width: 70px; height: 62px; }
+  .ar-launch-card > div { flex: 1; min-width: 160px; }
+  .ar-launch-card h2 { font-size: 17px; }
+  .ar-launch-card p { font-size: 12px; }
+  .ar-launch-card button { width: 100%; }
+  .ar-monitor { width: 168px; padding: 7px; }
+  #ar-brain-slot #brain-plot { height: 66px; }
+  .ar-top { gap: 6px; }
+  .ar-top > div { padding: 8px; }
+  .ar-top strong { font-size: 12px; }
+  .ar-top span { font-size: 9px; }
+  #ar-view button { padding-left: 10px; padding-right: 10px; }
+}
+@media(max-height:550px) and (orientation:landscape) {
+  .ar-monitor { width: 175px; }
+  .ar-bottom { left: 12px; transform: none; width: min(360px,52%); }
+  .ar-tools-content { max-height: 38dvh; }
+}

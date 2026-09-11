@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import {Brain} from '../src/brain.js';
 import {TRIGGERS,ACTIONS,TriggerActions,newConnection,normalizeConnections} from '../src/lab/trigger-actions.js';
 import {defaultScene,validateScene,encodeScene,decodeScene} from '../src/lab/scene.js';
+import {SENSOR_TRIGGERS} from '../src/lab/senses.js';
 const context=(patch={})=>({time:1,duck:{motorEnabled:true,motorGain:1,silence:'none'},body:{fallen:false},
   input:{fresh:true,gate:false,loomL:.5,loomR:.3},neural:{forward:20,left:25,right:2,backward:15,loom:12,gfHeld:false,yaw:.4},
   vision:{target:{visible:true,bearing:.4},brightness:[.8,.8]},...patch});
@@ -14,7 +15,7 @@ test('the public trigger/action matrix is portable and never requests unsupporte
     const connections=config([[trigger.id,action.id]]),scene=defaultScene('empty');
     scene.ducks[0].connections=connections;
     const normalized=validateScene(scene);
-    assert.equal(normalized.version,7);assert.deepEqual(decodeScene(encodeScene(normalized)),normalized);
+    assert.equal(normalized.version,SENSOR_TRIGGERS.has(trigger.id)?9:7);assert.deepEqual(decodeScene(encodeScene(normalized)),normalized);
     assert.deepEqual(normalizeConnections(connections),connections);
     const result=new TriggerActions().step(connections,context());
     assert.ok(result.command.vx>=0&&result.command.vx<=.3);

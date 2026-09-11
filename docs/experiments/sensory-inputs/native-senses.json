@@ -1,0 +1,4519 @@
+{
+  "format": "duckfly-catalog-audit",
+  "errors": [],
+  "interactions": [
+    {
+      "action": "walk pulse reaches live brain",
+      "id": "scent",
+      "forward": 76.05828844907683,
+      "tick": 327
+    },
+    {
+      "before": [
+        1.1,
+        0,
+        0.13
+      ],
+      "action": "select and move prop",
+      "id": "air",
+      "preservedTick": 317,
+      "connectedDuck": "duck-1",
+      "after": [
+        1.1,
+        0.12,
+        0.13
+      ],
+      "prop": "target-1"
+    },
+    {
+      "before": [
+        1.1,
+        0,
+        0.13
+      ],
+      "action": "select and move prop",
+      "id": "touch",
+      "preservedTick": 332,
+      "connectedDuck": "duck-1",
+      "after": [
+        1.1,
+        0.12,
+        0.13
+      ],
+      "prop": "target-1"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "scent",
+      "samples": [
+        {
+          "collisions": 0,
+          "time": 0.8200000000000006,
+          "loop": {
+            "speed": 0.14966889044421688,
+            "mappingActive": true,
+            "perception": "Eyes covered",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "feedback": {
+              "drive": 0.961715476698782,
+              "enabled": true,
+              "phase": 0.046384557921149705
+            },
+            "sampledAt": 0.8200000000000006,
+            "reason": "Fly circuit drives walking",
+            "mapping": {
+              "forward": "walk",
+              "turn": "follow"
+            },
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "command": [
+              0.3,
+              0.65
+            ],
+            "pixels": 0,
+            "status": "Walking \u00b7 body responding"
+          },
+          "paused": false,
+          "ducks": [
+            {
+              "speed": 0.14966889044421688,
+              "id": "duck-1",
+              "position": [
+                0.07630281571054483,
+                -0.00945780466925168,
+                0.1170095867604076
+              ],
+              "neural": {
+                "yaw": 0.65,
+                "spikes": 3621,
+                "forward": 110.13660562294719,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0,
+              "tilt": 0.7038777970203032,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "age": 5.551115123125783e-16,
+                "loomPathway": "both",
+                "air": 0,
+                "gate": false,
+                "gateReason": "Scent gradient",
+                "turn": 0.05577801188007923,
+                "loomR": 0,
+                "fresh": true,
+                "forward": 0.12,
+                "reason": "Scent gradient",
+                "brainFresh": true,
+                "senses": {
+                  "scent": {
+                    "detected": true,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0.4550698926262297,
+                    "contrast": 0.03873473047227724,
+                    "left": 0.47269690226315486,
+                    "right": 0.43744288298930456
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 0.8000000000000006,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": false,
+              "command": [
+                0.3,
+                0.65
+              ],
+              "fallen": false,
+              "distance": 0.1086775365304859,
+              "temporal": null,
+              "pixels": 0
+            }
+          ],
+          "tick": 41
+        },
+        {
+          "collisions": 0,
+          "time": 1.5999999999999879,
+          "loop": {
+            "speed": 0.22683024658464251,
+            "mappingActive": true,
+            "perception": "Eyes covered",
+            "neural": [
+              0.3,
+              -0.5542720293210496
+            ],
+            "feedback": {
+              "enabled": true,
+              "phase": 0.9620577302415497,
+              "drive": 1
+            },
+            "sampledAt": 1.5999999999999879,
+            "reason": "Fly circuit drives walking",
+            "command": [
+              0.3,
+              -0.5542720293210496
+            ],
+            "mapping": {
+              "turn": "follow",
+              "forward": "walk"
+            },
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "pixels": 0,
+            "status": "Walking \u00b7 body responding"
+          },
+          "paused": false,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "speed": 0.22683024658464251,
+              "position": [
+                0.16256347916504157,
+                0.02437533329833411,
+                0.11920602620842749
+              ],
+              "neural": {
+                "yaw": -0.5542720293210496,
+                "spikes": 7258,
+                "forward": 111.45786955360809,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0,
+              "tilt": 4.029731418027415,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "age": 0.0799999999999883,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "loomPathway": "both",
+                "air": 0,
+                "gate": false,
+                "gateReason": "Scent gradient",
+                "loomR": 0,
+                "brainFresh": true,
+                "reason": "Scent gradient",
+                "forward": 0.12,
+                "turn": -0.022990111955524098,
+                "fresh": true,
+                "senses": {
+                  "scent": {
+                    "detected": true,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0.5567325323485897,
+                    "left": 0.5478440995374949,
+                    "right": 0.5656209651596845,
+                    "contrast": -0.015965355524669513
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 1.5799999999999883,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": false,
+              "command": [
+                0.3,
+                -0.5542720293210496
+              ],
+              "fallen": false,
+              "temporal": null,
+              "distance": 0.23617706134538688,
+              "pixels": 0
+            }
+          ],
+          "tick": 80
+        },
+        {
+          "tick": 80,
+          "time": 1.5999999999999879,
+          "loop": {
+            "speed": 0.22683024658464251,
+            "mappingActive": true,
+            "perception": "Eyes covered",
+            "neural": [
+              0.3,
+              -0.5542720293210496
+            ],
+            "feedback": {
+              "enabled": true,
+              "phase": 0.9620577302415497,
+              "drive": 1
+            },
+            "sampledAt": 1.5999999999999879,
+            "reason": "Fly circuit drives walking",
+            "command": [
+              0.3,
+              -0.5542720293210496
+            ],
+            "mapping": {
+              "turn": "follow",
+              "forward": "walk"
+            },
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "pixels": 0,
+            "status": "Walking \u00b7 body responding"
+          },
+          "paused": false,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "speed": 0.22683024658464251,
+              "position": [
+                0.16256347916504157,
+                0.02437533329833411,
+                0.11920602620842749
+              ],
+              "neural": {
+                "yaw": -0.5542720293210496,
+                "spikes": 7258,
+                "forward": 111.45786955360809,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0,
+              "tilt": 4.029731418027415,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "age": 0.0799999999999883,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "loomPathway": "both",
+                "air": 0,
+                "gate": false,
+                "gateReason": "Scent gradient",
+                "loomR": 0,
+                "brainFresh": true,
+                "reason": "Scent gradient",
+                "forward": 0.12,
+                "turn": -0.022990111955524098,
+                "fresh": true,
+                "senses": {
+                  "scent": {
+                    "detected": true,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0.5567325323485897,
+                    "left": 0.5478440995374949,
+                    "right": 0.5656209651596845,
+                    "contrast": -0.015965355524669513
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 1.5799999999999883,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": false,
+              "command": [
+                0.3,
+                -0.5542720293210496
+              ],
+              "fallen": false,
+              "distance": 0.23617706134538688,
+              "temporal": null,
+              "pixels": 0
+            }
+          ],
+          "collisions": 0
+        },
+        {
+          "tick": 119,
+          "collisions": 0,
+          "loop": {
+            "speed": 0.17044947487400103,
+            "mappingActive": true,
+            "perception": "Eyes covered",
+            "neural": [
+              0.3,
+              -0.035008547649623266
+            ],
+            "feedback": {
+              "phase": 0.045339317268180634,
+              "enabled": true,
+              "drive": 0.8907820610438202
+            },
+            "sampledAt": 2.3799999999999715,
+            "reason": "Fly circuit drives walking",
+            "mapping": {
+              "turn": "follow",
+              "forward": "walk"
+            },
+            "command": [
+              0.3,
+              -0.035008547649623266
+            ],
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "status": "Walking \u00b7 body responding",
+            "pixels": 0
+          },
+          "paused": false,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "speed": 0.17044947487400103,
+              "position": [
+                0.2564393346437009,
+                0.05966208198121192,
+                0.1193463855434482
+              ],
+              "neural": {
+                "yaw": -0.035008547649623266,
+                "spikes": 10934,
+                "forward": 109.63084912151089,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0,
+              "tilt": 3.526755538434275,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "age": 0.05999999999997163,
+                "loomPathway": "both",
+                "air": 0,
+                "gate": false,
+                "gateReason": "Scent gradient",
+                "reason": "Scent gradient",
+                "loomR": 0,
+                "fresh": true,
+                "forward": 0.12,
+                "turn": -0.03257569823045663,
+                "brainFresh": true,
+                "senses": {
+                  "scent": {
+                    "detected": true,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0.6744833913178495,
+                    "contrast": -0.02262201266003933,
+                    "right": 0.6897415631352282,
+                    "left": 0.6592252195004709
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 2.359999999999972,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": false,
+              "command": [
+                0.3,
+                -0.035008547649623266
+              ],
+              "fallen": false,
+              "distance": 0.37656356792153645,
+              "temporal": null,
+              "pixels": 0
+            }
+          ],
+          "time": 2.3799999999999715
+        },
+        {
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "speed": 0.15914667374370767,
+              "position": [
+                0.357629260360269,
+                0.07229581558608254,
+                0.1204243350505073
+              ],
+              "neural": {
+                "yaw": 0.65,
+                "spikes": 14506,
+                "forward": 113.8735589455708,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0,
+              "tilt": 3.8798459462897017,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "age": 0.01999999999995561,
+                "loomPathway": "both",
+                "air": 0,
+                "gate": false,
+                "gateReason": "Scent gradient",
+                "reason": "Scent gradient",
+                "turn": 0.031081845716910847,
+                "fresh": true,
+                "forward": 0.12,
+                "loomR": 0,
+                "brainFresh": true,
+                "senses": {
+                  "scent": {
+                    "detected": true,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0.7974733124039299,
+                    "left": 0.8146864668896888,
+                    "contrast": 0.02158461508118809,
+                    "right": 0.780260157918171
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 3.1199999999999557,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": false,
+              "command": [
+                0.3,
+                0.65
+              ],
+              "fallen": false,
+              "temporal": null,
+              "distance": 0.5088998304294142,
+              "pixels": 0
+            }
+          ],
+          "loop": {
+            "speed": 0.15914667374370767,
+            "mappingActive": true,
+            "perception": "Eyes covered",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "feedback": {
+              "drive": 0.6517310011192115,
+              "phase": 0.9848954871889667,
+              "enabled": true
+            },
+            "sampledAt": 3.1399999999999553,
+            "reason": "Fly circuit drives walking",
+            "mapping": {
+              "turn": "follow",
+              "forward": "walk"
+            },
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "command": [
+              0.3,
+              0.65
+            ],
+            "status": "Walking \u00b7 body responding",
+            "pixels": 0
+          },
+          "paused": false,
+          "time": 3.1399999999999553,
+          "tick": 157
+        },
+        {
+          "time": 3.1399999999999553,
+          "collisions": 0,
+          "loop": {
+            "speed": 0.15914667374370767,
+            "mappingActive": true,
+            "perception": "Eyes covered",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "feedback": {
+              "drive": 0.6517310011192115,
+              "phase": 0.9848954871889667,
+              "enabled": true
+            },
+            "sampledAt": 3.1399999999999553,
+            "reason": "Fly circuit drives walking",
+            "mapping": {
+              "turn": "follow",
+              "forward": "walk"
+            },
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "command": [
+              0.3,
+              0.65
+            ],
+            "status": "Walking \u00b7 body responding",
+            "pixels": 0
+          },
+          "paused": false,
+          "ducks": [
+            {
+              "speed": 0.15914667374370767,
+              "id": "duck-1",
+              "position": [
+                0.357629260360269,
+                0.07229581558608254,
+                0.1204243350505073
+              ],
+              "neural": {
+                "yaw": 0.65,
+                "spikes": 14506,
+                "forward": 113.8735589455708,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0,
+              "tilt": 3.8798459462897017,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "age": 0.01999999999995561,
+                "loomPathway": "both",
+                "air": 0,
+                "gate": false,
+                "gateReason": "Scent gradient",
+                "reason": "Scent gradient",
+                "turn": 0.031081845716910847,
+                "fresh": true,
+                "forward": 0.12,
+                "loomR": 0,
+                "brainFresh": true,
+                "senses": {
+                  "scent": {
+                    "detected": true,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0.7974733124039299,
+                    "left": 0.8146864668896888,
+                    "contrast": 0.02158461508118809,
+                    "right": 0.780260157918171
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 3.1199999999999557,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": false,
+              "command": [
+                0.3,
+                0.65
+              ],
+              "fallen": false,
+              "distance": 0.5088998304294142,
+              "temporal": null,
+              "pixels": 0
+            }
+          ],
+          "tick": 157
+        },
+        {
+          "tick": 195,
+          "time": 3.899999999999939,
+          "loop": {
+            "speed": 0.19897755766195163,
+            "mappingActive": true,
+            "perception": "Eyes covered",
+            "neural": [
+              0.3,
+              -0.20582755433571898
+            ],
+            "feedback": {
+              "drive": 1,
+              "phase": 0.010863033908539599,
+              "enabled": true
+            },
+            "sampledAt": 3.899999999999939,
+            "reason": "Fly circuit drives walking",
+            "mapping": {
+              "turn": "follow",
+              "forward": "walk"
+            },
+            "command": [
+              0.3,
+              -0.20582755433571898
+            ],
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "pixels": 0,
+            "status": "Walking \u00b7 body responding"
+          },
+          "paused": false,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "speed": 0.19897755766195163,
+              "position": [
+                0.44617505266504054,
+                0.10807548525568275,
+                0.11525088500056925
+              ],
+              "neural": {
+                "yaw": -0.20582755433571898,
+                "spikes": 18065,
+                "forward": 113.72954767155913,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0,
+              "tilt": 1.1125873085654272,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "age": 0.07999999999993923,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "loomPathway": "both",
+                "air": 0,
+                "gate": false,
+                "gateReason": "Scent gradient",
+                "turn": 0.01254877875828567,
+                "brainFresh": true,
+                "fresh": true,
+                "forward": 0.12,
+                "loomR": 0,
+                "reason": "Scent gradient",
+                "senses": {
+                  "scent": {
+                    "detected": true,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0.8854139892574785,
+                    "left": 0.8931298672162863,
+                    "contrast": 0.008714429693253938,
+                    "right": 0.8776981112986707
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 3.8799999999999395,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": false,
+              "command": [
+                0.3,
+                -0.20582755433571898
+              ],
+              "fallen": false,
+              "temporal": null,
+              "distance": 0.6445169089841152,
+              "pixels": 0
+            }
+          ],
+          "collisions": 0
+        },
+        {
+          "tick": 233,
+          "collisions": 0,
+          "loop": {
+            "speed": 0.010306567020580568,
+            "mappingActive": true,
+            "perception": "Eyes covered",
+            "neural": [
+              0.3,
+              -0.1211104185895768
+            ],
+            "feedback": {
+              "enabled": true,
+              "phase": 0.7560838793637176,
+              "drive": 0.07303900263464866
+            },
+            "sampledAt": 4.659999999999923,
+            "reason": "Scent source reached",
+            "mapping": {
+              "forward": "walk",
+              "turn": "follow"
+            },
+            "command": [
+              0,
+              0
+            ],
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "pixels": 0,
+            "status": "Scent source reached \u00b7 forward blocked"
+          },
+          "paused": false,
+          "time": 4.659999999999923,
+          "ducks": [
+            {
+              "speed": 0.010306567020580568,
+              "id": "duck-1",
+              "position": [
+                0.48931557196475406,
+                0.12735591110846978,
+                0.11725904466067492
+              ],
+              "neural": {
+                "yaw": -0.1211104185895768,
+                "spikes": 21319,
+                "forward": 4.6247269107314555,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0,
+              "tilt": 0.32805345982048584,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "age": 0.039999999999922764,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "air": 0,
+                "loomPathway": "both",
+                "gate": true,
+                "gateReason": "Scent source reached",
+                "turn": -0.007672073745218879,
+                "brainFresh": true,
+                "fresh": true,
+                "forward": 0,
+                "loomR": 0,
+                "reason": "Scent source reached",
+                "senses": {
+                  "scent": {
+                    "detected": true,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0.9311302569240372,
+                    "contrast": -0.005327828989735333,
+                    "left": 0.9261693541479776,
+                    "right": 0.9360911597000968
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 4.639999999999923,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": false,
+              "command": [
+                0,
+                0
+              ],
+              "fallen": false,
+              "temporal": null,
+              "distance": 0.7387990439835301,
+              "pixels": 0
+            }
+          ]
+        },
+        {
+          "ducks": [
+            {
+              "id": "duck-1",
+              "speed": 0.010306567020580568,
+              "position": [
+                0.48931557196475406,
+                0.12735591110846978,
+                0.11725904466067492
+              ],
+              "neural": {
+                "yaw": -0.1211104185895768,
+                "spikes": 21319,
+                "forward": 4.6247269107314555,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0,
+              "tilt": 0.32805345982048584,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "age": 0.039999999999922764,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "air": 0,
+                "loomPathway": "both",
+                "gate": true,
+                "gateReason": "Scent source reached",
+                "turn": -0.007672073745218879,
+                "brainFresh": true,
+                "fresh": true,
+                "forward": 0,
+                "loomR": 0,
+                "reason": "Scent source reached",
+                "senses": {
+                  "scent": {
+                    "detected": true,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0.9311302569240372,
+                    "contrast": -0.005327828989735333,
+                    "left": 0.9261693541479776,
+                    "right": 0.9360911597000968
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 4.639999999999923,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": false,
+              "command": [
+                0,
+                0
+              ],
+              "fallen": false,
+              "distance": 0.7387990439835301,
+              "temporal": null,
+              "pixels": 0
+            }
+          ],
+          "tick": 233,
+          "loop": {
+            "speed": 0.010306567020580568,
+            "mappingActive": true,
+            "perception": "Eyes covered",
+            "neural": [
+              0.3,
+              -0.1211104185895768
+            ],
+            "feedback": {
+              "enabled": true,
+              "phase": 0.7560838793637176,
+              "drive": 0.07303900263464866
+            },
+            "sampledAt": 4.659999999999923,
+            "reason": "Scent source reached",
+            "mapping": {
+              "forward": "walk",
+              "turn": "follow"
+            },
+            "command": [
+              0,
+              0
+            ],
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "pixels": 0,
+            "status": "Scent source reached \u00b7 forward blocked"
+          },
+          "paused": false,
+          "time": 4.659999999999923,
+          "collisions": 0
+        },
+        {
+          "tick": 272,
+          "ducks": [
+            {
+              "speed": 0.0012273168547645434,
+              "id": "duck-1",
+              "position": [
+                0.48951368157181546,
+                0.12693707727766568,
+                0.11689648846487624
+              ],
+              "neural": {
+                "yaw": -0.35888402239062495,
+                "spikes": 23996,
+                "forward": 2.0086825880359593,
+                "vx": 0
+              },
+              "neighborVisible": false,
+              "area": 0,
+              "tilt": 0.6949249813555598,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "age": 0.019999999999906315,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "loomPathway": "both",
+                "air": 0,
+                "gate": true,
+                "gateReason": "Scent source reached",
+                "turn": -0.009230925858851755,
+                "reason": "Scent source reached",
+                "brainFresh": true,
+                "loomR": 0,
+                "fresh": true,
+                "forward": 0,
+                "senses": {
+                  "scent": {
+                    "detected": true,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0.9305555373272817,
+                    "contrast": -0.006410365179758163,
+                    "left": 0.9245903365129677,
+                    "right": 0.9365207381415956
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 5.419999999999907,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": false,
+              "command": [
+                0,
+                0
+              ],
+              "fallen": false,
+              "temporal": null,
+              "distance": 0.739848547000571,
+              "pixels": 0
+            }
+          ],
+          "loop": {
+            "speed": 0.0012273168547645434,
+            "mappingActive": true,
+            "perception": "Eyes covered",
+            "neural": [
+              0,
+              -0.35888402239062495
+            ],
+            "feedback": {
+              "drive": 0.005201871170705522,
+              "phase": 0.5256850346193209,
+              "enabled": true
+            },
+            "sampledAt": 5.439999999999906,
+            "reason": "Scent source reached",
+            "mapping": {
+              "forward": "walk",
+              "turn": "follow"
+            },
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "command": [
+              0,
+              0
+            ],
+            "status": "Scent source reached \u00b7 forward blocked",
+            "pixels": 0
+          },
+          "paused": false,
+          "time": 5.439999999999906,
+          "collisions": 0
+        }
+      ],
+      "title": "Follow a scent",
+      "openEnded": {
+        "tick": 312,
+        "collisions": 0,
+        "loop": {
+          "speed": 0.0010125264432989934,
+          "mappingActive": true,
+          "perception": "Eyes covered",
+          "neural": [
+            0.3,
+            -0.24602448075603395
+          ],
+          "feedback": {
+            "enabled": true,
+            "phase": 0.4702290082266072,
+            "drive": 0.0014670758852147912
+          },
+          "sampledAt": 6.239999999999889,
+          "reason": "Scent source reached",
+          "mapping": {
+            "turn": "follow",
+            "forward": "walk"
+          },
+          "mappingSummary": "Walk forward \u00b7 Follow the turn",
+          "command": [
+            0,
+            0
+          ],
+          "pixels": 0,
+          "status": "Scent source reached \u00b7 forward blocked"
+        },
+        "paused": false,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "speed": 0.0010125264432989934,
+            "position": [
+              0.4896017066485852,
+              0.12694811664688596,
+              0.11681291297994864
+            ],
+            "neural": {
+              "yaw": -0.24602448075603395,
+              "spikes": 26734,
+              "forward": 2.0005154401415,
+              "vx": 0.3
+            },
+            "neighborVisible": false,
+            "area": 0,
+            "tilt": 0.7532945256390876,
+            "input": {
+              "headReason": "Neutral head",
+              "loomL": 0,
+              "age": 0.01999999999988944,
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "loomPathway": "both",
+              "air": 0,
+              "gate": true,
+              "gateReason": "Scent source reached",
+              "loomR": 0,
+              "turn": -0.00962790327898669,
+              "fresh": true,
+              "forward": 0,
+              "reason": "Scent source reached",
+              "brainFresh": true,
+              "senses": {
+                "scent": {
+                  "detected": true,
+                  "available": true,
+                  "antennae": "both",
+                  "strength": 0.9304358308536733,
+                  "left": 0.9242148960017548,
+                  "right": 0.936656765705592,
+                  "contrast": -0.0066860439437407574
+                },
+                "model": "duckfly-sensors-v1",
+                "air": {
+                  "available": true,
+                  "strength": 0
+                },
+                "time": 6.21999999999989,
+                "touch": {
+                  "objects": [],
+                  "available": true,
+                  "active": false
+                }
+              }
+            },
+            "visible": false,
+            "command": [
+              0,
+              0
+            ],
+            "fallen": false,
+            "distance": 0.7400823782418496,
+            "temporal": null,
+            "pixels": 0
+          }
+        ],
+        "time": 6.239999999999889
+      },
+      "final": {
+        "ducks": [
+          {
+            "id": "duck-1",
+            "speed": 0.0012273168547645434,
+            "position": [
+              0.48951368157181546,
+              0.12693707727766568,
+              0.11689648846487624
+            ],
+            "neural": {
+              "yaw": -0.35888402239062495,
+              "spikes": 23996,
+              "forward": 2.0086825880359593,
+              "vx": 0
+            },
+            "neighborVisible": false,
+            "area": 0,
+            "tilt": 0.6949249813555598,
+            "input": {
+              "headReason": "Neutral head",
+              "loomL": 0,
+              "age": 0.019999999999906315,
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "air": 0,
+              "loomPathway": "both",
+              "gate": true,
+              "gateReason": "Scent source reached",
+              "turn": -0.009230925858851755,
+              "brainFresh": true,
+              "reason": "Scent source reached",
+              "fresh": true,
+              "forward": 0,
+              "loomR": 0,
+              "senses": {
+                "scent": {
+                  "detected": true,
+                  "available": true,
+                  "antennae": "both",
+                  "strength": 0.9305555373272817,
+                  "contrast": -0.006410365179758163,
+                  "right": 0.9365207381415956,
+                  "left": 0.9245903365129677
+                },
+                "model": "duckfly-sensors-v1",
+                "air": {
+                  "available": true,
+                  "strength": 0
+                },
+                "time": 5.419999999999907,
+                "touch": {
+                  "objects": [],
+                  "available": true,
+                  "active": false
+                }
+              }
+            },
+            "visible": false,
+            "command": [
+              0,
+              0
+            ],
+            "fallen": false,
+            "distance": 0.739848547000571,
+            "temporal": null,
+            "pixels": 0
+          }
+        ],
+        "tick": 272,
+        "loop": {
+          "speed": 0.0012273168547645434,
+          "mappingActive": true,
+          "perception": "Eyes covered",
+          "neural": [
+            0,
+            -0.35888402239062495
+          ],
+          "feedback": {
+            "enabled": true,
+            "phase": 0.5256850346193209,
+            "drive": 0.005201871170705522
+          },
+          "sampledAt": 5.439999999999906,
+          "reason": "Scent source reached",
+          "command": [
+            0,
+            0
+          ],
+          "mapping": {
+            "forward": "walk",
+            "turn": "follow"
+          },
+          "mappingSummary": "Walk forward \u00b7 Follow the turn",
+          "status": "Paused \u00b7 Run or Step to advance",
+          "pixels": 0
+        },
+        "paused": true,
+        "time": 5.439999999999906,
+        "collisions": 0
+      }
+    },
+    {
+      "id": "air",
+      "samples": [
+        {
+          "time": 0.7200000000000005,
+          "tick": 36,
+          "loop": {
+            "speed": 0.002931316338237161,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0.3,
+              0.04674832932500249
+            ],
+            "feedback": {
+              "enabled": true,
+              "drive": 0.10064677136607841,
+              "phase": 0.9688116666217862
+            },
+            "sampledAt": 0.7200000000000005,
+            "reason": "Fly circuit drives walking",
+            "command": [
+              0.3,
+              0.04674832932500249
+            ],
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "mapping": {
+              "forward": "walk",
+              "turn": "follow"
+            },
+            "status": "Movement requested \u00b7 body settling",
+            "pixels": 6
+          },
+          "paused": false,
+          "ducks": [
+            {
+              "speed": 0.002931316338237161,
+              "id": "duck-1",
+              "position": [
+                0.005695453158502651,
+                0.0001362703784602899,
+                0.11513887790728292
+              ],
+              "neural": {
+                "yaw": 0.04674832932500249,
+                "spikes": 2623,
+                "forward": 36.53166099628114,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0.0009765625,
+              "tilt": 1.311644092263207,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "age": 4.440892098500626e-16,
+                "loomPathway": "both",
+                "air": 0.012909697382639912,
+                "gate": false,
+                "gateReason": "None",
+                "turn": -0.003789473684210538,
+                "loomR": 0,
+                "fresh": true,
+                "brainFresh": true,
+                "reason": "Target visible through camera",
+                "forward": 0.12,
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "left": 0,
+                    "contrast": 0,
+                    "right": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0.012909697382639912
+                  },
+                  "time": 0.7000000000000005,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0.3,
+                0.04674832932500249
+              ],
+              "fallen": false,
+              "temporal": null,
+              "distance": 0.021830938046201967,
+              "pixels": 6
+            }
+          ],
+          "collisions": 0
+        },
+        {
+          "tick": 74,
+          "time": 1.4799999999999904,
+          "loop": {
+            "speed": 0.20057753419767688,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0.3,
+              -0.2825776860908701
+            ],
+            "feedback": {
+              "drive": 0.9720458458770098,
+              "phase": 0.9782450372655916,
+              "enabled": true
+            },
+            "sampledAt": 1.4799999999999904,
+            "reason": "Fly circuit drives walking",
+            "mapping": {
+              "turn": "follow",
+              "forward": "walk"
+            },
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "command": [
+              0.3,
+              -0.2825776860908701
+            ],
+            "status": "Walking \u00b7 body responding",
+            "pixels": 7
+          },
+          "paused": false,
+          "ducks": [
+            {
+              "speed": 0.20057753419767688,
+              "id": "duck-1",
+              "position": [
+                0.050118633934330144,
+                0.019555792088013477,
+                0.11441262866429953
+              ],
+              "neural": {
+                "yaw": -0.2825776860908701,
+                "spikes": 5882,
+                "forward": 101.0476960072544,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0.0011393229166666667,
+              "tilt": 0.3443496533670711,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "age": 0.05999999999999073,
+                "air": 0.028390109473589994,
+                "loomPathway": "both",
+                "gate": false,
+                "gateReason": "None",
+                "turn": -0.024631578947368418,
+                "brainFresh": true,
+                "fresh": true,
+                "forward": 0.12,
+                "loomR": 0,
+                "reason": "Target visible through camera",
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "left": 0,
+                    "right": 0,
+                    "contrast": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0.028390109473589994
+                  },
+                  "time": 1.4599999999999909,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0.3,
+                -0.2825776860908701
+              ],
+              "fallen": false,
+              "temporal": null,
+              "distance": 0.10269422947711322,
+              "pixels": 7
+            }
+          ],
+          "collisions": 0
+        },
+        {
+          "time": 2.2799999999999736,
+          "tick": 114,
+          "loop": {
+            "speed": 0.2163316763255502,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0.3,
+              0.2150418989942088
+            ],
+            "feedback": {
+              "enabled": true,
+              "drive": 1,
+              "phase": 0.9531594406256347
+            },
+            "sampledAt": 2.2799999999999736,
+            "reason": "Fly circuit drives walking",
+            "mapping": {
+              "turn": "follow",
+              "forward": "walk"
+            },
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "command": [
+              0.3,
+              0.2150418989942088
+            ],
+            "pixels": 9,
+            "status": "Walking \u00b7 body responding"
+          },
+          "paused": false,
+          "ducks": [
+            {
+              "speed": 0.2163316763255502,
+              "id": "duck-1",
+              "position": [
+                0.1479220971706628,
+                0.020764339371635143,
+                0.11741903058926915
+              ],
+              "neural": {
+                "yaw": 0.2150418989942088,
+                "spikes": 9727,
+                "forward": 115.75132267954658,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0.00146484375,
+              "tilt": 3.092374827326382,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "age": 0.05999999999997385,
+                "air": 0.14246200984886898,
+                "loomPathway": "both",
+                "gate": false,
+                "reason": "Target visible through camera",
+                "loomR": 0,
+                "brainFresh": true,
+                "fresh": true,
+                "forward": 0.12,
+                "gateReason": "None",
+                "turn": -0.001894736842105269,
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "left": 0,
+                    "contrast": 0,
+                    "right": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0.14246200984886898
+                  },
+                  "time": 2.259999999999974,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0.3,
+                0.2150418989942088
+              ],
+              "fallen": false,
+              "distance": 0.23737677705560092,
+              "temporal": null,
+              "pixels": 9
+            }
+          ],
+          "collisions": 0
+        },
+        {
+          "collisions": 0,
+          "tick": 114,
+          "loop": {
+            "speed": 0.2163316763255502,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0.3,
+              0.2150418989942088
+            ],
+            "feedback": {
+              "enabled": true,
+              "drive": 1,
+              "phase": 0.9531594406256347
+            },
+            "sampledAt": 2.2799999999999736,
+            "reason": "Fly circuit drives walking",
+            "mapping": {
+              "turn": "follow",
+              "forward": "walk"
+            },
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "command": [
+              0.3,
+              0.2150418989942088
+            ],
+            "pixels": 9,
+            "status": "Walking \u00b7 body responding"
+          },
+          "paused": false,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "speed": 0.2163316763255502,
+              "position": [
+                0.1479220971706628,
+                0.020764339371635143,
+                0.11741903058926915
+              ],
+              "neural": {
+                "yaw": 0.2150418989942088,
+                "spikes": 9727,
+                "forward": 115.75132267954658,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0.00146484375,
+              "tilt": 3.092374827326382,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "age": 0.05999999999997385,
+                "air": 0.14246200984886898,
+                "loomPathway": "both",
+                "gate": false,
+                "reason": "Target visible through camera",
+                "loomR": 0,
+                "brainFresh": true,
+                "fresh": true,
+                "forward": 0.12,
+                "gateReason": "None",
+                "turn": -0.001894736842105269,
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "left": 0,
+                    "contrast": 0,
+                    "right": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0.14246200984886898
+                  },
+                  "time": 2.259999999999974,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0.3,
+                0.2150418989942088
+              ],
+              "fallen": false,
+              "temporal": null,
+              "distance": 0.23737677705560092,
+              "pixels": 9
+            }
+          ],
+          "time": 2.2799999999999736
+        },
+        {
+          "tick": 152,
+          "ducks": [
+            {
+              "speed": 0.08087236610557101,
+              "id": "duck-1",
+              "position": [
+                0.23974444132008554,
+                0.012240884133372425,
+                0.12054342205780462
+              ],
+              "neural": {
+                "yaw": 0.1641740903589851,
+                "spikes": 13642,
+                "forward": 110.9155779808789,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0.0016276041666666667,
+              "tilt": 3.2062563935576365,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "age": 0.01999999999995783,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "air": 0.40401073852771996,
+                "loomPathway": "both",
+                "gate": false,
+                "reason": "Target visible through camera",
+                "gateReason": "None",
+                "brainFresh": true,
+                "fresh": true,
+                "turn": 0.006442105263157906,
+                "loomR": 0,
+                "forward": 0.12,
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "left": 0,
+                    "right": 0,
+                    "contrast": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0.40401073852771996
+                  },
+                  "time": 3.019999999999958,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0.3,
+                0.1641740903589851
+              ],
+              "fallen": false,
+              "distance": 0.36739823133641647,
+              "temporal": null,
+              "pixels": 10
+            }
+          ],
+          "loop": {
+            "speed": 0.08087236610557101,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0.3,
+              0.1641740903589851
+            ],
+            "feedback": {
+              "phase": 0.019415433872708387,
+              "enabled": true,
+              "drive": 0.5862846546099217
+            },
+            "sampledAt": 3.0399999999999574,
+            "reason": "Fly circuit drives walking",
+            "command": [
+              0.3,
+              0.1641740903589851
+            ],
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "mapping": {
+              "forward": "walk",
+              "turn": "follow"
+            },
+            "status": "Walking \u00b7 body responding",
+            "pixels": 10
+          },
+          "paused": false,
+          "time": 3.0399999999999574,
+          "collisions": 0
+        },
+        {
+          "collisions": 0,
+          "ducks": [
+            {
+              "speed": 0.08087236610557101,
+              "id": "duck-1",
+              "position": [
+                0.23974444132008554,
+                0.012240884133372425,
+                0.12054342205780462
+              ],
+              "neural": {
+                "yaw": 0.1641740903589851,
+                "spikes": 13642,
+                "forward": 110.9155779808789,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0.0016276041666666667,
+              "tilt": 3.2062563935576365,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "age": 0.01999999999995783,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "air": 0.40401073852771996,
+                "loomPathway": "both",
+                "gate": false,
+                "reason": "Target visible through camera",
+                "gateReason": "None",
+                "brainFresh": true,
+                "fresh": true,
+                "turn": 0.006442105263157906,
+                "loomR": 0,
+                "forward": 0.12,
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "left": 0,
+                    "right": 0,
+                    "contrast": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0.40401073852771996
+                  },
+                  "time": 3.019999999999958,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0.3,
+                0.1641740903589851
+              ],
+              "fallen": false,
+              "distance": 0.36739823133641647,
+              "temporal": null,
+              "pixels": 10
+            }
+          ],
+          "loop": {
+            "speed": 0.08087236610557101,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0.3,
+              0.1641740903589851
+            ],
+            "feedback": {
+              "phase": 0.019415433872708387,
+              "enabled": true,
+              "drive": 0.5862846546099217
+            },
+            "sampledAt": 3.0399999999999574,
+            "reason": "Fly circuit drives walking",
+            "command": [
+              0.3,
+              0.1641740903589851
+            ],
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "mapping": {
+              "forward": "walk",
+              "turn": "follow"
+            },
+            "status": "Walking \u00b7 body responding",
+            "pixels": 10
+          },
+          "paused": false,
+          "time": 3.0399999999999574,
+          "tick": 152
+        },
+        {
+          "collisions": 0,
+          "ducks": [
+            {
+              "speed": 0.04875494742716598,
+              "id": "duck-1",
+              "position": [
+                0.30870574043056376,
+                0.029994279374093286,
+                0.11704997699716821
+              ],
+              "neural": {
+                "yaw": 0,
+                "spikes": 17992,
+                "forward": 118.88030897882702,
+                "vx": 0
+              },
+              "neighborVisible": false,
+              "area": 0.001953125,
+              "tilt": 1.478299511596753,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "age": 0,
+                "air": 0.7123775966957426,
+                "loomPathway": "both",
+                "gate": false,
+                "reason": "Target visible through camera",
+                "turn": -0.005684210526315807,
+                "loomR": 0,
+                "fresh": true,
+                "forward": 0.12,
+                "gateReason": "None",
+                "brainFresh": true,
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "contrast": 0,
+                    "right": 0,
+                    "left": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0.7123775966957426
+                  },
+                  "time": 3.799999999999941,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0,
+                0
+              ],
+              "fallen": false,
+              "temporal": null,
+              "distance": 0.4782599195717652,
+              "pixels": 12
+            }
+          ],
+          "loop": {
+            "speed": 0.04875494742716598,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0,
+              0
+            ],
+            "feedback": {
+              "enabled": true,
+              "phase": 0.9483357433589094,
+              "drive": 0.20640825462582538
+            },
+            "sampledAt": 3.8199999999999408,
+            "reason": "GF stop reflex active",
+            "command": [
+              0,
+              0
+            ],
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "mapping": {
+              "turn": "follow",
+              "forward": "walk"
+            },
+            "pixels": 12,
+            "status": "GF stop reflex active"
+          },
+          "paused": false,
+          "time": 3.8199999999999408,
+          "tick": 191
+        },
+        {
+          "collisions": 0,
+          "time": 4.579999999999925,
+          "loop": {
+            "speed": 0.0009973683663655763,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0,
+              0
+            ],
+            "feedback": {
+              "drive": 0.003628594225419342,
+              "enabled": true,
+              "phase": 0.9992972541866241
+            },
+            "sampledAt": 4.579999999999925,
+            "reason": "GF stop reflex active",
+            "command": [
+              0,
+              0
+            ],
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "mapping": {
+              "forward": "walk",
+              "turn": "follow"
+            },
+            "status": "GF stop reflex active",
+            "pixels": 13
+          },
+          "paused": false,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "speed": 0.0009973683663655763,
+              "position": [
+                0.30549909386318375,
+                0.030610475197213848,
+                0.11634757891244181
+              ],
+              "neural": {
+                "yaw": 0,
+                "spikes": 21814,
+                "forward": 117.7384857444155,
+                "vx": 0
+              },
+              "neighborVisible": false,
+              "area": 0.0021158854166666665,
+              "tilt": 0.8096339319758686,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "age": 0.059999999999925,
+                "air": 0.697106385569102,
+                "loomPathway": "both",
+                "gate": false,
+                "reason": "Target visible through camera",
+                "loomR": 0,
+                "gateReason": "None",
+                "fresh": true,
+                "forward": 0.12,
+                "turn": 0.0001457489878542484,
+                "brainFresh": true,
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "left": 0,
+                    "right": 0,
+                    "contrast": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0.697106385569102
+                  },
+                  "time": 4.559999999999925,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0,
+                0
+              ],
+              "fallen": false,
+              "temporal": null,
+              "distance": 0.48189482057668037,
+              "pixels": 13
+            }
+          ],
+          "tick": 229
+        },
+        {
+          "ducks": [
+            {
+              "speed": 0.0009973683663655763,
+              "id": "duck-1",
+              "position": [
+                0.30549909386318375,
+                0.030610475197213848,
+                0.11634757891244181
+              ],
+              "neural": {
+                "yaw": 0,
+                "spikes": 21814,
+                "forward": 117.7384857444155,
+                "vx": 0
+              },
+              "neighborVisible": false,
+              "area": 0.0021158854166666665,
+              "tilt": 0.8096339319758686,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "age": 0.059999999999925,
+                "air": 0.697106385569102,
+                "loomPathway": "both",
+                "gate": false,
+                "reason": "Target visible through camera",
+                "loomR": 0,
+                "gateReason": "None",
+                "fresh": true,
+                "forward": 0.12,
+                "turn": 0.0001457489878542484,
+                "brainFresh": true,
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "left": 0,
+                    "right": 0,
+                    "contrast": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0.697106385569102
+                  },
+                  "time": 4.559999999999925,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0,
+                0
+              ],
+              "fallen": false,
+              "distance": 0.48189482057668037,
+              "temporal": null,
+              "pixels": 13
+            }
+          ],
+          "collisions": 0,
+          "loop": {
+            "speed": 0.0009973683663655763,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0,
+              0
+            ],
+            "feedback": {
+              "drive": 0.003628594225419342,
+              "enabled": true,
+              "phase": 0.9992972541866241
+            },
+            "sampledAt": 4.579999999999925,
+            "reason": "GF stop reflex active",
+            "command": [
+              0,
+              0
+            ],
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "mapping": {
+              "forward": "walk",
+              "turn": "follow"
+            },
+            "status": "GF stop reflex active",
+            "pixels": 13
+          },
+          "paused": false,
+          "time": 4.579999999999925,
+          "tick": 229
+        },
+        {
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "speed": 0.0006563968880102149,
+              "position": [
+                0.3049942704361398,
+                0.030840434522068354,
+                0.11617516257117273
+              ],
+              "neural": {
+                "yaw": 0,
+                "spikes": 25682,
+                "forward": 117.19700489853345,
+                "vx": 0
+              },
+              "neighborVisible": false,
+              "area": 0.0017903645833333333,
+              "tilt": 0.7815963114943767,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "age": 0.03999999999990855,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "loomPathway": "both",
+                "air": 0.6948384598259709,
+                "gate": false,
+                "gateReason": "None",
+                "reason": "Target visible through camera",
+                "brainFresh": true,
+                "turn": 0.0012057416267942567,
+                "forward": 0.12,
+                "loomR": 0,
+                "fresh": true,
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "left": 0,
+                    "right": 0,
+                    "contrast": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0.6948384598259709
+                  },
+                  "time": 5.339999999999908,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0,
+                0
+              ],
+              "fallen": false,
+              "temporal": null,
+              "distance": 0.48255027120301025,
+              "pixels": 11
+            }
+          ],
+          "loop": {
+            "speed": 0.0006563968880102149,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0,
+              0
+            ],
+            "feedback": {
+              "phase": 0.9974762448149904,
+              "enabled": true,
+              "drive": 0.0032975479520725433
+            },
+            "sampledAt": 5.359999999999908,
+            "reason": "GF stop reflex active",
+            "command": [
+              0,
+              0
+            ],
+            "mappingSummary": "Walk forward \u00b7 Follow the turn",
+            "mapping": {
+              "turn": "follow",
+              "forward": "walk"
+            },
+            "pixels": 11,
+            "status": "GF stop reflex active"
+          },
+          "paused": false,
+          "time": 5.359999999999908,
+          "tick": 268
+        }
+      ],
+      "title": "Feel the air",
+      "openEnded": {
+        "tick": 307,
+        "time": 6.139999999999891,
+        "loop": {
+          "speed": 0.00062545173268706,
+          "mappingActive": true,
+          "perception": "Beacon visible",
+          "neural": [
+            0,
+            0
+          ],
+          "feedback": {
+            "enabled": true,
+            "drive": 0.0011637420390799133,
+            "phase": 0.9999845948591326
+          },
+          "sampledAt": 6.139999999999891,
+          "reason": "GF stop reflex active",
+          "mapping": {
+            "forward": "walk",
+            "turn": "follow"
+          },
+          "mappingSummary": "Walk forward \u00b7 Follow the turn",
+          "command": [
+            0,
+            0
+          ],
+          "pixels": 11,
+          "status": "GF stop reflex active"
+        },
+        "paused": false,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "speed": 0.00062545173268706,
+            "position": [
+              0.30474898472728235,
+              0.03095091260418029,
+              0.11615857337357839
+            ],
+            "neural": {
+              "yaw": 0,
+              "spikes": 29602,
+              "forward": 119.27252169878741,
+              "vx": 0
+            },
+            "neighborVisible": false,
+            "area": 0.0017903645833333333,
+            "tilt": 0.7595031925478863,
+            "input": {
+              "headReason": "Neutral head",
+              "loomL": 0,
+              "age": 0.019999999999891216,
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "air": 0.6934290022982297,
+              "loomPathway": "both",
+              "gate": false,
+              "gateReason": "None",
+              "loomR": 0,
+              "turn": 0.0025837320574162615,
+              "fresh": true,
+              "reason": "Target visible through camera",
+              "forward": 0.12,
+              "brainFresh": true,
+              "senses": {
+                "scent": {
+                  "detected": false,
+                  "available": true,
+                  "antennae": "both",
+                  "strength": 0,
+                  "left": 0,
+                  "right": 0,
+                  "contrast": 0
+                },
+                "model": "duckfly-sensors-v1",
+                "air": {
+                  "available": true,
+                  "strength": 0.6934290022982297
+                },
+                "time": 6.119999999999892,
+                "touch": {
+                  "objects": [],
+                  "available": true,
+                  "active": false
+                }
+              }
+            },
+            "visible": true,
+            "command": [
+              0,
+              0
+            ],
+            "fallen": false,
+            "temporal": null,
+            "distance": 0.48282130002863144,
+            "pixels": 11
+          }
+        ],
+        "collisions": 0
+      },
+      "final": {
+        "tick": 268,
+        "ducks": [
+          {
+            "speed": 0.0006563968880102149,
+            "id": "duck-1",
+            "position": [
+              0.3049942704361398,
+              0.030840434522068354,
+              0.11617516257117273
+            ],
+            "neural": {
+              "yaw": 0,
+              "spikes": 25682,
+              "forward": 117.19700489853345,
+              "vx": 0
+            },
+            "neighborVisible": false,
+            "area": 0.0017903645833333333,
+            "tilt": 0.7815963114943767,
+            "input": {
+              "headReason": "Neutral head",
+              "loomL": 0,
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "age": 0.03999999999990855,
+              "air": 0.6948384598259709,
+              "loomPathway": "both",
+              "gate": false,
+              "gateReason": "None",
+              "loomR": 0,
+              "brainFresh": true,
+              "reason": "Target visible through camera",
+              "forward": 0.12,
+              "fresh": true,
+              "turn": 0.0012057416267942567,
+              "senses": {
+                "scent": {
+                  "detected": false,
+                  "available": true,
+                  "antennae": "both",
+                  "strength": 0,
+                  "left": 0,
+                  "right": 0,
+                  "contrast": 0
+                },
+                "model": "duckfly-sensors-v1",
+                "air": {
+                  "available": true,
+                  "strength": 0.6948384598259709
+                },
+                "time": 5.339999999999908,
+                "touch": {
+                  "objects": [],
+                  "available": true,
+                  "active": false
+                }
+              }
+            },
+            "visible": true,
+            "command": [
+              0,
+              0
+            ],
+            "fallen": false,
+            "temporal": null,
+            "distance": 0.48255027120301025,
+            "pixels": 11
+          }
+        ],
+        "loop": {
+          "speed": 0.0006563968880102149,
+          "mappingActive": true,
+          "perception": "Beacon visible",
+          "neural": [
+            0,
+            0
+          ],
+          "feedback": {
+            "enabled": true,
+            "phase": 0.9974762448149904,
+            "drive": 0.0032975479520725433
+          },
+          "sampledAt": 5.359999999999908,
+          "reason": "GF stop reflex active",
+          "command": [
+            0,
+            0
+          ],
+          "mapping": {
+            "forward": "walk",
+            "turn": "follow"
+          },
+          "mappingSummary": "Walk forward \u00b7 Follow the turn",
+          "pixels": 11,
+          "status": "Paused \u00b7 Run or Step to advance"
+        },
+        "paused": true,
+        "time": 5.359999999999908,
+        "collisions": 0
+      }
+    },
+    {
+      "id": "touch",
+      "samples": [
+        {
+          "time": 0.8400000000000006,
+          "tick": 42,
+          "loop": {
+            "speed": 0.18343033823211666,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0.3,
+              0.38309890621305903
+            ],
+            "feedback": {
+              "drive": 0.9980164119171465,
+              "phase": 0.025661363738756826,
+              "enabled": true
+            },
+            "sampledAt": 0.8400000000000006,
+            "reason": "Fly circuit drives walking",
+            "mapping": {
+              "turn": "follow",
+              "forward": "walk"
+            },
+            "command": [
+              0.3,
+              0.38309890621305903
+            ],
+            "mappingSummary": "Walk forward \u00b7 Follow the turn +1",
+            "pixels": 6,
+            "status": "Walking \u00b7 body responding"
+          },
+          "paused": false,
+          "ducks": [
+            {
+              "speed": 0.18343033823211666,
+              "id": "duck-1",
+              "position": [
+                0.034411137356759006,
+                0.014522144970166493,
+                0.11616877368137589
+              ],
+              "neural": {
+                "yaw": 0.38309890621305903,
+                "spikes": 3267,
+                "forward": 115.09788555541373,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0.0009765625,
+              "tilt": 3.235916425265313,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "age": 0.020000000000000573,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "loomPathway": "both",
+                "air": 0,
+                "gate": false,
+                "gateReason": "None",
+                "turn": -0.005684210526315807,
+                "brainFresh": true,
+                "fresh": true,
+                "loomR": 0,
+                "reason": "Target visible through camera",
+                "forward": 0.12,
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "contrast": 0,
+                    "right": 0,
+                    "left": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 0.8200000000000006,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0.3,
+                0.38309890621305903
+              ],
+              "fallen": false,
+              "temporal": null,
+              "distance": 0.05629053437826719,
+              "pixels": 6
+            }
+          ],
+          "collisions": 0
+        },
+        {
+          "collisions": 0,
+          "time": 1.779999999999984,
+          "loop": {
+            "speed": 0.14996388583553574,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0.3,
+              -0.4687831695400192
+            ],
+            "feedback": {
+              "drive": 0.5266362410105722,
+              "enabled": true,
+              "phase": 0.9990249218512564
+            },
+            "sampledAt": 1.779999999999984,
+            "reason": "Fly circuit drives walking",
+            "command": [
+              0.3,
+              -0.4687831695400192
+            ],
+            "mappingSummary": "Walk forward \u00b7 Follow the turn +1",
+            "mapping": {
+              "turn": "follow",
+              "forward": "walk"
+            },
+            "status": "Walking \u00b7 body responding",
+            "pixels": 9
+          },
+          "paused": false,
+          "ducks": [
+            {
+              "speed": 0.14996388583553574,
+              "id": "duck-1",
+              "position": [
+                0.14249632375646165,
+                0.018518126835221256,
+                0.11964521713835101
+              ],
+              "neural": {
+                "yaw": -0.4687831695400192,
+                "spikes": 7587,
+                "forward": 113.20830672297254,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0.00146484375,
+              "tilt": 2.86921669198665,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "age": 0.05999999999998451,
+                "loomPathway": "both",
+                "air": 0,
+                "gate": false,
+                "gateReason": "None",
+                "turn": -0.020421052631578944,
+                "brainFresh": true,
+                "fresh": true,
+                "reason": "Target visible through camera",
+                "forward": 0.12,
+                "loomR": 0,
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "contrast": 0,
+                    "right": 0,
+                    "left": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 1.7599999999999845,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0.3,
+                -0.4687831695400192
+              ],
+              "fallen": false,
+              "temporal": null,
+              "distance": 0.20945294533738953,
+              "pixels": 9
+            }
+          ],
+          "tick": 89
+        },
+        {
+          "ducks": [
+            {
+              "id": "duck-1",
+              "speed": 0.14996388583553574,
+              "position": [
+                0.14249632375646165,
+                0.018518126835221256,
+                0.11964521713835101
+              ],
+              "neural": {
+                "yaw": -0.4687831695400192,
+                "spikes": 7587,
+                "forward": 113.20830672297254,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0.00146484375,
+              "tilt": 2.86921669198665,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "age": 0.05999999999998451,
+                "loomPathway": "both",
+                "air": 0,
+                "gate": false,
+                "gateReason": "None",
+                "turn": -0.020421052631578944,
+                "brainFresh": true,
+                "fresh": true,
+                "reason": "Target visible through camera",
+                "forward": 0.12,
+                "loomR": 0,
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "contrast": 0,
+                    "right": 0,
+                    "left": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 1.7599999999999845,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0.3,
+                -0.4687831695400192
+              ],
+              "fallen": false,
+              "distance": 0.20945294533738953,
+              "temporal": null,
+              "pixels": 9
+            }
+          ],
+          "collisions": 0,
+          "loop": {
+            "speed": 0.14996388583553574,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0.3,
+              -0.4687831695400192
+            ],
+            "feedback": {
+              "drive": 0.5266362410105722,
+              "enabled": true,
+              "phase": 0.9990249218512564
+            },
+            "sampledAt": 1.779999999999984,
+            "reason": "Fly circuit drives walking",
+            "command": [
+              0.3,
+              -0.4687831695400192
+            ],
+            "mappingSummary": "Walk forward \u00b7 Follow the turn +1",
+            "mapping": {
+              "turn": "follow",
+              "forward": "walk"
+            },
+            "status": "Walking \u00b7 body responding",
+            "pixels": 9
+          },
+          "paused": false,
+          "time": 1.779999999999984,
+          "tick": 89
+        },
+        {
+          "tick": 135,
+          "collisions": 0,
+          "loop": {
+            "speed": 0.21069552228899346,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0.3,
+              -0.05609301735140054
+            ],
+            "feedback": {
+              "enabled": true,
+              "drive": 1,
+              "phase": 0.9303048999165894
+            },
+            "sampledAt": 2.6999999999999647,
+            "reason": "Fly circuit drives walking",
+            "command": [
+              0.3,
+              -0.05609301735140054
+            ],
+            "mapping": {
+              "forward": "walk",
+              "turn": "follow"
+            },
+            "mappingSummary": "Walk forward \u00b7 Follow the turn +1",
+            "pixels": 11,
+            "status": "Walking \u00b7 body responding"
+          },
+          "paused": false,
+          "time": 2.6999999999999647,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "speed": 0.21069552228899346,
+              "position": [
+                0.250273085856683,
+                0.008294935150073469,
+                0.11751513859597083
+              ],
+              "neural": {
+                "yaw": -0.05609301735140054,
+                "spikes": 11857,
+                "forward": 110.55190298286283,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0.0017903645833333333,
+              "tilt": 2.1532234627986178,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "age": 0.07999999999996499,
+                "air": 0,
+                "loomPathway": "both",
+                "gate": false,
+                "reason": "Target visible through camera",
+                "loomR": 0,
+                "turn": 0.00017224880382774808,
+                "fresh": true,
+                "forward": 0.12,
+                "brainFresh": true,
+                "gateReason": "None",
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "left": 0,
+                    "right": 0,
+                    "contrast": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 2.679999999999965,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0.3,
+                -0.05609301735140054
+              ],
+              "fallen": false,
+              "distance": 0.36514882345389005,
+              "temporal": null,
+              "pixels": 11
+            }
+          ]
+        },
+        {
+          "tick": 135,
+          "time": 2.6999999999999647,
+          "loop": {
+            "speed": 0.21069552228899346,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0.3,
+              -0.05609301735140054
+            ],
+            "feedback": {
+              "enabled": true,
+              "drive": 1,
+              "phase": 0.9303048999165894
+            },
+            "sampledAt": 2.6999999999999647,
+            "reason": "Fly circuit drives walking",
+            "command": [
+              0.3,
+              -0.05609301735140054
+            ],
+            "mapping": {
+              "forward": "walk",
+              "turn": "follow"
+            },
+            "mappingSummary": "Walk forward \u00b7 Follow the turn +1",
+            "pixels": 11,
+            "status": "Walking \u00b7 body responding"
+          },
+          "paused": false,
+          "ducks": [
+            {
+              "speed": 0.21069552228899346,
+              "id": "duck-1",
+              "position": [
+                0.250273085856683,
+                0.008294935150073469,
+                0.11751513859597083
+              ],
+              "neural": {
+                "yaw": -0.05609301735140054,
+                "spikes": 11857,
+                "forward": 110.55190298286283,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0.0017903645833333333,
+              "tilt": 2.1532234627986178,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "age": 0.07999999999996499,
+                "air": 0,
+                "loomPathway": "both",
+                "gate": false,
+                "reason": "Target visible through camera",
+                "loomR": 0,
+                "turn": 0.00017224880382774808,
+                "fresh": true,
+                "forward": 0.12,
+                "brainFresh": true,
+                "gateReason": "None",
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "left": 0,
+                    "right": 0,
+                    "contrast": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 2.679999999999965,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0.3,
+                -0.05609301735140054
+              ],
+              "fallen": false,
+              "temporal": null,
+              "distance": 0.36514882345389005,
+              "pixels": 11
+            }
+          ],
+          "collisions": 0
+        },
+        {
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "speed": 0.08424892025316393,
+              "position": [
+                0.36251402498454693,
+                -0.0014838717685471423,
+                0.11983699619642363
+              ],
+              "neural": {
+                "yaw": 0.34815231868748236,
+                "spikes": 16232,
+                "forward": 114.09181015228579,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0.0026041666666666665,
+              "tilt": 3.2354323850892603,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "age": 0.01999999999994495,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "air": 0,
+                "loomPathway": "both",
+                "gate": false,
+                "gateReason": "None",
+                "reason": "Target visible through camera",
+                "brainFresh": true,
+                "fresh": true,
+                "loomR": 0,
+                "turn": 0.013263157894736843,
+                "forward": 0.12,
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "left": 0,
+                    "contrast": 0,
+                    "right": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 3.619999999999945,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0.3,
+                0.34815231868748236
+              ],
+              "fallen": false,
+              "distance": 0.5231626916067393,
+              "temporal": null,
+              "pixels": 16
+            }
+          ],
+          "loop": {
+            "speed": 0.08424892025316393,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0.3,
+              0.34815231868748236
+            ],
+            "feedback": {
+              "enabled": true,
+              "phase": 0.015059303753313102,
+              "drive": 0.5463995317617256
+            },
+            "sampledAt": 3.6399999999999446,
+            "reason": "Fly circuit drives walking",
+            "command": [
+              0.3,
+              0.34815231868748236
+            ],
+            "mapping": {
+              "turn": "follow",
+              "forward": "walk"
+            },
+            "mappingSummary": "Walk forward \u00b7 Follow the turn +1",
+            "status": "Walking \u00b7 body responding",
+            "pixels": 16
+          },
+          "paused": false,
+          "time": 3.6399999999999446,
+          "tick": 182
+        },
+        {
+          "collisions": 0,
+          "time": 3.6399999999999446,
+          "loop": {
+            "speed": 0.08424892025316393,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0.3,
+              0.34815231868748236
+            ],
+            "feedback": {
+              "enabled": true,
+              "phase": 0.015059303753313102,
+              "drive": 0.5463995317617256
+            },
+            "sampledAt": 3.6399999999999446,
+            "reason": "Fly circuit drives walking",
+            "command": [
+              0.3,
+              0.34815231868748236
+            ],
+            "mapping": {
+              "turn": "follow",
+              "forward": "walk"
+            },
+            "mappingSummary": "Walk forward \u00b7 Follow the turn +1",
+            "status": "Walking \u00b7 body responding",
+            "pixels": 16
+          },
+          "paused": false,
+          "ducks": [
+            {
+              "speed": 0.08424892025316393,
+              "id": "duck-1",
+              "position": [
+                0.36251402498454693,
+                -0.0014838717685471423,
+                0.11983699619642363
+              ],
+              "neural": {
+                "yaw": 0.34815231868748236,
+                "spikes": 16232,
+                "forward": 114.09181015228579,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0.0026041666666666665,
+              "tilt": 3.2354323850892603,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "age": 0.01999999999994495,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "air": 0,
+                "loomPathway": "both",
+                "gate": false,
+                "gateReason": "None",
+                "reason": "Target visible through camera",
+                "brainFresh": true,
+                "fresh": true,
+                "loomR": 0,
+                "turn": 0.013263157894736843,
+                "forward": 0.12,
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "left": 0,
+                    "contrast": 0,
+                    "right": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 3.619999999999945,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0.3,
+                0.34815231868748236
+              ],
+              "fallen": false,
+              "temporal": null,
+              "distance": 0.5231626916067393,
+              "pixels": 16
+            }
+          ],
+          "tick": 182
+        },
+        {
+          "collisions": 1,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "speed": 0.1284707166600921,
+              "position": [
+                0.4575499346261937,
+                0.0072529456930707625,
+                0.11799706681352225
+              ],
+              "neural": {
+                "yaw": 0.170257675446956,
+                "spikes": 20522,
+                "forward": 114.90723734780478,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0.0030924479166666665,
+              "tilt": 3.633295102293736,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "age": 0.059999999999925,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "loomPathway": "both",
+                "air": 0,
+                "gate": false,
+                "reason": "Target visible through camera",
+                "turn": 0.001894736842105269,
+                "brainFresh": true,
+                "fresh": true,
+                "forward": 0.12,
+                "loomR": 0,
+                "gateReason": "None",
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "left": 0,
+                    "right": 0,
+                    "contrast": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 4.559999999999925,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0,
+                0
+              ],
+              "fallen": false,
+              "distance": 0.669484527404727,
+              "temporal": null,
+              "pixels": 19
+            }
+          ],
+          "loop": {
+            "speed": 0.1284707166600921,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0.3,
+              0.170257675446956
+            ],
+            "feedback": {
+              "enabled": true,
+              "drive": 0.5962260572649497,
+              "phase": 0.934696951318354
+            },
+            "sampledAt": 4.579999999999925,
+            "reason": "Requested actions: Pause movement",
+            "mapping": {
+              "forward": "walk",
+              "turn": "follow"
+            },
+            "mappingSummary": "Walk forward \u00b7 Follow the turn +1",
+            "command": [
+              0,
+              0
+            ],
+            "pixels": 19,
+            "status": "Pause response active"
+          },
+          "paused": false,
+          "time": 4.579999999999925,
+          "tick": 229
+        },
+        {
+          "time": 4.579999999999925,
+          "tick": 229,
+          "loop": {
+            "speed": 0.1284707166600921,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0.3,
+              0.170257675446956
+            ],
+            "feedback": {
+              "enabled": true,
+              "drive": 0.5962260572649497,
+              "phase": 0.934696951318354
+            },
+            "sampledAt": 4.579999999999925,
+            "reason": "Requested actions: Pause movement",
+            "mapping": {
+              "forward": "walk",
+              "turn": "follow"
+            },
+            "mappingSummary": "Walk forward \u00b7 Follow the turn +1",
+            "command": [
+              0,
+              0
+            ],
+            "pixels": 19,
+            "status": "Pause response active"
+          },
+          "paused": false,
+          "ducks": [
+            {
+              "speed": 0.1284707166600921,
+              "id": "duck-1",
+              "position": [
+                0.4575499346261937,
+                0.0072529456930707625,
+                0.11799706681352225
+              ],
+              "neural": {
+                "yaw": 0.170257675446956,
+                "spikes": 20522,
+                "forward": 114.90723734780478,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0.0030924479166666665,
+              "tilt": 3.633295102293736,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "age": 0.059999999999925,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "loomPathway": "both",
+                "air": 0,
+                "gate": false,
+                "reason": "Target visible through camera",
+                "turn": 0.001894736842105269,
+                "brainFresh": true,
+                "fresh": true,
+                "forward": 0.12,
+                "loomR": 0,
+                "gateReason": "None",
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "left": 0,
+                    "right": 0,
+                    "contrast": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 4.559999999999925,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0,
+                0
+              ],
+              "fallen": false,
+              "temporal": null,
+              "distance": 0.669484527404727,
+              "pixels": 19
+            }
+          ],
+          "collisions": 1
+        },
+        {
+          "tick": 275,
+          "time": 5.499999999999905,
+          "loop": {
+            "speed": 0.002469755317413546,
+            "mappingActive": true,
+            "perception": "Beacon visible",
+            "neural": [
+              0.3,
+              -0.65
+            ],
+            "feedback": {
+              "enabled": true,
+              "drive": 0.0073622177595894555,
+              "phase": 0.5094549601709782
+            },
+            "sampledAt": 5.499999999999905,
+            "reason": "Requested actions: Pause movement",
+            "command": [
+              0,
+              0
+            ],
+            "mappingSummary": "Walk forward \u00b7 Follow the turn +1",
+            "mapping": {
+              "turn": "follow",
+              "forward": "walk"
+            },
+            "pixels": 21,
+            "status": "Pause response active"
+          },
+          "paused": false,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "speed": 0.002469755317413546,
+              "position": [
+                0.44998621270118033,
+                0.008759933730726444,
+                0.11657172088730343
+              ],
+              "neural": {
+                "yaw": -0.65,
+                "spikes": 24162,
+                "forward": 118.3891211564982,
+                "vx": 0.3
+              },
+              "neighborVisible": false,
+              "area": 0.00341796875,
+              "tilt": 0.5492961239591693,
+              "input": {
+                "headReason": "Neutral head",
+                "loomL": 0,
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "age": 0.07999999999990504,
+                "air": 0,
+                "loomPathway": "both",
+                "gate": false,
+                "reason": "Target visible through camera",
+                "loomR": 0,
+                "brainFresh": true,
+                "turn": -0.016691729323308258,
+                "forward": 0.12,
+                "fresh": true,
+                "gateReason": "None",
+                "senses": {
+                  "scent": {
+                    "detected": false,
+                    "available": true,
+                    "antennae": "both",
+                    "strength": 0,
+                    "contrast": 0,
+                    "right": 0,
+                    "left": 0
+                  },
+                  "model": "duckfly-sensors-v1",
+                  "air": {
+                    "available": true,
+                    "strength": 0
+                  },
+                  "time": 5.479999999999905,
+                  "touch": {
+                    "objects": [],
+                    "available": true,
+                    "active": false
+                  }
+                }
+              },
+              "visible": true,
+              "command": [
+                0,
+                0
+              ],
+              "fallen": false,
+              "temporal": null,
+              "distance": 0.7049490945162907,
+              "pixels": 21
+            }
+          ],
+          "collisions": 4
+        }
+      ],
+      "openEnded": {
+        "collisions": 5,
+        "time": 6.419999999999885,
+        "loop": {
+          "speed": 0.0038022499627590055,
+          "mappingActive": true,
+          "perception": "Beacon visible",
+          "neural": [
+            0.3,
+            0.36047584315398107
+          ],
+          "feedback": {
+            "drive": 0.03284923742712903,
+            "enabled": true,
+            "phase": 0.9930212091222913
+          },
+          "sampledAt": 6.419999999999885,
+          "reason": "Requested actions: Pause movement",
+          "command": [
+            0,
+            0
+          ],
+          "mapping": {
+            "turn": "follow",
+            "forward": "walk"
+          },
+          "mappingSummary": "Walk forward \u00b7 Follow the turn +1",
+          "status": "Pause response active",
+          "pixels": 20
+        },
+        "paused": false,
+        "ducks": [
+          {
+            "speed": 0.0038022499627590055,
+            "id": "duck-1",
+            "position": [
+              0.452536167021227,
+              0.009946366995417224,
+              0.11570140568359055
+            ],
+            "neural": {
+              "yaw": 0.36047584315398107,
+              "spikes": 27692,
+              "forward": 118.73554251179995,
+              "vx": 0.3
+            },
+            "neighborVisible": false,
+            "area": 0.0032552083333333335,
+            "tilt": 0.45154149631580365,
+            "input": {
+              "headReason": "Neutral head",
+              "loomL": 0,
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "age": 0,
+              "loomPathway": "both",
+              "air": 0,
+              "gate": false,
+              "gateReason": "None",
+              "turn": -0.0022736842105263388,
+              "loomR": 0,
+              "fresh": true,
+              "brainFresh": true,
+              "forward": 0.12,
+              "reason": "Target visible through camera",
+              "senses": {
+                "scent": {
+                  "detected": false,
+                  "available": true,
+                  "antennae": "both",
+                  "strength": 0,
+                  "left": 0,
+                  "right": 0,
+                  "contrast": 0
+                },
+                "model": "duckfly-sensors-v1",
+                "air": {
+                  "available": true,
+                  "strength": 0
+                },
+                "time": 6.399999999999886,
+                "touch": {
+                  "objects": [],
+                  "available": true,
+                  "active": false
+                }
+              }
+            },
+            "visible": true,
+            "command": [
+              0,
+              0
+            ],
+            "fallen": false,
+            "temporal": null,
+            "distance": 0.725844111554518,
+            "pixels": 20
+          }
+        ],
+        "tick": 321
+      },
+      "title": "Touch and pause",
+      "final": {
+        "time": 5.499999999999905,
+        "collisions": 4,
+        "loop": {
+          "speed": 0.002469755317413546,
+          "mappingActive": true,
+          "perception": "Beacon visible",
+          "neural": [
+            0.3,
+            -0.65
+          ],
+          "feedback": {
+            "drive": 0.0073622177595894555,
+            "enabled": true,
+            "phase": 0.5094549601709782
+          },
+          "sampledAt": 5.499999999999905,
+          "reason": "Requested actions: Pause movement",
+          "command": [
+            0,
+            0
+          ],
+          "mapping": {
+            "turn": "follow",
+            "forward": "walk"
+          },
+          "mappingSummary": "Walk forward \u00b7 Follow the turn +1",
+          "pixels": 21,
+          "status": "Paused \u00b7 Run or Step to advance"
+        },
+        "paused": true,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "speed": 0.002469755317413546,
+            "position": [
+              0.44998621270118033,
+              0.008759933730726444,
+              0.11657172088730343
+            ],
+            "neural": {
+              "yaw": -0.65,
+              "spikes": 24162,
+              "forward": 118.3891211564982,
+              "vx": 0.3
+            },
+            "neighborVisible": false,
+            "area": 0.00341796875,
+            "tilt": 0.5492961239591693,
+            "input": {
+              "headReason": "Neutral head",
+              "loomL": 0,
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "age": 0.07999999999990504,
+              "air": 0,
+              "loomPathway": "both",
+              "gate": false,
+              "gateReason": "None",
+              "turn": -0.016691729323308258,
+              "brainFresh": true,
+              "loomR": 0,
+              "fresh": true,
+              "forward": 0.12,
+              "reason": "Target visible through camera",
+              "senses": {
+                "scent": {
+                  "detected": false,
+                  "available": true,
+                  "antennae": "both",
+                  "strength": 0,
+                  "contrast": 0,
+                  "left": 0,
+                  "right": 0
+                },
+                "model": "duckfly-sensors-v1",
+                "air": {
+                  "available": true,
+                  "strength": 0
+                },
+                "time": 5.479999999999905,
+                "touch": {
+                  "objects": [],
+                  "available": true,
+                  "active": false
+                }
+              }
+            },
+            "visible": true,
+            "command": [
+              0,
+              0
+            ],
+            "fallen": false,
+            "temporal": null,
+            "distance": 0.7049490945162907,
+            "pixels": 21
+          }
+        ],
+        "tick": 275
+      }
+    }
+  ],
+  "scope": {
+    "scenarios": [
+      "scent",
+      "air",
+      "touch"
+    ],
+    "diagnosticOnly": true
+  },
+  "version": 4,
+  "controls": [
+    {
+      "disconnected": {
+        "tick": 317,
+        "time": 6.339999999999887,
+        "loop": {
+          "speed": 5.215683739061685e-05,
+          "mappingActive": true,
+          "perception": "Eyes covered",
+          "neural": [
+            0,
+            -0.29432725562548273
+          ],
+          "feedback": {
+            "phase": 0,
+            "drive": 0,
+            "enabled": false
+          },
+          "sampledAt": 6.339999999999887,
+          "reason": "Body command connection off",
+          "command": [
+            0,
+            0
+          ],
+          "mappingSummary": "Walk forward \u00b7 Follow the turn",
+          "mapping": {
+            "forward": "walk",
+            "turn": "follow"
+          },
+          "status": "Paused \u00b7 Run or Step to advance",
+          "pixels": 0
+        },
+        "paused": true,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "speed": 5.215683739061685e-05,
+            "position": [
+              0.48960567197278115,
+              0.12694599391526207,
+              0.11680465910772686
+            ],
+            "neural": {
+              "yaw": -0.29432725562548273,
+              "spikes": 27081,
+              "forward": 0.866390022309382,
+              "vx": 0
+            },
+            "neighborVisible": false,
+            "area": 0,
+            "tilt": 0.7506924269462467,
+            "input": {
+              "headReason": "Neutral head",
+              "loomL": 0,
+              "age": 0.019999999999887663,
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "loomPathway": "both",
+              "air": 0,
+              "gate": true,
+              "reason": "Scent source reached",
+              "turn": -0.009647402302866844,
+              "brainFresh": true,
+              "loomR": 0,
+              "forward": 0,
+              "fresh": true,
+              "gateReason": "Scent source reached",
+              "senses": {
+                "scent": {
+                  "detected": true,
+                  "available": true,
+                  "antennae": "both",
+                  "strength": 0.93042749147343,
+                  "left": 0.9241940134707276,
+                  "right": 0.9366609694761323,
+                  "contrast": -0.006699584932546419
+                },
+                "model": "duckfly-sensors-v1",
+                "air": {
+                  "available": true,
+                  "strength": 0
+                },
+                "time": 6.3199999999998875,
+                "touch": {
+                  "objects": [],
+                  "available": true,
+                  "active": false
+                }
+              }
+            },
+            "visible": false,
+            "command": [
+              0,
+              0
+            ],
+            "fallen": false,
+            "distance": 0.7401050338380548,
+            "temporal": null,
+            "pixels": 0
+          }
+        ],
+        "collisions": 0
+      },
+      "id": "scent",
+      "reconnected": {
+        "tick": 322,
+        "time": 6.439999999999885,
+        "loop": {
+          "speed": 0.0006434357880660517,
+          "mappingActive": true,
+          "perception": "Eyes covered",
+          "neural": [
+            0,
+            -0.4139680189772274
+          ],
+          "feedback": {
+            "drive": 0.002469476839607106,
+            "phase": 0.14250271826813732,
+            "enabled": true
+          },
+          "sampledAt": 6.439999999999885,
+          "reason": "Scent source reached",
+          "command": [
+            0,
+            0
+          ],
+          "mappingSummary": "Walk forward \u00b7 Follow the turn",
+          "mapping": {
+            "forward": "walk",
+            "turn": "follow"
+          },
+          "pixels": 0,
+          "status": "Paused \u00b7 Run or Step to advance"
+        },
+        "paused": true,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "speed": 0.0006434357880660517,
+            "position": [
+              0.4896178000572887,
+              0.12695141709498006,
+              0.1168012033633867
+            ],
+            "neural": {
+              "yaw": -0.4139680189772274,
+              "spikes": 27413,
+              "forward": 3.56302341344006,
+              "vx": 0
+            },
+            "neighborVisible": false,
+            "area": 0,
+            "tilt": 0.7504317208573178,
+            "input": {
+              "headReason": "Neutral head",
+              "loomL": 0,
+              "age": 0.019999999999885,
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "loomPathway": "both",
+              "air": 0,
+              "gate": true,
+              "reason": "Scent source reached",
+              "loomR": 0,
+              "brainFresh": true,
+              "fresh": true,
+              "forward": 0,
+              "gateReason": "Scent source reached",
+              "turn": -0.009669961315936336,
+              "senses": {
+                "scent": {
+                  "detected": true,
+                  "available": true,
+                  "antennae": "both",
+                  "strength": 0.9304196467511192,
+                  "left": 0.9241716453680148,
+                  "right": 0.9366676481342238,
+                  "contrast": -0.006715250913844678
+                },
+                "model": "duckfly-sensors-v1",
+                "air": {
+                  "available": true,
+                  "strength": 0
+                },
+                "time": 6.419999999999885,
+                "touch": {
+                  "objects": [],
+                  "available": true,
+                  "active": false
+                }
+              }
+            },
+            "visible": false,
+            "command": [
+              0,
+              0
+            ],
+            "fallen": false,
+            "temporal": null,
+            "distance": 0.7401355072375153,
+            "pixels": 0
+          }
+        ],
+        "collisions": 0
+      },
+      "actions": [
+        "pulse-walk",
+        "pulse-left",
+        "pulse-right",
+        "add-target",
+        "add-duck",
+        "skill-kick",
+        "skill-recover"
+      ]
+    },
+    {
+      "disconnected": {
+        "ducks": [
+          {
+            "speed": 0.0009659186453662101,
+            "id": "duck-1",
+            "position": [
+              0.30472651231162085,
+              0.030962353964026523,
+              0.11615852539361232
+            ],
+            "neural": {
+              "yaw": 0,
+              "spikes": 30099,
+              "forward": 116.33386539016618,
+              "vx": 0
+            },
+            "neighborVisible": false,
+            "area": 0.0017903645833333333,
+            "tilt": 0.7579557934255702,
+            "input": {
+              "headReason": "Neutral head",
+              "loomL": 0,
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "age": 0.01999999999988944,
+              "loomPathway": "both",
+              "air": 0.6933182881220475,
+              "gate": false,
+              "gateReason": "None",
+              "turn": 0.0025837320574162615,
+              "brainFresh": true,
+              "fresh": true,
+              "forward": 0.12,
+              "loomR": 0,
+              "reason": "Target visible through camera",
+              "senses": {
+                "scent": {
+                  "detected": false,
+                  "available": true,
+                  "antennae": "both",
+                  "strength": 0,
+                  "left": 0,
+                  "right": 0,
+                  "contrast": 0
+                },
+                "model": "duckfly-sensors-v1",
+                "air": {
+                  "available": true,
+                  "strength": 0.6933182881220475
+                },
+                "time": 6.21999999999989,
+                "touch": {
+                  "objects": [],
+                  "available": true,
+                  "active": false
+                }
+              }
+            },
+            "visible": true,
+            "command": [
+              0,
+              0
+            ],
+            "fallen": false,
+            "temporal": null,
+            "distance": 0.48284697454117587,
+            "pixels": 11
+          }
+        ],
+        "collisions": 0,
+        "loop": {
+          "speed": 0.0009659186453662101,
+          "mappingActive": true,
+          "perception": "Beacon visible",
+          "neural": [
+            0,
+            0
+          ],
+          "feedback": {
+            "drive": 0,
+            "phase": 0,
+            "enabled": false
+          },
+          "sampledAt": 6.239999999999889,
+          "reason": "Body command connection off",
+          "mapping": {
+            "forward": "walk",
+            "turn": "follow"
+          },
+          "mappingSummary": "Walk forward \u00b7 Follow the turn",
+          "command": [
+            0,
+            0
+          ],
+          "status": "Paused \u00b7 Run or Step to advance",
+          "pixels": 11
+        },
+        "paused": true,
+        "time": 6.239999999999889,
+        "tick": 312
+      },
+      "id": "air",
+      "reconnected": {
+        "collisions": 0,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "speed": 0.00010038266634266411,
+            "position": [
+              0.3046983143053213,
+              0.03097308071785234,
+              0.11615823956543672
+            ],
+            "neural": {
+              "yaw": 0,
+              "spikes": 30605,
+              "forward": 117.92870532016403,
+              "vx": 0
+            },
+            "neighborVisible": false,
+            "area": 0.0017903645833333333,
+            "tilt": 0.7517343472094947,
+            "input": {
+              "headReason": "Neutral head",
+              "loomL": 0,
+              "age": 0.019999999999887663,
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "loomPathway": "both",
+              "air": 0.6931748724838023,
+              "gate": false,
+              "gateReason": "None",
+              "loomR": 0,
+              "brainFresh": true,
+              "fresh": true,
+              "forward": 0.12,
+              "turn": 0.0025837320574162615,
+              "reason": "Target visible through camera",
+              "senses": {
+                "scent": {
+                  "detected": false,
+                  "available": true,
+                  "antennae": "both",
+                  "strength": 0,
+                  "contrast": 0,
+                  "right": 0,
+                  "left": 0
+                },
+                "model": "duckfly-sensors-v1",
+                "air": {
+                  "available": true,
+                  "strength": 0.6931748724838023
+                },
+                "time": 6.3199999999998875,
+                "touch": {
+                  "objects": [],
+                  "available": true,
+                  "active": false
+                }
+              }
+            },
+            "visible": true,
+            "command": [
+              0,
+              0
+            ],
+            "fallen": false,
+            "distance": 0.4828774378464599,
+            "temporal": null,
+            "pixels": 11
+          }
+        ],
+        "loop": {
+          "speed": 0.00010038266634266411,
+          "mappingActive": true,
+          "perception": "Beacon visible",
+          "neural": [
+            0,
+            0
+          ],
+          "feedback": {
+            "drive": 0.0018603394664637835,
+            "enabled": true,
+            "phase": 9.228014934792306e-05
+          },
+          "sampledAt": 6.339999999999887,
+          "reason": "GF stop reflex active",
+          "mapping": {
+            "forward": "walk",
+            "turn": "follow"
+          },
+          "mappingSummary": "Walk forward \u00b7 Follow the turn",
+          "command": [
+            0,
+            0
+          ],
+          "pixels": 11,
+          "status": "Paused \u00b7 Run or Step to advance"
+        },
+        "paused": true,
+        "time": 6.339999999999887,
+        "tick": 317
+      },
+      "actions": [
+        "beacon-ahead",
+        "beacon-left",
+        "beacon-right",
+        "skill-kick",
+        "skill-recover"
+      ]
+    },
+    {
+      "disconnected": {
+        "tick": 327,
+        "collisions": 5,
+        "loop": {
+          "speed": 0.001682562599604887,
+          "mappingActive": true,
+          "perception": "Beacon visible",
+          "neural": [
+            0.3,
+            0.3497501403505961
+          ],
+          "feedback": {
+            "enabled": false,
+            "phase": 0,
+            "drive": 0
+          },
+          "sampledAt": 6.539999999999883,
+          "reason": "Body command connection off",
+          "command": [
+            0,
+            0
+          ],
+          "mappingSummary": "Walk forward \u00b7 Follow the turn +1",
+          "mapping": {
+            "forward": "walk",
+            "turn": "follow"
+          },
+          "status": "Paused \u00b7 Run or Step to advance",
+          "pixels": 20
+        },
+        "paused": true,
+        "time": 6.539999999999883,
+        "ducks": [
+          {
+            "speed": 0.001682562599604887,
+            "id": "duck-1",
+            "position": [
+              0.4522624100408092,
+              0.009882218631005652,
+              0.11571788018368369
+            ],
+            "neural": {
+              "yaw": 0.3497501403505961,
+              "spikes": 28124,
+              "forward": 121.49288419762351,
+              "vx": 0.3
+            },
+            "neighborVisible": false,
+            "area": 0.0032552083333333335,
+            "tilt": 0.3642321376310796,
+            "input": {
+              "headReason": "Neutral head",
+              "loomL": 0,
+              "age": 0.019999999999883222,
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "air": 0,
+              "loomPathway": "both",
+              "gate": false,
+              "gateReason": "None",
+              "reason": "Target visible through camera",
+              "loomR": 0,
+              "fresh": true,
+              "forward": 0.12,
+              "turn": -0.0026526315789473687,
+              "brainFresh": true,
+              "senses": {
+                "scent": {
+                  "detected": false,
+                  "available": true,
+                  "antennae": "both",
+                  "strength": 0,
+                  "contrast": 0,
+                  "left": 0,
+                  "right": 0
+                },
+                "model": "duckfly-sensors-v1",
+                "air": {
+                  "available": true,
+                  "strength": 0
+                },
+                "time": 6.519999999999883,
+                "touch": {
+                  "objects": [],
+                  "available": true,
+                  "active": false
+                }
+              }
+            },
+            "visible": true,
+            "command": [
+              0,
+              0
+            ],
+            "fallen": false,
+            "distance": 0.72612572031781,
+            "temporal": null,
+            "pixels": 20
+          }
+        ]
+      },
+      "id": "touch",
+      "reconnected": {
+        "collisions": 5,
+        "time": 6.639999999999881,
+        "loop": {
+          "speed": 0.015096916308221076,
+          "mappingActive": true,
+          "perception": "Beacon visible",
+          "neural": [
+            0.3,
+            0.11073653531829133
+          ],
+          "feedback": {
+            "drive": 0.0777067092544358,
+            "enabled": true,
+            "phase": 0.04451620706273407
+          },
+          "sampledAt": 6.639999999999881,
+          "reason": "Fly circuit drives walking",
+          "mapping": {
+            "turn": "follow",
+            "forward": "walk"
+          },
+          "command": [
+            0.15,
+            0.05536826765914567
+          ],
+          "mappingSummary": "Walk forward \u00b7 Follow the turn +1",
+          "pixels": 20,
+          "status": "Paused \u00b7 Run or Step to advance"
+        },
+        "paused": true,
+        "ducks": [
+          {
+            "speed": 0.015096916308221076,
+            "id": "duck-1",
+            "position": [
+              0.45340592787130124,
+              0.010054666358655076,
+              0.11559094732143159
+            ],
+            "neural": {
+              "yaw": 0.11073653531829133,
+              "spikes": 28496,
+              "forward": 118.31105340831883,
+              "vx": 0.3
+            },
+            "neighborVisible": false,
+            "area": 0.0032552083333333335,
+            "tilt": 0.11534989781745353,
+            "input": {
+              "headReason": "Neutral head",
+              "loomL": 0,
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "age": 0.019999999999880558,
+              "loomPathway": "both",
+              "air": 0,
+              "gate": false,
+              "gateReason": "None",
+              "turn": -0.003031578947368398,
+              "loomR": 0,
+              "fresh": true,
+              "brainFresh": true,
+              "forward": 0.12,
+              "reason": "Target visible through camera",
+              "senses": {
+                "scent": {
+                  "detected": false,
+                  "available": true,
+                  "antennae": "both",
+                  "strength": 0,
+                  "contrast": 0,
+                  "left": 0,
+                  "right": 0
+                },
+                "model": "duckfly-sensors-v1",
+                "air": {
+                  "available": true,
+                  "strength": 0
+                },
+                "time": 6.619999999999881,
+                "touch": {
+                  "objects": [],
+                  "available": true,
+                  "active": false
+                }
+              }
+            },
+            "visible": true,
+            "command": [
+              0.15,
+              0.05536826765914567
+            ],
+            "fallen": false,
+            "temporal": null,
+            "distance": 0.727283249125235,
+            "pixels": 20
+          }
+        ],
+        "tick": 332
+      },
+      "actions": [
+        "beacon-ahead",
+        "beacon-left",
+        "beacon-right",
+        "skill-kick",
+        "skill-recover"
+      ]
+    }
+  ]
+}

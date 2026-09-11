@@ -100,34 +100,34 @@ try {
   check(physicalState() === initial && $('#launch-spark-status').textContent.includes('Make the illustration react'), 'Decorative spark did not reset independently of the experiment');
   checks.push({check:'decorative animation pauses/resumes and Send a spark reacts independently of the real circuit and physics', reducedMotion:reduced, documentHidden:document.hidden, configured, paused:pausedMotion});
 
-  stage = 'beacon quick start cancellation'; reportAcceptanceStage(stage);
-  $('#launch-beacon').focus(); $('#launch-beacon').click();
-  await wait(() => $('#scene-setup')?.open);
-  check($('#setup-title').textContent === 'Build a visual follower', 'Launch quick start opened the wrong experiment');
-  check(physicalState() === initial, 'Opening quick start replaced the experiment before review');
-  $('[data-setup-action="cancel"]').click();
-  await wait(() => !$('#scene-setup').open && visible($('#launch-page')));
-  check($('#scene-catalog').hidden && $('#experiment-page').hidden, 'Cancelling quick start did not keep the introduction');
-  check(physicalState() === initial, 'Cancelling quick start changed the retained experiment');
-  await wait(() => document.activeElement === $('#launch-beacon'));
+  stage = 'new scene cancellation'; reportAcceptanceStage(stage);
   $('#new-scene').click();
   await wait(() => $('#scene-setup').open);
   check($('#setup-title').textContent === 'Blank scene', 'Global New scene is unavailable from the introduction');
   $('[data-setup-action="cancel"]').click();
   await wait(() => !$('#scene-setup').open && visible($('#launch-page')));
   check(physicalState() === initial, 'Cancelling a new scene changed the launch experiment');
-  checks.push({check:'beacon and global New scene use isolated setup; cancelling returns to the introduction with focus and state retained'});
+  checks.push({check:'global New scene uses isolated setup; cancelling returns to the introduction with state retained'});
+
+  stage = 'direct quick start'; reportAcceptanceStage(stage);
+  $('#launch-beacon').click();
+  await wait(() => !$('#experiment-page').hidden && !t().paused && t().tick >= 100);
+  check(!$('#scene-setup').open && t().scene.name === 'Build a visual follower', 'Quick start did not launch the selected prebuilt scene directly');
+  check(t().ducks[0].distance > .01, 'Quick start did not produce physical movement');
+  checks.push({check:'Try a connection launches directly and moves the duck',tick:t().tick,distance:t().ducks[0].distance});
+  await openIntro();
+  const galleryBaseline=physicalState();
 
   stage = 'gallery entry and real scene launch'; reportAcceptanceStage(stage);
   $('#launch-enter').click();
   await wait(() => $('#launch-page').hidden && visible($('#scene-catalog')));
-  check(physicalState() === initial && $('#experiment-page').hidden, 'Opening the gallery ran or replaced the experiment');
-  check(document.querySelectorAll('#scene-catalog [data-scenario]').length === 15, 'Gallery entry lost experiment tiles');
+  check(physicalState() === galleryBaseline && $('#experiment-page').hidden, 'Opening the gallery ran or replaced the experiment');
+  check(document.querySelectorAll('#scene-catalog [data-scenario]').length === 18, 'Gallery entry lost experiment tiles');
   await launchScenario('target');
   await wait(() => !$('#experiment-page').hidden && !t().paused && t().tick >= 100);
-  check($('#home-page').hidden && $('#launch-page').hidden, 'Reviewed scene launch left the introduction on the stage');
-  check(t().ducks[0].distance > .01, 'Quickly reviewed beacon scene did not produce actual physical movement');
-  checks.push({check:'Open studio reveals the existing gallery; reviewed launch runs the actual neural and physical experiment', tick:t().tick, distance:t().ducks[0].distance});
+  check($('#home-page').hidden && $('#launch-page').hidden, 'Direct scene launch left the introduction on the stage');
+  check(t().ducks[0].distance > .01, 'Direct beacon scene did not produce actual physical movement');
+  checks.push({check:'Open studio reveals the gallery; selecting a prebuilt scene runs the neural and physical experiment directly', tick:t().tick, distance:t().ducks[0].distance});
 
   stage = 'reopen introduction without losing the running scene'; reportAcceptanceStage(stage);
   await openIntro();

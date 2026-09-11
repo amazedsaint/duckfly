@@ -1,0 +1,73 @@
+{
+  "format": "duckfly-sensory-ui-acceptance",
+  "origin": "http://127.0.0.1:5195",
+  "passed": true,
+  "checks": [
+    {
+      "name": "eyes-covered pursuit, live source position and on/off, independent antenna control",
+      "start": {
+        "tick": 252,
+        "distance": 0.7398897901826617
+      },
+      "off": {
+        "senses": {
+          "model": "duckfly-sensors-v1",
+          "time": 5.119999999999913,
+          "scent": {
+            "available": true,
+            "antennae": "both",
+            "left": 0,
+            "right": 0,
+            "strength": 0,
+            "contrast": 0,
+            "detected": false
+          },
+          "air": {
+            "available": true,
+            "strength": 0
+          },
+          "touch": {
+            "available": true,
+            "active": false,
+            "objects": []
+          }
+        },
+        "command": [
+          0,
+          0
+        ]
+      },
+      "left": {
+        "available": true,
+        "antennae": "left",
+        "left": 0.32593473889255403,
+        "right": 0,
+        "strength": 0.16296736944627702,
+        "contrast": 1,
+        "detected": true
+      }
+    },
+    {
+      "name": "air field recruits the fly stop reflex",
+      "tick": 181,
+      "air": 0.649800339222481,
+      "held": true
+    },
+    {
+      "name": "actual object contact activates the mapped stop",
+      "tick": 228,
+      "touch": {
+        "available": true,
+        "active": true,
+        "objects": [
+          "touch-block"
+        ]
+      },
+      "command": [
+        0,
+        0
+      ]
+    }
+  ],
+  "errors": []
+}

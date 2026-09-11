@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-11",
+  "sourceSha256": {
+    "web/src/lab/ar-view.js": "0cf3cee7f6ba403b806ed5fa4e4f80166fb72b6293422de464cce8240d2b3673",
+    "web/src/lab/lab-arena.js": "fafd306fe2fe565c0634fdb9744adf79aa945d942db95bf21a65f3e009bf80d4",
+    "web/src/lab/ar-placement.js": "e3f74e6e4ea03dcdbf0026d659e4ab22c66b1cbce60dffd8dd4e92dbc387aec2",
+    "web/src/lab/ar-scene.js": "9202fa9540af4260eecac5ae0fcea6e260fef7afe32e0c4cbd4b629a57a91673",
+    "web/src/lab/senses.js": "b315a250800e0acb68c089dab6dca5d471ae0ec4ef0c98e1fcb3a6d51c6abaa9",
+    "web/src/lab/trigger-actions.js": "952824ca792e5a043789576f588fce0a06d65f7fdcb3be3918f1878e8cec5a7c",
+    "web/src/lab/experiment.js": "a88ae012ccc7c45c6ac7d5095c2320d8a75b32311e668b21b900a9012030de3b"
+  },
+  "nodeTests": {
+    "passed": 123,
+    "failed": 0
+  },
+  "webBuild": "passed",
+  "macBuild": "passed; local Apple Silicon app, ad hoc signed",
+  "catalogScenes": 18,
+  "macSensoryScenes": [
+    "scent",
+    "air",
+    "touch"
+  ],
+  "arEvidence": {
+    "xr": "IWER and SEM emulation",
+    "camera": "synthetic video stream",
+    "physicalDeviceTested": false
+  }
+}

@@ -65,7 +65,11 @@ const launchScenario = async id => {
   if (!tile || tile.closest('[hidden]')) throw Error('Missing visible scenario tile ' + id);
   tile.scrollIntoView({block:'nearest'});
   tile.click();
-  await finishSceneSetup();
+  if(id==='empty')await finishSceneSetup();
+  else {
+    await setupWait(()=>!document.querySelector('#experiment-page').hidden&&!window.duckflyTelemetry.paused);
+    if(document.querySelector('#scene-setup').open)throw Error('A prebuilt scene unexpectedly opened setup');
+  }
 };
 const loadPresetScene = async id => {
   await launchScenario(id);

@@ -2,14 +2,17 @@
 
 [Open DuckFly](https://makeduckfly.com) · [GitHub](https://github.com/amazedsaint/duckfly)
 
-Connect a simulated fly circuit to a Microduck robot. Map **13 available signals to 10 robot actions** in the setup wizard or **Brain → duck** editor, then inspect the live activity and resulting movement.
+Connect a simulated fly circuit to a Microduck robot. Map **19 available signals to 10 robot actions** in the setup wizard or **Brain → duck** editor, then inspect the live activity and resulting movement.
 
 The app runs on your device, in a browser or a standalone Mac app. Each duck has its own 668-neuron circuit. Scenes have no time limit.
 
 ## Try a scene
 
-Choose **Open studio** to browse the scene gallery, or **Try a connection** to start with a visual follower. The setup wizard lets you add ducks and arrange objects, then review their connections before starting.
+Choose **Open studio** to browse the scene gallery, or **Try a connection** to start with a visual follower. Prebuilt scenes start immediately. Choose **Customize** on a tile to adjust its setup first. **New scene** opens the wizard for your own experiment.
 
+- **Follow a scent:** use two simulated antennae to guide a duck with its eyes covered.
+- **Feel the air:** move an air source and compare its effect on the fly circuit’s stop reflex.
+- **Touch and pause:** stop on physical contact, or connect that signal to another action.
 - **Build a visual follower:** connect walking-pathway activity to movement, or assign a different action.
 - **Look without chasing:** use circuit activity to track a beacon with the head.
 - **Reverse the steering:** give two ducks opposite mappings and compare their responses.
@@ -17,9 +20,15 @@ Choose **Open studio** to browse the scene gallery, or **Try a connection** to s
 
 Scenes come with their connections ready to use. Change **Duck does** on a row, or choose **Add a connection** to pick another signal and response. Added responses keep the duck’s other connections in place.
 
-The studio keeps the selected duck’s camera and fly circuit visible. Drag objects to change its view. Use **Brain → duck** to edit connections while the scene runs, or **Objects & physics** to configure movement paths and physical properties. **Why?** shows the recorded inputs behind an action, including the exact camera frame when available.
+The studio keeps the selected duck’s camera and fly circuit visible. Drag objects or sensory sources to change its surroundings. The **Senses** monitor shows readings from the selected duck; its sensor settings can disable an antenna or a whole input. Use **Brain → duck** to edit connections while the scene runs, or **Objects & physics** to configure movement paths and physical properties. **Why?** shows the recorded inputs behind an action, including the exact camera frame when available.
 
-Signals are labeled by source. Fly-circuit activity comes from simulated neurons; camera rules and body feedback are separate inputs. The robot’s trained controllers handle joint movement and balance. The full Flyvis model is available in a separate vision test bench and does not drive the live duck.
+Signals are labeled by source. Fly-circuit activity comes from simulated neurons; camera rules and body feedback are separate inputs. Scent is a simulated concentration field connected to movement neurons through an engineered adapter; it is not a reconstructed olfactory circuit. Air stimulates the bundled circuit’s existing sensory-current pathway. The robot’s trained controllers handle joint movement and balance. The full Flyvis model is available in a separate vision test bench and does not drive the live duck.
+
+## Bring it into your room
+
+[Create an AR scene](https://makeduckfly.com/?ar=1) on your phone, or choose **View in AR** in any experiment. On a browser with surface AR support, point at a floor or table and choose **Place scene & run**. Add ducks or objects from the placement tray and give props physical behavior. The fly brain remains visible while the simulation runs.
+
+Browsers without surface tracking can use **Camera preview**, which places the simulation over video without anchoring it to the room. The duck still sees virtual objects; real furniture and camera video do not enter its physics or vision. See [AR support and verification](docs/experiments/ar/README.md) for the tested scope. Physical phone tracking has not yet been verified.
 
 ## Run locally
 
@@ -89,6 +98,8 @@ Keep credentials in your local environment or Vercel settings. `.env*` files and
 
 The repository retains failed trials alongside passing results. A working demonstration does not establish biological accuracy or performance on a physical robot.
 
+- [Sensory inputs and direct scene launch](docs/experiments/sensory-inputs/README.md)
+- [AR scenes and mobile camera preview](docs/experiments/ar/README.md)
 - [Visual triggers and action mappings](docs/research/visual-behavior-proposal/selected-connections.md)
 - [Brain and body experiments](experiments/embodied/RESULTS.md)
 - [Vision and feedback experiments](docs/experiments/playground/README.md)

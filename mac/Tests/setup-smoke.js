@@ -37,7 +37,7 @@ const inView = selector => {
 };
 const openTile = async id => {
   await enterSceneCatalog();
-  $(`[data-scenario="${id}"]`).click();
+  $(`[data-customize-scenario="${id}"]`).click();
   await wait(() => $('#scene-setup')?.open && t().paused);
 };
 let downloadPromise;
@@ -181,7 +181,7 @@ try {
   const initialRun = clone(t());
   const ball = t().scene.props.find(p => p.name === 'Practice ball');
   check(t().scene.name === 'Wizard loop study', 'Apply lost the experiment name entered before the click');
-  check(t().scene.version === 6, 'An explicit mapping was not saved in scene schema 6');
+  check(t().scene.version === 9, 'An explicit mapping was not saved in scene schema 9');
   check(ball?.movable && ball.mass === 1 && t().props.find(p => p.id === ball.id).position[2] < .1, 'Upfront heavy-body physics did not reach MuJoCo gravity');
   check(t().ducks.every(d => !d.fallen), 'The configured scene fell during its initial run');
   check(t().ducks.find(d => d.id === 'duck-1').distance > .1, 'The default vision-to-walking path did not move the first duck');
@@ -242,9 +242,9 @@ try {
   stage = 'save and reload exact mappings and runtime'; reportAcceptanceStage(stage);
   const saved = clone(t());
   const sceneFile = await exportJSON('#save');
-  check(sceneFile.version === 6 && JSON.stringify(sceneFile.ducks.map(d => d.mapping)) === JSON.stringify(saved.scene.ducks.map(d => d.mapping)), 'Scene export lost the versioned mappings');
+  check(sceneFile.version === 9 && JSON.stringify(sceneFile.ducks.map(d => d.mapping)) === JSON.stringify(saved.scene.ducks.map(d => d.mapping)), 'Scene export lost the versioned mappings');
   const recording = await exportJSON('#export');
-  check(recording.format === 'duckfly-recording' && recording.version >= 4 && recording.checkpoint.scene.version === 6, 'Recording did not retain a versioned mapping scene');
+  check(recording.format === 'duckfly-recording' && recording.version >= 4 && recording.checkpoint.scene.version === 9, 'Recording did not retain a versioned mapping scene');
   $('#reset').click();
   await wait(() => t().tick === 0);
   await importJSON(sceneFile);
@@ -252,7 +252,7 @@ try {
   await importJSON(recording);
   await wait(() => t().tick === saved.tick);
   check(JSON.stringify(t().ducks) === JSON.stringify(saved.ducks) && JSON.stringify(t().agents) === JSON.stringify(saved.agents) && JSON.stringify(t().scene) === JSON.stringify(saved.scene), 'Recording roundtrip changed physical state, neural state, or settings');
-  receipts.push({check:'scene schema 6 and recording preserve mappings, props, complete neural state, and physical state', sceneVersion:sceneFile.version, recordingVersion:recording.version, tick:saved.tick});
+  receipts.push({check:'scene schema 9 and recording preserve mappings, props, complete neural state, and physical state', sceneVersion:sceneFile.version, recordingVersion:recording.version, tick:saved.tick});
 
   stage = 'immersive panel layout'; reportAcceptanceStage(stage);
   const beforePresentation = physicalState();

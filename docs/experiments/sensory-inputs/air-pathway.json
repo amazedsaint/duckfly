@@ -1,0 +1,160 @@
+{
+  "format": "duckfly-air-pathway-probe",
+  "circuitSha256": "da53640e4dc7071c26892870ec5b28984c4cfc74c1c44d3a3cde0a2913579d0f",
+  "brainSourceSha256": "6765131d593bd5a9ddf124e09733dde9a0657cd431e6b4745b73e6b4c8f8b010",
+  "conditions": {
+    "ticks": 100,
+    "tickSeconds": 0.02,
+    "pulseTicks": [
+      25,
+      45
+    ],
+    "forwardCurrent": 0.12,
+    "gfGain": 6,
+    "feedback": false,
+    "cameraInput": false,
+    "sensoryCells": 16
+  },
+  "rows": [
+    {
+      "seed": "air-causal",
+      "strength": 0,
+      "heldTicks": 0,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": null
+    },
+    {
+      "seed": "air-causal",
+      "strength": 0.2,
+      "heldTicks": 0,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": null
+    },
+    {
+      "seed": "air-causal",
+      "strength": 0.5,
+      "heldTicks": 0,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": null
+    },
+    {
+      "seed": "air-causal",
+      "strength": 0.8,
+      "heldTicks": 68,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": 27
+    },
+    {
+      "seed": "air-causal",
+      "strength": 1,
+      "heldTicks": 66,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": 27
+    },
+    {
+      "seed": "air-control-2",
+      "strength": 0,
+      "heldTicks": 0,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": null
+    },
+    {
+      "seed": "air-control-2",
+      "strength": 0.2,
+      "heldTicks": 0,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": null
+    },
+    {
+      "seed": "air-control-2",
+      "strength": 0.5,
+      "heldTicks": 0,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": null
+    },
+    {
+      "seed": "air-control-2",
+      "strength": 0.8,
+      "heldTicks": 63,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": 32
+    },
+    {
+      "seed": "air-control-2",
+      "strength": 1,
+      "heldTicks": 50,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": 32
+    },
+    {
+      "seed": "air-control-3",
+      "strength": 0,
+      "heldTicks": 0,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": null
+    },
+    {
+      "seed": "air-control-3",
+      "strength": 0.2,
+      "heldTicks": 0,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": null
+    },
+    {
+      "seed": "air-control-3",
+      "strength": 0.5,
+      "heldTicks": 0,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": null
+    },
+    {
+      "seed": "air-control-3",
+      "strength": 0.8,
+      "heldTicks": 58,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": 32
+    },
+    {
+      "seed": "air-control-3",
+      "strength": 1,
+      "heldTicks": 66,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": 26
+    },
+    {
+      "seed": "senses-v1/duck-1",
+      "strength": 0,
+      "heldTicks": 0,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": null
+    },
+    {
+      "seed": "senses-v1/duck-1",
+      "strength": 0.2,
+      "heldTicks": 0,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": null
+    },
+    {
+      "seed": "senses-v1/duck-1",
+      "strength": 0.5,
+      "heldTicks": 50,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": 29
+    },
+    {
+      "seed": "senses-v1/duck-1",
+      "strength": 0.8,
+      "heldTicks": 50,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": 44
+    },
+    {
+      "seed": "senses-v1/duck-1",
+      "strength": 1,
+      "heldTicks": 65,
+      "sensoryCellsSilencedHeldTicks": 0,
+      "firstHeldTick": 29
+    }
+  ]
+}

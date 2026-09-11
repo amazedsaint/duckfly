@@ -49,6 +49,7 @@ export class Brain {
     s.loomPathway=s.simMs<this.loomUntil?'both':sensory.loomPathway??'both';
     s.loomL=Math.max(s.simMs<this.loomUntil?1:0,clamp(sensory.loomL??0,0,1));
     s.loomR=Math.max(s.simMs<this.loomUntil?1:0,clamp(sensory.loomR??0,0,1));
+    s.airPuff=clamp(sensory.air??0,0,1);
     if(sensory.forward>0)s.stimulate(s.fwd,clamp(sensory.forward,0,.25),20);
     if(sensory.turn>0)s.stimulate(s.dnaL,clamp(sensory.turn,0,.25),20);
     if(sensory.turn<0)s.stimulate(s.dnaR,clamp(-sensory.turn,0,.25),20);

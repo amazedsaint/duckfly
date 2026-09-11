@@ -3,6 +3,8 @@ import { LAB_IDS, STOP_CASES, STOP_MODES, guidedScene } from './guided-labs.js';
 import { normalizeBrainMapping } from './brain-mapping.js';
 import { normalizeConnections } from './trigger-actions.js';
 import { CONNECTION_SCENES,connectionScene } from './connection-scenes.js';
+import { normalizeSenses, SENSOR_TRIGGERS } from './senses.js';
+import { SENSORY_SCENES, sensoryScene } from './sensory-scenes.js';
 const kinds=new Set(['wall','block','ball','target']);
 const modes=new Set(['brain','target','flock','reactive','manual','odor','light','reflex']);
 const sources=new Set(['eyes','webcam']);
@@ -14,7 +16,7 @@ const label=v=>{if(typeof v!=='string'||v.length>80)throw Error('Invalid label')
 const vec=(v,n,lo,hi,name)=>{if(!Array.isArray(v)||v.length!==n)throw Error(`Invalid ${name}`);return v.map(x=>number(x,lo,hi,name));};
 const choice=(v,values,name)=>{if(!values.has(v))throw Error(`Invalid ${name}`);return v;};
 export function validateScene(input){
-  if(!input||![1,2,3,4,5,6,7,8].includes(input.version))throw Error('Unsupported scene version');
+  if(!input||![1,2,3,4,5,6,7,8,9,10].includes(input.version))throw Error('Unsupported scene version');
   if(!Array.isArray(input.ducks)||input.ducks.length<1||input.ducks.length>8)throw Error('Use 1–8 ducks');
   if(!Array.isArray(input.props)||input.props.length>40)throw Error('Use at most 40 props');
   const scene={version:2,name:label(input.name??'Untitled arena'),seed:id(input.seed??'duckfly-v1'),
@@ -32,6 +34,7 @@ export function validateScene(input){
       kickOnSight:normalizeBrainMapping(d).forward==='kick',
       ...(d.mapping!=null||input.version>=6?{mapping:normalizeBrainMapping(d)}:{}),
       ...(d.connections!=null?{connections:normalizeConnections(d.connections)}:{}),
+      ...(d.senses!=null||input.version>=9?{senses:normalizeSenses(d.senses)}:{}),
       motorEnabled:d.motorEnabled!==false,motorGain:number(d.motorGain??1,0,1,'body command strength'),
       adapter:adapterWeights(d.adapter),
       eye:choice(d.eye??'both',new Set(['both','left','right','none']),'eye covering'),
@@ -46,7 +49,7 @@ export function validateScene(input){
       behavior:p.behavior==null?null:{kind:choice(p.behavior.kind,new Set(['patrol','orbit']),'prop behavior'),
         speed:number(p.behavior.speed??.2,.02,1,'motion speed'),range:number(p.behavior.range??.4,.05,2,'motion range'),
         axis:choice(p.behavior.axis??'y',new Set(['x','y']),'motion direction'),startedAt:number(p.behavior.startedAt??0,0,1e9,'motion start')}})),
-    fields:(input.fields??[]).map(f=>({id:id(f.id),kind:choice(f.kind,new Set(['light','odor']),'field'),
+    fields:(input.fields??[]).map(f=>({id:id(f.id),kind:choice(f.kind,new Set(['light','odor','air']),'field'),
       position:vec(f.position,2,-10,10,'field position'),strength:number(f.strength??1,0,5,'strength'),
       radius:number(f.radius??.5,.05,5,'radius')})),
     challenge:{duration:number(input.challenge?.duration??30,1,600,'duration'),
@@ -64,6 +67,14 @@ export function validateScene(input){
   // Old clients must reject additive connections instead of dropping the
   // retained neural behavior and silently changing what the duck does.
   if(input.version===8||scene.ducks.some(d=>d.connections?.includeBrainMapping))scene.version=8;
+  if(input.version>=9||scene.fields.some(f=>f.kind==='air')||scene.ducks.some(d=>d.senses||d.connections?.rules.some(r=>SENSOR_TRIGGERS.has(r.trigger)))){
+    scene.version=9;
+    for(const d of scene.ducks)d.senses=normalizeSenses(d.senses);
+  }
+  if(input.presentation!=null){
+    if(typeof input.presentation!=='object'||Array.isArray(input.presentation)||input.presentation.view!=='ar')throw Error('Invalid scene presentation');
+    scene.presentation={view:'ar'};scene.version=10;
+  }else if(input.version>=10)scene.version=10;
   if(scene.fields.length>16)throw Error('Use at most 16 sensory fields');
   const ids=[...scene.ducks,...scene.props,...scene.fields].map(x=>x.id);
   if(new Set(ids).size!==ids.length)throw Error('Object IDs must be unique');
@@ -93,6 +104,7 @@ export function changeEncounter(input,options){
   return validateScene(scene);
 }
 export function defaultScene(preset='target',options){
+  if(SENSORY_SCENES.includes(preset))return validateScene(sensoryScene(preset));
   if(CONNECTION_SCENES.includes(preset))return validateScene(connectionScene(preset));
   if(LAB_IDS.includes(preset))return validateScene(guidedScene(preset,options));
   const ducks=[{id:'duck-1',name:'Duck 1',spawn:[0,0,0],mode:preset==='flock'?'flock':preset==='empty'?'brain':'target'}];

@@ -90,14 +90,20 @@ export function mountGuidedLab({restart, patch, move, push, save, reset, add, st
       const agent=state?.agents[id], body=state?.body.ducks.find(d=>d.id===id);
       const threatSpeed=scene.props.find(p=>p.id==='threat-1')?.motion[0]??0;
       for(const [action,value] of [['threat-in',threatSpeed<0],['threat-out',threatSpeed>0],['threat-still',threatSpeed===0]])$(`[data-lab-action="${action}"]`)?.setAttribute('aria-pressed',String(value));
-      $('#lab-question').textContent = ({target:'Guide the duck',occlusion:'Block or reveal the beacon',flock:'Compare the ducks',loom:'Test the approach response',vision:'Compare eye input',empty:'Build your scene'})[kind]??'Scene actions';
+      $('#lab-question').textContent = ({scent:'Guide the duck by smell',air:'Test the air response',touch:'Test physical contact',target:'Guide the duck',occlusion:'Block or reveal the beacon',flock:'Compare the ducks',loom:'Test the approach response',vision:'Compare eye input',empty:'Build your scene'})[kind]??'Scene actions';
       $('#lab-observation').textContent = state?.paused ? 'Paused. Edits take effect on the next Run or Step.' :
+        kind==='scent'?`${agent?.input?.reason??'Waiting for scent'}. Drag the source or change its strength in Objects & physics.`:
+        kind==='air'?'Move the turquoise source to change local air input. The Senses monitor shows exposure; the fly brain shows the resulting stop response.':
+        kind==='touch'?'The touch connection pauses movement on contact, then holds for one second. Move the block away to release it.':
         kind==='loom' ? `Object ${threatSpeed<0?'approaching':threatSpeed>0?'retreating':'stationary'}${threatSpeed?' at '+Math.abs(threatSpeed).toFixed(2)+' m/s':''}. Open Why? to inspect recorded stop-reflex activity.` :
         kind==='flock' ? `${duck.name}: ${duck.mode==='flock'?'follows cyan companions':'follows the pink beacon'}. Every duck has its own circuit.` :
         agent?.input?.gate ? 'Walking is paused. Move the beacon into view or remove the object blocking it.' :
         'Move a cue or change a connection. The live monitor shows the delivered command and measured response.';
       $('#lab-measures').textContent = body ? `${body.distance.toFixed(2)} m traveled · ${body.speed.toFixed(2)} m/s` : 'Waiting for measurements';
-      $('#lab-explanation').textContent = kind==='vision' ? 'The motion adapter converts camera changes into circuit input. Use the vision test bench to compare it with the full Flyvis reference model.' :
+      $('#lab-explanation').textContent = kind==='scent'?'Two sensors sample a modeled scent field near the head. Their difference supplies a bounded current to steering neurons; detected scent supplies walking input. This is an engineered bridge, not a reconstruction of the olfactory circuit. Covering the eyes does not disable scent.':
+        kind==='air'?'A local air field stimulates the sensory cells already present in the DesktopFly extract. The giant-fiber stop remains in charge when it fires. The field is an experimental input model, not a physical airflow solver.':
+        kind==='touch'?'Object contact comes from the physics engine. The touch-to-pause connection is a user mapping; it does not imply that the fly circuit has learned touch avoidance. Floor contact is excluded.':
+        kind==='vision' ? 'The motion adapter converts camera changes into circuit input. Use the vision test bench to compare it with the full Flyvis reference model.' :
         kind==='loom' ? 'A growing red object stimulates the stop pathway. A stop is not guaranteed collision avoidance. Compare approach with retreat from identical resets; GF events and delivered commands are recorded in Why.' :
         'The camera detects colored cues, then the fly circuit requests movement. A cue smaller than five pixels or hidden from view blocks forward following. Move beacon ahead repositions the object; the circuit still receives only camera-derived input. In direct brain mode, spontaneous circuit activity can also initiate movement.';
       for(const [action,value] of [['flow',duck.flowSteer],['eye-left',duck.eye==='left']])$(`[data-lab-action="${action}"]`)?.setAttribute('aria-pressed',String(value));

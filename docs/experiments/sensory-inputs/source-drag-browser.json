@@ -1,0 +1,46 @@
+{
+  "format": "duckfly-source-drag",
+  "passed": true,
+  "viewport": [
+    1440,
+    1000
+  ],
+  "gesture": {
+    "from": [
+      785,
+      608
+    ],
+    "to": [
+      695,
+      580
+    ]
+  },
+  "before": {
+    "tick": 16,
+    "field": {
+      "id": "scent-1",
+      "kind": "odor",
+      "position": [
+        0.75,
+        0.18
+      ],
+      "strength": 1,
+      "radius": 0.5
+    }
+  },
+  "after": {
+    "tick": 16,
+    "field": {
+      "id": "scent-1",
+      "kind": "odor",
+      "position": [
+        0.8281425408490518,
+        0.3238832710485327
+      ],
+      "strength": 1,
+      "radius": 0.5
+    },
+    "selected": "scent-1",
+    "connectedDuck": "duck-1"
+  }
+}

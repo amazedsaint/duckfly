@@ -4,6 +4,7 @@ import { EYE_WIDTH as W, EYE_HEIGHT as H } from "./vision.js";
 import { framePacket, EYE_CALIBRATION } from "../../../shared/vision/frame.js";
 import { COLORS } from "./scene.js";
 import { propPosition } from "./prop-behavior.js";
+import { FIELD_COLORS } from './senses.js';
 export class LabArena extends Arena {
   constructor(host, assets) {
     super(host, assets);
@@ -12,6 +13,7 @@ export class LabArena extends Arena {
     this.ducks = new Map();
     this.props = new Map();
     this.fields = [];
+    this.fieldMeshes=new Map();this.fieldVisuals=[];
     this.body = null;
     this.target.set(0.3, 0.12, 0);
     this.camera.position.set(1.15, 0.7, 1.15);
@@ -41,7 +43,8 @@ export class LabArena extends Arena {
     this.motionPath = new THREE.Line(new THREE.BufferGeometry(),new THREE.LineDashedMaterial({color:0x437fac,dashSize:.025,gapSize:.02,transparent:true,opacity:.8}));
     this.motionPath.layers.set(1);this.motionPath.visible=false;this.scene.add(this.motionPath);
     this.installPropDragging();
-    this.renderer.setAnimationLoop(() => {
+    this.renderer.setAnimationLoop((time,frame) => {
+      if(this.ar?.render(time,frame))return;
       if (!this.host.clientWidth || !this.host.clientHeight) return;
       this.controls.update();
       this.renderer.render(this.scene, this.camera);
@@ -51,6 +54,7 @@ export class LabArena extends Arena {
     const canvas = this.renderer.domElement,
       ray = new THREE.Raycaster(),
       pointer = new THREE.Vector2();
+    ray.layers.enable(1);
     let drag, duckClick;
     const cast = (event) => {
       const rect = canvas.getBoundingClientRect();
@@ -63,10 +67,12 @@ export class LabArena extends Arena {
     canvas.addEventListener(
       "pointerdown",
       (event) => {
+        if(this.ar?.active)return;
         if (event.button !== 0) return;
         cast(event);
         const candidates = [
           ...this.props.values(),
+          ...this.fieldMeshes.values(),
           ...[...this.ducks.values()].flatMap((d) => d.meshes),
         ];
         const hit = ray.intersectObjects(candidates, false)[0];
@@ -82,7 +88,7 @@ export class LabArena extends Arena {
           };
           return;
         }
-        const id = [...this.props].find(([, mesh]) => mesh === hit.object)[0],
+        const id = [...this.props,...this.fieldMeshes].find(([, mesh]) => mesh === hit.object)[0],
           position = hit.object.position.clone();
         const plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), -position.y),
           point = new THREE.Vector3();
@@ -108,11 +114,13 @@ export class LabArena extends Arena {
     canvas.addEventListener(
       "pointermove",
       (event) => {
+        if(this.ar?.active)return;
         if (!drag) {
           cast(event);
           const hit = ray.intersectObjects(
             [
               ...this.props.values(),
+              ...this.fieldMeshes.values(),
               ...[...this.ducks.values()].flatMap((d) => d.meshes),
             ],
             false,
@@ -172,7 +180,7 @@ export class LabArena extends Arena {
   setSelection(duckId, objectId) {
     this.selected = duckId;
     this.selectedObject = objectId;
-    const prop = this.props.get(objectId);
+    const prop = this.props.get(objectId)??this.fieldMeshes.get(objectId);
     this.propOutline.visible = !!prop;
     if (prop) this.propOutline.setFromObject(prop);
     const definition=this.definition?.props.find(p=>p.id===objectId),behavior=definition?.behavior;
@@ -219,6 +227,7 @@ export class LabArena extends Arena {
     this.ducks.clear();
     this.props.clear();
     this.fields = [];
+    this.fieldVisuals=[];this.fieldMeshes.clear();this.fieldKey=null;
     for (const duck of scene.ducks) {
       const group = new THREE.Group(),
         meshes = this.robot.map((mesh) => {
@@ -265,31 +274,7 @@ export class LabArena extends Arena {
       this.scene.add(mesh);
       this.props.set(prop.id, mesh);
     }
-    for (const f of scene.fields) {
-      const disc = new THREE.Mesh(
-        new THREE.CircleGeometry(f.radius, 48),
-        new THREE.MeshBasicMaterial({
-          color: f.kind === "odor" ? 0x76c79c : 0xf5d98b,
-          transparent: true,
-          opacity: 0.12,
-          depthWrite: false,
-        }),
-      );
-      disc.rotation.x = -Math.PI / 2;
-      disc.position.set(f.position[0], 0.002, -f.position[1]);
-      this.scene.add(disc);
-      this.fields.push(disc);
-      if (f.kind === "light") {
-        const light = new THREE.PointLight(
-          0xffdda5,
-          f.strength * 0.18,
-          f.radius * 3,
-        );
-        light.position.set(f.position[0], 0.25, -f.position[1]);
-        this.scene.add(light);
-        this.fields.push(light);
-      }
-    }
+    this.updateFields(scene);
     const goal = new THREE.Mesh(
       new THREE.RingGeometry(
         Math.max(0.005, scene.challenge.radius - 0.008),
@@ -308,12 +293,40 @@ export class LabArena extends Arena {
     this.scene.add(goal);
     this.fields.push(goal);
   }
+  updateFields(scene){
+    const key=JSON.stringify(scene.fields);if(key===this.fieldKey)return;
+    this.fieldKey=key;
+    for(const mesh of this.fieldVisuals){this.scene.remove(mesh);mesh.geometry?.dispose();mesh.material?.dispose();}
+    this.fields=this.fields.filter(mesh=>!this.fieldVisuals.includes(mesh));
+    this.fieldVisuals=[];this.fieldMeshes.clear();
+    const add=mesh=>{this.scene.add(mesh);this.fields.push(mesh);this.fieldVisuals.push(mesh);};
+    for(const field of scene.fields){
+      const color=FIELD_COLORS[field.kind],active=field.strength>0;
+      const disc=new THREE.Mesh(new THREE.CircleGeometry(field.radius,48),new THREE.MeshBasicMaterial({color,transparent:true,opacity:active?.12:.025,depthWrite:false}));
+      disc.rotation.x=-Math.PI/2;disc.position.set(field.position[0],.003,-field.position[1]);
+      // Overlays are excluded from eye images. Only a light source changes
+      // rendered illumination; a scent cannot leak into the visual detector.
+      disc.layers.set(1);add(disc);
+      const ring=new THREE.Mesh(new THREE.RingGeometry(Math.max(.01,field.radius-.008),field.radius,48),new THREE.MeshBasicMaterial({color,transparent:true,opacity:active?.4:.12,depthWrite:false}));
+      ring.rotation.copy(disc.rotation);ring.position.copy(disc.position);ring.layers.set(1);add(ring);
+      const source=new THREE.Mesh(new THREE.CylinderGeometry(.045,.052,.018,32),new THREE.MeshBasicMaterial({color:active?color:'#a4aaa5'}));
+      source.position.set(field.position[0],.018,-field.position[1]);source.layers.set(1);add(source);this.fieldMeshes.set(field.id,source);
+      if(field.kind==='light'){
+        const light=new THREE.PointLight(0xffdda5,field.strength*.18,field.radius*3);
+        light.position.set(field.position[0],.25,-field.position[1]);add(light);
+      }
+    }
+    const hasLight=scene.fields.some(f=>f.kind==='light');
+    this.key.intensity=hasLight?.4:3.5;
+    this.scene.children.find(c=>c.isHemisphereLight).intensity=hasLight?.3:2.5;
+  }
   pose(object, p) {
     object.position.set(p[0], p[2], -p[1]);
     object.quaternion.set(p[4], p[5], p[6], p[3]).premultiply(this.conversion);
   }
   updateLab(body) {
     this.body = body;
+    this.updateFields(this.definition);
     for (const s of body.ducks) {
       const duck = this.ducks.get(s.id);
       if (!duck) continue;
@@ -360,8 +373,20 @@ export class LabArena extends Arena {
   }
   captureEyes(time = this.body?.time ?? 0, frameId = Math.round(time * 50)) {
     const frames = {};
+    // XR replaces the render camera. Duck vision must keep its own virtual
+    // viewpoint and must never inherit the room camera or presentation scale.
+    const xrEnabled=this.renderer.xr.enabled,target=this.renderer.getRenderTarget(),
+      autoClearColor=this.renderer.autoClearColor,
+      clearColor=this.renderer.getClearColor(new THREE.Color()),clearAlpha=this.renderer.getClearAlpha();
+    this.renderer.xr.enabled=false;
+    // Three applies the active XR session's transparent background even when
+    // xr.enabled is false. Clear each eye explicitly so room compositing cannot
+    // change brightness or optical flow in the virtual sensory image.
+    this.renderer.autoClearColor=false;
     const read = (duck, camera) => {
       this.renderer.setRenderTarget(duck.target);
+      this.renderer.setClearColor(clearColor,clearAlpha);
+      this.renderer.clear(true,true,true);
       this.renderer.render(this.scene, camera);
       const raw = new Uint8Array(W * H * 4);
       this.renderer.readRenderTargetPixels(duck.target, 0, 0, W, H, raw);
@@ -400,7 +425,10 @@ export class LabArena extends Arena {
         }
       }
     } finally {
-      this.renderer.setRenderTarget(null);
+      this.renderer.setRenderTarget(target);
+      this.renderer.autoClearColor=autoClearColor;
+      this.renderer.setClearColor(clearColor,clearAlpha);
+      this.renderer.xr.enabled=xrEnabled;
     }
     return frames;
   }
@@ -409,6 +437,7 @@ export class LabArena extends Arena {
     const points = [
       ...(this.body?.ducks ?? []),
       ...(this.body?.props ?? []),
+      ...(this.definition?.fields??[]).map(field=>({position:[...field.position,0]})),
     ].map(
       (d) => new THREE.Vector3(d.position[0], d.position[2], -d.position[1]),
     );

@@ -53,6 +53,7 @@ async function drain(){
         while(experiment.tick<until)await experiment.step(experiment.needsFrames()?await requestFrames():null);
       }
       if(msg.type==='duck')experiment.updateDuck(msg.id,msg.patch);
+      if(msg.type==='field'){experiment.updateField(msg.id,msg.patch);send({type:'field-applied',scene:experiment.scene});}
       if(msg.type==='move-prop')experiment.moveProp(msg.id,msg.position,msg.yaw);
       if(msg.type==='prop-behavior'){experiment.setPropBehavior(msg.id,msg.behavior);send({type:'prop-behavior-applied',scene:experiment.scene});}
       if(msg.type==='stimulus')experiment.stimulus(msg.id,msg.kind);
