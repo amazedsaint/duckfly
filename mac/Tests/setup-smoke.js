@@ -8,7 +8,7 @@ const wait = async (predicate, timeout = 35000) => {
   const start = Date.now();
   while (!predicate()) {
     if (Date.now() - start > timeout)
-      throw Error('Setup acceptance timed out at ' + stage + ': ' + JSON.stringify({tick:t()?.tick, scene:t()?.scene?.name, paused:t()?.paused, notice:$('#notice')?.textContent}));
+      throw Error('Setup acceptance timed out at ' + stage + ': ' + JSON.stringify({tick:t()?.tick, scene:t()?.scene?.name, paused:t()?.paused, notice:$('#notice')?.textContent, setupOpen:$('#scene-setup')?.open, setupError:$('#setup-error')?.textContent}));
     await new Promise(resolve => setTimeout(resolve, 20));
   }
 };
@@ -68,6 +68,19 @@ const importJSON = async value => {
 try {
   await wait(() => t()?.ready);
   check(!$('#home-page').hidden && $('#experiment-page').hidden, 'App did not begin at scenario tiles');
+  stage = 'new scene entry from the dashboard'; reportAcceptanceStage(stage);
+  check(inView('#new-scene') && !$('#new-scene').disabled, 'New scene is not available at the top of the dashboard');
+  const beforeNew = physicalState();
+  $('#new-scene').click();
+  await wait(() => $('#scene-setup')?.open);
+  check($('#setup-title').textContent === 'Your own playground', 'New scene did not open a fresh playground');
+  check(document.querySelectorAll('#scene-setup [data-setup-select]').length === 1, 'New scene inherited the previous scene members');
+  action('add-duck');
+  action('cancel');
+  await wait(() => !$('#scene-setup').open);
+  check(physicalState() === beforeNew && !$('#home-page').hidden, 'Cancelling a new scene changed the dashboard experiment');
+  await wait(() => document.activeElement === $('#new-scene'));
+  receipts.push({check:'top dashboard New scene opens an isolated playground and restores focus after cancellation'});
   stage = 'draft cancellation'; reportAcceptanceStage(stage);
   const initial = physicalState();
   await openTile('target');
@@ -95,6 +108,25 @@ try {
   change('#setup-turn', 'off');
   change('#setup-duck-select', 'duck-1');
   check($('#setup-forward').value === 'walk' && $('#setup-turn').value === 'follow', 'Editing the second duck rewired the first duck');
+  const advanced = $('[data-setup-panel="advanced-brain"]');
+  advanced.open = true;
+  const weights = advanced.querySelector('details');
+  weights.open = false;
+  const source = $('[data-setup-path="source"]');
+  source.focus();
+  $('#setup-controls').scrollTop = 190;
+  const brainScroll = $('#setup-controls').scrollTop;
+  check(brainScroll > 0, 'Advanced wizard acceptance did not reach a scrollable form');
+  change('[data-setup-path="source"]', 'webcam');
+  await settle();
+  check(Math.abs($('#setup-controls').scrollTop - brainScroll) < 2, 'Editing an advanced select jumped the setup form');
+  check($('[data-setup-panel="advanced-brain"]').open, 'An open advanced section collapsed after a select edit');
+  change('[data-setup-path="source"]', 'eyes');
+  change('#setup-feedback', false);
+  await settle();
+  check(Math.abs($('#setup-controls').scrollTop - brainScroll) < 2, 'Editing a checkbox jumped the setup form');
+  check(!$('[data-setup-panel="adapter-weights"]').open, 'A closed advanced section reopened after a control edit');
+  change('#setup-feedback', true);
   action('next');
   $('[data-add-prop="ball"]').click();
   change('#setup-prop-profile', 'heavy');
@@ -108,9 +140,23 @@ try {
   check(Number($('[data-setup-path="position.0"]').value) === .3, 'The visual map did not edit the selected object position');
   change('[data-setup-path="position.0"]', .25);
   change('[data-setup-path="mass"]', 0);
+  const invalidSelection = $('#scene-setup .setup-entity.is-selected').dataset.setupSelect;
+  const invalidCount = document.querySelectorAll('#scene-setup .setup-entity').length;
+  $('[data-setup-select="target-1"]').click();
+  check($('#scene-setup .setup-entity.is-selected').dataset.setupSelect === invalidSelection && $('[data-setup-path="mass"]').value === '0', 'Selecting another object discarded an invalid unfinished weight');
+  $('[data-add-prop="block"]').click();
+  check(document.querySelectorAll('#scene-setup .setup-entity').length === invalidCount && $('[data-setup-path="mass"]').value === '0', 'Adding an object discarded an invalid unfinished weight');
+  const invalidMapX = $('[data-setup-path="position.0"]').value;
+  $(`[data-map-entity="${ballMapId}"]`).dispatchEvent(new KeyboardEvent('keydown', {key:'ArrowRight', bubbles:true}));
+  check($('[data-setup-path="mass"]').value === '0' && $('[data-setup-path="position.0"]').value === invalidMapX, 'Moving on the map discarded invalid physics');
   action('next');
   check($('[data-setup-step="2"]'), 'Invalid object physics passed the wizard validation');
   change('[data-setup-path="mass"]', 1);
+  const physicalDetails = $('[data-setup-panel="object-physics"]');
+  physicalDetails.open = false;
+  change('#setup-prop-profile', 'pushable');
+  check(!$('[data-setup-panel="object-physics"]').open, 'A closed physical-properties section reopened when behavior changed');
+  change('#setup-prop-profile', 'heavy');
   const nameInput = $('[data-setup-path="name"]');
   nameInput.value = 'Practice ball';
   nameInput.dispatchEvent(new Event('input', {bubbles:true}));
@@ -137,6 +183,7 @@ try {
   check(secondCommands.length > 50 && secondCommands.every(c => c.command.vx === 0 && c.command.yaw === 0), 'Disconnected mappings leaked movement commands');
   check(secondCommands.some(c => c.neural.forward > 6), 'The second duck’s circuit was stopped instead of disconnecting its body mapping');
   receipts.push({check:'wizard mappings reach independent neural controllers; added heavy ball falls under gravity', duck1Distance:initialRun.ducks[0].distance, deliveredEvents:secondCommands.length, ballHeight:t().props.find(p => p.id === ball.id).position[2]});
+  receipts.push({check:'invalid unfinished physics survives select/add attempts; advanced controls preserve scroll and collapsed sections', advancedScroll:brainScroll});
 
   stage = 'edit setup without restarting for a mapping change'; reportAcceptanceStage(stage);
   change('#brain-duck', 'duck-2');
@@ -229,6 +276,54 @@ try {
   $('#pause').click();
   await wait(() => t().paused);
   receipts.push({check:'cancelling setup resumes a previously running scene with its original objects'});
+  stage = 'rapid cancel and reopen preserves run intent'; reportAcceptanceStage(stage);
+  $('#pause').click(); await wait(() => !t().paused);
+  $('#new-scene').click(); await wait(() => $('#scene-setup').open && t().paused);
+  const rapidRetained = clone(t());
+  action('cancel');
+  // Reopen before the worker can acknowledge the queued resume. This is the
+  // same rapid New scene interaction, not an artificial pause inserted by UI.
+  $('#new-scene').click();
+  check($('#scene-setup').open, 'New scene could not reopen immediately after cancellation');
+  action('cancel');
+  await wait(() => !$('#scene-setup').open && !t().paused && t().tick > rapidRetained.tick);
+  check(JSON.stringify(t().scene) === JSON.stringify(rapidRetained.scene) && t().connectedDuck === rapidRetained.connectedDuck, 'Rapid cancellation replaced the retained scene or selected brain');
+  $('#pause').click(); await wait(() => t().paused);
+  receipts.push({check:'rapid cancel, reopen, cancel resumes the original scene before a worker resume acknowledgement'});
+  stage = 'new scene from a running experiment'; reportAcceptanceStage(stage);
+  $('#pause').click();
+  await wait(() => !t().paused);
+  check(inView('#new-scene'), 'New scene is not available above the running stage');
+  $('#new-scene').click();
+  await wait(() => $('#scene-setup').open && t().paused);
+  const retainedNew = clone(t());
+  check($('#setup-title').textContent === 'Your own playground', 'The stage New scene button edited the current experiment');
+  action('next'); action('next');
+  check(!$('#scene-setup .setup-entity'), 'New scene kept the previous props');
+  $('[data-add-prop="block"]').click();
+  action('cancel');
+  await wait(() => !$('#scene-setup').open && !t().paused && t().tick > retainedNew.tick);
+  check(JSON.stringify(t().scene) === JSON.stringify(retainedNew.scene) && t().connectedDuck === retainedNew.connectedDuck, 'Cancelling New scene lost the running scene or selected brain');
+  $('#pause').click(); await wait(() => t().paused);
+  $('#new-scene').click();
+  await wait(() => $('#scene-setup').open);
+  action('next');
+  change('#setup-mode', 'target');
+  change('#setup-forward', 'walk');
+  change('#setup-turn', 'follow');
+  action('next');
+  $('[data-add-prop="target"]').click();
+  change('[data-setup-path="position.0"]', .65);
+  change('[data-setup-path="position.1"]', 0);
+  change('[data-setup-path="position.2"]', .13);
+  action('next');
+  check($('#setup-review').textContent.includes('Walk'), 'Fresh scene review omitted its chosen walking connection');
+  action('apply');
+  await wait(() => !$('#scene-setup').open && t().scene.name === 'Your own playground' && t().tick >= 120 && !t().paused);
+  $('#pause').click(); await wait(() => t().paused);
+  check(t().ducks.length === 1 && t().scene.props.length === 1 && t().scene.props[0].kind === 'target', 'New scene launch leaked retained objects');
+  check(t().ducks[0].distance > .1 && !t().ducks[0].fallen, 'A newly created beacon scene did not move through its configured brain connection');
+  receipts.push({check:'stage New scene cancellation resumes the prior scene; a fresh beacon and brain mapping run through real vision and physics', distance:t().ducks[0].distance, tick:t().tick});
   check(errors.length === 0, 'Console or uncaught errors: ' + errors.join('\n'));
   return {format:'duckfly-native-setup', version:1, passed:true, checks:receipts, errors};
 } finally {

@@ -5,7 +5,7 @@ const FILTERS = {
   vision: ['target', 'gaze', 'occlusion', 'vision', 'loom', 'stop-go', 'kick'],
   brain: ['switchboard', 'recovery', 'flock', 'empty', 'stop-go', 'kick'],
 };
-export function mountWorkspaceLayout({onResize}) {
+export function mountWorkspaceLayout({onResize, onOpenPanel = () => {}}) {
   const $ = selector => document.querySelector(selector);
   let prefs = {};
   try { prefs = JSON.parse(localStorage.getItem(PREFS_KEY)) || {}; } catch { /* Defaults also work without storage. */ }
@@ -14,19 +14,30 @@ export function mountWorkspaceLayout({onResize}) {
   const small = matchMedia('(max-width: 820px)');
   const panels = [...document.querySelectorAll('details[data-panel]')];
   const stagePanels = panels.filter(panel => panel.classList.contains('workspace-panel'));
-  const rail = [['#panel-connections','brain-mapping-panel'],['#panel-objects','objects-panel'],['#panel-experiment','experiment-controls']];
+  const rail = [['#panel-connections',['brain-mapping-panel']],['#panel-objects',['objects-panel','prop-behavior-panel']],['#panel-experiment',['experiment-controls']]];
+  let lastRail = '#panel-connections';
+  const visibleOpen = panel => panel?.open && !panel.hidden && !panel.parentElement.hidden;
   function syncRail() {
-    rail.forEach(([selector,id])=>$(selector).setAttribute('aria-expanded',String($('#'+id)?.open??false)));
-    $('#close-stage-settings').hidden=!stagePanels.some(panel=>panel.open&&!panel.hidden&&!panel.parentElement.hidden);
+    rail.forEach(([selector,ids])=>$(selector).setAttribute('aria-expanded',String(ids.some(id=>visibleOpen($('#'+id))))));
+    $('#close-stage-settings').hidden=!stagePanels.some(visibleOpen);
   }
   function closePanels() {stagePanels.forEach(panel=>panel.open=false);syncRail();}
-  rail.forEach(([selector,id])=>$(selector).onclick=()=>{
-    const panel=$('#'+id),next=!panel.open;
+  function openPanel(id, moveFocus = false) {
+    const group = rail.find(([,ids])=>ids.includes(id));
+    if (!group) return;
     if(focus)setFocus(false);
-    closePanels();panel.open=next;syncRail();
-    if(next)requestAnimationFrame(()=>panel.querySelector('summary').focus());
+    onOpenPanel();
+    closePanels();lastRail=group[0];
+    group[1].forEach(key=>{const panel=$('#'+key);if(panel&&!panel.hidden&&!panel.parentElement.hidden)panel.open=true;});
+    syncRail();
+    const container=$('#scene-control-panels');container.scrollTop=0;
+    if(moveFocus)$('#'+group[1][0])?.querySelector('summary').focus({preventScroll:true});
+  }
+  rail.forEach(([selector,ids])=>$(selector).onclick=()=>{
+    if(ids.some(id=>visibleOpen($('#'+id))))closePanels();
+    else openPanel(ids[0],true);
   });
-  $('#close-stage-settings').onclick=()=>{closePanels();$('#panel-connections').focus();};
+  $('#close-stage-settings').onclick=()=>{closePanels();$(lastRail).focus();};
   const persist = () => { try { localStorage.setItem(PREFS_KEY, JSON.stringify(prefs)); } catch { /* Private browsing may deny storage. */ } };
   const compactKey = () => small.matches ? 'compactSmall' : 'compactWide';
   const isCompact = () => focus || (typeof prefs[compactKey()] === 'boolean' ? prefs[compactKey()] : small.matches);
@@ -66,7 +77,9 @@ export function mountWorkspaceLayout({onResize}) {
         if (panel.open && panel.classList.contains('workspace-panel')) {
           const workspace = $('#scene-control-panels');
           // Reveal controls inside their own pane without scrolling the brain dock away.
-          workspace.scrollTop = Math.max(0, panel.getBoundingClientRect().top - workspace.getBoundingClientRect().top + workspace.scrollTop);
+          // Object selection and its physics are one group. Keep the switcher visible.
+          const first = stagePanels.find(visibleOpen);
+          if(panel === first)workspace.scrollTop = 0;
         }
       });
     });
@@ -81,17 +94,24 @@ export function mountWorkspaceLayout({onResize}) {
   $('#focus-mode').onclick = () => setFocus(!focus);
   small.addEventListener('change', render);
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && !document.querySelector('dialog[open]')) {
+    if (event.key !== 'Escape' || event.defaultPrevented || document.querySelector('dialog[open]')) return;
+    {
       const menus = [...document.querySelectorAll('.app-menu[open]')];
       if (menus.length) {
         menus.forEach(menu => menu.open = false);
         menus[0].querySelector('summary').focus();
+        event.preventDefault();
         return;
       }
     }
-    if (event.key === 'Escape' && focus && !document.querySelector('dialog[open]') && $('#tools-panel').hidden) {
+    if (!$('#tools-panel').hidden) return; // The drawer handles its own close and focus.
+    if (stagePanels.some(visibleOpen)) {
+      closePanels();$(lastRail).focus();event.preventDefault();return;
+    }
+    if (focus) {
       setFocus(false);
       $('#focus-mode').focus();
+      event.preventDefault();
     }
   });
   document.querySelectorAll('[data-scenario-filter]').forEach(button => {
@@ -112,5 +132,5 @@ export function mountWorkspaceLayout({onResize}) {
   }).observe($('#brain-panel'));
   render();
   syncRail();
-  return {setFocus,closePanels};
+  return {setFocus,closePanels,openPanel};
 }

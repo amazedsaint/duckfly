@@ -1,11 +1,18 @@
 const $=s=>document.querySelector(s), t=()=>window.duckflyTelemetry;
 const wait=async(predicate,timeout=20000)=>{const start=Date.now();while(!predicate()){if(Date.now()-start>timeout)throw Error('Audit timed out: '+JSON.stringify({scene:t()?.scene?.name,time:t()?.time,paused:t()?.paused,notice:$('#notice')?.textContent}));await new Promise(r=>setTimeout(r,20));}};
 const check=(condition,message)=>{if(!condition)throw Error(message+' '+JSON.stringify({tick:t()?.tick,paused:t()?.paused,scene:t()?.scene?.name}));};
+const errors=[];
+window.addEventListener('error',event=>errors.push(String(event.error?.stack||event.message)));
+window.addEventListener('unhandledrejection',event=>errors.push(String(event.reason?.stack||event.reason)));
 await wait(()=>t()?.ready);
 const scenarios=[...document.querySelectorAll('[data-scenario]')].map(e=>({id:e.dataset.scenario,title:e.querySelector('h3').textContent}));
-const result={format:'duckfly-catalog-audit',version:3,scenarios:[],controls:[]};
+const result={format:'duckfly-catalog-audit',version:4,scenarios:[],controls:[],interactions:[]};
+const settle=()=>new Promise(resolve=>setTimeout(resolve,50));
+const inView=selector=>{const r=$(selector).getBoundingClientRect();return r.width>0&&r.height>0&&r.top>=0&&r.bottom<=innerHeight&&r.left>=0&&r.right<=innerWidth;};
+const openPanel=async(id,button)=>{if(!$(id).open)$(button).click();await settle();check($(id).open,'Missing open panel '+id);};
 const sample=()=>{const s=t();return {time:s.time,tick:s.tick,paused:s.paused,loop:s.loop,collisions:s.collisionCount,ducks:s.ducks.map(d=>{const a=s.agents[d.id],v=a?.vision;return {id:d.id,position:d.position,command:d.command,speed:d.speed,distance:d.distance,fallen:d.fallen,tilt:d.tilt,visible:v?.target.visible,neighborVisible:v?.neighbor.visible,area:v?.target.area,pixels:v?.target.candidatePixels,input:a?.input,neural:a?.neural&&{vx:a.neural.vx,yaw:a.neural.yaw,forward:a.neural.forward,spikes:a.neural.spikeCount},temporal:a?.temporal&&{held:a.temporal.held,fresh:a.temporal.fresh,gfEvents:a.temporal.gfEvents}};})};};
 for(const scenario of scenarios){
+  reportAcceptanceStage('catalog '+scenario.id);
   if($('#home-page').hidden)$('#back-home').click();
   const name=scenario.id==='empty'?'Open arena':scenario.title;
   await launchScenario(scenario.id);
@@ -14,6 +21,7 @@ for(const scenario of scenarios){
   for(let at=.5;at<=5;at+=.5){await wait(()=>t().tick>=Math.round(at/.02));row.samples.push(sample());}
   if(!t().paused){$('#pause').click();await wait(()=>t().paused);}
   row.final=sample();
+  check(inView('#new-scene')&&inView('#eye')&&inView('#brain-plot'),scenario.id+' lost New scene or a live monitor');
   check(row.final.ducks.every(d=>Number.isFinite(d.speed)&&d.command.every(Number.isFinite)),scenario.id+' nonfinite movement');
   check(row.final.ducks.every(d=>!d.fallen),scenario.id+' fell during the default audit');
   result.scenarios.push(row);
@@ -24,6 +32,7 @@ for(const scenario of scenarios){
   check(!t().paused,scenario.id+' automatically stopped at a time limit');
   row.openEnded=sample();$('#pause').click();await wait(()=>t().paused);
   if(scenario.id==='stop-go')check(!$('#lab-save').hidden,'Five-second observation was not retained in the open scene');
+  await openPanel('#experiment-controls','#panel-experiment');
   $('#body-details').open=true;
   $('#motor-link').click();$('#feedback-link').click();
   await wait(()=>!t().scene.ducks[0].motorEnabled&&!t().scene.ducks[0].feedback);
@@ -40,6 +49,45 @@ for(const scenario of scenarios){
   $('#step').click();await wait(()=>t().tick===tick+10&&t().paused);
   check(Math.abs(t().ducks[0].command[0])<=.15+1e-9,scenario.id+' gain was ignored');
   result.controls.at(-1).reconnected=sample();
+  // Every catalog entry supports a visible, live interaction after its default
+  // behavior has been observed. Moving a fixed prop must reach the physics
+  // world without restarting time or switching the connected brain.
+  const prop=t().scene.props.find(p=>p.id==='bg-a')??t().scene.props.find(p=>!p.movable);
+  if(prop){
+    const connected=t().connectedDuck,at=t().tick;
+    await openPanel('#objects-panel','#panel-objects');
+    const chip=$('#scene-objects [data-object="'+prop.id+'"]');
+    check(chip,'Missing object chip for '+scenario.id);chip.click();
+    await settle();
+    check(t().selected===prop.id&&t().connectedDuck===connected&&$('#prop-behavior-panel').open,'Selecting '+prop.id+' did not preserve the watched brain or open its physics');
+    const before=t().props.find(p=>p.id===prop.id).position.slice();
+    $('[data-prop-step="left"]').click();
+    await wait(()=>t().props.find(p=>p.id===prop.id).position[1]>before[1]+.1);
+    check(t().tick===at&&t().connectedDuck===connected,'Live prop movement reset '+scenario.id+' or changed its brain');
+    const after=t().props.find(p=>p.id===prop.id).position.slice();
+    document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+    await settle();
+    check(!$('#prop-behavior-panel').open&&!$('#objects-panel').open,'Escape did not close object settings in '+scenario.id);
+    check(inView('#brain-plot')&&inView('#eye'),'Closing object settings hid a monitor in '+scenario.id);
+    result.interactions.push({id:scenario.id,action:'select and move prop',prop:prop.id,before,after,preservedTick:at,connectedDuck:connected});
+    if(scenario.id==='kick'){
+      await openPanel('#objects-panel','#panel-objects');
+      $('#scene-objects [data-object="kick-ball"]').click();
+      await settle();
+      check($('#prop-profile').value==='existing-physics'&&$('#apply-behavior').disabled,'The custom kick ball was incorrectly offered as an unmodified physics preset');
+      check(t().scene.props.find(p=>p.id==='kick-ball').mass===.025&&t().scene.props.find(p=>p.id==='kick-ball').friction===.6,'Selecting the kick ball changed its custom physical values');
+      check($('#prop-profile-note').textContent.includes('25 g')&&$('#prop-profile-note').textContent.includes('0.6'),'The custom kick ball panel did not show its real weight and friction');
+      result.interactions.at(-1).customPhysics={mass:.025,friction:.6,displayed:$('#prop-profile-note').textContent};
+    }
+  }else{
+    const at=t().tick;
+    await openPanel('#experiment-controls','#panel-experiment');
+    $('[data-lab-action="pulse-walk"]').click();
+    check(t().tick===at&&t().paused,'Queuing a pulse advanced the empty scene');
+    $('#step').click();await wait(()=>t().tick===at+5&&t().paused);
+    check(t().agents['duck-1'].neural.event.includes('walk stimulus')&&t().agents['duck-1'].neural.forward>6,'The empty-scene pulse did not reach the fly circuit');
+    result.interactions.push({id:scenario.id,action:'walk pulse reaches live brain',tick:t().tick,forward:t().agents['duck-1'].neural.forward});
+  }
 }
 $('#back-home').click();await launchScenario("target");await wait(()=>t().scene.name==='Follow the beacon'&&t().time>.05);
 $('#pause').click();await wait(()=>t().paused);
@@ -86,4 +134,6 @@ result.pushable={prop:t().props[0],definition:t().scene.props[0]};
 choose('#prop-profile','heavy');$('#apply-behavior').click();await wait(()=>t().tick===0&&t().scene.props[0].mass===1);
 check(t().scene.props[0].behavior===null,'Free body retained an animated path');
 result.heavy=t().scene.props[0];
+check(errors.length===0,'Catalog raised uncaught errors: '+errors.join('\n'));
+result.errors=errors;
 return result;

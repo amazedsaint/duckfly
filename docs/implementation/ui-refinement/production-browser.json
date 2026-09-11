@@ -1,0 +1,18 @@
+{
+  "clock": "8.42 s",
+  "command": "0.00 m/s · -0.02 rad/s",
+  "measuredSpeed": "0.01 m/s",
+  "newSceneVisible": true,
+  "response": "Paused · Run or Step to advance",
+  "scene": "Follow the beacon",
+  "url": "https://duckfly.vercel.app/",
+  "vision": "No cue detected",
+  "watched": "Duck 1",
+  "freshStart": {
+    "clock": "0.10 s",
+    "command": "0.30 m/s · -0.00 rad/s",
+    "request": "0.30 m/s · -0.00 rad/s",
+    "speed": "0.07 m/s",
+    "vision": "Beacon visible"
+  }
+}

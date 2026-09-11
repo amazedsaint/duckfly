@@ -1,0 +1,5664 @@
+{
+  "ballDisplacement": 2.9688310965273987,
+  "passed": true,
+  "format": "duckfly-native-skills-ui",
+  "coveredKick": false,
+  "samples": [
+    {
+      "fallen": false,
+      "position": [
+        -0.0002563624237603622,
+        -3.712910760788172e-05,
+        0.11618547100289404
+      ],
+      "forward": 28.40454326495755,
+      "tick": 2,
+      "skill": {
+        "stable": 0,
+        "source": "manual",
+        "ticks": 0,
+        "visualTicks": 2,
+        "phase": "walk",
+        "message": "Walking policy",
+        "armed": true
+      },
+      "visible": true,
+      "ball": [
+        0.09,
+        0.042,
+        0.03468280979634978
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 39.04704928654802,
+      "position": [
+        0.00017176566010667694,
+        9.407074348587184e-06,
+        0.11483653605483822
+      ],
+      "visible": true,
+      "skill": {
+        "stable": 0,
+        "phase": "walk",
+        "ticks": 0,
+        "visualTicks": 3,
+        "source": "manual",
+        "message": "Walking policy",
+        "armed": true
+      },
+      "tick": 3,
+      "ball": [
+        0.09,
+        0.042,
+        0.034778005397301005
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.0009384209630304935,
+        9.862935220835019e-05,
+        0.11556949004889253
+      ],
+      "skill": {
+        "source": "manual",
+        "phase": "walk",
+        "ticks": 0,
+        "visualTicks": 4,
+        "stable": 0,
+        "message": "Walking policy",
+        "armed": true
+      },
+      "visible": true,
+      "forward": 56.029614611533475,
+      "tick": 4,
+      "ball": [
+        0.09,
+        0.042,
+        0.034832697553199586
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.0015768560634407932,
+        0.00013808810913477524,
+        0.11616681683529265
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "settle",
+        "ticks": 1,
+        "visualTicks": 0,
+        "stable": 0,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "forward": 63.056627847629116,
+      "tick": 5,
+      "visible": true,
+      "ball": [
+        0.09,
+        0.042,
+        0.034861738047507106
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.0015768560634407932,
+        0.00013808810913477524,
+        0.11616681683529265
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "settle",
+        "ticks": 1,
+        "visualTicks": 0,
+        "stable": 0,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "visible": true,
+      "forward": 63.056627847629116,
+      "tick": 5,
+      "ball": [
+        0.09,
+        0.042,
+        0.034861738047507106
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.0019504205026690629,
+        0.00018793363523278024,
+        0.11650807049556099
+      ],
+      "skill": {
+        "stable": 1,
+        "phase": "settle",
+        "ticks": 2,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "tick": 6,
+      "visible": true,
+      "forward": 68.74318899394666,
+      "ball": [
+        0.09,
+        0.042,
+        0.03487706784689408
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.002152419569366833,
+        0.00021179641713859224,
+        0.11665764521036297
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "settle",
+        "ticks": 3,
+        "visualTicks": 0,
+        "stable": 2,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 7,
+      "forward": 73.36379846608119,
+      "ball": [
+        0.09,
+        0.042,
+        0.034885188664382415
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 77.04729911360104,
+      "position": [
+        0.0022646961011193235,
+        0.0001852806134236231,
+        0.11671684800789255
+      ],
+      "visible": true,
+      "tick": 8,
+      "skill": {
+        "source": "vision",
+        "phase": "settle",
+        "ticks": 4,
+        "visualTicks": 0,
+        "stable": 3,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "ball": [
+        0.09,
+        0.042,
+        0.03488950401654221
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 88.23797652058268,
+      "position": [
+        0.002293858541808259,
+        0.0001828589455545404,
+        0.11671061451233088
+      ],
+      "tick": 9,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "stable": 4,
+        "ticks": 5,
+        "visualTicks": 0,
+        "phase": "settle",
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "ball": [
+        0.09,
+        0.042,
+        0.03489180147315114
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 90.26752382460677,
+      "skill": {
+        "stable": 5,
+        "source": "vision",
+        "ticks": 6,
+        "visualTicks": 0,
+        "phase": "settle",
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "tick": 10,
+      "position": [
+        0.00225462955340384,
+        0.00020068017341706934,
+        0.1166894556579397
+      ],
+      "visible": true,
+      "ball": [
+        0.09,
+        0.042,
+        0.0348930258832955
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 91.69860917390929,
+      "position": [
+        0.0022191398493557695,
+        0.000175368795122513,
+        0.11669459952178393
+      ],
+      "tick": 11,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "phase": "settle",
+        "stable": 6,
+        "visualTicks": 0,
+        "ticks": 7,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "ball": [
+        0.09,
+        0.042,
+        0.03489367878420543
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 96.78223534451449,
+      "position": [
+        0.0022110883088326504,
+        0.00013698953364857312,
+        0.11669429685735651
+      ],
+      "tick": 12,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "phase": "settle",
+        "ticks": 8,
+        "visualTicks": 0,
+        "stable": 7,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "ball": [
+        0.09,
+        0.042,
+        0.034894027038108434
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.0021932551837277286,
+        0.0001435355362659699,
+        0.11667078042914326
+      ],
+      "skill": {
+        "stable": 8,
+        "phase": "settle",
+        "ticks": 9,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 13,
+      "forward": 97.2434915152754,
+      "ball": [
+        0.09,
+        0.042,
+        0.03489421282414734
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.0021889019868084063,
+        0.00015102752898614086,
+        0.11665606280784374
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "settle",
+        "stable": 9,
+        "visualTicks": 0,
+        "ticks": 10,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "tick": 14,
+      "visible": true,
+      "forward": 101.50419432466606,
+      "ball": [
+        0.09,
+        0.042,
+        0.034894311945353876
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 101.29651573178229,
+      "skill": {
+        "source": "vision",
+        "phase": "settle",
+        "ticks": 11,
+        "stable": 10,
+        "visualTicks": 0,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 15,
+      "position": [
+        0.002186981449878459,
+        0.00016374557080954885,
+        0.11664108230223934
+      ],
+      "ball": [
+        0.09,
+        0.042,
+        0.03489436483120498
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 100.92989359213263,
+      "skill": {
+        "stable": 11,
+        "source": "vision",
+        "ticks": 12,
+        "visualTicks": 0,
+        "phase": "settle",
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 16,
+      "position": [
+        0.002184166335495041,
+        0.0001724967536683231,
+        0.11662892139603764
+      ],
+      "ball": [
+        0.09,
+        0.042,
+        0.03489439304898011
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.0021758319310285347,
+        0.0001791580646864188,
+        0.11661615373748235
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "settle",
+        "ticks": 13,
+        "visualTicks": 0,
+        "stable": 12,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "tick": 17,
+      "visible": true,
+      "forward": 100.49381903867055,
+      "ball": [
+        0.09,
+        0.042,
+        0.03489440810504786
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.002165841752698159,
+        0.0001803384961565642,
+        0.11660347874937654
+      ],
+      "skill": {
+        "stable": 13,
+        "source": "vision",
+        "ticks": 14,
+        "visualTicks": 0,
+        "phase": "settle",
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 18,
+      "forward": 104.00415580280563,
+      "ball": [
+        0.09,
+        0.042,
+        0.03489441613852012
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.0021539783206146333,
+        0.00017524607715990425,
+        0.11659539598587229
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "settle",
+        "ticks": 15,
+        "visualTicks": 0,
+        "stable": 14,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 19,
+      "forward": 107.38471608819529,
+      "ball": [
+        0.09,
+        0.042,
+        0.034894420424958716
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 106.43488835199526,
+      "skill": {
+        "source": "vision",
+        "stable": 15,
+        "ticks": 16,
+        "phase": "settle",
+        "visualTicks": 0,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "visible": true,
+      "position": [
+        0.0021393425453485604,
+        0.000169350521039029,
+        0.11658679186048881
+      ],
+      "tick": 20,
+      "ball": [
+        0.09,
+        0.042,
+        0.034894422712088216
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 105.37257577434013,
+      "skill": {
+        "stable": 16,
+        "phase": "settle",
+        "ticks": 17,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "tick": 21,
+      "visible": true,
+      "position": [
+        0.0021252771296422393,
+        0.0001613124761820959,
+        0.11657875425794118
+      ],
+      "ball": [
+        0.09,
+        0.042,
+        0.03489442393244087
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 104.31653432783679,
+      "skill": {
+        "stable": 17,
+        "phase": "settle",
+        "ticks": 18,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 22,
+      "position": [
+        0.0021140896186278456,
+        0.0001524941856182441,
+        0.11657072294190746
+      ],
+      "ball": [
+        0.09,
+        0.042,
+        0.03489442458358958
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 107.2336936569958,
+      "position": [
+        0.002101178616343943,
+        0.00014621386377669144,
+        0.11656475403400755
+      ],
+      "tick": 23,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "phase": "settle",
+        "ticks": 19,
+        "visualTicks": 0,
+        "stable": 18,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "ball": [
+        0.09,
+        0.042,
+        0.03489442493102584
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 110.11544708796484,
+      "skill": {
+        "source": "vision",
+        "phase": "settle",
+        "stable": 19,
+        "visualTicks": 0,
+        "ticks": 20,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 24,
+      "position": [
+        0.0020856603360229525,
+        0.00014055121312951292,
+        0.11655564607745535
+      ],
+      "ball": [
+        0.09,
+        0.042,
+        0.03489442511640895
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.68008534382582,
+      "skill": {
+        "stable": 20,
+        "phase": "settle",
+        "ticks": 21,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 25,
+      "position": [
+        0.0020213557522073483,
+        0.00011281348669852783,
+        0.11656029144422773
+      ],
+      "ball": [
+        0.09,
+        0.042,
+        0.03489442521532466
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.0019381017824026112,
+        9.146123460259347e-05,
+        0.11656875916652236
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "settle",
+        "ticks": 22,
+        "visualTicks": 0,
+        "stable": 21,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 26,
+      "forward": 107.24302785757929,
+      "ball": [
+        0.09,
+        0.042,
+        0.03489442526810355
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.87089887117958,
+      "skill": {
+        "source": "vision",
+        "phase": "settle",
+        "stable": 22,
+        "visualTicks": 0,
+        "ticks": 23,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "tick": 27,
+      "visible": true,
+      "position": [
+        0.00186997721590325,
+        0.00010132854804579156,
+        0.11658768775145505
+      ],
+      "ball": [
+        0.09,
+        0.042,
+        0.03489442529626503
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 111.02906497760803,
+      "skill": {
+        "source": "vision",
+        "phase": "settle",
+        "stable": 24,
+        "visualTicks": 0,
+        "ticks": 25,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 29,
+      "position": [
+        0.0017619090497079206,
+        0.00012729052323787277,
+        0.11659778691096988
+      ],
+      "ball": [
+        0.09,
+        0.042,
+        0.034894425319308905
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.38930277612741,
+      "skill": {
+        "stable": 25,
+        "source": "vision",
+        "phase": "settle",
+        "ticks": 26,
+        "visualTicks": 0,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 30,
+      "position": [
+        0.0017770339698141657,
+        0.00013628030064943118,
+        0.11659553265770987
+      ],
+      "ball": [
+        0.09,
+        0.042,
+        0.0348944253235869
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.0017770339698141657,
+        0.00013628030064943118,
+        0.11659553265770987
+      ],
+      "skill": {
+        "stable": 25,
+        "source": "vision",
+        "phase": "settle",
+        "ticks": 26,
+        "visualTicks": 0,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "tick": 30,
+      "forward": 109.38930277612741,
+      "visible": true,
+      "ball": [
+        0.09,
+        0.042,
+        0.0348944253235869
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 107.81283046711054,
+      "skill": {
+        "source": "vision",
+        "phase": "settle",
+        "ticks": 27,
+        "visualTicks": 0,
+        "stable": 26,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 31,
+      "position": [
+        0.0017893857046261713,
+        0.0001336470598745012,
+        0.11659771580940344
+      ],
+      "ball": [
+        0.09,
+        0.042,
+        0.034894425325869526
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.0017974256073360964,
+        0.0001297684668196111,
+        0.11659855680860835
+      ],
+      "forward": 110.25027232586885,
+      "tick": 32,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "phase": "settle",
+        "ticks": 28,
+        "visualTicks": 0,
+        "stable": 27,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "ball": [
+        0.09,
+        0.042,
+        0.03489442532708748
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.0018023566000653869,
+        0.00012677025015144023,
+        0.11659792502241365
+      ],
+      "skill": {
+        "stable": 28,
+        "source": "vision",
+        "phase": "settle",
+        "visualTicks": 0,
+        "ticks": 29,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "tick": 33,
+      "visible": true,
+      "forward": 108.5341650043789,
+      "ball": [
+        0.09,
+        0.042,
+        0.03489442532773736
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 110.96253320164429,
+      "skill": {
+        "stable": 29,
+        "phase": "settle",
+        "ticks": 30,
+        "source": "vision",
+        "visualTicks": 0,
+        "message": "Waiting for a steady stance",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 34,
+      "position": [
+        0.001804496677566176,
+        0.000124930577707284,
+        0.1165965118611766
+      ],
+      "ball": [
+        0.09,
+        0.042,
+        0.034894425328084115
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.27094897077802,
+      "position": [
+        0.0028488095636499504,
+        9.169225477199437e-05,
+        0.11700259140756064
+      ],
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "phase": "kick",
+        "ticks": 0,
+        "stable": 0,
+        "visualTicks": 0,
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "tick": 35,
+      "ball": [
+        0.09,
+        0.042,
+        0.03489442532826914
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 111.68432038074472,
+      "position": [
+        0.0052779673538648365,
+        -0.000874104253539158,
+        0.11746967709681012
+      ],
+      "tick": 36,
+      "skill": {
+        "source": "vision",
+        "stable": 0,
+        "ticks": 1,
+        "visualTicks": 0,
+        "phase": "kick",
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "visible": true,
+      "ball": [
+        0.09,
+        0.042,
+        0.03489442532836786
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.00807513075016798,
+        -0.003003232330971408,
+        0.11781171922601873
+      ],
+      "skill": {
+        "stable": 0,
+        "phase": "kick",
+        "ticks": 2,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "forward": 109.94245325104916,
+      "visible": true,
+      "tick": 37,
+      "ball": [
+        0.09,
+        0.042,
+        0.034894425328420534
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.37261457009826,
+      "skill": {
+        "source": "vision",
+        "stable": 0,
+        "phase": "kick",
+        "visualTicks": 0,
+        "ticks": 3,
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "tick": 38,
+      "visible": true,
+      "position": [
+        0.010698253160486183,
+        -0.005213218826166808,
+        0.11820087980424654
+      ],
+      "ball": [
+        0.09,
+        0.042,
+        0.03489442532844864
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.012444028421774701,
+        -0.006273565251276997,
+        0.11855383969570242
+      ],
+      "skill": {
+        "stable": 0,
+        "phase": "kick",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 4,
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "visible": true,
+      "forward": 106.85292122581991,
+      "tick": 39,
+      "ball": [
+        0.09618983819327032,
+        0.043149773963983604,
+        0.03725682893335226
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 105.34532240584589,
+      "position": [
+        0.01356906214030149,
+        -0.005553003327641285,
+        0.11843392252343038
+      ],
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "stable": 0,
+        "ticks": 5,
+        "visualTicks": 0,
+        "phase": "kick",
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "tick": 40,
+      "ball": [
+        0.11438924631989755,
+        0.04651386033528472,
+        0.04246395517567111
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.016043363114119583,
+        -0.0007568814185859431,
+        0.11628318988682676
+      ],
+      "skill": {
+        "stable": 0,
+        "phase": "kick",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 7,
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "tick": 42,
+      "visible": true,
+      "forward": 110.54550642724398,
+      "ball": [
+        0.15078806257315203,
+        0.053242033077886955,
+        0.041106207660308786
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.0116369578347,
+      "skill": {
+        "stable": 0,
+        "phase": "kick",
+        "ticks": 8,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 43,
+      "position": [
+        0.017276736764656245,
+        0.002404287893604957,
+        0.11418329630923582
+      ],
+      "ball": [
+        0.16898747069977926,
+        0.05660611944918807,
+        0.034541333902627626
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 107.48748347163477,
+      "skill": {
+        "stable": 0,
+        "phase": "kick",
+        "ticks": 9,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "tick": 44,
+      "visible": true,
+      "position": [
+        0.018351755416140456,
+        0.005702473764156021,
+        0.11142429956734244
+      ],
+      "ball": [
+        0.18516314198241854,
+        0.05934164517659208,
+        0.033244640093879486
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.01956977702419553,
+        0.008826776880285091,
+        0.10901215082798185
+      ],
+      "skill": {
+        "stable": 0,
+        "phase": "kick",
+        "ticks": 10,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "tick": 45,
+      "visible": true,
+      "forward": 105.9449573756332,
+      "ball": [
+        0.20075996451355174,
+        0.061900192558859646,
+        0.033905662079942514
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.021173182453038036,
+        0.010813753457485403,
+        0.1094139742768356
+      ],
+      "skill": {
+        "stable": 0,
+        "source": "vision",
+        "ticks": 11,
+        "visualTicks": 0,
+        "phase": "kick",
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "tick": 46,
+      "forward": 112.70791721414463,
+      "visible": true,
+      "ball": [
+        0.21636238930297885,
+        0.06445513795142202,
+        0.034386752065390415
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.022682795184809545,
+        0.012019075522799665,
+        0.11010349885773005
+      ],
+      "skill": {
+        "stable": 0,
+        "source": "vision",
+        "ticks": 12,
+        "visualTicks": 0,
+        "phase": "kick",
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "tick": 47,
+      "forward": 111.03495912835444,
+      "visible": true,
+      "ball": [
+        0.23199179582421547,
+        0.067014253809611,
+        0.03464060322474344
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.3611977255007,
+      "position": [
+        0.0238587644077288,
+        0.012434639761783557,
+        0.11053089976360139
+      ],
+      "tick": 48,
+      "skill": {
+        "stable": 0,
+        "phase": "kick",
+        "ticks": 13,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "visible": true,
+      "ball": [
+        0.24763658932259006,
+        0.06957587526396664,
+        0.03476468727923552
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.024606166225443392,
+        0.012264398612147115,
+        0.11081899221501902
+      ],
+      "skill": {
+        "source": "vision",
+        "stable": 0,
+        "ticks": 14,
+        "phase": "kick",
+        "visualTicks": 0,
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "tick": 49,
+      "forward": 107.68811707235028,
+      "visible": true,
+      "ball": [
+        0.26328907756443215,
+        0.0721387558220168,
+        0.03482675668903429
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.025102465734360254,
+        0.011869769011470053,
+        0.11090555330102468
+      ],
+      "skill": {
+        "stable": 1,
+        "phase": "kick",
+        "ticks": 15,
+        "source": "vision",
+        "visualTicks": 0,
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "visible": true,
+      "forward": 106.08217788794819,
+      "tick": 50,
+      "ball": [
+        0.2789454256740965,
+        0.07470226833264919,
+        0.03485873428280038
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.8234699400744,
+      "skill": {
+        "source": "vision",
+        "phase": "kick",
+        "ticks": 16,
+        "visualTicks": 0,
+        "stable": 2,
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "position": [
+        0.02550571021539896,
+        0.011347558921298996,
+        0.11093507307503991
+      ],
+      "tick": 51,
+      "visible": true,
+      "ball": [
+        0.29460375784842924,
+        0.07726610570382106,
+        0.03487549382757738
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 107.30272726617953,
+      "skill": {
+        "source": "vision",
+        "stable": 3,
+        "ticks": 17,
+        "visualTicks": 0,
+        "phase": "kick",
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "tick": 52,
+      "visible": true,
+      "position": [
+        0.025924606537489542,
+        0.010775122781266357,
+        0.1109991529012999
+      ],
+      "ball": [
+        0.3102631278609156,
+        0.07983011300659978,
+        0.03488435489753258
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02635519865361609,
+        0.010187640699147998,
+        0.11109979546635179
+      ],
+      "forward": 109.953843759645,
+      "visible": true,
+      "tick": 53,
+      "skill": {
+        "stable": 4,
+        "phase": "kick",
+        "ticks": 18,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "ball": [
+        0.325923045993117,
+        0.08239421005646215,
+        0.03488906063746983
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02676070007315534,
+        0.009610230654600954,
+        0.11121360623299924
+      ],
+      "forward": 108.4142322942486,
+      "tick": 54,
+      "skill": {
+        "stable": 5,
+        "source": "vision",
+        "ticks": 19,
+        "visualTicks": 0,
+        "phase": "kick",
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "visible": true,
+      "ball": [
+        0.3415832550422242,
+        0.08495835473998162,
+        0.03489156529658534
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02710390579558469,
+        0.00910413981795478,
+        0.11131834585269049
+      ],
+      "skill": {
+        "stable": 6,
+        "phase": "kick",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 20,
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 55,
+      "forward": 110.98573278520469,
+      "ball": [
+        0.35724361888823036,
+        0.08752252476937247,
+        0.03489289997595146
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027359650431933294,
+        0.008729414410780257,
+        0.1113922106660417
+      ],
+      "forward": 109.31954504453877,
+      "tick": 56,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "stable": 7,
+        "ticks": 21,
+        "visualTicks": 0,
+        "phase": "kick",
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "ball": [
+        0.3729040652096701,
+        0.09008670830298567,
+        0.03489361163431242
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02754409833379249,
+        0.008484664567269925,
+        0.11144942522933864
+      ],
+      "skill": {
+        "stable": 8,
+        "phase": "kick",
+        "ticks": 22,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "tick": 57,
+      "forward": 111.75470999770201,
+      "visible": true,
+      "ball": [
+        0.38856455550396835,
+        0.09265089903655198,
+        0.034893991217429476
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02766186637112407,
+        0.00834440706010683,
+        0.11148894559465436
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "kick",
+        "ticks": 23,
+        "visualTicks": 0,
+        "stable": 9,
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "tick": 58,
+      "forward": 109.97136897214675,
+      "visible": true,
+      "ball": [
+        0.4042250692514513,
+        0.09521509361025599,
+        0.03489419371364241
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02766145279300246,
+        0.008305947415682635,
+        0.1115028584776294
+      ],
+      "skill": {
+        "stable": 10,
+        "source": "vision",
+        "phase": "kick",
+        "visualTicks": 0,
+        "ticks": 24,
+        "message": "Left kick policy \u00b7 0.5 seconds",
+        "armed": false
+      },
+      "tick": 59,
+      "visible": true,
+      "forward": 108.17095594715256,
+      "ball": [
+        0.41988559551022697,
+        0.09777929023251278,
+        0.034894301749185085
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02758406030244159,
+        0.00854326020569363,
+        0.11159000619542699
+      ],
+      "forward": 110.65529799787748,
+      "tick": 60,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "stable": 11,
+        "phase": "rest",
+        "ticks": 0,
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        0.4355461284439342,
+        0.10034348794769814,
+        0.034894359390990906
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027529072047490125,
+        0.008926591620516375,
+        0.11178016639559797
+      ],
+      "skill": {
+        "stable": 12,
+        "phase": "rest",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 1,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 61,
+      "forward": 108.91432389722827,
+      "visible": true,
+      "ball": [
+        0.45120666493899425,
+        0.10290768624600624,
+        0.03489439014627786
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027585936184591264,
+        0.009375554419757473,
+        0.11203980964565405
+      ],
+      "skill": {
+        "stable": 13,
+        "phase": "rest",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 2,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 62,
+      "visible": true,
+      "forward": 111.31707853994294,
+      "ball": [
+        0.46686720333423876,
+        0.1054718848554435,
+        0.03489440655625619
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027674608910102667,
+        0.009872647644510018,
+        0.11230843109591046
+      ],
+      "skill": {
+        "stable": 14,
+        "source": "vision",
+        "ticks": 3,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 63,
+      "visible": true,
+      "forward": 109.50077198859094,
+      "ball": [
+        0.4825277427433553,
+        0.10803608363088843,
+        0.03489441531212896
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 107.77288228335424,
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "stable": 15,
+        "ticks": 4,
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 64,
+      "position": [
+        0.027782365638183718,
+        0.010369305423890661,
+        0.11256973580385896
+      ],
+      "ball": [
+        0.4981882826934431,
+        0.11060028249491001,
+        0.03489441998401875
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027841119971480584,
+        0.010852510077120823,
+        0.11280606296714102
+      ],
+      "skill": {
+        "stable": 16,
+        "phase": "rest",
+        "source": "vision",
+        "ticks": 5,
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "forward": 110.157551242327,
+      "tick": 65,
+      "ball": [
+        0.513848822932178,
+        0.11316448140619359,
+        0.03489442247681424
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02783301484638561,
+        0.01130445430328662,
+        0.1130046002860978
+      ],
+      "skill": {
+        "stable": 17,
+        "phase": "rest",
+        "ticks": 6,
+        "source": "vision",
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 66,
+      "forward": 108.2994241008874,
+      "ball": [
+        0.5295093633249274,
+        0.11572868034269491,
+        0.03489442380690477
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 110.73247767855734,
+      "skill": {
+        "stable": 18,
+        "phase": "rest",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 7,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "position": [
+        0.0278076531336699,
+        0.01167752848552441,
+        0.11317249290611539
+      ],
+      "tick": 67,
+      "visible": true,
+      "ball": [
+        0.5451699037998545,
+        0.11829287929265175,
+        0.034894424516606744
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02782864895262752,
+        0.011953161467324409,
+        0.11332302480890805
+      ],
+      "skill": {
+        "source": "vision",
+        "stable": 19,
+        "ticks": 8,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 68,
+      "forward": 109.00704208780778,
+      "ball": [
+        0.5608304443186298,
+        0.12085707824978811,
+        0.03489442489528552
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027862161424515346,
+        0.012172060900161838,
+        0.11344852106839722
+      ],
+      "forward": 107.35683093454493,
+      "tick": 69,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "stable": 20,
+        "visualTicks": 0,
+        "ticks": 9,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        0.5764909848608014,
+        0.12342127721075527,
+        0.03489442509733883
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.86661442937046,
+      "skill": {
+        "source": "vision",
+        "stable": 21,
+        "ticks": 10,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 70,
+      "position": [
+        0.027886409772793195,
+        0.012339258375223478,
+        0.11354823574435007
+      ],
+      "visible": true,
+      "ball": [
+        0.5921515254154565,
+        0.12598547617376646,
+        0.03489442520514933
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 110.63567283024017,
+      "skill": {
+        "stable": 23,
+        "phase": "rest",
+        "ticks": 12,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 72,
+      "position": [
+        0.02800590392637279,
+        0.012500556354567923,
+        0.1137019006700231
+      ],
+      "visible": true,
+      "ball": [
+        0.6234726065416426,
+        0.131113874102552,
+        0.0348944252933681
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.99316306636581,
+      "skill": {
+        "stable": 24,
+        "phase": "rest",
+        "ticks": 13,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 73,
+      "visible": true,
+      "position": [
+        0.028084768080270283,
+        0.012508702679017976,
+        0.11376034085407195
+      ],
+      "ball": [
+        0.6391331471084092,
+        0.13367807306754628,
+        0.03489442530974555
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.028084768080270283,
+        0.012508702679017976,
+        0.11376034085407195
+      ],
+      "skill": {
+        "stable": 24,
+        "phase": "rest",
+        "ticks": 13,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 73,
+      "forward": 108.99316306636581,
+      "visible": true,
+      "ball": [
+        0.6391331471084092,
+        0.13367807306754628,
+        0.03489442530974555
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.028099617291280812,
+        0.012546505196346156,
+        0.11385552082839052
+      ],
+      "skill": {
+        "stable": 26,
+        "phase": "rest",
+        "source": "vision",
+        "ticks": 15,
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 75,
+      "visible": true,
+      "forward": 109.97973197510083,
+      "ball": [
+        0.670454228244506,
+        0.13880647099795457,
+        0.03489442532314683
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.43583150562398,
+      "position": [
+        0.02804469129252621,
+        0.012598038814969452,
+        0.1139006017808963
+      ],
+      "tick": 76,
+      "skill": {
+        "stable": 27,
+        "source": "vision",
+        "phase": "rest",
+        "visualTicks": 0,
+        "ticks": 16,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "ball": [
+        0.6861147688131124,
+        0.1413706699632501,
+        0.03489442532563472
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 106.91281405767378,
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "stable": 28,
+        "ticks": 17,
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 77,
+      "visible": true,
+      "position": [
+        0.028030141832367177,
+        0.01263834191004939,
+        0.11394810436926607
+      ],
+      "ball": [
+        0.7017753093818725,
+        0.14393486892857077,
+        0.0348944253269622
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.4913265416339,
+      "position": [
+        0.028016365344688522,
+        0.01268097282532328,
+        0.11399618489493497
+      ],
+      "visible": true,
+      "skill": {
+        "stable": 29,
+        "phase": "rest",
+        "ticks": 18,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 78,
+      "ball": [
+        0.7174358499507146,
+        0.14649906789390488,
+        0.03489442532767051
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 107.98991044512869,
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "ticks": 19,
+        "visualTicks": 0,
+        "stable": 30,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 79,
+      "position": [
+        0.028003307092586353,
+        0.012727966907497874,
+        0.11404341218124772
+      ],
+      "ball": [
+        0.7330963905196005,
+        0.14906326685924615,
+        0.03489442532804844
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02799117393004999,
+        0.012776613869234142,
+        0.11408951572070881
+      ],
+      "forward": 106.43330884526527,
+      "tick": 80,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "ticks": 20,
+        "visualTicks": 0,
+        "stable": 31,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        0.7487569310885096,
+        0.15162746582459125,
+        0.034894425328250094
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.02533175680624,
+      "skill": {
+        "stable": 32,
+        "phase": "rest",
+        "ticks": 21,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 81,
+      "visible": true,
+      "position": [
+        0.027967215249216942,
+        0.012829455233683028,
+        0.11413079183091232
+      ],
+      "ball": [
+        0.7644174716574312,
+        0.15419166478993837,
+        0.03489442532835769
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02794888039608912,
+        0.01287682269850504,
+        0.11417120751287262
+      ],
+      "forward": 107.4402737232349,
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "stable": 33,
+        "visualTicks": 0,
+        "ticks": 22,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 82,
+      "ball": [
+        0.7800780122263596,
+        0.15675586375528658,
+        0.0348944253284151
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027913213979804046,
+        0.012958960022779317,
+        0.1142495037802284
+      ],
+      "forward": 108.4874839147626,
+      "tick": 84,
+      "skill": {
+        "stable": 35,
+        "phase": "rest",
+        "ticks": 24,
+        "source": "vision",
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "ball": [
+        0.8113990933642252,
+        0.1618842616859845,
+        0.034894425328462084
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02789319874918287,
+        0.012999404070574693,
+        0.1142869893006738
+      ],
+      "skill": {
+        "stable": 36,
+        "phase": "rest",
+        "ticks": 25,
+        "source": "vision",
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 85,
+      "visible": true,
+      "forward": 106.88722355145273,
+      "ball": [
+        0.82705963393316,
+        0.16444846065133378,
+        0.034894425328470806
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027855091982056122,
+        0.013080912945067823,
+        0.11435742875371087
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "ticks": 27,
+        "visualTicks": 0,
+        "stable": 38,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 87,
+      "forward": 112.1015727912905,
+      "visible": true,
+      "ball": [
+        0.8583807150710308,
+        0.16957685858203259,
+        0.034894425328477946
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 110.51988355557509,
+      "position": [
+        0.027835908116318673,
+        0.0131219193561186,
+        0.11439108479490845
+      ],
+      "tick": 88,
+      "visible": true,
+      "skill": {
+        "stable": 39,
+        "source": "vision",
+        "ticks": 28,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        0.8740412556399666,
+        0.17214105754738201,
+        0.03489442532847927
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027815279829275064,
+        0.01316394700542783,
+        0.11442375732190185
+      ],
+      "forward": 108.95850934287512,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "stable": 40,
+        "ticks": 29,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 89,
+      "ball": [
+        0.8897017962089024,
+        0.17470525651273144,
+        0.03489442532847998
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027795610093994998,
+        0.01320555903044557,
+        0.1144555520319759
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "ticks": 30,
+        "visualTicks": 0,
+        "stable": 41,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 90,
+      "visible": true,
+      "forward": 107.44572905835028,
+      "ball": [
+        0.9053623367778383,
+        0.17726945547808087,
+        0.034894425328480354
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02777639880922851,
+        0.013246976488820646,
+        0.11448652958787205
+      ],
+      "forward": 110.06888428027536,
+      "tick": 91,
+      "skill": {
+        "stable": 42,
+        "phase": "rest",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 31,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "ball": [
+        0.9210228773467741,
+        0.1798336544434303,
+        0.03489442532848056
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02775333024893179,
+        0.013288066591393574,
+        0.11451619122218647
+      ],
+      "skill": {
+        "stable": 43,
+        "phase": "rest",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 32,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 92,
+      "forward": 108.5137218405028,
+      "ball": [
+        0.93668341791571,
+        0.18239785340877973,
+        0.034894425328480666
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 111.09989968120985,
+      "skill": {
+        "stable": 44,
+        "phase": "rest",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 33,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 93,
+      "position": [
+        0.02773116868822148,
+        0.013331865785062803,
+        0.11454563853614415
+      ],
+      "ball": [
+        0.9523439584846458,
+        0.18496205237412916,
+        0.03489442532848073
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.41859499192742,
+      "skill": {
+        "stable": 45,
+        "phase": "rest",
+        "ticks": 34,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 94,
+      "position": [
+        0.02770028589458236,
+        0.013376236139238265,
+        0.11457333979983109
+      ],
+      "visible": true,
+      "ball": [
+        0.9680044990535817,
+        0.1875262513394786,
+        0.034894425328480756
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02767361936545497,
+        0.01342334277144536,
+        0.11460121595596551
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "ticks": 35,
+        "visualTicks": 0,
+        "stable": 46,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 95,
+      "forward": 111.86963853592258,
+      "visible": true,
+      "ball": [
+        0.9836650396225175,
+        0.19009045030482802,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 110.1018853419962,
+      "skill": {
+        "stable": 47,
+        "phase": "rest",
+        "ticks": 36,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 96,
+      "position": [
+        0.027636856303725747,
+        0.013471038565786093,
+        0.11462729546321815
+      ],
+      "ball": [
+        0.9993255801914533,
+        0.19265464927017745,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.28135854501676,
+      "position": [
+        0.027599403905561266,
+        0.013518059612470929,
+        0.11465342330729265
+      ],
+      "tick": 97,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "ticks": 37,
+        "visualTicks": 0,
+        "stable": 48,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        1.0149861207603892,
+        0.19521884823552688,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02755315827124403,
+        0.013560457401998563,
+        0.11467844467391695
+      ],
+      "skill": {
+        "stable": 49,
+        "phase": "rest",
+        "ticks": 38,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "forward": 110.61943686141224,
+      "tick": 98,
+      "ball": [
+        1.030646661329325,
+        0.1977830472008763,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02750478142934857,
+        0.013595184401697718,
+        0.11470363727233529
+      ],
+      "skill": {
+        "stable": 50,
+        "phase": "rest",
+        "source": "vision",
+        "ticks": 39,
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 99,
+      "visible": true,
+      "forward": 112.85390066387187,
+      "ball": [
+        1.0463072018982609,
+        0.20034724616622573,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027478159638429905,
+        0.013611234571600773,
+        0.11473092476189795
+      ],
+      "forward": 110.89740785169678,
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "stable": 51,
+        "visualTicks": 0,
+        "ticks": 40,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 100,
+      "ball": [
+        1.0619677424671967,
+        0.20291144513157516,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027415483962543466,
+        0.013630279702254139,
+        0.114781737589667
+      ],
+      "forward": 111.21852500418252,
+      "visible": true,
+      "tick": 102,
+      "skill": {
+        "stable": 53,
+        "source": "vision",
+        "ticks": 42,
+        "phase": "rest",
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        1.0932888236050684,
+        0.20803984306227402,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 113.58776581795134,
+      "skill": {
+        "stable": 54,
+        "source": "vision",
+        "phase": "rest",
+        "visualTicks": 0,
+        "ticks": 43,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 103,
+      "visible": true,
+      "position": [
+        0.027376191321412887,
+        0.013635837134469994,
+        0.11480505911897375
+      ],
+      "ball": [
+        1.1089493641740042,
+        0.21060404202762345,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027344443986612284,
+        0.013629496831710577,
+        0.11483132753647994
+      ],
+      "skill": {
+        "stable": 55,
+        "source": "vision",
+        "ticks": 44,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 104,
+      "visible": true,
+      "forward": 111.74563577467057,
+      "ball": [
+        1.12460990474294,
+        0.21316824099297288,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027299345185993574,
+        0.01363277946102583,
+        0.1148541227387862
+      ],
+      "skill": {
+        "stable": 56,
+        "phase": "rest",
+        "ticks": 45,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "forward": 109.99973367091314,
+      "tick": 105,
+      "ball": [
+        1.140270445311876,
+        0.2157324399583223,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027242899982842836,
+        0.01364309199117307,
+        0.11487569918222754
+      ],
+      "skill": {
+        "stable": 57,
+        "phase": "rest",
+        "ticks": 46,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 106,
+      "forward": 108.2577941850316,
+      "ball": [
+        1.1559309858808118,
+        0.21829663892367174,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02721069709710921,
+        0.013646672269957853,
+        0.11489946273824019
+      ],
+      "skill": {
+        "stable": 58,
+        "phase": "rest",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 47,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 107,
+      "forward": 110.78924255495623,
+      "visible": true,
+      "ball": [
+        1.1715915264497476,
+        0.22086083788902117,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027173482104101657,
+        0.013648219046674898,
+        0.1149216173785502
+      ],
+      "forward": 113.2281496117649,
+      "visible": true,
+      "tick": 108,
+      "skill": {
+        "source": "vision",
+        "stable": 59,
+        "ticks": 48,
+        "phase": "rest",
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        1.1872520670186835,
+        0.2234250368543706,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 111.50945180315135,
+      "skill": {
+        "stable": 60,
+        "phase": "rest",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 49,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 109,
+      "position": [
+        0.02714713783393987,
+        0.013648730867795717,
+        0.11494485980839592
+      ],
+      "visible": true,
+      "ball": [
+        1.2029126075876193,
+        0.22598923581972002,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027124685910578934,
+        0.013642242500065833,
+        0.11496685026212113
+      ],
+      "skill": {
+        "stable": 61,
+        "phase": "rest",
+        "ticks": 50,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "forward": 109.86197883353108,
+      "tick": 110,
+      "ball": [
+        1.2185731481565552,
+        0.22855343478506945,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02709021158432237,
+        0.013639320112367497,
+        0.11498748860626656
+      ],
+      "skill": {
+        "stable": 62,
+        "source": "vision",
+        "ticks": 51,
+        "phase": "rest",
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "forward": 108.20571110746691,
+      "visible": true,
+      "tick": 111,
+      "ball": [
+        1.234233688725491,
+        0.23111763375041888,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 110.71532327763691,
+      "position": [
+        0.027066297081134436,
+        0.013632353745526224,
+        0.11500867928109194
+      ],
+      "skill": {
+        "stable": 63,
+        "phase": "rest",
+        "ticks": 52,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 112,
+      "ball": [
+        1.2498942292944268,
+        0.2336818327157683,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.99757253899519,
+      "skill": {
+        "stable": 64,
+        "source": "vision",
+        "ticks": 53,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 113,
+      "position": [
+        0.027033573595912963,
+        0.013631816083602278,
+        0.11502934722022767
+      ],
+      "ball": [
+        1.2655547698633627,
+        0.23624603168111774,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.027012076780376332,
+        0.013624081231615752,
+        0.11505008927304347
+      ],
+      "skill": {
+        "source": "vision",
+        "stable": 65,
+        "ticks": 54,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 114,
+      "visible": true,
+      "forward": 111.41864089894551,
+      "ball": [
+        1.2812153104322985,
+        0.23881023064646717,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026980836745566176,
+        0.01361960099214208,
+        0.11506953776353848
+      ],
+      "skill": {
+        "stable": 66,
+        "phase": "rest",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 55,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 115,
+      "visible": true,
+      "forward": 109.6524512338526,
+      "ball": [
+        1.2968758510012344,
+        0.2413744296118166,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 107.90012571004932,
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "stable": 67,
+        "ticks": 56,
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 116,
+      "position": [
+        0.02695909602865856,
+        0.013611551587662356,
+        0.11509025787844272
+      ],
+      "ball": [
+        1.3125363915701702,
+        0.24393862857716603,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026925771960094515,
+        0.013611180438619759,
+        0.11510942512981179
+      ],
+      "skill": {
+        "stable": 68,
+        "phase": "rest",
+        "ticks": 57,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 117,
+      "forward": 110.2384256811653,
+      "ball": [
+        1.328196932139106,
+        0.24650282754251546,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026898980630883498,
+        0.01360740863871396,
+        0.1151288803718277
+      ],
+      "skill": {
+        "source": "vision",
+        "stable": 69,
+        "ticks": 58,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "forward": 112.50186464342787,
+      "tick": 118,
+      "ball": [
+        1.343857472708042,
+        0.24906702650786489,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 110.70036377515129,
+      "position": [
+        0.026875153945296024,
+        0.013602400638170893,
+        0.11514802584285547
+      ],
+      "visible": true,
+      "tick": 119,
+      "skill": {
+        "stable": 70,
+        "phase": "rest",
+        "ticks": 59,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        1.3595180132769777,
+        0.25163122547321437,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.94712303463443,
+      "skill": {
+        "source": "vision",
+        "stable": 71,
+        "ticks": 60,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 120,
+      "position": [
+        0.026849207628084595,
+        0.013597848450617584,
+        0.11516652064680655
+      ],
+      "ball": [
+        1.3751785538459136,
+        0.2541954244385639,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 111.40338234983169,
+      "position": [
+        0.026823789867808954,
+        0.01359143937894287,
+        0.11518472636074849
+      ],
+      "visible": true,
+      "tick": 121,
+      "skill": {
+        "stable": 72,
+        "phase": "rest",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 61,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        1.3908390944148494,
+        0.25675962340391345,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026799141151744667,
+        0.01358437836467288,
+        0.1152030156048392
+      ],
+      "forward": 113.68100875604006,
+      "visible": true,
+      "skill": {
+        "stable": 73,
+        "phase": "rest",
+        "ticks": 62,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 122,
+      "ball": [
+        1.4064996349837853,
+        0.259323822369263,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.93123102682854,
+      "skill": {
+        "stable": 75,
+        "phase": "rest",
+        "ticks": 64,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "position": [
+        0.026743847363127817,
+        0.013576435525693004,
+        0.11523838578589389
+      ],
+      "tick": 124,
+      "ball": [
+        1.437820716121657,
+        0.26445222029996207,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026720555218662977,
+        0.013568095702509185,
+        0.1152552560865553
+      ],
+      "skill": {
+        "stable": 76,
+        "phase": "rest",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 65,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 125,
+      "forward": 108.19984842791139,
+      "ball": [
+        1.4534812566905928,
+        0.2670164192653116,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026720555218662977,
+        0.013568095702509185,
+        0.1152552560865553
+      ],
+      "skill": {
+        "stable": 76,
+        "phase": "rest",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 65,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 125,
+      "forward": 108.19984842791139,
+      "ball": [
+        1.4534812566905928,
+        0.2670164192653116,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 112.8129495307256,
+      "position": [
+        0.026671839913086803,
+        0.013554138257132527,
+        0.11528829847856324
+      ],
+      "visible": true,
+      "tick": 127,
+      "skill": {
+        "stable": 78,
+        "source": "vision",
+        "ticks": 67,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        1.4848023378284645,
+        0.2721448171960107,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026652152825695285,
+        0.013545773266631603,
+        0.11530473037034665
+      ],
+      "skill": {
+        "stable": 79,
+        "phase": "rest",
+        "ticks": 68,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 128,
+      "forward": 110.89827432644869,
+      "ball": [
+        1.5004628783974003,
+        0.27470901616136023,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026627347575308533,
+        0.01353691809092066,
+        0.11532039052742843
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "ticks": 69,
+        "visualTicks": 0,
+        "stable": 80,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 129,
+      "forward": 109.05193295117263,
+      "ball": [
+        1.5161234189663362,
+        0.27727321512670977,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 111.39701206500084,
+      "skill": {
+        "stable": 81,
+        "phase": "rest",
+        "ticks": 70,
+        "source": "vision",
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 130,
+      "visible": true,
+      "position": [
+        0.02660259919332492,
+        0.013530715153784676,
+        0.11533611423210295
+      ],
+      "ball": [
+        1.531783959535272,
+        0.2798374140920593,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.67040548280812,
+      "position": [
+        0.026582562916329714,
+        0.013521739734766081,
+        0.11535144982208792
+      ],
+      "tick": 131,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "stable": 82,
+        "phase": "rest",
+        "visualTicks": 0,
+        "ticks": 71,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        1.5474445001042079,
+        0.28240161305740885,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026559075871064097,
+        0.013514479055842375,
+        0.1153665764829771
+      ],
+      "skill": {
+        "stable": 83,
+        "phase": "rest",
+        "source": "vision",
+        "ticks": 72,
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 132,
+      "visible": true,
+      "forward": 112.08635500177772,
+      "ball": [
+        1.5631050406731437,
+        0.2849658120227584,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02653704105992229,
+        0.013507891321947975,
+        0.11538186215730316
+      ],
+      "forward": 110.28253064244916,
+      "tick": 133,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "stable": 84,
+        "visualTicks": 0,
+        "ticks": 73,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        1.5787655812420796,
+        0.28753001098810793,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.65622973000575,
+      "skill": {
+        "stable": 85,
+        "phase": "rest",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 74,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 134,
+      "visible": true,
+      "position": [
+        0.02650851262981374,
+        0.013501924184319412,
+        0.11539597431346964
+      ],
+      "ball": [
+        1.5944261218110154,
+        0.29009420995345747,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026494742596636298,
+        0.013491284081016009,
+        0.1154109802498967
+      ],
+      "forward": 106.93384218688328,
+      "visible": true,
+      "tick": 135,
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "stable": 86,
+        "visualTicks": 0,
+        "ticks": 75,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        1.6100866623799512,
+        0.292658408918807,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.48208319335743,
+      "skill": {
+        "stable": 87,
+        "phase": "rest",
+        "ticks": 76,
+        "source": "vision",
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "position": [
+        0.026465773184048188,
+        0.013483998550905906,
+        0.11542440884028805
+      ],
+      "tick": 136,
+      "ball": [
+        1.625747202948887,
+        0.29522260788415655,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 107.88885599372067,
+      "position": [
+        0.026449613091087756,
+        0.013472901085201825,
+        0.1154387972499449
+      ],
+      "visible": true,
+      "tick": 137,
+      "skill": {
+        "stable": 88,
+        "phase": "rest",
+        "ticks": 77,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        1.641407743517823,
+        0.2977868068495061,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 110.51464914231312,
+      "position": [
+        0.026423819783725863,
+        0.013465334204356673,
+        0.11545205570783942
+      ],
+      "visible": true,
+      "tick": 138,
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "stable": 89,
+        "visualTicks": 0,
+        "ticks": 78,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        1.6570682840867588,
+        0.30035100581485563,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.0145037644885,
+      "position": [
+        0.026405191248521347,
+        0.013454231914265749,
+        0.11546570445546146
+      ],
+      "tick": 139,
+      "skill": {
+        "stable": 90,
+        "source": "vision",
+        "ticks": 79,
+        "phase": "rest",
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "ball": [
+        1.6727288246556946,
+        0.30291520478020517,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02638417533879058,
+        0.013445588507462962,
+        0.1154788949533987
+      ],
+      "forward": 107.52079204917469,
+      "visible": true,
+      "tick": 140,
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "ticks": 80,
+        "visualTicks": 0,
+        "stable": 91,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        1.6883893652246305,
+        0.3054794037455547,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026361426139436258,
+        0.013438283407927088,
+        0.11549181512780082
+      ],
+      "skill": {
+        "source": "vision",
+        "stable": 92,
+        "ticks": 81,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 141,
+      "visible": true,
+      "forward": 106.06660380416963,
+      "ball": [
+        1.7040499057935663,
+        0.30804360271090425,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02634518390605374,
+        0.013428132384098266,
+        0.11550469482325207
+      ],
+      "forward": 104.58772509999388,
+      "visible": true,
+      "tick": 142,
+      "skill": {
+        "stable": 93,
+        "phase": "rest",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 82,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        1.7197104463625021,
+        0.3106078016762538,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026323521020914918,
+        0.013420819194700593,
+        0.11551704723937284
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "ticks": 83,
+        "stable": 94,
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "forward": 111.50207318458662,
+      "visible": true,
+      "tick": 143,
+      "ball": [
+        1.735370986931438,
+        0.31317200064160333,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.91776399798238,
+      "skill": {
+        "stable": 95,
+        "phase": "rest",
+        "ticks": 84,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 144,
+      "visible": true,
+      "position": [
+        0.026301614317101617,
+        0.01341347634768549,
+        0.11552914791526965
+      ],
+      "ball": [
+        1.7510315275003738,
+        0.31573619960695287,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.38017762570244,
+      "skill": {
+        "source": "vision",
+        "stable": 96,
+        "ticks": 85,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "position": [
+        0.026284920207580963,
+        0.013404591862742803,
+        0.11554117184480615
+      ],
+      "tick": 145,
+      "ball": [
+        1.7666920680693097,
+        0.3183003985723024,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.0262664365341298,
+        0.01339539059818613,
+        0.11555299221536873
+      ],
+      "skill": {
+        "stable": 97,
+        "phase": "rest",
+        "ticks": 86,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 146,
+      "visible": true,
+      "forward": 106.92031594471568,
+      "ball": [
+        1.7823526086382455,
+        0.32086459753765195,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026249485924864258,
+        0.013385513545197281,
+        0.11556449280241891
+      ],
+      "skill": {
+        "source": "vision",
+        "stable": 98,
+        "ticks": 87,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "forward": 105.43480478845616,
+      "tick": 147,
+      "ball": [
+        1.7980131492071814,
+        0.3234287965030015,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026210288795884874,
+        0.013369931863307167,
+        0.11558754034321235
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "ticks": 89,
+        "stable": 100,
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 149,
+      "visible": true,
+      "forward": 110.4936123081578,
+      "ball": [
+        1.829334230345053,
+        0.3285571944337006,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.83613932151965,
+      "position": [
+        0.026189942226214916,
+        0.013361324361698512,
+        0.11559819199866322
+      ],
+      "skill": {
+        "stable": 101,
+        "phase": "rest",
+        "ticks": 90,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 150,
+      "visible": true,
+      "ball": [
+        1.844994770913989,
+        0.3311213933990501,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.83613932151965,
+      "skill": {
+        "stable": 101,
+        "phase": "rest",
+        "ticks": 90,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "position": [
+        0.026189942226214916,
+        0.013361324361698512,
+        0.11559819199866322
+      ],
+      "tick": 150,
+      "visible": true,
+      "ball": [
+        1.844994770913989,
+        0.3311213933990501,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.78577407372606,
+      "position": [
+        0.02615748195012786,
+        0.013343762601061302,
+        0.11561993142204556
+      ],
+      "tick": 152,
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "ticks": 92,
+        "stable": 103,
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "ball": [
+        1.8763158520518606,
+        0.3362497913297492,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 112.2192183191098,
+      "position": [
+        0.026138664074930866,
+        0.013336566482967677,
+        0.11563028702495773
+      ],
+      "tick": 153,
+      "skill": {
+        "stable": 104,
+        "source": "vision",
+        "ticks": 93,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "ball": [
+        1.8919763926207964,
+        0.33881399029509873,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 110.52136717371278,
+      "skill": {
+        "source": "vision",
+        "phase": "rest",
+        "stable": 105,
+        "ticks": 94,
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 154,
+      "position": [
+        0.0261238978092763,
+        0.013326966049348212,
+        0.11564057175529788
+      ],
+      "ball": [
+        1.9076369331897323,
+        0.3413781892604483,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026107849486340894,
+        0.013316914179639287,
+        0.11565055417056291
+      ],
+      "forward": 108.76482788224604,
+      "tick": 155,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "stable": 106,
+        "ticks": 95,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        1.923297473758668,
+        0.3439423882257978,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 107.12104277253418,
+      "skill": {
+        "stable": 107,
+        "source": "vision",
+        "ticks": 96,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 156,
+      "position": [
+        0.026081965736323726,
+        0.013366637126829499,
+        0.11568662423087772
+      ],
+      "ball": [
+        1.938958014327604,
+        0.34650658719114735,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 105.50980286509848,
+      "skill": {
+        "stable": 108,
+        "phase": "rest",
+        "ticks": 97,
+        "source": "vision",
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "visible": true,
+      "position": [
+        0.02608145923155073,
+        0.013525476904734834,
+        0.11573130430331179
+      ],
+      "tick": 157,
+      "ball": [
+        1.9546185548965398,
+        0.3490707861564969,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 112.15140138172623,
+      "position": [
+        0.02612634444965087,
+        0.013720202217658623,
+        0.1157605233617357
+      ],
+      "visible": true,
+      "tick": 158,
+      "skill": {
+        "stable": 109,
+        "source": "vision",
+        "ticks": 98,
+        "visualTicks": 0,
+        "phase": "rest",
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "ball": [
+        1.9702790954654756,
+        0.35163498512184643,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026187047658723803,
+        0.013898126889648844,
+        0.11577531405622045
+      ],
+      "skill": {
+        "stable": 110,
+        "phase": "rest",
+        "ticks": 99,
+        "source": "vision",
+        "visualTicks": 0,
+        "message": "Returning to the walking policy",
+        "armed": false
+      },
+      "tick": 159,
+      "visible": true,
+      "forward": 110.49786282995868,
+      "ball": [
+        1.9859396360344115,
+        0.354199184087196,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02623781091247116,
+        0.013986264226525994,
+        0.11576549387874473
+      ],
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 160,
+      "visible": true,
+      "forward": 108.8397347988505,
+      "ball": [
+        2.0016001766033473,
+        0.3567633830525455,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026254558565929995,
+        0.014009322141427692,
+        0.11577019441341728
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "stable": 111,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "forward": 111.12559594818312,
+      "tick": 161,
+      "ball": [
+        2.017260717172283,
+        0.35932758201789505,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026243926513413705,
+        0.013984477018050723,
+        0.1157785703296851
+      ],
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 162,
+      "forward": 109.24698580119964,
+      "ball": [
+        2.032921257741219,
+        0.3618917809832446,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 111.5933973605171,
+      "position": [
+        0.026215269170678276,
+        0.013929658446543286,
+        0.11578816352227937
+      ],
+      "tick": 163,
+      "visible": true,
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "ball": [
+        2.048581798310155,
+        0.36445597994859413,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026161963584181748,
+        0.01386391138516889,
+        0.11579540912150732
+      ],
+      "skill": {
+        "stable": 111,
+        "source": "vision",
+        "ticks": 100,
+        "visualTicks": 0,
+        "phase": "walk",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 164,
+      "visible": true,
+      "forward": 109.80105471437935,
+      "ball": [
+        2.0642423388790907,
+        0.3670201789139437,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.02930448500281,
+      "position": [
+        0.026098870453426248,
+        0.013916099879063294,
+        0.11584636503569563
+      ],
+      "tick": 165,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "stable": 111,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "ball": [
+        2.0799028794480265,
+        0.3695843778792932,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 110.47286271283832,
+      "position": [
+        0.02611649997870586,
+        0.014104517156285992,
+        0.11589287408567127
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "stable": 111,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 166,
+      "visible": true,
+      "ball": [
+        2.0955634200169624,
+        0.37214857684464275,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 112.89039719902128,
+      "skill": {
+        "source": "vision",
+        "stable": 111,
+        "phase": "walk",
+        "visualTicks": 0,
+        "ticks": 100,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 167,
+      "position": [
+        0.026165443741347178,
+        0.014303603728955023,
+        0.11590346747497739
+      ],
+      "visible": true,
+      "ball": [
+        2.1112239605858982,
+        0.3747127758099923,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 111.18714287310468,
+      "position": [
+        0.026217194585108627,
+        0.014479995316424738,
+        0.1159109108599175
+      ],
+      "visible": true,
+      "tick": 168,
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 100,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "ball": [
+        2.126884501154834,
+        0.37727697477534183,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.52406191680194,
+      "position": [
+        0.02626003592095963,
+        0.014567211147068505,
+        0.11589480811873097
+      ],
+      "tick": 169,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "stable": 111,
+        "visualTicks": 0,
+        "ticks": 100,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "ball": [
+        2.14254504172377,
+        0.3798411737406914,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026262967874575965,
+        0.014567119077952778,
+        0.11588691090306077
+      ],
+      "skill": {
+        "source": "vision",
+        "stable": 111,
+        "ticks": 100,
+        "visualTicks": 0,
+        "phase": "walk",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "forward": 107.9244660756384,
+      "visible": true,
+      "tick": 170,
+      "ball": [
+        2.1582055822927058,
+        0.3824053727060409,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026234706417400874,
+        0.014501096048798012,
+        0.11588841621050511
+      ],
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 171,
+      "visible": true,
+      "forward": 106.28340613459925,
+      "ball": [
+        2.1738661228616416,
+        0.38496957167139045,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.86708145297166,
+      "position": [
+        0.02618743316724117,
+        0.014402161788176137,
+        0.11589427867553817
+      ],
+      "visible": true,
+      "tick": 172,
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "stable": 111,
+        "visualTicks": 0,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "ball": [
+        2.1895266634305774,
+        0.38753377063674,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.77331277680364,
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 174,
+      "position": [
+        0.02608039146576352,
+        0.01454270784935339,
+        0.11598388107170911
+      ],
+      "ball": [
+        2.220847744568449,
+        0.3926621685674391,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02608039146576352,
+        0.01454270784935339,
+        0.11598388107170911
+      ],
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 174,
+      "forward": 109.77331277680364,
+      "ball": [
+        2.220847744568449,
+        0.3926621685674391,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026112528566463632,
+        0.014727251388256079,
+        0.11599984512663405
+      ],
+      "skill": {
+        "stable": 111,
+        "source": "vision",
+        "ticks": 100,
+        "visualTicks": 0,
+        "phase": "walk",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 175,
+      "forward": 108.13203541051614,
+      "visible": true,
+      "ball": [
+        2.236508285137385,
+        0.3952263675327886,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026202520372905574,
+        0.014979865044751501,
+        0.11599864060346537
+      ],
+      "forward": 109.3055534361768,
+      "skill": {
+        "source": "vision",
+        "stable": 111,
+        "ticks": 100,
+        "visualTicks": 0,
+        "phase": "walk",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 177,
+      "ball": [
+        2.2678293662752567,
+        0.4003547654634877,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 111.87466490397819,
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 178,
+      "position": [
+        0.02622222493434743,
+        0.014961135572584633,
+        0.11597501789279124
+      ],
+      "visible": true,
+      "ball": [
+        2.2834899068441925,
+        0.40291896442883723,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026198302427524512,
+        0.014870520642139076,
+        0.11596607414151704
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "stable": 111,
+        "visualTicks": 0,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 179,
+      "visible": true,
+      "forward": 110.20179281149947,
+      "ball": [
+        2.2991504474131284,
+        0.4054831633941868,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026151486110514523,
+        0.014745238504080846,
+        0.11596903669137275
+      ],
+      "forward": 108.59088733391691,
+      "tick": 180,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "stable": 111,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "ball": [
+        2.314810987982064,
+        0.4080473623595363,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 106.97233564329274,
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "source": "vision",
+        "visualTicks": 0,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 181,
+      "visible": true,
+      "position": [
+        0.02607412666623766,
+        0.014749570679722022,
+        0.11601873951304327
+      ],
+      "ball": [
+        2.330471528551,
+        0.41061156132488585,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02603492432675847,
+        0.014928445677195288,
+        0.11606270528536625
+      ],
+      "forward": 109.48258729177746,
+      "visible": true,
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 182,
+      "ball": [
+        2.346132069119936,
+        0.4131757602902354,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02606014660875815,
+        0.015112604681119081,
+        0.11606999809138312
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "stable": 111,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 183,
+      "forward": 111.92514504235328,
+      "ball": [
+        2.3617926096888717,
+        0.41573995925558493,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 110.14560261437012,
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 184,
+      "position": [
+        0.026091997266224798,
+        0.01526729406038834,
+        0.11606894932006574
+      ],
+      "visible": true,
+      "ball": [
+        2.3774531502578076,
+        0.4183041582209345,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026154914681993505,
+        0.015359480319726077,
+        0.11607275537144046
+      ],
+      "forward": 108.47785566675513,
+      "visible": true,
+      "tick": 185,
+      "skill": {
+        "stable": 111,
+        "source": "vision",
+        "ticks": 100,
+        "phase": "walk",
+        "visualTicks": 0,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "ball": [
+        2.3931136908267434,
+        0.420868357186284,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02620503629130448,
+        0.01533282133766013,
+        0.11605002610883056
+      ],
+      "forward": 107.0031982651225,
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "stable": 111,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 186,
+      "ball": [
+        2.4087742313956793,
+        0.42343255615163355,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 105.50518707078722,
+      "skill": {
+        "source": "vision",
+        "stable": 111,
+        "phase": "walk",
+        "visualTicks": 0,
+        "ticks": 100,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 187,
+      "position": [
+        0.026198963608258043,
+        0.015217133882022222,
+        0.11603679653872041
+      ],
+      "ball": [
+        2.424434771964615,
+        0.4259967551169831,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026162019529951244,
+        0.015057839041728914,
+        0.11603719751668293
+      ],
+      "forward": 108.205917845773,
+      "tick": 188,
+      "skill": {
+        "source": "vision",
+        "stable": 111,
+        "ticks": 100,
+        "visualTicks": 0,
+        "phase": "walk",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "ball": [
+        2.440095312533551,
+        0.42856095408233263,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 110.65096579326173,
+      "position": [
+        0.02606924979608828,
+        0.015101430494522054,
+        0.11609815222308524
+      ],
+      "tick": 189,
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "stable": 111,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "ball": [
+        2.455755853102487,
+        0.4311251530476822,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.0260620746773189,
+        0.015262927648692916,
+        0.11613351701663356
+      ],
+      "forward": 108.93725942927641,
+      "visible": true,
+      "skill": {
+        "stable": 111,
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 190,
+      "ball": [
+        2.4714163936714226,
+        0.4336893520130317,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026105244177849377,
+        0.015430265742959534,
+        0.11613679108014686
+      ],
+      "forward": 107.36301057153217,
+      "tick": 191,
+      "visible": true,
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "ball": [
+        2.4870769342403585,
+        0.43625355097838125,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 110.00488631004228,
+      "skill": {
+        "stable": 111,
+        "source": "vision",
+        "ticks": 100,
+        "visualTicks": 0,
+        "phase": "walk",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 192,
+      "position": [
+        0.026173251057170013,
+        0.015556014267601469,
+        0.11613777210355244
+      ],
+      "visible": true,
+      "ball": [
+        2.5027374748092943,
+        0.4388177499437308,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.46088426555053,
+      "position": [
+        0.026229868938916184,
+        0.015619922647037649,
+        0.11612424347695381
+      ],
+      "visible": true,
+      "tick": 193,
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "source": "vision",
+        "visualTicks": 0,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "ball": [
+        2.51839801537823,
+        0.44138194890908033,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026285368029139018,
+        0.01555242626295247,
+        0.11610060815127506
+      ],
+      "skill": {
+        "source": "vision",
+        "stable": 111,
+        "ticks": 100,
+        "visualTicks": 0,
+        "phase": "walk",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 194,
+      "visible": true,
+      "forward": 106.95769328803908,
+      "ball": [
+        2.534058555947166,
+        0.4439461478744299,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026282639250094126,
+        0.015401737086447518,
+        0.11609109324079561
+      ],
+      "skill": {
+        "source": "vision",
+        "stable": 111,
+        "ticks": 100,
+        "phase": "walk",
+        "visualTicks": 0,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 195,
+      "visible": true,
+      "forward": 105.62489685687478,
+      "ball": [
+        2.549719096516102,
+        0.4465103468397794,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026197076441316622,
+        0.015402025059727435,
+        0.11615062907880301
+      ],
+      "forward": 108.40222724774249,
+      "skill": {
+        "source": "vision",
+        "stable": 111,
+        "ticks": 100,
+        "visualTicks": 0,
+        "phase": "walk",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 196,
+      "visible": true,
+      "ball": [
+        2.5653796370850377,
+        0.44907454580512896,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 111.23715413696914,
+      "position": [
+        0.026152396275971938,
+        0.015537268892891375,
+        0.1161849592214343
+      ],
+      "tick": 197,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "stable": 111,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "ball": [
+        2.5810401776539735,
+        0.4516387447704785,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.73054038471636,
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 198,
+      "position": [
+        0.026175252062794117,
+        0.01568074118703879,
+        0.11618872245755035
+      ],
+      "visible": true,
+      "ball": [
+        2.5967007182229094,
+        0.45420294373582804,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026224976029611363,
+        0.015793502041521412,
+        0.11618735187038437
+      ],
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "source": "vision",
+        "visualTicks": 0,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 199,
+      "forward": 108.25590732646936,
+      "ball": [
+        2.612361258791845,
+        0.4567671427011776,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026284140173589654,
+        0.015842040760204013,
+        0.11617377879379821
+      ],
+      "skill": {
+        "stable": 111,
+        "source": "vision",
+        "ticks": 100,
+        "visualTicks": 0,
+        "phase": "walk",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "forward": 110.94905671824131,
+      "visible": true,
+      "tick": 200,
+      "ball": [
+        2.628021799360781,
+        0.4593313416665271,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.38631511606975,
+      "position": [
+        0.02631645914781163,
+        0.015762932758936324,
+        0.11614186729063569
+      ],
+      "tick": 201,
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "ball": [
+        2.643682339929717,
+        0.46189554063187666,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 107.77298054939264,
+      "position": [
+        0.02630406435422447,
+        0.015597838965013737,
+        0.11612974201791973
+      ],
+      "tick": 202,
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "ball": [
+        2.6593428804986528,
+        0.4644597395972262,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026226961288354795,
+        0.015603376209762416,
+        0.11619075621726968
+      ],
+      "forward": 110.25370437361346,
+      "visible": true,
+      "tick": 203,
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "stable": 111,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "ball": [
+        2.6750034210675886,
+        0.46702393856257574,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.70410387736942,
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "stable": 111,
+        "visualTicks": 0,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 204,
+      "visible": true,
+      "position": [
+        0.026196730628585012,
+        0.015742568058762098,
+        0.11622510219668894
+      ],
+      "ball": [
+        2.6906639616365244,
+        0.4695881375279253,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026229961005599916,
+        0.01588970535534481,
+        0.11622815754261076
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "stable": 111,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "forward": 107.19700972478842,
+      "visible": true,
+      "tick": 205,
+      "ball": [
+        2.7063245022054603,
+        0.4721523364932748,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.92378390937954,
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "stable": 111,
+        "visualTicks": 0,
+        "ticks": 100,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 206,
+      "position": [
+        0.0262805375882605,
+        0.016006775681007473,
+        0.11622546221693898
+      ],
+      "visible": true,
+      "ball": [
+        2.721985042774396,
+        0.47471653545862436,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026340073257416018,
+        0.01605520536346496,
+        0.11621026603285795
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "stable": 111,
+        "visualTicks": 0,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "forward": 108.28939625782202,
+      "visible": true,
+      "tick": 207,
+      "ball": [
+        2.737645583343332,
+        0.4772807344239739,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02637561011152737,
+        0.015972888144824216,
+        0.11617913770201654
+      ],
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 100,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 208,
+      "visible": true,
+      "forward": 110.7826154925273,
+      "ball": [
+        2.753306123912268,
+        0.47984493338932344,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.98906497975796,
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 209,
+      "position": [
+        0.02635302355028304,
+        0.0158273525247692,
+        0.11617736487665571
+      ],
+      "ball": [
+        2.7689666644812037,
+        0.482409132354673,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02626519556536952,
+        0.01588052730958769,
+        0.11623839658080311
+      ],
+      "skill": {
+        "stable": 111,
+        "source": "vision",
+        "ticks": 100,
+        "visualTicks": 0,
+        "phase": "walk",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 210,
+      "visible": true,
+      "forward": 107.18394056437062,
+      "ball": [
+        2.7846272050501395,
+        0.4849733313200225,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02623971666645221,
+        0.016020915136524087,
+        0.11626141917678368
+      ],
+      "forward": 109.62743602017164,
+      "visible": true,
+      "tick": 211,
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "stable": 111,
+        "visualTicks": 0,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "ball": [
+        2.8002877456190753,
+        0.48753753028537206,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02627696419834175,
+        0.016153285928763726,
+        0.11626138056259774
+      ],
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "source": "vision",
+        "visualTicks": 0,
+        "ticks": 100,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 212,
+      "visible": true,
+      "forward": 112.0147762683437,
+      "ball": [
+        2.815948286188011,
+        0.4901017292507216,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 110.22142084476152,
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "stable": 111,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "position": [
+        0.02632643219934964,
+        0.016253779316378274,
+        0.11625869103470263
+      ],
+      "tick": 213,
+      "ball": [
+        2.831608826756947,
+        0.49266592821607114,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026377313303730145,
+        0.016305090447158027,
+        0.11625113308846013
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "stable": 111,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 214,
+      "forward": 108.44718045441935,
+      "ball": [
+        2.847269367325883,
+        0.4952301271814207,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026419207036716148,
+        0.01622888980089904,
+        0.11621525585779527
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "stable": 111,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 215,
+      "forward": 106.75438052639991,
+      "ball": [
+        2.8629299078948187,
+        0.4977943261467702,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026408482304930276,
+        0.01607838020794967,
+        0.11620861447744228
+      ],
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "stable": 111,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 216,
+      "forward": 113.43591702590707,
+      "ball": [
+        2.8785904484637546,
+        0.5003585251121198,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 111.68162161073205,
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 217,
+      "visible": true,
+      "position": [
+        0.026336061527891388,
+        0.016116144544287014,
+        0.11626917324467854
+      ],
+      "ball": [
+        2.8942509890326904,
+        0.5029227240774693,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026291149933907475,
+        0.01625469155071482,
+        0.11628905866781138
+      ],
+      "forward": 110.06907563409844,
+      "tick": 218,
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "ball": [
+        2.9099115296016262,
+        0.5054869230428188,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026324935067246306,
+        0.016378791721485608,
+        0.11628867257208263
+      ],
+      "forward": 108.51032702576357,
+      "visible": true,
+      "tick": 219,
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "stable": 111,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "ball": [
+        2.925572070170562,
+        0.5080511220081684,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.026364950796144898,
+        0.01647365331209391,
+        0.11628432458501624
+      ],
+      "skill": {
+        "source": "vision",
+        "stable": 111,
+        "ticks": 100,
+        "visualTicks": 0,
+        "phase": "walk",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "tick": 220,
+      "visible": true,
+      "forward": 106.93401333807567,
+      "ball": [
+        2.941232610739498,
+        0.5106153209735179,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 113.67545045710095,
+      "position": [
+        0.026413103534275433,
+        0.016526849269887192,
+        0.1162835418709986
+      ],
+      "visible": true,
+      "tick": 221,
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "source": "vision",
+        "message": "Kick finished",
+        "armed": false
+      },
+      "ball": [
+        2.9568931513084338,
+        0.5131795199388675,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 111.8187106480173,
+      "position": [
+        0.026457637787892823,
+        0.016467917891262673,
+        0.11624946573606158
+      ],
+      "tick": 222,
+      "visible": true,
+      "skill": {
+        "source": "vision",
+        "stable": 111,
+        "phase": "walk",
+        "visualTicks": 0,
+        "ticks": 100,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "ball": [
+        2.9725536918773696,
+        0.515743718904217,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 109.99086655811702,
+      "skill": {
+        "stable": 111,
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "visible": true,
+      "tick": 223,
+      "position": [
+        0.026449232060779128,
+        0.016321082843803875,
+        0.11623538878235325
+      ],
+      "ball": [
+        2.9882142324463055,
+        0.5183079178695665,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "forward": 108.32168616985092,
+      "position": [
+        0.02637754332293079,
+        0.016346797969180035,
+        0.11629154882306914
+      ],
+      "visible": true,
+      "tick": 224,
+      "skill": {
+        "stable": 111,
+        "phase": "walk",
+        "ticks": 100,
+        "source": "vision",
+        "visualTicks": 0,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "ball": [
+        3.0038747730152413,
+        0.5208721168349161,
+        0.03489442532848077
+      ]
+    },
+    {
+      "fallen": false,
+      "position": [
+        0.02634324616670315,
+        0.0164670389972041,
+        0.11631147013147485
+      ],
+      "forward": 106.67885227335913,
+      "visible": true,
+      "tick": 225,
+      "skill": {
+        "source": "vision",
+        "phase": "walk",
+        "ticks": 100,
+        "visualTicks": 0,
+        "stable": 111,
+        "message": "Kick finished",
+        "armed": false
+      },
+      "ball": [
+        3.019535313584177,
+        0.5234363158002656,
+        0.03489442532848077
+      ]
+    }
+  ],
+  "sampledKickPhase": true,
+  "rearmed": true,
+  "renderedKick": true,
+  "version": 1,
+  "deliveredPolicies": [
+    "walking \u00b7 Walking policy",
+    "walking \u00b7 Walking policy",
+    "walking \u00b7 Walking policy",
+    "walking \u00b7 Walking policy",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "walking \u00b7 Waiting for a steady stance",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "kick \u00b7 Left kick policy \u00b7 0.5 seconds",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Returning to the walking policy",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished",
+    "walking \u00b7 Kick finished"
+  ]
+}

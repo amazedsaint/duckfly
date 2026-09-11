@@ -1,0 +1,6 @@
+MAC_LAB_TEST_START RoomSmoke.js
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789087512704,"stage":"wizard step 0"}
+MAC_LAB_PROGRESS {"stage":"wizard step 1","scene":"Follow the beacon","time":1789087512720,"tick":0}
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789087512724,"stage":"wizard step 2"}
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789087512853,"stage":"wizard launch complete"}
+MAC_LAB_RECEIPT {"identicalPoses":true,"time":1.0000000000000007,"connected":true,"check":"native WebKit room","transport":"Local authenticated TURN relay","hostOwnership":true,"remotePropAccepted":true}

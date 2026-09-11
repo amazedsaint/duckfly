@@ -1,0 +1,87 @@
+{
+  "format": "duckfly-native-ui-refinement",
+  "version": 1,
+  "bundle": "/Users/madhusudanaa/Documents/GitHub/duckfly/mac/build/DuckFlyUIRelease.app",
+  "asset": "/assets/index-eZaKvqLe.js",
+  "assetSHA256": "3fd2cbe6d16aa586569c7b3c6bc2ca18e9c6e756a982daff1c16c4614d3737b2",
+  "nativePaintVerified": false,
+  "tests": [
+    {
+      "test": "setup",
+      "passed": true,
+      "exitCode": 0,
+      "elapsedSeconds": null,
+      "log": "native-setup.log",
+      "receipt": "native-setup.json"
+    },
+    {
+      "test": "scenarios",
+      "passed": true,
+      "exitCode": 0,
+      "elapsedSeconds": 285.58,
+      "log": "native-scenarios.log",
+      "receipt": "native-scenarios.json"
+    },
+    {
+      "test": "playground",
+      "passed": true,
+      "exitCode": 0,
+      "elapsedSeconds": 22.45,
+      "log": "native-playground.log",
+      "receipt": "native-playground.json"
+    },
+    {
+      "test": "workspace",
+      "passed": true,
+      "exitCode": 0,
+      "elapsedSeconds": 101.98,
+      "log": "native-workspace.log",
+      "receipt": "native-workspace.json"
+    },
+    {
+      "test": "guided",
+      "passed": true,
+      "exitCode": 0,
+      "elapsedSeconds": 20.22,
+      "log": "native-guided.log",
+      "receipt": "native-guided.json"
+    },
+    {
+      "test": "skills",
+      "passed": true,
+      "exitCode": 0,
+      "elapsedSeconds": 16.56,
+      "log": "native-skills.log",
+      "receipt": "native-skills.json"
+    },
+    {
+      "test": "vision",
+      "passed": true,
+      "exitCode": 0,
+      "elapsedSeconds": 12.34,
+      "log": "native-vision.log",
+      "receipt": "native-vision.json"
+    },
+    {
+      "test": "room",
+      "passed": true,
+      "exitCode": 0,
+      "elapsedSeconds": 5.33,
+      "log": "native-room.log",
+      "receipt": "native-room.json"
+    }
+  ],
+  "passed": true,
+  "testSourcesMatchBundle": {
+    "setup-helpers.js": true,
+    "setup-smoke.js": true,
+    "scenario-audit.js": true,
+    "playground-smoke.js": true,
+    "workspace-smoke.js": true,
+    "guided-smoke.js": true,
+    "skills-smoke.js": true,
+    "vision-smoke.js": true,
+    "room-smoke.js": true
+  },
+  "hostExecutableSHA256": "b0ff0da9c3b916eff9a67de89df6321abc0691427ddb2381e56ede52beb08779"
+}

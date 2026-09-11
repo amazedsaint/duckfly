@@ -82,6 +82,7 @@ const remoteActions = new Set([
   "push",
   "skill",
 ]);
+let pauseRequestId = 0, pendingPause;
 const send = (type, extra = {}) => {
   if (room?.role === "guest") {
     if (remoteActions.has(type)) {
@@ -90,6 +91,12 @@ const send = (type, extra = {}) => {
     } else notify("The host controls the simulation clock and recordings.");
     return;
   }
+  if(type==='pause'){
+    // Retain the requested state until this exact command is acknowledged.
+    // A quick wizard reopen can happen before the worker delivers its state.
+    pendingPause={id:++pauseRequestId,value:extra.value};
+    extra={...extra,pauseRequestId};
+  }else if(['scene','reset','step','rewind','import','compare','learn','loom-compare'].includes(type))pendingPause=undefined;
   worker.postMessage({ type, ...extra });
 };
 let setupSession, pendingSetupSelection;
@@ -133,15 +140,17 @@ const sceneSetup = mountSceneSetup({
   onClose: () => {
     if (setupSession?.wasRunning && !setupSession.applied && room?.role !== 'guest') send('pause',{value:false});
     const applied=setupSession?.applied;
+    const trigger=setupSession?.trigger;
     setupSession=undefined;
     if(applied)$('#pause').focus();
+    else if(trigger?.isConnected)trigger.focus({preventScroll:true});
   },
 });
-function openSetup(next = scene, editing = true) {
+function openSetup(next = scene, editing = true, trigger = document.activeElement) {
   if (!ready || jobBusy) {notify('Wait for the experiment to finish loading or running its comparison.');return;}
   if (room?.role === 'guest') {notify('The host configures the shared scene. You can still edit its objects and duck controls.');return;}
   if (sceneSetup.isOpen()) return;
-  setupSession={wasRunning:!paused,applied:false,original:structuredClone(validateScene(next))};
+  setupSession={wasRunning:!(pendingPause?.value??paused),applied:false,original:structuredClone(validateScene(next)),trigger};
   send('pause',{value:true});
   sceneSetup.open(next,{editing,selectedDuckId:editing?connectedDuck:next.ducks[0].id});
 }
@@ -169,7 +178,7 @@ const updatePropControls = mountPropControls({apply: (id, patch) => {
   }else if(!prop.movable)send('prop-behavior',{id,behavior:patch.behavior});
   else notify('This object already has those physical properties.');
 }});
-const workspaceLayout = mountWorkspaceLayout({onResize: () => {
+const workspaceLayout = mountWorkspaceLayout({onOpenPanel:()=>setTools(false),onResize: () => {
   arena?.resize();
   plot?.draw();
   if ($("#trace").offsetWidth) trace($("#trace"), samples);
@@ -211,7 +220,7 @@ function sceneChanged(next) {
     notify(e.message);
   }
 }
-function selectObject(id) {
+function selectObject(id, revealPanel = true) {
   selected = id;
   if (scene.ducks.some((d) => d.id === id) && connectedDuck !== id) {
     connectedDuck = id;
@@ -221,11 +230,8 @@ function selectObject(id) {
   syncConnectedDuck();
   renderScene();
   renderInspector();
-  if(scene.props.some(p=>p.id===selected)){
-    workspaceLayout.closePanels();
-    $("#prop-behavior-panel").open=true;
-  }
   if (state) update(state);
+  if(revealPanel&&scene.props.some(p=>p.id===selected))workspaceLayout.openPanel('objects-panel');
   drawEye();
 }
 function syncConnectedDuck() {
@@ -282,6 +288,7 @@ function showExperiment() {
 function showHome() {
   $("#app").append($("#notice"));
   workspaceLayout.setFocus(false);
+  workspaceLayout.closePanels();
   if (ready && room?.role !== "guest") send("pause", { value: true });
   $("#home-page").hidden = false;
   $("#experiment-page").hidden = true;
@@ -293,6 +300,7 @@ function setTools(open) {
   $("#tools-panel").hidden = !open;
   $("#tools-button").setAttribute("aria-expanded", String(open));
   if (open) {
+    workspaceLayout.closePanels();
     $("#selected-object-panel").open = true;
     $("#close-tools").focus();
   }
@@ -352,7 +360,15 @@ function renderScene() {
       prop.name === "target" ? "Beacon" : prop.name;
   document
     .querySelectorAll("[data-object]")
-    .forEach((el) => (el.onclick = () => selectObject(el.dataset.object)));
+    .forEach((el) => (el.onclick = () => {
+      const inInspector=!!el.closest('#tools-panel');
+      selectObject(el.dataset.object,!inInspector);
+      if(inInspector){
+        $('#selected-object-panel').open=true;
+        $('#selected-object-panel > summary').focus({preventScroll:true});
+        $('#tools-panel').scrollTop=0;
+      }else $('#scene-objects [data-object="'+CSS.escape(el.dataset.object)+'"]')?.focus({preventScroll:true});
+    }));
   $("#challenge-subject").innerHTML = options(
     [["ducks", "Each duck"], ...scene.props.map((p) => [p.id, p.name])],
     scene.challenge.subject,
@@ -576,6 +592,7 @@ function drawEye() {
 function update(data) {
   state = data;
   paused = data.paused;
+  if(pendingPause?.id===data.pauseRequestId)pendingPause=undefined;
   scene = data.scene;
   if (arena) arena.definition = scene;
   arena?.updateLab(data.body);
@@ -876,7 +893,7 @@ async function load() {
 load();
 if (new URLSearchParams(location.hash.slice(1)).has("scene")) showExperiment();
 $("#pause").onclick = () => {
-  send("pause", { value: !paused });
+  send("pause", { value: !(pendingPause?.value??paused) });
 };
 $("#step").onclick = () => send("step");
 $("#motor-link").onclick = () => patchConnected({motorEnabled:!scene.ducks.find(d=>d.id===connectedDuck).motorEnabled});
@@ -942,7 +959,10 @@ function addObject(kind, profile) {
   if (!sceneChanged(next)) return;
   selected = id;
   if (kind === "duck") connectedDuck = id;
-  else $("#prop-behavior-panel").open=true;
+  else if(scene.props.some(p=>p.id===selected)){
+    updatePropControls(scene,state,selected);
+    workspaceLayout.openPanel('objects-panel');
+  }
   showExperiment();
   $("#quick-add").open = false;
 }
@@ -1098,7 +1118,9 @@ $("#inspect-event").onclick = () => {
 };
 $("#event-index").oninput = (e) => showEvent(+e.target.value);
 document.addEventListener("keydown", (e) => {
+  if (e.defaultPrevented || document.querySelector("dialog[open]")) return;
   if (e.key === "Escape" && !$("#tools-panel").hidden) {
+    e.preventDefault();
     setTools(false);
     return;
   }
@@ -1330,6 +1352,7 @@ $("#room-leave").onclick = () => {
 };
 
 $("#home-button").onclick = showHome;
+$("#new-scene").onclick = event => openSetup({...defaultScene('empty'),name:'Your own playground'},false,event.currentTarget);
 $("#back-home").onclick = showHome;
 $("#continue-scene").onclick = showExperiment;
 for (const tile of document.querySelectorAll("[data-scenario]"))

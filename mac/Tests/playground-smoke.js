@@ -111,6 +111,11 @@ check(
   !$("#tools-panel").hidden && $("#selection-title").textContent === "Duck 2",
   "Duck settings did not target the connected duck",
 );
+$('#scene-tree [data-object="target-1"]').click();
+check(!$('#tools-panel').hidden && $('#object-editor [data-number="position.0"]'), 'Selecting a prop in Advanced closed the drawer instead of showing its editor');
+check(t().connectedDuck === 'duck-2', 'Selecting an Advanced prop replaced the watched brain');
+$('#scene-tree [data-object="duck-2"]').click();
+check(!$('#tools-panel').hidden && $('#selection-title').textContent === 'Duck 2', 'Selecting a duck in Advanced closed the drawer');
 select("#controller", "manual");
 await wait(() => t().scene.ducks[1].mode === "manual");
 check(

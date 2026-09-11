@@ -1,0 +1,63 @@
+{
+  "surface": "Codex in-app browser",
+  "url": "http://127.0.0.1:5197/",
+  "checks": [
+    {
+      "check": "New scene from dashboard opens an empty wizard; cancel restores focus",
+      "passed": true
+    },
+    {
+      "check": "New scene from existing stage preserves the scene and selected Scout when cancelled",
+      "passed": true
+    },
+    {
+      "check": "Configure two ducks and an orbiting beacon, start, see selected Scout brain driving body",
+      "passed": true
+    },
+    {
+      "check": "Objects and movement controls remain available with selected prop physics",
+      "passed": true
+    },
+    {
+      "check": "Advanced object selection keeps drawer open and reveals selected editor",
+      "passed": true
+    },
+    {
+      "check": "Escape closes object panel group and returns focus to Objects & physics",
+      "passed": true
+    },
+    {
+      "check": "Escape dismisses setup before the underlying Advanced drawer",
+      "passed": true
+    },
+    {
+      "check": "Kick ball shows actual 25 g / friction 0.6 and preserves custom physics until replacement chosen",
+      "passed": true
+    },
+    {
+      "check": "390px viewport has no horizontal overflow and keeps brain panel in view",
+      "passed": true,
+      "documentWidth": 390,
+      "brainBottom": 836,
+      "viewportHeight": 844
+    },
+    {
+      "check": "320px viewport header does not overflow and brain panel stays in view",
+      "passed": true,
+      "documentWidth": 320,
+      "brainBottom": 732,
+      "viewportHeight": 740
+    },
+    {
+      "check": "New scene stays at top while dashboard is scrolled",
+      "passed": true,
+      "scrollY": 959,
+      "buttonTop": 9
+    },
+    {
+      "check": "Browser error and warning log",
+      "passed": true,
+      "entries": []
+    }
+  ]
+}

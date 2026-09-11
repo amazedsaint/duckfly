@@ -1,0 +1,396 @@
+[
+  {
+    "check": "camera-driven approach",
+    "position": [
+      0.4250093639135402,
+      -0.020486819822422866,
+      0.11871333755906001
+    ],
+    "distance": 0.6137821636341485
+  },
+  {
+    "check": "eye intervention"
+  },
+  {
+    "check": "wall occlusion"
+  },
+  {
+    "check": "rendered visual threat",
+    "time": 0.6800000000000005
+  },
+  {
+    "check": "independent ducks and companion vision"
+  },
+  {
+    "check": "physical prop edit preserves time"
+  },
+  {
+    "check": "rewind and branch"
+  },
+  {
+    "physicalCameraUsed": false,
+    "check": "denied and synthetic webcam paths"
+  },
+  {
+    "check": "recording export/import and same-tick inspector",
+    "time": 1.3999999999999921
+  },
+  {
+    "signals": [
+      0,
+      0.15
+    ],
+    "check": "odor field response"
+  },
+  {
+    "check": "light field response",
+    "signals": [
+      0.09670954456436447,
+      0.15
+    ]
+  },
+  {
+    "check": "physical prop goal in an open-ended scene",
+    "time": 1.6199999999999875
+  },
+  {
+    "report": {
+      "version": 1,
+      "interpretation": "Matched seeds and placements in separate physical arenas. These bounded trials do not establish biological validity.",
+      "rows": [
+        {
+          "condition": "Fly circuit",
+          "meanScore": 0.8342457966889587,
+          "trials": [
+            {
+              "fallen": false,
+              "score": 0.8181679601323073,
+              "distance": 0.976545931071807,
+              "time": 5.999999999999894,
+              "seed": "eval-left",
+              "contacts": 0,
+              "reachedAt": 5.639999999999902,
+              "remaining": 0.14971957402962163,
+              "progress": 0.6826865768366488
+            },
+            {
+              "fallen": false,
+              "score": 0.8503236332456102,
+              "time": 5.999999999999894,
+              "distance": 1.0023541529454643,
+              "contacts": 0,
+              "seed": "eval-right",
+              "remaining": 0.12296941414052341,
+              "reachedAt": 5.419999999999907,
+              "progress": 0.709436736725747
+            }
+          ]
+        },
+        {
+          "condition": "Reactive controller",
+          "trials": [
+            {
+              "fallen": false,
+              "score": 0.7176530540988786,
+              "distance": 0.9109928777015907,
+              "time": 5.999999999999894,
+              "seed": "eval-left",
+              "contacts": 0,
+              "reachedAt": null,
+              "remaining": 0.23404929618163464,
+              "progress": 0.5983568546846358
+            },
+            {
+              "fallen": false,
+              "score": 0.744619937995124,
+              "time": 5.999999999999894,
+              "distance": 0.9283578812802743,
+              "contacts": 0,
+              "seed": "eval-right",
+              "remaining": 0.2121500025371339,
+              "reachedAt": null,
+              "progress": 0.6202561483291366
+            }
+          ],
+          "meanScore": 0.7311364960470013
+        },
+        {
+          "trials": [
+            {
+              "fallen": false,
+              "score": 0.8181679601323073,
+              "distance": 0.976545931071807,
+              "time": 5.999999999999894,
+              "contacts": 0,
+              "seed": "eval-left",
+              "remaining": 0.14971957402962163,
+              "reachedAt": 5.639999999999902,
+              "progress": 0.6826865768366488
+            },
+            {
+              "fallen": false,
+              "score": 0.8503236332456102,
+              "distance": 1.0023541529454643,
+              "time": 5.999999999999894,
+              "seed": "eval-right",
+              "contacts": 0,
+              "reachedAt": 5.419999999999907,
+              "remaining": 0.12296941414052341,
+              "progress": 0.709436736725747
+            }
+          ],
+          "condition": "Silence gf",
+          "meanScore": 0.8342457966889587
+        }
+      ],
+      "task": "Six-second camera target approach",
+      "format": "duckfly-comparison"
+    },
+    "check": "native compare"
+  },
+  {
+    "report": {
+      "format": "duckfly-adapter",
+      "interpretation": "No promotion. Original weights retained.",
+      "weights": {
+        "flow": 0.08,
+        "forward": 0.12,
+        "field": 0.12,
+        "turn": 0.18
+      },
+      "training": [
+        {
+          "weights": {
+            "turn": 0.18,
+            "forward": 0.12,
+            "field": 0.12,
+            "flow": 0.08
+          },
+          "trials": [
+            {
+              "fallen": false,
+              "score": 0.7399408299792095,
+              "time": 4.79999999999992,
+              "distance": 0.7186619308509584,
+              "seed": "train-left",
+              "contacts": 0,
+              "reachedAt": 4.139999999999934,
+              "remaining": 0.17100714558591298,
+              "progress": 0.4899769692005167
+            },
+            {
+              "fallen": false,
+              "score": 0.7737238639613288,
+              "time": 4.79999999999992,
+              "distance": 0.7565711837943656,
+              "seed": "train-right",
+              "contacts": 0,
+              "reachedAt": 4.099999999999935,
+              "remaining": 0.14866496911517954,
+              "progress": 0.5123191456712501
+            }
+          ],
+          "meanScore": 0.7568323469702691
+        },
+        {
+          "trials": [
+            {
+              "fallen": false,
+              "score": 0.750007707707726,
+              "time": 4.79999999999992,
+              "distance": 0.7433696929008878,
+              "seed": "train-left",
+              "contacts": 0,
+              "reachedAt": 4.399999999999928,
+              "remaining": 0.1646253282838829,
+              "progress": 0.49635878650254683
+            },
+            {
+              "fallen": false,
+              "score": 0.7552995367013331,
+              "distance": 0.7350915136416822,
+              "time": 4.79999999999992,
+              "contacts": 0,
+              "seed": "train-right",
+              "reachedAt": 4.359999999999929,
+              "remaining": 0.16119695406569778,
+              "progress": 0.4997871607207319
+            }
+          ],
+          "weights": {
+            "flow": 0.08,
+            "forward": 0.12,
+            "field": 0.12,
+            "turn": 0.08
+          },
+          "meanScore": 0.7526536222045295
+        },
+        {
+          "weights": {
+            "flow": 0.08,
+            "forward": 0.12,
+            "field": 0.12,
+            "turn": 0.03
+          },
+          "meanScore": 0.7198187516424741,
+          "trials": [
+            {
+              "fallen": false,
+              "score": 0.7028585976059489,
+              "distance": 0.7296692870801701,
+              "time": 4.79999999999992,
+              "contacts": 0,
+              "seed": "train-left",
+              "reachedAt": 4.639999999999923,
+              "remaining": 0.19590735472803092,
+              "progress": 0.4650767600583988
+            },
+            {
+              "fallen": false,
+              "score": 0.7367789056789993,
+              "distance": 0.7348418851202101,
+              "time": 4.79999999999992,
+              "seed": "train-right",
+              "contacts": 0,
+              "reachedAt": 4.539999999999925,
+              "remaining": 0.17355385286389344,
+              "progress": 0.48743026192253625
+            }
+          ]
+        },
+        {
+          "meanScore": 0.7372442446950567,
+          "trials": [
+            {
+              "fallen": false,
+              "score": 0.7389111024020375,
+              "distance": 0.7357048473502705,
+              "time": 4.79999999999992,
+              "contacts": 0,
+              "seed": "train-left",
+              "reachedAt": 4.539999999999925,
+              "remaining": 0.1719659014003643,
+              "progress": 0.48901821338606544
+            },
+            {
+              "fallen": false,
+              "score": 0.7355773869880758,
+              "time": 4.79999999999992,
+              "distance": 0.734768114515973,
+              "seed": "train-right",
+              "contacts": 0,
+              "reachedAt": 4.359999999999929,
+              "remaining": 0.17420575301877925,
+              "progress": 0.48677836176765044
+            }
+          ],
+          "weights": {
+            "flow": 0.08,
+            "forward": 0.08,
+            "field": 0.12,
+            "turn": 0.06
+          }
+        },
+        {
+          "trials": [
+            {
+              "fallen": false,
+              "score": 0.7492739715184429,
+              "distance": 0.7396155369769636,
+              "time": 4.79999999999992,
+              "seed": "train-left",
+              "contacts": 0,
+              "remaining": 0.1650714461074078,
+              "reachedAt": 4.419999999999928,
+              "progress": 0.49591266867902195
+            },
+            {
+              "fallen": false,
+              "score": 0.758018041756351,
+              "time": 4.79999999999992,
+              "distance": 0.7380629579823784,
+              "seed": "train-right",
+              "contacts": 0,
+              "remaining": 0.1593961654088186,
+              "reachedAt": 4.459999999999927,
+              "progress": 0.5015879493776111
+            }
+          ],
+          "weights": {
+            "turn": 0.08,
+            "forward": 0.16,
+            "field": 0.12,
+            "flow": 0.08
+          },
+          "meanScore": 0.7536460066373969
+        }
+      ],
+      "candidateWeights": {
+        "flow": 0.08,
+        "forward": 0.12,
+        "field": 0.12,
+        "turn": 0.18
+      },
+      "evaluation": {
+        "candidate": [
+          {
+            "fallen": false,
+            "score": 0.8181679601323073,
+            "distance": 0.976545931071807,
+            "time": 5.999999999999894,
+            "seed": "eval-left",
+            "contacts": 0,
+            "reachedAt": 5.639999999999902,
+            "remaining": 0.14971957402962163,
+            "progress": 0.6826865768366488
+          },
+          {
+            "fallen": false,
+            "score": 0.8503236332456102,
+            "time": 5.999999999999894,
+            "distance": 1.0023541529454643,
+            "seed": "eval-right",
+            "contacts": 0,
+            "remaining": 0.12296941414052341,
+            "reachedAt": 5.419999999999907,
+            "progress": 0.709436736725747
+          }
+        ],
+        "baseline": [
+          {
+            "fallen": false,
+            "score": 0.8181679601323073,
+            "time": 5.999999999999894,
+            "distance": 0.976545931071807,
+            "contacts": 0,
+            "seed": "eval-left",
+            "reachedAt": 5.639999999999902,
+            "remaining": 0.14971957402962163,
+            "progress": 0.6826865768366488
+          },
+          {
+            "fallen": false,
+            "score": 0.8503236332456102,
+            "distance": 1.0023541529454643,
+            "time": 5.999999999999894,
+            "seed": "eval-right",
+            "contacts": 0,
+            "remaining": 0.12296941414052341,
+            "reachedAt": 5.419999999999907,
+            "progress": 0.709436736725747
+          }
+        ]
+      },
+      "method": "Finite parameter search through camera and physical simulation",
+      "gate": {
+        "noExtraFalls": true,
+        "worstCaseGain": 0,
+        "promote": false,
+        "threshold": 0.02,
+        "meanGain": 0
+      },
+      "version": 1
+    },
+    "check": "native learn"
+  }
+]

@@ -186,7 +186,11 @@ final class AssetServer {
         testTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
             Task { @MainActor in
                 guard let self, !self.testStarted else { return }
-                if Date() > self.testDeadline { self.fail("Workspace initialization timed out"); return }
+                if Date() > self.testDeadline {
+                    self.testTimer?.invalidate()
+                    let diagnostic = try? await self.web.evaluateJavaScript("JSON.stringify({url:location.href,ready:window.duckflyTelemetry?.ready,notice:document.querySelector('#notice')?.textContent,title:document.title,state:document.readyState})")
+                    self.fail("Workspace initialization timed out: \(diagnostic ?? "No DOM response")"); return
+                }
                 guard (try? await self.web.evaluateJavaScript("window.duckflyTelemetry?.ready === true")) as? Bool == true else { return }
                 self.testStarted = true; self.testTimer?.invalidate()
                 do {

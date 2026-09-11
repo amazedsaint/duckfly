@@ -1,0 +1,9 @@
+{
+  "source": "/Users/madhusudanaa/Documents/GitHub/duckfly/mac/build/DuckFlyUIRelease.app",
+  "installed": "/Users/madhusudanaa/Applications/DuckFly.app",
+  "version": "0.9.1",
+  "build": "10",
+  "matchingFiles": 68,
+  "exactMatch": true,
+  "codesignVerified": true
+}

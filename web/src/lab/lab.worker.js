@@ -2,10 +2,10 @@ import { loadLabRuntime } from './lab-runtime.js';
 import { Experiment } from './experiment.js';
 import { compareControllers,learnAdapter,trialScore } from './benchmarks.js';
 import { compareLooming,StoppingMeasure } from './loom-benchmarks.js';
-let experiment,paused=true,timer,running=false,frameWait=null,ticket=0,runtime;
+let experiment,paused=true,pauseRequestId=null,timer,running=false,frameWait=null,ticket=0,runtime;
 let cancelled=false;
 const send=x=>self.postMessage(x);
-const snapshot=()=>{if(experiment)send({type:'state',...experiment.state(),paused});};
+const snapshot=()=>{if(experiment)send({type:'state',...experiment.state(),paused,pauseRequestId});};
 const recordingView=()=>send({type:'recording-view',...experiment.recordingView()});
 function schedule(){clearTimeout(timer);if(!paused)timer=setTimeout(tick,0);}
 async function requestFrames(){
@@ -34,7 +34,7 @@ async function drain(){
     try{
       if(msg.type==='init'){runtime=await loadLabRuntime(msg.base,message=>send({type:'loading',message}));experiment=new Experiment(runtime,msg.scene);send({type:'ready',scene:experiment.scene});}
       if(!experiment)continue;
-      if(msg.type==='pause'){if(paused&&!msg.value&&!experiment.replaying){experiment.resetLiveInput();send({type:'capture-reset'});}paused=msg.value;}
+      if(msg.type==='pause'){if(paused&&!msg.value&&!experiment.replaying){experiment.resetLiveInput();send({type:'capture-reset'});}paused=msg.value;pauseRequestId=msg.pauseRequestId??null;}
       if(msg.type==='scene'){experiment.configure(msg.scene);paused=true;send({type:'scene',scene:experiment.scene});}
       if(msg.type==='reset'){experiment.configure(experiment.scene);paused=true;send({type:'scene',scene:experiment.scene});}
       if(msg.type==='step'){

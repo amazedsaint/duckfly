@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "passed": true,
+  "errors": [],
+  "checks": [
+    {
+      "check": "top dashboard New scene opens an isolated playground and restores focus after cancellation"
+    },
+    {
+      "check": "tile opens isolated setup; cancellation preserves the scene and neural state"
+    },
+    {
+      "deliveredEvents": 166,
+      "check": "wizard mappings reach independent neural controllers; added heavy ball falls under gravity",
+      "ballHeight": 0.05978355953724722,
+      "duck1Distance": 0.47923068210514796
+    },
+    {
+      "advancedScroll": 190,
+      "check": "invalid unfinished physics survives select/add attempts; advanced controls preserve scroll and collapsed sections"
+    },
+    {
+      "check": "later setup and live controls stay synchronized; mapping-only changes preserve time and the other brain",
+      "secondDuckMovement": 0.36115588477971156
+    },
+    {
+      "check": "scene schema 6 and recording preserve mappings, props, complete neural state, and physical state",
+      "sceneVersion": 6,
+      "recordingVersion": 5,
+      "tick": 285
+    },
+    {
+      "check": "computed DOM layout keeps brain and eyes inside the viewport when controls collapse or focus mode opens; no experiment change",
+      "nativePaintVerified": false
+    },
+    {
+      "check": "cancelling setup resumes a previously running scene with its original objects"
+    },
+    {
+      "check": "rapid cancel, reopen, cancel resumes the original scene before a worker resume acknowledgement"
+    },
+    {
+      "check": "stage New scene cancellation resumes the prior scene; a fresh beacon and brain mapping run through real vision and physics",
+      "tick": 160,
+      "distance": 0.45744120240265407
+    }
+  ],
+  "format": "duckfly-native-setup"
+}

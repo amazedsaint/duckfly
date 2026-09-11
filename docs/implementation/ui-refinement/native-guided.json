@@ -1,0 +1,75 @@
+{
+  "trials": [
+    {
+      "contacts": 0,
+      "condition": "hold",
+      "loop": {
+        "threshold": 0.98,
+        "risk": 0.2928360172504793,
+        "releases": 1,
+        "mode": "hold",
+        "clearSeconds": 0.5599999999999996,
+        "held": false,
+        "triggers": 1,
+        "fresh": true,
+        "gfEvents": 1
+      },
+      "fallen": false,
+      "position": [
+        0.010457922427979036,
+        0.001594288519555772,
+        0.11443928099187077
+      ]
+    },
+    {
+      "contacts": 2,
+      "condition": "timer",
+      "fallen": false,
+      "loop": {
+        "triggers": 2,
+        "releases": 0,
+        "risk": 2.2638314109170104e-05,
+        "mode": "timer",
+        "clearSeconds": 0.20000000000000018,
+        "held": false,
+        "threshold": 0.98,
+        "fresh": true,
+        "gfEvents": 2
+      },
+      "position": [
+        0.19418991400936847,
+        0.022334704173574978,
+        0.11647216678766091
+      ]
+    },
+    {
+      "contacts": 2,
+      "condition": "gf-off",
+      "fallen": false,
+      "loop": {
+        "gfEvents": 0,
+        "risk": 1.5869434354403558e-06,
+        "threshold": 0.98,
+        "mode": "hold",
+        "clearSeconds": 0.35999999999999943,
+        "held": false,
+        "releases": 0,
+        "fresh": true,
+        "triggers": 1
+      },
+      "position": [
+        0.231376908367965,
+        0.05199105169332472,
+        0.11691147068450453
+      ]
+    }
+  ],
+  "pass": true,
+  "checks": [
+    "Bundled temporal artifact and stereo loop",
+    "GF timer versus hold and GF lesion",
+    "Custom physics disables the encounter script; reset and encounter changes preserve added props",
+    "Output intervention preserves visible neural activity"
+  ],
+  "format": "duckfly-native-guided"
+}

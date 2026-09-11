@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {propPosition,propProfile,profileFor} from '../src/lab/prop-behavior.js';
 import {defaultScene,validateScene,encodeScene,decodeScene} from '../src/lab/scene.js';
+import {currentPropProfile} from '../src/lab/prop-controls.js';
 
 test('patrol and orbit start without a jump and stay bounded over an open run',()=>{
   for(const kind of ['patrol','orbit']){
@@ -23,4 +24,15 @@ test('physical and scripted profiles are exclusive; invalid motion cannot enter 
   const s=defaultScene();Object.assign(s.props[0],propProfile('orbit'),{movable:true});
   assert.throws(()=>validateScene(s),/both freely moving and animated/);
   s.props[0].movable=false;s.props[0].behavior.range=0;assert.throws(()=>validateScene(s));
+});
+
+test('live physics controls preserve the real kick ball values instead of selecting a replacement preset',()=>{
+  const ball=defaultScene('kick').props.find(p=>p.id==='kick-ball'),before=structuredClone(ball);
+  assert.equal(ball.mass,.025);assert.equal(ball.friction,.6);
+  assert.equal(currentPropProfile(ball),'existing-physics');
+  assert.deepEqual(ball,before);
+  for(const profile of ['pushable','heavy','slippery'])assert.equal(currentPropProfile({...ball,...propProfile(profile)}),profile);
+  assert.equal(currentPropProfile({...ball,...propProfile('heavy'),friction:.6}),'existing-physics');
+  assert.equal(currentPropProfile({...ball,...propProfile('slippery'),mass:.025}),'existing-physics');
+  assert.equal(currentPropProfile({...ball,...propProfile('patrol')}),'patrol');
 });

@@ -1,0 +1,3 @@
+MAC_LAB_TEST_START SetupSmoke.js
+MAC_LAB_PROGRESS {"stage":"new scene entry from the dashboard","scene":"Follow the beacon","time":1789086444937,"tick":0}
+MAC_LAB_FAIL A JavaScript exception occurred: ["NSLocalizedDescription": A JavaScript exception occurred, "WKJavaScriptExceptionColumnNumber": 0, "WKJavaScriptExceptionLineNumber": 0, "WKJavaScriptExceptionMessage": Error: Cancelling setup did not restore keyboard focus to New scene]

@@ -1,0 +1,9 @@
+{
+  "identicalPoses": true,
+  "time": 1.0000000000000007,
+  "connected": true,
+  "check": "native WebKit room",
+  "transport": "Local authenticated TURN relay",
+  "hostOwnership": true,
+  "remotePropAccepted": true
+}
