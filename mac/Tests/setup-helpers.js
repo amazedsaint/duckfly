@@ -41,6 +41,10 @@ const finishSceneSetup = async () => {
         .map(input => ({field:input.dataset.setupPath || input.id, value:input.value, error:input.validationMessage}));
       throw Error('Default scene form is invalid at step ' + step + ': ' + JSON.stringify(invalid));
     }
+    if(step===1){
+      if(form.querySelectorAll('.trigger-connections').length!==1||form.querySelector('[data-connection="enabled"]')||/default connections|custom connections/i.test(form.innerText))throw Error('Competing connection editors in the wizard');
+      if(!form.querySelector('.connection-rule'))throw Error('Scene has no ready connection rows');
+    }
     const next = get('[data-setup-action="next"]');
     if (!next || next.hidden || next.disabled)
       throw Error('Scene setup did not expose the next step ' + step);

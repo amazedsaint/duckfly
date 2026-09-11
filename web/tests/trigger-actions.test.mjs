@@ -70,3 +70,41 @@ test('the MDN trigger reads a real circuit response to its population stimulus',
   assert.ok(result.signals[0].active);assert.equal(result.signals[0].value,active.backward);
   assert.equal(result.command.head[2],.35);assert.equal(result.command.vx,0);
 });
+
+test('added responses own only their channels and fall back to the existing neural connections',()=>{
+  const engine=new TriggerActions(),baseCommand={vx:.19,yaw:-.2,head:[.02,.03,.1,0]},ctx=context({baseCommand});
+  const connections={...config([['seen','look-left']]),includeBrainMapping:true};
+  let result=engine.step(connections,ctx);
+  assert.equal(result.command.vx,baseCommand.vx);
+  assert.equal(result.command.yaw,baseCommand.yaw);
+  assert.equal(result.command.head[2],.35);
+  assert.deepEqual(result.overrides,{forward:false,turn:false,head:true});
+  connections.rules[0].action='right';
+  result=engine.step(connections,ctx);
+  assert.equal(result.command.vx,.3);
+  assert.equal(result.command.yaw,-.65,'An explicit arc replaces the old steering request');
+  assert.deepEqual(result.command.head,baseCommand.head);
+  connections.rules[0].enabled=false;
+  assert.deepEqual(engine.step(connections,ctx).command,baseCommand);
+  connections.rules[0].enabled=true;
+  connections.rules[0].action='stop';
+  result=engine.step(connections,ctx);
+  assert.equal(result.command.vx,0);assert.equal(result.command.yaw,0);
+  assert.deepEqual(result.command.head,baseCommand.head,'Pause applies to walking and turning');
+  for(const patch of [{neural:{...ctx.neural,gfHeld:true}},{input:{...ctx.input,fresh:false}},{duck:{...ctx.duck,motorEnabled:false}},{duck:{...ctx.duck,motorGain:0}},{duck:{...ctx.duck,silence:'output'}},{body:{fallen:true}}]){
+    result=engine.step({...connections,rules:[]},{...ctx,...patch});
+    assert.deepEqual(result.command,{vx:0,yaw:0,head:[0,0,0,0]},'A retained connection must not bypass a stop condition');
+  }
+});
+
+test('additive connection scenes round trip in a version older clients reject',()=>{
+  const scene=defaultScene('target');
+  scene.ducks[0].connections={...config([['seen','look-left']]),includeBrainMapping:true};
+  const normalized=validateScene(scene);
+  assert.equal(normalized.version,8);
+  assert.equal(normalized.ducks[0].connections.includeBrainMapping,true);
+  assert.deepEqual(decodeScene(encodeScene(normalized)),normalized);
+  assert.deepEqual(validateScene(normalized),normalized);
+  assert.equal(validateScene({...scene,ducks:[{...scene.ducks[0],connections:config([['seen','look-left']])}]}).version,7);
+  assert.throws(()=>normalizeConnections({...config([['seen','look-left']]),includeBrainMapping:'yes'}),/Invalid/);
+});

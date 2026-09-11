@@ -714,7 +714,7 @@ function update(data) {
     events.set(data.event.tick, data.event);
     if (events.size > 1000) events.delete(events.keys().next().value);
   }
-  updateConnectionActivity(document.querySelector('#brain-mapping-panel'),data.agents[connectedDuck]?.connections);
+  updateConnectionActivity(document.querySelector('#brain-mapping-panel'),data.agents[connectedDuck]?.connections,{duck:scene.ducks.find(d=>d.id===connectedDuck),agent:data.agents[connectedDuck],body:data.body.ducks.find(d=>d.id===connectedDuck),cause:data.event?.causes.find(c=>c.id===connectedDuck),paused});
   drawEye();
   window.duckflyTelemetry = {
     ready,

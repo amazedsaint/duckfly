@@ -15,6 +15,8 @@ Choose **Open studio** to browse the scene gallery, or **Try a connection** to s
 - **Reverse the steering:** give two ducks opposite mappings and compare their responses.
 - **Trigger a kick:** connect a signal to the robot’s trained kick controller.
 
+Scenes come with their connections ready to use. Change **Duck does** on a row, or choose **Add a connection** to pick another signal and response. Added responses keep the duck’s other connections in place.
+
 The studio keeps the selected duck’s camera and fly circuit visible. Drag objects to change its view. Use **Brain → duck** to edit connections while the scene runs, or **Objects & physics** to configure movement paths and physical properties. **Why?** shows the recorded inputs behind an action, including the exact camera frame when available.
 
 Signals are labeled by source. Fly-circuit activity comes from simulated neurons; camera rules and body feedback are separate inputs. The robot’s trained controllers handle joint movement and balance. The full Flyvis model is available in a separate vision test bench and does not drive the live duck.

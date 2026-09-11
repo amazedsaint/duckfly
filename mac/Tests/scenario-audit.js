@@ -33,6 +33,12 @@ for(const scenario of scenarios){
   check(row.final.ducks.every(d=>Number.isFinite(d.speed)&&d.command.every(Number.isFinite)),scenario.id+' nonfinite movement');
   check(row.final.ducks.every(d=>!d.fallen),scenario.id+' fell during the default audit');
   result.scenarios.push(row);
+  await openPanel('#brain-mapping-panel','#panel-connections');
+  check($('#brain-mapping-panel').querySelectorAll('.trigger-connections').length===1,'Competing live connection editors in '+scenario.id);
+  check(!/default connections|custom connections/i.test($('#brain-mapping-panel').innerText),'Old routing modes in '+scenario.id);
+  check($('#brain-mapping-panel .connection-rule'),'No live connection rows in '+scenario.id);
+  check($('#mapping-duck-name').textContent===t().scene.ducks.find(d=>d.id===t().connectedDuck).name,'Connections do not follow the selected duck in '+scenario.id);
+  $('#panel-connections').click();
   check(!$('#guided-lab').hidden,scenario.id+' is missing scene controls');
   check($('#loop-intent').textContent.length&&$('#loop-command').textContent.length,scenario.id+' missing loop readout');
   const beyond=scenario.id==='target'?1600:300;

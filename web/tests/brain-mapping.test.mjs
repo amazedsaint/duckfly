@@ -65,7 +65,53 @@ test('actual brain, policy and physics respect per-duck wiring and safety, inclu
   const runtime={mj,template,session,Tensor:ort.Tensor,circuit,skillSessions:{kick:kickSession}};
   const blank=new Uint8Array(96*64*4).fill(100),pink=blank.slice();
   for(let y=20;y<38;y++)for(let x=30;x<48;x++)pink.set([240,40,130,255],(y*96+x)*4);
+  const physical=value=>JSON.parse(JSON.stringify(value,(key,value)=>key==='cost'?undefined:value));
   try{
+    await t.test('adding a response preserves the existing physical behavior, head tracking and recorded causes',async()=>{
+      const scene=validateScene({...defaultScene('target'),version:6});scene.ducks[0].activeLook=true;
+      const added=structuredClone(scene);
+      added.ducks[0].connections={enabled:true,includeBrainMapping:true,rules:[{...newConnection('bright','look-left'),threshold:.99}]};
+      const original=new Experiment(runtime,scene),edited=new Experiment(runtime,added),frames={'duck-1':pink};
+      try{
+        for(let i=0;i<100;i++){
+          const a=await original.step(frames),b=await edited.step(frames);
+          assert.deepEqual(physical(b.body),physical(a.body),'An inactive added response changed the body');
+          assert.deepEqual(b.event.causes[0].provenance,a.event.causes[0].provenance,'An inactive response claimed the existing action');
+        }
+        const rule={...newConnection('seen','look-left')};
+        edited.updateDuck('duck-1',{connections:{enabled:true,includeBrainMapping:true,rules:[rule]}});
+        let walking=0;
+        for(let i=0;i<40;i++){
+          const state=await edited.step(frames),cause=state.event.causes[0];
+          if(cause.neural.vx>0){walking++;assert.equal(cause.command.vx,cause.neural.vx);}
+          assert.equal(cause.command.head[2],.35,'The new head response was not delivered');
+        }
+        assert.ok(walking>10,'Adding a head response stopped the walker');
+        const recording=JSON.parse(JSON.stringify(edited.export()));
+        for(let i=0;i<8;i++)await edited.step(frames);const expected=edited.checkpoint();
+        edited.import(recording);for(let i=0;i<8;i++)await edited.step(frames);
+        assert.deepEqual(edited.checkpoint(),expected,'Additive connections did not replay exactly');
+        edited.updateDuck('duck-1',{connections:{enabled:true,includeBrainMapping:true,rules:[{...rule,action:'stop'}]}});
+        assert.deepEqual((await edited.step(frames)).body.ducks[0].command,[0,0]);
+        edited.updateDuck('duck-1',{connections:{enabled:true,includeBrainMapping:true,rules:[{...rule,enabled:false}]}});
+        const resumed=await edited.step(frames);
+        assert.equal(resumed.event.causes[0].command.vx,resumed.event.causes[0].neural.vx);
+      }finally{original.dispose();edited.dispose();}
+    });
+    await t.test('adding an inactive head response preserves the scene visual kick and its rearming',async()=>{
+      const scene=validateScene({...defaultScene('kick'),version:6});
+      const added=structuredClone(scene);added.ducks[0].connections={enabled:true,includeBrainMapping:true,rules:[{...newConnection('bright','look-left'),threshold:.99}]};
+      const original=new Experiment(runtime,scene),edited=new Experiment(runtime,added),frames={'duck-1':pink};let kicks=0;
+      try{
+        for(let i=0;i<160;i++){
+          const a=await original.step(frames),b=await edited.step(frames);
+          assert.deepEqual(physical(b.body),physical(a.body));
+          assert.deepEqual(b.agents['duck-1'].skill,a.agents['duck-1'].skill);
+          kicks+=b.event.causes[0].command.policy==='kick';
+        }
+        assert.equal(kicks,25,'The visual kick must still execute exactly once');
+      }finally{original.dispose();edited.dispose();}
+    });
     await t.test('a neuron can request a different action, with physical movement, per-duck isolation and exact replay',async()=>{
       const scene=defaultScene('empty');
       scene.ducks[0].connections={enabled:true,rules:[newConnection('forward','left')]};

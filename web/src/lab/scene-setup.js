@@ -2,7 +2,8 @@ import {connectionsMarkup,editConnection} from './connection-controls.js';
 import '../scene-setup.css';
 import { validateScene } from './scene.js';
 import { PROP_PROFILES, profileFor } from './prop-behavior.js';
-import { normalizeBrainMapping, brainMappingEnabled, brainMappingSummary, FORWARD_OPERATIONS, TURN_OPERATIONS } from './brain-mapping.js';
+import { normalizeBrainMapping, patchBrainMapping, brainMappingSummary } from './brain-mapping.js';
+import { includesBrainMapping } from './trigger-actions.js';
 import { SETUP_MODES, cloneSetupScene, setupEntity, addSetupDuck, addSetupProp, addSetupField, removeSetupEntity, setSetupProfile, setSetupValue, setupWarnings } from './scene-setup-draft.js';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[char]));
@@ -51,7 +52,10 @@ export function mountSceneSetup({onApply, onClose = () => {}, requiresRestart = 
       <section class="setup-editor"><div class="setup-editor-title"><h3>${esc(d.name)}</h3><button type="button" data-setup-action="remove-entity" ${draft.ducks.length === 1 ? 'disabled' : ''} aria-label="Remove ${esc(d.name)}">Remove</button></div><label>Duck name<input id="setup-entity-name" data-setup-path="name" maxlength="80" value="${esc(d.name)}" required></label>${positionControls(d)}<p class="setup-help">Drag a duck on the map to place it. The arrow shows its starting direction.</p></section>`;
   }
   function renderAdvancedDuck(d) {
-    return `<details class="setup-details" data-setup-panel="advanced-brain"><summary>Advanced settings</summary><div class="setup-details-content"><p class="setup-help">Adjust the vision model or disable a pathway to compare its effect.</p>
+    return `<details class="setup-details" data-setup-panel="advanced-brain"><summary>Input & body options <span class="summary-note">${esc(SETUP_MODES.find(([id])=>id===d.mode)?.[1])}</span></summary><div class="setup-details-content">
+      ${select('mode','What feeds the brain?',SETUP_MODES,d.mode,'setup-mode')}<p class="setup-help">${SETUP_MODES.find(([id])=>id===d.mode)?.[2]}</p>
+      ${includesBrainMapping(d)?toggle('activeLook','Track the beacon','Turn the head toward the beacon and scan when it leaves view.',d.activeLook,'setup-active-look'):''}
+      ${toggle('feedback','Body feedback','Send measured walking activity back to the fly circuit.',d.feedback,'setup-feedback')}
       ${select('source','Camera input',[['eyes','Duck camera'],['webcam','Device camera']],d.source)}
       ${select('visionModel','Vision adapter',[['marker-v1','Color tracking'],['motion-opponency-v1','Motion detection · experimental']],d.visionModel)}
       ${select('eye','Camera input',[['both','Both eyes open'],['left','Left eye only'],['right','Right eye only'],['none','Both eyes covered']],d.eye)}
@@ -66,16 +70,10 @@ export function mountSceneSetup({onApply, onClose = () => {}, requiresRestart = 
       </div></details>`;
   }
   function renderBrain() {
-    const d = duck(), mapping = normalizeBrainMapping(d), enabled = brainMappingEnabled(d); selected = d.id;
-    return `<div class="setup-step-heading"><p class="setup-kicker">02 / CONNECTIONS</p><h2>Choose what each signal does</h2><p>Select a signal and assign an action. The robot’s movement controller handles the joints.</p></div>
-      <div class="setup-two-columns setup-brain-controls"><label>Connections for<select id="setup-duck-select">${options(draft.ducks.map(item=>[item.id,item.name]),d.id)}</select></label>
-      ${select('mode','Input mode',SETUP_MODES,d.mode,'setup-mode')}</div>
-      <div class="setup-loop" aria-label="${enabled ? 'Camera input feeds fly neurons, then mapped requests feed the duck body' : 'Direct controller bypasses fly brain mapping'}"><span><b aria-hidden="true">◉</b>Camera input</span><span aria-hidden="true">→</span><span class="${enabled?'':'is-bypassed'}"><b aria-hidden="true">⌘</b>${d.connections?.enabled?'Signals':'Fly circuit'}</span><span aria-hidden="true">→</span><span><b aria-hidden="true">${duckIcon}</b>Duck body</span></div>
-      ${!enabled ? '<p class="setup-notice">This mode controls the body directly. Your connections are saved and will resume when you choose a fly-circuit input mode.</p>' : ''}
-      <details class="setup-details" data-setup-panel="basic-wiring" ${d.connections?.enabled?'':'open'}><summary>Default connections ${d.connections?.enabled?'· saved':''}</summary><div class="setup-wiring ${enabled?'':'is-bypassed'}"><label><span class="setup-signal-label"><i></i> Forward neurons <span aria-hidden="true">→</span></span><select id="setup-forward" ${d.connections?.enabled?'disabled':''} data-setup-path="mapping.forward">${options(FORWARD_OPERATIONS.map(o=>[o.value,o.label]),mapping.forward)}</select><small>${esc(FORWARD_OPERATIONS.find(o=>o.value===mapping.forward).description)}</small></label><label><span class="setup-signal-label"><i></i> Turning neurons <span aria-hidden="true">→</span></span><select id="setup-turn" ${d.connections?.enabled?'disabled':''} data-setup-path="mapping.turn">${options(TURN_OPERATIONS.map(o=>[o.value,o.label]),mapping.turn)}</select><small>${esc(TURN_OPERATIONS.find(o=>o.value===mapping.turn).description)}</small></label><p class="setup-help">The stop reflex takes priority. A visual kick needs a current camera frame and a stable body.</p></div></details>
-      ${connectionsMarkup(d.connections)}
-      <p class="setup-mode-help">${SETUP_MODES.find(([id])=>id===d.mode)?.[2]}</p>
-      ${toggle('activeLook','Track the beacon','Turn the head toward the beacon and scan when it leaves view.',d.activeLook,'setup-active-look')}${toggle('feedback','Body feedback','Send measured walking activity back to the fly circuit.',d.feedback,'setup-feedback')}
+    const d = duck(); selected = d.id;
+    return `<div class="setup-step-heading"><p class="setup-kicker">02 / CONNECTIONS</p><h2>What should this duck do?</h2><p>This scene is ready to run. Change a response below, or continue.</p></div>
+      <label class="setup-duck-picker" ${draft.ducks.length===1?'hidden':''}>Connections for<select id="setup-duck-select">${options(draft.ducks.map(item=>[item.id,item.name]),d.id)}</select></label>
+      ${connectionsMarkup(d,{prefix:'setup'})}
       ${renderAdvancedDuck(d)}`;
   }
   function renderPropEditor(p) {
@@ -154,6 +152,7 @@ export function mountSceneSetup({onApply, onClose = () => {}, requiresRestart = 
   }
   function render(moveFocus = false) {
     const active = document.activeElement, focusId=active?.id, focusPath=active?.dataset?.setupPath, focusMapId=active?.dataset?.mapEntity;
+    const focusConnection=active?.dataset?.connection,focusRule=active?.closest('[data-rule]')?.dataset.rule;
     const focusButton=active?.tagName==='BUTTON'?['setupAction','setupSelect','addProp','addField'].find(key=>active.dataset[key]):null;
     const focusButtonValue=focusButton?active.dataset[focusButton]:null;
     const scrollPositions = renderedContext && !moveFocus ? ['.setup-body','.setup-form','.setup-preview'].map(selector=>[selector,dialog.querySelector(selector)?.scrollTop ?? 0]) : [];
@@ -163,7 +162,7 @@ export function mountSceneSetup({onApply, onClose = () => {}, requiresRestart = 
     dialog.innerHTML=`<div class="setup-shell"><header class="setup-header"><div><p class="setup-kicker">${editing?'EDIT SCENE':'SCENE SETUP'}</p><h1 id="setup-title">${esc(draft.name)}</h1></div><button type="button" class="setup-close" data-setup-action="cancel" aria-label="Close setup and discard changes" ${busy?'disabled':''}>×</button></header>
       <nav class="setup-steps" aria-label="Setup progress">${steps.map((title,index)=>`<button type="button" data-setup-step-link="${index}" aria-current="${index===step?'step':'false'}" ${busy?'disabled':''}><span>${index<step?'✓':index+1}</span><b>${title}</b></button>`).join('')}</nav>
       <div class="setup-body"><form id="setup-controls" class="setup-form" novalidate ${busy?'inert':''}><div class="setup-mobile-navigation"><button type="button" data-setup-action="show-layout" aria-controls="setup-layout">View layout ↓</button></div><div data-setup-step="${step}">${[renderDucks,renderBrain,renderObjects,renderReview][step]()}</div></form><aside id="setup-layout" class="setup-preview"><div class="setup-mobile-navigation"><button type="button" data-setup-action="show-controls" aria-controls="setup-controls">↑ Back to controls</button></div><div class="setup-preview-title" tabindex="-1"><span class="setup-kicker">STARTING LAYOUT</span><span class="setup-schematic-badge">2D preview</span></div><div class="setup-map-canvas"></div><div class="setup-map-caption"><span id="setup-map-selection"></span><span>Grid: 25 cm</span></div><p class="setup-help">Drag items to place them, or use the arrow keys to move by 5 cm. The simulation starts after setup.</p><div class="setup-preview-connection"><span class="setup-connection-dot"></span><strong>${esc(duck().name)}</strong><span>${esc(brainMappingSummary(duck()))}</span></div></aside></div>
-      <footer class="setup-footer"><div id="setup-error" role="alert" ${error?'':'hidden'}>${esc(error)}</div><div class="setup-footer-row"><button type="button" data-setup-action="${step?'back':'cancel'}" ${busy?'disabled':''}>${step?'← Back':'Cancel'}</button><span class="setup-footer-hint">${step===0?'You can keep the defaults and continue.':step===3?'You can change these settings later.':`Step ${step+1} of 4`}</span><button type="button" class="primary setup-primary" data-setup-action="${step===3?'apply':'next'}" ${busy?'disabled':''}>${busy?'Applying…':step===3?(editing?'Apply changes':'Start scene'):'Continue →'}</button></div></footer></div>`;
+      <footer class="setup-footer"><div id="setup-error" role="alert" ${error?'':'hidden'}>${esc(error)}</div><div class="setup-footer-row"><button type="button" data-setup-action="${step?'back':'cancel'}" ${busy?'disabled':''}>${step?'← Back':'Cancel'}</button><span class="setup-footer-hint">${step===0?'Keep this duck or add another.':step===3?'You can change these settings later.':`Step ${step+1} of 4`}</span><button type="button" class="primary setup-primary" data-setup-action="${step===3?'apply':'next'}" ${busy?'disabled':''}>${busy?'Applying…':step===3?(editing?'Apply changes':'Start scene'):'Continue →'}</button></div></footer></div>`;
     renderMap();
     renderedContext={step,selected};
     for(const details of dialog.querySelectorAll('[data-setup-panel]')){
@@ -172,7 +171,15 @@ export function mountSceneSetup({onApply, onClose = () => {}, requiresRestart = 
     }
     dialog.querySelector('form').onsubmit=event=>event.preventDefault();
     if(moveFocus) { dialog.querySelector('.setup-step-heading h2').tabIndex=-1; dialog.querySelector('.setup-step-heading h2').focus(); }
-    else if(focusId) dialog.querySelector(`#${CSS.escape(focusId)}`)?.focus({preventScroll:true});
+    else if(focusId) {
+      const target=dialog.querySelector(`#${CSS.escape(focusId)}`)??(focusConnection?.startsWith('brain-')?dialog.querySelector(`[data-rule^="${focusConnection}-"] [data-connection="action"]`):null);
+      target?.focus({preventScroll:true});
+    }
+    else if(focusConnection){
+      const scope=focusRule?dialog.querySelector(`[data-rule="${CSS.escape(focusRule)}"]`):dialog;
+      const target=focusConnection==='add'?dialog.querySelector('.connection-rule[data-rule]:last-child [data-connection="action"]'):scope?.querySelector(`[data-connection="${focusConnection}"]`);
+      (target??dialog.querySelector('.connection-composer > summary'))?.focus({preventScroll:true});
+    }
     else if(focusPath) dialog.querySelector(`[data-setup-path="${focusPath}"]`)?.focus({preventScroll:true});
     else if(focusMapId)dialog.querySelector(`[data-map-entity="${CSS.escape(focusMapId)}"]`)?.focus({preventScroll:true});
     else if(focusButton){const attribute=focusButton.replace(/[A-Z]/g,letter=>`-${letter.toLowerCase()}`);dialog.querySelector(`[data-${attribute}="${CSS.escape(focusButtonValue)}"]`)?.focus({preventScroll:true});}
@@ -246,7 +253,7 @@ export function mountSceneSetup({onApply, onClose = () => {}, requiresRestart = 
     const button=event.target.closest('button');if(!button||busy)return;
     error='';
     try {
-      if(button.dataset.connection){if(!valid())return;const value=editConnection(event,duck().connections);if(value){duck().connections=value;render();}return;}
+      if(button.dataset.connection){if(!valid())return;const value=editConnection(event,duck());if(value){Object.assign(duck(),patchBrainMapping(duck(),value));render();}return;}
       if(button.dataset.setupSelect){choose(button.dataset.setupSelect);return;}
       if(button.dataset.reviewDuck){selectedDuckId=button.dataset.reviewDuck;changeStep(1);return;}
       if(button.dataset.reviewObject){selected=button.dataset.reviewObject;changeStep(2);return;}
@@ -284,7 +291,7 @@ export function mountSceneSetup({onApply, onClose = () => {}, requiresRestart = 
   dialog.addEventListener('change',event=>{
     const input=event.target;if(busy)return;
     try {
-      if(input.dataset.connection){const value=editConnection(event,duck().connections);if(value){duck().connections=value;if(input.type==='number')refreshDraftPresentation();else render();}return;}
+      if(input.dataset.connection){const value=editConnection(event,duck());if(value){Object.assign(duck(),patchBrainMapping(duck(),value));if(input.type==='number')refreshDraftPresentation();else render();}return;}
       if(input.id==='setup-duck-select'){
         const id=input.value;if(!valid()){input.value=selectedDuckId;return;}
         selectedDuckId=selected=id;render();return;
@@ -300,7 +307,10 @@ export function mountSceneSetup({onApply, onClose = () => {}, requiresRestart = 
       else {commitControl(input);error='';}
       // Replacing the form during a textbox blur detaches the button the user
       // is clicking. Keep it intact so one click advances with the latest text.
-      if(input.tagName==='SELECT'||input.type==='checkbox')render();else refreshDraftPresentation();
+      // These controls do not change the form's structure. Keeping their DOM
+      // avoids WebKit scrolling an offscreen focused select back into view.
+      const stableSetting=['source','visionModel','eye','silence','temporal','activeLook','feedback','headStabilization','flowSteer','motorEnabled'].includes(path);
+      if(!stableSetting&&(input.tagName==='SELECT'||input.type==='checkbox'))render();else refreshDraftPresentation();
     }catch(e){showError(e.message);}
   });
   dialog.addEventListener('pointerdown',event=>{

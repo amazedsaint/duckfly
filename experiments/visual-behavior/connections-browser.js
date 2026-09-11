@@ -9,7 +9,7 @@ async page => {
     check(await page.locator(`[data-scenario="${id}"] img`).evaluate(img=>img.complete&&img.naturalWidth>0),'Missing scene image '+id);
     await page.locator(`[data-scenario="${id}"]`).click();
     await page.getByRole('button',{name:'Continue →',exact:true}).click();
-    check(await page.locator('#scene-setup [data-connection="enabled"]').isChecked(),'Scene custom wiring is disabled');
+    check(await page.locator('#scene-setup [data-connection="enabled"]').count()===0&&await page.locator('#scene-setup [data-rule]').count()>0,'Scene connections are not ready to edit');
     if(id==='cue-workshop'){
       await page.locator('#scene-setup [data-rule="connection-1"] [data-connection="action"]').selectOption('look-left');
       await page.screenshot({path:'output/playwright/trigger-wizard-desktop.png'});
@@ -41,6 +41,9 @@ async page => {
       await page.waitForFunction(()=>window.duckflyTelemetry.scene.ducks[0].connections.rules[0].action==='walk');
       await page.locator('#brain-mapping-panel [data-rule="connection-1"] details > summary').click();
       await page.locator('#brain-mapping-panel [data-rule="connection-1"] [data-connection="threshold"]').fill('9');
+      await page.locator('#brain-mapping-panel .connection-composer > summary').click();
+      await page.locator('#brain-mapping-panel [data-connection="draft-trigger"]').selectOption('seen');
+      await page.locator('#brain-mapping-panel [data-connection="draft-action"]').selectOption('look-cue');
       await page.locator('#brain-mapping-panel [data-connection="add"]').click();
       await page.waitForFunction(()=>window.duckflyTelemetry.scene.ducks[0].connections.rules.length===4);
       check(await page.evaluate(()=>window.duckflyTelemetry.scene.ducks[0].connections.rules[0].threshold===9),'Editor lost threshold when adding a connection');
@@ -52,7 +55,8 @@ async page => {
       await page.getByRole('button',{name:'Ⅱ Pause',exact:true}).click();await page.waitForFunction(()=>window.duckflyTelemetry.paused);
       state=await page.evaluate(()=>window.duckflyTelemetry);
       check(state.ducks[0].distance>.1,'Edited walking connection did not move the body');
-      check(await page.locator('#brain-mapping-panel .connection-live.is-active').count()>0,'Live connection indicators did not update');
+      check(state.event.causes[0].connections.signals.some(signal=>signal.active),'Live signal activity did not update');
+      check((await page.locator('#brain-mapping-panel .connection-runtime').textContent()).includes('paused'),'Paused scene still looks live');
       await page.screenshot({path:'output/playwright/trigger-editor-desktop.png'});
       await page.setViewportSize({width:390,height:844});
       check(await page.locator('#brain-mapping-panel').evaluate(el=>el.scrollWidth-el.clientWidth<=1),'Connection panel horizontal overflow');

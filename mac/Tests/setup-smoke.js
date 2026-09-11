@@ -117,11 +117,18 @@ try {
   const source = $('[data-setup-path="source"]');
   source.focus();
   $('#setup-controls').scrollTop = 190;
+  const requestedScroll = $('#setup-controls').scrollTop;
+  // A no-edit control separates WebKit's deferred focus scroll from an edit.
+  await settle();
+  const focusOnlyScroll = $('#setup-controls').scrollTop;
+  reportAcceptanceStage('focus scroll control '+JSON.stringify({requestedScroll,focusOnlyScroll}));
+  $('#setup-controls').scrollTop = 190;
+  await settle();
   const brainScroll = $('#setup-controls').scrollTop;
   check(brainScroll > 0, 'Advanced wizard acceptance did not reach a scrollable form');
   change('[data-setup-path="source"]', 'webcam');
   await settle();
-  check(Math.abs($('#setup-controls').scrollTop - brainScroll) < 2, 'Editing an advanced select jumped the setup form');
+  check(Math.abs($('#setup-controls').scrollTop - brainScroll) < 2, 'Editing an advanced select jumped the setup form '+JSON.stringify({requestedScroll,focusOnlyScroll,before:brainScroll,after:$('#setup-controls').scrollTop,sameControl:source===$('[data-setup-path="source"]')}));
   check($('[data-setup-panel="advanced-brain"]').open, 'An open advanced section collapsed after a select edit');
   change('[data-setup-path="source"]', 'eyes');
   change('#setup-feedback', false);

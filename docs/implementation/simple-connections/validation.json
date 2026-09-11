@@ -1,0 +1,696 @@
+{
+  "format": "duckfly-simple-connections-validation",
+  "generatedAt": "2026-09-11T14:58:12.571468+00:00",
+  "unitAndEngineTests": {
+    "passed": 108,
+    "failed": 0
+  },
+  "browserWorkflow": {
+    "format": "duckfly-simple-connections-browser",
+    "origin": "http://127.0.0.1:5182",
+    "checks": [
+      {
+        "name": "wizard add preserves walker and steering",
+        "distance": 0.3188739510426912,
+        "version": 8
+      },
+      {
+        "name": "live add, remove and direct remap; pause overrides original walking",
+        "passed": true
+      },
+      {
+        "name": "manual mode, mobile layouts, independent ducks and cancellation",
+        "passed": true
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "browserCatalog": {
+    "scenes": [
+      {
+        "id": "cue-workshop",
+        "title": "Build a visual follower",
+        "observedSeconds": 4.999999999999916,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.7865252265929972,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.52
+            ]
+          }
+        ]
+      },
+      {
+        "id": "lookout",
+        "title": "Look without chasing",
+        "observedSeconds": 4.999999999999916,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.0053017990353233305,
+            "fallen": false,
+            "command": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "id": "crossed-wires",
+        "title": "Reverse the steering",
+        "observedSeconds": 4.999999999999916,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.26077124836700544,
+            "fallen": false,
+            "command": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "duck-2",
+            "distance": 0.6524582272098615,
+            "fallen": false,
+            "command": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "id": "trigger-kick",
+        "title": "Trigger a kick",
+        "observedSeconds": 4.999999999999916,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.06225801728189021,
+            "fallen": false,
+            "command": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "id": "target",
+        "title": "Follow the beacon",
+        "observedSeconds": 4.999999999999916,
+        "continuedSeconds": 31.999999999997918,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.7648037964950295,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.5401736151151421
+            ]
+          }
+        ]
+      },
+      {
+        "id": "stop-go",
+        "title": "Stop, wait, go",
+        "observedSeconds": 4.999999999999916,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.013158250712271941,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.39288506227442604
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gaze",
+        "title": "Find it again",
+        "observedSeconds": 4.999999999999916,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.7980749305646951,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.3934395810778283
+            ]
+          }
+        ]
+      },
+      {
+        "id": "switchboard",
+        "title": "Brain switchboard",
+        "observedSeconds": 4.999999999999916,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.8084376075771073,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.50513688496395
+            ]
+          }
+        ]
+      },
+      {
+        "id": "recovery",
+        "title": "Bump and recover",
+        "observedSeconds": 4.999999999999916,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.801990467869176,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.22919336918789607
+            ]
+          }
+        ]
+      },
+      {
+        "id": "kick",
+        "title": "See it, kick it",
+        "observedSeconds": 4.999999999999916,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.06225801728189021,
+            "fallen": false,
+            "command": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "id": "occlusion",
+        "title": "Out of sight",
+        "observedSeconds": 4.999999999999916,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.006049155210843513,
+            "fallen": false,
+            "command": [
+              0,
+              -0.058661125046249596
+            ]
+          }
+        ]
+      },
+      {
+        "id": "flock",
+        "title": "Follow the flock",
+        "observedSeconds": 5.019999999999915,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.7674041989688309,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.2871076897348351
+            ]
+          },
+          {
+            "id": "duck-2",
+            "distance": 0.8277079607456936,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.28669668411282745
+            ]
+          },
+          {
+            "id": "duck-3",
+            "distance": 0.8226867156507718,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.2944273907409957
+            ]
+          }
+        ]
+      },
+      {
+        "id": "loom",
+        "title": "Approaching threat",
+        "observedSeconds": 4.999999999999916,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.1776065871729507,
+            "fallen": false,
+            "command": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "id": "vision",
+        "title": "Retinal motion lab",
+        "observedSeconds": 4.999999999999916,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.8051753223057518,
+            "fallen": false,
+            "command": [
+              0.3,
+              -0.43851787773826656
+            ]
+          }
+        ]
+      },
+      {
+        "id": "empty",
+        "title": "Blank scene",
+        "observedSeconds": 4.999999999999916,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.09005298712003551,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.01467395622671253
+            ]
+          }
+        ]
+      }
+    ],
+    "controls": 15,
+    "objectInteractions": 15,
+    "errors": []
+  },
+  "macCatalog": {
+    "scenes": [
+      {
+        "id": "cue-workshop",
+        "title": "Build a visual follower",
+        "observedSeconds": 5.579999999999903,
+        "continuedSeconds": 6.4599999999998845,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.8904913896174812,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.09754239133232016
+            ]
+          }
+        ]
+      },
+      {
+        "id": "lookout",
+        "title": "Look without chasing",
+        "observedSeconds": 5.139999999999913,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.005331112421856565,
+            "fallen": false,
+            "command": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "id": "crossed-wires",
+        "title": "Reverse the steering",
+        "observedSeconds": 5.439999999999906,
+        "continuedSeconds": 6.099999999999892,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.26104355394060075,
+            "fallen": false,
+            "command": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "duck-2",
+            "distance": 0.6550773959884998,
+            "fallen": false,
+            "command": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "id": "trigger-kick",
+        "title": "Trigger a kick",
+        "observedSeconds": 5.199999999999911,
+        "continuedSeconds": 6.079999999999893,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.06305110282506211,
+            "fallen": false,
+            "command": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "id": "target",
+        "title": "Follow the beacon",
+        "observedSeconds": 5.299999999999909,
+        "continuedSeconds": 32.539999999998194,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.8187663359848577,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.07637516549630785
+            ]
+          }
+        ]
+      },
+      {
+        "id": "stop-go",
+        "title": "Stop, wait, go",
+        "observedSeconds": 5.419999999999907,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.037967301997783996,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.2557190699534887
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gaze",
+        "title": "Find it again",
+        "observedSeconds": 5.079999999999914,
+        "continuedSeconds": 6.699999999999879,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.8147029115038156,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.07456703564430633
+            ]
+          }
+        ]
+      },
+      {
+        "id": "switchboard",
+        "title": "Brain switchboard",
+        "observedSeconds": 5.139999999999913,
+        "continuedSeconds": 6.079999999999893,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.8321310128229312,
+            "fallen": false,
+            "command": [
+              0.3,
+              -0.14871985945819088
+            ]
+          }
+        ]
+      },
+      {
+        "id": "recovery",
+        "title": "Bump and recover",
+        "observedSeconds": 5.3799999999999075,
+        "continuedSeconds": 6.299999999999888,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.8644643294567325,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.01133424207312074
+            ]
+          }
+        ]
+      },
+      {
+        "id": "kick",
+        "title": "See it, kick it",
+        "observedSeconds": 5.299999999999909,
+        "continuedSeconds": 6.19999999999989,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.06329122600420851,
+            "fallen": false,
+            "command": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "id": "occlusion",
+        "title": "Out of sight",
+        "observedSeconds": 5.059999999999914,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.006079897827625692,
+            "fallen": false,
+            "command": [
+              0,
+              -0.06879360798295045
+            ]
+          }
+        ]
+      },
+      {
+        "id": "flock",
+        "title": "Follow the flock",
+        "observedSeconds": 5.419999999999907,
+        "continuedSeconds": 5.999999999999894,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.8376992758932744,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.49646177200335334
+            ]
+          },
+          {
+            "id": "duck-2",
+            "distance": 0.8977792884639455,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.634339395555309
+            ]
+          },
+          {
+            "id": "duck-3",
+            "distance": 0.8895834996325471,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.30395996117055535
+            ]
+          }
+        ]
+      },
+      {
+        "id": "loom",
+        "title": "Approaching threat",
+        "observedSeconds": 5.119999999999913,
+        "continuedSeconds": 6.799999999999877,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.21008648943391475,
+            "fallen": false,
+            "command": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "id": "vision",
+        "title": "Retinal motion lab",
+        "observedSeconds": 5.2399999999999105,
+        "continuedSeconds": 6.439999999999885,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.8423054270736847,
+            "fallen": false,
+            "command": [
+              0.3,
+              0.65
+            ]
+          }
+        ]
+      },
+      {
+        "id": "empty",
+        "title": "Blank scene",
+        "observedSeconds": 5.499999999999905,
+        "continuedSeconds": 6.4599999999998845,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "distance": 0.1213277704525125,
+            "fallen": false,
+            "command": [
+              0,
+              -0.08219276335400183
+            ]
+          }
+        ]
+      }
+    ],
+    "controls": 15,
+    "objectInteractions": 15,
+    "errors": []
+  },
+  "macSetup": {
+    "errors": [],
+    "passed": true,
+    "version": 1,
+    "checks": [
+      {
+        "check": "top dashboard New scene opens an isolated playground and restores focus after cancellation"
+      },
+      {
+        "check": "tile opens isolated setup; cancellation preserves the scene and neural state"
+      },
+      {
+        "check": "wizard mappings reach independent neural controllers; added heavy ball falls under gravity",
+        "deliveredEvents": 161,
+        "ballHeight": 0.05978355953724722,
+        "duck1Distance": 0.46562555795854843
+      },
+      {
+        "advancedScroll": 190,
+        "check": "invalid unfinished physics survives select/add attempts; advanced controls preserve scroll and collapsed sections"
+      },
+      {
+        "check": "later setup and live controls stay synchronized; mapping-only changes preserve time and the other brain",
+        "secondDuckMovement": 0.4074111845364605
+      },
+      {
+        "check": "scene schema 6 and recording preserve mappings, props, complete neural state, and physical state",
+        "recordingVersion": 5,
+        "sceneVersion": 6,
+        "tick": 292
+      },
+      {
+        "check": "computed DOM layout keeps brain and eyes inside the viewport when controls collapse or focus mode opens; no experiment change",
+        "nativePaintVerified": false
+      },
+      {
+        "check": "cancelling setup resumes a previously running scene with its original objects"
+      },
+      {
+        "check": "rapid cancel, reopen, cancel resumes the original scene before a worker resume acknowledgement"
+      },
+      {
+        "check": "stage New scene cancellation resumes the prior scene; a fresh beacon and brain mapping run through real vision and physics",
+        "tick": 131,
+        "distance": 0.36004759627911886
+      }
+    ],
+    "format": "duckfly-native-setup"
+  },
+  "macConnections": {
+    "passed": true,
+    "cases": [
+      {
+        "id": "cue-workshop",
+        "check": "scene launch and connection behavior"
+      },
+      {
+        "id": "lookout",
+        "check": "scene launch and connection behavior"
+      },
+      {
+        "id": "crossed-wires",
+        "check": "scene launch and connection behavior"
+      },
+      {
+        "id": "trigger-kick",
+        "check": "scene launch and connection behavior"
+      },
+      {
+        "id": "target",
+        "check": "add a head response while retaining walking"
+      }
+    ]
+  },
+  "dedicatedConnectionScenes": {
+    "passed": true,
+    "scenes": [
+      "cue-workshop",
+      "lookout",
+      "crossed-wires",
+      "trigger-kick"
+    ],
+    "errors": []
+  },
+  "productionBuild": {
+    "web": true,
+    "mac": true
+  },
+  "screenshots": "output/playwright/simple-connections-*.png"
+}

@@ -34,8 +34,9 @@ export function newConnection(trigger='forward',action='walk',id='connection-1')
 export function normalizeConnections(value) {
   if(value==null)return null;
   if(typeof value!=='object'||Array.isArray(value)||typeof value.enabled!=='boolean'||!Array.isArray(value.rules)||value.rules.length>12)throw Error('Invalid trigger connections');
+  if(value.includeBrainMapping!=null&&typeof value.includeBrainMapping!=='boolean')throw Error('Invalid brain connection setting');
   const ids=new Set();
-  return {enabled:value.enabled,rules:value.rules.map(rule=>{
+  return {enabled:value.enabled,...(value.includeBrainMapping?{includeBrainMapping:true}:{}),rules:value.rules.map(rule=>{
     const trigger=TRIGGERS.find(t=>t.id===rule.trigger);
     if(!trigger||!ACTIONS.some(a=>a.id===rule.action)||typeof rule.id!=='string'||!/^[-a-zA-Z0-9_]{1,40}$/.test(rule.id)||ids.has(rule.id)||typeof rule.enabled!=='boolean')throw Error('Invalid trigger connection');
     ids.add(rule.id);
@@ -43,7 +44,11 @@ export function normalizeConnections(value) {
     return {id:rule.id,trigger:rule.trigger,action:rule.action,threshold:rule.threshold,strength:rule.strength,hold:rule.hold,enabled:rule.enabled};
   })};
 }
-export const connectionSummary=value=>value?.enabled?`${value.rules.filter(r=>r.enabled).length} custom connections · holds still between signals`:null;
+export const connectionSummary=value=>value?.enabled?`${value.rules.filter(r=>r.enabled).length} signal connections`:null;
+
+// Older scenes replace the whole controller. The editor can now add a rule
+// while retaining the scene's continuous neural connections on other channels.
+export const includesBrainMapping=duck=>!duck.connections?.enabled||!!duck.connections.includeBrainMapping;
 
 export class TriggerActions {
   constructor(){this.reset();}
@@ -59,6 +64,7 @@ export class TriggerActions {
     if(!config?.enabled)return null;
     const requests=[],signals=[],next=Object.create(null),command={vx:0,yaw:0,head:[0,0,0,0]};
     let pause=false,skill=null;
+    const owns={forward:false,turn:false,head:false};
     const gate=!duck.motorEnabled||duck.motorGain===0?'Body disconnected':duck.silence==='output'?'Output silenced':!input.fresh?'Camera stale or absent':neural.gfHeld?'Giant-fiber stop':null;
     for(const rule of config.rules){
       const trigger=TRIGGERS.find(t=>t.id===rule.trigger),value=trigger.read(context),key=JSON.stringify(rule),previous=this.states[rule.id];
@@ -74,26 +80,35 @@ export class TriggerActions {
       requests.push(record);
       if(rule.action==='stop')pause=true;
       if(rule.action==='walk'){
+        owns.forward=true;
         if(input.gate){record.blocked=input.gateReason;continue;}
         command.vx=Math.max(command.vx,.3*rule.strength);
       }
       if(['left','right'].includes(rule.action)){
+        owns.forward=owns.turn=true;
         command.yaw+=(rule.action==='left'?1:-1)*.65*rule.strength;
         if(!input.gate)command.vx=Math.max(command.vx,rule.strength>0?.3:0);
         else record.limited='Forward held: '+input.gateReason;
       }
-      if(rule.action==='steer')command.yaw+=neural.yaw*rule.strength;
-      if(rule.action==='look-left')command.head[2]+=.35*rule.strength;
-      if(rule.action==='look-right')command.head[2]-=.35*rule.strength;
+      if(rule.action==='steer'){owns.turn=true;command.yaw+=neural.yaw*rule.strength;}
+      if(rule.action==='look-left'){owns.head=true;command.head[2]+=.35*rule.strength;}
+      if(rule.action==='look-right'){owns.head=true;command.head[2]-=.35*rule.strength;}
       if(rule.action==='look-cue'){
+        owns.head=true;
         if(context.vision?.target?.visible)command.head[2]+=clamp(context.vision.target.bearing*.3,-.35,.35)*rule.strength;
         else record.blocked='Pink cue is not visible';
       }
       if(rising&&rule.strength>0&&['kick','recover'].includes(rule.action)&&!skill)skill={kind:rule.action,connection:rule.id};
     }
     this.states=next;
+    const inherited=config.includeBrainMapping&&!gate&&!body.fallen?context.baseCommand:null;
+    if(inherited){
+      if(!owns.forward)command.vx=inherited.vx;
+      if(!owns.turn)command.yaw=inherited.yaw;
+      if(!owns.head)command.head=[...inherited.head];
+    }
     command.yaw=clamp(command.yaw,-.65,.65);command.head[2]=clamp(command.head[2],-.35,.35);
     if(pause){command.vx=0;command.yaw=0;skill=null;}
-    return {command,signals,requests,skill,paused:pause,gate,idle:requests.length===0,model:'duckfly-trigger-actions-v1'};
+    return {command,signals,requests,skill,paused:pause,gate,idle:requests.length===0&&!inherited,...(config.includeBrainMapping?{overrides:owns}:{}),model:'duckfly-trigger-actions-v1'};
   }
 }

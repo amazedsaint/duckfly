@@ -131,19 +131,25 @@ export class Experiment {
       command=mapBrainCommand(command,d,provenance);
       if(d.mode==='manual'){provenance.forward=provenance.yaw='Manual override';command={vx:d.manual[0],yaw:d.manual[1],head:input.head};}
       if(d.mode==='reactive'||d.mode==='reflex'){provenance.forward=provenance.yaw='Reactive camera rule';command={vx:(d.mode==='reactive'?input.gate:!input.fresh)||input.loomL+input.loomR>.2?0:.3,yaw:d.mode==='reflex'?0:clamp((a.vision?.target.bearing??0)*.7,-.65,.65),head:input.head};}
-      const connected=!['manual','reactive','reflex'].includes(d.mode)?a.connections.step(d.connections,{duck:d,neural,input,body,vision:a.vision,time:state.time}):null;
+      const connected=!['manual','reactive','reflex'].includes(d.mode)?a.connections.step(d.connections,{duck:d,neural,input,body,vision:a.vision,time:state.time,baseCommand:command}):null;
       a.connectionStatus=connected;
       if(connected){
         command=connected.command;
-        provenance.forward=provenance.yaw=connected.gate??(connected.paused?'Mapped pause':connected.idle?'Connections idle':connected.requests.map(r=>r.trigger+' → '+r.action).join(' · '));
-        provenance.head='User trigger connections';
+        const explanation=connected.gate??(connected.paused?'Pause response active':connected.idle?'Waiting for a signal':connected.requests.map(r=>r.trigger+' → '+r.action).join(' · '));
+        if(!d.connections.includeBrainMapping||connected.gate||connected.paused)provenance.forward=provenance.yaw=explanation;
+        else {
+          if(connected.overrides.forward)provenance.forward=explanation;
+          if(connected.overrides.turn)provenance.yaw=explanation;
+        }
+        if(!d.connections.includeBrainMapping||connected.gate||connected.overrides.head)provenance.head=explanation;
       }
       if(a.temporal){command=a.temporal.motor(command,body,state.time,gfEvent);if(a.temporal.feedback.state.held)provenance.forward=provenance.yaw='Experimental GF hazard hold';}
       if(d.silence==='output'){provenance.forward=provenance.yaw='Output intervention';command={...command,vx:0,yaw:0};}
       if(!d.motorEnabled){provenance.forward=provenance.yaw='Body command connection off';command={...command,vx:0,yaw:0};}
       else if(d.motorGain!==1){provenance.gain=d.motorGain;command={...command,vx:command.vx*d.motorGain,yaw:command.yaw*d.motorGain};
         if(d.motorGain===0)provenance.forward=provenance.yaw='Body command strength is zero';}
-      const kickOnSight=!connected&&automaticKickEnabled(d,this.scene.version);
+      const keepsVisualKick=!connected||d.connections.includeBrainMapping&&!connected.paused&&!connected.requests.some(r=>['walk','left','right','kick','stop'].includes(r.action));
+      const kickOnSight=keepsVisualKick&&automaticKickEnabled(d,this.scene.version);
       const skillEnabled=d.motorEnabled&&d.motorGain>0&&d.silence!=='output'&&(this.scene.version<6||!a.temporal?.feedback.state.held);
       const connectionSkillEnabled=!!connected&&!connected.gate&&!connected.paused&&skillEnabled;
       if(connected?.skill&&connectionSkillEnabled&&this.runtime.skillSessions?.[connected.skill.kind==='recover'?'standing':'kick']){

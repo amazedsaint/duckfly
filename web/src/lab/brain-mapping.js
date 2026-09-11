@@ -1,14 +1,14 @@
-import { connectionSummary } from './trigger-actions.js';
+import { ACTIONS, includesBrainMapping } from './trigger-actions.js';
 // These are engineered connections from circuit outputs to existing body
 // controllers. They do not alter fly anatomy or let a neuron control a joint.
 export const FORWARD_OPERATIONS = Object.freeze([
-  {value:'walk',label:'Walk',description:'Walking-pathway activity requests forward movement.'},
-  {value:'kick',label:'Kick on sight',description:'A visible beacon and sustained walking-pathway activity trigger a kick.'},
+  {value:'walk',label:'Walk forward',description:'Walking-pathway activity requests forward movement.'},
+  {value:'kick',label:'Kick when ready',description:'A visible beacon and sustained walking-pathway activity trigger a kick.'},
   {value:'off',label:'No forward action',description:'Keep walking-pathway activity visible without triggering an action.'},
 ]);
 export const TURN_OPERATIONS = Object.freeze([
-  {value:'follow',label:'Follow neural steering',description:'Left and right neural activity turn the duck in the same direction.'},
-  {value:'reverse',label:'Reverse neural steering',description:'Swap the direction sent to the body to compare the response.'},
+  {value:'follow',label:'Follow the turn',description:'Left and right neural activity turn the duck in the same direction.'},
+  {value:'reverse',label:'Reverse the turn',description:'Swap the direction sent to the body to compare the response.'},
   {value:'off',label:'No turning',description:'Turn activity is visible in the brain but does not turn the body.'},
 ]);
 const bypassModes=new Set(['manual','reactive','reflex']);
@@ -36,9 +36,14 @@ export function patchBrainMapping(duck,patch){
 
 export function brainMappingSummary(duck){
   if(!brainMappingEnabled(duck))return duck.mode==='manual'?'Manual controls bypass brain connections':'Camera rules bypass brain connections';
-  if(duck.connections?.enabled)return connectionSummary(duck.connections);
-  const mapping=normalizeBrainMapping(duck);
-  return `${FORWARD_OPERATIONS.find(o=>o.value===mapping.forward).label} · ${TURN_OPERATIONS.find(o=>o.value===mapping.turn).label}`;
+  const mapping=normalizeBrainMapping(duck),responses=[];
+  if(includesBrainMapping(duck)){
+    if(mapping.forward!=='off')responses.push(FORWARD_OPERATIONS.find(o=>o.value===mapping.forward).label);
+    if(mapping.turn!=='off')responses.push(TURN_OPERATIONS.find(o=>o.value===mapping.turn).label);
+  }
+  if(duck.connections?.enabled)for(const rule of duck.connections.rules)if(rule.enabled)responses.push(ACTIONS.find(a=>a.id===rule.action).label);
+  const unique=[...new Set(responses)];
+  return unique.length?unique.slice(0,2).join(' · ')+(unique.length>2?` +${unique.length-2}`:''):'No actions connected';
 }
 
 // v1-v5 recordings keep their original kick semantics, including old bypass
