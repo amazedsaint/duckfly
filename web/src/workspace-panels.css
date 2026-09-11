@@ -1,0 +1,104 @@
+/* Inspector geometry only. The shared studio theme owns surface colors. */
+.workspace.intent-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  gap: 8px;
+  min-width: 0;
+  min-height: 0;
+  align-content: stretch;
+}
+.intent-workspace > #arena {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+.intent-workspace > .stage-settings-rail { grid-row: 2; grid-column: 1 / -1; min-width: 0; }
+.intent-workspace > .statusbar { grid-row: 3; grid-column: 1 / -1; min-width: 0; }
+#scene-control-panels.workspace-inspector {
+  position: absolute;
+  z-index: 8;
+  top: auto;
+  bottom: var(--inspector-bottom, 72px);
+  left: auto;
+  right: 8px;
+  width: min(356px, calc(100% - 32px));
+  max-width: 100%;
+  height: auto;
+  max-height: min(480px, calc(100% - var(--inspector-bottom, 72px) - 76px));
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  align-items: stretch;
+}
+#scene-control-panels.workspace-inspector[data-inspector-open="true"] { display: flex; }
+#scene-control-panels.workspace-inspector[data-inspector-open="false"] { display: none; }
+#scene-control-panels.workspace-inspector > * { min-width: 0; flex-shrink: 0; }
+#scene-control-panels.workspace-inspector > #tools-panel {
+  position: static;
+  inset: auto;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  min-height: 0;
+  margin: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  flex: none;
+}
+#scene-control-panels.workspace-inspector > #tools-panel > .panel-title { top: 0; }
+#scene-control-panels.workspace-inspector .panel-content { min-width: 0; }
+#scene-control-panels.workspace-inspector input,
+#scene-control-panels.workspace-inspector select,
+#scene-control-panels.workspace-inspector textarea { max-width: 100%; }
+#scene-control-panels.workspace-inspector .panel-title { min-width: 0; }
+#scene-control-panels.workspace-inspector .panel-title > span { min-width: 0; overflow-wrap: anywhere; }
+.focus-mode .intent-workspace > #scene-control-panels { display: none; }
+@media (min-width: 1200px) {
+  .workspace.intent-workspace.inspector-open {
+    grid-template-columns: minmax(0, 1fr) 320px;
+  }
+  .intent-workspace > #scene-control-panels.workspace-inspector {
+    position: relative;
+    inset: auto;
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    min-height: 0;
+    align-self: stretch;
+    box-shadow: none;
+  }
+}
+@media (max-width: 820px) {
+  .workspace.intent-workspace { gap: 6px; }
+  #scene-control-panels.workspace-inspector {
+    right: 8px;
+    width: min(356px, calc(100% - 24px));
+    max-height: min(400px, calc(100% - var(--inspector-bottom, 44px) - 64px));
+  }
+}
+@media (max-width: 360px) {
+  .stage-settings-rail { gap: 3px; }
+  .stage-settings-rail button { padding-inline: 6px; }
+  #close-stage-settings { padding-inline: 7px; }
+  .toolbar { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) 44px; }
+  .toolbar > #pause { grid-area: 1 / 1; }
+  .toolbar > #step { grid-area: 1 / 2; }
+  .toolbar > #reset { grid-area: 1 / 3; }
+  .toolbar > #clock { grid-area: 1 / 4; min-width: 0; }
+  .toolbar > #focus-mode { grid-area: 2 / 1; }
+  .toolbar > #edit-setup { grid-area: 2 / 2; }
+  .toolbar > #tools-button { grid-area: 2 / 3 / 3 / 5; margin-left: 0; }
+}

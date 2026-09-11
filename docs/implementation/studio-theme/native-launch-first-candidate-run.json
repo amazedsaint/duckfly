@@ -1,0 +1,14 @@
+{
+  "suite": "launch",
+  "command": [
+    "/Users/madhusudanaa/Documents/GitHub/duckfly/mac/build/DuckFlyStudioFinal.app/Contents/MacOS/DuckFly",
+    "--self-test-launch"
+  ],
+  "pid": 1570,
+  "exitCode": 0,
+  "elapsedSeconds": 16.4,
+  "receipts": 1,
+  "failures": [],
+  "receiptGroups": 6,
+  "pass": true
+}

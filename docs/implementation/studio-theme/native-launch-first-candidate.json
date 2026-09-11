@@ -1,0 +1,145 @@
+{
+  "errors": [],
+  "passed": true,
+  "version": 1,
+  "checks": [
+    {
+      "check": "fresh startup, visible primary controls, and packaged hero images",
+      "assets": [
+        {
+          "path": "/launch/duck-hero.png",
+          "width": 1254,
+          "height": 1254,
+          "layout": {
+            "x": 610.58,
+            "height": 579.09,
+            "bottom": 798.94,
+            "y": 219.84,
+            "width": 617.33,
+            "left": 610.58,
+            "right": 1227.91,
+            "top": 219.84
+          }
+        },
+        {
+          "path": "/launch/fly-hero.png",
+          "width": 1254,
+          "height": 1254,
+          "layout": {
+            "x": 1015.64,
+            "bottom": 357.44,
+            "height": 281.99,
+            "y": 75.45,
+            "width": 281.13,
+            "left": 1015.64,
+            "top": 75.45,
+            "right": 1296.77
+          }
+        }
+      ],
+      "controls": {
+        "#launch-motion": {
+          "x": 1153.64,
+          "bottom": 104,
+          "height": 32,
+          "y": 72,
+          "width": 112.36,
+          "left": 1153.64,
+          "top": 72,
+          "right": 1266
+        },
+        "#new-scene": {
+          "x": 1105.16,
+          "bottom": 43,
+          "height": 35,
+          "y": 8,
+          "width": 112.78,
+          "left": 1105.16,
+          "top": 8,
+          "right": 1217.94
+        },
+        "#launch-enter": {
+          "x": 64,
+          "height": 58,
+          "bottom": 728.02,
+          "y": 670.02,
+          "width": 206.56,
+          "left": 64,
+          "right": 270.56,
+          "top": 670.02
+        },
+        "#launch-beacon": {
+          "x": 287.56,
+          "height": 37,
+          "bottom": 717.52,
+          "y": 680.52,
+          "width": 106.39,
+          "left": 287.56,
+          "right": 393.95,
+          "top": 680.52
+        }
+      },
+      "viewport": [
+        1320,
+        860
+      ]
+    },
+    {
+      "check": "decorative animation pauses/resumes and Send a spark reacts independently of the real circuit and physics",
+      "reducedMotion": false,
+      "paused": [
+        {
+          "state": "paused",
+          "element": "launch-duck-shadow",
+          "name": "launch-shadow-breathe"
+        },
+        {
+          "state": "paused",
+          "name": "launch-duck-bob",
+          "element": "launch-duck"
+        },
+        {
+          "element": "launch-fly",
+          "name": "launch-fly-orbit",
+          "state": "paused"
+        }
+      ],
+      "documentHidden": true,
+      "configured": [
+        {
+          "name": "launch-shadow-breathe",
+          "element": "launch-duck-shadow",
+          "state": "paused"
+        },
+        {
+          "element": "launch-duck",
+          "name": "launch-duck-bob",
+          "state": "paused"
+        },
+        {
+          "element": "launch-fly",
+          "state": "paused",
+          "name": "launch-fly-orbit"
+        }
+      ]
+    },
+    {
+      "check": "beacon and global New scene use isolated setup; cancelling returns to the introduction with focus and state retained"
+    },
+    {
+      "check": "Open playground reveals the existing gallery; reviewed launch runs the actual neural and physical experiment",
+      "tick": 123,
+      "distance": 0.3341285724483265
+    },
+    {
+      "check": "More reopens the introduction and pauses without replacement; gallery Continue preserves the exact run; Run resumes it; Back and brand return to the gallery",
+      "retainedTick": 123,
+      "resumedTick": 166
+    },
+    {
+      "check": "a real same-origin shared-scene URL initializes directly on the linked stage without launch or setup",
+      "scene": "Shared launch acceptance"
+    }
+  ],
+  "format": "duckfly-native-launch"
+}

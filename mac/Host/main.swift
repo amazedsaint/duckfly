@@ -81,7 +81,7 @@ final class AssetServer {
     var testStarted = false
     var downloads: [ObjectIdentifier: (temporary: URL, destination: URL)] = [:]
     var testDeadline = Date().addingTimeInterval(90)
-    let testing = CommandLine.arguments.contains("--self-test-setup") || CommandLine.arguments.contains("--self-test-skills") || CommandLine.arguments.contains("--self-test-scenarios") || CommandLine.arguments.contains("--self-test-guided") || CommandLine.arguments.contains("--self-test-playground") || CommandLine.arguments.contains("--self-test") || CommandLine.arguments.contains("--self-test-room") || CommandLine.arguments.contains("--self-test-vision")
+    let testing = CommandLine.arguments.contains("--self-test-launch") || CommandLine.arguments.contains("--self-test-setup") || CommandLine.arguments.contains("--self-test-skills") || CommandLine.arguments.contains("--self-test-scenarios") || CommandLine.arguments.contains("--self-test-guided") || CommandLine.arguments.contains("--self-test-playground") || CommandLine.arguments.contains("--self-test") || CommandLine.arguments.contains("--self-test-room") || CommandLine.arguments.contains("--self-test-vision")
     func applicationDidFinishLaunching(_ notification: Notification) {
         let menu = NSMenu()
         let appItem = NSMenuItem(); menu.addItem(appItem)
@@ -99,6 +99,11 @@ final class AssetServer {
         if testing { configuration.userContentController.add(self, name: "acceptance") }
         let saved = testing ? nil : UserDefaults.standard.string(forKey: "duckfly.scene.v1")
         var script = "window.duckflyHost = {platform:'mac'};"
+        if testing, let option = CommandLine.arguments.first(where: { $0.hasPrefix("--scenario=") }),
+           let encoded = try? JSONSerialization.data(withJSONObject: ["scenario": String(option.dropFirst("--scenario=".count))]),
+           let json = String(data: encoded, encoding: .utf8) {
+            script += "window.duckflyTestOptions = \(json);"
+        }
         if let saved, let encoded = try? JSONSerialization.data(withJSONObject: [saved]), let array = String(data: encoded, encoding: .utf8) {
             script += "try{localStorage.setItem('duckfly.scene.v1',\(array)[0]);}catch(e){}"
         }
@@ -109,8 +114,15 @@ final class AssetServer {
         window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 1320, height: 860), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
         window.title = "DuckFly · Fly Brain Playground"
         window.minSize = NSSize(width: 560, height: 640)
-        window.contentView = web; window.center(); window.makeKeyAndOrderFront(nil)
-        NSApp.activate(ignoringOtherApps: true)
+        window.contentView = web; window.center()
+        if testing {
+            // Keep a real attached window for WebKit layout without redirecting
+            // the user's foreground mouse or keyboard input into a test run.
+            window.orderBack(nil)
+        } else {
+            window.makeKeyAndOrderFront(nil)
+            NSApp.activate(ignoringOtherApps: true)
+        }
         guard let root = Bundle.main.resourceURL?.appendingPathComponent("Web") else { fatalError("Bundled workspace missing") }
         server = AssetServer(root: root)
         do { try server.start { [weak self] result in
@@ -194,7 +206,7 @@ final class AssetServer {
                 guard (try? await self.web.evaluateJavaScript("window.duckflyTelemetry?.ready === true")) as? Bool == true else { return }
                 self.testStarted = true; self.testTimer?.invalidate()
                 do {
-                    let path = Bundle.main.resourceURL!.appendingPathComponent(CommandLine.arguments.contains("--self-test-setup") ? "SetupSmoke.js" : CommandLine.arguments.contains("--self-test-skills") ? "SkillsSmoke.js" : CommandLine.arguments.contains("--self-test-scenarios") ? "ScenarioAudit.js" : CommandLine.arguments.contains("--self-test-guided") ? "GuidedSmoke.js" : CommandLine.arguments.contains("--self-test-playground") ? "PlaygroundSmoke.js" : CommandLine.arguments.contains("--self-test-room") ? "RoomSmoke.js" : CommandLine.arguments.contains("--self-test-vision") ? "VisionSmoke.js" : "NativeSmoke.js")
+                    let path = Bundle.main.resourceURL!.appendingPathComponent(CommandLine.arguments.contains("--self-test-launch") ? "LaunchSmoke.js" : CommandLine.arguments.contains("--self-test-setup") ? "SetupSmoke.js" : CommandLine.arguments.contains("--self-test-skills") ? "SkillsSmoke.js" : CommandLine.arguments.contains("--self-test-scenarios") ? "ScenarioAudit.js" : CommandLine.arguments.contains("--self-test-guided") ? "GuidedSmoke.js" : CommandLine.arguments.contains("--self-test-playground") ? "PlaygroundSmoke.js" : CommandLine.arguments.contains("--self-test-room") ? "RoomSmoke.js" : CommandLine.arguments.contains("--self-test-vision") ? "VisionSmoke.js" : "NativeSmoke.js")
                     let helperPath = Bundle.main.resourceURL!.appendingPathComponent("SetupHelpers.js")
                     let script = try String(contentsOf: helperPath, encoding: .utf8) + "\n" + String(contentsOf: path, encoding: .utf8)
                     print("MAC_LAB_TEST_START " + path.lastPathComponent)

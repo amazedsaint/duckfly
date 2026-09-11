@@ -6,10 +6,15 @@ import { propProfile } from "./lab/prop-behavior.js";
 import { loopStatus } from "./lab/loop-status.js";
 import { mountWorkspaceLayout } from "./lab/workspace-layout.js";
 import { workspaceShell } from "./lab/workspace-ui.js";
+import { mountLaunchPage } from "./lab/launch-page.js";
 import { mountGuidedLab } from "./lab/guided-ui.js";
 import { SCENARIOS } from "./lab/scenarios.js";
 import "./style.css";
 import "./workspace.css";
+import "./launch-page.css";
+import "./studio-theme.css";
+import "./workspace-panels.css";
+import "./setup-theme.css";
 import { fetchBytes } from "./assets.js";
 import { BrainPlot, trace } from "./plots.js";
 import { LabArena } from "./lab/lab-arena.js";
@@ -100,6 +105,9 @@ const send = (type, extra = {}) => {
   worker.postMessage({ type, ...extra });
 };
 let setupSession, pendingSetupSelection;
+const launchPage = mountLaunchPage({enterPlayground:showHome,startScenario:()=>chooseScenario('target')});
+launchPage.setVisible(true);
+document.body.classList.add('launch-active');
 const physicalSceneKey = value => JSON.stringify({...value, version:undefined, ducks:value.ducks.map(({id,spawn}) => ({id,spawn}))});
 const sceneSetup = mountSceneSetup({
   requiresRestart: draft => physicalSceneKey(validateScene(draft)) !== physicalSceneKey(setupSession.original),
@@ -178,7 +186,7 @@ const updatePropControls = mountPropControls({apply: (id, patch) => {
   }else if(!prop.movable)send('prop-behavior',{id,behavior:patch.behavior});
   else notify('This object already has those physical properties.');
 }});
-const workspaceLayout = mountWorkspaceLayout({onOpenPanel:()=>setTools(false),onResize: () => {
+const workspaceLayout = mountWorkspaceLayout({onResize: () => {
   arena?.resize();
   plot?.draw();
   if ($("#trace").offsetWidth) trace($("#trace"), samples);
@@ -273,6 +281,8 @@ function syncConnectedDuck() {
   );
 }
 function showExperiment() {
+  launchPage.setVisible(false);
+  document.body.classList.remove('launch-active');
   $("#arena").append($("#notice"));
   $("#home-page").hidden = true;
   $("#experiment-page").hidden = false;
@@ -291,21 +301,24 @@ function showHome() {
   workspaceLayout.closePanels();
   if (ready && room?.role !== "guest") send("pause", { value: true });
   $("#home-page").hidden = false;
+  $("#scene-catalog").hidden = false;
+  launchPage.setVisible(false);
   $("#experiment-page").hidden = true;
-  document.body.classList.remove("in-experiment");
+  document.body.classList.remove("in-experiment", "launch-active");
   setTools(false);
   $("#back-home").blur();
+  window.scrollTo(0,0);
+  $('#scene-catalog-title').focus({preventScroll:true});
+}
+function showLaunch() {
+  showHome();
+  $('#scene-catalog').hidden = true;
+  launchPage.setVisible(true);
+  document.body.classList.add('launch-active');
+  $('#launch-enter').focus({preventScroll:true});
 }
 function setTools(open) {
-  $("#tools-panel").hidden = !open;
-  $("#tools-button").setAttribute("aria-expanded", String(open));
-  if (open) {
-    workspaceLayout.closePanels();
-    $("#selected-object-panel").open = true;
-    $("#close-tools").focus();
-  }
-  else if (document.activeElement?.closest("#tools-panel"))
-    $("#tools-button").focus();
+  workspaceLayout.setTools(open);
 }
 function chooseScenario(id) {
   openSetup(defaultScene(id),false);
@@ -366,7 +379,7 @@ function renderScene() {
       if(inInspector){
         $('#selected-object-panel').open=true;
         $('#selected-object-panel > summary').focus({preventScroll:true});
-        $('#tools-panel').scrollTop=0;
+        $('#scene-control-panels').scrollTop=0;
       }else $('#scene-objects [data-object="'+CSS.escape(el.dataset.object)+'"]')?.focus({preventScroll:true});
     }));
   $("#challenge-subject").innerHTML = options(
@@ -739,9 +752,14 @@ worker.onmessage = ({ data }) => {
   if (data.type === "error") {
     notify(data.message);
     $("#loading-detail").textContent = data.message;
+    if (!ready) {
+      $("#home-status").textContent = data.message;
+      launchPage.setError(data.message);
+    }
   }
   if (data.type === "ready") {
     ready = true;
+    launchPage.setReady(true);
     $("#home-status").textContent = "Ready to explore · runs on your device";
     scene = data.scene;
     arena.setScene(scene);
@@ -847,7 +865,14 @@ worker.onmessage = ({ data }) => {
   if (data.type === "export")
     download("duckfly-recording.json", data.recording);
 };
-worker.onerror = (e) => notify(e.message || "Simulation worker failed");
+worker.onerror = (e) => {
+  const message = e.message || 'Simulation worker failed';
+  notify(message);
+  if (!ready) {
+    $('#home-status').textContent = message;
+    launchPage.setError(message);
+  }
+};
 async function load() {
   try {
     const [bytes, circuit] = await Promise.all([
@@ -888,6 +913,9 @@ async function load() {
     if (webcamError) notify(webcamError);
   } catch (e) {
     $("#loading-detail").textContent = e.message;
+    $("#home-status").textContent = e.message;
+    launchPage.setError(e.message);
+    notify(e.message);
   }
 }
 load();
@@ -1352,6 +1380,7 @@ $("#room-leave").onclick = () => {
 };
 
 $("#home-button").onclick = showHome;
+$("#show-launch").onclick = showLaunch;
 $("#new-scene").onclick = event => openSetup({...defaultScene('empty'),name:'Your own playground'},false,event.currentTarget);
 $("#back-home").onclick = showHome;
 $("#continue-scene").onclick = showExperiment;

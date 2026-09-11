@@ -1,0 +1,31 @@
+{
+  "url": "https://duckfly.vercel.app",
+  "verifiedAt": "2026-09-11T01:40:14.846770+00:00",
+  "files": [
+    {
+      "path": "/assets/index-D7lKy3Se.js",
+      "bytes": 761600,
+      "sha256": "0213997ab4eebe4f03d027e146cb583acd2d9e2166a6c568eb17224ba6c7b680"
+    },
+    {
+      "path": "/assets/index-G16S4Cud.css",
+      "bytes": 83814,
+      "sha256": "7af30494fde555f3f603645a6d61c8669298f4aad186766daea95da72a697639"
+    },
+    {
+      "path": "/assets/lab.worker-C_BMSfjx.js",
+      "bytes": 161937,
+      "sha256": "7f07de668df47d83970cbafeba97dff5182c8681127ef77881ba7b75423c845c"
+    },
+    {
+      "path": "/launch/duck-hero.png",
+      "bytes": 967061,
+      "sha256": "affbcaa6f0b372d189a19fd6fe2ea2a3fe55a59a3d5d736022abde5f8ac56fe4"
+    },
+    {
+      "path": "/launch/fly-hero.png",
+      "bytes": 1489571,
+      "sha256": "e052cb58292b0c2af20d83c63a5ab41d68df5bbf6c30737e6ea0b33ab7d27cd8"
+    }
+  ]
+}

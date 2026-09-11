@@ -1,13 +1,17 @@
 import { SCENARIOS } from "./scenarios.js";
+import { launchPageMarkup } from "./launch-page.js";
 export function workspaceShell(W, H) {
   return `
-<header class="topbar"><button class="brand" id="home-button" aria-label="DuckFly home"><img src="/duck.svg" alt=""><span class="brand-name">DuckFly</span></button><span class="platform" id="platform">A fly circuit. A duck body.</span><div class="top-actions"><button id="new-scene" class="primary" data-control disabled aria-haspopup="dialog"><span aria-hidden="true">＋</span> New scene</button><button id="share">Share scene</button><details class="app-menu"><summary>More</summary><div class="menu-content"><button id="room-button">Collaborate</button><button id="save">Save scene</button><button id="open">Open file</button><button id="about">About the experiment</button></div></details></div></header>
+<header class="topbar"><button class="brand" id="home-button" aria-label="DuckFly home"><img src="/duck.svg" alt=""><span class="brand-name">DuckFly</span></button><span class="platform" id="platform">A fly circuit. A duck body.</span><div class="top-actions"><button id="new-scene" class="primary" data-control disabled aria-haspopup="dialog"><span aria-hidden="true">＋</span> New scene</button><button id="share">Share scene</button><details class="app-menu"><summary>More</summary><div class="menu-content"><button id="show-launch">Welcome page</button><button id="room-button">Collaborate</button><button id="save">Save scene</button><button id="open">Open file</button><button id="about">About the experiment</button></div></details></div></header>
 <main id="home-page" class="home-page">
+${launchPageMarkup()}
+<div id="scene-catalog" hidden>
 <div class="home-intro"><span class="eyebrow">THE DUCKFLY PLAYGROUND</span><h1>A fly brain. A duck’s world.</h1><p>Give a duck a fly’s neural circuit. Change what it sees, and watch how its body responds.</p><div class="home-meta"><span id="home-status" role="status">Preparing your playground…</span><button id="continue-scene" hidden>Continue your scene</button></div></div>
-<div class="section-heading"><div><h2>Choose your playground</h2><p>Choose a scene, then make it yours in a guided setup.</p></div><span id="scenario-count">${SCENARIOS.length} scenes</span></div>
+<div class="section-heading"><div><h2 id="scene-catalog-title" tabindex="-1">Choose your playground</h2><p>Choose a scene, then make it yours in a guided setup.</p></div><span id="scenario-count">${SCENARIOS.length} scenes</span></div>
 <div class="scenario-filters" role="group" aria-label="Filter scenarios"><button data-scenario-filter="all" aria-pressed="true">All scenes</button><button data-scenario-filter="start" aria-pressed="false">Start here</button><button data-scenario-filter="vision" aria-pressed="false">Vision experiments</button><button data-scenario-filter="brain" aria-pressed="false">Brain & body</button></div>
 <div class="scenario-grid">${SCENARIOS.map((s, i) => `<button class="scenario-tile" data-scenario="${s.id}" data-control disabled><div class="scenario-image"><img src="/scenarios/${s.id}.${s.id==='kick'?'svg':'png'}" alt="${s.alt}"><span class="tile-tag">${s.tag}</span></div><div class="tile-copy"><span class="tile-number">EXPERIMENT ${String(i + 1).padStart(2, "0")}</span><h3>${s.title}</h3><p>${s.description}</p><span class="tile-launch">${s.action}<span aria-hidden="true">↗</span></span></div></button>`).join("")}</div>
 <footer class="home-footer"><span>Runs on your device. No account needed.</span><span>A modeled vision adapter connects a 668-neuron fly circuit to Microduck.</span></footer>
+</div>
 </main>
 <main id="experiment-page" hidden>
 <div class="scene-header"><header class="experiment-heading"><button id="back-home" aria-label="Back to scenarios">← Scenarios</button><div><h1 id="arena-title">Follow the beacon</h1><p id="scenario-guide">Move the pink beacon. Watch the duck respond.</p></div></header>

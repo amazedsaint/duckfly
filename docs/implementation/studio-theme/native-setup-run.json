@@ -1,0 +1,14 @@
+{
+  "suite": "setup",
+  "command": [
+    "/Users/madhusudanaa/Documents/GitHub/duckfly/mac/build/DuckFlyStudioVerified.app/Contents/MacOS/DuckFly",
+    "--self-test-setup"
+  ],
+  "pid": 2614,
+  "exitCode": 0,
+  "elapsedSeconds": 36.9,
+  "receipts": 1,
+  "failures": [],
+  "receiptGroups": 10,
+  "pass": true
+}

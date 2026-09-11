@@ -1,0 +1,18 @@
+{
+  "suite": "scenarios",
+  "command": [
+    "/Users/madhusudanaa/Documents/GitHub/duckfly/mac/build/DuckFlyStudioVerified.app/Contents/MacOS/DuckFly",
+    "--self-test-scenarios"
+  ],
+  "pid": 3275,
+  "exitCode": 0,
+  "elapsedSeconds": 295.8,
+  "receipts": 1,
+  "failures": [],
+  "pass": true,
+  "sceneCount": 11,
+  "controlChecks": 11,
+  "interactionChecks": 11,
+  "defaultSamples": 110,
+  "uncaughtErrors": 0
+}

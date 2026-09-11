@@ -36,6 +36,7 @@ const inView = selector => {
   return r.width > 0 && r.height > 0 && r.top >= 0 && r.bottom <= innerHeight && r.left >= 0 && r.right <= innerWidth;
 };
 const openTile = async id => {
+  await enterSceneCatalog();
   $(`[data-scenario="${id}"]`).click();
   await wait(() => $('#scene-setup')?.open && t().paused);
 };
@@ -67,6 +68,7 @@ const importJSON = async value => {
 
 try {
   await wait(() => t()?.ready);
+  await enterSceneCatalog();
   check(!$('#home-page').hidden && $('#experiment-page').hidden, 'App did not begin at scenario tiles');
   stage = 'new scene entry from the dashboard'; reportAcceptanceStage(stage);
   check(inView('#new-scene') && !$('#new-scene').disabled, 'New scene is not available at the top of the dashboard');
@@ -256,7 +258,7 @@ try {
   check(document.body.classList.contains('focus-mode'), 'Focus mode did not open');
   check(inView('#eye') && inView('#brain-plot'), 'Focus mode hid the connected brain or eyesight');
   check(physicalState() === beforePresentation, 'Panel changes mutated the experiment');
-  document.dispatchEvent(new KeyboardEvent('keydown', {key:'Escape', bubbles:true}));
+  document.dispatchEvent(new KeyboardEvent('keydown', {key:'Escape', bubbles:true, cancelable:true}));
   await settle();
   check(!document.body.classList.contains('focus-mode'), 'Escape did not restore the editing workspace');
   receipts.push({check:'computed DOM layout keeps brain and eyes inside the viewport when controls collapse or focus mode opens; no experiment change', nativePaintVerified:false});

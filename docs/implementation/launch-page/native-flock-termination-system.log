@@ -1,0 +1,29 @@
+Timestamp               Ty Process[PID:TID]
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:Application] -[NSApplication _setShouldRestoreStateOnNextLaunch:] shouldRestore=0
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:Application] terminate:
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:AutomaticTermination] void _NSDisableAutomaticTerminationAndLog(NSString *) Terminating
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:StateRestoration] -[NSApplication _pushPersistentStateTerminationGeneration] sPersistentStateTerminateStackHeight -> 1
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:StateRestoration] -[NSPersistentUIManager discardAllPersistentStateAndClose]
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:StateRestoration] -[NSPersistentUIManager _waitForPendingChangesToFinish] finishing pending changes
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:StateRestoration] -[NSPersistentUIManager _finishEncodingImmediatelyWithCompletionHandler:] _encodingQueue=0x7ab4e0a60
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:StateRestoration] -[NSPersistentUIManager _waitForPendingChangesToFinish] observer=0x7a9ce8280
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bfc3] [com.apple.AppKit:StateRestoration] -[NSPersistentUIManager _waitForPendingChangesToFinish]_block_invoke asyncing to main runloop
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:StateRestoration] -[NSPersistentUIManager _waitForPendingChangesToFinish] spinning the runloop
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:StateRestoration] -[NSPersistentUIManager _waitForPendingChangesToFinish]_block_invoke observer=0x7a9ce8280 activity=1 depth=0 finished=0
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:StateRestoration] -[NSPersistentUIManager _waitForPendingChangesToFinish]_block_invoke finished=YES
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:StateRestoration] -[NSPersistentUIManager _waitForPendingChangesToFinish]_block_invoke observer=0x7a9ce8280 activity=128 depth=1 finished=1
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:StateRestoration] -[NSPersistentUIManager _waitForPendingChangesToFinish] completed spinning the runloop
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:StateRestoration] -[NSPersistentUIManager _waitForPendingChangesToFinish] finished waiting
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:StateRestoration] -[NSPersistentUIManager _flushPendingPostEncodingChangesSynchronously] workQueue=0x7ab570400
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:StateRestoration] -[NSPersistentUIManager _flushPendingPostEncodingChangesSynchronously]_block_invoke _windowSnapshotter=0x7ab4dd2c0
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:StateRestoration] -[NSPersistentUIWindowSnapshotter flushPendingSnapshotsSynchronously] _workQueue=0x7ab570480
+2026-09-10 21:12:43.671 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:StateRestoration] -[NSPersistentUIManager _flushPendingPostEncodingChangesSynchronously]_block_invoke _store=0x7aa9bc720
+2026-09-10 21:12:43.674 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:StateRestoration] -[NSPersistentUIManager _waitForPendingChangesToFinish] finished flushing
+2026-09-10 21:12:43.674 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:Application] Attempting sudden termination (1st attempt)
+2026-09-10 21:12:43.674 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:Application] Checking whether app should terminate
+2026-09-10 21:12:43.674 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:Application] Asking app delegate whether applicationShouldTerminate:
+2026-09-10 21:12:43.674 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:Application] replyToApplicationShouldTerminate:YES
+2026-09-10 21:12:43.674 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:Application] App termination approved
+2026-09-10 21:12:43.674 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:Application] Termination commencing
+2026-09-10 21:12:43.674 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:Application] Attempting sudden termination (2nd attempt)
+2026-09-10 21:12:43.693 Df DuckFly[97267:3b7bf69] [com.apple.AppKit:Application] Termination complete. Exiting without sudden termination.

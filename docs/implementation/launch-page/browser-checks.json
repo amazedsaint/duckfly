@@ -1,0 +1,205 @@
+{
+  "initial": {
+    "images": [
+      {
+        "loaded": true,
+        "src": "/launch/duck-hero.png"
+      },
+      {
+        "loaded": true,
+        "src": "/launch/fly-hero.png"
+      }
+    ],
+    "motion": [
+      {
+        "name": "launch-duck-shadow",
+        "state": "running",
+        "transform": "matrix(0.933657, -0.0981313, 0.0981313, 0.933657, 0, 0)"
+      },
+      {
+        "name": "launch-duck",
+        "state": "running",
+        "transform": "matrix(0.999925, 0.012217, -0.012217, 0.999925, 0, -6.12)"
+      },
+      {
+        "name": "launch-fly",
+        "state": "running",
+        "transform": "matrix(0.99928, 0.0379357, -0.0379357, 0.99928, -23.5938, 11.2747)"
+      }
+    ],
+    "overflow": false,
+    "viewport": [
+      1280,
+      920
+    ]
+  },
+  "laterMotion": [
+    {
+      "name": "launch-duck-shadow",
+      "transform": "matrix(0.907053, -0.0953351, 0.0953351, 0.907053, 0, 0)"
+    },
+    {
+      "name": "launch-duck",
+      "transform": "matrix(0.999683, 0.0251838, -0.0251838, 0.999683, 0, -8.79509)"
+    },
+    {
+      "name": "launch-fly",
+      "transform": "matrix(0.991568, 0.129585, -0.129585, 0.991568, -8.89125, -11.992)"
+    }
+  ],
+  "paused": {
+    "animations": [
+      "paused",
+      "paused",
+      "paused"
+    ],
+    "state": "paused"
+  },
+  "animationTransformsChanged": true,
+  "mobile390": {
+    "controls": [
+      {
+        "id": "new-scene",
+        "rect": {
+          "bottom": 39.5,
+          "height": 32,
+          "left": 217.171875,
+          "right": 311.6875,
+          "top": 7.5,
+          "width": 94.515625,
+          "x": 217.171875,
+          "y": 7.5
+        }
+      },
+      {
+        "id": "launch-motion",
+        "rect": {
+          "bottom": 96,
+          "height": 32,
+          "left": 274.8359375,
+          "right": 373,
+          "top": 64,
+          "width": 98.1640625,
+          "x": 274.8359375,
+          "y": 64
+        }
+      },
+      {
+        "id": "launch-enter",
+        "rect": {
+          "bottom": 470.609375,
+          "height": 51,
+          "left": 22,
+          "right": 184.28125,
+          "top": 419.609375,
+          "width": 162.28125,
+          "x": 22,
+          "y": 419.609375
+        }
+      },
+      {
+        "id": "launch-beacon",
+        "rect": {
+          "bottom": 463.609375,
+          "height": 37,
+          "left": 200.28125,
+          "right": 299.359375,
+          "top": 426.609375,
+          "width": 99.078125,
+          "x": 200.28125,
+          "y": 426.609375
+        }
+      }
+    ],
+    "overflow": false,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  "beaconCancel": {
+    "focused": "launch-beacon",
+    "galleryHidden": true,
+    "launchVisible": true
+  },
+  "mobile320": {
+    "cta": {
+      "bottom": 451.640625,
+      "height": 51,
+      "left": 22,
+      "right": 184.28125,
+      "top": 400.640625,
+      "width": 162.28125,
+      "x": 22,
+      "y": 400.640625
+    },
+    "overflow": false,
+    "title": {
+      "bottom": 298.4139404296875,
+      "height": 175.98411560058594,
+      "left": 15.960277557373049,
+      "right": 302.03974533081055,
+      "top": 122.42982482910156,
+      "width": 286.0794677734375,
+      "x": 15.960277557373049,
+      "y": 122.42982482910156
+    },
+    "viewport": [
+      320,
+      780
+    ]
+  },
+  "gallery": {
+    "focused": "scene-catalog-title",
+    "galleryVisible": true,
+    "launchHidden": true,
+    "tiles": 11
+  },
+  "welcomeReturn": {
+    "focused": "launch-enter",
+    "scrollY": 0,
+    "visible": true
+  },
+  "panel563": {
+    "cta": {
+      "bottom": 534.671875,
+      "height": 54,
+      "left": 29.5,
+      "right": 222.734375,
+      "top": 480.671875,
+      "width": 193.234375,
+      "x": 29.5,
+      "y": 480.671875
+    },
+    "overflow": false,
+    "viewport": [
+      563,
+      813
+    ]
+  },
+  "logs": [],
+  "failedDownload": {
+    "beaconDisabled": true,
+    "galleryEnabled": true,
+    "noticeHidden": true,
+    "status": "Experiments could not load. Could not load /assets/scene.json.gz (503) Reload to try again.",
+    "statusVisible": true,
+    "galleryOpens": true
+  },
+  "finalStartup": {
+    "beaconEnabled": true,
+    "launchVisible": true,
+    "script": "/assets/index-BP-jLbr3.js",
+    "status": "Your playground is ready. No account needed."
+  },
+  "finalLogs": [],
+  "flockControls": {
+    "body": "0.00 m/s · 0.00 rad/s",
+    "brain": "668 neurons · body disconnected",
+    "clock": "9.98 s",
+    "feedback": "Feedback: off",
+    "motor": "Body commands: off",
+    "scene": "Follow the flock",
+    "watchedDuck": "duck-1"
+  }
+}

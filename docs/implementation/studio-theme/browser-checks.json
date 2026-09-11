@@ -1,0 +1,221 @@
+{
+  "beforeFocus": {
+    "clock": "0.00 s",
+    "inspectorHidden": false,
+    "intent": "objects",
+    "selected": "Beacon"
+  },
+  "focus": {
+    "arenaWidth": 1052,
+    "brainVisible": true,
+    "inspectorHidden": true
+  },
+  "restored": {
+    "clock": "0.00 s",
+    "inspectorHidden": false,
+    "intent": "objects",
+    "selected": "Beacon"
+  },
+  "advanced": {
+    "intent": "advanced",
+    "openStagePanels": 0,
+    "toolsParent": "scene-control-panels"
+  },
+  "advancedRestored": {
+    "intent": "advanced",
+    "toolsVisible": true
+  },
+  "escape": {
+    "focus": "tools-button",
+    "inspectorHidden": true
+  },
+  "mobile390": {
+    "layout": "drawer",
+    "overflow": false,
+    "rects": {
+      "#arena": {
+        "bottom": 552.40625,
+        "height": 396.40625,
+        "left": 8,
+        "right": 382,
+        "top": 156,
+        "width": 374,
+        "x": 8,
+        "y": 156
+      },
+      "#brain-panel": {
+        "bottom": 836,
+        "height": 229.59375,
+        "left": 8,
+        "right": 382,
+        "top": 606.40625,
+        "width": 374,
+        "x": 8,
+        "y": 606.40625
+      },
+      "#brain-plot": {
+        "bottom": 737.40625,
+        "height": 58,
+        "left": 206,
+        "right": 371,
+        "top": 679.40625,
+        "width": 165,
+        "x": 206,
+        "y": 679.40625
+      },
+      "#eye": {
+        "bottom": 736.40625,
+        "height": 56,
+        "left": 60,
+        "right": 144,
+        "top": 680.40625,
+        "width": 84,
+        "x": 60,
+        "y": 680.40625
+      },
+      "#scene-control-panels": {
+        "bottom": 556.40625,
+        "height": 336.40625,
+        "left": 24,
+        "right": 374,
+        "top": 220,
+        "width": 350,
+        "x": 24,
+        "y": 220
+      }
+    },
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  "mobileWizard": {
+    "dialogOverflow": false,
+    "previewText": "Sunbeam selectedGrid: 25 cm",
+    "previewVisible": true,
+    "viewport": [
+      390,
+      844
+    ],
+    "retainedName": "Sunbeam"
+  },
+  "mobile320": {
+    "layout": "drawer",
+    "overflow": false,
+    "rects": {
+      "#arena": {
+        "bottom": 451.40625,
+        "height": 259.40625,
+        "left": 8,
+        "right": 312,
+        "top": 192,
+        "width": 304,
+        "x": 8,
+        "y": 192
+      },
+      "#brain-panel": {
+        "bottom": 772,
+        "height": 231.59375,
+        "left": 8,
+        "right": 312,
+        "top": 540.40625,
+        "width": 304,
+        "x": 8,
+        "y": 540.40625
+      },
+      "#brain-plot": {
+        "bottom": 671.40625,
+        "height": 58,
+        "left": 171,
+        "right": 301,
+        "top": 613.40625,
+        "width": 130,
+        "x": 171,
+        "y": 613.40625
+      },
+      "#eye": {
+        "bottom": 672.40625,
+        "height": 56,
+        "left": 42.5,
+        "right": 126.5,
+        "top": 616.40625,
+        "width": 84,
+        "x": 42.5,
+        "y": 616.40625
+      },
+      "#new-scene": {
+        "bottom": 39.5,
+        "height": 32,
+        "left": 58.140625,
+        "right": 152.1171875,
+        "top": 7.5,
+        "width": 93.9765625,
+        "x": 58.140625,
+        "y": 7.5
+      },
+      "#scene-control-panels": {
+        "bottom": 455.40625,
+        "height": 199.40625,
+        "left": 24,
+        "right": 304,
+        "top": 256,
+        "width": 280,
+        "x": 24,
+        "y": 256
+      }
+    },
+    "viewport": [
+      320,
+      780
+    ]
+  },
+  "final320": {
+    "height": 780,
+    "layout": "drawer",
+    "overflow": 0,
+    "rail": [
+      {
+        "text": "Brain → duck",
+        "y": 493.40625
+      },
+      {
+        "text": "Objects & physics",
+        "y": 493.40625
+      },
+      {
+        "text": "Experiment",
+        "y": 493.40625
+      },
+      {
+        "text": "Close settings",
+        "y": 492.90625
+      }
+    ],
+    "width": 320
+  },
+  "final820": {
+    "inspectorWidth": 356,
+    "layout": "drawer",
+    "overflow": 0,
+    "width": 820
+  },
+  "final1320": {
+    "layout": "docked",
+    "overflow": 0,
+    "width": 1320
+  },
+  "console": [],
+  "realEscapeBefore": {
+    "intent": "advanced",
+    "sceneSettingsOpen": true,
+    "scroll": 604,
+    "toolsHidden": false
+  },
+  "realEscapeAfter": {
+    "focus": false,
+    "intent": "advanced",
+    "sceneSettingsOpen": true,
+    "scroll": 604,
+    "toolsHidden": false
+  }
+}

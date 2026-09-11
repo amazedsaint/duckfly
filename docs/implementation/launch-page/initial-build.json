@@ -1,0 +1,30 @@
+{
+  "candidate": "mac/build/DuckFlyLaunchFinal.app",
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "f494b27a1fc984e39716058036a2072919a8f9fc33392efacc91e2358401dcdf",
+      "bytes": 605
+    },
+    {
+      "path": "assets/index-BP-jLbr3.js",
+      "sha256": "0155bd51c2711952434edc352f279901610b67d891f24189a1f3688698ed845e",
+      "bytes": 759820
+    },
+    {
+      "path": "assets/index-CxzitTcC.css",
+      "sha256": "331484dafdbe696771c2852749cb4493af2f33e964ad8a358c5a90c17bf05b4a",
+      "bytes": 59412
+    },
+    {
+      "path": "launch/duck-hero.png",
+      "sha256": "affbcaa6f0b372d189a19fd6fe2ea2a3fe55a59a3d5d736022abde5f8ac56fe4",
+      "bytes": 967061
+    },
+    {
+      "path": "launch/fly-hero.png",
+      "sha256": "e052cb58292b0c2af20d83c63a5ab41d68df5bbf6c30737e6ea0b33ab7d27cd8",
+      "bytes": 1489571
+    }
+  ]
+}

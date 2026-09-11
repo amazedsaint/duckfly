@@ -1,0 +1,44 @@
+{
+  "candidate": "mac/build/DuckFlyStudioVerified.app",
+  "allPassed": true,
+  "suites": {
+    "launch": {
+      "passed": true,
+      "exitCode": 0,
+      "elapsedSeconds": 10.4,
+      "receiptGroups": 6
+    },
+    "playground": {
+      "passed": true,
+      "exitCode": 0,
+      "elapsedSeconds": 33.2,
+      "receiptGroups": 4
+    },
+    "setup": {
+      "passed": true,
+      "exitCode": 0,
+      "elapsedSeconds": 36.9,
+      "receiptGroups": 10
+    },
+    "workspace": {
+      "passed": true,
+      "exitCode": 0,
+      "elapsedSeconds": 124.0,
+      "receiptGroups": 14
+    },
+    "scenarios": {
+      "passed": true,
+      "exitCode": 0,
+      "elapsedSeconds": 295.8,
+      "scenarios": 11,
+      "controls": 11,
+      "interactions": 11,
+      "defaultSamples": 110
+    }
+  },
+  "totalNamedReceiptGroupsExcludingCatalog": 34,
+  "assertionExecutionCount": null,
+  "assertionCountNote": "Native scripts retain named receipt groups and catalog intervention sets rather than an executed assertion counter. All existing assertions completed; no assertions were weakened.",
+  "nativePaintVerified": false,
+  "testEventCorrection": "Synthetic Escape events now use cancelable:true like real keyboard events. Invalid earlier playground attempt is retained as native-playground-test-event-invalid.log; production bundle JS/CSS is byte-identical."
+}

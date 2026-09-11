@@ -11,6 +11,24 @@ const setupWait = async (predicate, timeout = 30000) => {
     await new Promise(resolve => setTimeout(resolve, 20));
   }
 };
+const enterSceneCatalog = async () => {
+  const get = selector => document.querySelector(selector);
+  await setupWait(() => window.duckflyTelemetry?.ready);
+  if (get('#home-page').hidden) {
+    const back = get('#back-home');
+    if (!back || back.closest('[hidden]')) throw Error('Scene gallery has no visible return control');
+    back.click();
+    await setupWait(() => !get('#home-page').hidden);
+  }
+  const launch = get('#launch-page');
+  if (launch && !launch.hidden) {
+    const enter = get('#launch-enter');
+    if (!enter || enter.disabled || enter.closest('[hidden]') || enter.getBoundingClientRect().width <= 0)
+      throw Error('Launch page has no visible playground entry');
+    enter.click();
+  }
+  await setupWait(() => !get('#home-page').hidden && (!get('#scene-catalog') || !get('#scene-catalog').hidden) && (!get('#launch-page') || get('#launch-page').hidden));
+};
 const finishSceneSetup = async () => {
   const get = selector => document.querySelector(selector);
   await setupWait(() => get('#scene-setup')?.open);
@@ -38,16 +56,15 @@ const finishSceneSetup = async () => {
   reportAcceptanceStage('wizard launch complete');
 };
 const launchScenario = async id => {
+  await enterSceneCatalog();
   const tile = document.querySelector(`[data-scenario="${id}"]`);
-  if (!tile) throw Error('Missing scenario tile ' + id);
+  if (!tile || tile.closest('[hidden]')) throw Error('Missing visible scenario tile ' + id);
+  tile.scrollIntoView({block:'nearest'});
   tile.click();
   await finishSceneSetup();
 };
 const loadPresetScene = async id => {
-  const preset = document.querySelector('#preset');
-  preset.value = id;
-  preset.dispatchEvent(new Event('change', {bubbles: true}));
-  await finishSceneSetup();
+  await launchScenario(id);
   await setupWait(() => !window.duckflyTelemetry.paused);
   document.querySelector('#pause').click();
   await setupWait(() => window.duckflyTelemetry.paused);

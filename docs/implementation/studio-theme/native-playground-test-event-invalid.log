@@ -1,0 +1,10 @@
+MAC_LAB_TEST_START PlaygroundSmoke.js
+MAC_LAB_PROGRESS {"stage":"wizard step 0","scene":"Follow the beacon","time":1789090115930,"tick":0}
+MAC_LAB_PROGRESS {"stage":"wizard step 1","scene":"Follow the beacon","time":1789090115943,"tick":0}
+MAC_LAB_PROGRESS {"stage":"wizard step 2","scene":"Follow the beacon","time":1789090115946,"tick":0}
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789090115973,"stage":"wizard launch complete"}
+MAC_LAB_PROGRESS {"tick":127,"scene":"Follow the beacon","time":1789090119982,"stage":"wizard step 0"}
+MAC_LAB_PROGRESS {"stage":"wizard step 1","scene":"Follow the beacon","time":1789090119987,"tick":127}
+MAC_LAB_PROGRESS {"stage":"wizard step 2","scene":"Follow the beacon","time":1789090119989,"tick":127}
+MAC_LAB_PROGRESS {"stage":"wizard launch complete","scene":"Follow the flock","time":1789090120980,"tick":39}
+MAC_LAB_FAIL A JavaScript exception occurred: ["WKJavaScriptExceptionLineNumber": 0, "WKJavaScriptExceptionMessage": Error: Focus did not restore the Advanced inspector and disclosure, "NSLocalizedDescription": A JavaScript exception occurred, "WKJavaScriptExceptionColumnNumber": 0]

@@ -1,0 +1,41 @@
+{
+  "art": [
+    {
+      "loaded": true,
+      "src": "/launch/duck-hero.png"
+    },
+    {
+      "loaded": true,
+      "src": "/launch/fly-hero.png"
+    }
+  ],
+  "overflow": 0,
+  "ready": true,
+  "scripts": [
+    "https://duckfly.vercel.app/assets/index-D7lKy3Se.js"
+  ],
+  "status": "Your playground is ready. No account needed.",
+  "styles": [
+    "https://duckfly.vercel.app/assets/index-G16S4Cud.css"
+  ],
+  "url": "https://duckfly.vercel.app/",
+  "viewport": [
+    563,
+    811
+  ],
+  "studio563": {
+    "brainVisible": true,
+    "eyeVisible": true,
+    "intent": "objects",
+    "layout": "drawer",
+    "overflow": 0,
+    "width": 563
+  },
+  "live": {
+    "brain": "LIVE CONNECTION\nDuck 1\nCompact\nDuck’s eye view\nHead\nLeft\nRight\nCue too small · 2/5 pixels\nFlow\nVision controls\nFly brain\n668 neurons · connected\nForward\nTurn\nStop reflex\nStimulate the brain\nBeacon lost · forward blocked\nWhy?\nBrain request\n0.30 m/s · 0.11 rad/s\nBody command\n0.00 m/s · 0.11 rad/s\nMeasured speed\n0.09 m/s\nFeedback\n40% gait drive\n\nTarget absent\n\nMovement & feedback\n\n668-neuron fly circuit · modeled vision",
+    "clock": "7.14 s",
+    "layout": "docked",
+    "overflow": 0
+  },
+  "console": []
+}

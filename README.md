@@ -2,6 +2,10 @@
 
 **Web app:** [duckfly.vercel.app](https://duckfly.vercel.app) · Vercel organization: `contextmind`.
 
+The [animated welcome page](docs/implementation/launch-page/README.md) introduces the duck and fly with original illustrated characters. Open the playground to browse scenes, or use **Try the beacon** to go straight into guided setup. **More → Welcome page** brings it back at any time.
+
+The same colors carry into the [compact studio and setup wizard](docs/implementation/studio-theme/README.md). One contextual inspector holds the active settings, docks beside the stage on wide windows, and becomes a drawer on smaller screens. Focus mode restores your previous panel when you leave it; the connected fly brain remains visible.
+
 [What we built, what the experiments found, and the next plan](docs/experiments/playground/README.md). New guided scenes: Stop, wait, go; Find it again; Brain switchboard; Bump and recover. The temporal stop adapter is explicitly experimental and remains off in earlier presets.
 
 The [scene and feedback audit](docs/experiments/scene-audit/README.md) makes every scene open-ended. It adds visible movement-block reasons and controls for the brain/body connection. Props can follow motion paths or behave as physical bodies.
@@ -52,7 +56,7 @@ Node 22.12+ is required for development. The resulting Mac app can be copied to 
 
 ## Conduct an experiment
 
-Start with a scenario tile on the home page. Each tile opens a visual setup wizard. Choose the ducks, map brain signals to body actions, then arrange objects and their physics on a draggable top-down map. Review the complete scene before starting it. Cancelling leaves the previous experiment intact. **Follow the beacon** uses camera input to follow a magenta target; **Out of sight** lets you block that view with a wall. **Follow the flock** gives every duck its own circuit in the same physical world.
+Choose **Open playground** on the welcome page, then select a scenario tile. Each tile opens a visual setup wizard. Choose the ducks, map brain signals to body actions, then arrange objects and their physics on a draggable top-down map. Review the complete scene before starting it. Cancelling leaves the previous experiment intact. **Follow the beacon** uses camera input to follow a magenta target; **Out of sight** lets you block that view with a wall. **Follow the flock** gives every duck its own circuit in the same physical world.
 
 Use **Edit setup** to revisit every wizard choice. **Brain → duck** opens live controls for the selected duck: forward neurons can request walking, a visual kick, or no forward action; turning can follow, reverse, or stay disconnected. Settings-only changes preserve the clock and physical state. The review explains when a change requires rebuilding the world. **Objects & physics** and **Experiment** open collapsible panels over the stage so the arena keeps its space.
 

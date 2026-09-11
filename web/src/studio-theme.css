@@ -1,0 +1,224 @@
+/* The launch palette, translated into compact studio chrome.
+   Scene colors and camera/circuit rendering stay owned by their renderers. */
+:root {
+  --studio-ink: #222524;
+  --studio-paper: #fff7df;
+  --studio-panel: #fffdf5;
+  --studio-muted: #656457;
+  --studio-line: #d8d0b8;
+  --studio-strong-line: #94917d;
+  --studio-lemon: #ffe63e;
+  --studio-coral: #ff7558;
+  --studio-cyan: #b9efec;
+  --studio-pink: #ffd0e4;
+}
+
+body:not(.launch-active) { background: var(--studio-paper); color: var(--studio-ink); }
+#scene-catalog, #experiment-page, body:not(.launch-active) .topbar, dialog:not(.scene-setup) {
+  --muted: var(--studio-muted);
+  --line: var(--studio-line);
+  --surface: var(--studio-panel);
+  --border-subtle: var(--studio-line);
+  --mint: #38776a;
+  --amber: #8b531f;
+  color: var(--studio-ink);
+  color-scheme: light;
+}
+
+/* Shared controls keep the current dimensions and layout. */
+:is(#scene-catalog, #experiment-page, dialog:not(.scene-setup)) button {
+  color: var(--studio-ink);
+  background: #fffdf5;
+  border-color: var(--studio-strong-line);
+  font-weight: 550;
+}
+:is(#scene-catalog, #experiment-page, dialog:not(.scene-setup)) button:hover:enabled {
+  color: var(--studio-ink);
+  background: #f8edce;
+  border-color: #44483e;
+}
+:is(#scene-catalog, #experiment-page, dialog:not(.scene-setup)) button[aria-pressed="true"] {
+  background: var(--studio-cyan);
+  color: #194541;
+  border-color: #537c73;
+}
+:is(#scene-catalog, #experiment-page, dialog:not(.scene-setup)) button.primary {
+  background: var(--studio-lemon);
+  color: var(--studio-ink);
+  border-color: #686139;
+  font-weight: 700;
+}
+:is(#scene-catalog, #experiment-page, dialog:not(.scene-setup)) button.primary:hover:enabled {
+  background: #fff088;
+  border-color: var(--studio-ink);
+}
+:is(#scene-catalog, #experiment-page, dialog:not(.scene-setup)) :is(input, select, textarea) {
+  color: var(--studio-ink);
+  background: #fffef8;
+  border-color: #a8a58d;
+}
+:is(#scene-catalog, #experiment-page, dialog:not(.scene-setup)) :is(input, textarea)::placeholder { color: #777668; opacity: 1; }
+:is(#scene-catalog, #experiment-page, dialog:not(.scene-setup)) :is(input[type="checkbox"], input[type="range"], progress) { accent-color: #36766b; }
+:is(#scene-catalog, #experiment-page, dialog:not(.scene-setup)) :is(label, summary) { color: #464a3f; }
+:is(#scene-catalog, #experiment-page, dialog:not(.scene-setup)) details { border-color: var(--studio-line); }
+:is(#scene-catalog, #experiment-page, dialog:not(.scene-setup)) summary::marker { color: #62695a; }
+:is(#scene-catalog, #experiment-page, dialog:not(.scene-setup)) :is(button, input, select, textarea, summary, a):focus-visible {
+  outline: 2px solid #9b3375;
+  outline-offset: 3px;
+}
+:is(#scene-catalog, #experiment-page, dialog:not(.scene-setup)) a { color: #28665d; }
+:is(#scene-catalog, #experiment-page, dialog:not(.scene-setup)) .hint { color: var(--studio-muted); }
+:is(#scene-catalog, #experiment-page) .eyebrow { color: #925063; }
+
+body:not(.launch-active) .topbar { background: #fff7dff5; border-bottom: 1px solid #b8b29b; color: var(--studio-ink); }
+body:not(.launch-active) .topbar .brand { color: var(--studio-ink); }
+body:not(.launch-active) .topbar .platform { color: var(--studio-muted); }
+body:not(.launch-active) .topbar :is(button, .app-menu > summary) { color: var(--studio-ink); border-color: #aaa58f; }
+body:not(.launch-active) .topbar :is(button, .app-menu > summary):hover { background: #f7ebc9; border-color: #575c4b; }
+body:not(.launch-active) .topbar :is(button, summary):focus-visible { outline-color: #9b3375; }
+body:not(.launch-active) .top-actions > #new-scene { background: var(--studio-lemon); color: var(--studio-ink); border: 1px solid #686139; font-weight: 700; }
+body:not(.launch-active) .top-actions > #new-scene:hover:enabled { background: #fff088; border-color: var(--studio-ink); }
+body:not(.launch-active) .topbar .app-menu summary::after { color: #686a5c; }
+body:not(.launch-active) .topbar .menu-content, #experiment-page .menu-content {
+  color: var(--studio-ink);
+  background: var(--studio-panel);
+  border-color: var(--studio-strong-line);
+  box-shadow: 0 8px 24px #2225241c;
+}
+body:not(.launch-active) .topbar .menu-content button, #experiment-page .menu-content button { color: var(--studio-ink); background: transparent; }
+body:not(.launch-active) .topbar .menu-content button:hover, #experiment-page .menu-content button:hover { background: #f8edce; }
+
+/* The catalog is a light, quiet continuation of the colorful welcome page. */
+#scene-catalog .home-intro { border-left: 4px solid #f18bad; padding-left: 18px; }
+#scene-catalog .home-intro h1 { color: var(--studio-ink); font-weight: 750; font-size: clamp(30px,3.4vw,39px); letter-spacing: -1.45px; }
+#scene-catalog .home-intro p { color: #56594c; }
+#scene-catalog .home-meta { color: var(--studio-muted); }
+#scene-catalog #continue-scene { background: var(--studio-cyan); color: #204b45; border-color: #71998e; }
+#scene-catalog #continue-scene:hover { background: #d2f8f3; border-color: #355e54; }
+#scene-catalog .section-heading h2 { font-weight: 700; }
+#scene-catalog .scenario-filters button { background: transparent; border-color: transparent; color: #5c6253; }
+#scene-catalog .scenario-filters button:hover:enabled { background: #f5eacc; border-color: #c1b99f; }
+#scene-catalog .scenario-filters button[aria-pressed="true"] { background: var(--studio-cyan); color: #204b45; border-color: #749990; font-weight: 650; }
+#scene-catalog .scenario-tile { color: var(--studio-ink); background: var(--studio-panel); border-color: #8c907a; border-radius: 10px; box-shadow: 0 2px 0 #e5dbbe; }
+#scene-catalog .scenario-tile:hover:enabled { color: var(--studio-ink); background: #fffef8; border-color: #404c3f; box-shadow: 0 3px 0 #d0e6db; }
+#scene-catalog .scenario-image { border-bottom: 1px solid #a9ad97; }
+#scene-catalog .tile-tag { color: #3e493b; background: #fff3bd; border-color: #746b43; font-weight: 600; }
+#scene-catalog .scenario-tile:nth-child(4n+2) .tile-tag { background: #c6f0ed; border-color: #567d74; color: #254941; }
+#scene-catalog .scenario-tile:nth-child(4n+3) .tile-tag { background: #ffdae8; border-color: #aa7387; color: #663c4e; }
+#scene-catalog .scenario-tile:nth-child(4n) .tile-tag { background: #ffdfcb; border-color: #aa7b5a; color: #653f2d; }
+#scene-catalog .tile-number { color: #737363; }
+#scene-catalog .tile-copy h3 { color: var(--studio-ink); font-weight: 700; }
+#scene-catalog .tile-copy p { color: #5a6154; }
+#scene-catalog .tile-launch { color: #315f54; font-weight: 650; }
+#scene-catalog .home-footer { color: var(--studio-muted); border-color: var(--studio-line); }
+
+/* Stage and monitor remain in their existing responsive geometry. */
+#experiment-page .experiment-heading h1 { color: var(--studio-ink); font-weight: 700; }
+#experiment-page .experiment-heading p { color: #65675a; }
+#experiment-page .experiment-heading > button { background: transparent; border-color: #b1ad95; }
+#experiment-page .toolbar #pause { border-color: #686139; box-shadow: 0 1px 0 #b5a855; }
+#experiment-page .toolbar #edit-setup { background: #fff0d6; border-color: #af9270; }
+#experiment-page .toolbar #edit-setup:hover { background: #ffe3bd; border-color: #806444; }
+#experiment-page .toolbar #clock { color: #484f43; }
+#experiment-page .open-scene-label { color: #666b5a; }
+#experiment-page .arena { outline: 1px solid #7b8977; outline-offset: -1px; }
+#experiment-page .arena-label span { color: #374c3e; background: #fffdf3ed; border-color: #b8c5b2; }
+#experiment-page .arena-label #live { color: #365b4d; background: #d7f0dded; border-color: #8aad95; }
+#experiment-page .view-actions button { color: #304e42; background: #fffdf3ed; border-color: #9aa98d; }
+#experiment-page .view-actions button:hover:enabled { background: #fff8db; border-color: #516b57; }
+#experiment-page .view-actions button[aria-pressed="true"] { background: #b9efec; color: #194541; border-color: #537c73; }
+#experiment-page .statusbar { color: #69705e; }
+#experiment-page .stage-settings-rail button { background: #fffdf5; color: #414b3d; border-color: #a5aa92; }
+#experiment-page .stage-settings-rail button:hover { background: #f8edce; border-color: #59654f; }
+#experiment-page .stage-settings-rail button[aria-expanded="true"] { background: var(--studio-cyan); color: #204b45; border-color: #5c8b7f; font-weight: 650; }
+#experiment-page #close-stage-settings { border-color: transparent; color: #646b5b; background: transparent; }
+#experiment-page #close-stage-settings:hover { border-color: #aaa58e; background: #f7e9c9; }
+
+/* Floating settings read as small instrument panels, not a second dashboard. */
+#experiment-page :is(.scene-control-panels, .tools-panel) { color: var(--studio-ink); background: var(--studio-panel); border-color: #8b9681; box-shadow: 0 8px 28px #263b2a24; }
+#experiment-page .workspace-panel { background: var(--studio-panel); border-color: var(--studio-line); }
+#experiment-page .scene-control-panels .workspace-panel > summary { background: #faf0d3; color: #364534; font-weight: 650; }
+#experiment-page .scene-control-panels .workspace-panel > summary:hover { background: #f6e8bd; }
+#experiment-page .workspace-panel > summary::marker { color: #646f58; }
+#experiment-page .summary-note { color: #626650; font-weight: 400; }
+#experiment-page .tools-panel > .panel-title { background: var(--studio-panel); border-bottom-color: var(--studio-line); }
+#experiment-page .tools-panel summary { color: #46523f; }
+#experiment-page .tools-panel summary:hover { color: #1b483d; }
+#experiment-page .tools-panel :is(.tree-group, #object-count, .tree-item small, #branch-label, .timeline p) { color: #6c7563; }
+#experiment-page .tree-item { background: transparent; border-color: transparent; }
+#experiment-page .tree-item[aria-pressed="true"], #experiment-page .object-chip[aria-pressed="true"] { background: var(--studio-cyan); border-color: #5c8b7f; color: #204b45; }
+#experiment-page .object-chip { background: #fffbef; border-color: #b1b49e; }
+#experiment-page .object-chip:hover:enabled { background: #eef6e9; border-color: #6d8976; }
+#experiment-page .workspace-inspector .object-tray { display: grid; grid-template-columns: minmax(0,1fr); align-items: stretch; gap: 8px; width: 100%; min-width: 0; }
+#experiment-page .workspace-inspector .object-chips { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; width: 100%; min-width: 0; max-height: 160px; padding: 5px; flex: none; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+#experiment-page .workspace-inspector .object-chip { width: 100%; min-width: 0; min-height: 32px; padding: 6px 8px; gap: 6px; justify-content: flex-start; text-align: left; white-space: normal; overflow-wrap: anywhere; line-height: 1.35; }
+#experiment-page .workspace-inspector .object-chip :is(img,.prop-dot) { flex: none; }
+#experiment-page .workspace-inspector #quick-add { width: 100%; min-width: 0; }
+#experiment-page .workspace-inspector #quick-add > summary { display: flex; align-items: center; justify-content: center; width: 100%; text-align: center; }
+#experiment-page .workspace-inspector #quick-add .menu-content { min-width: 0; }
+#experiment-page .prop-actions { border-color: var(--studio-line); }
+#experiment-page #prop-label { color: #4b5645; }
+#experiment-page .workspace-inspector .prop-actions { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); align-items: center; gap: 5px; padding-top: 8px; margin-top: 8px; }
+#experiment-page .workspace-inspector #prop-label { grid-column: 1/4; min-width: 0; margin: 0; overflow-wrap: anywhere; }
+#experiment-page .workspace-inspector .prop-actions > .hint { grid-column: 4; margin: 0; text-align: right; }
+#experiment-page .workspace-inspector .prop-actions button { min-width: 0; padding: 5px 7px; }
+#experiment-page .workspace-inspector :is(#edit-object,#delete-object) { grid-column: span 2; }
+#experiment-page :is(#delete-object, #remove) { color: #974a45; border-color: #c9a095; background: #fff6eb; }
+#experiment-page :is(#delete-object, #remove):hover:enabled { color: #83392e; border-color: #ab796c; background: #ffe3d7; }
+#experiment-page .mapping-connections label > span { color: #56604b; }
+#experiment-page .mapping-connections b { color: #b35578; }
+#experiment-page .mapping-status { background: #e0f3df; color: #35573f; border: 1px solid #b7cdb0; }
+#experiment-page .mapping-bypassed .mapping-status { background: #fff0c7; color: #745421; border-color: #d2b875; }
+#experiment-page #lab-observation { color: #4f5c45; }
+#experiment-page .lab-readout { color: #8a4d2c; }
+#experiment-page .lab-notes { color: #68705d; }
+
+/* Neural colors retain their original dark plotting background. */
+#experiment-page .brain-panel { color: var(--studio-ink); background: var(--studio-panel); border-color: #8d9b83; }
+#experiment-page .brain-heading { background: #d1f4f1; border-bottom-color: #a4cac4; }
+#experiment-page .brain-heading .eyebrow { color: #536e66; }
+#experiment-page .brain-heading select { color: #294738; background: transparent; border-color: transparent; }
+#experiment-page .brain-heading button { background: #f4fbef; border-color: #9fb795; color: #3e5a41; }
+#experiment-page :is(.eye-heading strong, .neural-heading strong) { color: #3b4d37; font-weight: 650; }
+#experiment-page #eye-empty { color: #9aafa1; }
+#experiment-page :is(#brain-plot, #trace) { background: #1b2b23; border-radius: 5px; }
+#experiment-page .vision-caption { color: #697260; }
+#experiment-page .vision-caption label { color: #697260; }
+#experiment-page .neural-heading > span { color: #55744b; }
+#experiment-page .neural-heading > span.bypassed { color: #946223; }
+#experiment-page .neural-legend { color: #66745e; }
+#experiment-page .monitor-controls > summary { color: #59704e; }
+#experiment-page .monitor-controls > summary:hover { color: #244d3a; }
+#experiment-page .monitor-controls > summary::marker { color: #67835c; }
+#experiment-page .response-heading strong { color: #405d36; }
+#experiment-page .signal-bars b, #experiment-page .loop-readout b { color: #405038; }
+#experiment-page #metrics { color: #66755c; }
+#experiment-page .feedback-loop { color: #48683d; }
+#experiment-page .loop-reason { color: #956037; }
+#experiment-page #model-note { color: #636b59; }
+#experiment-page .connection-note { color: #626657; background: #faf6e9; }
+#experiment-page meter::-webkit-meter-bar { background: #e7eadb; }
+#experiment-page .active-camera { border-color: #a97630 !important; color: #815126 !important; background: #ffeac0 !important; }
+
+/* Supporting dialogs share the paper surface; setup has its own scoped theme. */
+dialog:not(.scene-setup) { background: var(--studio-panel); color: var(--studio-ink); border-color: #929a82; box-shadow: 0 18px 70px #233b293d; }
+dialog:not(.scene-setup)::backdrop { background: #26352980; }
+dialog:not(.scene-setup) :is(p, td:first-child, .bench-views figcaption) { color: #637058; }
+dialog:not(.scene-setup) td { border-color: var(--studio-line); }
+dialog:not(.scene-setup) #job-results pre { color: #495a3e; background: #eff2e3; border-color: #c4cead; }
+body:not(.launch-active) #notice { background: #fff0c3; border-color: #afa174; color: #514725; box-shadow: 0 6px 24px #283a2524; }
+
+@media (min-width: 1000px) {
+  #scene-catalog .home-intro { display: grid; grid-template-columns: minmax(0,1fr) minmax(180px,240px); column-gap: 28px; row-gap: 7px; max-width: none; padding-top: 8px; padding-bottom: 8px; }
+  #scene-catalog .home-intro > .eyebrow { grid-column: 1; grid-row: 1; margin: 0; }
+  #scene-catalog .home-intro h1 { grid-column: 1; grid-row: 2; margin: 0; font-size: 35px; }
+  #scene-catalog .home-intro > p { grid-column: 1; grid-row: 3; max-width: 620px; margin: 0; font-size: 14px; line-height: 1.6; }
+  #scene-catalog .home-meta { grid-column: 2; grid-row: 1/4; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 10px; padding-left: 20px; border-left: 1px solid var(--studio-line); text-align: right; }
+  #scene-catalog #continue-scene { padding: 8px 13px; }
+}
+
+@media (max-width: 520px) {
+  #scene-catalog .home-intro { padding-left: 13px; border-left-width: 3px; }
+  #scene-catalog .home-intro h1 { font-size: 31px; letter-spacing: -1.1px; }
+  #scene-catalog .home-intro p { font-size: 14px; }
+}

@@ -1,0 +1,13 @@
+{
+  "installed": "/Users/madhusudanaa/Applications/DuckFly.app",
+  "candidate": "/Users/madhusudanaa/Documents/GitHub/duckfly/mac/build/DuckFlyStudioVerified.app",
+  "backup": "/Users/madhusudanaa/Documents/GitHub/duckfly/mac/build/backups/DuckFly-before-0.10.0-20260910-213954.app",
+  "version": "0.10.0",
+  "build": "11",
+  "filesMatched": 71,
+  "signatureVerified": true,
+  "installedAt": "2026-09-11T01:39:54.964323+00:00",
+  "executableSha256": "b3435a99a659a6521ad65e7d86cfcd0cd946ec626a751e386b69453421e6a12d",
+  "opened": true,
+  "readyWelcomeVerified": "CUA native accessibility state: Your playground is ready. No account needed."
+}

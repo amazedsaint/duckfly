@@ -20,6 +20,8 @@ All experiment controls are documented in the [root README](../README.md). Nativ
 
 ```sh
 mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test
+mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-launch
+mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-setup
 mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-playground
 mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-scenarios
 mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-guided
@@ -27,6 +29,8 @@ mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-vision
 ```
 
 The packaged self-test launches the actual WKWebView and drives the bundled workspace. It uses a nonpersistent data store and does not alter the user's saved scene. Camera checks use a denied stub and synthetic canvas stream; they do not activate the physical camera. Test receipts and visual review are tracked in `docs/implementation/`.
+
+The launch check covers the illustrated welcome page and its transitions into real experiments, including shared links and retaining a paused scene. Run the native suites serially so their WebKit/physics processes do not contend for the same machine.
 
 `Host/main.swift` implements the shell, origin restrictions and native downloads. `Tests/playground-smoke.js` checks the simplified home and persistent brain dock. `Tests/workspace-smoke.js` supplies native workspace acceptance checks.
 `Tests/vision-smoke.js` checks the retinal bench and full Flyvis inference. The

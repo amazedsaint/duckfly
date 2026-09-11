@@ -1,0 +1,8 @@
+MAC_LAB_TEST_START ScenarioAudit.js
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789089157890,"stage":"catalog flock"}
+MAC_LAB_PROGRESS {"stage":"wizard step 0","scene":"Follow the beacon","time":1789089157902,"tick":0}
+MAC_LAB_PROGRESS {"stage":"wizard step 1","scene":"Follow the beacon","time":1789089157915,"tick":0}
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789089157919,"stage":"wizard step 2"}
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789089158016,"stage":"wizard launch complete"}
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789089158016,"stage":"flock wait for configured world"}
+MAC_LAB_PROGRESS {"tick":3,"scene":"Follow the flock","time":1789089158188,"stage":"flock observe default run"}

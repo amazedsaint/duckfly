@@ -1,0 +1,15 @@
+{
+  "suite": "playground",
+  "command": [
+    "/Users/madhusudanaa/Documents/GitHub/duckfly/mac/build/DuckFlyStudioFinal.app/Contents/MacOS/DuckFly",
+    "--self-test-playground"
+  ],
+  "pid": 1694,
+  "exitCode": 1,
+  "elapsedSeconds": 19.9,
+  "receipts": 0,
+  "failures": [
+    "MAC_LAB_FAIL A JavaScript exception occurred: [\"WKJavaScriptExceptionLineNumber\": 0, \"WKJavaScriptExceptionMessage\": Error: Focus did not restore the Advanced inspector and disclosure, \"NSLocalizedDescription\": A JavaScript exception occurred, \"WKJavaScriptExceptionColumnNumber\": 0]"
+  ],
+  "pass": false
+}

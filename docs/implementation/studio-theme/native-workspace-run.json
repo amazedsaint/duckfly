@@ -1,0 +1,14 @@
+{
+  "suite": "workspace",
+  "command": [
+    "/Users/madhusudanaa/Documents/GitHub/duckfly/mac/build/DuckFlyStudioVerified.app/Contents/MacOS/DuckFly",
+    "--self-test"
+  ],
+  "pid": 2790,
+  "exitCode": 0,
+  "elapsedSeconds": 124.0,
+  "receipts": 1,
+  "failures": [],
+  "receiptGroups": 14,
+  "pass": true
+}

@@ -1,0 +1,19 @@
+[
+  {
+    "check": "scenario home, reviewed wizard launch, visible vision and brain, eye covering, independent duck selection, prop movement and controller provenance"
+  },
+  {
+    "check": "add duck selects its brain, removal repairs selection, Continue preserves scene"
+  },
+  {
+    "check": "one mounted inspector slot, viewport-appropriate geometry, menu Escape priority, Advanced and object Focus restoration with preserved scroll, unchanged physical state",
+    "arenaWidth": 628,
+    "inspectorWidth": 320,
+    "nativePaintVerified": false,
+    "mode": "docked",
+    "viewport": 1320
+  },
+  {
+    "check": "compact and Focus layouts preserve the complete paused scene and selected duck; Escape restores panels; guided controls collapse without resetting time"
+  }
+]

@@ -1,0 +1,42 @@
+MAC_LAB_TEST_START ScenarioAudit.js
+MAC_LAB_PROGRESS {"stage":"catalog target","scene":"Follow the beacon","time":1789088759992,"tick":0}
+MAC_LAB_PROGRESS {"stage":"wizard step 0","scene":"Follow the beacon","time":1789088760007,"tick":0}
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789088760025,"stage":"wizard step 1"}
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789088760029,"stage":"wizard step 2"}
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789088760281,"stage":"wizard launch complete"}
+MAC_LAB_PROGRESS {"tick":1616,"scene":"Follow the beacon","time":1789088807609,"stage":"catalog stop-go"}
+MAC_LAB_PROGRESS {"stage":"wizard step 0","scene":"Follow the beacon","time":1789088807615,"tick":1616}
+MAC_LAB_PROGRESS {"stage":"wizard step 1","scene":"Follow the beacon","time":1789088807619,"tick":1616}
+MAC_LAB_PROGRESS {"stage":"wizard step 2","scene":"Follow the beacon","time":1789088807621,"tick":1616}
+MAC_LAB_PROGRESS {"tick":30,"scene":"Stop, wait, go","time":1789088808609,"stage":"wizard launch complete"}
+MAC_LAB_PROGRESS {"tick":322,"scene":"Stop, wait, go","time":1789088828609,"stage":"catalog gaze"}
+MAC_LAB_PROGRESS {"tick":322,"scene":"Stop, wait, go","time":1789088828624,"stage":"wizard step 0"}
+MAC_LAB_PROGRESS {"tick":322,"scene":"Stop, wait, go","time":1789088828640,"stage":"wizard step 1"}
+MAC_LAB_PROGRESS {"stage":"wizard step 2","scene":"Stop, wait, go","time":1789088828647,"tick":322}
+MAC_LAB_PROGRESS {"tick":17,"scene":"Find it again","time":1789088829612,"stage":"wizard launch complete"}
+MAC_LAB_PROGRESS {"stage":"catalog switchboard","scene":"Find it again","time":1789088852610,"tick":320}
+MAC_LAB_PROGRESS {"tick":320,"scene":"Find it again","time":1789088852623,"stage":"wizard step 0"}
+MAC_LAB_PROGRESS {"stage":"wizard step 1","scene":"Find it again","time":1789088852647,"tick":320}
+MAC_LAB_PROGRESS {"tick":320,"scene":"Find it again","time":1789088852656,"stage":"wizard step 2"}
+MAC_LAB_PROGRESS {"tick":28,"scene":"Brain switchboard","time":1789088853627,"stage":"wizard launch complete"}
+MAC_LAB_PROGRESS {"tick":338,"scene":"Brain switchboard","time":1789088872609,"stage":"catalog recovery"}
+MAC_LAB_PROGRESS {"tick":338,"scene":"Brain switchboard","time":1789088872621,"stage":"wizard step 0"}
+MAC_LAB_PROGRESS {"tick":338,"scene":"Brain switchboard","time":1789088872636,"stage":"wizard step 1"}
+MAC_LAB_PROGRESS {"stage":"wizard step 2","scene":"Brain switchboard","time":1789088872644,"tick":338}
+MAC_LAB_PROGRESS {"stage":"wizard launch complete","scene":"Bump and recover","time":1789088873612,"tick":35}
+MAC_LAB_PROGRESS {"stage":"catalog kick","scene":"Bump and recover","time":1789088891610,"tick":328}
+MAC_LAB_PROGRESS {"tick":328,"scene":"Bump and recover","time":1789088891620,"stage":"wizard step 0"}
+MAC_LAB_PROGRESS {"tick":328,"scene":"Bump and recover","time":1789088891630,"stage":"wizard step 1"}
+MAC_LAB_PROGRESS {"tick":328,"scene":"Bump and recover","time":1789088891636,"stage":"wizard step 2"}
+MAC_LAB_PROGRESS {"stage":"wizard launch complete","scene":"See it, kick it","time":1789088892622,"tick":39}
+MAC_LAB_PROGRESS {"tick":315,"scene":"See it, kick it","time":1789088912611,"stage":"catalog occlusion"}
+MAC_LAB_PROGRESS {"stage":"wizard step 0","scene":"See it, kick it","time":1789088912626,"tick":315}
+MAC_LAB_PROGRESS {"tick":315,"scene":"See it, kick it","time":1789088912642,"stage":"wizard step 1"}
+MAC_LAB_PROGRESS {"tick":315,"scene":"See it, kick it","time":1789088912653,"stage":"wizard step 2"}
+MAC_LAB_PROGRESS {"tick":29,"scene":"Out of sight","time":1789088913742,"stage":"wizard launch complete"}
+MAC_LAB_PROGRESS {"tick":316,"scene":"Out of sight","time":1789088927519,"stage":"catalog flock"}
+MAC_LAB_PROGRESS {"tick":316,"scene":"Out of sight","time":1789088927527,"stage":"wizard step 0"}
+MAC_LAB_PROGRESS {"tick":316,"scene":"Out of sight","time":1789088927534,"stage":"wizard step 1"}
+MAC_LAB_PROGRESS {"tick":316,"scene":"Out of sight","time":1789088927537,"stage":"wizard step 2"}
+MAC_LAB_PROGRESS {"tick":316,"scene":"Out of sight","time":1789088927563,"stage":"wizard launch complete"}
+MAC_LAB_FAIL A JavaScript exception occurred: ["WKJavaScriptExceptionColumnNumber": 0, "NSLocalizedDescription": A JavaScript exception occurred, "WKJavaScriptExceptionMessage": Error: Audit timed out: {"scene":"Follow the flock","time":5.999999999999894,"paused":true,"notice":"Your scene is ready. Select a duck to watch its brain, or drag an object."}, "WKJavaScriptExceptionLineNumber": 0]

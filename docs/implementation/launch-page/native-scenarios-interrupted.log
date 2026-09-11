@@ -1,0 +1,6 @@
+MAC_LAB_TEST_START ScenarioAudit.js
+MAC_LAB_PROGRESS {"stage":"catalog target","scene":"Follow the beacon","time":1789088692068,"tick":0}
+MAC_LAB_PROGRESS {"tick":0,"scene":"Follow the beacon","time":1789088692081,"stage":"wizard step 0"}
+MAC_LAB_PROGRESS {"stage":"wizard step 1","scene":"Follow the beacon","time":1789088692096,"tick":0}
+MAC_LAB_PROGRESS {"stage":"wizard step 2","scene":"Follow the beacon","time":1789088692100,"tick":0}
+MAC_LAB_PROGRESS {"stage":"wizard launch complete","scene":"Follow the beacon","time":1789088692313,"tick":0}

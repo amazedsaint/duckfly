@@ -1,24 +1,32 @@
 const $=s=>document.querySelector(s), t=()=>window.duckflyTelemetry;
-const wait=async(predicate,timeout=20000)=>{const start=Date.now();while(!predicate()){if(Date.now()-start>timeout)throw Error('Audit timed out: '+JSON.stringify({scene:t()?.scene?.name,time:t()?.time,paused:t()?.paused,notice:$('#notice')?.textContent}));await new Promise(r=>setTimeout(r,20));}};
+let auditStage='startup';
+const mark=stage=>{auditStage=stage;reportAcceptanceStage(stage);};
+const wait=async(predicate,timeout=20000)=>{const start=Date.now();while(!predicate()){if(Date.now()-start>timeout)throw Error('Audit timed out: '+JSON.stringify({stage:auditStage,waitingFor:String(predicate),scene:t()?.scene?.name,tick:t()?.tick,time:t()?.time,paused:t()?.paused,connectedDuck:t()?.connectedDuck,selected:t()?.selected,ducks:t()?.scene?.ducks.map(d=>({id:d.id,motorEnabled:d.motorEnabled,feedback:d.feedback})),stepDisabled:$('#step')?.disabled,pauseText:$('#pause')?.textContent,notice:$('#notice')?.textContent}));await new Promise(r=>setTimeout(r,20));}};
 const check=(condition,message)=>{if(!condition)throw Error(message+' '+JSON.stringify({tick:t()?.tick,paused:t()?.paused,scene:t()?.scene?.name}));};
 const errors=[];
 window.addEventListener('error',event=>errors.push(String(event.error?.stack||event.message)));
 window.addEventListener('unhandledrejection',event=>errors.push(String(event.reason?.stack||event.reason)));
 await wait(()=>t()?.ready);
-const scenarios=[...document.querySelectorAll('[data-scenario]')].map(e=>({id:e.dataset.scenario,title:e.querySelector('h3').textContent}));
+await enterSceneCatalog();
+const requestedScenarios=window.duckflyTestOptions?.scenario?.split(',').filter(Boolean);
+const scenarios=[...document.querySelectorAll('[data-scenario]')].map(e=>({id:e.dataset.scenario,title:e.querySelector('h3').textContent})).filter(s=>!requestedScenarios||requestedScenarios.includes(s.id));
+check(!requestedScenarios||requestedScenarios.every(id=>scenarios.some(s=>s.id===id)),'Unknown requested diagnostic scenario');
 const result={format:'duckfly-catalog-audit',version:4,scenarios:[],controls:[],interactions:[]};
 const settle=()=>new Promise(resolve=>setTimeout(resolve,50));
 const inView=selector=>{const r=$(selector).getBoundingClientRect();return r.width>0&&r.height>0&&r.top>=0&&r.bottom<=innerHeight&&r.left>=0&&r.right<=innerWidth;};
 const openPanel=async(id,button)=>{if(!$(id).open)$(button).click();await settle();check($(id).open,'Missing open panel '+id);};
 const sample=()=>{const s=t();return {time:s.time,tick:s.tick,paused:s.paused,loop:s.loop,collisions:s.collisionCount,ducks:s.ducks.map(d=>{const a=s.agents[d.id],v=a?.vision;return {id:d.id,position:d.position,command:d.command,speed:d.speed,distance:d.distance,fallen:d.fallen,tilt:d.tilt,visible:v?.target.visible,neighborVisible:v?.neighbor.visible,area:v?.target.area,pixels:v?.target.candidatePixels,input:a?.input,neural:a?.neural&&{vx:a.neural.vx,yaw:a.neural.yaw,forward:a.neural.forward,spikes:a.neural.spikeCount},temporal:a?.temporal&&{held:a.temporal.held,fresh:a.temporal.fresh,gfEvents:a.temporal.gfEvents}};})};};
 for(const scenario of scenarios){
-  reportAcceptanceStage('catalog '+scenario.id);
+  mark('catalog '+scenario.id);
   if($('#home-page').hidden)$('#back-home').click();
   const name=scenario.id==='empty'?'Open arena':scenario.title;
   await launchScenario(scenario.id);
+  mark(scenario.id+' wait for configured world');
   await wait(()=>t().scene.name===name&&t().time>.05);
   const row={...scenario,samples:[]};
+  mark(scenario.id+' observe default run');
   for(let at=.5;at<=5;at+=.5){await wait(()=>t().tick>=Math.round(at/.02));row.samples.push(sample());}
+  mark(scenario.id+' pause default run');
   if(!t().paused){$('#pause').click();await wait(()=>t().paused);}
   row.final=sample();
   check(inView('#new-scene')&&inView('#eye')&&inView('#brain-plot'),scenario.id+' lost New scene or a live monitor');
@@ -28,24 +36,31 @@ for(const scenario of scenarios){
   check(!$('#guided-lab').hidden,scenario.id+' is missing scene controls');
   check($('#loop-intent').textContent.length&&$('#loop-command').textContent.length,scenario.id+' missing loop readout');
   const beyond=scenario.id==='target'?1600:300;
+  mark(scenario.id+' resume open-ended run');
   $('#pause').click();await wait(()=>t().tick>=beyond,60000);
   check(!t().paused,scenario.id+' automatically stopped at a time limit');
+  mark(scenario.id+' pause open-ended run');
   row.openEnded=sample();$('#pause').click();await wait(()=>t().paused);
   if(scenario.id==='stop-go')check(!$('#lab-save').hidden,'Five-second observation was not retained in the open scene');
   await openPanel('#experiment-controls','#panel-experiment');
   $('#body-details').open=true;
+  mark(scenario.id+' disconnect motor and feedback');
   $('#motor-link').click();$('#feedback-link').click();
   await wait(()=>!t().scene.ducks[0].motorEnabled&&!t().scene.ducks[0].feedback);
   const tick=t().tick, spikes=t().agents['duck-1'].neural.spikeCount;
+  mark(scenario.id+' step disconnected circuit');
   $('#step').click();await wait(()=>t().tick===tick+5&&t().paused);
   check(t().ducks[0].command.every(v=>v===0),scenario.id+' disconnected motor still commanded movement');
   check(t().agents['duck-1'].neural.spikeCount>spikes,scenario.id+' disconnect stopped brain simulation');
   check(t().agents['duck-1'].neural.feedback.drive===0,scenario.id+' feedback disconnect failed');
   result.controls.push({id:scenario.id,disconnected:sample(),actions:[...$('#guided-lab').querySelectorAll('[data-lab-action]')].filter(e=>!e.closest('[hidden]')).map(e=>e.dataset.labAction)});
+  mark(scenario.id+' reconnect motor and feedback');
   $('#motor-link').click();$('#feedback-link').click();
   await wait(()=>t().scene.ducks[0].motorEnabled&&t().scene.ducks[0].feedback);
+  mark(scenario.id+' reduce command gain');
   $('#motor-gain').value='0.5';$('#motor-gain').dispatchEvent(new Event('change',{bubbles:true}));
   await wait(()=>t().scene.ducks[0].motorGain===.5);
+  mark(scenario.id+' step reconnected circuit');
   $('#step').click();await wait(()=>t().tick===tick+10&&t().paused);
   check(Math.abs(t().ducks[0].command[0])<=.15+1e-9,scenario.id+' gain was ignored');
   result.controls.at(-1).reconnected=sample();
@@ -53,6 +68,7 @@ for(const scenario of scenarios){
   // behavior has been observed. Moving a fixed prop must reach the physics
   // world without restarting time or switching the connected brain.
   const prop=t().scene.props.find(p=>p.id==='bg-a')??t().scene.props.find(p=>!p.movable);
+  mark(scenario.id+' interact with the live scene');
   if(prop){
     const connected=t().connectedDuck,at=t().tick;
     await openPanel('#objects-panel','#panel-objects');
@@ -89,6 +105,12 @@ for(const scenario of scenarios){
     result.interactions.push({id:scenario.id,action:'walk pulse reaches live brain',tick:t().tick,forward:t().agents['duck-1'].neural.forward});
   }
 }
+if(requestedScenarios){
+  check(errors.length===0,'Diagnostic catalog raised uncaught errors: '+errors.join('\n'));
+  result.errors=errors;result.scope={diagnosticOnly:true,scenarios:requestedScenarios};
+  return result;
+}
+mark('distant beacon and prop physics regressions');
 $('#back-home').click();await launchScenario("target");await wait(()=>t().scene.name==='Follow the beacon'&&t().time>.05);
 $('#pause').click();await wait(()=>t().paused);
 $('#scene-objects [data-object="target-1"]').click();$('#edit-object').click();
