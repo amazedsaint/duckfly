@@ -1,0 +1,39 @@
+{
+  "commit": "c98d06aae1c16b3ad7ed92c609a6b43c617a296a",
+  "sources": [
+    {
+      "path": "models/DDModel2DbyEpoch.m",
+      "url": "https://raw.githubusercontent.com/ClarkLabCode/DDModel/c98d06aae1c16b3ad7ed92c609a6b43c617a296a/models/DDModel2DbyEpoch.m",
+      "sha256": "076a14156c9b8275e2dd132dff6961e1bea362411f715e0283fbdf6c637d4584",
+      "bytes": 9352
+    },
+    {
+      "path": "stimuli.zip",
+      "url": "https://raw.githubusercontent.com/ClarkLabCode/DDModel/c98d06aae1c16b3ad7ed92c609a6b43c617a296a/stimuli.zip",
+      "sha256": "820ed8ef0d252f2fce9c106cabef492e9db83c7f840417c577caa34afd2d09ca",
+      "bytes": 520027
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/ClarkLabCode/DDModel/c98d06aae1c16b3ad7ed92c609a6b43c617a296a/README.md",
+      "sha256": "6d1bdd88063fb83f9d7573182a97537b782a137e75ffd9d7904eb9efdf6e4fd9",
+      "bytes": 869
+    }
+  ],
+  "octaveInputAdapters": [
+    {
+      "group": "Fig4L_LocalFlickers",
+      "sourceSha256": "933b1ca28203ea7d808bbaa8cc6dd824d2a3f9e29a9de5ac9429b6e4a6234851",
+      "adaptedSha256": "dcc1c98c5c8e4595231fffbd53101935b43207c657cd776a608e51d4da2ef802",
+      "change": "Only unused trailing empty field becomes numeric zero"
+    },
+    {
+      "group": "Fig4F_SizeTuning",
+      "sourceSha256": "437405b5c154cc56a202220c2059bbdf87c8c42c32f99646eb773a66e325424e",
+      "adaptedSha256": "05ad27344e61771b011e60c12d98975ef4e4a96b48720cd2b316fd2e89c5c07a",
+      "change": "Only unused trailing empty field becomes numeric zero"
+    }
+  ],
+  "license": "No license file or repository license metadata found at inspected commit. Source stays in ignored cache.",
+  "originalModelSourceModified": false
+}

@@ -1,0 +1,23 @@
+{
+  "format": "duckfly-neural-map-flow-replay",
+  "version": 2,
+  "passed": true,
+  "exactNeuralMapHashes": true,
+  "exactDiagnostics": true,
+  "studyId": "neural-flow-v2-stratified",
+  "sourceSha256": "4bfbd8326aa55b82350b545231f3d27620edbbbd73a94ca5be6249d684117b8f",
+  "summarySha256": "a33382f50e1d06f2cca8bbdd5a6c787761acce3bc672c802fe3d0d83aba80594",
+  "checked": [
+    "cal-0-10-60",
+    "stratified-grating-8000",
+    "stratified-edge-on-8000",
+    "stratified-edge-off-8000",
+    "stratified-blank-8000",
+    "stratified-flash-8000",
+    "stratified-flicker-8000",
+    "stratified-static-grating-8000",
+    "stratified-counterphase-8000",
+    "stratified-illumination-8000"
+  ],
+  "coverage": "one calibration trial plus every moving/control family at held-out seed 8000"
+}

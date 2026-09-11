@@ -15,14 +15,14 @@ export class ExperimentRoom {
     this.disconnect();this.role=role;this.room=room;this.lastSequence=-1;
     this.pc=new RTCPeerConnection({iceServers:iceServers??[{urls:'stun:stun.l.google.com:19302'}]});
     this.pc.onconnectionstatechange=()=>{
-      const state=this.pc?.connectionState;if(state==='failed'||state==='disconnected'||state==='closed'){this.connected=false;this.onStatus({role:this.role,state,message:'Connection lost. Pair again to reconnect; the host keeps ownership.'});}
+      const state=this.pc?.connectionState;if(state==='failed'||state==='disconnected'||state==='closed'){this.connected=false;this.onStatus({role:this.role,state,message:'Connection lost. Pair again to reconnect. The host keeps the scene.'});}
     };
     this.pc.ondatachannel=event=>this.attach(event.channel);
     this.onStatus({role,state:'pairing',message:role==='host'?'Share the invitation, then paste the reply.':'Return the reply to the host.'});
   }
   attach(channel){
     this.channel=channel;
-    channel.onopen=()=>{this.connected=true;this.onStatus({role:this.role,state:'connected',message:this.role==='host'?'Collaborator connected. This device runs the simulation.':'Connected to the host. Prop and controller edits are shared.'});};
+    channel.onopen=()=>{this.connected=true;this.onStatus({role:this.role,state:'connected',message:this.role==='host'?'Collaborator connected. This device runs the simulation.':'Connected to the host. Object and duck settings are shared.'});};
     channel.onclose=()=>{this.connected=false;this.onStatus({role:this.role,state:'disconnected',message:'Connection closed. Pair again to reconnect.'});};
     channel.onmessage=event=>{
       try{
@@ -69,6 +69,6 @@ export class ExperimentRoom {
   disconnect(){
     if(this.channel){this.channel.onclose=null;this.channel.close();}if(this.pc){this.pc.onconnectionstatechange=null;this.pc.close();}
     this.pc=null;this.channel=null;this.connected=false;this.role='local';this.parts.clear();
-    this.onStatus({role:'local',state:'local',message:'Local experiment. No collaborator connected.'});
+    this.onStatus({role:'local',state:'local',message:'No collaborator connected. This scene runs on your device.'});
   }
 }

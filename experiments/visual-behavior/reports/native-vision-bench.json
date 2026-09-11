@@ -1,0 +1,60 @@
+{
+  "scope": "Stereo approach, stimulus bench and recorded action inspector only; webcam acceptance not run",
+  "format": "duckfly-native-vision-bench-acceptance",
+  "receipts": [
+    {
+      "check": "stereo approach",
+      "position": [
+        0.35651071121225636,
+        0.019823064076931844,
+        0.12089290852951384
+      ]
+    },
+    {
+      "dt": 0.002,
+      "check": "full Flyvis in WKWebView",
+      "timing": {
+        "p95": 31,
+        "scope": "Neural integration only; excludes capture, readout serialization and rendering",
+        "median": 30
+      }
+    },
+    {
+      "check": "signed maps and recorded cell inspection",
+      "positive": 94415,
+      "negative": 84393,
+      "frames": 31
+    },
+    {
+      "check": "flash falsifier"
+    },
+    {
+      "check": "OFF expansion at explicit gain 10"
+    },
+    {
+      "status": "eyes:duck-1 \u00b7 frame 0 \u00b7 0.000 s (simulation) \u00b7 age at decision 0.000 s",
+      "check": "native recorded action and exact stereo image inspection"
+    }
+  ],
+  "bundleSha256": {
+    "MacOS/DuckFly": "030e0d108209fce4244b9c100e1f3b85b8695b891e4273dffece64243e549f00",
+    "Resources/VisionSmoke.js": "1c4ea25fafc3ded63ac2e5613961ba6b1c3b437757f6cacdaecd72c7c59d6c48",
+    "Resources/SetupHelpers.js": "798062d0e738e9b3f7b3b8454b339a9a83d110b5b98c64037288385750eb81b0",
+    "Resources/Web/assets/flyvis.worker-Cr86Z_9J.js": "736c9f1b2ed463a034caf6f98ff484b9fcea6fdfddbfb612fa9483439e2324e2",
+    "Resources/Web/assets/index-CMxmGvvr.js": "ec63e0fb5194df2eb384daf89f8575e1c0baa75b35c6b6dc84a78f77c91cbac8",
+    "Resources/Web/assets/lab.worker-DbHJb1_9.js": "a96e032cca067503243d32f94868348da36dce84a4f195f7896e381e2f2390e1",
+    "Resources/Web/assets/no-pose-C0bo0SAe.js": "6cce70ed9ae234d78bb787ad29ef80ec6487536249f45434c15e412285e85146",
+    "Resources/Web/assets/index-Ddhf2Eh9.css": "cf594af32652c3d2ff04bc35f25047dc9665ff7d7d33bf35aefe4716d580a0bc"
+  },
+  "sourceSha256": {
+    "mac/Host/main.swift": "c20b1e48b25159b82010517e69b28e581217535384290e514fbd422bcb6c7bf0",
+    "mac/Tests/vision-smoke.js": "1c4ea25fafc3ded63ac2e5613961ba6b1c3b437757f6cacdaecd72c7c59d6c48",
+    "mac/Tests/setup-helpers.js": "798062d0e738e9b3f7b3b8454b339a9a83d110b5b98c64037288385750eb81b0",
+    "web/src/lab/action-inspector.js": "2d4f9d2b9fee4a36fa3d77884a0cb5df04ea7be6f3f0921b7a91be92e8c8ce11",
+    "web/src/lab/action-evidence.js": "cd2ad40b151b6db983a6da4abd9428dbabe2dad5a7bf8e21d416789abe7425df",
+    "web/src/lab/spatial-response-view.js": "ccbca742a843acb1deaf2917e171e549f5dd3bf8aafe134ca3d69cd6981b239f",
+    "web/src/lab/flyvis.worker.js": "3363b23100fa91123910819797511b2f3308d8d5f5dccbfd246d2b081c866258"
+  },
+  "command": "mac/build/DuckFlyResearch.app/Contents/MacOS/DuckFly --self-test-vision --vision-bench-only",
+  "rawLogSha256": "0e238b1ff1391707f0523830bc81b0763711af812bcbb01fb408b1145df2a626"
+}

@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "stage": "exploratory feasibility only",
+  "sources": {
+    "spatial-event.mjs": "6b534ca3840c0883fa8b48f12b33fef743cac18cabffd59c22f667af2ad9c390",
+    "spatial-feasibility.mjs": "ac5d4a3f0f071da63612e0f1bb4ea383a8f3a2cde59dd223d8d965b2106dd931"
+  },
+  "loadedModelHashes": {
+    "manifestFile": "33e007097fc3c539ebd817a297be38dfca113ab42a3fc6b24052575f0d403218",
+    "wasm": "7225b966d087253f204f50f1ec1fc85cb76286466d8e94b8af3e6a911a81f9b0",
+    "arrays": {
+      "source": "d1bb5f8eda28fb7c3b7088c4b07af6fc21726e488aedc74c277a4aa976b768b6",
+      "target": "a5521e8e79887ed525e2991d898119d95f46216bbee1f25b4b2dc93a2141fa33",
+      "weight": "f5c0636c6f9fca9d289d8a7b0e2d00d4aa0bd19cdc37df1ca28afa800c1b03bf",
+      "bias": "d276601573420bf787a81ffa8c81f2da3499a20df2bb858f6082c2e449ff564f",
+      "timeConstant": "1651e91b8f2554de0e48a8e5bdb56828ddd3cad3cb34d1b494652897d76279b8",
+      "inputIndex": "0961dec8bde58d7023f81666fcdad6451d570d328e030cd140fd7a96d9963119",
+      "steadyState": "ec82da2a80d617cc5cc81e6588624737da4bb75c212a1797acda3a8c9995cd73"
+    },
+    "sparseRuntime": "df8556796dd5245a620de6363577d661bded285428ad89133932faa40993aa05",
+    "spatialReadout": "568714f756f812c4e9505641ece06af25a29f743600f8006ef179bfd4d0962cf",
+    "retina": "12391b582bbe53d5fe65dc908fa931b54cda3f8d59418e15ca35b336b8052fa8"
+  },
+  "parentArenaArtifactSha256": "acfa7c2638dab7474f4735adce0bf06a56e80175848531be6bbfd1850af06141",
+  "neuralDt": 0.002,
+  "inputHoldSeconds": 0.04,
+  "initialConditioningSeconds": 1,
+  "groups": {
+    "synthetic-feasibility/small-pass": {
+      "movies": 2,
+      "eventMovies": 2,
+      "compactFrames": 31,
+      "frames": 62
+    },
+    "synthetic-feasibility/small-step": {
+      "movies": 2,
+      "eventMovies": 0,
+      "compactFrames": 50,
+      "frames": 62
+    },
+    "synthetic-feasibility/large-bar": {
+      "movies": 2,
+      "eventMovies": 0,
+      "compactFrames": 0,
+      "frames": 62
+    },
+    "synthetic-feasibility/stationary-flicker": {
+      "movies": 2,
+      "eventMovies": 2,
+      "compactFrames": 60,
+      "frames": 62
+    },
+    "synthetic-feasibility/global-flash": {
+      "movies": 2,
+      "eventMovies": 0,
+      "compactFrames": 0,
+      "frames": 62
+    },
+    "synthetic-feasibility/textured-small-pass": {
+      "movies": 2,
+      "eventMovies": 2,
+      "compactFrames": 29,
+      "frames": 62
+    },
+    "actual-arena-transfer/target-pass": {
+      "movies": 2,
+      "eventMovies": 2,
+      "compactFrames": 31,
+      "frames": 62
+    },
+    "actual-arena-transfer/large-bar": {
+      "movies": 2,
+      "eventMovies": 0,
+      "compactFrames": 5,
+      "frames": 62
+    },
+    "actual-arena-transfer/approach": {
+      "movies": 2,
+      "eventMovies": 2,
+      "compactFrames": 37,
+      "frames": 62
+    },
+    "actual-arena-transfer/recession": {
+      "movies": 2,
+      "eventMovies": 2,
+      "compactFrames": 47,
+      "frames": 62
+    },
+    "actual-arena-transfer/lighting-change": {
+      "movies": 2,
+      "eventMovies": 0,
+      "compactFrames": 0,
+      "frames": 62
+    },
+    "actual-arena-transfer/static-target": {
+      "movies": 2,
+      "eventMovies": 0,
+      "compactFrames": 0,
+      "frames": 62
+    }
+  },
+  "productionPromotion": false,
+  "heldoutValidation": false,
+  "physicalUsefulnessTested": false,
+  "interpretation": "Engineered spatial T4/T5 activity footprint and centroid tracking; no LC11 neuron or behavioral output circuit.",
+  "mapsSha256": "9a69b9d46b3303eacc1d4d6c2e7c95eb95c94c1012fb424e2f1d90d6006d9353"
+}

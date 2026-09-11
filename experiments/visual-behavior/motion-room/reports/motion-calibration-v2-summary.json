@@ -1,0 +1,169 @@
+{
+  "format": "duckfly-motion-room-calibration-result",
+  "version": 2,
+  "run": "motion-calibration-v2",
+  "representation": "raw-neural-map-flow-v1",
+  "minimumGradient": 0.0086436657469057,
+  "confidenceRule": "quarter of training moving-gradient tenth percentile; explained >=0.2; maximum360image-degrees/sec",
+  "coverage": {
+    "rotation": {
+      "frames": 320,
+      "eyeObservations": 640,
+      "availableEyes": 601
+    },
+    "unchanged": {
+      "frames": 130,
+      "eyeObservations": 260,
+      "availableEyes": 0
+    },
+    "flat-flash": {
+      "frames": 45,
+      "eyeObservations": 90,
+      "availableEyes": 0
+    },
+    "flicker": {
+      "frames": 45,
+      "eyeObservations": 90,
+      "availableEyes": 0
+    },
+    "illumination": {
+      "frames": 45,
+      "eyeObservations": 90,
+      "availableEyes": 0
+    }
+  },
+  "decoders": {
+    "flyvis": {
+      "format": "motion-room-ridge",
+      "version": 1,
+      "lambda": 0.1,
+      "mean": [
+        0.0006123399820661202
+      ],
+      "scale": [
+        0.17707611473315316
+      ],
+      "weights": [
+        -3.4593538751530065e-18,
+        -0.13668505766093453
+      ],
+      "rows": 385
+    },
+    "conventional": {
+      "format": "motion-room-ridge",
+      "version": 1,
+      "lambda": 0.1,
+      "mean": [
+        -7.922937453295787e-05
+      ],
+      "scale": [
+        0.17859360395229212
+      ],
+      "weights": [
+        1.1412508271803588e-17,
+        -0.13677793208942252
+      ],
+      "rows": 385
+    }
+  },
+  "scores": {
+    "flyvis": {
+      "movingFrames": 280,
+      "stationaryFrames": 265,
+      "directionAccuracy": 1,
+      "rateMAE": 0.025390281992741143,
+      "stationaryMAE": 0.0004726652484042361,
+      "confounds": {
+        "unchanged": {
+          "frames": 130,
+          "falseTurns": 0,
+          "falseTurnRate": 0,
+          "mae": 0.00047266524840423353,
+          "peak": 0.00047266524840423494
+        },
+        "flat-flash": {
+          "frames": 45,
+          "falseTurns": 0,
+          "falseTurnRate": 0,
+          "mae": 0.0004726652484042352,
+          "peak": 0.00047266524840423494
+        },
+        "flicker": {
+          "frames": 45,
+          "falseTurns": 0,
+          "falseTurnRate": 0,
+          "mae": 0.0004726652484042352,
+          "peak": 0.00047266524840423494
+        },
+        "illumination": {
+          "frames": 45,
+          "falseTurns": 0,
+          "falseTurnRate": 0,
+          "mae": 0.0004726652484042352,
+          "peak": 0.00047266524840423494
+        }
+      },
+      "passed": true
+    },
+    "conventional": {
+      "movingFrames": 280,
+      "stationaryFrames": 265,
+      "directionAccuracy": 1,
+      "rateMAE": 0.024224456248800052,
+      "stationaryMAE": 0.0008126210135681135,
+      "confounds": {
+        "unchanged": {
+          "frames": 130,
+          "falseTurns": 0,
+          "falseTurnRate": 0,
+          "mae": 6.0678712840405624e-05,
+          "peak": 6.0678712840405794e-05
+        },
+        "flat-flash": {
+          "frames": 45,
+          "falseTurns": 0,
+          "falseTurnRate": 0,
+          "mae": 6.067871284040583e-05,
+          "peak": 6.0678712840405794e-05
+        },
+        "flicker": {
+          "frames": 45,
+          "falseTurns": 0,
+          "falseTurnRate": 0,
+          "mae": 0.004425958002927688,
+          "peak": 0.031115187431872304
+        },
+        "illumination": {
+          "frames": 45,
+          "falseTurns": 0,
+          "falseTurnRate": 0,
+          "mae": 0.00012350408259406638,
+          "peak": 0.0016211263985415328
+        }
+      },
+      "passed": true
+    }
+  },
+  "limits": {
+    "directionAccuracy": 0.9,
+    "rateMAE": 0.08,
+    "stationaryMAE": 0.03,
+    "falseTurnRate": 0.05,
+    "falseTurnThreshold": 0.05
+  },
+  "admitted": true,
+  "trainingSamples": 385,
+  "heldoutSamples": 650,
+  "metadataModel": {
+    "id": "flyvis-000",
+    "sourceCommit": "92b3845cc426dd309a1a0e1b3890156c42e14021",
+    "checkpoint": "flow/0000/000/best_chkpt",
+    "checkpointSha256": "d8a57a022aa18ca338599be713af9db29b89cde4b00098ffe42b78f0d583e46a",
+    "loadedCheckpointSha256": "d0e42857e738d0315897c2d50fde9eb3fb1a3fb1f071d55dfc13d53d72bccc3f",
+    "manifestCanonicalSha256": "826051cb1333da60ca5aea40664427390ec7fe545e4d81671e755ba1460b4f58",
+    "wasmSha256": "7225b966d087253f204f50f1ec1fc85cb76286466d8e94b8af3e6a911a81f9b0",
+    "integrationDt": 0.002,
+    "units": "model continuous activity; not spikes or calcium"
+  },
+  "claim": "Admission only to declared horizontal renderer physical pilot; no broad model fidelity or physical benefit claim."
+}

@@ -1,0 +1,31 @@
+.vision-bench { width: min(1000px, 94vw); max-height: 92dvh; overflow: auto; }
+.vision-bench > .dialog-top { position: sticky; top: -23px; z-index: 2; margin: -12px -23px 18px; padding: 12px 23px; background: var(--studio-panel, #fffdf5); border-bottom: 1px solid var(--studio-line, #d8d0b8); }
+.vision-bench > .pair { flex-wrap: wrap; }
+.vision-bench > .pair > label { flex: 1 1 155px; }
+.vision-bench .bench-views { max-width: 660px; margin: 14px auto 0; }
+.spatial-inspector { border-top: 1px solid var(--studio-line, #d8d0b8); margin-top: 18px; padding-top: 12px; }
+.spatial-inspector > summary { font-weight: 650; cursor: pointer; }
+.spatial-inspector > summary span { font-weight: 400; font-size: 11px; margin-left: 8px; }
+.spatial-playback { display: flex; align-items: center; gap: 16px; margin: 16px 0 10px; }
+.spatial-playback > label:first-child { flex: 1; }
+.spatial-playback input[type="range"] { width: 100%; min-width: 80px; }
+.spatial-playback output { font-size: 11px; font-variant-numeric: tabular-nums; }
+.spatial-follow { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+.spatial-follow input { width: auto; }
+.spatial-maps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.spatial-maps figure { margin: 0; border: 1px solid var(--studio-line, #d8d0b8); border-radius: 7px; overflow: hidden; }
+.spatial-maps figure.selected { border-color: #8b732c; box-shadow: 0 0 0 1px #8b732c; }
+.spatial-maps figcaption { font-size: 12px; font-weight: 650; padding: 5px 8px; background: #f7efd6; }
+.spatial-maps canvas { display: block; width: 100%; cursor: crosshair; }
+.spatial-scale { font-size: 11px; margin: 10px 0 14px; text-align: center; font-variant-numeric: tabular-nums; }
+.spatial-cell summary { cursor: pointer; }
+.spatial-cell output { display: block; padding: 10px 0; font-size: 12px; line-height: 1.6; font-variant-numeric: tabular-nums; }
+.spatial-cell .pair { margin-top: 10px; }
+.spatial-cell input { max-width: 130px; }
+@media (max-width: 620px) {
+  .spatial-maps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .spatial-playback { flex-wrap: wrap; gap: 8px; }
+  .spatial-playback > label:first-child { flex-basis: 100%; }
+  .vision-bench .bench-views { gap: 8px; }
+  .spatial-inspector > summary span { display: block; margin: 6px 0 0; }
+}

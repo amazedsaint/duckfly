@@ -2,10 +2,11 @@ import { loadLabRuntime } from './lab-runtime.js';
 import { Experiment } from './experiment.js';
 import { compareControllers,learnAdapter,trialScore } from './benchmarks.js';
 import { compareLooming,StoppingMeasure } from './loom-benchmarks.js';
-let experiment,paused=true,pauseRequestId=null,timer,running=false,frameWait=null,ticket=0,runtime;
+import { recordedActionEvidence } from './action-evidence.js';
+let experiment,recordingId,paused=true,pauseRequestId=null,timer,running=false,frameWait=null,ticket=0,runtime;
 let cancelled=false;
 const send=x=>self.postMessage(x);
-const snapshot=()=>{if(experiment)send({type:'state',...experiment.state(),paused,pauseRequestId});};
+const snapshot=()=>{if(experiment)send({type:'state',...experiment.state(),recordingId,paused,pauseRequestId});};
 const recordingView=()=>send({type:'recording-view',...experiment.recordingView()});
 function schedule(){clearTimeout(timer);if(!paused)timer=setTimeout(tick,0);}
 async function requestFrames(){
@@ -23,6 +24,14 @@ async function tick(){
 }
 const queue=[];let draining=false;
 self.onmessage=({data})=>{
+  // Inspection never enters the mutation queue, pauses the world or branches it.
+  if(data.type==='action-evidence'){
+    let evidence;
+    try{evidence=experiment?recordedActionEvidence(experiment,data):{status:'unavailable',reason:'The experiment has not loaded.'};}
+    catch{evidence={status:'unavailable',reason:'The recorded image cannot be read safely.'};}
+    send({type:'action-evidence',requestId:data.requestId,evidence});
+    return;
+  }
   if(data.type==='cancel-job'){cancelled=true;return;}
   if(data.type==='frames'){if(frameWait?.id===data.ticket)frameWait.resolve(data.frames);return;}
   queue.push(data);drain();
@@ -32,11 +41,11 @@ async function drain(){
   while(queue.length){const msg=queue.shift();clearTimeout(timer);
     while(running)await new Promise(r=>setTimeout(r,1));clearTimeout(timer);
     try{
-      if(msg.type==='init'){runtime=await loadLabRuntime(msg.base,message=>send({type:'loading',message}));experiment=new Experiment(runtime,msg.scene);send({type:'ready',scene:experiment.scene});}
+      if(msg.type==='init'){runtime=await loadLabRuntime(msg.base,message=>send({type:'loading',message}));experiment=new Experiment(runtime,msg.scene);recordingId=crypto.randomUUID();send({type:'ready',scene:experiment.scene});}
       if(!experiment)continue;
       if(msg.type==='pause'){if(paused&&!msg.value&&!experiment.replaying){experiment.resetLiveInput();send({type:'capture-reset'});}paused=msg.value;pauseRequestId=msg.pauseRequestId??null;}
-      if(msg.type==='scene'){experiment.configure(msg.scene);paused=true;send({type:'scene',scene:experiment.scene});}
-      if(msg.type==='reset'){experiment.configure(experiment.scene);paused=true;send({type:'scene',scene:experiment.scene});}
+      if(msg.type==='scene'){experiment.configure(msg.scene);recordingId=crypto.randomUUID();paused=true;send({type:'scene',scene:experiment.scene});}
+      if(msg.type==='reset'){experiment.configure(experiment.scene);recordingId=crypto.randomUUID();paused=true;send({type:'scene',scene:experiment.scene});}
       if(msg.type==='step'){
         paused=true;
         experiment.resetLiveInput();send({type:'capture-reset'});
@@ -55,7 +64,7 @@ async function drain(){
       if(msg.type==='import'){
         const candidate=new Experiment(runtime,msg.recording?.checkpoint?.scene);
         try{candidate.import(msg.recording);}catch(error){candidate.dispose();throw error;}
-        experiment.dispose();experiment=candidate;paused=true;send({type:'scene',scene:experiment.scene});recordingView();
+        experiment.dispose();experiment=candidate;recordingId=crypto.randomUUID();paused=true;send({type:'scene',scene:experiment.scene});recordingView();
       }
       if(msg.type==='weights')experiment.updateDuck(msg.id,{adapter:msg.weights});
       if(msg.type==='compare'||msg.type==='learn'||msg.type==='loom-compare'){

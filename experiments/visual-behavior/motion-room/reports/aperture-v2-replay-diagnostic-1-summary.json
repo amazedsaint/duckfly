@@ -1,0 +1,165 @@
+{
+  "complete": true,
+  "finishedAt": "2026-09-11T02:47:10.186Z",
+  "trialCount": 28,
+  "frameCount": 1700,
+  "baselineMaxError": 0,
+  "oracleMaxError": 1.1368683772161603e-13,
+  "minimumGradient": 0.00955925845266949,
+  "decoder": {
+    "format": "motion-room-ridge",
+    "version": 1,
+    "lambda": 0.1,
+    "mean": [
+      0.0004299174397427729
+    ],
+    "scale": [
+      0.16438484120214142
+    ],
+    "weights": [
+      9.326895741733819e-18,
+      -0.13696277462766118
+    ],
+    "rows": 385
+  },
+  "reusedHeldoutScore": {
+    "movingFrames": 280,
+    "stationaryFrames": 265,
+    "directionAccuracy": 1,
+    "rateMAE": 0.023271899272952465,
+    "stationaryMAE": 0.0003582002146754196,
+    "confounds": {
+      "unchanged": {
+        "frames": 130,
+        "falseTurns": 0,
+        "falseTurnRate": 0,
+        "mae": 0.0003582002146754199,
+        "peak": 0.000358200214675421
+      },
+      "flat-flash": {
+        "frames": 45,
+        "falseTurns": 0,
+        "falseTurnRate": 0,
+        "mae": 0.0003582002146754209,
+        "peak": 0.000358200214675421
+      },
+      "flicker": {
+        "frames": 45,
+        "falseTurns": 0,
+        "falseTurnRate": 0,
+        "mae": 0.0003582002146754209,
+        "peak": 0.000358200214675421
+      },
+      "illumination": {
+        "frames": 45,
+        "falseTurns": 0,
+        "falseTurnRate": 0,
+        "mae": 0.0003582002146754209,
+        "peak": 0.000358200214675421
+      }
+    },
+    "passed": true
+  },
+  "physicalDiagnostics": [
+    {
+      "id": "panorama-0",
+      "condition": "none-direct",
+      "frames": 95,
+      "rigidYawProxyMAE": {
+        "candidate": 1.015192390182616,
+        "originalFlyvis": 0.984063719003555,
+        "conventional": 0.6944755000412843
+      },
+      "maximumAbsRate": {
+        "candidate": 1.3441146457603508,
+        "originalFlyvis": 1.2820306072781946
+      },
+      "availableEyeFraction": 0.7157894736842105,
+      "interpretation": "Proxy uses evaluator-only panorama-minus-body-yaw change. It omits camera pitch/roll and translation, so this is diagnostic error, not complete retinal ground truth or a physical benefit estimate."
+    },
+    {
+      "id": "panorama-1",
+      "condition": "none-direct",
+      "frames": 95,
+      "rigidYawProxyMAE": {
+        "candidate": 0.9954106468364722,
+        "originalFlyvis": 0.9837723757495529,
+        "conventional": 0.7518101061084504
+      },
+      "maximumAbsRate": {
+        "candidate": 1.2925901842372687,
+        "originalFlyvis": 1.2674125781891667
+      },
+      "availableEyeFraction": 0.7421052631578947,
+      "interpretation": "Proxy uses evaluator-only panorama-minus-body-yaw change. It omits camera pitch/roll and translation, so this is diagnostic error, not complete retinal ground truth or a physical benefit estimate."
+    },
+    {
+      "id": "perturbation-0",
+      "condition": "none-direct",
+      "frames": 95,
+      "rigidYawProxyMAE": {
+        "candidate": 1.0026951677173266,
+        "originalFlyvis": 0.9716791414537297,
+        "conventional": 0.693803172232353
+      },
+      "maximumAbsRate": {
+        "candidate": 1.3165723064144492,
+        "originalFlyvis": 1.2538306519264253
+      },
+      "availableEyeFraction": 0.7105263157894737,
+      "interpretation": "Proxy uses evaluator-only panorama-minus-body-yaw change. It omits camera pitch/roll and translation, so this is diagnostic error, not complete retinal ground truth or a physical benefit estimate."
+    },
+    {
+      "id": "perturbation-1",
+      "condition": "none-direct",
+      "frames": 95,
+      "rigidYawProxyMAE": {
+        "candidate": 1.000749139610859,
+        "originalFlyvis": 0.9923334203330791,
+        "conventional": 0.7528879087990816
+      },
+      "maximumAbsRate": {
+        "candidate": 1.2402492106747178,
+        "originalFlyvis": 1.2239714931806953
+      },
+      "availableEyeFraction": 0.7631578947368421,
+      "interpretation": "Proxy uses evaluator-only panorama-minus-body-yaw change. It omits camera pitch/roll and translation, so this is diagnostic error, not complete retinal ground truth or a physical benefit estimate."
+    },
+    {
+      "id": "intentional-0",
+      "condition": "none-direct",
+      "frames": 95,
+      "rigidYawProxyMAE": {
+        "candidate": 0.9863399794263258,
+        "originalFlyvis": 0.9575916743615888,
+        "conventional": 0.6892475475075838
+      },
+      "maximumAbsRate": {
+        "candidate": 1.3058235073916409,
+        "originalFlyvis": 1.2378865959601324
+      },
+      "availableEyeFraction": 0.7105263157894737,
+      "interpretation": "Proxy uses evaluator-only panorama-minus-body-yaw change. It omits camera pitch/roll and translation, so this is diagnostic error, not complete retinal ground truth or a physical benefit estimate."
+    },
+    {
+      "id": "intentional-1",
+      "condition": "none-direct",
+      "frames": 95,
+      "rigidYawProxyMAE": {
+        "candidate": 1.0276986376904909,
+        "originalFlyvis": 1.0194073974712834,
+        "conventional": 0.7765706014086338
+      },
+      "maximumAbsRate": {
+        "candidate": 1.2967332529756832,
+        "originalFlyvis": 1.2788283169863175
+      },
+      "availableEyeFraction": 0.7736842105263158,
+      "interpretation": "Proxy uses evaluator-only panorama-minus-body-yaw change. It omits camera pitch/roll and translation, so this is diagnostic error, not complete retinal ground truth or a physical benefit estimate."
+    }
+  ],
+  "admission": false,
+  "physicalBenefit": false,
+  "promotion": false,
+  "interpretation": "Old data replay only. Fresh prospective renderer calibration and closed-loop body evidence are still required."
+}

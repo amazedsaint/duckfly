@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "receipts": [
+    {
+      "split": "calibration",
+      "movies": 112,
+      "replayedFrames": 3472,
+      "exactDecisions": true,
+      "hashes": true
+    },
+    {
+      "split": "heldout",
+      "movies": 448,
+      "replayedFrames": 15820,
+      "exactDecisions": true,
+      "hashes": true
+    }
+  ],
+  "independentMovieIdsAndHashes": true,
+  "productionPromotion": false
+}

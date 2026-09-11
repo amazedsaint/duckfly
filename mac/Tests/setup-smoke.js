@@ -75,7 +75,7 @@ try {
   const beforeNew = physicalState();
   $('#new-scene').click();
   await wait(() => $('#scene-setup')?.open);
-  check($('#setup-title').textContent === 'Your own playground', 'New scene did not open a fresh playground');
+  check($('#setup-title').textContent === 'Blank scene', 'New scene did not open a fresh playground');
   check(document.querySelectorAll('#scene-setup [data-setup-select]').length === 1, 'New scene inherited the previous scene members');
   action('add-duck');
   action('cancel');
@@ -299,7 +299,7 @@ try {
   $('#new-scene').click();
   await wait(() => $('#scene-setup').open && t().paused);
   const retainedNew = clone(t());
-  check($('#setup-title').textContent === 'Your own playground', 'The stage New scene button edited the current experiment');
+  check($('#setup-title').textContent === 'Blank scene', 'The stage New scene button edited the current experiment');
   action('next'); action('next');
   check(!$('#scene-setup .setup-entity'), 'New scene kept the previous props');
   $('[data-add-prop="block"]').click();
@@ -321,7 +321,7 @@ try {
   action('next');
   check($('#setup-review').textContent.includes('Walk'), 'Fresh scene review omitted its chosen walking connection');
   action('apply');
-  await wait(() => !$('#scene-setup').open && t().scene.name === 'Your own playground' && t().tick >= 120 && !t().paused);
+  await wait(() => !$('#scene-setup').open && t().scene.name === 'Blank scene' && t().tick >= 120 && !t().paused);
   $('#pause').click(); await wait(() => t().paused);
   check(t().ducks.length === 1 && t().scene.props.length === 1 && t().scene.props[0].kind === 'target', 'New scene launch leaked retained objects');
   check(t().ducks[0].distance > .1 && !t().ducks[0].fallen, 'A newly created beacon scene did not move through its configured brain connection');

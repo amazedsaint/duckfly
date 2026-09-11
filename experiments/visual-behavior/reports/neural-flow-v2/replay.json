@@ -1,0 +1,22 @@
+{
+  "format": "duckfly-neural-map-flow-replay",
+  "version": 2,
+  "passed": true,
+  "exactNeuralMapHashes": true,
+  "exactDiagnostics": true,
+  "sourceSha256": "c701bbf38ef1c09b82119f16b5dc489df6debcc5c3f6a5a0dac58ccbc8e52966",
+  "summarySha256": "d9d559f4abd2aa49f6118a770090ec3b0e53d8df39f02785b33e01e052ddf72a",
+  "checked": [
+    "cal-0-10-60",
+    "grating-6000",
+    "edge-on-6000",
+    "edge-off-6000",
+    "blank-6000",
+    "flash-6000",
+    "flicker-6000",
+    "static-grating-6000",
+    "counterphase-6000",
+    "illumination-6000"
+  ],
+  "coverage": "one calibration trial plus every moving/control family at held-out seed 6000"
+}

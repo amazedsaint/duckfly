@@ -1,0 +1,5367 @@
+{
+  "format": "duckfly-catalog-audit",
+  "version": 4,
+  "scenarios": [
+    {
+      "id": "cue-workshop",
+      "title": "Build a visual follower",
+      "samples": [
+        {
+          "time": 0.5000000000000003,
+          "tick": 25,
+          "paused": false,
+          "loop": {
+            "status": "Walking · body responding",
+            "perception": "Beacon visible",
+            "reason": "forward → walk · forward → steer · seen → look-cue",
+            "neural": [
+              0.3,
+              0.2044518119686667
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "3 custom connections · idle holds still",
+            "command": [
+              0.3,
+              0.16356144957493338
+            ],
+            "speed": 0.1361749746645777,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.6681305458312233,
+              "phase": 0.9958459020270308
+            },
+            "sampledAt": 0.5000000000000003,
+            "pixels": 20
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.023496325951704165,
+                0.01787693638760877,
+                0.11732893464777329
+              ],
+              "command": [
+                0.3,
+                0.16356144957493338
+              ],
+              "speed": 0.1361749746645777,
+              "distance": 0.04012016936994267,
+              "fallen": false,
+              "tilt": 3.3308424155798133,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.0032552083333333335,
+              "pixels": 20,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.002273684210526319,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.0800000000000003,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.2044518119686667,
+                "forward": 109.22257100167407,
+                "spikes": 1957
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 1.0000000000000007,
+          "tick": 50,
+          "paused": false,
+          "loop": {
+            "status": "Walking · body responding",
+            "perception": "Beacon visible",
+            "reason": "forward → walk · forward → steer · seen → look-cue",
+            "neural": [
+              0.3,
+              -0.18674172439795692
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "3 custom connections · idle holds still",
+            "command": [
+              0.3,
+              -0.14939337951836554
+            ],
+            "speed": 0.20071162402920828,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.9832364718035516,
+              "phase": 0.9356517735650375
+            },
+            "sampledAt": 1.0000000000000007,
+            "pixels": 22
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.08357526643079696,
+                0.016076435097558465,
+                0.11783889236348095
+              ],
+              "command": [
+                0.3,
+                -0.14939337951836554
+              ],
+              "speed": 0.20071162402920828,
+              "distance": 0.12455598736397719,
+              "fallen": false,
+              "tilt": 2.504756313507231,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.0035807291666666665,
+              "pixels": 22,
+              "input": {
+                "forward": 0.12,
+                "turn": -0.0015502392344497328,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.08000000000000074,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.18674172439795692,
+                "forward": 109.17121726644663,
+                "spikes": 4200
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 1.49999999999999,
+          "tick": 75,
+          "paused": false,
+          "loop": {
+            "status": "Walking · body responding",
+            "perception": "Beacon visible",
+            "reason": "forward → walk · forward → steer · seen → look-cue",
+            "neural": [
+              0.3,
+              0.48232189056875924
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "3 custom connections · idle holds still",
+            "command": [
+              0.3,
+              0.38585751245500743
+            ],
+            "speed": 0.14803759024400553,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.8616347627152079,
+              "phase": 0.05227858343538405
+            },
+            "sampledAt": 1.49999999999999,
+            "pixels": 31
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.14113734604067263,
+                0.014092405696985463,
+                0.1185928855338682
+              ],
+              "command": [
+                0.3,
+                0.38585751245500743
+              ],
+              "speed": 0.14803759024400553,
+              "distance": 0.2082713063223952,
+              "fallen": false,
+              "tilt": 2.4456062706123514,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.005045572916666667,
+              "pixels": 31,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.02499830220713072,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.0799999999999903,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.48232189056875924,
+                "forward": 107.73279670566546,
+                "spikes": 6443
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 1.9999999999999793,
+          "tick": 100,
+          "paused": false,
+          "loop": {
+            "status": "Walking · body responding",
+            "perception": "Beacon visible",
+            "reason": "forward → walk · forward → steer · seen → look-cue",
+            "neural": [
+              0.3,
+              0.5255077607394956
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "3 custom connections · idle holds still",
+            "command": [
+              0.3,
+              0.4204062085915965
+            ],
+            "speed": 0.11962194376030374,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.4494375937983744,
+              "phase": 0.9996369063706919
+            },
+            "sampledAt": 1.9999999999999793,
+            "pixels": 37
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.19589509340842337,
+                0.021886087574223737,
+                0.12075545510377447
+              ],
+              "command": [
+                0.3,
+                0.4204062085915965
+              ],
+              "speed": 0.11962194376030374,
+              "distance": 0.28594502541234645,
+              "fallen": false,
+              "tilt": 3.685411607747081,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.006022135416666667,
+              "pixels": 37,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.02934281650071124,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999997964,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.5255077607394956,
+                "forward": 109.46865058832074,
+                "spikes": 8640
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 2.499999999999969,
+          "tick": 125,
+          "paused": false,
+          "loop": {
+            "status": "Walking · body responding",
+            "perception": "Beacon visible",
+            "reason": "forward → walk · forward → steer · seen → look-cue",
+            "neural": [
+              0.3,
+              0.30064309245353127
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "3 custom connections · idle holds still",
+            "command": [
+              0.3,
+              0.24051447396282502
+            ],
+            "speed": 0.21516621479415754,
+            "feedback": {
+              "enabled": true,
+              "drive": 1,
+              "phase": 0.9463081483146105
+            },
+            "sampledAt": 2.499999999999969,
+            "pixels": 43
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.25307743619947465,
+                0.040874171655925357,
+                0.11711227643144162
+              ],
+              "command": [
+                0.3,
+                0.24051447396282502
+              ],
+              "speed": 0.21516621479415754,
+              "distance": 0.37163025254696347,
+              "fallen": false,
+              "tilt": 2.594123267009432,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.006998697916666667,
+              "pixels": 43,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.009561811505507957,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999996943,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.30064309245353127,
+                "forward": 110.2843322908056,
+                "spikes": 10876
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 2.9999999999999583,
+          "tick": 150,
+          "paused": false,
+          "loop": {
+            "status": "Walking · body responding",
+            "perception": "Beacon visible",
+            "reason": "forward → walk · forward → steer · seen → look-cue",
+            "neural": [
+              0.3,
+              0.034972821980284674
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "3 custom connections · idle holds still",
+            "command": [
+              0.3,
+              0.027978257584227742
+            ],
+            "speed": 0.1696273788597146,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.9060789246458558,
+              "phase": 0.0557402270843812
+            },
+            "sampledAt": 2.9999999999999583,
+            "pixels": 56
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.3079495058776488,
+                0.061092139697747044,
+                0.11840151482435977
+              ],
+              "command": [
+                0.3,
+                0.027978257584227742
+              ],
+              "speed": 0.1696273788597146,
+              "distance": 0.45560871533134434,
+              "fallen": false,
+              "tilt": 2.7673935409401054,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.009114583333333334,
+              "pixels": 56,
+              "input": {
+                "forward": 0.12,
+                "turn": -0.003789473684210538,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999995877,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.034972821980284674,
+                "forward": 109.38657341930586,
+                "spikes": 13092
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 3.4999999999999476,
+          "tick": 175,
+          "paused": false,
+          "loop": {
+            "status": "Walking · body responding",
+            "perception": "Beacon visible",
+            "reason": "forward → walk · forward → steer · seen → look-cue",
+            "neural": [
+              0.3,
+              -0.3530158370642553
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "3 custom connections · idle holds still",
+            "command": [
+              0.3,
+              -0.28241266965140427
+            ],
+            "speed": 0.13903146256447066,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.5497503834230691,
+              "phase": 0.002760463710879568
+            },
+            "sampledAt": 3.4999999999999476,
+            "pixels": 76
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.3661546826110196,
+                0.06923333982565559,
+                0.12044276173575202
+              ],
+              "command": [
+                0.3,
+                -0.28241266965140427
+              ],
+              "speed": 0.13903146256447066,
+              "distance": 0.5368127601987307,
+              "fallen": false,
+              "tilt": 3.3674948857826625,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.012369791666666666,
+              "pixels": 76,
+              "input": {
+                "forward": 0.12,
+                "turn": -0.016254847645429376,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999994811,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.3530158370642553,
+                "forward": 109.34581359831868,
+                "spikes": 15299
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 3.999999999999937,
+          "tick": 200,
+          "paused": false,
+          "loop": {
+            "status": "Walking · body responding",
+            "perception": "Beacon visible",
+            "reason": "forward → walk · forward → steer · seen → look-cue",
+            "neural": [
+              0.3,
+              0.06670401124170243
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "3 custom connections · idle holds still",
+            "command": [
+              0.3,
+              0.053363208993361944
+            ],
+            "speed": 0.21175488074456794,
+            "feedback": {
+              "enabled": true,
+              "drive": 1,
+              "phase": 0.9305580947169545
+            },
+            "sampledAt": 3.999999999999937,
+            "pixels": 105
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.4273796310831419,
+                0.0671265170015877,
+                0.11739359466947585
+              ],
+              "command": [
+                0.3,
+                0.053363208993361944
+              ],
+              "speed": 0.21175488074456794,
+              "distance": 0.6234227889755423,
+              "fallen": false,
+              "tilt": 2.2807035870832806,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.01708984375,
+              "pixels": 105,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.0019669172932330814,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999993745,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.06670401124170243,
+                "forward": 107.37085234291779,
+                "spikes": 17527
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 4.499999999999926,
+          "tick": 225,
+          "paused": false,
+          "loop": {
+            "status": "Walking · body responding",
+            "perception": "Beacon visible",
+            "reason": "forward → walk · forward → steer · seen → look-cue",
+            "neural": [
+              0.3,
+              0.49940105581249444
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "3 custom connections · idle holds still",
+            "command": [
+              0.3,
+              0.3995208446499956
+            ],
+            "speed": 0.12494929669904856,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.7485869290635229,
+              "phase": 0.036454381007500425
+            },
+            "sampledAt": 4.499999999999926,
+            "pixels": 169
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.48735949013587565,
+                0.06660456202437084,
+                0.11953015130297032
+              ],
+              "command": [
+                0.3,
+                0.3995208446499956
+              ],
+              "speed": 0.12494929669904856,
+              "distance": 0.7081106406598399,
+              "fallen": false,
+              "tilt": 2.8752142289927014,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.027506510416666668,
+              "pixels": 169,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.03353347866708191,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999992635,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.49940105581249444,
+                "forward": 108.71000352372651,
+                "spikes": 19771
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 4.999999999999916,
+          "tick": 250,
+          "paused": false,
+          "loop": {
+            "status": "Walking · body responding",
+            "perception": "Beacon visible",
+            "reason": "forward → walk · forward → steer · seen → look-cue",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "3 custom connections · idle holds still",
+            "command": [
+              0.3,
+              0.52
+            ],
+            "speed": 0.18381244915120704,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.6997836153302451,
+              "phase": 0.9716298935997384
+            },
+            "sampledAt": 4.999999999999916,
+            "pixels": 272
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.5412137262374912,
+                0.07913705018981923,
+                0.1194991042598064
+              ],
+              "command": [
+                0.3,
+                0.52
+              ],
+              "speed": 0.18381244915120704,
+              "distance": 0.7865252265929972,
+              "fallen": false,
+              "tilt": 3.6944326629079627,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.044270833333333336,
+              "pixels": 272,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.034216718266253866,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.0799999999999157,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 107.27951937088505,
+                "spikes": 21971
+              },
+              "temporal": null
+            }
+          ]
+        }
+      ],
+      "final": {
+        "time": 4.999999999999916,
+        "tick": 250,
+        "paused": true,
+        "loop": {
+          "status": "Paused · Run or Step to advance",
+          "perception": "Beacon visible",
+          "reason": "forward → walk · forward → steer · seen → look-cue",
+          "neural": [
+            0.3,
+            0.65
+          ],
+          "mapping": {
+            "forward": "off",
+            "turn": "off"
+          },
+          "mappingActive": true,
+          "mappingSummary": "3 custom connections · idle holds still",
+          "command": [
+            0.3,
+            0.52
+          ],
+          "speed": 0.18381244915120704,
+          "feedback": {
+            "enabled": true,
+            "drive": 0.6997836153302451,
+            "phase": 0.9716298935997384
+          },
+          "sampledAt": 4.999999999999916,
+          "pixels": 272
+        },
+        "collisions": 0,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "position": [
+              0.5412137262374912,
+              0.07913705018981923,
+              0.1194991042598064
+            ],
+            "command": [
+              0.3,
+              0.52
+            ],
+            "speed": 0.18381244915120704,
+            "distance": 0.7865252265929972,
+            "fallen": false,
+            "tilt": 3.6944326629079627,
+            "visible": true,
+            "neighborVisible": false,
+            "area": 0.044270833333333336,
+            "pixels": 272,
+            "input": {
+              "forward": 0.12,
+              "turn": 0.034216718266253866,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.0799999999999157,
+              "gateReason": "None",
+              "gate": false,
+              "reason": "Target visible through camera"
+            },
+            "neural": {
+              "vx": 0.3,
+              "yaw": 0.65,
+              "forward": 107.27951937088505,
+              "spikes": 21971
+            },
+            "temporal": null
+          }
+        ]
+      },
+      "openEnded": {
+        "time": 5.999999999999894,
+        "tick": 300,
+        "paused": false,
+        "loop": {
+          "status": "Walking · body responding",
+          "perception": "Beacon visible",
+          "reason": "forward → walk · forward → steer · seen → look-cue",
+          "neural": [
+            0.3,
+            0.14765927412705904
+          ],
+          "mapping": {
+            "forward": "off",
+            "turn": "off"
+          },
+          "mappingActive": true,
+          "mappingSummary": "3 custom connections · idle holds still",
+          "command": [
+            0.3,
+            0.11812741930164723
+          ],
+          "speed": 0.14535670749156143,
+          "feedback": {
+            "enabled": true,
+            "drive": 0.8686297335621869,
+            "phase": 0.03785403250116093
+          },
+          "sampledAt": 5.999999999999894,
+          "pixels": 463
+        },
+        "collisions": 0,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "position": [
+              0.659160077882191,
+              0.11851953177864165,
+              0.11991010842728315
+            ],
+            "command": [
+              0.3,
+              0.11812741930164723
+            ],
+            "speed": 0.14535670749156143,
+            "distance": 0.9604777874211572,
+            "fallen": false,
+            "tilt": 3.416842684679744,
+            "visible": true,
+            "neighborVisible": false,
+            "area": 0.07535807291666667,
+            "pixels": 463,
+            "input": {
+              "forward": 0.12,
+              "turn": -0.00884346936455608,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.07999999999989438,
+              "gateReason": "None",
+              "gate": false,
+              "reason": "Target visible through camera"
+            },
+            "neural": {
+              "vx": 0.3,
+              "yaw": 0.14765927412705904,
+              "forward": 109.15928905836736,
+              "spikes": 26441
+            },
+            "temporal": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookout",
+      "title": "Look without chasing",
+      "samples": [
+        {
+          "time": 0.5000000000000003,
+          "tick": 25,
+          "paused": false,
+          "loop": {
+            "status": "forward → look-cue",
+            "perception": "Beacon visible",
+            "reason": "forward → look-cue",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0043149637717108105,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.009093365921945066,
+              "phase": 0.9998061139787832
+            },
+            "sampledAt": 0.5000000000000003,
+            "pixels": 21
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.0020248827083836807,
+                0.00010627082768813969,
+                0.11657598105692361
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.0043149637717108105,
+              "distance": 0.003156319010623166,
+              "fallen": false,
+              "tilt": 0.632419619891865,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.00341796875,
+              "pixels": 21,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.032210526315789474,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.0800000000000003,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 107.77217000794717,
+                "spikes": 2057
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 1.0000000000000007,
+          "tick": 50,
+          "paused": false,
+          "loop": {
+            "status": "forward → look-cue",
+            "perception": "Beacon visible",
+            "reason": "forward → look-cue",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0005829065034668568,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.0021173520049789928,
+              "phase": 0.9999148735772179
+            },
+            "sampledAt": 1.0000000000000007,
+            "pixels": 21
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.001824245580859295,
+                0.00009775568345189993,
+                0.11658895850696306
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.0005829065034668568,
+              "distance": 0.0036370579137313744,
+              "fallen": false,
+              "tilt": 0.5395923140919175,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.00341796875,
+              "pixels": 21,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.032751879699248136,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.08000000000000074,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 111.66657961960195,
+                "spikes": 4164
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 1.49999999999999,
+          "tick": 75,
+          "paused": false,
+          "loop": {
+            "status": "forward → look-cue",
+            "perception": "Beacon visible",
+            "reason": "forward → look-cue",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.00020506077800283787,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.004672495114994042,
+              "phase": 0.00007987428781652817
+            },
+            "sampledAt": 1.49999999999999,
+            "pixels": 21
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.0017998931029654106,
+                0.00008673545912485825,
+                0.1165681678054268
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.00020506077800283787,
+              "distance": 0.0038901262711840572,
+              "fallen": false,
+              "tilt": 0.5203939300800345,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.00341796875,
+              "pixels": 21,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.032751879699248136,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.0799999999999903,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 113.04028086621418,
+                "spikes": 6301
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 1.9999999999999793,
+          "tick": 100,
+          "paused": false,
+          "loop": {
+            "status": "forward → look-cue",
+            "perception": "Beacon visible",
+            "reason": "forward → look-cue",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0007153916874808397,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.003140514560323638,
+              "phase": 0.9999031487638415
+            },
+            "sampledAt": 1.9999999999999793,
+            "pixels": 21
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.001836067143665782,
+                0.00007432788996566674,
+                0.11655563258319035
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.0007153916874808397,
+              "distance": 0.004116095779137808,
+              "fallen": false,
+              "tilt": 0.5260038395658845,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.00341796875,
+              "pixels": 21,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.032751879699248136,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999997964,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 108.9818932759015,
+                "spikes": 8414
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 2.499999999999969,
+          "tick": 125,
+          "paused": false,
+          "loop": {
+            "status": "forward → look-cue",
+            "perception": "Beacon visible",
+            "reason": "forward → look-cue",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.00011633849209766078,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.0006578748092108833,
+              "phase": 0.9999369067297368
+            },
+            "sampledAt": 2.499999999999969,
+            "pixels": 20
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.002040345227709985,
+                0.00017176340458630797,
+                0.11651236108581585
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.00011633849209766078,
+              "distance": 0.0044595194473008295,
+              "fallen": false,
+              "tilt": 0.6501175496302226,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.0032552083333333335,
+              "pixels": 20,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.03315789473684211,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999996943,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 109.18515522252392,
+                "spikes": 10528
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 2.9999999999999583,
+          "tick": 150,
+          "paused": false,
+          "loop": {
+            "status": "forward → look-cue",
+            "perception": "Beacon visible",
+            "reason": "forward → look-cue",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0007652639234263637,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.002479398717975237,
+              "phase": 0.9999471292637687
+            },
+            "sampledAt": 2.9999999999999583,
+            "pixels": 20
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.002088109680456043,
+                0.000180438496799514,
+                0.11650332181612791
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.0007652639234263637,
+              "distance": 0.004616624421918215,
+              "fallen": false,
+              "tilt": 0.6835690979164993,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.0032552083333333335,
+              "pixels": 20,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.03296842105263159,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999995877,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 113.48909694541494,
+                "spikes": 12651
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 3.4999999999999476,
+          "tick": 175,
+          "paused": false,
+          "loop": {
+            "status": "forward → look-cue",
+            "perception": "Beacon visible",
+            "reason": "forward → look-cue",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0005660683786538862,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.0016762805354575683,
+              "phase": 0.9999643736039704
+            },
+            "sampledAt": 3.4999999999999476,
+            "pixels": 20
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.002123669084246251,
+                0.00019170497647906764,
+                0.1164940585644591
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.0005660683786538862,
+              "distance": 0.004772174593029079,
+              "fallen": false,
+              "tilt": 0.7127181662667361,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.0032552083333333335,
+              "pixels": 20,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.03315789473684211,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999994811,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 109.46758099202982,
+                "spikes": 14771
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 3.999999999999937,
+          "tick": 200,
+          "paused": false,
+          "loop": {
+            "status": "forward → look-cue",
+            "perception": "Beacon visible",
+            "reason": "forward → look-cue",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.00022868776583302036,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.0033864561083102635,
+              "phase": 0.00004053811112547656
+            },
+            "sampledAt": 3.999999999999937,
+            "pixels": 20
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.0021445117777652858,
+                0.00013968539717703767,
+                0.11653456338125746
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.00022868776583302036,
+              "distance": 0.004994053166421134,
+              "fallen": false,
+              "tilt": 0.7386047159788077,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.0032552083333333335,
+              "pixels": 20,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.03315789473684211,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999993745,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 111.18141267388735,
+                "spikes": 16889
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 4.499999999999926,
+          "tick": 225,
+          "paused": false,
+          "loop": {
+            "status": "forward → look-cue",
+            "perception": "Beacon visible",
+            "reason": "forward → look-cue",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0006328129875265336,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.005961103471640427,
+              "phase": 0.9988877826861707
+            },
+            "sampledAt": 4.499999999999926,
+            "pixels": 21
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.0021955898323015063,
+                0.00015549898638817834,
+                0.11653380179054997
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.0006328129875265336,
+              "distance": 0.005168043259971557,
+              "fallen": false,
+              "tilt": 0.7925353874011958,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.00341796875,
+              "pixels": 21,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.03293233082706765,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999992635,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 113.77742616921797,
+                "spikes": 19007
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 4.999999999999916,
+          "tick": 250,
+          "paused": false,
+          "loop": {
+            "status": "forward → look-cue",
+            "perception": "Beacon visible",
+            "reason": "forward → look-cue",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.00021693038964857398,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.0021983751276821143,
+              "phase": 0.00015024315591793957
+            },
+            "sampledAt": 4.999999999999916,
+            "pixels": 23
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.0022079550278959682,
+                0.00016724846331437796,
+                0.1165331706076581
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.00021693038964857398,
+              "distance": 0.0053017990353233305,
+              "fallen": false,
+              "tilt": 0.8249568340740236,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.0037434895833333335,
+              "pixels": 23,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.03303432494279176,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.0799999999999157,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 114.94509125382726,
+                "spikes": 21144
+              },
+              "temporal": null
+            }
+          ]
+        }
+      ],
+      "final": {
+        "time": 4.999999999999916,
+        "tick": 250,
+        "paused": true,
+        "loop": {
+          "status": "Paused · Run or Step to advance",
+          "perception": "Beacon visible",
+          "reason": "forward → look-cue",
+          "neural": [
+            0.3,
+            0.65
+          ],
+          "mapping": {
+            "forward": "off",
+            "turn": "off"
+          },
+          "mappingActive": true,
+          "mappingSummary": "2 custom connections · idle holds still",
+          "command": [
+            0,
+            0
+          ],
+          "speed": 0.00021693038964857398,
+          "feedback": {
+            "enabled": true,
+            "drive": 0.0021983751276821143,
+            "phase": 0.00015024315591793957
+          },
+          "sampledAt": 4.999999999999916,
+          "pixels": 23
+        },
+        "collisions": 0,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "position": [
+              0.0022079550278959682,
+              0.00016724846331437796,
+              0.1165331706076581
+            ],
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.00021693038964857398,
+            "distance": 0.0053017990353233305,
+            "fallen": false,
+            "tilt": 0.8249568340740236,
+            "visible": true,
+            "neighborVisible": false,
+            "area": 0.0037434895833333335,
+            "pixels": 23,
+            "input": {
+              "forward": 0.12,
+              "turn": 0.03303432494279176,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.0799999999999157,
+              "gateReason": "None",
+              "gate": false,
+              "reason": "Target visible through camera"
+            },
+            "neural": {
+              "vx": 0.3,
+              "yaw": 0.65,
+              "forward": 114.94509125382726,
+              "spikes": 21144
+            },
+            "temporal": null
+          }
+        ]
+      },
+      "openEnded": {
+        "time": 5.999999999999894,
+        "tick": 300,
+        "paused": false,
+        "loop": {
+          "status": "forward → look-cue",
+          "perception": "Beacon visible",
+          "reason": "forward → look-cue",
+          "neural": [
+            0.3,
+            0.65
+          ],
+          "mapping": {
+            "forward": "off",
+            "turn": "off"
+          },
+          "mappingActive": true,
+          "mappingSummary": "2 custom connections · idle holds still",
+          "command": [
+            0,
+            0
+          ],
+          "speed": 0.0017260833831267237,
+          "feedback": {
+            "enabled": true,
+            "drive": 0.0027021040982754974,
+            "phase": 0.992468433730258
+          },
+          "sampledAt": 5.999999999999894,
+          "pixels": 22
+        },
+        "collisions": 0,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "position": [
+              0.002206363605593747,
+              0.00018913587589052973,
+              0.1165310043780522
+            ],
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0017260833831267237,
+            "distance": 0.005625192198574438,
+            "fallen": false,
+            "tilt": 0.8577498730614788,
+            "visible": true,
+            "neighborVisible": false,
+            "area": 0.0035807291666666665,
+            "pixels": 22,
+            "input": {
+              "forward": 0.12,
+              "turn": 0.03341626794258373,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.07999999999989438,
+              "gateReason": "None",
+              "gate": false,
+              "reason": "Target visible through camera"
+            },
+            "neural": {
+              "vx": 0.3,
+              "yaw": 0.65,
+              "forward": 109.78658884448001,
+              "spikes": 25363
+            },
+            "temporal": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "crossed-wires",
+      "title": "Reverse the steering",
+      "samples": [
+        {
+          "time": 0.5000000000000003,
+          "tick": 25,
+          "paused": false,
+          "loop": {
+            "status": "Walking · body responding",
+            "perception": "Beacon visible",
+            "reason": "left → left",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0.3,
+              0.325
+            ],
+            "speed": 0.16948554686183032,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.7345715284270161,
+              "phase": 0.985322822373284
+            },
+            "sampledAt": 0.5000000000000003,
+            "pixels": 16
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.025040973369152106,
+                -0.33957541826436066,
+                0.11599708701018155
+              ],
+              "command": [
+                0.3,
+                0.325
+              ],
+              "speed": 0.16948554686183032,
+              "distance": 0.035866126909092806,
+              "fallen": false,
+              "tilt": 2.8687390772601034,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.0026041666666666665,
+              "pixels": 16,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.03884210526315789,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.0800000000000003,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 110.78108926731565,
+                "spikes": 2044
+              },
+              "temporal": null
+            },
+            {
+              "id": "duck-2",
+              "position": [
+                0.024532727736702724,
+                0.36185895577609306,
+                0.11622715478286742
+              ],
+              "command": [
+                0.3,
+                0.325
+              ],
+              "speed": 0.15851922057650614,
+              "distance": 0.03547115181086277,
+              "fallen": false,
+              "tilt": 2.968804030877956,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.00390625,
+              "pixels": 24,
+              "input": {
+                "forward": 0.12,
+                "turn": -0.09789473684210524,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.0800000000000003,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.65,
+                "forward": 111.25015669081891,
+                "spikes": 2096
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 1.0000000000000007,
+          "tick": 50,
+          "paused": false,
+          "loop": {
+            "status": "Walking · body responding",
+            "perception": "Beacon visible",
+            "reason": "left → left",
+            "neural": [
+              0.3,
+              0.4749860971068962
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0.3,
+              0.325
+            ],
+            "speed": 0.17597236025481044,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.9866608366051023,
+              "phase": 0.987315677475859
+            },
+            "sampledAt": 1.0000000000000007,
+            "pixels": 18
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.08082833679352944,
+                -0.3465702811891923,
+                0.11533880056168737
+              ],
+              "command": [
+                0.3,
+                0.325
+              ],
+              "speed": 0.17597236025481044,
+              "distance": 0.11999370452463042,
+              "fallen": false,
+              "tilt": 0.7386047159788077,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.0029296875,
+              "pixels": 18,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.04442105263157894,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.08000000000000074,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.4749860971068962,
+                "forward": 115.3038532121731,
+                "spikes": 4378
+              },
+              "temporal": null
+            },
+            {
+              "id": "duck-2",
+              "position": [
+                0.08173734628842208,
+                0.35581038456493647,
+                0.11589003220853634
+              ],
+              "command": [
+                0.3,
+                0.325
+              ],
+              "speed": 0.195292665906842,
+              "distance": 0.12010948972057339,
+              "fallen": false,
+              "tilt": 0.4247458452658267,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.004231770833333333,
+              "pixels": 26,
+              "input": {
+                "forward": 0.12,
+                "turn": -0.10289878542510124,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.08000000000000074,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.65,
+                "forward": 109.53675938619843,
+                "spikes": 4543
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 1.49999999999999,
+          "tick": 75,
+          "paused": false,
+          "loop": {
+            "status": "Walking · body responding",
+            "perception": "Beacon visible",
+            "reason": "left → left",
+            "neural": [
+              0.3,
+              0.45552172423965237
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0.3,
+              0.325
+            ],
+            "speed": 0.07684706933227577,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.4625446836457556,
+              "phase": 0.015958505438824933
+            },
+            "sampledAt": 1.49999999999999,
+            "pixels": 20
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.13248050158744215,
+                -0.3384577886419101,
+                0.11981533959255482
+              ],
+              "command": [
+                0.3,
+                0.325
+              ],
+              "speed": 0.07684706933227577,
+              "distance": 0.19608983541303857,
+              "fallen": false,
+              "tilt": 2.7459490917789657,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.0032552083333333335,
+              "pixels": 20,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.0483157894736842,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.0799999999999903,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.45552172423965237,
+                "forward": 118.9441959875372,
+                "spikes": 6703
+              },
+              "temporal": null
+            },
+            {
+              "id": "duck-2",
+              "position": [
+                0.13565506914898146,
+                0.36028130101788597,
+                0.12024531597930667
+              ],
+              "command": [
+                0.3,
+                0.325
+              ],
+              "speed": 0.06671599940559254,
+              "distance": 0.19789134841575656,
+              "fallen": false,
+              "tilt": 3.0078468047218445,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.005045572916666667,
+              "pixels": 31,
+              "input": {
+                "forward": 0.12,
+                "turn": -0.10311035653650251,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.0799999999999903,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.65,
+                "forward": 113.90100841784836,
+                "spikes": 6980
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 1.9999999999999793,
+          "tick": 100,
+          "paused": false,
+          "loop": {
+            "status": "Connections idle",
+            "perception": "Beacon visible",
+            "reason": "Connections idle",
+            "neural": [
+              0.3,
+              -0.07631078213027966
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.007007044960205776,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.012811250857958855,
+              "phase": 0.9896290647240001
+            },
+            "sampledAt": 1.9999999999999793,
+            "pixels": 22
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.1486368203627983,
+                -0.3220191000852867,
+                0.11692731370563529
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.007007044960205776,
+              "distance": 0.25249658179888246,
+              "fallen": false,
+              "tilt": 0.7298097831569101,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.0035807291666666665,
+              "pixels": 22,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.024976076555023933,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999997964,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.07631078213027966,
+                "forward": 112.41183635747747,
+                "spikes": 8879
+              },
+              "temporal": null
+            },
+            {
+              "id": "duck-2",
+              "position": [
+                0.18172859930603946,
+                0.38473714756919464,
+                0.11705650259014988
+              ],
+              "command": [
+                0.3,
+                0.325
+              ],
+              "speed": 0.21118127504387157,
+              "distance": 0.27621833491632763,
+              "fallen": false,
+              "tilt": 2.570397694850178,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.008951822916666666,
+              "pixels": 55,
+              "input": {
+                "forward": 0.12,
+                "turn": -0.1653244019138756,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999997964,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.65,
+                "forward": 109.8302173942473,
+                "spikes": 9439
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 2.499999999999969,
+          "tick": 125,
+          "paused": false,
+          "loop": {
+            "status": "Connections idle",
+            "perception": "Beacon visible",
+            "reason": "Connections idle",
+            "neural": [
+              0.3,
+              0.035573113384025135
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0008404161331129223,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.01112081200471008,
+              "phase": 0.9973299477418374
+            },
+            "sampledAt": 2.499999999999969,
+            "pixels": 21
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.1484226156812352,
+                -0.32131062474126015,
+                0.11636089659937772
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.0008404161331129223,
+              "distance": 0.25545152338404414,
+              "fallen": false,
+              "tilt": 0.47188377266937204,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.00341796875,
+              "pixels": 21,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.01705263157894736,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999996943,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.035573113384025135,
+                "forward": 118.6373613652209,
+                "spikes": 10813
+              },
+              "temporal": null
+            },
+            {
+              "id": "duck-2",
+              "position": [
+                0.1923659481311648,
+                0.404251600793158,
+                0.11904064290957556
+              ],
+              "command": [
+                0,
+                0.325
+              ],
+              "speed": 0.07363148344631595,
+              "distance": 0.3300179629981946,
+              "fallen": false,
+              "tilt": 3.426398509012952,
+              "visible": false,
+              "neighborVisible": false,
+              "area": 0,
+              "pixels": 0,
+              "input": {
+                "forward": 0,
+                "turn": 0,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999996943,
+                "gateReason": "Target absent",
+                "gate": true,
+                "reason": "Target absent from camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.5200910948835709,
+                "forward": 14.091494648078816,
+                "spikes": 11581
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 2.9999999999999583,
+          "tick": 150,
+          "paused": false,
+          "loop": {
+            "status": "Connections idle",
+            "perception": "Beacon visible",
+            "reason": "Connections idle",
+            "neural": [
+              0.3,
+              -0.0614954821161302
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0015392650932088442,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.006887484313232153,
+              "phase": 0.9834069081265483
+            },
+            "sampledAt": 2.9999999999999583,
+            "pixels": 21
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.14909520609792098,
+                -0.3209337506378448,
+                0.11598288965396784
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.0015392650932088442,
+              "distance": 0.25654831466285916,
+              "fallen": false,
+              "tilt": 0.5549664718814401,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.00341796875,
+              "pixels": 21,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.01705263157894736,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999995877,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.0614954821161302,
+                "forward": 112.36660937867273,
+                "spikes": 12724
+              },
+              "temporal": null
+            },
+            {
+              "id": "duck-2",
+              "position": [
+                0.2350858731238313,
+                0.3963292869162708,
+                0.11665919826439482
+              ],
+              "command": [
+                0.3,
+                0.325
+              ],
+              "speed": 0.19603150398654473,
+              "distance": 0.40709753843514096,
+              "fallen": false,
+              "tilt": 2.0403760180006763,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.00634765625,
+              "pixels": 39,
+              "input": {
+                "forward": 0.12,
+                "turn": -0.17183805668016192,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999995877,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.65,
+                "forward": 83.88713440793107,
+                "spikes": 13972
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 3.4999999999999476,
+          "tick": 175,
+          "paused": false,
+          "loop": {
+            "status": "Connections idle",
+            "perception": "Beacon visible",
+            "reason": "Connections idle",
+            "neural": [
+              0.3,
+              -0.22332934069717078
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0034373531714689035,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.0185922890961811,
+              "phase": 0.9888016697787884
+            },
+            "sampledAt": 3.4999999999999476,
+            "pixels": 21
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.1489084063652975,
+                -0.3205671480295507,
+                0.11572069383639878
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.0034373531714689035,
+              "distance": 0.2588424477996445,
+              "fallen": false,
+              "tilt": 0.7407210956420385,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.00341796875,
+              "pixels": 21,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.01705263157894736,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999994811,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.22332934069717078,
+                "forward": 114.08403343548258,
+                "spikes": 14663
+              },
+              "temporal": null
+            },
+            {
+              "id": "duck-2",
+              "position": [
+                0.26849610702171794,
+                0.40288663841121164,
+                0.11840225453063999
+              ],
+              "command": [
+                0.3,
+                0.325
+              ],
+              "speed": 0.0943965832925649,
+              "distance": 0.47192636370123264,
+              "fallen": false,
+              "tilt": 2.0821530906792547,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.004720052083333333,
+              "pixels": 29,
+              "input": {
+                "forward": 0.12,
+                "turn": -0.17398911070780396,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999994811,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.65,
+                "forward": 73.72463850863241,
+                "spikes": 16251
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 3.999999999999937,
+          "tick": 200,
+          "paused": false,
+          "loop": {
+            "status": "Connections idle",
+            "perception": "Beacon visible",
+            "reason": "Connections idle",
+            "neural": [
+              0.3,
+              -0.24775740403408203
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.001044790907111261,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.0005464873908349723,
+              "phase": 0.999806589932833
+            },
+            "sampledAt": 3.999999999999937,
+            "pixels": 21
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.14825956376579594,
+                -0.32070571994449526,
+                0.11572867208173164
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.001044790907111261,
+              "distance": 0.25950992282408336,
+              "fallen": false,
+              "tilt": 0.5964328905051877,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.00341796875,
+              "pixels": 21,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.01705263157894736,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999993745,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.24775740403408203,
+                "forward": 111.95079857530456,
+                "spikes": 16603
+              },
+              "temporal": null
+            },
+            {
+              "id": "duck-2",
+              "position": [
+                0.2931793734961561,
+                0.4179654779091458,
+                0.11422421546496528
+              ],
+              "command": [
+                0.3,
+                0.325
+              ],
+              "speed": 0.19119722794195426,
+              "distance": 0.5415442548704585,
+              "fallen": false,
+              "tilt": 1.3207134913414884,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.0068359375,
+              "pixels": 42,
+              "input": {
+                "forward": 0.12,
+                "turn": -0.17151879699248118,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999993745,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.65,
+                "forward": 103.80643359983901,
+                "spikes": 18560
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 4.499999999999926,
+          "tick": 225,
+          "paused": false,
+          "loop": {
+            "status": "Connections idle",
+            "perception": "Beacon visible",
+            "reason": "Connections idle",
+            "neural": [
+              0.3,
+              -0.06814652264135379
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.00039954881090078614,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.0036990436482893852,
+              "phase": 0.9978772806990488
+            },
+            "sampledAt": 4.499999999999926,
+            "pixels": 21
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.1482611820186838,
+                -0.3206260248911648,
+                0.11572547238472855
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.00039954881090078614,
+              "distance": 0.2602391081212426,
+              "fallen": false,
+              "tilt": 0.5535543301672644,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.00341796875,
+              "pixels": 21,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.01705263157894736,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999992635,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.06814652264135379,
+                "forward": 115.0805536965373,
+                "spikes": 18532
+              },
+              "temporal": null
+            },
+            {
+              "id": "duck-2",
+              "position": [
+                0.3446378453448569,
+                0.43025359009457087,
+                0.11992970070251993
+              ],
+              "command": [
+                0,
+                0.325
+              ],
+              "speed": 0.0699727904108503,
+              "distance": 0.6185563298190093,
+              "fallen": false,
+              "tilt": 3.520198470175019,
+              "visible": false,
+              "neighborVisible": false,
+              "area": 0,
+              "pixels": 0,
+              "input": {
+                "forward": 0,
+                "turn": 0,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999992635,
+                "gateReason": "Target absent",
+                "gate": true,
+                "reason": "Target absent from camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.6363306559246783,
+                "forward": 48.78749526612158,
+                "spikes": 20969
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 4.999999999999916,
+          "tick": 250,
+          "paused": false,
+          "loop": {
+            "status": "Connections idle",
+            "perception": "Beacon visible",
+            "reason": "Connections idle",
+            "neural": [
+              0.3,
+              -0.19597994327227702
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "2 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0021191368661373977,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.008278036789483745,
+              "phase": 0.0002970345811095232
+            },
+            "sampledAt": 4.999999999999916,
+            "pixels": 21
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.14837181663812238,
+                -0.32052100531172156,
+                0.11572321872155994
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.0021191368661373977,
+              "distance": 0.26077124836700544,
+              "fallen": false,
+              "tilt": 0.5016312176569806,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.00341796875,
+              "pixels": 21,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.01705263157894736,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.0799999999999157,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.19597994327227702,
+                "forward": 114.32916390175467,
+                "spikes": 20458
+              },
+              "temporal": null
+            },
+            {
+              "id": "duck-2",
+              "position": [
+                0.3450642153749817,
+                0.4275066423510509,
+                0.11635744882245556
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.0020116919849231764,
+              "distance": 0.6524582272098615,
+              "fallen": false,
+              "tilt": 0.5987250033453337,
+              "visible": false,
+              "neighborVisible": false,
+              "area": 0,
+              "pixels": 0,
+              "input": {
+                "forward": 0,
+                "turn": 0,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.0799999999999157,
+                "gateReason": "Target absent",
+                "gate": true,
+                "reason": "Target absent from camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 2.903433467842036,
+                "spikes": 22949
+              },
+              "temporal": null
+            }
+          ]
+        }
+      ],
+      "final": {
+        "time": 4.999999999999916,
+        "tick": 250,
+        "paused": true,
+        "loop": {
+          "status": "Paused · Run or Step to advance",
+          "perception": "Beacon visible",
+          "reason": "Connections idle",
+          "neural": [
+            0.3,
+            -0.19597994327227702
+          ],
+          "mapping": {
+            "forward": "off",
+            "turn": "off"
+          },
+          "mappingActive": true,
+          "mappingSummary": "2 custom connections · idle holds still",
+          "command": [
+            0,
+            0
+          ],
+          "speed": 0.0021191368661373977,
+          "feedback": {
+            "enabled": true,
+            "drive": 0.008278036789483745,
+            "phase": 0.0002970345811095232
+          },
+          "sampledAt": 4.999999999999916,
+          "pixels": 21
+        },
+        "collisions": 0,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "position": [
+              0.14837181663812238,
+              -0.32052100531172156,
+              0.11572321872155994
+            ],
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0021191368661373977,
+            "distance": 0.26077124836700544,
+            "fallen": false,
+            "tilt": 0.5016312176569806,
+            "visible": true,
+            "neighborVisible": false,
+            "area": 0.00341796875,
+            "pixels": 21,
+            "input": {
+              "forward": 0.12,
+              "turn": 0.01705263157894736,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.0799999999999157,
+              "gateReason": "None",
+              "gate": false,
+              "reason": "Target visible through camera"
+            },
+            "neural": {
+              "vx": 0.3,
+              "yaw": -0.19597994327227702,
+              "forward": 114.32916390175467,
+              "spikes": 20458
+            },
+            "temporal": null
+          },
+          {
+            "id": "duck-2",
+            "position": [
+              0.3450642153749817,
+              0.4275066423510509,
+              0.11635744882245556
+            ],
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0020116919849231764,
+            "distance": 0.6524582272098615,
+            "fallen": false,
+            "tilt": 0.5987250033453337,
+            "visible": false,
+            "neighborVisible": false,
+            "area": 0,
+            "pixels": 0,
+            "input": {
+              "forward": 0,
+              "turn": 0,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.0799999999999157,
+              "gateReason": "Target absent",
+              "gate": true,
+              "reason": "Target absent from camera"
+            },
+            "neural": {
+              "vx": 0.3,
+              "yaw": 0.65,
+              "forward": 2.903433467842036,
+              "spikes": 22949
+            },
+            "temporal": null
+          }
+        ]
+      },
+      "openEnded": {
+        "time": 5.999999999999894,
+        "tick": 300,
+        "paused": false,
+        "loop": {
+          "status": "Connections idle",
+          "perception": "Beacon visible",
+          "reason": "Connections idle",
+          "neural": [
+            0.3,
+            -0.1107335473483936
+          ],
+          "mapping": {
+            "forward": "off",
+            "turn": "off"
+          },
+          "mappingActive": true,
+          "mappingSummary": "2 custom connections · idle holds still",
+          "command": [
+            0,
+            0
+          ],
+          "speed": 0.0030202856265812445,
+          "feedback": {
+            "enabled": true,
+            "drive": 0.07373227709799604,
+            "phase": 0.050548196107063514
+          },
+          "sampledAt": 5.999999999999894,
+          "pixels": 21
+        },
+        "collisions": 0,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "position": [
+              0.1489133136975618,
+              -0.3202192467980331,
+              0.11569320162533483
+            ],
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0030202856265812445,
+            "distance": 0.26283623271756434,
+            "fallen": false,
+            "tilt": 0.41354173305531616,
+            "visible": true,
+            "neighborVisible": false,
+            "area": 0.00341796875,
+            "pixels": 21,
+            "input": {
+              "forward": 0.12,
+              "turn": 0.01705263157894736,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.07999999999989438,
+              "gateReason": "None",
+              "gate": false,
+              "reason": "Target visible through camera"
+            },
+            "neural": {
+              "vx": 0.3,
+              "yaw": -0.1107335473483936,
+              "forward": 115.08785298955131,
+              "spikes": 24319
+            },
+            "temporal": null
+          },
+          {
+            "id": "duck-2",
+            "position": [
+              0.34456839971083913,
+              0.42736653254949364,
+              0.11600699321796877
+            ],
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.00016387907502711264,
+            "distance": 0.653473090896365,
+            "fallen": false,
+            "tilt": 0.7417770212451066,
+            "visible": false,
+            "neighborVisible": false,
+            "area": 0,
+            "pixels": 0,
+            "input": {
+              "forward": 0,
+              "turn": 0,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.07999999999989438,
+              "gateReason": "Target absent",
+              "gate": true,
+              "reason": "Target absent from camera"
+            },
+            "neural": {
+              "vx": 0,
+              "yaw": 0.65,
+              "forward": 0.0028518080732008563,
+              "spikes": 26556
+            },
+            "temporal": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "trigger-kick",
+      "title": "A neuron requests a kick",
+      "samples": [
+        {
+          "time": 0.5000000000000003,
+          "tick": 25,
+          "paused": false,
+          "loop": {
+            "status": "Waiting for a steady stance",
+            "perception": "Beacon visible",
+            "reason": "Waiting for a steady stance",
+            "neural": [
+              0.3,
+              -0.021922331583856546
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "1 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.004243411474083634,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.008667393726222447,
+              "phase": 0.9998087144499198
+            },
+            "sampledAt": 0.5000000000000003,
+            "pixels": 26
+          },
+          "collisions": 0,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.0020213557522073483,
+                0.00011281348669852783,
+                0.11656029144422773
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.004243411474083634,
+              "distance": 0.0031825647482382523,
+              "fallen": false,
+              "tilt": 0.657003703816416,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.004231770833333333,
+              "pixels": 26,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.001894736842105269,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.0800000000000003,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.021922331583856546,
+                "forward": 106.56125972112709,
+                "spikes": 1846
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 1.0000000000000007,
+          "tick": 50,
+          "paused": false,
+          "loop": {
+            "status": "Left kick policy · 0.5 seconds",
+            "perception": "Beacon visible",
+            "reason": "Left kick policy · 0.5 seconds",
+            "neural": [
+              0.3,
+              -0.14296768202513851
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "1 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.031247774590866414,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.17205838160511452,
+              "phase": 0.026378181635159814
+            },
+            "sampledAt": 1.0000000000000007,
+            "pixels": 30
+          },
+          "collisions": 1,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.025102465734360254,
+                0.011869769011470053,
+                0.11090555330102468
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.031247774590866414,
+              "distance": 0.04022885801131252,
+              "fallen": false,
+              "tilt": 0.9295697445257182,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.0048828125,
+              "pixels": 30,
+              "input": {
+                "forward": 0.12,
+                "turn": -0.000631578947368423,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.08000000000000074,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": -0.14296768202513851,
+                "forward": 108.32806649794759,
+                "spikes": 3945
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 1.49999999999999,
+          "tick": 75,
+          "paused": false,
+          "loop": {
+            "status": "Returning to the walking policy",
+            "perception": "Beacon visible",
+            "reason": "Returning to the walking policy",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "1 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.003792909650858129,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.004306979646993914,
+              "phase": 0.9924130122497955
+            },
+            "sampledAt": 1.49999999999999,
+            "pixels": 44
+          },
+          "collisions": 1,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.028099617291280837,
+                0.012546505196346178,
+                0.1138555208283906
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.003792909650858129,
+              "distance": 0.04909674874657886,
+              "fallen": false,
+              "tilt": 1.7211283720542103,
+              "visible": true,
+              "neighborVisible": true,
+              "area": 0.007161458333333333,
+              "pixels": 44,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.08810526315789473,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.0799999999999903,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 106.93964924822258,
+                "spikes": 5961
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 1.9999999999999793,
+          "tick": 100,
+          "paused": false,
+          "loop": {
+            "status": "Returning to the walking policy",
+            "perception": "Beacon visible",
+            "reason": "Returning to the walking policy",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "1 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0019650293974794405,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.010751223007837313,
+              "phase": 0.989626480747609
+            },
+            "sampledAt": 1.9999999999999793,
+            "pixels": 46
+          },
+          "collisions": 1,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.027478159638430793,
+                0.013611234571600357,
+                0.114730924761898
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.0019650293974794405,
+              "distance": 0.050354088919159844,
+              "fallen": false,
+              "tilt": 1.9779366208945297,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.007486979166666667,
+              "pixels": 46,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.09094736842105264,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999997964,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 109.93810397539194,
+                "spikes": 7955
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 2.499999999999969,
+          "tick": 125,
+          "paused": false,
+          "loop": {
+            "status": "Returning to the walking policy",
+            "perception": "Beacon visible",
+            "reason": "Returning to the walking policy",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "1 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0015868850310589537,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.00538001204613814,
+              "phase": 0.9922997378426464
+            },
+            "sampledAt": 2.499999999999969,
+            "pixels": 46
+          },
+          "collisions": 1,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.026720555218694594,
+                0.013568095702493222,
+                0.11525525608655708
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.0015868850310589537,
+              "distance": 0.05112748392448043,
+              "fallen": false,
+              "tilt": 1.8167155164116249,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.007486979166666667,
+              "pixels": 46,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.09094736842105264,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999996943,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 111.69946260039585,
+                "spikes": 9936
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 2.9999999999999583,
+          "tick": 150,
+          "paused": false,
+          "loop": {
+            "status": "Returning to the walking policy",
+            "perception": "Beacon visible",
+            "reason": "Returning to the walking policy",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "1 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0015410097075088587,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.005521588845525339,
+              "phase": 0.9874059348458407
+            },
+            "sampledAt": 2.9999999999999583,
+            "pixels": 45
+          },
+          "collisions": 1,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.026189942227302903,
+                0.013361324361125611,
+                0.11559819199871388
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.0015410097075088587,
+              "distance": 0.051700929802056844,
+              "fallen": false,
+              "tilt": 1.746972709639175,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.00732421875,
+              "pixels": 45,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.09065263157894737,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999995877,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 108.41877189576822,
+                "spikes": 11892
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 3.4999999999999476,
+          "tick": 175,
+          "paused": false,
+          "loop": {
+            "status": "forward → kick",
+            "perception": "Beacon visible",
+            "reason": "forward → kick",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "1 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.009079349408162901,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.04690740940361475,
+              "phase": 0.5739160045969971
+            },
+            "sampledAt": 3.4999999999999476,
+            "pixels": 44
+          },
+          "collisions": 1,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.026112528675660662,
+                0.014727251023410465,
+                0.1159998451256181
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.009079349408162901,
+              "distance": 0.054078734488514815,
+              "fallen": false,
+              "tilt": 1.4475328084489556,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.007161458333333333,
+              "pixels": 44,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.08715789473684209,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999994811,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 112.70762213175429,
+                "spikes": 13884
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 3.999999999999937,
+          "tick": 200,
+          "paused": false,
+          "loop": {
+            "status": "forward → kick",
+            "perception": "Beacon visible",
+            "reason": "forward → kick",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "1 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.003439801864744021,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.027939392997192447,
+              "phase": 0.4877976280243499
+            },
+            "sampledAt": 3.999999999999937,
+            "pixels": 44
+          },
+          "collisions": 1,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.026284140026619787,
+                0.015842040974163453,
+                0.11617377889835857
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.003439801864744021,
+              "distance": 0.057130613750089154,
+              "fallen": false,
+              "tilt": 1.134014350769127,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.007161458333333333,
+              "pixels": 44,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.08336842105263158,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999993745,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 110.76174559952118,
+                "spikes": 15879
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 4.499999999999926,
+          "tick": 225,
+          "paused": false,
+          "loop": {
+            "status": "forward → kick",
+            "perception": "Beacon visible",
+            "reason": "forward → kick",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "1 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.005937923243727787,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.03191256753247493,
+              "phase": 0.5420919216677167
+            },
+            "sampledAt": 4.499999999999926,
+            "pixels": 43
+          },
+          "collisions": 1,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.026343244990020505,
+                0.016467039558924937,
+                0.11631146984762411
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.005937923243727787,
+              "distance": 0.05995118970974358,
+              "fallen": false,
+              "tilt": 1.0391051189808644,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.006998697916666667,
+              "pixels": 43,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.08253121175030599,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.07999999999992635,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 112.65794804966227,
+                "spikes": 17860
+              },
+              "temporal": null
+            }
+          ]
+        },
+        {
+          "time": 4.999999999999916,
+          "tick": 250,
+          "paused": false,
+          "loop": {
+            "status": "forward → kick",
+            "perception": "Beacon visible",
+            "reason": "forward → kick",
+            "neural": [
+              0.3,
+              0.65
+            ],
+            "mapping": {
+              "forward": "off",
+              "turn": "off"
+            },
+            "mappingActive": true,
+            "mappingSummary": "1 custom connections · idle holds still",
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0085447467726112,
+            "feedback": {
+              "enabled": true,
+              "drive": 0.014894944341547802,
+              "phase": 0.496268768939899
+            },
+            "sampledAt": 4.999999999999916,
+            "pixels": 38
+          },
+          "collisions": 1,
+          "ducks": [
+            {
+              "id": "duck-1",
+              "position": [
+                0.026601441346174266,
+                0.017065481989971317,
+                0.11630737026552435
+              ],
+              "command": [
+                0,
+                0
+              ],
+              "speed": 0.0085447467726112,
+              "distance": 0.06225801728189021,
+              "fallen": false,
+              "tilt": 0.9427382939052543,
+              "visible": true,
+              "neighborVisible": false,
+              "area": 0.006184895833333333,
+              "pixels": 38,
+              "input": {
+                "forward": 0.12,
+                "turn": 0.08147368421052631,
+                "loomL": 0,
+                "loomR": 0,
+                "loomPathway": "both",
+                "head": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "headReason": "Neutral head",
+                "fresh": true,
+                "age": 0.0799999999999157,
+                "gateReason": "None",
+                "gate": false,
+                "reason": "Target visible through camera"
+              },
+              "neural": {
+                "vx": 0.3,
+                "yaw": 0.65,
+                "forward": 107.43818006357844,
+                "spikes": 19841
+              },
+              "temporal": null
+            }
+          ]
+        }
+      ],
+      "final": {
+        "time": 4.999999999999916,
+        "tick": 250,
+        "paused": true,
+        "loop": {
+          "status": "Paused · Run or Step to advance",
+          "perception": "Beacon visible",
+          "reason": "forward → kick",
+          "neural": [
+            0.3,
+            0.65
+          ],
+          "mapping": {
+            "forward": "off",
+            "turn": "off"
+          },
+          "mappingActive": true,
+          "mappingSummary": "1 custom connections · idle holds still",
+          "command": [
+            0,
+            0
+          ],
+          "speed": 0.0085447467726112,
+          "feedback": {
+            "enabled": true,
+            "drive": 0.014894944341547802,
+            "phase": 0.496268768939899
+          },
+          "sampledAt": 4.999999999999916,
+          "pixels": 38
+        },
+        "collisions": 1,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "position": [
+              0.026601441346174266,
+              0.017065481989971317,
+              0.11630737026552435
+            ],
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0085447467726112,
+            "distance": 0.06225801728189021,
+            "fallen": false,
+            "tilt": 0.9427382939052543,
+            "visible": true,
+            "neighborVisible": false,
+            "area": 0.006184895833333333,
+            "pixels": 38,
+            "input": {
+              "forward": 0.12,
+              "turn": 0.08147368421052631,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.0799999999999157,
+              "gateReason": "None",
+              "gate": false,
+              "reason": "Target visible through camera"
+            },
+            "neural": {
+              "vx": 0.3,
+              "yaw": 0.65,
+              "forward": 107.43818006357844,
+              "spikes": 19841
+            },
+            "temporal": null
+          }
+        ]
+      },
+      "openEnded": {
+        "time": 5.999999999999894,
+        "tick": 300,
+        "paused": false,
+        "loop": {
+          "status": "forward → kick",
+          "perception": "Beacon visible",
+          "reason": "forward → kick",
+          "neural": [
+            0.3,
+            0.65
+          ],
+          "mapping": {
+            "forward": "off",
+            "turn": "off"
+          },
+          "mappingActive": true,
+          "mappingSummary": "1 custom connections · idle holds still",
+          "command": [
+            0,
+            0
+          ],
+          "speed": 0.0006749087246598366,
+          "feedback": {
+            "enabled": true,
+            "drive": 0.01305910068561197,
+            "phase": 0.49222782514117247
+          },
+          "sampledAt": 5.999999999999894,
+          "pixels": 41
+        },
+        "collisions": 1,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "position": [
+              0.02652801934756944,
+              0.017337453708336586,
+              0.11646668891765971
+            ],
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0006749087246598366,
+            "distance": 0.06498478128249273,
+            "fallen": false,
+            "tilt": 0.830865599165256,
+            "visible": true,
+            "neighborVisible": false,
+            "area": 0.006673177083333333,
+            "pixels": 41,
+            "input": {
+              "forward": 0.12,
+              "turn": 0.08073427471116816,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.07999999999989438,
+              "gateReason": "None",
+              "gate": false,
+              "reason": "Target visible through camera"
+            },
+            "neural": {
+              "vx": 0.3,
+              "yaw": 0.65,
+              "forward": 107.30316108354155,
+              "spikes": 23795
+            },
+            "temporal": null
+          }
+        ]
+      }
+    }
+  ],
+  "controls": [
+    {
+      "id": "cue-workshop",
+      "disconnected": {
+        "time": 6.099999999999892,
+        "tick": 305,
+        "paused": true,
+        "loop": {
+          "status": "Paused · Run or Step to advance",
+          "perception": "Beacon visible",
+          "reason": "Body command connection off",
+          "neural": [
+            0.3,
+            -0.4750954314504098
+          ],
+          "mapping": {
+            "forward": "off",
+            "turn": "off"
+          },
+          "mappingActive": true,
+          "mappingSummary": "3 custom connections · idle holds still",
+          "command": [
+            0,
+            0
+          ],
+          "speed": 0.14280646995731855,
+          "feedback": {
+            "enabled": false,
+            "drive": 0,
+            "phase": 0
+          },
+          "sampledAt": 6.099999999999892,
+          "pixels": 268
+        },
+        "collisions": 0,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "position": [
+              0.6671191375992409,
+              0.11406132344675007,
+              0.11866305625915761
+            ],
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.14280646995731855,
+            "distance": 0.971062470672256,
+            "fallen": false,
+            "tilt": 2.0476529299329354,
+            "visible": true,
+            "neighborVisible": false,
+            "area": 0.043619791666666664,
+            "pixels": 268,
+            "input": {
+              "forward": 0.12,
+              "turn": -0.01942812254516887,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.0799999999998926,
+              "gateReason": "None",
+              "gate": false,
+              "reason": "Target visible through camera"
+            },
+            "neural": {
+              "vx": 0.3,
+              "yaw": -0.4750954314504098,
+              "forward": 109.30472903427868,
+              "spikes": 26810
+            },
+            "temporal": null
+          }
+        ]
+      },
+      "actions": [
+        "beacon-ahead",
+        "beacon-left",
+        "beacon-right",
+        "skill-kick",
+        "skill-recover"
+      ],
+      "reconnected": {
+        "time": 6.19999999999989,
+        "tick": 310,
+        "paused": true,
+        "loop": {
+          "status": "Paused · Run or Step to advance",
+          "perception": "Beacon visible",
+          "reason": "forward → walk · forward → steer · seen → look-cue",
+          "neural": [
+            0.3,
+            -0.20409255595113898
+          ],
+          "mapping": {
+            "forward": "off",
+            "turn": "off"
+          },
+          "mappingActive": true,
+          "mappingSummary": "3 custom connections · idle holds still",
+          "command": [
+            0.15,
+            -0.0816370223804556
+          ],
+          "speed": 0.10554782935322485,
+          "feedback": {
+            "enabled": true,
+            "drive": 0.27190881108888354,
+            "phase": 0.00811406368192591
+          },
+          "sampledAt": 6.19999999999989,
+          "pixels": 302
+        },
+        "collisions": 0,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "position": [
+              0.665754094461649,
+              0.11051189789367546,
+              0.11719855662774663
+            ],
+            "command": [
+              0.15,
+              -0.0816370223804556
+            ],
+            "speed": 0.10554782935322485,
+            "distance": 0.9794603539601942,
+            "fallen": false,
+            "tilt": 1.1570752373022823,
+            "visible": true,
+            "neighborVisible": false,
+            "area": 0.049153645833333336,
+            "pixels": 302,
+            "input": {
+              "forward": 0.12,
+              "turn": 0.009473684210526325,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.07999999999988994,
+              "gateReason": "None",
+              "gate": false,
+              "reason": "Target visible through camera"
+            },
+            "neural": {
+              "vx": 0.3,
+              "yaw": -0.20409255595113898,
+              "forward": 108.62125686553352,
+              "spikes": 27211
+            },
+            "temporal": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookout",
+      "disconnected": {
+        "time": 6.099999999999892,
+        "tick": 305,
+        "paused": true,
+        "loop": {
+          "status": "Paused · Run or Step to advance",
+          "perception": "Beacon visible",
+          "reason": "Body command connection off",
+          "neural": [
+            0.3,
+            0.6440671576428355
+          ],
+          "mapping": {
+            "forward": "off",
+            "turn": "off"
+          },
+          "mappingActive": true,
+          "mappingSummary": "2 custom connections · idle holds still",
+          "command": [
+            0,
+            0
+          ],
+          "speed": 0.00006837041722400793,
+          "feedback": {
+            "enabled": false,
+            "drive": 0,
+            "phase": 0
+          },
+          "sampledAt": 6.099999999999892,
+          "pixels": 22
+        },
+        "collisions": 0,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "position": [
+              0.0021605378990531953,
+              0.00018687599326617181,
+              0.11653071184562179
+            ],
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.00006837041722400793,
+            "distance": 0.005698824936288877,
+            "fallen": false,
+            "tilt": 0.8318071067583942,
+            "visible": true,
+            "neighborVisible": false,
+            "area": 0.0035807291666666665,
+            "pixels": 22,
+            "input": {
+              "forward": 0.12,
+              "turn": 0.03341626794258373,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.0799999999998926,
+              "gateReason": "None",
+              "gate": false,
+              "reason": "Target visible through camera"
+            },
+            "neural": {
+              "vx": 0.3,
+              "yaw": 0.6440671576428355,
+              "forward": 112.40231798704694,
+              "spikes": 25792
+            },
+            "temporal": null
+          }
+        ]
+      },
+      "actions": [
+        "beacon-ahead",
+        "beacon-left",
+        "beacon-right",
+        "hide",
+        "reveal",
+        "skill-kick",
+        "skill-recover"
+      ],
+      "reconnected": {
+        "time": 6.19999999999989,
+        "tick": 310,
+        "paused": true,
+        "loop": {
+          "status": "Paused · Run or Step to advance",
+          "perception": "Beacon visible",
+          "reason": "forward → look-cue",
+          "neural": [
+            0.3,
+            0.65
+          ],
+          "mapping": {
+            "forward": "off",
+            "turn": "off"
+          },
+          "mappingActive": true,
+          "mappingSummary": "2 custom connections · idle holds still",
+          "command": [
+            0,
+            0
+          ],
+          "speed": 0.0005499291229685818,
+          "feedback": {
+            "enabled": true,
+            "drive": 0.003169995485356626,
+            "phase": 0.00010546441282288654
+          },
+          "sampledAt": 6.19999999999989,
+          "pixels": 22
+        },
+        "collisions": 0,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "position": [
+              0.0021683952140484444,
+              0.00018940127021090336,
+              0.11653027241045957
+            ],
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0005499291229685818,
+            "distance": 0.005732434860829417,
+            "fallen": false,
+            "tilt": 0.8362647934094063,
+            "visible": true,
+            "neighborVisible": false,
+            "area": 0.0035807291666666665,
+            "pixels": 22,
+            "input": {
+              "forward": 0.12,
+              "turn": 0.03341626794258373,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.07999999999988994,
+              "gateReason": "None",
+              "gate": false,
+              "reason": "Target visible through camera"
+            },
+            "neural": {
+              "vx": 0.3,
+              "yaw": 0.65,
+              "forward": 110.66607572784179,
+              "spikes": 26220
+            },
+            "temporal": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "crossed-wires",
+      "disconnected": {
+        "time": 6.099999999999892,
+        "tick": 305,
+        "paused": true,
+        "loop": {
+          "status": "Paused · Run or Step to advance",
+          "perception": "Beacon visible",
+          "reason": "Body command connection off",
+          "neural": [
+            0.3,
+            -0.26231262031426994
+          ],
+          "mapping": {
+            "forward": "off",
+            "turn": "off"
+          },
+          "mappingActive": true,
+          "mappingSummary": "2 custom connections · idle holds still",
+          "command": [
+            0,
+            0
+          ],
+          "speed": 0.0016125163509103147,
+          "feedback": {
+            "enabled": false,
+            "drive": 0,
+            "phase": 0
+          },
+          "sampledAt": 6.099999999999892,
+          "pixels": 20
+        },
+        "collisions": 0,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "position": [
+              0.14863510215554704,
+              -0.32034001078316005,
+              0.11570325530182406
+            ],
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0016125163509103147,
+            "distance": 0.2631452362668603,
+            "fallen": false,
+            "tilt": 0.5716401457242708,
+            "visible": true,
+            "neighborVisible": false,
+            "area": 0.0032552083333333335,
+            "pixels": 20,
+            "input": {
+              "forward": 0.12,
+              "turn": 0.01894736842105263,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.0799999999998926,
+              "gateReason": "None",
+              "gate": false,
+              "reason": "Target visible through camera"
+            },
+            "neural": {
+              "vx": 0.3,
+              "yaw": -0.26231262031426994,
+              "forward": 111.82830917378043,
+              "spikes": 24707
+            },
+            "temporal": null
+          },
+          {
+            "id": "duck-2",
+            "position": [
+              0.34451600931316345,
+              0.4273657235025727,
+              0.11599581339937583
+            ],
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0004768398584944942,
+            "distance": 0.653528908338482,
+            "fallen": false,
+            "tilt": 0.7425679801321224,
+            "visible": false,
+            "neighborVisible": false,
+            "area": 0,
+            "pixels": 0,
+            "input": {
+              "forward": 0,
+              "turn": 0,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.0799999999998926,
+              "gateReason": "Target absent",
+              "gate": true,
+              "reason": "Target absent from camera"
+            },
+            "neural": {
+              "vx": 0,
+              "yaw": 0.65,
+              "forward": 2.207121376085668,
+              "spikes": 26918
+            },
+            "temporal": null
+          }
+        ]
+      },
+      "actions": [
+        "beacon-ahead",
+        "beacon-left",
+        "beacon-right",
+        "pulse-walk",
+        "pulse-left",
+        "pulse-right",
+        "pulse-loom",
+        "skill-kick",
+        "skill-recover"
+      ],
+      "reconnected": {
+        "time": 6.19999999999989,
+        "tick": 310,
+        "paused": true,
+        "loop": {
+          "status": "Paused · Run or Step to advance",
+          "perception": "Beacon visible",
+          "reason": "Connections idle",
+          "neural": [
+            0.3,
+            -0.20475983316568092
+          ],
+          "mapping": {
+            "forward": "off",
+            "turn": "off"
+          },
+          "mappingActive": true,
+          "mappingSummary": "2 custom connections · idle holds still",
+          "command": [
+            0,
+            0
+          ],
+          "speed": 0.003177149172953898,
+          "feedback": {
+            "enabled": true,
+            "drive": 0.008841330208790889,
+            "phase": 0.9963208888697387
+          },
+          "sampledAt": 6.19999999999989,
+          "pixels": 20
+        },
+        "collisions": 0,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "position": [
+              0.1484320508604196,
+              -0.32049490813959436,
+              0.11575308934767119
+            ],
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.003177149172953898,
+            "distance": 0.2634090432212197,
+            "fallen": false,
+            "tilt": 0.599704655702171,
+            "visible": true,
+            "neighborVisible": false,
+            "area": 0.0032552083333333335,
+            "pixels": 20,
+            "input": {
+              "forward": 0.12,
+              "turn": 0.01818947368421051,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.07999999999988994,
+              "gateReason": "None",
+              "gate": false,
+              "reason": "Target visible through camera"
+            },
+            "neural": {
+              "vx": 0.3,
+              "yaw": -0.20475983316568092,
+              "forward": 112.68781450982695,
+              "spikes": 25090
+            },
+            "temporal": null
+          },
+          {
+            "id": "duck-2",
+            "position": [
+              0.34447635797115495,
+              0.4273590096381126,
+              0.11599064011416713
+            ],
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0009449765759765123,
+            "distance": 0.6535712375065448,
+            "fallen": false,
+            "tilt": 0.7420407678801976,
+            "visible": false,
+            "neighborVisible": false,
+            "area": 0,
+            "pixels": 0,
+            "input": {
+              "forward": 0,
+              "turn": 0,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.07999999999988994,
+              "gateReason": "Target absent",
+              "gate": true,
+              "reason": "Target absent from camera"
+            },
+            "neural": {
+              "vx": 0,
+              "yaw": 0.65,
+              "forward": 0.9558676228617959,
+              "spikes": 27283
+            },
+            "temporal": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "trigger-kick",
+      "disconnected": {
+        "time": 6.099999999999892,
+        "tick": 305,
+        "paused": true,
+        "loop": {
+          "status": "Paused · Run or Step to advance",
+          "perception": "Beacon visible",
+          "reason": "Body command connection off",
+          "neural": [
+            0.3,
+            0.65
+          ],
+          "mapping": {
+            "forward": "off",
+            "turn": "off"
+          },
+          "mappingActive": true,
+          "mappingSummary": "1 custom connections · idle holds still",
+          "command": [
+            0,
+            0
+          ],
+          "speed": 0.0024020524107762936,
+          "feedback": {
+            "enabled": false,
+            "drive": 0,
+            "phase": 0
+          },
+          "sampledAt": 6.099999999999892,
+          "pixels": 41
+        },
+        "collisions": 1,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "position": [
+              0.02651257283506536,
+              0.017319819507243626,
+              0.1164768340454933
+            ],
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.0024020524107762936,
+            "distance": 0.06505494716849321,
+            "fallen": false,
+            "tilt": 0.832982494864473,
+            "visible": true,
+            "neighborVisible": false,
+            "area": 0.006673177083333333,
+            "pixels": 41,
+            "input": {
+              "forward": 0.12,
+              "turn": 0.08073427471116816,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.0799999999998926,
+              "gateReason": "None",
+              "gate": false,
+              "reason": "Target visible through camera"
+            },
+            "neural": {
+              "vx": 0.3,
+              "yaw": 0.65,
+              "forward": 111.20033600548805,
+              "spikes": 24194
+            },
+            "temporal": null
+          }
+        ]
+      },
+      "actions": [
+        "beacon-ahead",
+        "beacon-left",
+        "beacon-right",
+        "pulse-walk",
+        "pulse-left",
+        "pulse-right",
+        "pulse-loom",
+        "place-ball",
+        "beacon-away",
+        "beacon-ahead",
+        "skill-kick",
+        "skill-recover"
+      ],
+      "reconnected": {
+        "time": 6.19999999999989,
+        "tick": 310,
+        "paused": true,
+        "loop": {
+          "status": "Waiting for a steady stance",
+          "perception": "Beacon visible",
+          "reason": "Waiting for a steady stance",
+          "neural": [
+            0.3,
+            0.65
+          ],
+          "mapping": {
+            "forward": "off",
+            "turn": "off"
+          },
+          "mappingActive": true,
+          "mappingSummary": "1 custom connections · idle holds still",
+          "command": [
+            0,
+            0
+          ],
+          "speed": 0.002138423068757764,
+          "feedback": {
+            "enabled": true,
+            "drive": 0.0031989224922785047,
+            "phase": 0.4994286929048801
+          },
+          "sampledAt": 6.19999999999989,
+          "pixels": 41
+        },
+        "collisions": 1,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "position": [
+              0.026505448966985423,
+              0.017318280288322566,
+              0.1164782786200739
+            ],
+            "command": [
+              0,
+              0
+            ],
+            "speed": 0.002138423068757764,
+            "distance": 0.06518915273241983,
+            "fallen": false,
+            "tilt": 0.819005443910213,
+            "visible": true,
+            "neighborVisible": false,
+            "area": 0.006673177083333333,
+            "pixels": 41,
+            "input": {
+              "forward": 0.12,
+              "turn": 0.08073427471116816,
+              "loomL": 0,
+              "loomR": 0,
+              "loomPathway": "both",
+              "head": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "headReason": "Neutral head",
+              "fresh": true,
+              "age": 0.07999999999988994,
+              "gateReason": "None",
+              "gate": false,
+              "reason": "Target visible through camera"
+            },
+            "neural": {
+              "vx": 0.3,
+              "yaw": 0.65,
+              "forward": 114.01272708230157,
+              "spikes": 24595
+            },
+            "temporal": null
+          }
+        ]
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "id": "cue-workshop",
+      "action": "select and move prop",
+      "prop": "target-1",
+      "before": [
+        0.8,
+        0.15,
+        0.14
+      ],
+      "after": [
+        0.8,
+        0.27,
+        0.14
+      ],
+      "preservedTick": 310,
+      "connectedDuck": "duck-1"
+    },
+    {
+      "id": "lookout",
+      "action": "select and move prop",
+      "prop": "target-1",
+      "before": [
+        0.8,
+        0.15,
+        0.14
+      ],
+      "after": [
+        0.8,
+        0.27,
+        0.14
+      ],
+      "preservedTick": 310,
+      "connectedDuck": "duck-1"
+    },
+    {
+      "id": "crossed-wires",
+      "action": "select and move prop",
+      "prop": "target-1",
+      "before": [
+        0.9,
+        0,
+        0.14
+      ],
+      "after": [
+        0.9,
+        0.12,
+        0.14
+      ],
+      "preservedTick": 310,
+      "connectedDuck": "duck-1"
+    },
+    {
+      "id": "trigger-kick",
+      "action": "select and move prop",
+      "prop": "target-1",
+      "before": [
+        0.7,
+        0,
+        0.14
+      ],
+      "after": [
+        0.7,
+        0.12,
+        0.14
+      ],
+      "preservedTick": 310,
+      "connectedDuck": "duck-1"
+    }
+  ],
+  "errors": [],
+  "scope": {
+    "diagnosticOnly": true,
+    "scenarios": [
+      "cue-workshop",
+      "lookout",
+      "crossed-wires",
+      "trigger-kick"
+    ]
+  },
+  "recordedAt": "2026-09-11T11:08:01.464Z",
+  "sourceSha256": {
+    "web/src/brain.js": "5f219fc3861e6c396fbe6224e4b8ded79af55b1105d26fb052cbb3f577d3b1d6",
+    "web/src/main.js": "2f3008fa99f604e1e41aa94144fb978dc2badad804f8c5661bd8b6df25160a7d",
+    "web/src/lab/trigger-actions.js": "1aa75dc6434c13c86f6b3f84a444439cd744d5593e29358d79a8c5bd0c6a77dc",
+    "web/src/lab/connection-controls.js": "3eaadeb72edf524296ebaa1dad5ef2daac9e26cff01b07e98fc5aee82c3cdeb8",
+    "web/src/lab/connection-controls.css": "2d06a48ff0c70da0b3d6e4bd8d9f9dc5e814f9b05f3eea2ba1d6d6581e57b262",
+    "web/src/lab/connection-scenes.js": "4ece0cb58ce1722dc94691dfabae8fc2eba448b3d77e90a430f622b9fed89bf0",
+    "web/src/lab/experiment.js": "02f0c59a18ae63426bef1f70bb31129fc9f6306b5eb9358452c46fc2c85a0b67",
+    "web/src/lab/scene.js": "eb566f0c91d59716db3c8f9a1b63d706bc1940b8f2b635de20a0840bd9a2a86b",
+    "web/src/lab/scene-setup.js": "c5aea4752c30f175cc66dffd4cfd0fdc39ee07ec0c4ad15613785eb04629d5e9",
+    "web/src/lab/mapping-controls.js": "c1dd151a972cca47a208d07d482ddb66b96e5a34937d34929293af1b3f2da06b",
+    "web/src/lab/brain-mapping.js": "41afdac4548e4df96bd6a5bdc53b5e90237eacb231cefceb7dc7bb4c9973d953",
+    "web/src/lab/body-skills.js": "dd045becafba81dd2ea3cbb26ab6549250f150abdd441f4daa9eacbefc746a60",
+    "web/src/lab/scenarios.js": "be4cd642ee739f2e6dadf3cc27fdbabd629563ab9448d464e4dadeb86e54949a",
+    "web/src/lab/guided-ui.js": "b8b74d164e708d3da13257ec580cbc775b7f509d45ee6f20997ad92886fcbd8f",
+    "web/src/lab/workspace-ui.js": "52ba05f81dc1fb66e33531e35dd027f17fd796d0ea29330ccab7bbab3fd9cd12",
+    "web/src/lab/action-inspector.js": "6dd9c43476a8b79c66546fefa9bb51204dd83a09f73d30fec91f83eb3408fcc4",
+    "web/src/lab/action-evidence.js": "cd32823d38f81e083e260fa4f2956d65bc4fe3a052fc95e343caa1b44eb0de34",
+    "web/src/lab/recorded-events.js": "e2c2fefd901aeea9b92f516ce3fc6297d020f0382b04851f252a63495ef250b4"
+  },
+  "logSha256": "874f976d5f98e2df34c65cd868537869645d75b38a54f82792223327f97a5c0d"
+}

@@ -1,0 +1,687 @@
+{
+  "version": 1,
+  "stage": "exploratory feasibility only",
+  "sources": {
+    "object-input-readout.mjs": "ef35a2d1e9eb7060d5399b0b87ca41496ffd3f3be911f209a022f1e3e02d5288",
+    "object-input-feasibility.mjs": "13ba72a2a1301c1395abada6590202f73208cfdae44ffcfc899a8045a728a154",
+    "object-input-indices.json": "d61d612526675208afb3c224eec636234f161dd0d98bf7c557a60bb064e9d379"
+  },
+  "loadedModelHashes": {
+    "manifestFile": "33e007097fc3c539ebd817a297be38dfca113ab42a3fc6b24052575f0d403218",
+    "wasm": "7225b966d087253f204f50f1ec1fc85cb76286466d8e94b8af3e6a911a81f9b0",
+    "arrays": {
+      "source": "d1bb5f8eda28fb7c3b7088c4b07af6fc21726e488aedc74c277a4aa976b768b6",
+      "target": "a5521e8e79887ed525e2991d898119d95f46216bbee1f25b4b2dc93a2141fa33",
+      "weight": "f5c0636c6f9fca9d289d8a7b0e2d00d4aa0bd19cdc37df1ca28afa800c1b03bf",
+      "bias": "d276601573420bf787a81ffa8c81f2da3499a20df2bb858f6082c2e449ff564f",
+      "timeConstant": "1651e91b8f2554de0e48a8e5bdb56828ddd3cad3cb34d1b494652897d76279b8",
+      "inputIndex": "0961dec8bde58d7023f81666fcdad6451d570d328e030cd140fd7a96d9963119",
+      "steadyState": "ec82da2a80d617cc5cc81e6588624737da4bb75c212a1797acda3a8c9995cd73"
+    },
+    "sparseRuntime": "df8556796dd5245a620de6363577d661bded285428ad89133932faa40993aa05",
+    "spatialReadout": "568714f756f812c4e9505641ece06af25a29f743600f8006ef179bfd4d0962cf",
+    "retina": "12391b582bbe53d5fe65dc908fa931b54cda3f8d59418e15ca35b336b8052fa8"
+  },
+  "parentArenaArtifactSha256": "acfa7c2638dab7474f4735adce0bf06a56e80175848531be6bbfd1850af06141",
+  "mapsSha256": "c5cd87b808a3da558e8245139d3a29984253ea06471b8d4d6e7f76773fbc7d8b",
+  "neuralDt": 0.002,
+  "inputHoldSeconds": 0.04,
+  "adaptationSeconds": 0.3,
+  "adaptationGain": 100,
+  "poolingSigmaDegrees": 10,
+  "outputLowpassSeconds": 0.3,
+  "interpretation": "Actual T2/T3 model activity plus separately engineered adaptation/spatial pooling. Not the published DDModel, no LC11 neurons, no motor bridge.",
+  "productionPromotion": false,
+  "heldoutValidation": false,
+  "physicalUsefulnessTested": false,
+  "groups": {
+    "synthetic-feasibility/small-pass": [
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.007319343290612255,
+            "meanPool": 0.005363918303929043,
+            "peakColumn": 1.3217219114303589
+          },
+          "unadapted": {
+            "peakPool": 0.15101345786569165,
+            "meanPool": 0.07902133203286354,
+            "peakColumn": 1.3217219114303589
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.004066895444234762,
+            "meanPool": 0.0030300628402846457,
+            "peakColumn": 0.5038051605224609
+          },
+          "unadapted": {
+            "peakPool": 0.04221501507068472,
+            "meanPool": 0.023416980664245114,
+            "peakColumn": 0.5038051605224609
+          }
+        }
+      },
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.007747516555895698,
+            "meanPool": 0.006044725333361549,
+            "peakColumn": 1.76398503780365
+          },
+          "unadapted": {
+            "peakPool": 0.23941812599508605,
+            "meanPool": 0.11777462564285036,
+            "peakColumn": 1.76398503780365
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.005232277530632963,
+            "meanPool": 0.0035254312910106846,
+            "peakColumn": 0.6181377172470093
+          },
+          "unadapted": {
+            "peakPool": 0.07057392845664642,
+            "meanPool": 0.03620807031727939,
+            "peakColumn": 0.6181377172470093
+          }
+        }
+      }
+    ],
+    "synthetic-feasibility/small-step": [
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.008326962185249549,
+            "meanPool": 0.006343077708114896,
+            "peakColumn": 1.7756829261779785
+          },
+          "unadapted": {
+            "peakPool": 0.12234002803319359,
+            "meanPool": 0.09811902962864796,
+            "peakColumn": 1.7756829261779785
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.0034946981359367754,
+            "meanPool": 0.0031012823134307253,
+            "peakColumn": 0.5662157535552979
+          },
+          "unadapted": {
+            "peakPool": 0.03236315042312254,
+            "meanPool": 0.024395937760280716,
+            "peakColumn": 0.5662157535552979
+          }
+        }
+      },
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.00547808456835259,
+            "meanPool": 0.004683886600633454,
+            "peakColumn": 1.8182570934295654
+          },
+          "unadapted": {
+            "peakPool": 0.10508013254447375,
+            "meanPool": 0.07970922778754513,
+            "peakColumn": 1.8182570934295654
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.0032754474595614778,
+            "meanPool": 0.002869448068142786,
+            "peakColumn": 0.6136380434036255
+          },
+          "unadapted": {
+            "peakPool": 0.03617240590330621,
+            "meanPool": 0.02705925816950149,
+            "peakColumn": 0.6136380434036255
+          }
+        }
+      }
+    ],
+    "synthetic-feasibility/large-bar": [
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.013605327470060396,
+            "meanPool": 0.010703195615138723,
+            "peakColumn": 1.7123396396636963
+          },
+          "unadapted": {
+            "peakPool": 0.5503516000269665,
+            "meanPool": 0.25878177440634237,
+            "peakColumn": 1.7123396396636963
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.008896396487715475,
+            "meanPool": 0.006155447705043862,
+            "peakColumn": 0.5159237384796143
+          },
+          "unadapted": {
+            "peakPool": 0.16761481417682864,
+            "meanPool": 0.07801094787007307,
+            "peakColumn": 0.5159237384796143
+          }
+        }
+      },
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.013040656934553769,
+            "meanPool": 0.010324420123380062,
+            "peakColumn": 1.8542896509170532
+          },
+          "unadapted": {
+            "peakPool": 0.754629958782175,
+            "meanPool": 0.37486936723416214,
+            "peakColumn": 1.8542896509170532
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.010174898816263394,
+            "meanPool": 0.0075280471304720355,
+            "peakColumn": 0.47792792320251465
+          },
+          "unadapted": {
+            "peakPool": 0.18491207261269288,
+            "meanPool": 0.09480814355521963,
+            "peakColumn": 0.47792792320251465
+          }
+        }
+      }
+    ],
+    "synthetic-feasibility/stationary-flicker": [
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.009003667888265511,
+            "meanPool": 0.00778716293015066,
+            "peakColumn": 1.3350802659988403
+          },
+          "unadapted": {
+            "peakPool": 0.15080170441013932,
+            "meanPool": 0.1310881022933631,
+            "peakColumn": 1.3350802659988403
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.00429878650502196,
+            "meanPool": 0.003998593209103158,
+            "peakColumn": 0.3797510862350464
+          },
+          "unadapted": {
+            "peakPool": 0.033746319060936884,
+            "meanPool": 0.028998261145714528,
+            "peakColumn": 0.3797510862350464
+          }
+        }
+      },
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.0029356589826992764,
+            "meanPool": 0.0025746189204670224,
+            "peakColumn": 0.08324766159057617
+          },
+          "unadapted": {
+            "peakPool": 0.006867938036446596,
+            "meanPool": 0.005437283505419662,
+            "peakColumn": 0.08324766159057617
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.0007339010724127264,
+            "meanPool": 0.0006259569701206381,
+            "peakColumn": 0.020072847604751587
+          },
+          "unadapted": {
+            "peakPool": 0.0010632583994014339,
+            "meanPool": 0.000867228085363898,
+            "peakColumn": 0.020072847604751587
+          }
+        }
+      }
+    ],
+    "synthetic-feasibility/global-flash": [
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.018447313173635148,
+            "meanPool": 0.011922682056970961,
+            "peakColumn": 1.0186858177185059
+          },
+          "unadapted": {
+            "peakPool": 0.39227775326290115,
+            "meanPool": 0.22385833066113303,
+            "peakColumn": 1.0186858177185059
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.0121852271703749,
+            "meanPool": 0.008561691234349175,
+            "peakColumn": 0.22873389720916748
+          },
+          "unadapted": {
+            "peakPool": 0.07022335446990075,
+            "meanPool": 0.04002427099548775,
+            "peakColumn": 0.22873389720916748
+          }
+        }
+      },
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.018461887280095554,
+            "meanPool": 0.012010389418612181,
+            "peakColumn": 0.9720335006713867
+          },
+          "unadapted": {
+            "peakPool": 0.3964953008788257,
+            "meanPool": 0.22668833908264677,
+            "peakColumn": 0.9720335006713867
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.012529925372013067,
+            "meanPool": 0.009056643799744067,
+            "peakColumn": 0.22856539487838745
+          },
+          "unadapted": {
+            "peakPool": 0.07826805168262321,
+            "meanPool": 0.04571783701484013,
+            "peakColumn": 0.22856539487838745
+          }
+        }
+      }
+    ],
+    "synthetic-feasibility/textured-small-pass": [
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.006229308662666143,
+            "meanPool": 0.004506712611459411,
+            "peakColumn": 1.6838006973266602
+          },
+          "unadapted": {
+            "peakPool": 0.14679685755489916,
+            "meanPool": 0.07929391215152061,
+            "peakColumn": 1.6838006973266602
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.003907204902328662,
+            "meanPool": 0.002780051928316429,
+            "peakColumn": 0.6170073747634888
+          },
+          "unadapted": {
+            "peakPool": 0.04693228436816361,
+            "meanPool": 0.026422340200083442,
+            "peakColumn": 0.6170073747634888
+          }
+        }
+      },
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.0074423996277364615,
+            "meanPool": 0.005097553834563232,
+            "peakColumn": 1.3848373889923096
+          },
+          "unadapted": {
+            "peakPool": 0.15607774892599624,
+            "meanPool": 0.08138827981805148,
+            "peakColumn": 1.3848373889923096
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.0045203065730667095,
+            "meanPool": 0.0032621204542295306,
+            "peakColumn": 0.5403317213058472
+          },
+          "unadapted": {
+            "peakPool": 0.04340733876782691,
+            "meanPool": 0.025103934909180836,
+            "peakColumn": 0.5403317213058472
+          }
+        }
+      }
+    ],
+    "actual-arena-transfer/target-pass": [
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.007907617495702943,
+            "meanPool": 0.005788189924895326,
+            "peakColumn": 1.091515064239502
+          },
+          "unadapted": {
+            "peakPool": 0.08614865620794397,
+            "meanPool": 0.05054121333548285,
+            "peakColumn": 1.091515064239502
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.003506858731199838,
+            "meanPool": 0.0025474104411275706,
+            "peakColumn": 0.34059035778045654
+          },
+          "unadapted": {
+            "peakPool": 0.017531554973641304,
+            "meanPool": 0.011582855182455326,
+            "peakColumn": 0.34059035778045654
+          }
+        }
+      },
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.006850526277059824,
+            "meanPool": 0.004972619156983472,
+            "peakColumn": 1.000028133392334
+          },
+          "unadapted": {
+            "peakPool": 0.0673297333898839,
+            "meanPool": 0.040122639726709014,
+            "peakColumn": 1.000028133392334
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.0031754383701783815,
+            "meanPool": 0.002164708118681738,
+            "peakColumn": 0.38910993933677673
+          },
+          "unadapted": {
+            "peakPool": 0.016607892986176105,
+            "meanPool": 0.010699580658686692,
+            "peakColumn": 0.38910993933677673
+          }
+        }
+      }
+    ],
+    "actual-arena-transfer/large-bar": [
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.011786156215363513,
+            "meanPool": 0.009961884520632546,
+            "peakColumn": 2.2036991119384766
+          },
+          "unadapted": {
+            "peakPool": 0.44868419818954486,
+            "meanPool": 0.26386831116354714,
+            "peakColumn": 2.2036991119384766
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.007998705509521278,
+            "meanPool": 0.005897669787988082,
+            "peakColumn": 0.5834580063819885
+          },
+          "unadapted": {
+            "peakPool": 0.08567855007981437,
+            "meanPool": 0.05587560044007683,
+            "peakColumn": 0.5834580063819885
+          }
+        }
+      },
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.010162176718473215,
+            "meanPool": 0.008410773461720535,
+            "peakColumn": 1.7846403121948242
+          },
+          "unadapted": {
+            "peakPool": 0.2963226050172937,
+            "meanPool": 0.1832686901810416,
+            "peakColumn": 1.7846403121948242
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.007773959303991921,
+            "meanPool": 0.005563006027373236,
+            "peakColumn": 0.6614444255828857
+          },
+          "unadapted": {
+            "peakPool": 0.08730163168460955,
+            "meanPool": 0.056693495763164826,
+            "peakColumn": 0.6614444255828857
+          }
+        }
+      }
+    ],
+    "actual-arena-transfer/approach": [
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.005384304363583094,
+            "meanPool": 0.0033588959276055013,
+            "peakColumn": 1.3141496181488037
+          },
+          "unadapted": {
+            "peakPool": 0.06775395349472793,
+            "meanPool": 0.024145599226813003,
+            "peakColumn": 1.3141496181488037
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.004352575859255318,
+            "meanPool": 0.0028326547750697766,
+            "peakColumn": 0.3951970338821411
+          },
+          "unadapted": {
+            "peakPool": 0.022836879100430457,
+            "meanPool": 0.010417386607482336,
+            "peakColumn": 0.3951970338821411
+          }
+        }
+      },
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.004418728447390265,
+            "meanPool": 0.002447980519070005,
+            "peakColumn": 1.0147449970245361
+          },
+          "unadapted": {
+            "peakPool": 0.04603572968943819,
+            "meanPool": 0.014485144948467296,
+            "peakColumn": 1.0147449970245361
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.003966991604291174,
+            "meanPool": 0.0024815676126703524,
+            "peakColumn": 0.3875730037689209
+          },
+          "unadapted": {
+            "peakPool": 0.02047112870521916,
+            "meanPool": 0.007757913426200219,
+            "peakColumn": 0.3875730037689209
+          }
+        }
+      }
+    ],
+    "actual-arena-transfer/recession": [
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.016081551664587752,
+            "meanPool": 0.012311072494946129,
+            "peakColumn": 3.2436602115631104
+          },
+          "unadapted": {
+            "peakPool": 1.250281971816216,
+            "meanPool": 0.6687263997210975,
+            "peakColumn": 3.2436602115631104
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.01051652449306483,
+            "meanPool": 0.007968278466943098,
+            "peakColumn": 0.8368856310844421
+          },
+          "unadapted": {
+            "peakPool": 0.22626659514727343,
+            "meanPool": 0.12548916532808174,
+            "peakColumn": 0.8368856310844421
+          }
+        }
+      },
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.015092424728006116,
+            "meanPool": 0.01150253494560723,
+            "peakColumn": 2.860908031463623
+          },
+          "unadapted": {
+            "peakPool": 1.0698718787132955,
+            "meanPool": 0.5751627431415667,
+            "peakColumn": 2.860908031463623
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.010434414742578679,
+            "meanPool": 0.007913433485947492,
+            "peakColumn": 0.8202446103096008
+          },
+          "unadapted": {
+            "peakPool": 0.22780032646819287,
+            "meanPool": 0.13116270665388777,
+            "peakColumn": 0.8202446103096008
+          }
+        }
+      }
+    ],
+    "actual-arena-transfer/lighting-change": [
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.0004288222831478268,
+            "meanPool": 0.00040164015412303344,
+            "peakColumn": 0.0016531944274902344
+          },
+          "unadapted": {
+            "peakPool": 0.0004429389750180432,
+            "meanPool": 0.0004243293549048479,
+            "peakColumn": 0.0016531944274902344
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.00022549290456343028,
+            "meanPool": 0.00010996263847077739,
+            "peakColumn": 0.009946316480636597
+          },
+          "unadapted": {
+            "peakPool": 0.00025843350935721425,
+            "meanPool": 0.0001170369001421688,
+            "peakColumn": 0.009946316480636597
+          }
+        }
+      },
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.00042273017169843315,
+            "meanPool": 0.0003841448928097167,
+            "peakColumn": 0.0015053749084472656
+          },
+          "unadapted": {
+            "peakPool": 0.0004367481642244224,
+            "meanPool": 0.00040565319219729466,
+            "peakColumn": 0.0015053749084472656
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.00023232028875679652,
+            "meanPool": 0.00011398483364609958,
+            "peakColumn": 0.009515941143035889
+          },
+          "unadapted": {
+            "peakPool": 0.0002662744015184988,
+            "meanPool": 0.00012174179683685968,
+            "peakColumn": 0.009515941143035889
+          }
+        }
+      }
+    ],
+    "actual-arena-transfer/static-target": [
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.000986883482122871,
+            "meanPool": 0.000833983854063425,
+            "peakColumn": 0.0018892288208007812
+          },
+          "unadapted": {
+            "peakPool": 0.001096485575597757,
+            "meanPool": 0.0009057033678156922,
+            "peakColumn": 0.0018892288208007812
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.0000821819866971191,
+            "meanPool": 0.00006824701425277371,
+            "peakColumn": 0.0004121065139770508
+          },
+          "unadapted": {
+            "peakPool": 0.00008410825811876895,
+            "meanPool": 0.00006949419720556362,
+            "peakColumn": 0.0004121065139770508
+          }
+        }
+      },
+      {
+        "T2": {
+          "adapted": {
+            "peakPool": 0.000966458932119216,
+            "meanPool": 0.0008186034286276887,
+            "peakColumn": 0.0017910003662109375
+          },
+          "unadapted": {
+            "peakPool": 0.0010748018682131349,
+            "meanPool": 0.0008896334837347164,
+            "peakColumn": 0.0017910003662109375
+          }
+        },
+        "T3": {
+          "adapted": {
+            "peakPool": 0.00008461698262945251,
+            "meanPool": 0.00007079959685883183,
+            "peakColumn": 0.0004915595054626465
+          },
+          "unadapted": {
+            "peakPool": 0.00008675717135313818,
+            "meanPool": 0.00007219588769965334,
+            "peakColumn": 0.0004915595054626465
+          }
+        }
+      }
+    ]
+  }
+}

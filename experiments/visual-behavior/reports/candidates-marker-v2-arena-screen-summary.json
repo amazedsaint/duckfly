@@ -1,0 +1,123 @@
+{
+  "sourceArtifactSha256": "8fd8634dcf02d83c52771a1601649384976dcf2be59884ef6de3491e105c6100",
+  "trackerSha256": "9ccf82aedd4b2b34b19cde19e2295c161c21f59cc5a6cbf935b2302ed82ce8d5",
+  "screenSha256": "a511a7ef7e85daf3ec0ead34c490735d888cfb54c5f6eefe5a7bc504f567d3fe",
+  "movies": 32,
+  "groups": {
+    "isolated": {
+      "movies": 4,
+      "eligibleFrames": 184,
+      "visibleFrames": 184,
+      "wrongFrames": 0,
+      "baselineWrongFrames": 0,
+      "ambiguousFrames": 0,
+      "confidentAmbiguousFrames": 0,
+      "falseTargetFrames": 0,
+      "baselineFalseTargetFrames": 0,
+      "coverage": 1,
+      "wrongRate": 0
+    },
+    "separated-distractor": {
+      "movies": 4,
+      "eligibleFrames": 184,
+      "visibleFrames": 159,
+      "wrongFrames": 0,
+      "baselineWrongFrames": 168,
+      "ambiguousFrames": 0,
+      "confidentAmbiguousFrames": 0,
+      "falseTargetFrames": 0,
+      "baselineFalseTargetFrames": 0,
+      "coverage": 0.8641304347826086,
+      "wrongRate": 0
+    },
+    "same-color-cross": {
+      "movies": 4,
+      "eligibleFrames": 0,
+      "visibleFrames": 0,
+      "wrongFrames": 0,
+      "baselineWrongFrames": 0,
+      "ambiguousFrames": 141,
+      "confidentAmbiguousFrames": 0,
+      "falseTargetFrames": 0,
+      "baselineFalseTargetFrames": 0,
+      "coverage": null,
+      "wrongRate": null
+    },
+    "brief-occlusion": {
+      "movies": 4,
+      "eligibleFrames": 0,
+      "visibleFrames": 0,
+      "wrongFrames": 0,
+      "baselineWrongFrames": 0,
+      "ambiguousFrames": 0,
+      "confidentAmbiguousFrames": 0,
+      "falseTargetFrames": 0,
+      "baselineFalseTargetFrames": 0,
+      "coverage": null,
+      "wrongRate": null
+    },
+    "ambiguous-occlusion": {
+      "movies": 4,
+      "eligibleFrames": 0,
+      "visibleFrames": 0,
+      "wrongFrames": 0,
+      "baselineWrongFrames": 0,
+      "ambiguousFrames": 141,
+      "confidentAmbiguousFrames": 0,
+      "falseTargetFrames": 0,
+      "baselineFalseTargetFrames": 0,
+      "coverage": null,
+      "wrongRate": null
+    },
+    "global-flash": {
+      "movies": 4,
+      "eligibleFrames": 0,
+      "visibleFrames": 0,
+      "wrongFrames": 0,
+      "baselineWrongFrames": 0,
+      "ambiguousFrames": 0,
+      "confidentAmbiguousFrames": 0,
+      "falseTargetFrames": 0,
+      "baselineFalseTargetFrames": 16,
+      "coverage": null,
+      "wrongRate": null
+    },
+    "local-flash": {
+      "movies": 4,
+      "eligibleFrames": 0,
+      "visibleFrames": 0,
+      "wrongFrames": 0,
+      "baselineWrongFrames": 0,
+      "ambiguousFrames": 0,
+      "confidentAmbiguousFrames": 0,
+      "falseTargetFrames": 0,
+      "baselineFalseTargetFrames": 16,
+      "coverage": null,
+      "wrongRate": null
+    },
+    "no-marker": {
+      "movies": 4,
+      "eligibleFrames": 0,
+      "visibleFrames": 0,
+      "wrongFrames": 0,
+      "baselineWrongFrames": 0,
+      "ambiguousFrames": 0,
+      "confidentAmbiguousFrames": 0,
+      "falseTargetFrames": 0,
+      "baselineFalseTargetFrames": 0,
+      "coverage": null,
+      "wrongRate": null
+    }
+  },
+  "gates": {
+    "coverage": false,
+    "precision": true,
+    "ambiguityAbstention": true,
+    "noTargetRejection": true,
+    "pass": false
+  },
+  "traceArtifactSha256": "d5e038b2f9f54516562c6070d7a3e1036b422fb89cf052ce8e179f52f38f80b0",
+  "productionPromotion": false,
+  "biologicalCircuit": false,
+  "bodyUsefulness": false
+}

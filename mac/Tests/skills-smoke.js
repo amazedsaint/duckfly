@@ -9,7 +9,7 @@ await wait(()=>{const s=t();samples.push({tick:s.tick,position:s.ducks[0].positi
 $('#pause').click();await wait(()=>t().paused);
 // A half-second action can fall between UI polling samples under load.
 // Inspect the retained delivered-command events, not just the latest phase.
-const deliveredPolicies=(minTick=0)=>{$('#inspect-event').click();const out=[];for(let i=0;i<=Number($('#event-index').max);i++){$('#event-index').value=String(i);$('#event-index').dispatchEvent(new Event('input'));const row=[...document.querySelectorAll('#event-content tr')].find(r=>r.cells[0].textContent==='Body policy');if(row&&Number($('#event-time').textContent.match(/tick (\d+)/)[1])>=minTick)out.push(row.cells[1].textContent);}$('#event-dialog').close();return out;};
+const deliveredPolicies=(minTick=0)=>{$('#inspect-event').click();const out=[];for(let i=0;i<=Number($('#event-index').max);i++){$('#event-index').value=String(i);$('#event-index').dispatchEvent(new Event('input'));const row=[...document.querySelectorAll('#event-signals tr')].find(r=>r.cells[0].textContent==='Body policy');if(row&&Number($('#event-time').textContent.match(/tick (\d+)/)[1])>=minTick)out.push(row.cells[1].textContent);}$('#event-dialog').close();return out;};
 const delivered=deliveredPolicies();check(delivered.some(p=>p.startsWith('kick')),'No delivered kick policy: '+JSON.stringify({samples,delivered}));
 check(samples.every(s=>!s.fallen),'Visual kick caused a fall');
 const ball=samples.at(-1).ball;check(Math.hypot(ball[0]-.09,ball[1]-.042)>.1,'Kick did not move ball');

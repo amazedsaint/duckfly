@@ -1,0 +1,168 @@
+{
+  "format": "duckfly-native-launch",
+  "passed": true,
+  "errors": [],
+  "checks": [
+    {
+      "check": "fresh startup, visible primary controls, and packaged hero images",
+      "assets": [
+        {
+          "path": "/launch/duck-hero.png",
+          "width": 1254,
+          "height": 1254,
+          "layout": {
+            "bottom": 798.94,
+            "height": 579.09,
+            "x": 610.58,
+            "y": 219.84,
+            "width": 617.33,
+            "left": 610.58,
+            "right": 1227.91,
+            "top": 219.84
+          }
+        },
+        {
+          "path": "/launch/fly-hero.png",
+          "width": 1254,
+          "height": 1254,
+          "layout": {
+            "height": 281.99,
+            "x": 1015.64,
+            "bottom": 357.44,
+            "y": 75.45,
+            "width": 281.13,
+            "left": 1015.64,
+            "top": 75.45,
+            "right": 1296.77
+          }
+        }
+      ],
+      "controls": {
+        "#launch-motion": {
+          "height": 32,
+          "x": 1153.64,
+          "bottom": 104,
+          "y": 72,
+          "width": 112.36,
+          "left": 1153.64,
+          "top": 72,
+          "right": 1266
+        },
+        "#new-scene": {
+          "height": 35,
+          "bottom": 43,
+          "x": 1105.16,
+          "y": 8,
+          "width": 112.78,
+          "left": 1105.16,
+          "top": 8,
+          "right": 1217.94
+        },
+        "#launch-enter": {
+          "height": 58,
+          "x": 64,
+          "bottom": 728.02,
+          "y": 670.02,
+          "width": 206.56,
+          "left": 64,
+          "right": 270.56,
+          "top": 670.02
+        },
+        "#launch-beacon": {
+          "height": 37,
+          "bottom": 717.52,
+          "x": 287.56,
+          "y": 680.52,
+          "width": 106.39,
+          "left": 287.56,
+          "right": 393.95,
+          "top": 680.52
+        }
+      },
+      "viewport": [
+        1320,
+        860
+      ]
+    },
+    {
+      "check": "decorative animation pauses/resumes and Send a spark reacts independently of the real circuit and physics",
+      "reducedMotion": false,
+      "paused": [
+        {
+          "name": "launch-shadow-breathe",
+          "state": "paused",
+          "element": "launch-duck-shadow"
+        },
+        {
+          "element": "launch-duck",
+          "name": "launch-duck-bob",
+          "state": "paused"
+        },
+        {
+          "state": "paused",
+          "element": "launch-fly",
+          "name": "launch-fly-orbit"
+        }
+      ],
+      "documentHidden": true,
+      "configured": [
+        {
+          "element": "launch-duck-shadow",
+          "state": "paused",
+          "name": "launch-shadow-breathe"
+        },
+        {
+          "element": "launch-duck",
+          "name": "launch-duck-bob",
+          "state": "paused"
+        },
+        {
+          "state": "paused",
+          "name": "launch-fly-orbit",
+          "element": "launch-fly"
+        }
+      ]
+    },
+    {
+      "check": "beacon and global New scene use isolated setup; cancelling returns to the introduction with focus and state retained"
+    },
+    {
+      "tick": 115,
+      "distance": 0.3109330845363121,
+      "check": "Open playground reveals the existing gallery; reviewed launch runs the actual neural and physical experiment"
+    },
+    {
+      "retainedTick": 115,
+      "resumedTick": 155,
+      "check": "More reopens the introduction and pauses without replacement; gallery Continue preserves the exact run; Run resumes it; Back and brand return to the gallery"
+    },
+    {
+      "scene": "Shared launch acceptance",
+      "check": "a real same-origin shared-scene URL initializes directly on the linked stage without launch or setup"
+    }
+  ],
+  "version": 1,
+  "recordedAt": "2026-09-11T11:11:24.297Z",
+  "sourceSha256": {
+    "web/src/brain.js": "5f219fc3861e6c396fbe6224e4b8ded79af55b1105d26fb052cbb3f577d3b1d6",
+    "web/src/main.js": "2f3008fa99f604e1e41aa94144fb978dc2badad804f8c5661bd8b6df25160a7d",
+    "web/src/lab/trigger-actions.js": "1aa75dc6434c13c86f6b3f84a444439cd744d5593e29358d79a8c5bd0c6a77dc",
+    "web/src/lab/connection-controls.js": "3eaadeb72edf524296ebaa1dad5ef2daac9e26cff01b07e98fc5aee82c3cdeb8",
+    "web/src/lab/connection-controls.css": "2d06a48ff0c70da0b3d6e4bd8d9f9dc5e814f9b05f3eea2ba1d6d6581e57b262",
+    "web/src/lab/connection-scenes.js": "4ece0cb58ce1722dc94691dfabae8fc2eba448b3d77e90a430f622b9fed89bf0",
+    "web/src/lab/experiment.js": "02f0c59a18ae63426bef1f70bb31129fc9f6306b5eb9358452c46fc2c85a0b67",
+    "web/src/lab/scene.js": "eb566f0c91d59716db3c8f9a1b63d706bc1940b8f2b635de20a0840bd9a2a86b",
+    "web/src/lab/scene-setup.js": "c5aea4752c30f175cc66dffd4cfd0fdc39ee07ec0c4ad15613785eb04629d5e9",
+    "web/src/lab/mapping-controls.js": "c1dd151a972cca47a208d07d482ddb66b96e5a34937d34929293af1b3f2da06b",
+    "web/src/lab/brain-mapping.js": "41afdac4548e4df96bd6a5bdc53b5e90237eacb231cefceb7dc7bb4c9973d953",
+    "web/src/lab/body-skills.js": "dd045becafba81dd2ea3cbb26ab6549250f150abdd441f4daa9eacbefc746a60",
+    "web/src/lab/scenarios.js": "be4cd642ee739f2e6dadf3cc27fdbabd629563ab9448d464e4dadeb86e54949a",
+    "web/src/lab/guided-ui.js": "b8b74d164e708d3da13257ec580cbc775b7f509d45ee6f20997ad92886fcbd8f",
+    "web/src/lab/workspace-ui.js": "52ba05f81dc1fb66e33531e35dd027f17fd796d0ea29330ccab7bbab3fd9cd12",
+    "web/src/lab/action-inspector.js": "6dd9c43476a8b79c66546fefa9bb51204dd83a09f73d30fec91f83eb3408fcc4",
+    "web/src/lab/action-evidence.js": "cd32823d38f81e083e260fa4f2956d65bc4fe3a052fc95e343caa1b44eb0de34",
+    "web/src/lab/recorded-events.js": "e2c2fefd901aeea9b92f516ce3fc6297d020f0382b04851f252a63495ef250b4"
+  },
+  "logSha256": "eef3ae6e54ba25dc1a21223b33b7f3d3ad243b819c7e1effd2332260a286663f",
+  "scopeNote": "Launch acceptance before the final numeric-field blur fix; the final UI is covered by connections-native-release.json."
+}

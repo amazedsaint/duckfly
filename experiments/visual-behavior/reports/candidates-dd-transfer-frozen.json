@@ -1,0 +1,8 @@
+{
+  "sources": {
+    "ddmodel-transfer.py": "ff33904f445a2b1b7470dfc76191f33a6dbfcd7b5c910161d83d536279e4783d",
+    "ddmodel-equations.py": "b186ae62e58879eeb762152e6ee92101c7888a7edd0a1aa05ad2a9b591e3d41b"
+  },
+  "threshold": 0.0007153802979611501,
+  "calibrationPass": true
+}

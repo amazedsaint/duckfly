@@ -1,0 +1,26 @@
+{
+  "sources": {
+    "marker-tracker.mjs": "c739a4d7def55381b6093ed9eb55eeae9ab4950f8f648e1e91c0dbd3dd764e06",
+    "marker-movies.mjs": "deae734fcfd078af73844ee02ef43bf111de149f9ed19e5da218b44d4313563d",
+    "marker-study.mjs": "c85926e2b8534c7dcd13da700b28f76f87aa38fb6ea7dd1ee2508d50fc4b01fe",
+    "MARKER-PLAN.md": "a7f8afafc7fb7228429ce709589e26e945c399b856d77f1334de4801c3ef7692",
+    "web/src/lab/vision.js": "6252146d6aa3ab3b4ecce9cd1dcae385b46bbeb84ef548c1577189ca4c5819dc"
+  },
+  "settings": {
+    "version": 1,
+    "width": 96,
+    "height": 64,
+    "minArea": 5,
+    "maxArea": 350,
+    "maxAspect": 3,
+    "acquireSeconds": 0.12,
+    "acquireFrames": 3,
+    "maxGap": 0.3,
+    "occlusionGrace": 0.24,
+    "associationRadius": 6,
+    "appearanceDistance": 0.2,
+    "areaRatio": 1.65,
+    "mergeMargin": 5,
+    "maxSpeed": 75
+  }
+}

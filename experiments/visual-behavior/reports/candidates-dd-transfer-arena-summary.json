@@ -1,0 +1,172 @@
+{
+  "split": "arena",
+  "sources": {
+    "ddmodel-transfer.py": "ff33904f445a2b1b7470dfc76191f33a6dbfcd7b5c910161d83d536279e4783d",
+    "ddmodel-equations.py": "b186ae62e58879eeb762152e6ee92101c7888a7edd0a1aa05ad2a9b591e3d41b"
+  },
+  "threshold": 0.0007153802979611501,
+  "groups": {
+    "target-pass/original": {
+      "movies": 2,
+      "responses": 0,
+      "scores": [
+        0.0006302465370132643,
+        0.0006481160295888487
+      ]
+    },
+    "target-pass/frozen": {
+      "movies": 2,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0
+      ]
+    },
+    "target-pass/reversed": {
+      "movies": 2,
+      "responses": 0,
+      "scores": [
+        0.0004939486954980546,
+        0.0004017945630473283
+      ]
+    },
+    "large-bar/original": {
+      "movies": 2,
+      "responses": 0,
+      "scores": [
+        0.0,
+        2.0102466767328417e-05
+      ]
+    },
+    "large-bar/frozen": {
+      "movies": 2,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0
+      ]
+    },
+    "large-bar/reversed": {
+      "movies": 2,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0
+      ]
+    },
+    "approach/original": {
+      "movies": 2,
+      "responses": 2,
+      "scores": [
+        0.0011102729438225828,
+        0.0012760002728937601
+      ]
+    },
+    "approach/frozen": {
+      "movies": 2,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0
+      ]
+    },
+    "approach/reversed": {
+      "movies": 2,
+      "responses": 0,
+      "scores": [
+        7.992324633489735e-05,
+        0.00011113496783227844
+      ]
+    },
+    "recession/original": {
+      "movies": 2,
+      "responses": 0,
+      "scores": [
+        5.844860951735389e-05,
+        9.267489358757362e-05
+      ]
+    },
+    "recession/frozen": {
+      "movies": 2,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0
+      ]
+    },
+    "recession/reversed": {
+      "movies": 2,
+      "responses": 2,
+      "scores": [
+        0.00112882155612426,
+        0.0012808570479401155
+      ]
+    },
+    "lighting-change/original": {
+      "movies": 2,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0
+      ]
+    },
+    "lighting-change/frozen": {
+      "movies": 2,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0
+      ]
+    },
+    "lighting-change/reversed": {
+      "movies": 2,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0
+      ]
+    },
+    "static-target/original": {
+      "movies": 2,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0
+      ]
+    },
+    "static-target/frozen": {
+      "movies": 2,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0
+      ]
+    },
+    "static-target/reversed": {
+      "movies": 2,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "calibrationPass": null,
+  "sampling": "14x14 at5deg centers[-32.5,32.5], actual75deg pinhole, causal25Hz or native capture hold to180Hz",
+  "conditioningSeconds": 4,
+  "baselineWindow": [
+    3.2,
+    4.24
+  ],
+  "observedWindow": [
+    4.24,
+    5.8
+  ],
+  "originalCodeParityReport": "3ce6bf474db8d2d3e2f0faf1c3c72b846782c329b330f6a034983b73ae054160",
+  "elapsedSeconds": 2.942957333056256,
+  "productionPromotion": false,
+  "biologicalLC11": false,
+  "flyvisInputs": false,
+  "physicalUsefulness": false,
+  "tracesSha256": "7196c569ef4187996acb3a60f35a44faf7ffabe77f60b7acf63c175ae1cb194e"
+}

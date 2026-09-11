@@ -1,0 +1,6494 @@
+{
+  "format": "duckfly-full-reference-stereo-capacity",
+  "version": 1,
+  "startedAt": "2026-09-11T02:46:51.841Z",
+  "finishedAt": "2026-09-11T02:48:02.598Z",
+  "elapsedSeconds": 70.75596733299999,
+  "sourceHashes": {
+    "run-capacity.mjs": "4fc1435624b77bcad7edc841ca0ce4d3df12b09ad6e27c4d7e6b8d74d744b960",
+    "CAPACITY-PROTOCOL.md": "95e5b21bd017142f42a51d3d2547396b3effe1b88158d74c6f4719d8235a52fd",
+    "load-model.mjs": "13daf664b0413b7e8402b32ac78e7b92eeb981568e4faa51d6471d7aede083b1",
+    "neuralMapFlowV2": "89105dc151642c43b246df793d6e1fd7255ac762a23deb8bf8de6289176f2a4b"
+  },
+  "modelHashes": {
+    "manifestFile": "33e007097fc3c539ebd817a297be38dfca113ab42a3fc6b24052575f0d403218",
+    "wasm": "7225b966d087253f204f50f1ec1fc85cb76286466d8e94b8af3e6a911a81f9b0",
+    "arrays": {
+      "source": "d1bb5f8eda28fb7c3b7088c4b07af6fc21726e488aedc74c277a4aa976b768b6",
+      "target": "a5521e8e79887ed525e2991d898119d95f46216bbee1f25b4b2dc93a2141fa33",
+      "weight": "f5c0636c6f9fca9d289d8a7b0e2d00d4aa0bd19cdc37df1ca28afa800c1b03bf",
+      "bias": "d276601573420bf787a81ffa8c81f2da3499a20df2bb858f6082c2e449ff564f",
+      "timeConstant": "1651e91b8f2554de0e48a8e5bdb56828ddd3cad3cb34d1b494652897d76279b8",
+      "inputIndex": "0961dec8bde58d7023f81666fcdad6451d570d328e030cd140fd7a96d9963119",
+      "steadyState": "ec82da2a80d617cc5cc81e6588624737da4bb75c212a1797acda3a8c9995cd73"
+    },
+    "sparseRuntime": "df8556796dd5245a620de6363577d661bded285428ad89133932faa40993aa05",
+    "spatialReadout": "568714f756f812c4e9505641ece06af25a29f743600f8006ef179bfd4d0962cf",
+    "retina": "12391b582bbe53d5fe65dc908fa931b54cda3f8d59418e15ca35b336b8052fa8"
+  },
+  "model": {
+    "id": "flyvis-000",
+    "sourceCommit": "92b3845cc426dd309a1a0e1b3890156c42e14021",
+    "checkpoint": "flow/0000/000/best_chkpt",
+    "checkpointSha256": "d8a57a022aa18ca338599be713af9db29b89cde4b00098ffe42b78f0d583e46a",
+    "loadedCheckpointSha256": "d0e42857e738d0315897c2d50fde9eb3fb1a3fb1f071d55dfc13d53d72bccc3f",
+    "manifestCanonicalSha256": "826051cb1333da60ca5aea40664427390ec7fe545e4d81671e755ba1460b4f58",
+    "wasmSha256": "7225b966d087253f204f50f1ec1fc85cb76286466d8e94b8af3e6a911a81f9b0",
+    "integrationDt": 0.002,
+    "units": "model continuous activity; not spikes or calcium"
+  },
+  "machine": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "node": "v24.19.0",
+    "cpu": "Apple M2 Max",
+    "logicalCpuCount": 12,
+    "totalMemoryBytes": 68719476736
+  },
+  "protocol": {
+    "duckCounts": [
+      1,
+      2,
+      8
+    ],
+    "stepCount": 20,
+    "intervalSeconds": 0.04,
+    "warmupIntervals": 4,
+    "measuredIntervals": 64,
+    "minimumGradient": 0.006455187013519394,
+    "executedSequentially": true,
+    "scope": "Offline precomputed-retina full core + signed map extraction + v2 decoder, excluding capture/projection/transfer/serialization/UI/physics; not an end-to-end or 25 Hz claim"
+  },
+  "fixedAllocations": {
+    "liveEyes": 0,
+    "liveAllocations": 5,
+    "liveBytes": 18524124,
+    "reservedWasmBytes": 19791872
+  },
+  "initialWorkload": {
+    "at": "2026-09-11T02:46:52.022Z",
+    "loadAverage": [
+      7.0556640625,
+      7.66796875,
+      7.74755859375
+    ],
+    "logicalCpuCount": 12,
+    "ownPid": 27276,
+    "relevant": [
+      {
+        "pid": 880,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 4226,
+        "cpuPercent": 0,
+        "command": "node_repl"
+      },
+      {
+        "pid": 4227,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 4228,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 4229,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 4230,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 4231,
+        "cpuPercent": 0,
+        "command": "node_repl"
+      },
+      {
+        "pid": 4396,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 4397,
+        "cpuPercent": 0,
+        "command": "Google Chrome"
+      },
+      {
+        "pid": 4399,
+        "cpuPercent": 0,
+        "command": "chrome_crashpad_handler"
+      },
+      {
+        "pid": 4406,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (GPU)"
+      },
+      {
+        "pid": 4407,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 4408,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 6931,
+        "cpuPercent": 0,
+        "command": "Codex (Renderer)"
+      },
+      {
+        "pid": 8331,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 13290,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 13390,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 13391,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 13392,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 13393,
+        "cpuPercent": 0,
+        "command": "node_repl"
+      },
+      {
+        "pid": 13394,
+        "cpuPercent": 0,
+        "command": "node_repl"
+      },
+      {
+        "pid": 13617,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 13618,
+        "cpuPercent": 0,
+        "command": "Google Chrome"
+      },
+      {
+        "pid": 13623,
+        "cpuPercent": 0,
+        "command": "chrome_crashpad_handler"
+      },
+      {
+        "pid": 13627,
+        "cpuPercent": 20.4,
+        "command": "Google Chrome Helper (GPU)"
+      },
+      {
+        "pid": 13628,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 13629,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 13634,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 13637,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 13638,
+        "cpuPercent": 15.5,
+        "command": "Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 13722,
+        "cpuPercent": 1.5,
+        "command": "node"
+      },
+      {
+        "pid": 17467,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 17468,
+        "cpuPercent": 0,
+        "command": "Google Chrome"
+      },
+      {
+        "pid": 17470,
+        "cpuPercent": 0,
+        "command": "chrome_crashpad_handler"
+      },
+      {
+        "pid": 17474,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (GPU)"
+      },
+      {
+        "pid": 17475,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 17476,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 17479,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 17480,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 17481,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 20597,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 24467,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 26258,
+        "cpuPercent": 97.9,
+        "command": "node"
+      },
+      {
+        "pid": 26741,
+        "cpuPercent": 0,
+        "command": "node_repl"
+      },
+      {
+        "pid": 26742,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 26743,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 26744,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 26745,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 26779,
+        "cpuPercent": 0,
+        "command": "node_repl"
+      },
+      {
+        "pid": 27161,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 27239,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 27240,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 27276,
+        "cpuPercent": 31.5,
+        "command": "node"
+      },
+      {
+        "pid": 29789,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 29790,
+        "cpuPercent": 0,
+        "command": "Google Chrome"
+      },
+      {
+        "pid": 29792,
+        "cpuPercent": 0,
+        "command": "chrome_crashpad_handler"
+      },
+      {
+        "pid": 29800,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (GPU)"
+      },
+      {
+        "pid": 29801,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 29802,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 34863,
+        "cpuPercent": 0,
+        "command": "codex"
+      },
+      {
+        "pid": 39562,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 44500,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 47110,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 47163,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 47164,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 53261,
+        "cpuPercent": 0.3,
+        "command": "node"
+      },
+      {
+        "pid": 55832,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 58546,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 58547,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 59110,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 59111,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 67881,
+        "cpuPercent": 0,
+        "command": "chrome_crashpad_handler"
+      },
+      {
+        "pid": 68084,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 73300,
+        "cpuPercent": 0.3,
+        "command": "Google Chrome"
+      },
+      {
+        "pid": 73323,
+        "cpuPercent": 0,
+        "command": "chrome_crashpad_handler"
+      },
+      {
+        "pid": 73326,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 73327,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 73329,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 73334,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 73341,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 74121,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 74122,
+        "cpuPercent": 0,
+        "command": "Google Chrome"
+      },
+      {
+        "pid": 74126,
+        "cpuPercent": 0,
+        "command": "chrome_crashpad_handler"
+      },
+      {
+        "pid": 74128,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (GPU)"
+      },
+      {
+        "pid": 74129,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 74130,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 74779,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 74780,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 76361,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 77976,
+        "cpuPercent": 0.3,
+        "command": "Codex (Service)"
+      },
+      {
+        "pid": 77977,
+        "cpuPercent": 0,
+        "command": "Codex (Service)"
+      },
+      {
+        "pid": 77978,
+        "cpuPercent": 0,
+        "command": "Codex (Service)"
+      },
+      {
+        "pid": 78762,
+        "cpuPercent": 14.4,
+        "command": "codex"
+      },
+      {
+        "pid": 78798,
+        "cpuPercent": 0.3,
+        "command": "Codex (Renderer)"
+      },
+      {
+        "pid": 78799,
+        "cpuPercent": 2.8,
+        "command": "Codex (Renderer)"
+      },
+      {
+        "pid": 79393,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 79394,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 79567,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 79579,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 79580,
+        "cpuPercent": 0,
+        "command": "Google Chrome"
+      },
+      {
+        "pid": 79582,
+        "cpuPercent": 0,
+        "command": "chrome_crashpad_handler"
+      },
+      {
+        "pid": 79588,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (GPU)"
+      },
+      {
+        "pid": 79589,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 79590,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper"
+      },
+      {
+        "pid": 80154,
+        "cpuPercent": 0,
+        "command": "Codex (Renderer)"
+      },
+      {
+        "pid": 80329,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 80330,
+        "cpuPercent": 0,
+        "command": "node_repl"
+      },
+      {
+        "pid": 80335,
+        "cpuPercent": 0,
+        "command": "node_repl"
+      },
+      {
+        "pid": 83307,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 87658,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 88071,
+        "cpuPercent": 0.6,
+        "command": "codex-code-mode-host"
+      },
+      {
+        "pid": 90828,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 91206,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 91550,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 91551,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 91552,
+        "cpuPercent": 0,
+        "command": "node_repl"
+      },
+      {
+        "pid": 91553,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 91647,
+        "cpuPercent": 0,
+        "command": "node_repl"
+      },
+      {
+        "pid": 93912,
+        "cpuPercent": 0,
+        "command": "Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 94894,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 94895,
+        "cpuPercent": 0,
+        "command": "node_repl"
+      },
+      {
+        "pid": 94896,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 94897,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 94900,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 94928,
+        "cpuPercent": 0,
+        "command": "node_repl"
+      },
+      {
+        "pid": 98600,
+        "cpuPercent": 0,
+        "command": "node"
+      },
+      {
+        "pid": 98601,
+        "cpuPercent": 0,
+        "command": "node"
+      }
+    ],
+    "otherAboveTenPercent": [
+      {
+        "pid": 724,
+        "cpuPercent": 17.7,
+        "command": "syspolicyd"
+      },
+      {
+        "pid": 798,
+        "cpuPercent": 89.6,
+        "command": "pmd"
+      },
+      {
+        "pid": 59379,
+        "cpuPercent": 100,
+        "command": "next-server (v16.3.4)"
+      }
+    ]
+  },
+  "groups": [
+    {
+      "duckCount": 1,
+      "eyeCount": 2,
+      "setupMs": 2014.3066249999974,
+      "conditioningMs": [
+        828.9359999999999,
+        846.4456249999998
+      ],
+      "independence": {
+        "changedEyeHash": "3cf078ec850bc12ea3fd4dd6d29684a4efbfb837729469db7aebc48f4c26b8f2",
+        "initialHashes": [
+          "246bccfa8c23acb3bc763fa6103d70a9ad86a567cb8ef8d41e0cf11eda274938",
+          "ccc3d9a8cc9c6133879952252a70ba0bc46dbaba47670a2a68bf2acdf7d69c25"
+        ],
+        "afterSingleStepHashes": [
+          "3cf078ec850bc12ea3fd4dd6d29684a4efbfb837729469db7aebc48f4c26b8f2",
+          "ccc3d9a8cc9c6133879952252a70ba0bc46dbaba47670a2a68bf2acdf7d69c25"
+        ],
+        "untouchedExact": true,
+        "steppedEyeChanged": true,
+        "restoreExact": true
+      },
+      "activeAllocations": {
+        "liveEyes": 2,
+        "liveAllocations": 11,
+        "liveBytes": 19620180,
+        "reservedWasmBytes": 20774912
+      },
+      "disposedAllocations": {
+        "liveEyes": 0,
+        "liveAllocations": 5,
+        "liveBytes": 18524124,
+        "reservedWasmBytes": 20774912
+      },
+      "released": true,
+      "finalStateHashes": [
+        "9ec2b571e218549ea9365453be2e88378164a8cd7fa534d3336de06886cff3db",
+        "2d8f841289ca6b965898f334f8f6d18ff48e8c905b868ef1fa54e16d61049c76"
+      ],
+      "samples": [
+        {
+          "interval": 4,
+          "groupMs": 67.29654100000016,
+          "coreMs": 64.20654100000002,
+          "extractionMs": 1.747001000000182,
+          "decoderMs": 1.3195409999998446
+        },
+        {
+          "interval": 5,
+          "groupMs": 67.27187499999991,
+          "coreMs": 64.39691599999969,
+          "extractionMs": 1.7208749999999782,
+          "decoderMs": 1.137000000000171
+        },
+        {
+          "interval": 6,
+          "groupMs": 72.40091699999994,
+          "coreMs": 69.07600000000048,
+          "extractionMs": 1.906582999999955,
+          "decoderMs": 1.393540999999459
+        },
+        {
+          "interval": 7,
+          "groupMs": 70.3507910000003,
+          "coreMs": 67.56358399999954,
+          "extractionMs": 1.7057920000002014,
+          "decoderMs": 1.073041000000103
+        },
+        {
+          "interval": 8,
+          "groupMs": 67.68754199999967,
+          "coreMs": 64.84383399999979,
+          "extractionMs": 1.776915999999801,
+          "decoderMs": 1.0608330000000024
+        },
+        {
+          "interval": 9,
+          "groupMs": 67.51549999999997,
+          "coreMs": 64.80033400000002,
+          "extractionMs": 1.931166999999732,
+          "decoderMs": 0.7775419999998121
+        },
+        {
+          "interval": 10,
+          "groupMs": 67.49983300000031,
+          "coreMs": 64.78704100000004,
+          "extractionMs": 1.9249170000002778,
+          "decoderMs": 0.7814159999998083
+        },
+        {
+          "interval": 11,
+          "groupMs": 66.86320800000021,
+          "coreMs": 64.27962600000001,
+          "extractionMs": 1.7067490000004,
+          "decoderMs": 0.8706259999994472
+        },
+        {
+          "interval": 12,
+          "groupMs": 66.45633300000009,
+          "coreMs": 63.8490840000004,
+          "extractionMs": 1.684708000000228,
+          "decoderMs": 0.9151260000003276
+        },
+        {
+          "interval": 13,
+          "groupMs": 68.57841600000029,
+          "coreMs": 66.1432490000002,
+          "extractionMs": 1.6828320000004169,
+          "decoderMs": 0.7454579999998714
+        },
+        {
+          "interval": 14,
+          "groupMs": 67.06720799999994,
+          "coreMs": 64.5422910000002,
+          "extractionMs": 1.8057909999997719,
+          "decoderMs": 0.7139170000000377
+        },
+        {
+          "interval": 15,
+          "groupMs": 66.4184580000001,
+          "coreMs": 63.864124000000174,
+          "extractionMs": 1.817583999999897,
+          "decoderMs": 0.7309580000001006
+        },
+        {
+          "interval": 16,
+          "groupMs": 67.48004200000014,
+          "coreMs": 64.8935419999998,
+          "extractionMs": 1.8535420000002887,
+          "decoderMs": 0.726249999999709
+        },
+        {
+          "interval": 17,
+          "groupMs": 66.87704200000007,
+          "coreMs": 64.26033300000017,
+          "extractionMs": 1.6739579999998568,
+          "decoderMs": 0.9345409999996264
+        },
+        {
+          "interval": 18,
+          "groupMs": 66.6228329999999,
+          "coreMs": 63.966249999999945,
+          "extractionMs": 1.7008749999999964,
+          "decoderMs": 0.944166999999652
+        },
+        {
+          "interval": 19,
+          "groupMs": 66.34816699999965,
+          "coreMs": 63.92000000000007,
+          "extractionMs": 1.748457999999573,
+          "decoderMs": 0.6760410000001684
+        },
+        {
+          "interval": 20,
+          "groupMs": 66.713209,
+          "coreMs": 64.19254099999989,
+          "extractionMs": 1.788082999999915,
+          "decoderMs": 0.7279999999996107
+        },
+        {
+          "interval": 21,
+          "groupMs": 66.78125,
+          "coreMs": 64.23374999999987,
+          "extractionMs": 1.6806249999999636,
+          "decoderMs": 0.8614999999999782
+        },
+        {
+          "interval": 22,
+          "groupMs": 65.88516699999991,
+          "coreMs": 63.379207999999835,
+          "extractionMs": 1.6449179999999615,
+          "decoderMs": 0.8551239999997051
+        },
+        {
+          "interval": 23,
+          "groupMs": 65.58095900000035,
+          "coreMs": 63.1726249999997,
+          "extractionMs": 1.6734169999995174,
+          "decoderMs": 0.729750000000422
+        },
+        {
+          "interval": 24,
+          "groupMs": 65.57699999999977,
+          "coreMs": 63.20779100000027,
+          "extractionMs": 1.6590830000000096,
+          "decoderMs": 0.7052490000000944
+        },
+        {
+          "interval": 25,
+          "groupMs": 65.89870900000005,
+          "coreMs": 63.48249999999962,
+          "extractionMs": 1.7359580000002097,
+          "decoderMs": 0.6766250000000582
+        },
+        {
+          "interval": 26,
+          "groupMs": 66.29595900000004,
+          "coreMs": 63.850916000000325,
+          "extractionMs": 1.7505000000001019,
+          "decoderMs": 0.690375000000131
+        },
+        {
+          "interval": 27,
+          "groupMs": 66.40870800000039,
+          "coreMs": 63.87141699999984,
+          "extractionMs": 1.6750410000004194,
+          "decoderMs": 0.8560829999996713
+        },
+        {
+          "interval": 28,
+          "groupMs": 66.03912499999979,
+          "coreMs": 63.368331999999555,
+          "extractionMs": 1.8130830000004607,
+          "decoderMs": 0.8513330000000678
+        },
+        {
+          "interval": 29,
+          "groupMs": 65.52529099999992,
+          "coreMs": 62.98258300000043,
+          "extractionMs": 1.7845830000001115,
+          "decoderMs": 0.7493750000003274
+        },
+        {
+          "interval": 30,
+          "groupMs": 65.8720000000003,
+          "coreMs": 63.32545800000025,
+          "extractionMs": 1.8248340000000098,
+          "decoderMs": 0.716750000000502
+        },
+        {
+          "interval": 31,
+          "groupMs": 66.0432080000005,
+          "coreMs": 63.49058299999979,
+          "extractionMs": 1.6396670000003724,
+          "decoderMs": 0.9076660000000629
+        },
+        {
+          "interval": 32,
+          "groupMs": 66.06983299999956,
+          "coreMs": 63.48545899999954,
+          "extractionMs": 1.6619169999994483,
+          "decoderMs": 0.9151670000001104
+        },
+        {
+          "interval": 33,
+          "groupMs": 66.39516600000024,
+          "coreMs": 64.00483400000121,
+          "extractionMs": 1.6742919999996957,
+          "decoderMs": 0.711500000000342
+        },
+        {
+          "interval": 34,
+          "groupMs": 66.41791699999976,
+          "coreMs": 63.96299999999883,
+          "extractionMs": 1.69183300000077,
+          "decoderMs": 0.758083999999144
+        },
+        {
+          "interval": 35,
+          "groupMs": 66.05674999999974,
+          "coreMs": 63.67808299999979,
+          "extractionMs": 1.7025830000002316,
+          "decoderMs": 0.6722499999996217
+        },
+        {
+          "interval": 36,
+          "groupMs": 66.35241599999972,
+          "coreMs": 63.868915999999444,
+          "extractionMs": 1.7689579999996567,
+          "decoderMs": 0.7094160000006013
+        },
+        {
+          "interval": 37,
+          "groupMs": 66.06045900000026,
+          "coreMs": 63.508749999999964,
+          "extractionMs": 1.6569170000002487,
+          "decoderMs": 0.8880839999992531
+        },
+        {
+          "interval": 38,
+          "groupMs": 66.77100000000064,
+          "coreMs": 64.24150000000009,
+          "extractionMs": 1.662916000000223,
+          "decoderMs": 0.8597500000005311
+        },
+        {
+          "interval": 39,
+          "groupMs": 66.62808399999994,
+          "coreMs": 64.12637499999983,
+          "extractionMs": 1.8051680000007764,
+          "decoderMs": 0.6914580000002388
+        },
+        {
+          "interval": 40,
+          "groupMs": 65.88562499999989,
+          "coreMs": 63.34837400000015,
+          "extractionMs": 1.8200839999990421,
+          "decoderMs": 0.7129580000000715
+        },
+        {
+          "interval": 41,
+          "groupMs": 66.22945900000013,
+          "coreMs": 63.61424999999963,
+          "extractionMs": 1.6806670000014492,
+          "decoderMs": 0.9277920000004087
+        },
+        {
+          "interval": 42,
+          "groupMs": 66.72991699999966,
+          "coreMs": 64.07404200000019,
+          "extractionMs": 1.7606260000002294,
+          "decoderMs": 0.8895830000001297
+        },
+        {
+          "interval": 43,
+          "groupMs": 65.9409999999998,
+          "coreMs": 63.40400000000045,
+          "extractionMs": 1.7048329999997804,
+          "decoderMs": 0.8274169999995138
+        },
+        {
+          "interval": 44,
+          "groupMs": 66.36875000000055,
+          "coreMs": 63.95537499999955,
+          "extractionMs": 1.6917499999990468,
+          "decoderMs": 0.7162499999994907
+        },
+        {
+          "interval": 45,
+          "groupMs": 66.39179199999944,
+          "coreMs": 63.96208399999978,
+          "extractionMs": 1.742167000000336,
+          "decoderMs": 0.6807909999997719
+        },
+        {
+          "interval": 46,
+          "groupMs": 66.33383400000002,
+          "coreMs": 63.777625000000626,
+          "extractionMs": 1.846042000000125,
+          "decoderMs": 0.7045010000001639
+        },
+        {
+          "interval": 47,
+          "groupMs": 66.36675000000014,
+          "coreMs": 63.69524999999976,
+          "extractionMs": 1.7623329999996713,
+          "decoderMs": 0.9028750000006767
+        },
+        {
+          "interval": 48,
+          "groupMs": 65.66949999999997,
+          "coreMs": 62.984833999999864,
+          "extractionMs": 1.689209000000119,
+          "decoderMs": 0.9895419999993464
+        },
+        {
+          "interval": 49,
+          "groupMs": 65.48516600000039,
+          "coreMs": 63.03370899999936,
+          "extractionMs": 1.745665999999801,
+          "decoderMs": 0.7017500000001746
+        },
+        {
+          "interval": 50,
+          "groupMs": 66.25429199999962,
+          "coreMs": 63.62004199999956,
+          "extractionMs": 1.869540999999117,
+          "decoderMs": 0.7601670000003651
+        },
+        {
+          "interval": 51,
+          "groupMs": 66.36212500000056,
+          "coreMs": 63.849457999999686,
+          "extractionMs": 1.6263330000001588,
+          "decoderMs": 0.8801250000005894
+        },
+        {
+          "interval": 52,
+          "groupMs": 66.29216600000018,
+          "coreMs": 63.70629200000076,
+          "extractionMs": 1.6612489999997706,
+          "decoderMs": 0.9179999999996653
+        },
+        {
+          "interval": 53,
+          "groupMs": 65.61933299999964,
+          "coreMs": 63.28254099999958,
+          "extractionMs": 1.6371680000002016,
+          "decoderMs": 0.6938330000002679
+        },
+        {
+          "interval": 54,
+          "groupMs": 65.984958,
+          "coreMs": 63.66874999999982,
+          "extractionMs": 1.6244589999996606,
+          "decoderMs": 0.6874170000000959
+        },
+        {
+          "interval": 55,
+          "groupMs": 66.24262499999986,
+          "coreMs": 63.69295900000088,
+          "extractionMs": 1.8030420000004597,
+          "decoderMs": 0.7429170000004888
+        },
+        {
+          "interval": 56,
+          "groupMs": 66.98862499999996,
+          "coreMs": 64.4780410000003,
+          "extractionMs": 1.791124999999738,
+          "decoderMs": 0.7157509999997274
+        },
+        {
+          "interval": 57,
+          "groupMs": 67.46320800000012,
+          "coreMs": 64.91062499999953,
+          "extractionMs": 1.6722499999996217,
+          "decoderMs": 0.8750829999999041
+        },
+        {
+          "interval": 58,
+          "groupMs": 67.74974999999995,
+          "coreMs": 64.98004200000014,
+          "extractionMs": 1.720792000000074,
+          "decoderMs": 1.043166000000383
+        },
+        {
+          "interval": 59,
+          "groupMs": 67.55199999999968,
+          "coreMs": 65.0198760000003,
+          "extractionMs": 1.7882920000001832,
+          "decoderMs": 0.7391250000000582
+        },
+        {
+          "interval": 60,
+          "groupMs": 67.15554200000042,
+          "coreMs": 64.49841699999979,
+          "extractionMs": 1.8307919999997466,
+          "decoderMs": 0.8187500000003638
+        },
+        {
+          "interval": 61,
+          "groupMs": 67.68645900000047,
+          "coreMs": 65.1324169999998,
+          "extractionMs": 1.677958000000217,
+          "decoderMs": 0.8687509999999747
+        },
+        {
+          "interval": 62,
+          "groupMs": 67.09975000000031,
+          "coreMs": 64.39200100000016,
+          "extractionMs": 1.709791000000223,
+          "decoderMs": 0.9915419999997539
+        },
+        {
+          "interval": 63,
+          "groupMs": 66.6704579999996,
+          "coreMs": 64.07983400000012,
+          "extractionMs": 1.7868749999997817,
+          "decoderMs": 0.7965830000002825
+        },
+        {
+          "interval": 64,
+          "groupMs": 66.93687499999942,
+          "coreMs": 64.52258400000028,
+          "extractionMs": 1.6985830000003261,
+          "decoderMs": 0.7101249999986976
+        },
+        {
+          "interval": 65,
+          "groupMs": 66.67512499999975,
+          "coreMs": 64.09562600000027,
+          "extractionMs": 1.8762090000009266,
+          "decoderMs": 0.6987079999998969
+        },
+        {
+          "interval": 66,
+          "groupMs": 66.29887500000041,
+          "coreMs": 63.75016700000015,
+          "extractionMs": 1.7759160000005068,
+          "decoderMs": 0.7686250000006112
+        },
+        {
+          "interval": 67,
+          "groupMs": 66.60983300000044,
+          "coreMs": 63.860999999999876,
+          "extractionMs": 1.6982499999994616,
+          "decoderMs": 1.0432079999991402
+        }
+      ],
+      "groupWallMs": {
+        "count": 64,
+        "median": 66.41791699999976,
+        "p90": 67.55199999999968,
+        "p95": 67.74974999999995,
+        "p99": 72.40091699999994,
+        "min": 65.48516600000039,
+        "max": 72.40091699999994,
+        "mean": 66.70547981250003
+      },
+      "coreGroupMs": {
+        "count": 64,
+        "median": 63.95537499999955,
+        "p90": 64.91062499999953,
+        "p95": 65.1324169999998,
+        "p99": 69.07600000000048,
+        "min": 62.98258300000043,
+        "max": 69.07600000000048,
+        "mean": 64.12839976562498
+      },
+      "extractionGroupMs": {
+        "count": 64,
+        "median": 1.7208749999999782,
+        "p90": 1.846042000000125,
+        "p95": 1.8762090000009266,
+        "p99": 1.931166999999732,
+        "min": 1.6244589999996606,
+        "max": 1.931166999999732,
+        "mean": 1.740220718750038
+      },
+      "decoderGroupMs": {
+        "count": 64,
+        "median": 0.7814159999998083,
+        "p90": 1.043166000000383,
+        "p95": 1.073041000000103,
+        "p99": 1.393540999999459,
+        "min": 0.6722499999996217,
+        "max": 1.393540999999459,
+        "mean": 0.8302948749999786
+      },
+      "currentProcessMemory": {
+        "rss": 169197568,
+        "heapTotal": 27295744,
+        "heapUsed": 14636880,
+        "external": 46267264,
+        "arrayBuffers": 23148744
+      },
+      "loadBefore": {
+        "at": "2026-09-11T02:46:52.069Z",
+        "loadAverage": [
+          7.0556640625,
+          7.66796875,
+          7.74755859375
+        ],
+        "logicalCpuCount": 12,
+        "ownPid": 27276,
+        "relevant": [
+          {
+            "pid": 880,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4226,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 4227,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4228,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4229,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4230,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4231,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 4396,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4397,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 4399,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 4406,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 4407,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 4408,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 6931,
+            "cpuPercent": 0,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 8331,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13290,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13390,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13391,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13392,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13393,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 13394,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 13617,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13618,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 13623,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 13627,
+            "cpuPercent": 20.9,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 13628,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 13629,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 13634,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13637,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13638,
+            "cpuPercent": 14.8,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13722,
+            "cpuPercent": 1.5,
+            "command": "node"
+          },
+          {
+            "pid": 17467,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 17468,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 17470,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 17474,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 17475,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 17476,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 17479,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 17480,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 17481,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 20597,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 24467,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26258,
+            "cpuPercent": 97,
+            "command": "node"
+          },
+          {
+            "pid": 26741,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 26742,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26743,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26744,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26745,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26779,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 27161,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27239,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27240,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27276,
+            "cpuPercent": 49.5,
+            "command": "node"
+          },
+          {
+            "pid": 29789,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 29790,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 29792,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 29800,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 29801,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 29802,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 34863,
+            "cpuPercent": 0,
+            "command": "codex"
+          },
+          {
+            "pid": 39562,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 44500,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 47110,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 47163,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 47164,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 53261,
+            "cpuPercent": 0.7,
+            "command": "node"
+          },
+          {
+            "pid": 55832,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 58546,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 58547,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 59110,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 59111,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 67881,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 68084,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 73300,
+            "cpuPercent": 0.1,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 73323,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 73326,
+            "cpuPercent": 0.1,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73327,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73329,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73334,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 73341,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 74121,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 74122,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 74126,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 74128,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 74129,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74130,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74779,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74780,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 76361,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 77976,
+            "cpuPercent": 0.2,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 77977,
+            "cpuPercent": 0.1,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 77978,
+            "cpuPercent": 0,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 78762,
+            "cpuPercent": 9.7,
+            "command": "codex"
+          },
+          {
+            "pid": 78798,
+            "cpuPercent": 0.3,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 78799,
+            "cpuPercent": 2.1,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 79393,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79394,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79567,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79579,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79580,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 79582,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 79588,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 79589,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 79590,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 80154,
+            "cpuPercent": 0.1,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 80329,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 80330,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 80335,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 83307,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 87658,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 88071,
+            "cpuPercent": 0.3,
+            "command": "codex-code-mode-host"
+          },
+          {
+            "pid": 90828,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91206,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 91550,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91551,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91552,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 91553,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91647,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 93912,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 94894,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94895,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 94896,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94897,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94900,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94928,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 98600,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 98601,
+            "cpuPercent": 0,
+            "command": "node"
+          }
+        ],
+        "otherAboveTenPercent": [
+          {
+            "pid": 724,
+            "cpuPercent": 16,
+            "command": "syspolicyd"
+          },
+          {
+            "pid": 798,
+            "cpuPercent": 93.7,
+            "command": "pmd"
+          },
+          {
+            "pid": 27029,
+            "cpuPercent": 20.7,
+            "command": "Docker Desktop Helper (Renderer)"
+          },
+          {
+            "pid": 59379,
+            "cpuPercent": 100.8,
+            "command": "next-server (v16.3.4)"
+          }
+        ]
+      },
+      "loadAfter": {
+        "at": "2026-09-11T02:46:58.350Z",
+        "loadAverage": [
+          6.73046875,
+          7.59033203125,
+          7.7197265625
+        ],
+        "logicalCpuCount": 12,
+        "ownPid": 27276,
+        "relevant": [
+          {
+            "pid": 880,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4226,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 4227,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4228,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4229,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4230,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4231,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 4396,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4397,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 4399,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 4406,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 4407,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 4408,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 6931,
+            "cpuPercent": 0,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 8331,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13290,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13390,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13391,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13392,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13393,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 13394,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 13617,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13618,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 13623,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 13627,
+            "cpuPercent": 6,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 13628,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 13629,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 13634,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13637,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13638,
+            "cpuPercent": 4.1,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13722,
+            "cpuPercent": 1.5,
+            "command": "node"
+          },
+          {
+            "pid": 17467,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 17468,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 17470,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 17474,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 17475,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 17476,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 17479,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 17480,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 17481,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 20597,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 24467,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26258,
+            "cpuPercent": 100,
+            "command": "node"
+          },
+          {
+            "pid": 26741,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 26742,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26743,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26744,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26745,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26779,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 27161,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27239,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27240,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27276,
+            "cpuPercent": 100,
+            "command": "node"
+          },
+          {
+            "pid": 29789,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 29790,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 29792,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 29800,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 29801,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 29802,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 34863,
+            "cpuPercent": 0,
+            "command": "codex"
+          },
+          {
+            "pid": 39562,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 44500,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 47110,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 47163,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 47164,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 53261,
+            "cpuPercent": 0.5,
+            "command": "node"
+          },
+          {
+            "pid": 55832,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 58546,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 58547,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 59110,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 59111,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 67881,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 68084,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 73300,
+            "cpuPercent": 0.4,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 73323,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 73326,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73327,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73329,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73334,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 73341,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 74121,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 74122,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 74126,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 74128,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 74129,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74130,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74779,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74780,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 76361,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 77976,
+            "cpuPercent": 0,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 77977,
+            "cpuPercent": 0,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 77978,
+            "cpuPercent": 0,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 78762,
+            "cpuPercent": 3,
+            "command": "codex"
+          },
+          {
+            "pid": 78798,
+            "cpuPercent": 0.3,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 78799,
+            "cpuPercent": 1.3,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 79393,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79394,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79567,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79579,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79580,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 79582,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 79588,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 79589,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 79590,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 80154,
+            "cpuPercent": 0,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 80329,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 80330,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 80335,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 83307,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 87658,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 88071,
+            "cpuPercent": 0,
+            "command": "codex-code-mode-host"
+          },
+          {
+            "pid": 90828,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91206,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 91550,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91551,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91552,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 91553,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91647,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 93912,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 94894,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94895,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 94896,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94897,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94900,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94928,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 98600,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 98601,
+            "cpuPercent": 0,
+            "command": "node"
+          }
+        ],
+        "otherAboveTenPercent": [
+          {
+            "pid": 724,
+            "cpuPercent": 10.7,
+            "command": "syspolicyd"
+          },
+          {
+            "pid": 798,
+            "cpuPercent": 94.5,
+            "command": "pmd"
+          },
+          {
+            "pid": 59379,
+            "cpuPercent": 102.4,
+            "command": "next-server (v16.3.4)"
+          }
+        ]
+      }
+    },
+    {
+      "duckCount": 2,
+      "eyeCount": 4,
+      "setupMs": 3927.213539000004,
+      "conditioningMs": [
+        830.4854589999995,
+        844.2776249999997,
+        843.6759999999995,
+        815.8760840000014
+      ],
+      "independence": {
+        "changedEyeHash": "3cf078ec850bc12ea3fd4dd6d29684a4efbfb837729469db7aebc48f4c26b8f2",
+        "initialHashes": [
+          "246bccfa8c23acb3bc763fa6103d70a9ad86a567cb8ef8d41e0cf11eda274938",
+          "ccc3d9a8cc9c6133879952252a70ba0bc46dbaba47670a2a68bf2acdf7d69c25",
+          "fdea537e67f745779e5791f3336695378716747ee7fa548586141eeb9747e043",
+          "9bfc939d41a45372473a9cc8ece9c09a2f8d45bb654b443664ae445d9950fbba"
+        ],
+        "afterSingleStepHashes": [
+          "3cf078ec850bc12ea3fd4dd6d29684a4efbfb837729469db7aebc48f4c26b8f2",
+          "ccc3d9a8cc9c6133879952252a70ba0bc46dbaba47670a2a68bf2acdf7d69c25",
+          "fdea537e67f745779e5791f3336695378716747ee7fa548586141eeb9747e043",
+          "9bfc939d41a45372473a9cc8ece9c09a2f8d45bb654b443664ae445d9950fbba"
+        ],
+        "untouchedExact": true,
+        "steppedEyeChanged": true,
+        "restoreExact": true
+      },
+      "activeAllocations": {
+        "liveEyes": 4,
+        "liveAllocations": 17,
+        "liveBytes": 20716236,
+        "reservedWasmBytes": 21954560
+      },
+      "disposedAllocations": {
+        "liveEyes": 0,
+        "liveAllocations": 5,
+        "liveBytes": 18524124,
+        "reservedWasmBytes": 21954560
+      },
+      "released": true,
+      "finalStateHashes": [
+        "9ec2b571e218549ea9365453be2e88378164a8cd7fa534d3336de06886cff3db",
+        "2d8f841289ca6b965898f334f8f6d18ff48e8c905b868ef1fa54e16d61049c76",
+        "8051294bf9cf7857b03980b385b018e7bf760186b00005a0b093b5263b8edeff",
+        "9e8502c0ceec01aa4711748e49d642cbd4d02cfc3607272b6673e0b65bb7be4c"
+      ],
+      "samples": [
+        {
+          "interval": 4,
+          "groupMs": 132.9177090000012,
+          "coreMs": 127.9741670000003,
+          "extractionMs": 3.4714590000003227,
+          "decoderMs": 1.4545410000009724
+        },
+        {
+          "interval": 5,
+          "groupMs": 132.7654169999987,
+          "coreMs": 127.68045800000073,
+          "extractionMs": 3.4645420000015292,
+          "decoderMs": 1.6109169999999722
+        },
+        {
+          "interval": 6,
+          "groupMs": 132.5355839999993,
+          "coreMs": 127.56729200000154,
+          "extractionMs": 3.383375999999771,
+          "decoderMs": 1.572915999999168
+        },
+        {
+          "interval": 7,
+          "groupMs": 131.77395799999977,
+          "coreMs": 126.55399900000157,
+          "extractionMs": 3.5577089999987948,
+          "decoderMs": 1.6467089999987365
+        },
+        {
+          "interval": 8,
+          "groupMs": 131.82941700000083,
+          "coreMs": 126.78533400000015,
+          "extractionMs": 3.416583999998693,
+          "decoderMs": 1.6109169999981532
+        },
+        {
+          "interval": 9,
+          "groupMs": 133.6181660000002,
+          "coreMs": 128.51779100000203,
+          "extractionMs": 3.555499999998574,
+          "decoderMs": 1.5228749999987485
+        },
+        {
+          "interval": 10,
+          "groupMs": 132.36416700000154,
+          "coreMs": 127.23991599999681,
+          "extractionMs": 3.4966670000030717,
+          "decoderMs": 1.6129590000000462
+        },
+        {
+          "interval": 11,
+          "groupMs": 131.83870799999931,
+          "coreMs": 126.92799999999806,
+          "extractionMs": 3.3744149999984074,
+          "decoderMs": 1.5265010000020993
+        },
+        {
+          "interval": 12,
+          "groupMs": 132.41933299999982,
+          "coreMs": 127.39762400000109,
+          "extractionMs": 3.514999999999418,
+          "decoderMs": 1.493376000002172
+        },
+        {
+          "interval": 13,
+          "groupMs": 137.4542079999992,
+          "coreMs": 132.3339160000014,
+          "extractionMs": 3.4534159999966505,
+          "decoderMs": 1.653333999998722
+        },
+        {
+          "interval": 14,
+          "groupMs": 136.8180420000008,
+          "coreMs": 131.72550000000047,
+          "extractionMs": 3.573333000002094,
+          "decoderMs": 1.4979590000020835
+        },
+        {
+          "interval": 15,
+          "groupMs": 132.92345800000112,
+          "coreMs": 127.68287500000224,
+          "extractionMs": 3.6449160000029224,
+          "decoderMs": 1.5791259999987233
+        },
+        {
+          "interval": 16,
+          "groupMs": 132.14537500000006,
+          "coreMs": 126.89724999999999,
+          "extractionMs": 3.5636669999967125,
+          "decoderMs": 1.672500000000582
+        },
+        {
+          "interval": 17,
+          "groupMs": 132.32450000000063,
+          "coreMs": 127.19287500000246,
+          "extractionMs": 3.5317899999990914,
+          "decoderMs": 1.58741800000098
+        },
+        {
+          "interval": 18,
+          "groupMs": 131.40587500000038,
+          "coreMs": 126.35704199999964,
+          "extractionMs": 3.371333000000959,
+          "decoderMs": 1.6645020000014483
+        },
+        {
+          "interval": 19,
+          "groupMs": 131.36537500000122,
+          "coreMs": 126.4930000000004,
+          "extractionMs": 3.430832999998529,
+          "decoderMs": 1.4293319999997038
+        },
+        {
+          "interval": 20,
+          "groupMs": 130.94616700000006,
+          "coreMs": 126.0268759999999,
+          "extractionMs": 3.363458999998329,
+          "decoderMs": 1.5467500000013388
+        },
+        {
+          "interval": 21,
+          "groupMs": 132.93495799999982,
+          "coreMs": 127.26604200000111,
+          "extractionMs": 3.4433330000010756,
+          "decoderMs": 2.215165999999954
+        },
+        {
+          "interval": 22,
+          "groupMs": 133.66966700000012,
+          "coreMs": 128.11074999999983,
+          "extractionMs": 3.794332999998005,
+          "decoderMs": 1.7556649999987712
+        },
+        {
+          "interval": 23,
+          "groupMs": 134.4642500000009,
+          "coreMs": 128.50000100000034,
+          "extractionMs": 3.967874000001757,
+          "decoderMs": 1.9855829999978596
+        },
+        {
+          "interval": 24,
+          "groupMs": 132.42374999999993,
+          "coreMs": 126.78437599999779,
+          "extractionMs": 3.978625000001557,
+          "decoderMs": 1.6508320000029926
+        },
+        {
+          "interval": 25,
+          "groupMs": 132.4487910000007,
+          "coreMs": 127.1476249999996,
+          "extractionMs": 3.41570800000045,
+          "decoderMs": 1.8741249999984575
+        },
+        {
+          "interval": 26,
+          "groupMs": 131.85916700000053,
+          "coreMs": 126.84216600000036,
+          "extractionMs": 3.4942490000012185,
+          "decoderMs": 1.510667000000467
+        },
+        {
+          "interval": 27,
+          "groupMs": 131.79583300000013,
+          "coreMs": 126.9004160000004,
+          "extractionMs": 3.3164159999996627,
+          "decoderMs": 1.5697070000005624
+        },
+        {
+          "interval": 28,
+          "groupMs": 132.86720799999966,
+          "coreMs": 128.24333300000217,
+          "extractionMs": 3.226332000002003,
+          "decoderMs": 1.386582000000999
+        },
+        {
+          "interval": 29,
+          "groupMs": 132.67183300000033,
+          "coreMs": 127.7820010000014,
+          "extractionMs": 3.4117500000011205,
+          "decoderMs": 1.4685409999983676
+        },
+        {
+          "interval": 30,
+          "groupMs": 131.71058399999856,
+          "coreMs": 126.91429099999732,
+          "extractionMs": 3.252791000000798,
+          "decoderMs": 1.5325840000004973
+        },
+        {
+          "interval": 31,
+          "groupMs": 130.933583,
+          "coreMs": 126.15620800000215,
+          "extractionMs": 3.3627919999998994,
+          "decoderMs": 1.403374999999869
+        },
+        {
+          "interval": 32,
+          "groupMs": 131.5686659999992,
+          "coreMs": 126.53154200000063,
+          "extractionMs": 3.3740839999991294,
+          "decoderMs": 1.642666999998255
+        },
+        {
+          "interval": 33,
+          "groupMs": 131.4444170000006,
+          "coreMs": 126.82095599999775,
+          "extractionMs": 3.217124999997395,
+          "decoderMs": 1.3969159999996918
+        },
+        {
+          "interval": 34,
+          "groupMs": 131.47249999999985,
+          "coreMs": 126.68087500000001,
+          "extractionMs": 3.370082999999795,
+          "decoderMs": 1.413206999999602
+        },
+        {
+          "interval": 35,
+          "groupMs": 133.08762500000012,
+          "coreMs": 128.21954200000255,
+          "extractionMs": 3.276249000000462,
+          "decoderMs": 1.5813760000000912
+        },
+        {
+          "interval": 36,
+          "groupMs": 132.512999999999,
+          "coreMs": 127.399747999998,
+          "extractionMs": 3.565500000000611,
+          "decoderMs": 1.5382919999992737
+        },
+        {
+          "interval": 37,
+          "groupMs": 131.8860420000001,
+          "coreMs": 126.81304000000091,
+          "extractionMs": 3.420498999999836,
+          "decoderMs": 1.643833000000086
+        },
+        {
+          "interval": 38,
+          "groupMs": 131.083208,
+          "coreMs": 126.39441699999952,
+          "extractionMs": 3.2987900000007357,
+          "decoderMs": 1.3792080000002898
+        },
+        {
+          "interval": 39,
+          "groupMs": 133.73837500000081,
+          "coreMs": 128.60775099999955,
+          "extractionMs": 3.5467920000028244,
+          "decoderMs": 1.5723739999993995
+        },
+        {
+          "interval": 40,
+          "groupMs": 132.6005839999998,
+          "coreMs": 127.61175000000185,
+          "extractionMs": 3.325792999999976,
+          "decoderMs": 1.6505020000022341
+        },
+        {
+          "interval": 41,
+          "groupMs": 131.7926669999997,
+          "coreMs": 126.97450000000026,
+          "extractionMs": 3.416874000002281,
+          "decoderMs": 1.3925819999985833
+        },
+        {
+          "interval": 42,
+          "groupMs": 131.9487079999999,
+          "coreMs": 127.06583300000057,
+          "extractionMs": 3.273250000002008,
+          "decoderMs": 1.598916000000827
+        },
+        {
+          "interval": 43,
+          "groupMs": 132.60229199999958,
+          "coreMs": 127.7641249999997,
+          "extractionMs": 3.3853329999983544,
+          "decoderMs": 1.443916000000172
+        },
+        {
+          "interval": 44,
+          "groupMs": 132.15612500000134,
+          "coreMs": 127.29212499999994,
+          "extractionMs": 3.326791999999841,
+          "decoderMs": 1.5276649999996152
+        },
+        {
+          "interval": 45,
+          "groupMs": 132.31112500000017,
+          "coreMs": 127.42429200000151,
+          "extractionMs": 3.457209000000148,
+          "decoderMs": 1.4210000000002765
+        },
+        {
+          "interval": 46,
+          "groupMs": 134.84787499999948,
+          "coreMs": 129.98037599999952,
+          "extractionMs": 3.28558300000077,
+          "decoderMs": 1.5699169999988953
+        },
+        {
+          "interval": 47,
+          "groupMs": 134.40929099999994,
+          "coreMs": 129.6441250000007,
+          "extractionMs": 3.309916999998677,
+          "decoderMs": 1.4434579999997368
+        },
+        {
+          "interval": 48,
+          "groupMs": 134.32116600000154,
+          "coreMs": 129.48862400000144,
+          "extractionMs": 3.4024589999989985,
+          "decoderMs": 1.4170419999954902
+        },
+        {
+          "interval": 49,
+          "groupMs": 133.22899999999936,
+          "coreMs": 128.41558300000543,
+          "extractionMs": 3.270918000001984,
+          "decoderMs": 1.53125
+        },
+        {
+          "interval": 50,
+          "groupMs": 133.42966700000034,
+          "coreMs": 128.62783300000228,
+          "extractionMs": 3.393542999998317,
+          "decoderMs": 1.3967919999995502
+        },
+        {
+          "interval": 51,
+          "groupMs": 133.00954199999978,
+          "coreMs": 128.25812500000393,
+          "extractionMs": 3.348667000002024,
+          "decoderMs": 1.3914170000025479
+        },
+        {
+          "interval": 52,
+          "groupMs": 132.83762500000012,
+          "coreMs": 127.93229100000099,
+          "extractionMs": 3.282626000003802,
+          "decoderMs": 1.6110419999968144
+        },
+        {
+          "interval": 53,
+          "groupMs": 133.06133399999817,
+          "coreMs": 128.22141599999668,
+          "extractionMs": 3.393125999995391,
+          "decoderMs": 1.4368739999990794
+        },
+        {
+          "interval": 54,
+          "groupMs": 133.22729199999958,
+          "coreMs": 128.24449999999706,
+          "extractionMs": 3.3084580000031565,
+          "decoderMs": 1.6596250000002328
+        },
+        {
+          "interval": 55,
+          "groupMs": 132.27383399999962,
+          "coreMs": 127.42879099999845,
+          "extractionMs": 3.426416000002064,
+          "decoderMs": 1.4087079999990237
+        },
+        {
+          "interval": 56,
+          "groupMs": 132.0526659999996,
+          "coreMs": 127.05441599999904,
+          "extractionMs": 3.3199169999970763,
+          "decoderMs": 1.6670420000009472
+        },
+        {
+          "interval": 57,
+          "groupMs": 132.46387500000128,
+          "coreMs": 127.8495839999996,
+          "extractionMs": 3.237582999998267,
+          "decoderMs": 1.368040999994264
+        },
+        {
+          "interval": 58,
+          "groupMs": 132.29945799999768,
+          "coreMs": 127.37362599999688,
+          "extractionMs": 3.4469180000014603,
+          "decoderMs": 1.4672489999975369
+        },
+        {
+          "interval": 59,
+          "groupMs": 131.7412919999988,
+          "coreMs": 126.82262499999706,
+          "extractionMs": 3.2679579999967245,
+          "decoderMs": 1.6392499999965366
+        },
+        {
+          "interval": 60,
+          "groupMs": 132.16245799999888,
+          "coreMs": 127.32016799999838,
+          "extractionMs": 3.4144169999963196,
+          "decoderMs": 1.417249999998603
+        },
+        {
+          "interval": 61,
+          "groupMs": 132.81312500000058,
+          "coreMs": 127.83262500000274,
+          "extractionMs": 3.3244999999988067,
+          "decoderMs": 1.6442919999935839
+        },
+        {
+          "interval": 62,
+          "groupMs": 133.53483400000187,
+          "coreMs": 128.5980419999978,
+          "extractionMs": 3.464708999999857,
+          "decoderMs": 1.459500000000844
+        },
+        {
+          "interval": 63,
+          "groupMs": 131.4520420000008,
+          "coreMs": 126.63216600000669,
+          "extractionMs": 3.2535420000021986,
+          "decoderMs": 1.5548329999983252
+        },
+        {
+          "interval": 64,
+          "groupMs": 131.28799999999683,
+          "coreMs": 126.69974999999977,
+          "extractionMs": 3.2107099999993807,
+          "decoderMs": 1.371459000001778
+        },
+        {
+          "interval": 65,
+          "groupMs": 132.25116699999853,
+          "coreMs": 127.34254099999816,
+          "extractionMs": 3.4756670000024315,
+          "decoderMs": 1.4222090000002936
+        },
+        {
+          "interval": 66,
+          "groupMs": 133.619917,
+          "coreMs": 128.46583299999838,
+          "extractionMs": 3.407292999992933,
+          "decoderMs": 1.7282089999971504
+        },
+        {
+          "interval": 67,
+          "groupMs": 132.54029199999786,
+          "coreMs": 127.77200000000084,
+          "extractionMs": 3.31537500000195,
+          "decoderMs": 1.4420419999987644
+        }
+      ],
+      "groupWallMs": {
+        "count": 64,
+        "median": 132.4487910000007,
+        "p90": 133.73837500000081,
+        "p95": 134.4642500000009,
+        "p99": 137.4542079999992,
+        "min": 130.933583,
+        "max": 137.4542079999992,
+        "mean": 132.62962764062493
+      },
+      "coreGroupMs": {
+        "count": 64,
+        "median": 127.399747999998,
+        "p90": 128.60775099999955,
+        "p95": 129.6441250000007,
+        "p99": 132.3339160000014,
+        "min": 126.0268759999999,
+        "max": 132.3339160000014,
+        "mean": 127.65010406250025
+      },
+      "extractionGroupMs": {
+        "count": 64,
+        "median": 3.4024589999989985,
+        "p90": 3.5636669999967125,
+        "p95": 3.6449160000029224,
+        "p99": 3.978625000001557,
+        "min": 3.2107099999993807,
+        "max": 3.978625000001557,
+        "mean": 3.4163574531249594
+      },
+      "decoderGroupMs": {
+        "count": 64,
+        "median": 1.5382919999992737,
+        "p90": 1.6670420000009472,
+        "p95": 1.7556649999987712,
+        "p99": 2.215165999999954,
+        "min": 1.368040999994264,
+        "max": 2.215165999999954,
+        "mean": 1.5513345937495444
+      },
+      "currentProcessMemory": {
+        "rss": 195837952,
+        "heapTotal": 45383680,
+        "heapUsed": 26255856,
+        "external": 53862205,
+        "arrayBuffers": 29562896
+      },
+      "loadBefore": {
+        "at": "2026-09-11T02:46:58.392Z",
+        "loadAverage": [
+          6.73046875,
+          7.59033203125,
+          7.7197265625
+        ],
+        "logicalCpuCount": 12,
+        "ownPid": 27276,
+        "relevant": [
+          {
+            "pid": 880,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4226,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 4227,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4228,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4229,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4230,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4231,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 4396,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4397,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 4399,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 4406,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 4407,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 4408,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 6931,
+            "cpuPercent": 0,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 8331,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13290,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13390,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13391,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13392,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13393,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 13394,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 13617,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13618,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 13623,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 13627,
+            "cpuPercent": 6,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 13628,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 13629,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 13634,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13637,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13638,
+            "cpuPercent": 4.1,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13722,
+            "cpuPercent": 1.5,
+            "command": "node"
+          },
+          {
+            "pid": 17467,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 17468,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 17470,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 17474,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 17475,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 17476,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 17479,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 17480,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 17481,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 20597,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 24467,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26258,
+            "cpuPercent": 100,
+            "command": "node"
+          },
+          {
+            "pid": 26741,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 26742,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26743,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26744,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26745,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26779,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 27161,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27239,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27240,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27276,
+            "cpuPercent": 100,
+            "command": "node"
+          },
+          {
+            "pid": 29789,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 29790,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 29792,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 29800,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 29801,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 29802,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 34863,
+            "cpuPercent": 0,
+            "command": "codex"
+          },
+          {
+            "pid": 39562,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 44500,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 47110,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 47163,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 47164,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 53261,
+            "cpuPercent": 0.5,
+            "command": "node"
+          },
+          {
+            "pid": 55832,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 58546,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 58547,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 59110,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 59111,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 67881,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 68084,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 73300,
+            "cpuPercent": 0.4,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 73323,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 73326,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73327,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73329,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73334,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 73341,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 74121,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 74122,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 74126,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 74128,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 74129,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74130,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74779,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74780,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 76361,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 77976,
+            "cpuPercent": 0,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 77977,
+            "cpuPercent": 0,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 77978,
+            "cpuPercent": 0,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 78762,
+            "cpuPercent": 3,
+            "command": "codex"
+          },
+          {
+            "pid": 78798,
+            "cpuPercent": 0.3,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 78799,
+            "cpuPercent": 1.3,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 79393,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79394,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79567,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79579,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79580,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 79582,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 79588,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 79589,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 79590,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 80154,
+            "cpuPercent": 0,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 80329,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 80330,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 80335,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 83307,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 87658,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 88071,
+            "cpuPercent": 0,
+            "command": "codex-code-mode-host"
+          },
+          {
+            "pid": 90828,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91206,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 91550,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91551,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91552,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 91553,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91647,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 93912,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 94894,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94895,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 94896,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94897,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94900,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94928,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 98600,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 98601,
+            "cpuPercent": 0,
+            "command": "node"
+          }
+        ],
+        "otherAboveTenPercent": [
+          {
+            "pid": 724,
+            "cpuPercent": 10.7,
+            "command": "syspolicyd"
+          },
+          {
+            "pid": 798,
+            "cpuPercent": 94.5,
+            "command": "pmd"
+          },
+          {
+            "pid": 59379,
+            "cpuPercent": 102.4,
+            "command": "next-server (v16.3.4)"
+          }
+        ]
+      },
+      "loadAfter": {
+        "at": "2026-09-11T02:47:10.809Z",
+        "loadAverage": [
+          6.5556640625,
+          7.51123046875,
+          7.68896484375
+        ],
+        "logicalCpuCount": 12,
+        "ownPid": 27276,
+        "relevant": [
+          {
+            "pid": 880,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4226,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 4227,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4228,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4229,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4230,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4231,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 4396,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4397,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 4399,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 4406,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 4407,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 4408,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 6931,
+            "cpuPercent": 0,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 8331,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13290,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13390,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13391,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13392,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13393,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 13394,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 13617,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13618,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 13623,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 13627,
+            "cpuPercent": 4.9,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 13628,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 13629,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 13634,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13637,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13638,
+            "cpuPercent": 3.1,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13722,
+            "cpuPercent": 2,
+            "command": "node"
+          },
+          {
+            "pid": 17467,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 17468,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 17470,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 17474,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 17475,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 17476,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 17479,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 17480,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 17481,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 20597,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 24467,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26258,
+            "cpuPercent": 105,
+            "command": "node"
+          },
+          {
+            "pid": 26741,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 26742,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26743,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26744,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26745,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26779,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 27239,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27240,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27276,
+            "cpuPercent": 99.6,
+            "command": "node"
+          },
+          {
+            "pid": 29789,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 29790,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 29792,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 29800,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 29801,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 29802,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 34863,
+            "cpuPercent": 0,
+            "command": "codex"
+          },
+          {
+            "pid": 39562,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 44500,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 47110,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 47163,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 47164,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 53261,
+            "cpuPercent": 1.1,
+            "command": "node"
+          },
+          {
+            "pid": 55832,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 58546,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 58547,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 59110,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 59111,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 67881,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 68084,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 73300,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 73323,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 73326,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73327,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73329,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73334,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 73341,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 74121,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 74122,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 74126,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 74128,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 74129,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74130,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74779,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74780,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 76361,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 77976,
+            "cpuPercent": 0,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 77977,
+            "cpuPercent": 0,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 77978,
+            "cpuPercent": 0,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 78762,
+            "cpuPercent": 4.2,
+            "command": "codex"
+          },
+          {
+            "pid": 78798,
+            "cpuPercent": 0.1,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 78799,
+            "cpuPercent": 0.6,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 79393,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79394,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79567,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79579,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79580,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 79582,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 79588,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 79589,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 79590,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 80154,
+            "cpuPercent": 0,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 80329,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 80330,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 80335,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 83307,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 87658,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 88071,
+            "cpuPercent": 0,
+            "command": "codex-code-mode-host"
+          },
+          {
+            "pid": 90828,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91206,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 91550,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91551,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91552,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 91553,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91647,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 93912,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 94894,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94895,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 94896,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94897,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94900,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94928,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 98600,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 98601,
+            "cpuPercent": 0,
+            "command": "node"
+          }
+        ],
+        "otherAboveTenPercent": [
+          {
+            "pid": 798,
+            "cpuPercent": 72.2,
+            "command": "pmd"
+          },
+          {
+            "pid": 27202,
+            "cpuPercent": 13,
+            "command": "Microsoft Edge Helper (Renderer)"
+          },
+          {
+            "pid": 59379,
+            "cpuPercent": 102.8,
+            "command": "next-server (v16.3.4)"
+          },
+          {
+            "pid": 85055,
+            "cpuPercent": 11.7,
+            "command": "Microsoft PowerPoint"
+          }
+        ]
+      }
+    },
+    {
+      "duckCount": 8,
+      "eyeCount": 16,
+      "setupMs": 15278.514254000045,
+      "conditioningMs": [
+        811.9556250000023,
+        812.9990419999995,
+        811.8549170000006,
+        825.3785419999986,
+        812.015666000003,
+        805.603833000001,
+        809.9887090000011,
+        813.7613749999982,
+        812.3325000000004,
+        812.6874169999974,
+        811.6360839999979,
+        815.6270839999997,
+        813.9815000000017,
+        814.9929169999996,
+        812.6111659999988,
+        825.6906659999986
+      ],
+      "independence": {
+        "changedEyeHash": "3cf078ec850bc12ea3fd4dd6d29684a4efbfb837729469db7aebc48f4c26b8f2",
+        "initialHashes": [
+          "246bccfa8c23acb3bc763fa6103d70a9ad86a567cb8ef8d41e0cf11eda274938",
+          "ccc3d9a8cc9c6133879952252a70ba0bc46dbaba47670a2a68bf2acdf7d69c25",
+          "fdea537e67f745779e5791f3336695378716747ee7fa548586141eeb9747e043",
+          "9bfc939d41a45372473a9cc8ece9c09a2f8d45bb654b443664ae445d9950fbba",
+          "bdb35f73354ffddc3d66c53fe889bad00d8207239184285b7d36313215df526d",
+          "00d3f43d252ecfc68346c183d63889526eaea36eeb96b7f7b6ee4c4798aedf99",
+          "2f15e0ced4740a276c2b8360324c44da15408c350805e0dbc65e268187c68ee8",
+          "71668e1cdb2ea22ff2f2ff7cbddaf6d7bec090a36f6709b53e15ee43ccb879c6",
+          "3f89e99a314397df8972c95bfe776a3376ad658479469d4a2aad34eb8798a1ed",
+          "d7bbcf4e7e5eb4bfe2c130a4786532c213d54c3faf09a7874dc2d762d6224d11",
+          "ac651016e0fda2c5c843095137ed88e76c44b67c928c529351823ab84e4cc9ad",
+          "61579034f7389dbb79e9fe6275939787c82afb41a97f4fcf91df9fa4e7f3e2e1",
+          "e17e68abcee03b2884a35d0e03af6a5091532f9cc280679b20c12c451add3e9b",
+          "7d965c1c198b8618cbe2588078b577ba4a9f50fba2d9d04110c29bb13b68650e",
+          "e84534b02fbd17a8a11120c3465a59aa5e1227a5b0e046b932e4f9c38b07c04a",
+          "599aee6f512929b6d9f3de0d3de9382e4fe3023d3b238e3233e0451cecfd7c2f"
+        ],
+        "afterSingleStepHashes": [
+          "3cf078ec850bc12ea3fd4dd6d29684a4efbfb837729469db7aebc48f4c26b8f2",
+          "ccc3d9a8cc9c6133879952252a70ba0bc46dbaba47670a2a68bf2acdf7d69c25",
+          "fdea537e67f745779e5791f3336695378716747ee7fa548586141eeb9747e043",
+          "9bfc939d41a45372473a9cc8ece9c09a2f8d45bb654b443664ae445d9950fbba",
+          "bdb35f73354ffddc3d66c53fe889bad00d8207239184285b7d36313215df526d",
+          "00d3f43d252ecfc68346c183d63889526eaea36eeb96b7f7b6ee4c4798aedf99",
+          "2f15e0ced4740a276c2b8360324c44da15408c350805e0dbc65e268187c68ee8",
+          "71668e1cdb2ea22ff2f2ff7cbddaf6d7bec090a36f6709b53e15ee43ccb879c6",
+          "3f89e99a314397df8972c95bfe776a3376ad658479469d4a2aad34eb8798a1ed",
+          "d7bbcf4e7e5eb4bfe2c130a4786532c213d54c3faf09a7874dc2d762d6224d11",
+          "ac651016e0fda2c5c843095137ed88e76c44b67c928c529351823ab84e4cc9ad",
+          "61579034f7389dbb79e9fe6275939787c82afb41a97f4fcf91df9fa4e7f3e2e1",
+          "e17e68abcee03b2884a35d0e03af6a5091532f9cc280679b20c12c451add3e9b",
+          "7d965c1c198b8618cbe2588078b577ba4a9f50fba2d9d04110c29bb13b68650e",
+          "e84534b02fbd17a8a11120c3465a59aa5e1227a5b0e046b932e4f9c38b07c04a",
+          "599aee6f512929b6d9f3de0d3de9382e4fe3023d3b238e3233e0451cecfd7c2f"
+        ],
+        "untouchedExact": true,
+        "steppedEyeChanged": true,
+        "restoreExact": true
+      },
+      "activeAllocations": {
+        "liveEyes": 16,
+        "liveAllocations": 53,
+        "liveBytes": 27292572,
+        "reservedWasmBytes": 28442624
+      },
+      "disposedAllocations": {
+        "liveEyes": 0,
+        "liveAllocations": 5,
+        "liveBytes": 18524124,
+        "reservedWasmBytes": 28442624
+      },
+      "released": true,
+      "finalStateHashes": [
+        "9ec2b571e218549ea9365453be2e88378164a8cd7fa534d3336de06886cff3db",
+        "2d8f841289ca6b965898f334f8f6d18ff48e8c905b868ef1fa54e16d61049c76",
+        "8051294bf9cf7857b03980b385b018e7bf760186b00005a0b093b5263b8edeff",
+        "9e8502c0ceec01aa4711748e49d642cbd4d02cfc3607272b6673e0b65bb7be4c",
+        "536a6a12cde87b2b6655336319f5985d5b462492a56515d1a0cc2fac9b68c584",
+        "8d4f298739a9512c813b82c67fa11cd815f741918b3058262d930df2b455637d",
+        "362bb1be6a8423ebf3255685fd6c6986464d27062c77eaf6d46dbc6f2cdea8e4",
+        "446de623465395d362a6c1245828421735632c7f00669b93b6ac3ab97f0d80e6",
+        "e814c4617a9724efab30f788a76a964216b965c6316b1132d1ed3e094911c821",
+        "59397e4cd4a5e11b511dc3c4a95a978a32ee633a38e4bccf7b7918df6778b09e",
+        "cf174260e2ab792359af38b6c2dbf64ae6f12fceee84d07a5ac8d7460af90715",
+        "e53dd31eedc186e45306bbea534b2fd53d0826446480ad54b87acd297f94995e",
+        "79a201e4300d186f88d540cd2b702e586964fe8c043ba7fd4fc62968c25847fe",
+        "8f35ce5a58c1daf800233ba097d572b43eb82090b366a796a478d66c5082a4b6",
+        "cd6d5585235fa414a5b85bcba1f8504d8c8ef475fef40b38c70fad3f057c907b",
+        "855a731f54813a04a23c4fb985b19ea01f52823fe6d0b78d4fc15c16f3c52ae5"
+      ],
+      "samples": [
+        {
+          "interval": 4,
+          "groupMs": 530.1018750000003,
+          "coreMs": 510.09408300001087,
+          "extractionMs": 13.94000099999539,
+          "decoderMs": 5.990917999995872
+        },
+        {
+          "interval": 5,
+          "groupMs": 528.9348329999993,
+          "coreMs": 509.14249999999447,
+          "extractionMs": 13.637705999979516,
+          "decoderMs": 6.1042100000195205
+        },
+        {
+          "interval": 6,
+          "groupMs": 528.3842079999959,
+          "coreMs": 508.5454599999939,
+          "extractionMs": 13.844167000010202,
+          "decoderMs": 5.937540000028093
+        },
+        {
+          "interval": 7,
+          "groupMs": 528.2084170000016,
+          "coreMs": 508.2796270000181,
+          "extractionMs": 13.862291999997979,
+          "decoderMs": 6.003249000008509
+        },
+        {
+          "interval": 8,
+          "groupMs": 527.7935409999991,
+          "coreMs": 508.20408399999724,
+          "extractionMs": 13.558289999964472,
+          "decoderMs": 5.976002000003064
+        },
+        {
+          "interval": 9,
+          "groupMs": 531.0695829999968,
+          "coreMs": 510.54524800000945,
+          "extractionMs": 14.469455999969796,
+          "decoderMs": 6.001916999986861
+        },
+        {
+          "interval": 10,
+          "groupMs": 527.9547909999965,
+          "coreMs": 508.5095860000001,
+          "extractionMs": 13.667377000005217,
+          "decoderMs": 5.7237069999901
+        },
+        {
+          "interval": 11,
+          "groupMs": 534.1364160000012,
+          "coreMs": 514.255333999994,
+          "extractionMs": 13.880872000016097,
+          "decoderMs": 5.9377930000046035
+        },
+        {
+          "interval": 12,
+          "groupMs": 526.6165419999961,
+          "coreMs": 506.26112699999067,
+          "extractionMs": 14.176664999991772,
+          "decoderMs": 6.121666999992158
+        },
+        {
+          "interval": 13,
+          "groupMs": 527.9514159999962,
+          "coreMs": 508.1924599999984,
+          "extractionMs": 13.896666000007826,
+          "decoderMs": 5.77429100000154
+        },
+        {
+          "interval": 14,
+          "groupMs": 529.0588749999952,
+          "coreMs": 509.1075840000267,
+          "extractionMs": 13.97433200001251,
+          "decoderMs": 5.916083999996772
+        },
+        {
+          "interval": 15,
+          "groupMs": 529.4929169999959,
+          "coreMs": 509.86724900000263,
+          "extractionMs": 13.871416000016325,
+          "decoderMs": 5.693330000023707
+        },
+        {
+          "interval": 16,
+          "groupMs": 528.3468330000032,
+          "coreMs": 508.2093350000214,
+          "extractionMs": 13.987874999998894,
+          "decoderMs": 6.0966239999906975
+        },
+        {
+          "interval": 17,
+          "groupMs": 529.1964999999982,
+          "coreMs": 509.38616799999,
+          "extractionMs": 13.77816499999608,
+          "decoderMs": 5.978084000016679
+        },
+        {
+          "interval": 18,
+          "groupMs": 534.0058749999953,
+          "coreMs": 513.8987090000082,
+          "extractionMs": 14.185628000013821,
+          "decoderMs": 5.866415999997116
+        },
+        {
+          "interval": 19,
+          "groupMs": 526.0916670000006,
+          "coreMs": 506.22041700001864,
+          "extractionMs": 13.752082999992126,
+          "decoderMs": 6.055081000005885
+        },
+        {
+          "interval": 20,
+          "groupMs": 526.6238339999982,
+          "coreMs": 506.79800100000284,
+          "extractionMs": 13.57604199997877,
+          "decoderMs": 6.19416600002296
+        },
+        {
+          "interval": 21,
+          "groupMs": 527.8016250000001,
+          "coreMs": 507.867038999997,
+          "extractionMs": 13.668666999983543,
+          "decoderMs": 6.207294000007096
+        },
+        {
+          "interval": 22,
+          "groupMs": 531.3876669999954,
+          "coreMs": 511.44658499999787,
+          "extractionMs": 13.881542999974045,
+          "decoderMs": 6.002707999999984
+        },
+        {
+          "interval": 23,
+          "groupMs": 526.8695829999997,
+          "coreMs": 507.02862200000527,
+          "extractionMs": 13.765538999985438,
+          "decoderMs": 6.013043999977526
+        },
+        {
+          "interval": 24,
+          "groupMs": 528.2808749999967,
+          "coreMs": 508.65620999998646,
+          "extractionMs": 13.549375999988115,
+          "decoderMs": 6.017040999999153
+        },
+        {
+          "interval": 25,
+          "groupMs": 526.2168750000055,
+          "coreMs": 507.01520699999674,
+          "extractionMs": 13.463333000028797,
+          "decoderMs": 5.684959999998682
+        },
+        {
+          "interval": 26,
+          "groupMs": 526.775834,
+          "coreMs": 506.7772929999919,
+          "extractionMs": 13.896708000007493,
+          "decoderMs": 6.04679000001488
+        },
+        {
+          "interval": 27,
+          "groupMs": 529.5760420000006,
+          "coreMs": 509.31741499999043,
+          "extractionMs": 14.302374999992026,
+          "decoderMs": 5.9022510000068
+        },
+        {
+          "interval": 28,
+          "groupMs": 529.4927499999976,
+          "coreMs": 509.6235819999929,
+          "extractionMs": 13.778291000002355,
+          "decoderMs": 6.040791999999783
+        },
+        {
+          "interval": 29,
+          "groupMs": 532.2205409999951,
+          "coreMs": 512.4735419999997,
+          "extractionMs": 13.53945799999201,
+          "decoderMs": 6.15500100000645
+        },
+        {
+          "interval": 30,
+          "groupMs": 534.5622079999957,
+          "coreMs": 514.76116799999,
+          "extractionMs": 13.729416000009223,
+          "decoderMs": 6.019539000008081
+        },
+        {
+          "interval": 31,
+          "groupMs": 546.8397500000065,
+          "coreMs": 524.9067090000026,
+          "extractionMs": 13.779289999991306,
+          "decoderMs": 8.104792000005546
+        },
+        {
+          "interval": 32,
+          "groupMs": 1011.8839999999982,
+          "coreMs": 782.9048370000019,
+          "extractionMs": 132.75004200000694,
+          "decoderMs": 96.12808299998869
+        },
+        {
+          "interval": 33,
+          "groupMs": 1063.6363750000019,
+          "coreMs": 881.8247489999922,
+          "extractionMs": 151.46579300000303,
+          "decoderMs": 30.25941300001432
+        },
+        {
+          "interval": 34,
+          "groupMs": 1138.2344999999987,
+          "coreMs": 1091.6191259999832,
+          "extractionMs": 21.302872999985993,
+          "decoderMs": 25.23558099998627
+        },
+        {
+          "interval": 35,
+          "groupMs": 907.5350410000028,
+          "coreMs": 854.696500999984,
+          "extractionMs": 38.83808599999611,
+          "decoderMs": 13.926207999997132
+        },
+        {
+          "interval": 36,
+          "groupMs": 697.8844580000004,
+          "coreMs": 670.1009189999822,
+          "extractionMs": 19.107584999997925,
+          "decoderMs": 8.609666999996989
+        },
+        {
+          "interval": 37,
+          "groupMs": 629.3737499999988,
+          "coreMs": 605.0298330000151,
+          "extractionMs": 16.9302100000059,
+          "decoderMs": 7.359791000002588
+        },
+        {
+          "interval": 38,
+          "groupMs": 616.7216670000053,
+          "coreMs": 593.1917519999697,
+          "extractionMs": 15.847250000020722,
+          "decoderMs": 7.624166999994486
+        },
+        {
+          "interval": 39,
+          "groupMs": 547.8317919999972,
+          "coreMs": 527.9808730000077,
+          "extractionMs": 13.923668999988877,
+          "decoderMs": 5.875421000018832
+        },
+        {
+          "interval": 40,
+          "groupMs": 541.9487499999959,
+          "coreMs": 521.6986250000191,
+          "extractionMs": 14.149501000014425,
+          "decoderMs": 6.04487500002142
+        },
+        {
+          "interval": 41,
+          "groupMs": 537.213708000003,
+          "coreMs": 517.1341220000031,
+          "extractionMs": 13.712456999994174,
+          "decoderMs": 6.311999000005017
+        },
+        {
+          "interval": 42,
+          "groupMs": 532.6314159999965,
+          "coreMs": 512.7907080000223,
+          "extractionMs": 13.529835000015737,
+          "decoderMs": 6.265541000022495
+        },
+        {
+          "interval": 43,
+          "groupMs": 527.5476249999992,
+          "coreMs": 508.05020699999295,
+          "extractionMs": 13.319165999993857,
+          "decoderMs": 6.1345840000140015
+        },
+        {
+          "interval": 44,
+          "groupMs": 527.0316670000029,
+          "coreMs": 507.52616899998975,
+          "extractionMs": 13.46495899999718,
+          "decoderMs": 5.982249999986379
+        },
+        {
+          "interval": 45,
+          "groupMs": 528.7052500000063,
+          "coreMs": 508.9483770000079,
+          "extractionMs": 13.716458999995666,
+          "decoderMs": 5.984375
+        },
+        {
+          "interval": 46,
+          "groupMs": 525.3586250000008,
+          "coreMs": 505.95487300001696,
+          "extractionMs": 13.508955999990576,
+          "decoderMs": 5.851168000001053
+        },
+        {
+          "interval": 47,
+          "groupMs": 531.1861250000002,
+          "coreMs": 511.0606650000118,
+          "extractionMs": 14.314249000010022,
+          "decoderMs": 5.762664999980188
+        },
+        {
+          "interval": 48,
+          "groupMs": 530.5838330000042,
+          "coreMs": 510.73654000000533,
+          "extractionMs": 13.875999999996566,
+          "decoderMs": 5.909833000005165
+        },
+        {
+          "interval": 49,
+          "groupMs": 529.3942500000048,
+          "coreMs": 510.09091700000135,
+          "extractionMs": 13.58754400001635,
+          "decoderMs": 5.6672920000128215
+        },
+        {
+          "interval": 50,
+          "groupMs": 528.4983329999959,
+          "coreMs": 509.2776649999796,
+          "extractionMs": 13.536708999992697,
+          "decoderMs": 5.63854199997877
+        },
+        {
+          "interval": 51,
+          "groupMs": 541.0036660000042,
+          "coreMs": 520.9387919999936,
+          "extractionMs": 13.718413999995391,
+          "decoderMs": 6.291332000000693
+        },
+        {
+          "interval": 52,
+          "groupMs": 525.5815000000002,
+          "coreMs": 506.03891999999905,
+          "extractionMs": 13.32242099999712,
+          "decoderMs": 6.176749000005657
+        },
+        {
+          "interval": 53,
+          "groupMs": 525.3450420000008,
+          "coreMs": 505.7970409999907,
+          "extractionMs": 13.414542999998957,
+          "decoderMs": 6.084087000017462
+        },
+        {
+          "interval": 54,
+          "groupMs": 529.057541999995,
+          "coreMs": 509.4960829999909,
+          "extractionMs": 13.466418000003614,
+          "decoderMs": 6.053665999999794
+        },
+        {
+          "interval": 55,
+          "groupMs": 527.0723749999961,
+          "coreMs": 507.674417000002,
+          "extractionMs": 13.539835000003222,
+          "decoderMs": 5.809374999989814
+        },
+        {
+          "interval": 56,
+          "groupMs": 528.6582500000004,
+          "coreMs": 508.9053309999872,
+          "extractionMs": 13.879084000000148,
+          "decoderMs": 5.822538999993412
+        },
+        {
+          "interval": 57,
+          "groupMs": 531.6812090000021,
+          "coreMs": 511.80858399999124,
+          "extractionMs": 13.898915000005218,
+          "decoderMs": 5.923126000001503
+        },
+        {
+          "interval": 58,
+          "groupMs": 526.4339999999938,
+          "coreMs": 507.372583999997,
+          "extractionMs": 13.431041000010737,
+          "decoderMs": 5.5795389999693725
+        },
+        {
+          "interval": 59,
+          "groupMs": 529.6489579999907,
+          "coreMs": 509.86587500000314,
+          "extractionMs": 14.105249000000185,
+          "decoderMs": 5.6278739999834215
+        },
+        {
+          "interval": 60,
+          "groupMs": 526.5222079999949,
+          "coreMs": 506.96508500000346,
+          "extractionMs": 13.857543999998597,
+          "decoderMs": 5.6522920000279555
+        },
+        {
+          "interval": 61,
+          "groupMs": 525.9492090000131,
+          "coreMs": 506.80483200002345,
+          "extractionMs": 13.576457999966806,
+          "decoderMs": 5.52095800000825
+        },
+        {
+          "interval": 62,
+          "groupMs": 525.6790000000037,
+          "coreMs": 505.8953349999647,
+          "extractionMs": 13.428042000028654,
+          "decoderMs": 6.308916999987559
+        },
+        {
+          "interval": 63,
+          "groupMs": 537.2416249999951,
+          "coreMs": 516.9693319999787,
+          "extractionMs": 14.020960000008927,
+          "decoderMs": 6.191041999991285
+        },
+        {
+          "interval": 64,
+          "groupMs": 586.5097079999978,
+          "coreMs": 563.4947490000341,
+          "extractionMs": 15.532460000002175,
+          "decoderMs": 7.411876000027405
+        },
+        {
+          "interval": 65,
+          "groupMs": 549.7453749999986,
+          "coreMs": 529.26204099998,
+          "extractionMs": 14.019874000019627,
+          "decoderMs": 6.422126000004937
+        },
+        {
+          "interval": 66,
+          "groupMs": 564.0496249999997,
+          "coreMs": 542.8511680000229,
+          "extractionMs": 14.419750000000931,
+          "decoderMs": 6.740623999969102
+        },
+        {
+          "interval": 67,
+          "groupMs": 564.5388329999987,
+          "coreMs": 542.8687910000008,
+          "extractionMs": 14.509293000010075,
+          "decoderMs": 7.120749000023352
+        }
+      ],
+      "groupWallMs": {
+        "count": 64,
+        "median": 529.4927499999976,
+        "p90": 616.7216670000053,
+        "p95": 907.5350410000028,
+        "p99": 1138.2344999999987,
+        "min": 525.3450420000008,
+        "max": 1138.2344999999987,
+        "mean": 569.2486119218744
+      },
+      "coreGroupMs": {
+        "count": 64,
+        "median": 509.6235819999929,
+        "p90": 593.1917519999697,
+        "p95": 782.9048370000019,
+        "p99": 1091.6191259999832,
+        "min": 505.7970409999907,
+        "max": 1091.6191259999832,
+        "mean": 542.3283869062496
+      },
+      "extractionGroupMs": {
+        "count": 64,
+        "median": 13.862291999997979,
+        "p90": 15.847250000020722,
+        "p95": 21.302872999985993,
+        "p99": 151.46579300000303,
+        "min": 13.319165999993857,
+        "max": 151.46579300000303,
+        "mean": 18.506791765624598
+      },
+      "decoderGroupMs": {
+        "count": 64,
+        "median": 6.019539000008081,
+        "p90": 7.624166999994486,
+        "p95": 13.926207999997132,
+        "p99": 96.12808299998869,
+        "min": 5.52095800000825,
+        "max": 96.12808299998869,
+        "mean": 8.35740026562712
+      },
+      "currentProcessMemory": {
+        "rss": 225034240,
+        "heapTotal": 81297408,
+        "heapUsed": 41701936,
+        "external": 61639394,
+        "arrayBuffers": 30854488
+      },
+      "loadBefore": {
+        "at": "2026-09-11T02:47:10.851Z",
+        "loadAverage": [
+          6.5556640625,
+          7.51123046875,
+          7.68896484375
+        ],
+        "logicalCpuCount": 12,
+        "ownPid": 27276,
+        "relevant": [
+          {
+            "pid": 880,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4226,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 4227,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4228,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4229,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4230,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4231,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 4396,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4397,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 4399,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 4406,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 4407,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 4408,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 6931,
+            "cpuPercent": 0,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 8331,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13290,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13390,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13391,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13392,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13393,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 13394,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 13617,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13618,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 13623,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 13627,
+            "cpuPercent": 5,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 13628,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 13629,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 13634,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13637,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13638,
+            "cpuPercent": 3.1,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13722,
+            "cpuPercent": 1.6,
+            "command": "node"
+          },
+          {
+            "pid": 17467,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 17468,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 17470,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 17474,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 17475,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 17476,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 17479,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 17480,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 17481,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 20597,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 24467,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26258,
+            "cpuPercent": 103,
+            "command": "node"
+          },
+          {
+            "pid": 26741,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 26742,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26743,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26744,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26745,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26779,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 27239,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27240,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27276,
+            "cpuPercent": 93.4,
+            "command": "node"
+          },
+          {
+            "pid": 29789,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 29790,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 29792,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 29800,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 29801,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 29802,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 34863,
+            "cpuPercent": 0,
+            "command": "codex"
+          },
+          {
+            "pid": 39562,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 44500,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 47110,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 47163,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 47164,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 53261,
+            "cpuPercent": 1.1,
+            "command": "node"
+          },
+          {
+            "pid": 55832,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 58546,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 58547,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 59110,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 59111,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 67881,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 68084,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 73300,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 73323,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 73326,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73327,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73329,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73334,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 73341,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 74121,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 74122,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 74126,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 74128,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 74129,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74130,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74779,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74780,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 76361,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 77976,
+            "cpuPercent": 0,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 77977,
+            "cpuPercent": 0,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 77978,
+            "cpuPercent": 0,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 78762,
+            "cpuPercent": 2.6,
+            "command": "codex"
+          },
+          {
+            "pid": 78798,
+            "cpuPercent": 0,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 78799,
+            "cpuPercent": 0.3,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 79393,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79394,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79567,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79579,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79580,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 79582,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 79588,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 79589,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 79590,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 80154,
+            "cpuPercent": 0,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 80329,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 80330,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 80335,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 83307,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 87658,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 88071,
+            "cpuPercent": 0,
+            "command": "codex-code-mode-host"
+          },
+          {
+            "pid": 90828,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91206,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 91550,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91551,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91552,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 91553,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91647,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 93912,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 94894,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94895,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 94896,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94897,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94900,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94928,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 98600,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 98601,
+            "cpuPercent": 0,
+            "command": "node"
+          }
+        ],
+        "otherAboveTenPercent": [
+          {
+            "pid": 798,
+            "cpuPercent": 72.2,
+            "command": "pmd"
+          },
+          {
+            "pid": 59379,
+            "cpuPercent": 101.6,
+            "command": "next-server (v16.3.4)"
+          },
+          {
+            "pid": 85055,
+            "cpuPercent": 11.7,
+            "command": "Microsoft PowerPoint"
+          }
+        ]
+      },
+      "loadAfter": {
+        "at": "2026-09-11T02:48:02.591Z",
+        "loadAverage": [
+          7.0751953125,
+          7.45751953125,
+          7.65478515625
+        ],
+        "logicalCpuCount": 12,
+        "ownPid": 27276,
+        "relevant": [
+          {
+            "pid": 880,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4226,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 4227,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4228,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4229,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4230,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4231,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 4396,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 4397,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 4399,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 4406,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 4407,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 4408,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 6931,
+            "cpuPercent": 0,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 8331,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13290,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13390,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13391,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13392,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13393,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 13394,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 13617,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 13618,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 13623,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 13627,
+            "cpuPercent": 7.2,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 13628,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 13629,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 13634,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13637,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13638,
+            "cpuPercent": 4.9,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 13722,
+            "cpuPercent": 1.5,
+            "command": "node"
+          },
+          {
+            "pid": 17467,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 17468,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 17470,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 17474,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 17475,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 17476,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 17479,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 17480,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 17481,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 20597,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 24467,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26741,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 26742,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26743,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26744,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26745,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 26779,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 27276,
+            "cpuPercent": 100.6,
+            "command": "node"
+          },
+          {
+            "pid": 27483,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27533,
+            "cpuPercent": 99,
+            "command": "node"
+          },
+          {
+            "pid": 27536,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 27614,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 27618,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 27622,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 27640,
+            "cpuPercent": 3.5,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 27641,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 27643,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 27645,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27646,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27647,
+            "cpuPercent": 2.7,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27668,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27669,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 27726,
+            "cpuPercent": 20.5,
+            "command": "node"
+          },
+          {
+            "pid": 29789,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 29790,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 29792,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 29800,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 29801,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 29802,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 34863,
+            "cpuPercent": 0,
+            "command": "codex"
+          },
+          {
+            "pid": 39562,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 44500,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 47110,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 47163,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 47164,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 53261,
+            "cpuPercent": 0.4,
+            "command": "node"
+          },
+          {
+            "pid": 55832,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 58546,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 58547,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 59110,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 59111,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 67881,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 68084,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 73300,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 73323,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 73326,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73327,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73329,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 73334,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 73341,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 74121,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 74122,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 74126,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 74128,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 74129,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74130,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74779,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 74780,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 76361,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 77976,
+            "cpuPercent": 0.1,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 77977,
+            "cpuPercent": 0.3,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 77978,
+            "cpuPercent": 0,
+            "command": "Codex (Service)"
+          },
+          {
+            "pid": 78762,
+            "cpuPercent": 5.9,
+            "command": "codex"
+          },
+          {
+            "pid": 78798,
+            "cpuPercent": 0,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 78799,
+            "cpuPercent": 0,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 79393,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79394,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79567,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79579,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 79580,
+            "cpuPercent": 0,
+            "command": "Google Chrome"
+          },
+          {
+            "pid": 79582,
+            "cpuPercent": 0,
+            "command": "chrome_crashpad_handler"
+          },
+          {
+            "pid": 79588,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (GPU)"
+          },
+          {
+            "pid": 79589,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 79590,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper"
+          },
+          {
+            "pid": 80154,
+            "cpuPercent": 0,
+            "command": "Codex (Renderer)"
+          },
+          {
+            "pid": 80329,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 80330,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 80335,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 83307,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 87658,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 88071,
+            "cpuPercent": 1,
+            "command": "codex-code-mode-host"
+          },
+          {
+            "pid": 90828,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91206,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 91550,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91551,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91552,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 91553,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 91647,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 93912,
+            "cpuPercent": 0,
+            "command": "Google Chrome Helper (Renderer)"
+          },
+          {
+            "pid": 94894,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94895,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 94896,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94897,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94900,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 94928,
+            "cpuPercent": 0,
+            "command": "node_repl"
+          },
+          {
+            "pid": 98600,
+            "cpuPercent": 0,
+            "command": "node"
+          },
+          {
+            "pid": 98601,
+            "cpuPercent": 0,
+            "command": "node"
+          }
+        ],
+        "otherAboveTenPercent": [
+          {
+            "pid": 724,
+            "cpuPercent": 11.9,
+            "command": "syspolicyd"
+          },
+          {
+            "pid": 798,
+            "cpuPercent": 62.3,
+            "command": "pmd"
+          },
+          {
+            "pid": 59379,
+            "cpuPercent": 433.5,
+            "command": "next-server (v16.3.4)"
+          }
+        ]
+      }
+    }
+  ],
+  "lifecycle": {
+    "disposedHandleChecks": {
+      "step": {
+        "rejected": true,
+        "error": "Model disposed"
+      },
+      "checkpoint": {
+        "rejected": false
+      },
+      "restore": {
+        "rejected": false
+      }
+    },
+    "staleHandleSafe": false,
+    "replacementBefore": "d276601573420bf787a81ffa8c81f2da3499a20df2bb858f6082c2e449ff564f",
+    "replacementAfter": "9c69b1b4418abf1f2be2de9633049e321ebcc0e7411b3f6b8e8e218a03185c53",
+    "replacementStatePointer": 19638264,
+    "oldStatePointer": 19638264,
+    "reservationBeforeCycles": 28442624,
+    "afterCycles": {
+      "liveEyes": 0,
+      "liveAllocations": 5,
+      "liveBytes": 18524124,
+      "reservedWasmBytes": 28442624
+    },
+    "reuse": true,
+    "eyeBeforeDispose": "d276601573420bf787a81ffa8c81f2da3499a20df2bb858f6082c2e449ff564f"
+  },
+  "finalAllocations": {
+    "liveEyes": 0,
+    "liveAllocations": 0,
+    "liveBytes": 0,
+    "reservedWasmBytes": 28442624
+  },
+  "failures": [
+    "Disposed eye still permits checkpoint",
+    "Disposed eye still permits restore",
+    "Disposed stale eye restore mutated replacement eye state"
+  ],
+  "gates": {
+    "independentEyes": true,
+    "releasedEyeAllocations": true,
+    "safeDisposedHandles": false,
+    "passed": false,
+    "bodyPromoted": false
+  }
+}

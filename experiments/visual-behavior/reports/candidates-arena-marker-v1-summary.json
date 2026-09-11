@@ -1,0 +1,15 @@
+{
+  "probe": "actual-arena-marker-v1",
+  "movies": 32,
+  "frames": 1632,
+  "sources": {
+    "arena-marker-browser.mjs": "a06ec1c7376cdb9ca7caee664c8943ed92ac45ff7a2953647600b748196e053a",
+    "arena-marker-server.mjs": "a55a5c252e1789c1740e3f7af90093813aa163bbd1819aa59aefdd5b26502220",
+    "web/src/arena.js": "a748a1a94dcbff4fd8e14be8d86adf37ba2538e9d64467a635c747f413c4f968",
+    "web/src/lab/lab-arena.js": "6f0c6d92345292fdd1cd21d080c30f40d69f86d38f398de058fefa7c08157ac7",
+    "web/src/lab/lab-world.js": "c22693ff00dfc328117380d4569703c95cd2168d0728e1bdd320fa6977a5c775",
+    "web/src/lab/scene.js": "32375c1243da009e6f5522f26b3e144319d5b0469a6f2b55e8e48da4898a82ca"
+  },
+  "artifactSha256": "2bdac8199631ff8485d6f0c24858b8d7b2568cdb41b35970198d54d22a9797fa",
+  "interpretation": "Actual rendered target and opaque occluder. Posed objects; no body policy. Object IDs/poses used only for ground-truth labels; inference receives RGBA and capture identity."
+}

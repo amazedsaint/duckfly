@@ -1,27 +1,31 @@
 export const SCENARIOS = [
+  {id:'cue-workshop',image:'target',title:'Build a visual follower',tag:'Custom connections',description:'Use a pink beacon to activate the walking pathway. Map its signal to walking, or assign an action of your own.',action: 'Set up scene',guide:'Move the beacon and watch the duck follow. Open Brain → duck to edit a connection and compare the response.',alt:'Duck following a movable pink beacon'},
+  {id:'lookout',image:'gaze',title:'Look without chasing',tag:'Head control',description:'Connect walking-pathway activity to head tracking. Hide the beacon to activate a search response.',action: 'Set up scene',guide:'Hide the beacon to switch from tracking to searching. Open Brain → duck to assign a different action.',alt:'Duck looking toward a beacon beside a wall'},
+  {id:'crossed-wires',image:'flock',title:'Reverse the steering',tag:'Compare connections',description:'Give two ducks opposite steering connections. Move the same beacon and compare their responses.',action: 'Set up scene',guide:'Move the beacon and select each duck to inspect its signals. Their steering connections request opposite turns.',alt:'Ducks with independently mapped neural connections'},
+  {id:'trigger-kick',image:'kick',title:'Trigger a kick',tag:'Action triggers',description:'Connect DNp09 activity to a kick. The duck waits for a steady stance before moving its leg.',action: 'Set up scene',guide:'Show the beacon to trigger one kick. Hide it until activity falls, then reveal it to try again. Place the ball beside the left foot.',alt:'Duck with a ball next to its left foot'},
   {
     id: "target",
     title: "Follow the beacon",
     tag: "Start here",
     description:
-      "Move the pink beacon and watch visual input become a turn, then a step.",
-    action: "Lead the way",
+      "Drag the pink beacon to guide the duck. Watch its camera view and steering activity as it follows.",
+    action: 'Set up scene',
     guide:
       "Drag the pink beacon. Watch its position in the eye view change the duck’s direction.",
     alt: "Microduck facing a pink beacon in the arena",
   },
-  {id: "stop-go", title: "Stop, wait, go", tag: "New · research", description: "Should a duck restart on a timer, or wait for danger to clear? Try both and test false alarms.", action: "Test the feedback loop", guide: "Choose an object path and stop response. Each choice restarts an encounter. Keep experimenting for as long as you like.", alt: "Duck watching an approaching object in the stop-loop experiment"},
-  {id: "gaze", title: "Find it again", tag: "New · active vision", description: "Send a beacon out of view. Let the duck look for it, or hold its head still.", action: "Play with eyesight", guide: "Move or hide the beacon with the buttons below. Toggle active looking to compare.", alt: "Duck seeking a beacon beside an occluding wall"},
-  {id: "switchboard", title: "Brain switchboard", tag: "New · causal experiment", description: "Disconnect a neural pathway while the brain stays visible. Find what really moves the duck.", action: "Follow the signal", guide: "Cut a pathway below, then watch neural firing and movement. Connect all to restore it.", alt: "Duck following a beacon in the neural intervention experiment"},
-  {id: "recovery", title: "Bump and recover", tag: "Body feedback", description: "Nudge the walking duck. If it falls, try a real standing policy and watch the handoff.", action: "Test its balance", guide: "Nudge the duck. Try Help stand after a fall; compare with an identical reset.", alt: "Microduck walking across an open balance-testing arena"},
-  {id: "kick", title: "See it, kick it", tag: "New · neural trigger", description: "A visible beacon excites forward neurons. Their response selects a real kicking policy.", action: "Try the visual kick", guide: "Move the beacon out of view, then bring it ahead to rearm. Place the ball by the left foot to try again.", alt: "Microduck with a ball beside its left foot and a pink visual cue"},
+  {id: "stop-go", title: "Stop, wait, go", tag: "Stop response", description: "Compare a timed stop with a response that waits for an object to move away. Test approaches and near misses.", action: 'Set up scene', guide: "Choose an object path and stop response. Each change restarts the encounter; the scene has no time limit.", alt: "Duck watching an approaching object in the stop-loop experiment"},
+  {id: "gaze", title: "Find it again", tag: "Head tracking", description: "Send a beacon out of view. Let the duck look for it, or hold its head still.", action: 'Set up scene', guide: "Move or hide the beacon with the buttons below. Toggle active looking to compare.", alt: "Duck seeking a beacon beside an occluding wall"},
+  {id: "switchboard", title: "Brain switchboard", tag: "Neural pathways", description: "Disable a neural pathway and compare its effect on movement. The brain monitor stays active.", action: 'Set up scene', guide: "Disable a pathway in Experiment controls. Compare neural activity with movement, then restore all pathways.", alt: "Duck following a beacon in the neural intervention experiment"},
+  {id: "recovery", title: "Bump and recover", tag: "Body feedback", description: "Nudge the duck to test its balance. After a fall, try the standing controller and watch its recovery.", action: 'Set up scene', guide: "Nudge the duck and select Stand up after a fall. Reset to compare the same starting conditions.", alt: "Microduck walking across an open balance-testing arena"},
+  {id: "kick", title: "See it, kick it", tag: "Visual actions", description: "A visible beacon activates the walking pathway. Sustained activity triggers a trained kick.", action: 'Set up scene', guide: "Move the beacon out of view, then bring it ahead to rearm. Place the ball by the left foot to try again.", alt: "Microduck with a ball beside its left foot and a pink visual cue"},
   {
     id: "occlusion",
     title: "Out of sight",
     tag: "Vision experiment",
     description:
-      "Slide a wall across the duck’s view. What happens when the beacon disappears?",
-    action: "Play hide and seek",
+      "Block the beacon with a wall and see how the duck responds when visual input is lost.",
+    action: 'Set up scene',
     guide:
       "Drag the wall out of the way, then put it back. Watch the eye view and forward signal.",
     alt: "A wall between Microduck and its beacon",
@@ -31,10 +35,10 @@ export const SCENARIOS = [
     title: "Follow the flock",
     tag: "Multiple brains",
     description:
-      "Each duck has its own circuit. Pick a duck to watch through its eyes.",
-    action: "Meet the flock",
+      "Run several ducks with independent circuits. Select one to inspect its camera and brain activity.",
+    action: 'Set up scene',
     guide:
-      "Click any duck to connect its brain panel. Move the beacon to guide the leader.",
+      "Select a duck to inspect its brain. Move the beacon to guide the leader.",
     alt: "A flock of Microducks with a shared beacon",
   },
   {
@@ -42,8 +46,8 @@ export const SCENARIOS = [
     title: "Approaching threat",
     tag: "Reflex experiment",
     description:
-      "A ball approaches the duck. See whether growing motion triggers a stop reflex.",
-    action: "Watch the reflex",
+      "Send a ball toward the duck and check whether the growing image activates its stop reflex.",
+    action: 'Set up scene',
     guide:
       "Watch the approaching ball in the eye view. Reset to repeat, or drag the ball to move it.",
     alt: "A red ball approaching Microduck",
@@ -53,21 +57,21 @@ export const SCENARIOS = [
     title: "Retinal motion lab",
     tag: "Experimental",
     description:
-      "Explore left and right eye motion with a compact experimental vision model.",
-    action: "Explore motion",
+      "Compare motion signals from each eye using an experimental vision adapter.",
+    action: 'Set up scene',
     guide:
       "Move a prop across the eye view. Switch between left and right eyes to compare motion.",
     alt: "Microduck viewing a beacon with the experimental motion pathway",
   },
   {
     id: "empty",
-    title: "Your own playground",
-    tag: "Free play",
+    title: "Blank scene",
+    tag: "Custom scene",
     description:
-      "Start with one duck. Add props or more ducks, and send pulses into the circuit.",
-    action: "Make a scene",
+      "Start with one duck and an empty stage. Add objects and build your own signal-to-action connections.",
+    action: 'Set up scene',
     guide:
-      "Add an object below the arena, or send a Walk pulse to the connected duck.",
+      "Add an object in Objects & physics. Use Send a signal to stimulate the selected duck’s circuit.",
     alt: "One Microduck in an open arena",
   },
 ];

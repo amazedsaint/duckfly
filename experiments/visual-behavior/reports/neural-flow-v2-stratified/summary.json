@@ -1,0 +1,536 @@
+{
+  "format": "duckfly-neural-map-flow-study",
+  "version": 2,
+  "startedAt": "2026-09-11T02:35:48.081Z",
+  "finishedAt": "2026-09-11T02:39:48.484Z",
+  "elapsedSeconds": 240.402647458,
+  "studyId": "neural-flow-v2-stratified",
+  "generatorCoverage": {
+    "format": "duckfly-neural-flow-coverage",
+    "version": 1,
+    "parameters": {
+      "wavelength": {
+        "declaredInterval": [
+          11,
+          19
+        ],
+        "actualInterval": [
+          11.133333333333333,
+          18.866666666666667
+        ],
+        "occupiedBins": 8,
+        "totalBins": 8,
+        "fractionOfDeclaredSpan": 0.9666666666666668,
+        "passed": true
+      },
+      "speed": {
+        "declaredInterval": [
+          72,
+          108
+        ],
+        "actualInterval": [
+          72.6,
+          107.4
+        ],
+        "occupiedBins": 8,
+        "totalBins": 8,
+        "fractionOfDeclaredSpan": 0.966666666666667,
+        "passed": true
+      },
+      "contrast": {
+        "declaredInterval": [
+          0.4,
+          0.8
+        ],
+        "actualInterval": [
+          0.4066666666666667,
+          0.7933333333333333
+        ],
+        "occupiedBins": 8,
+        "totalBins": 8,
+        "fractionOfDeclaredSpan": 0.9666666666666666,
+        "passed": true
+      },
+      "phase": {
+        "declaredInterval": [
+          0,
+          6.283185307179586
+        ],
+        "actualInterval": [
+          0.10471975511965977,
+          6.178465552059926
+        ],
+        "occupiedBins": 8,
+        "totalBins": 8,
+        "fractionOfDeclaredSpan": 0.9666666666666667,
+        "passed": true
+      }
+    },
+    "angles": [
+      33.75,
+      78.75,
+      123.75,
+      168.75,
+      213.75,
+      258.75,
+      303.75,
+      348.75
+    ],
+    "disjointCalibrationAngles": true,
+    "uniqueSeeds": 30,
+    "familyCounts": {
+      "grating": 30,
+      "edge-on": 30,
+      "edge-off": 30,
+      "blank": 30,
+      "flash": 30,
+      "flicker": 30,
+      "static-grating": 30,
+      "counterphase": 30,
+      "illumination": 30
+    },
+    "passed": true,
+    "interpretation": "Generator coverage admission only; neither physiology nor control validation. Actual ranges are reported instead of inferring breadth from PRNG formulas."
+  },
+  "referenceCalibration": {
+    "file": "../neural-flow-v2/calibration.json",
+    "sha256": "424fb34aba849d53b9005a1d557778449e171ff48c808aaf975cde3898769ea0",
+    "minimumGradient": 0.006455187013519394,
+    "retuned": false
+  },
+  "sourceHashes": {
+    "run-neural-flow-stratified.mjs": "ab8b5659e258b0362cd04ddf5736c22d1d49a2612f267fdae271940915b0a3cb",
+    "neural-flow-stratified-stimuli.mjs": "21152b123af8edcbf51242b415aebd09eba4c44a09e66613966b6c5eb3edef2b",
+    "neural-flow-stimuli.mjs": "d7873ecb23c5169ade1224570d1497dc9abf7bbf886584ea89df4341b36252fa",
+    "neural-flow-coverage.mjs": "321f64c866121fc9de04381332bcbd31b58646abd950211172ad2aba7052ef98",
+    "NEURAL-FLOW-STRATIFIED-PROTOCOL.md": "95f95f67b371ccf1d913f64ec634f7f3e8c8fb0f6feb557af6d43631c2d8260b",
+    "NEURAL-FLOW-V2-PROTOCOL.md": "8044e136d8f077e8143a40ece4c499907f119e5e7bd87aee94961fdeae92fd88",
+    "NEURAL-FLOW-PROTOCOL.md": "a434c3c90e36c95b130f76e965c8f94eab70d709d338f756bd79a112760276c8",
+    "load-model.mjs": "13daf664b0413b7e8402b32ac78e7b92eeb981568e4faa51d6471d7aede083b1",
+    "neuralMapFlow": "89105dc151642c43b246df793d6e1fd7255ac762a23deb8bf8de6289176f2a4b"
+  },
+  "modelHashes": {
+    "manifestFile": "33e007097fc3c539ebd817a297be38dfca113ab42a3fc6b24052575f0d403218",
+    "wasm": "7225b966d087253f204f50f1ec1fc85cb76286466d8e94b8af3e6a911a81f9b0",
+    "arrays": {
+      "source": "d1bb5f8eda28fb7c3b7088c4b07af6fc21726e488aedc74c277a4aa976b768b6",
+      "target": "a5521e8e79887ed525e2991d898119d95f46216bbee1f25b4b2dc93a2141fa33",
+      "weight": "f5c0636c6f9fca9d289d8a7b0e2d00d4aa0bd19cdc37df1ca28afa800c1b03bf",
+      "bias": "d276601573420bf787a81ffa8c81f2da3499a20df2bb858f6082c2e449ff564f",
+      "timeConstant": "1651e91b8f2554de0e48a8e5bdb56828ddd3cad3cb34d1b494652897d76279b8",
+      "inputIndex": "0961dec8bde58d7023f81666fcdad6451d570d328e030cd140fd7a96d9963119",
+      "steadyState": "ec82da2a80d617cc5cc81e6588624737da4bb75c212a1797acda3a8c9995cd73"
+    },
+    "sparseRuntime": "df8556796dd5245a620de6363577d661bded285428ad89133932faa40993aa05",
+    "spatialReadout": "568714f756f812c4e9505641ece06af25a29f743600f8006ef179bfd4d0962cf",
+    "retina": "12391b582bbe53d5fe65dc908fa931b54cda3f8d59418e15ca35b336b8052fa8"
+  },
+  "model": {
+    "id": "flyvis-000",
+    "sourceCommit": "92b3845cc426dd309a1a0e1b3890156c42e14021",
+    "checkpoint": "flow/0000/000/best_chkpt",
+    "checkpointSha256": "d8a57a022aa18ca338599be713af9db29b89cde4b00098ffe42b78f0d583e46a",
+    "loadedCheckpointSha256": "d0e42857e738d0315897c2d50fde9eb3fb1a3fb1f071d55dfc13d53d72bccc3f",
+    "manifestCanonicalSha256": "826051cb1333da60ca5aea40664427390ec7fe545e4d81671e755ba1460b4f58",
+    "wasmSha256": "7225b966d087253f204f50f1ec1fc85cb76286466d8e94b8af3e6a911a81f9b0",
+    "integrationDt": 0.002,
+    "units": "model continuous activity; not spikes or calcium"
+  },
+  "counts": {
+    "trials": 286,
+    "calibration": 16,
+    "heldout": 270,
+    "heldoutSeeds": 30,
+    "conditionedStates": 99,
+    "frames": 8580
+  },
+  "thresholds": {
+    "minimumGradient": 0.006455187013519394,
+    "minimumExplained": 0.2,
+    "maximumSpeed": 360,
+    "falseTurnDegreesPerSecond": 3
+  },
+  "moving": [
+    {
+      "family": "grating",
+      "correct": 30,
+      "n": 30,
+      "rate": 1,
+      "medianRelativeSpeedError": 0.06000957112847238,
+      "medianDirectionErrorDegrees": 0.07091358038394446,
+      "medianAvailability": 1,
+      "passed": true
+    },
+    {
+      "family": "edge-on",
+      "correct": 30,
+      "n": 30,
+      "rate": 1,
+      "medianRelativeSpeedError": 0.016217878127138905,
+      "medianDirectionErrorDegrees": 0.17814016251816156,
+      "medianAvailability": 1,
+      "passed": true
+    },
+    {
+      "family": "edge-off",
+      "correct": 30,
+      "n": 30,
+      "rate": 1,
+      "medianRelativeSpeedError": 0.01931859466396195,
+      "medianDirectionErrorDegrees": 0.3246649592024369,
+      "medianAvailability": 1,
+      "passed": true
+    }
+  ],
+  "confounds": [
+    {
+      "family": "blank",
+      "falseTrials": 0,
+      "n": 30,
+      "rate": 0,
+      "falseFrames": 0,
+      "analyzedFrames": 750,
+      "passed": true
+    },
+    {
+      "family": "flash",
+      "falseTrials": 0,
+      "n": 30,
+      "rate": 0,
+      "falseFrames": 0,
+      "analyzedFrames": 750,
+      "passed": true
+    },
+    {
+      "family": "flicker",
+      "falseTrials": 0,
+      "n": 30,
+      "rate": 0,
+      "falseFrames": 0,
+      "analyzedFrames": 750,
+      "passed": true
+    },
+    {
+      "family": "static-grating",
+      "falseTrials": 0,
+      "n": 30,
+      "rate": 0,
+      "falseFrames": 0,
+      "analyzedFrames": 750,
+      "passed": true
+    },
+    {
+      "family": "counterphase",
+      "falseTrials": 0,
+      "n": 30,
+      "rate": 0,
+      "falseFrames": 0,
+      "analyzedFrames": 750,
+      "passed": true
+    },
+    {
+      "family": "illumination",
+      "falseTrials": 0,
+      "n": 30,
+      "rate": 0,
+      "falseFrames": 0,
+      "analyzedFrames": 750,
+      "passed": true
+    }
+  ],
+  "ablations": [
+    {
+      "id": "stratified-grating-8000",
+      "frameId": 12,
+      "original": {
+        "available": true,
+        "reason": "spatial-temporal-fit",
+        "velocity": {
+          "x": 73.67532304083704,
+          "y": 48.96535520632362
+        },
+        "speed": 88.46275620651403,
+        "direction": 33.608409025003425,
+        "rawVelocity": {
+          "x": 73.67532304083704,
+          "y": 48.96535520632362
+        },
+        "rawSpeed": 88.46275620651403,
+        "rawDirection": 33.608409025003425,
+        "explained": 0.9406535223629142,
+        "aperture": 0.994342489582193,
+        "observedRank": 1,
+        "tangentObserved": false,
+        "minorToMajorEigenRatio": 0.002836779764438683,
+        "normalAxis": {
+          "x": 0.8328400131332545,
+          "y": 0.5535137871130225
+        },
+        "normalVelocity": 88.46275620651404,
+        "gradientRms": 0.05199411778089513,
+        "temporalRms": 4.73570575269505,
+        "commonModeTemporalRms": 0.25335021364033905,
+        "samples": 2168,
+        "dt": 0.020000000000000018,
+        "units": "image degrees per neural second",
+        "interpretation": "Observed normal flow; tangential flow is only included when the minor eigenmode is resolved. Minimum-norm rank-one velocity does not imply physical tangent speed is zero. No body or HS/VS mapping is implied."
+      },
+      "spatialMean": {
+        "available": false,
+        "reason": "insufficient-spatial-signal",
+        "velocity": null,
+        "speed": null,
+        "direction": null,
+        "dt": 0.020000000000000018,
+        "gradientRms": 0,
+        "temporalRms": 1.6427748885871777e-16,
+        "commonModeTemporalRms": 0.2208512564381634,
+        "samples": 2168
+      },
+      "frozenHistory": {
+        "available": false,
+        "reason": "temporal-change-not-explained-by-motion",
+        "velocity": null,
+        "speed": null,
+        "direction": null,
+        "rawVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "rawSpeed": 0,
+        "rawDirection": 180,
+        "explained": 0,
+        "aperture": 0.995784971759761,
+        "observedRank": 1,
+        "tangentObserved": false,
+        "minorToMajorEigenRatio": 0.00211196511642356,
+        "normalAxis": {
+          "x": 0.8327180015836072,
+          "y": 0.5536973269202259
+        },
+        "normalVelocity": 0,
+        "gradientRms": 0.06001263629089055,
+        "temporalRms": 0,
+        "commonModeTemporalRms": 0,
+        "samples": 2168,
+        "dt": 0.020000000000000018,
+        "units": "image degrees per neural second",
+        "interpretation": "Observed normal flow; tangential flow is only included when the minor eigenmode is resolved. Minimum-norm rank-one velocity does not imply physical tangent speed is zero. No body or HS/VS mapping is implied."
+      },
+      "passed": true
+    },
+    {
+      "id": "stratified-edge-on-8000",
+      "frameId": 12,
+      "original": {
+        "available": true,
+        "reason": "spatial-temporal-fit",
+        "velocity": {
+          "x": 47.74808906199533,
+          "y": 53.34052292978663
+        },
+        "speed": 71.58974364736426,
+        "direction": 48.16649484157239,
+        "rawVelocity": {
+          "x": 47.74808906199533,
+          "y": 53.34052292978663
+        },
+        "rawSpeed": 71.58974364736426,
+        "rawDirection": 48.16649484157239,
+        "explained": 0.9185592119069151,
+        "aperture": 0.8902261932928035,
+        "observedRank": 2,
+        "tangentObserved": true,
+        "minorToMajorEigenRatio": 0.05807442892110642,
+        "normalAxis": {
+          "x": 0.84252023033955,
+          "y": 0.5386647022671818
+        },
+        "normalVelocity": 68.96138789753495,
+        "gradientRms": 0.013992799480387827,
+        "temporalRms": 0.9810164877062681,
+        "commonModeTemporalRms": 0.22839446977356098,
+        "samples": 2168,
+        "dt": 0.020000000000000018,
+        "units": "image degrees per neural second",
+        "interpretation": "Observed normal flow; tangential flow is only included when the minor eigenmode is resolved. Minimum-norm rank-one velocity does not imply physical tangent speed is zero. No body or HS/VS mapping is implied."
+      },
+      "spatialMean": {
+        "available": false,
+        "reason": "insufficient-spatial-signal",
+        "velocity": null,
+        "speed": null,
+        "direction": null,
+        "dt": 0.020000000000000018,
+        "gradientRms": 0,
+        "temporalRms": 4.337486263368532e-17,
+        "commonModeTemporalRms": 0.05930784320358673,
+        "samples": 2168
+      },
+      "frozenHistory": {
+        "available": false,
+        "reason": "temporal-change-not-explained-by-motion",
+        "velocity": null,
+        "speed": null,
+        "direction": null,
+        "rawVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "rawSpeed": 0,
+        "rawDirection": 180,
+        "explained": 0,
+        "aperture": 0.9055377525863324,
+        "observedRank": 1,
+        "tangentObserved": false,
+        "minorToMajorEigenRatio": 0.04957248802100965,
+        "normalAxis": {
+          "x": 0.8414517648848151,
+          "y": 0.5403322379538628
+        },
+        "normalVelocity": 0,
+        "gradientRms": 0.015153392001087219,
+        "temporalRms": 0,
+        "commonModeTemporalRms": 0,
+        "samples": 2168,
+        "dt": 0.020000000000000018,
+        "units": "image degrees per neural second",
+        "interpretation": "Observed normal flow; tangential flow is only included when the minor eigenmode is resolved. Minimum-norm rank-one velocity does not imply physical tangent speed is zero. No body or HS/VS mapping is implied."
+      },
+      "passed": true
+    },
+    {
+      "id": "stratified-edge-off-8000",
+      "frameId": 12,
+      "original": {
+        "available": true,
+        "reason": "spatial-temporal-fit",
+        "velocity": {
+          "x": 55.62813403489035,
+          "y": 38.109938793700316
+        },
+        "speed": 67.43038433127393,
+        "direction": 34.41441497312485,
+        "rawVelocity": {
+          "x": 55.62813403489035,
+          "y": 38.109938793700316
+        },
+        "rawSpeed": 67.43038433127393,
+        "rawDirection": 34.41441497312485,
+        "explained": 0.876039843620557,
+        "aperture": 0.8909465373687944,
+        "observedRank": 2,
+        "tangentObserved": true,
+        "minorToMajorEigenRatio": 0.05767136218613078,
+        "normalAxis": {
+          "x": 0.8336831360430954,
+          "y": 0.5522430883925572
+        },
+        "normalVelocity": 67.42218753231742,
+        "gradientRms": 0.013192339712449567,
+        "temporalRms": 0.924039227462316,
+        "commonModeTemporalRms": 0.24973844813200996,
+        "samples": 2168,
+        "dt": 0.020000000000000018,
+        "units": "image degrees per neural second",
+        "interpretation": "Observed normal flow; tangential flow is only included when the minor eigenmode is resolved. Minimum-norm rank-one velocity does not imply physical tangent speed is zero. No body or HS/VS mapping is implied."
+      },
+      "spatialMean": {
+        "available": false,
+        "reason": "insufficient-spatial-signal",
+        "velocity": null,
+        "speed": null,
+        "direction": null,
+        "dt": 0.020000000000000018,
+        "gradientRms": 0,
+        "temporalRms": 4.879632524100176e-17,
+        "commonModeTemporalRms": 0.06856878245538159,
+        "samples": 2168
+      },
+      "frozenHistory": {
+        "available": false,
+        "reason": "temporal-change-not-explained-by-motion",
+        "velocity": null,
+        "speed": null,
+        "direction": null,
+        "rawVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "rawSpeed": 0,
+        "rawDirection": 180,
+        "explained": 0,
+        "aperture": 0.9061928120134507,
+        "observedRank": 1,
+        "tangentObserved": false,
+        "minorToMajorEigenRatio": 0.0492118044907869,
+        "normalAxis": {
+          "x": 0.8330880771392702,
+          "y": 0.5531403580723371
+        },
+        "normalVelocity": 0,
+        "gradientRms": 0.014178800919853246,
+        "temporalRms": 0,
+        "commonModeTemporalRms": 0,
+        "samples": 2168,
+        "dt": 0.020000000000000018,
+        "units": "image degrees per neural second",
+        "interpretation": "Observed normal flow; tangential flow is only included when the minor eigenmode is resolved. Minimum-norm rank-one velocity does not imply physical tangent speed is zero. No body or HS/VS mapping is implied."
+      },
+      "passed": true
+    }
+  ],
+  "timing": {
+    "neuralIntervalMs": {
+      "count": 8580,
+      "median": 16.118083000008482,
+      "p95": 18.06462499999907,
+      "max": 83.749791000002
+    },
+    "extractionMs": {
+      "count": 8580,
+      "median": 0.825749999989057,
+      "p95": 1.0803750000050059,
+      "max": 9.051042000006419
+    },
+    "decoderMs": {
+      "count": 8294,
+      "median": 0.2831249999871943,
+      "p95": 0.4618750000081491,
+      "max": 4.7771670000001905
+    },
+    "conditioningMs": {
+      "count": 99,
+      "median": 824.5164170000025,
+      "p95": 911.7830419999991,
+      "max": 1090.3571660000016
+    }
+  },
+  "gates": {
+    "moving": true,
+    "confounds": true,
+    "generatorCoverage": true,
+    "ablations": true,
+    "rendererAdmission": true,
+    "bodyPromoted": false
+  },
+  "interpretation": "Engineered motion equation applied to real signed neural maps. Synthetic evidence; no HS/VS reconstruction or demonstrated body improvement. Every held-out failure retained.",
+  "evidence": {
+    "inputs.f32.gz": {
+      "sha256": "7d9a14652abf0c577fc3ec6da39cbf2ac38a4b18ceeaf1684fd3d457b3c5eeab",
+      "bytes": 6585995
+    },
+    "trials.json.gz": {
+      "sha256": "e3bea43e8271be93c543e627ca98eea7bc073cb7c60555a6e21122b46dd3af11",
+      "bytes": 933368
+    },
+    "metadata.json": {
+      "sha256": "1bd9230ea01456c6d1d29af1fd7cdafcac0a11cf3a62e8ad7c26df328efe5350",
+      "bytes": 937787
+    },
+    "calibration.json": {
+      "sha256": "0baeda59e692f0d77cb149545ad95ab70052c59eeec92c7bf893aab7e21f2265",
+      "bytes": 711723
+    }
+  }
+}

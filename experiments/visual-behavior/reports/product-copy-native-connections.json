@@ -1,0 +1,363 @@
+{
+  "receipts": [
+    {
+      "connections": [
+        {
+          "paused": true,
+          "skill": null,
+          "signals": [
+            {
+              "matched": true,
+              "action": "stop",
+              "source": "Fly circuit",
+              "id": "connection-1",
+              "active": true,
+              "blocked": null,
+              "value": 110.67927335493738,
+              "trigger": "forward",
+              "threshold": 6
+            },
+            {
+              "matched": true,
+              "source": "Fly circuit",
+              "active": true,
+              "action": "steer",
+              "id": "connection-2",
+              "blocked": null,
+              "value": 110.67927335493738,
+              "trigger": "forward",
+              "threshold": 6
+            },
+            {
+              "active": true,
+              "matched": true,
+              "action": "look-cue",
+              "id": "connection-3",
+              "source": "Camera rule",
+              "blocked": null,
+              "value": 1,
+              "trigger": "seen",
+              "threshold": 1
+            }
+          ],
+          "model": "duckfly-trigger-actions-v1",
+          "gate": null,
+          "idle": false,
+          "requests": [
+            {
+              "matched": true,
+              "action": "stop",
+              "source": "Fly circuit",
+              "id": "connection-1",
+              "active": true,
+              "blocked": null,
+              "value": 110.67927335493738,
+              "trigger": "forward",
+              "threshold": 6
+            },
+            {
+              "matched": true,
+              "source": "Fly circuit",
+              "active": true,
+              "action": "steer",
+              "id": "connection-2",
+              "blocked": null,
+              "value": 110.67927335493738,
+              "trigger": "forward",
+              "threshold": 6
+            },
+            {
+              "active": true,
+              "matched": true,
+              "action": "look-cue",
+              "id": "connection-3",
+              "source": "Camera rule",
+              "blocked": null,
+              "value": 1,
+              "trigger": "seen",
+              "threshold": 1
+            }
+          ],
+          "command": {
+            "yaw": 0,
+            "head": [
+              0,
+              0,
+              0.025964912280701778,
+              0
+            ],
+            "vx": 0
+          }
+        }
+      ],
+      "id": "cue-workshop",
+      "time": 3.6799999999999438,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "fallen": false,
+          "command": [
+            0,
+            0
+          ],
+          "distance": 0.44759047076986574
+        }
+      ]
+    },
+    {
+      "connections": [
+        {
+          "paused": false,
+          "skill": null,
+          "signals": [
+            {
+              "matched": true,
+              "source": "Fly circuit",
+              "active": true,
+              "id": "connection-1",
+              "action": "look-cue",
+              "blocked": null,
+              "value": 115.38616276297871,
+              "trigger": "forward",
+              "threshold": 6
+            },
+            {
+              "active": false,
+              "source": "Camera rule",
+              "matched": false,
+              "id": "connection-2",
+              "action": "look-left",
+              "blocked": null,
+              "value": 0,
+              "trigger": "lost",
+              "threshold": 1
+            }
+          ],
+          "model": "duckfly-trigger-actions-v1",
+          "gate": null,
+          "idle": false,
+          "requests": [
+            {
+              "matched": true,
+              "source": "Fly circuit",
+              "active": true,
+              "id": "connection-1",
+              "action": "look-cue",
+              "blocked": null,
+              "value": 115.38616276297871,
+              "trigger": "forward",
+              "threshold": 6
+            }
+          ],
+          "command": {
+            "yaw": 0,
+            "head": [
+              0,
+              0,
+              0.055187969924812064,
+              0
+            ],
+            "vx": 0
+          }
+        }
+      ],
+      "id": "lookout",
+      "time": 2.5199999999999685,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "fallen": false,
+          "command": [
+            0,
+            0
+          ],
+          "distance": 0.004464081864799613
+        }
+      ]
+    },
+    {
+      "connections": [
+        {
+          "paused": false,
+          "skill": null,
+          "signals": [
+            {
+              "action": "left",
+              "active": false,
+              "source": "Fly circuit",
+              "id": "connection-1",
+              "matched": false,
+              "blocked": null,
+              "value": 0.31837785998654056,
+              "trigger": "left",
+              "threshold": 6
+            },
+            {
+              "active": false,
+              "source": "Fly circuit",
+              "action": "right",
+              "id": "connection-2",
+              "matched": false,
+              "blocked": null,
+              "value": -0.31837785998654056,
+              "trigger": "right",
+              "threshold": 6
+            }
+          ],
+          "model": "duckfly-trigger-actions-v1",
+          "gate": null,
+          "idle": true,
+          "requests": [],
+          "command": {
+            "head": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "yaw": 0,
+            "vx": 0
+          }
+        },
+        {
+          "paused": false,
+          "skill": null,
+          "signals": [
+            {
+              "action": "right",
+              "matched": false,
+              "source": "Fly circuit",
+              "active": false,
+              "id": "connection-1",
+              "blocked": null,
+              "value": -63.529694916043006,
+              "trigger": "left",
+              "threshold": 6
+            },
+            {
+              "action": "left",
+              "source": "Fly circuit",
+              "matched": true,
+              "id": "connection-2",
+              "active": true,
+              "blocked": null,
+              "value": 63.529694916043006,
+              "trigger": "right",
+              "threshold": 6
+            }
+          ],
+          "model": "duckfly-trigger-actions-v1",
+          "gate": null,
+          "idle": false,
+          "requests": [
+            {
+              "action": "left",
+              "source": "Fly circuit",
+              "matched": true,
+              "id": "connection-2",
+              "active": true,
+              "blocked": null,
+              "value": 63.529694916043006,
+              "trigger": "right",
+              "threshold": 6
+            }
+          ],
+          "command": {
+            "head": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "yaw": 0.325,
+            "vx": 0.3
+          }
+        }
+      ],
+      "id": "crossed-wires",
+      "ducks": [
+        {
+          "id": "duck-1",
+          "fallen": false,
+          "distance": 0.2555167705421959,
+          "command": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "duck-2",
+          "fallen": false,
+          "command": [
+            0.3,
+            0.325
+          ],
+          "distance": 0.3397073932581581
+        }
+      ],
+      "time": 2.5599999999999676
+    },
+    {
+      "connections": [
+        {
+          "paused": false,
+          "skill": null,
+          "signals": [
+            {
+              "action": "kick",
+              "source": "Fly circuit",
+              "active": true,
+              "id": "connection-1",
+              "matched": true,
+              "blocked": null,
+              "value": 108.44738494202093,
+              "trigger": "forward",
+              "threshold": 6
+            }
+          ],
+          "model": "duckfly-trigger-actions-v1",
+          "gate": null,
+          "idle": false,
+          "requests": [
+            {
+              "action": "kick",
+              "source": "Fly circuit",
+              "active": true,
+              "id": "connection-1",
+              "matched": true,
+              "blocked": null,
+              "value": 108.44738494202093,
+              "trigger": "forward",
+              "threshold": 6
+            }
+          ],
+          "command": {
+            "yaw": 0,
+            "head": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "vx": 0
+          }
+        }
+      ],
+      "id": "trigger-kick",
+      "time": 0.8400000000000006,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "fallen": false,
+          "command": [
+            0,
+            0
+          ],
+          "distance": 0.022880453182818568
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "format": "duckfly-native-trigger-connections"
+}

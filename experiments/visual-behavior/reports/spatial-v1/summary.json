@@ -1,0 +1,252 @@
+{
+  "format": "duckfly-spatial-readout-study",
+  "version": 1,
+  "startedAt": "2026-09-11T02:12:57.452Z",
+  "finishedAt": "2026-09-11T02:15:19.447Z",
+  "elapsedSeconds": 141.993818,
+  "sourceHashes": {
+    "run-spatial.mjs": "b656e68fa0c3a469e0d57a64b0b4b867463bf7096a37c9bf4b611ccd5ac12231",
+    "spatial-stimuli.mjs": "1a4c1e7188d1372a27fe88daae6720705c9b326321b7dca78fd189af745b3f3c",
+    "load-model.mjs": "13daf664b0413b7e8402b32ac78e7b92eeb981568e4faa51d6471d7aede083b1",
+    "SPATIAL-PROTOCOL.md": "17b430a2765ebac0a10c6b7849bb5942165e84fc039101c7073c0239d4517929"
+  },
+  "modelHashes": {
+    "manifestFile": "33e007097fc3c539ebd817a297be38dfca113ab42a3fc6b24052575f0d403218",
+    "wasm": "7225b966d087253f204f50f1ec1fc85cb76286466d8e94b8af3e6a911a81f9b0",
+    "arrays": {
+      "source": "d1bb5f8eda28fb7c3b7088c4b07af6fc21726e488aedc74c277a4aa976b768b6",
+      "target": "a5521e8e79887ed525e2991d898119d95f46216bbee1f25b4b2dc93a2141fa33",
+      "weight": "f5c0636c6f9fca9d289d8a7b0e2d00d4aa0bd19cdc37df1ca28afa800c1b03bf",
+      "bias": "d276601573420bf787a81ffa8c81f2da3499a20df2bb858f6082c2e449ff564f",
+      "timeConstant": "1651e91b8f2554de0e48a8e5bdb56828ddd3cad3cb34d1b494652897d76279b8",
+      "inputIndex": "0961dec8bde58d7023f81666fcdad6451d570d328e030cd140fd7a96d9963119",
+      "steadyState": "ec82da2a80d617cc5cc81e6588624737da4bb75c212a1797acda3a8c9995cd73"
+    },
+    "sparseRuntime": "df8556796dd5245a620de6363577d661bded285428ad89133932faa40993aa05",
+    "spatialReadout": "78991203dc2537f727d3b2b6adfe89720c92e24ee2ca0cd453df3e15e217045a",
+    "retina": "12391b582bbe53d5fe65dc908fa931b54cda3f8d59418e15ca35b336b8052fa8"
+  },
+  "runtime": {
+    "node": "v24.19.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "cpus": "Apple M2 Max",
+    "concurrency": 1
+  },
+  "counts": {
+    "trials": 338,
+    "calibration": 8,
+    "heldout": 330,
+    "seeds": 30,
+    "integrationSteps": 81120
+  },
+  "gates": {
+    "extraction": true,
+    "spatialLocation": true,
+    "direction": true,
+    "directionConfounds": false,
+    "singleEyeRealTime": true,
+    "neuralBridgePromoted": false,
+    "bodyControlPromoted": false
+  },
+  "direction": [
+    {
+      "polarity": -1,
+      "hemisphere": {
+        "count": 58,
+        "n": 60,
+        "rate": 0.9666666666666667,
+        "wilson95": [
+          0.886362257256914,
+          0.9908106807438021
+        ]
+      },
+      "medianErrorDegrees": 40.677269265431505,
+      "meanErrorDegrees": 38.30505736541143,
+      "passed": true
+    },
+    {
+      "polarity": 1,
+      "hemisphere": {
+        "count": 52,
+        "n": 60,
+        "rate": 0.8666666666666667,
+        "wilson95": [
+          0.7583484032350039,
+          0.9308589051941303
+        ]
+      },
+      "medianErrorDegrees": 49.332107929726305,
+      "meanErrorDegrees": 49.680504816167726,
+      "passed": true
+    }
+  ],
+  "spatialLocation": [
+    {
+      "polarity": -1,
+      "correctHemisphere": {
+        "count": 60,
+        "n": 60,
+        "rate": 1,
+        "wilson95": [
+          0.93982814785791,
+          0.9999999999999998
+        ]
+      },
+      "passed": true
+    },
+    {
+      "polarity": 1,
+      "correctHemisphere": {
+        "count": 60,
+        "n": 60,
+        "rate": 1,
+        "wilson95": [
+          0.93982814785791,
+          0.9999999999999998
+        ]
+      },
+      "passed": true
+    }
+  ],
+  "confounds": [
+    {
+      "family": "blank",
+      "falseMotion": {
+        "count": 0,
+        "n": 30,
+        "rate": 0,
+        "wilson95": [
+          0,
+          0.11351339317396876
+        ]
+      },
+      "passed": true
+    },
+    {
+      "family": "flash",
+      "falseMotion": {
+        "count": 15,
+        "n": 30,
+        "rate": 0.5,
+        "wilson95": [
+          0.33154125640533766,
+          0.6684587435946623
+        ]
+      },
+      "passed": false
+    },
+    {
+      "family": "flicker",
+      "falseMotion": {
+        "count": 30,
+        "n": 30,
+        "rate": 1,
+        "wilson95": [
+          0.8864866068260312,
+          0.9999999999999999
+        ]
+      },
+      "passed": false
+    }
+  ],
+  "timing": {
+    "stepMs": {
+      "count": 81120,
+      "median": 1.5887080000029528,
+      "p95": 1.7468749999970896,
+      "max": 9.751000000000204
+    },
+    "intervalMs": {
+      "count": 8112,
+      "median": 16.014500000004773,
+      "p95": 16.87462499999674,
+      "max": 38.03149999999914
+    },
+    "extractionMs": {
+      "count": 8112,
+      "median": 0.825834000002942,
+      "p95": 1.009874999999738,
+      "max": 2.5929160000086995
+    },
+    "resetMs": {
+      "count": 338,
+      "median": 0.03695900000457186,
+      "p95": 0.05233399999997346,
+      "max": 0.20499999998719431
+    }
+  },
+  "decoder": {
+    "method": "calibration-response-weighted population vectors; positive delta within central 20-degree disk",
+    "populationOrder": [
+      "T4a",
+      "T4b",
+      "T4c",
+      "T4d",
+      "T5a",
+      "T5b",
+      "T5c",
+      "T5d"
+    ],
+    "vectors": [
+      {
+        "x": -0.05162016632337682,
+        "y": -0.1797409202198741
+      },
+      {
+        "x": 0.07612414033321756,
+        "y": 0.2701857596571184
+      },
+      {
+        "x": -0.3933932917795833,
+        "y": 0.2166538135747645
+      },
+      {
+        "x": -0.3039658222634545,
+        "y": -0.038474995509277195
+      },
+      {
+        "x": 0.1274040249073164,
+        "y": -0.46278088782100335
+      },
+      {
+        "x": 0.23949929069093034,
+        "y": 0.47494927597143055
+      },
+      {
+        "x": -0.44446587999677817,
+        "y": -0.13955620948048972
+      },
+      {
+        "x": 0.2643246937044603,
+        "y": -0.17299040713886948
+      }
+    ],
+    "strongDirectionThreshold": 0.02237826393347916,
+    "physiologicalClaim": false,
+    "reliableDirectionCandidate": false
+  },
+  "interpretation": "Extraction and event-location evidence only. A direction pass without confound rejection does not authorize motion control. No higher visual module, anatomical bridge, body test or physiological validation is included.",
+  "evidence": {
+    "inputs.f32.gz": {
+      "sha256": "328c74f6b884c09ec32bbaec697fa6c7c202ff36b68690d4e9adc780229e8c39",
+      "bytes": 1050436
+    },
+    "snapshots.f32.gz": {
+      "sha256": "f8d6ba5521fdac3f23631b70bce0b022c31231cad8c34eba782f024754264b0f",
+      "bytes": 43339580
+    },
+    "metadata.json": {
+      "sha256": "ec0c063de00334e678e760820941ccfbddcf4c41443a04e792f65361836eb6b9",
+      "bytes": 1111393
+    },
+    "trials.json.gz": {
+      "sha256": "edaa17e8eb035a7d5939c5a029b74951f5303b7e9bb41ae5a9af15249718e38b",
+      "bytes": 747924
+    },
+    "calibration.json": {
+      "sha256": "9b41feea1c2fee727574d013f7973cb707b749da6530eddb5a3b2af8aec95ff9",
+      "bytes": 117533
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "receipts": [
+    {
+      "version": 1,
+      "split": "calibration",
+      "movies": 66,
+      "frames": 3366,
+      "moviesSha256": "da66f59e5977f45d5abf62557f65198f2144d541014ca49140446f128c88632c",
+      "tracesSha256": "5f00708492f649a19802bc248bb659bd3c582ae82bb7564db3c487246da7a6da",
+      "exactReplay": true
+    },
+    {
+      "version": 1,
+      "split": "heldout",
+      "movies": 264,
+      "frames": 15224,
+      "moviesSha256": "3d90e0d6145307e7dfb07c32c4659ee17167b184463ef736f922e7156b50612c",
+      "tracesSha256": "982a58927fa9f591db34590457c2919a6d32ebf346c9091c8e11f68264631b81",
+      "exactReplay": true
+    },
+    {
+      "version": 2,
+      "split": "calibration",
+      "movies": 66,
+      "frames": 3366,
+      "moviesSha256": "2a44ccd0344afe8630dc97af2be84d7e2fe0d37e1c91a8674268a9e0e165b7c3",
+      "tracesSha256": "9bf69a5201f41304aadb79c4ecc7d0caebf62bd1e803ed11461524425e96eb57",
+      "exactReplay": true
+    },
+    {
+      "version": 2,
+      "split": "heldout",
+      "movies": 264,
+      "frames": 15224,
+      "moviesSha256": "bfcbb2fb37df29923a216c27e65d6f9fdb72927b6a36413ab8982a475ba4d2de",
+      "tracesSha256": "1340d20cdd1f446beedbd4d38944d446450cdae266247fcd291f99c8c51fffbc",
+      "exactReplay": true
+    }
+  ],
+  "uniqueMovieIds": 660,
+  "uniqueMovieHashes": 660
+}

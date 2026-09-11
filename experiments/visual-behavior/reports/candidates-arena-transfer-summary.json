@@ -1,0 +1,61 @@
+{
+  "probe": "actual-default-LabArena-posed-camera",
+  "interpretation": "Actual renderer and MuJoCo initial body/camera pose; props moved geometrically. No physical motion or usefulness test.",
+  "sources": {
+    "arena-transfer-browser.mjs": "2df49744891f19206bc99f2cb6a8cee59360d2f8c4b32011fbfa2a9ae1d233d3",
+    "arena-transfer-server.mjs": "87c789ba10611ff083b007f4549150875cf238a80ef927a66c2dd4b42af09a1a",
+    "detectors.mjs": "e0fc81104d2cad9c6828b6b64b0b5295e439c952f630e107e1fca83926b16024",
+    "web/src/arena.js": "a748a1a94dcbff4fd8e14be8d86adf37ba2538e9d64467a635c747f413c4f968",
+    "web/src/lab/lab-arena.js": "6f0c6d92345292fdd1cd21d080c30f40d69f86d38f398de058fefa7c08157ac7",
+    "web/src/lab/lab-world.js": "c22693ff00dfc328117380d4569703c95cd2168d0728e1bdd320fa6977a5c775",
+    "web/src/lab/scene.js": "32375c1243da009e6f5522f26b3e144319d5b0469a6f2b55e8e48da4898a82ca"
+  },
+  "movies": 12,
+  "frames": 372,
+  "recordsSha256": "acfa7c2638dab7474f4735adce0bf06a56e80175848531be6bbfd1850af06141",
+  "groups": {
+    "target-pass": {
+      "movies": 2,
+      "frames": 62,
+      "supportedFrames": 0,
+      "eventMovies": 0,
+      "expansionMovies": 0
+    },
+    "large-bar": {
+      "movies": 2,
+      "frames": 62,
+      "supportedFrames": 0,
+      "eventMovies": 0,
+      "expansionMovies": 0
+    },
+    "approach": {
+      "movies": 2,
+      "frames": 62,
+      "supportedFrames": 0,
+      "eventMovies": 0,
+      "expansionMovies": 0
+    },
+    "recession": {
+      "movies": 2,
+      "frames": 62,
+      "supportedFrames": 0,
+      "eventMovies": 0,
+      "expansionMovies": 0
+    },
+    "lighting-change": {
+      "movies": 2,
+      "frames": 62,
+      "supportedFrames": 4,
+      "eventMovies": 0,
+      "expansionMovies": 0
+    },
+    "static-target": {
+      "movies": 2,
+      "frames": 62,
+      "supportedFrames": 0,
+      "eventMovies": 0,
+      "expansionMovies": 0
+    }
+  },
+  "productionPromotion": false
+}

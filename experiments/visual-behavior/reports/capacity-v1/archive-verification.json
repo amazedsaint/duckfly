@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "runtime": true,
+    "readout": true,
+    "flow": true,
+    "runner": true,
+    "protocol": true
+  },
+  "summarySha256": "d70f86aae8eb229045ce54d46f8471c9c4004439e217cbfaacc2ff34b0131711"
+}

@@ -1,0 +1,89 @@
+{
+  "format": "duckfly-motion-room-calibration-summary",
+  "version": 1,
+  "run": "motion-calibration-v1",
+  "executedMovies": 15,
+  "renderedFrames": 750,
+  "scores": {
+    "flyvis": {
+      "movingFrames": 70,
+      "stationaryFrames": 190,
+      "directionAccuracy": 1,
+      "rateMAE": 0.08436116539548398,
+      "stationaryMAE": 0.03616583945955913,
+      "confounds": {
+        "unchanged": {
+          "frames": 55,
+          "falseTurns": 0,
+          "falseTurnRate": 0,
+          "mae": 0.010794135070880779,
+          "peak": 0.011138663244554921
+        },
+        "flat-flash": {
+          "frames": 45,
+          "falseTurns": 19,
+          "falseTurnRate": 0.4222222222222222,
+          "mae": 0.05066210152608616,
+          "peak": 0.11032209541440384
+        },
+        "flicker": {
+          "frames": 45,
+          "falseTurns": 17,
+          "falseTurnRate": 0.37777777777777777,
+          "mae": 0.04341241276023899,
+          "peak": 0.10382053980210598
+        },
+        "illumination": {
+          "frames": 45,
+          "falseTurns": 28,
+          "falseTurnRate": 0.6222222222222222,
+          "mae": 0.04543286501184806,
+          "peak": 0.10076797568966535
+        }
+      },
+      "passed": false
+    },
+    "conventional": {
+      "movingFrames": 70,
+      "stationaryFrames": 190,
+      "directionAccuracy": 1,
+      "rateMAE": 0.23680371652162932,
+      "stationaryMAE": 0.0006165042846032244,
+      "confounds": {
+        "unchanged": {
+          "frames": 55,
+          "falseTurns": 0,
+          "falseTurnRate": 0,
+          "mae": 7.683145237600185e-06,
+          "peak": 7.68314523760018e-06
+        },
+        "flat-flash": {
+          "frames": 45,
+          "falseTurns": 0,
+          "falseTurnRate": 0,
+          "mae": 0.0015157881940449595,
+          "peak": 0.033947729888640865
+        },
+        "flicker": {
+          "frames": 45,
+          "falseTurns": 0,
+          "falseTurnRate": 0,
+          "mae": 0.0010442628918470279,
+          "peak": 0.04210064833882667
+        },
+        "illumination": {
+          "frames": 45,
+          "falseTurns": 0,
+          "falseTurnRate": 0,
+          "mae": 3.357649380901287e-05,
+          "peak": 0.0005979666333319864
+        }
+      },
+      "passed": false
+    }
+  },
+  "admitted": false,
+  "physicalRunExecuted": false,
+  "decision": "Reject both adapters; retain negative result. No body comparison or promotion.",
+  "calibrationOnlyDiagnosis": "Conventional nearly flat flash residual gradients produce raw \u00b19.9487 rad/s and shrink the fitted gain; moving training panoramas produce \u00b10.28\u20130.32 rad/s. Signed binned Flyvis fails held-out contrast confounds despite correct direction signs."
+}

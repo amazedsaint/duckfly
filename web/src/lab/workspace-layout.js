@@ -115,7 +115,7 @@ export function mountWorkspaceLayout({onResize}) {
     $('#brain-panel').classList.toggle('is-compact', compact);
     $('#compact-brain').textContent = compact ? 'Expand' : 'Compact';
     $('#compact-brain').setAttribute('aria-expanded', String(!compact));
-    $('#compact-brain').title = compact ? 'Expand brain panel controls' : 'Collapse brain panel to a live monitor';
+    $('#compact-brain').title = compact ? 'Expand brain panel controls' : 'Show a compact brain monitor';
     $('#focus-mode').textContent = focus ? 'Exit focus' : 'Focus';
     $('#focus-mode').setAttribute('aria-pressed', String(focus));
     syncRail();

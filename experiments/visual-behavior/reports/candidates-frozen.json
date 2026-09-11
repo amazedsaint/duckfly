@@ -1,0 +1,26 @@
+{
+  "sources": {
+    "detectors.mjs": "e0fc81104d2cad9c6828b6b64b0b5295e439c952f630e107e1fca83926b16024",
+    "movies.mjs": "d1a75118c218d17f22087709c002341694953e9c175f305acad1a04df99e1459",
+    "study.mjs": "05bb9ed6ff2a170b26a2cb2363d229b07d147c90daba2e31256442118ed6b76e",
+    "PLAN.md": "dad3a6803c2a1f3294b6edb43d4ce73aac915a87defc3aff34c350c713ba74ba",
+    "shared/vision/motion.js": "34469969e15986b4e4da8945a3de36e90193fc0118d30a56fcd29ee8e055ae7c"
+  },
+  "settings": {
+    "version": 1,
+    "width": 96,
+    "height": 64,
+    "minimumContrast": 0.12,
+    "borderSpreadLimit": 0.08,
+    "relativeThreshold": 0.48,
+    "minimumArea": 5,
+    "smallMaximumDiameter": 16,
+    "smallMaximumAspect": 1.8,
+    "eventTravelPixels": 1.6,
+    "eventQuietSeconds": 0.24,
+    "historySeconds": 0.2,
+    "expansionMinimumWindow": 0.12,
+    "expansionRatePixelsPerSecond": 2,
+    "expansionFitMinimum": 0.82
+  }
+}

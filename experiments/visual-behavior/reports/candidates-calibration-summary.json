@@ -1,0 +1,372 @@
+{
+  "version": 1,
+  "split": "calibration",
+  "countPerFamily": 8,
+  "createdAt": "2026-09-11T02:11:31.995Z",
+  "sources": {
+    "detectors.mjs": "e0fc81104d2cad9c6828b6b64b0b5295e439c952f630e107e1fca83926b16024",
+    "movies.mjs": "d1a75118c218d17f22087709c002341694953e9c175f305acad1a04df99e1459",
+    "study.mjs": "05bb9ed6ff2a170b26a2cb2363d229b07d147c90daba2e31256442118ed6b76e",
+    "PLAN.md": "dad3a6803c2a1f3294b6edb43d4ce73aac915a87defc3aff34c350c713ba74ba",
+    "shared/vision/motion.js": "34469969e15986b4e4da8945a3de36e90193fc0118d30a56fcd29ee8e055ae7c"
+  },
+  "settings": {
+    "version": 1,
+    "width": 96,
+    "height": 64,
+    "minimumContrast": 0.12,
+    "borderSpreadLimit": 0.08,
+    "relativeThreshold": 0.48,
+    "minimumArea": 5,
+    "smallMaximumDiameter": 16,
+    "smallMaximumAspect": 1.8,
+    "eventTravelPixels": 1.6,
+    "eventQuietSeconds": 0.24,
+    "historySeconds": 0.2,
+    "expansionMinimumWindow": 0.12,
+    "expansionRatePixelsPerSecond": 2,
+    "expansionFitMinimum": 0.82
+  },
+  "width": 96,
+  "height": 64,
+  "storage": "concatenated gray8 frames; byte offsets and timestamps in traces",
+  "movieCount": 112,
+  "controlCount": 224,
+  "elapsedSeconds": 4.186176791,
+  "grouped": {
+    "small-pass": {
+      "movies": 8,
+      "supportedMovies": 8,
+      "meanFrameCoverage": 1,
+      "eventMovies": 8,
+      "expansionMovies": 0,
+      "conditionalEventRate": 1,
+      "conditionalExpansionRate": 0,
+      "temporalBaselineMovies": 6,
+      "motionBaselineMovies": 0
+    },
+    "small-step": {
+      "movies": 8,
+      "supportedMovies": 8,
+      "meanFrameCoverage": 1,
+      "eventMovies": 8,
+      "expansionMovies": 0,
+      "conditionalEventRate": 1,
+      "conditionalExpansionRate": 0,
+      "temporalBaselineMovies": 8,
+      "motionBaselineMovies": 0
+    },
+    "large-bar": {
+      "movies": 8,
+      "supportedMovies": 8,
+      "meanFrameCoverage": 1,
+      "eventMovies": 0,
+      "expansionMovies": 0,
+      "conditionalEventRate": 0,
+      "conditionalExpansionRate": 0,
+      "temporalBaselineMovies": 8,
+      "motionBaselineMovies": 0
+    },
+    "stationary-flicker": {
+      "movies": 8,
+      "supportedMovies": 8,
+      "meanFrameCoverage": 1,
+      "eventMovies": 0,
+      "expansionMovies": 0,
+      "conditionalEventRate": 0,
+      "conditionalExpansionRate": 0,
+      "temporalBaselineMovies": 8,
+      "motionBaselineMovies": 1
+    },
+    "global-flash": {
+      "movies": 8,
+      "supportedMovies": 8,
+      "meanFrameCoverage": 1,
+      "eventMovies": 0,
+      "expansionMovies": 0,
+      "conditionalEventRate": 0,
+      "conditionalExpansionRate": 0,
+      "temporalBaselineMovies": 8,
+      "motionBaselineMovies": 0
+    },
+    "approach-dark": {
+      "movies": 8,
+      "supportedMovies": 8,
+      "meanFrameCoverage": 1,
+      "eventMovies": 1,
+      "expansionMovies": 8,
+      "conditionalEventRate": 0.125,
+      "conditionalExpansionRate": 1,
+      "temporalBaselineMovies": 8,
+      "motionBaselineMovies": 8
+    },
+    "approach-bright": {
+      "movies": 8,
+      "supportedMovies": 8,
+      "meanFrameCoverage": 1,
+      "eventMovies": 0,
+      "expansionMovies": 8,
+      "conditionalEventRate": 0,
+      "conditionalExpansionRate": 1,
+      "temporalBaselineMovies": 8,
+      "motionBaselineMovies": 8
+    },
+    "dimming": {
+      "movies": 8,
+      "supportedMovies": 8,
+      "meanFrameCoverage": 1,
+      "eventMovies": 0,
+      "expansionMovies": 0,
+      "conditionalEventRate": 0,
+      "conditionalExpansionRate": 0,
+      "temporalBaselineMovies": 8,
+      "motionBaselineMovies": 8
+    },
+    "translation": {
+      "movies": 8,
+      "supportedMovies": 8,
+      "meanFrameCoverage": 1,
+      "eventMovies": 0,
+      "expansionMovies": 0,
+      "conditionalEventRate": 0,
+      "conditionalExpansionRate": 0,
+      "temporalBaselineMovies": 8,
+      "motionBaselineMovies": 0
+    },
+    "recession": {
+      "movies": 8,
+      "supportedMovies": 8,
+      "meanFrameCoverage": 1,
+      "eventMovies": 0,
+      "expansionMovies": 0,
+      "conditionalEventRate": 0,
+      "conditionalExpansionRate": 0,
+      "temporalBaselineMovies": 8,
+      "motionBaselineMovies": 0
+    },
+    "background-rotation": {
+      "movies": 8,
+      "supportedMovies": 0,
+      "meanFrameCoverage": 0,
+      "eventMovies": 0,
+      "expansionMovies": 0,
+      "conditionalEventRate": null,
+      "conditionalExpansionRate": null,
+      "temporalBaselineMovies": 8,
+      "motionBaselineMovies": 0
+    },
+    "textured-small-pass": {
+      "movies": 8,
+      "supportedMovies": 0,
+      "meanFrameCoverage": 0,
+      "eventMovies": 0,
+      "expansionMovies": 0,
+      "conditionalEventRate": null,
+      "conditionalExpansionRate": null,
+      "temporalBaselineMovies": 3,
+      "motionBaselineMovies": 0
+    },
+    "textured-approach": {
+      "movies": 8,
+      "supportedMovies": 0,
+      "meanFrameCoverage": 0,
+      "eventMovies": 0,
+      "expansionMovies": 0,
+      "conditionalEventRate": null,
+      "conditionalExpansionRate": null,
+      "temporalBaselineMovies": 8,
+      "motionBaselineMovies": 8
+    },
+    "translation-dimming": {
+      "movies": 8,
+      "supportedMovies": 8,
+      "meanFrameCoverage": 1,
+      "eventMovies": 0,
+      "expansionMovies": 0,
+      "conditionalEventRate": 0,
+      "conditionalExpansionRate": 0,
+      "temporalBaselineMovies": 8,
+      "motionBaselineMovies": 0
+    }
+  },
+  "gates": {
+    "eventRecall": {
+      "n": 16,
+      "positives": 16,
+      "rate": 1
+    },
+    "eventFalse": {
+      "n": 24,
+      "positives": 0,
+      "rate": 0
+    },
+    "loomRecall": {
+      "n": 16,
+      "positives": 16,
+      "rate": 1
+    },
+    "loomFalse": {
+      "n": 24,
+      "positives": 0,
+      "rate": 0
+    },
+    "eventMedianDelay": 0.08000000000000002,
+    "loomMedianDelay": 0.16000000000000003,
+    "eventPass": true,
+    "expansionPass": true,
+    "physicalUsefulnessTested": false,
+    "neuralFidelityTested": false,
+    "productionPromotion": false
+  },
+  "controls": {
+    "frozen": {
+      "small-pass": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "small-step": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "large-bar": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "stationary-flicker": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "global-flash": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "approach-dark": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "approach-bright": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "dimming": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "translation": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "recession": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "background-rotation": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "textured-small-pass": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "textured-approach": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "translation-dimming": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      }
+    },
+    "reversed": {
+      "small-pass": {
+        "movies": 8,
+        "eventMovies": 8,
+        "expansionMovies": 0
+      },
+      "small-step": {
+        "movies": 8,
+        "eventMovies": 8,
+        "expansionMovies": 0
+      },
+      "large-bar": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "stationary-flicker": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "global-flash": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "approach-dark": {
+        "movies": 8,
+        "eventMovies": 1,
+        "expansionMovies": 0
+      },
+      "approach-bright": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "dimming": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "translation": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "recession": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 8
+      },
+      "background-rotation": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "textured-small-pass": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "textured-approach": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      },
+      "translation-dimming": {
+        "movies": 8,
+        "eventMovies": 0,
+        "expansionMovies": 0
+      }
+    }
+  },
+  "artifacts": {
+    "moviesSha256": "063ca9acaee4d04a9d73d4ba7998478865a5b09b70f49d68a94c260d22f29178",
+    "tracesSha256": "da7d5761cc32e0dfed7d9d261ad39e639893644f83cbc8147df822dd69ad30a2",
+    "movieBytes": 21331968
+  }
+}

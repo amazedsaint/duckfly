@@ -11,6 +11,7 @@ npm run build --prefix ../web
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources/Web" "$MAC_ROOT/.build/swift-cache"
 rsync -a --delete --exclude assets/Simulation/microduck.mjb.gz ../web/dist/ "$APP/Contents/Resources/Web/"
 cp AppIcon.icns "$APP/Contents/Resources/"
+cp Tests/connections-smoke.js "$APP/Contents/Resources/ConnectionsSmoke.js"
 cp Tests/setup-helpers.js "$APP/Contents/Resources/SetupHelpers.js"
 cp Tests/launch-smoke.js "$APP/Contents/Resources/LaunchSmoke.js"
 cp Tests/setup-smoke.js "$APP/Contents/Resources/SetupSmoke.js"

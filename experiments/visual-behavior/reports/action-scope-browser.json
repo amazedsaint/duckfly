@@ -1,0 +1,46 @@
+{
+  "format": "duckfly-action-recording-scope-browser",
+  "version": 1,
+  "transport": "Actual local WebRTC; no STUN/TURN servers configured",
+  "independentContexts": true,
+  "receipts": [
+    {
+      "check": "20 native close/reopen cycles retain a working exact-frame request",
+      "passed": true,
+      "selected": "0.64 s after step · tick 32 · branch 0"
+    },
+    {
+      "check": "malformed imported causes rejected without changing paused world, run identity or retained image",
+      "passed": true,
+      "notice": "Invalid recorded action"
+    }
+  ],
+  "errors": [],
+  "passed": false,
+  "stage": "actual local RTC pairing",
+  "failure": "page.waitForFunction: Timeout 20000ms exceeded.",
+  "transportAtFailure": {
+    "host": {
+      "connection": "failed",
+      "ice": "disconnected",
+      "selectedPair": null
+    },
+    "guest": {
+      "connection": "failed",
+      "ice": "disconnected",
+      "selectedPair": null
+    }
+  },
+  "sourceHashes": {
+    "web/src/lab/action-evidence.js": "cd32823d38f81e083e260fa4f2956d65bc4fe3a052fc95e343caa1b44eb0de34",
+    "web/src/lab/action-inspector.js": "aa777f67978e7d60e6da04daed2d620a270e137b79cc106dcb17f36b83dbef2e",
+    "web/src/lab/recorded-events.js": "59512f15aab710682bd8d7932260f14283ca2ecb847049748dfde732b2c52d78",
+    "web/src/lab/lab.worker.js": "95002e4450160b7f25de0103d7932eaa90fd7c653e1ad9ba9f2f7dc53fb4f4e2",
+    "web/src/lab/experiment.js": "8724b611cf03d448ae379ac5616ad4d4c220ba13af53402c61332051eefa5721",
+    "web/src/main.js": "90d1774229aa3b090a40858fd4ce371f1715048314aca88d4d9ffefe89786d41",
+    "web/src/lab/room.js": "c5591f9697aa93610db905f748a89d2db8c0b257a50e3d88348c2c4c08848dcf",
+    "experiments/visual-behavior/action-scope-browser.js": "5610553eb8fb5bf9d325117dc6b75963547f02631dda18d1bce170b9c8b38d6d",
+    "experiments/visual-behavior/action-scope-fixture-browser.js": "b7d2fbceeef521674f2711a3fb53806feeff433af93369475ab7c4cda4e63df4"
+  },
+  "recordedAt": "2026-09-11T02:56:29.657Z"
+}

@@ -1,0 +1,160 @@
+{
+  "upstreamCommit": "c98d06aae1c16b3ad7ed92c609a6b43c617a296a",
+  "upstreamSourceSha256": "076a14156c9b8275e2dd132dff6961e1bea362411f715e0283fbdf6c637d4584",
+  "equationImplementationSha256": "b186ae62e58879eeb762152e6ee92101c7888a7edd0a1aa05ad2a9b591e3d41b",
+  "oracleHarnessSha256": "32870e81de5b706393fcfc5b32bf9ab1fe82a5a225cc1b6e9cc088459a5ea989",
+  "absoluteTolerance": 1e-09,
+  "relativeTolerance": 1e-06,
+  "receipts": [
+    {
+      "group": "Fig4L_LocalFlickers",
+      "oracleFileSha256": "c545b43e1a0ff54cfe2e5d2da22d6b066d5b1e629d1ba68bb24363a033991218",
+      "octaveVersion": "10.3.0",
+      "stages": {
+        "Rout": {
+          "shape": [
+            22,
+            22,
+            1800
+          ],
+          "maxAbsoluteError": 2.6020852139652106e-17,
+          "allclose": true
+        },
+        "S": {
+          "shape": [
+            22,
+            22,
+            1800
+          ],
+          "maxAbsoluteError": 0.0,
+          "allclose": true
+        },
+        "RHP": {
+          "shape": [
+            22,
+            22,
+            1800
+          ],
+          "maxAbsoluteError": 1.3877787807814457e-16,
+          "allclose": true
+        },
+        "Rrect": {
+          "shape": [
+            22,
+            22,
+            1800
+          ],
+          "maxAbsoluteError": 1.3877787807814457e-16,
+          "allclose": true
+        },
+        "RCS": {
+          "shape": [
+            22,
+            22,
+            1800
+          ],
+          "maxAbsoluteError": 1.4432899320127035e-15,
+          "allclose": true
+        },
+        "Q": {
+          "shape": [
+            22,
+            22,
+            1800
+          ],
+          "maxAbsoluteError": 3.3306690738754696e-16,
+          "allclose": true
+        },
+        "Radapt": {
+          "shape": [
+            22,
+            22,
+            1800
+          ],
+          "maxAbsoluteError": 2.2898349882893854e-15,
+          "allclose": true
+        }
+      },
+      "allEpochCenterTraceError": 7.546047120499111e-17,
+      "allEpochCenterTracesMatch": true,
+      "epochCount": 9
+    },
+    {
+      "group": "Fig4F_SizeTuning",
+      "oracleFileSha256": "97d7c30fc45f21b33ba1065878e15c9cd21bb15602e3a986bf07c6de48d255ba",
+      "octaveVersion": "10.3.0",
+      "stages": {
+        "Rout": {
+          "shape": [
+            22,
+            22,
+            1800
+          ],
+          "maxAbsoluteError": 1.214306433183765e-17,
+          "allclose": true
+        },
+        "S": {
+          "shape": [
+            22,
+            22,
+            1800
+          ],
+          "maxAbsoluteError": 0.0,
+          "allclose": true
+        },
+        "RHP": {
+          "shape": [
+            22,
+            22,
+            1800
+          ],
+          "maxAbsoluteError": 6.938893903907228e-17,
+          "allclose": true
+        },
+        "Rrect": {
+          "shape": [
+            22,
+            22,
+            1800
+          ],
+          "maxAbsoluteError": 6.938893903907228e-17,
+          "allclose": true
+        },
+        "RCS": {
+          "shape": [
+            22,
+            22,
+            1800
+          ],
+          "maxAbsoluteError": 6.106226635438361e-16,
+          "allclose": true
+        },
+        "Q": {
+          "shape": [
+            22,
+            22,
+            1800
+          ],
+          "maxAbsoluteError": 1.0408340855860843e-16,
+          "allclose": true
+        },
+        "Radapt": {
+          "shape": [
+            22,
+            22,
+            1800
+          ],
+          "maxAbsoluteError": 1.2212453270876722e-15,
+          "allclose": true
+        }
+      },
+      "allEpochCenterTraceError": 1.5612511283791264e-17,
+      "allEpochCenterTracesMatch": true,
+      "epochCount": 11
+    }
+  ],
+  "numericalEquivalenceToOriginalCode": true,
+  "physiologicalValidation": false,
+  "bodyBridge": false,
+  "productionPromotion": false
+}

@@ -97,6 +97,19 @@ test('editable shared physics',async t=>{
         assert.ok(Math.abs(replayed.sim.gaitDrive-expectedBrain.sim.gaitDrive)<1e-12);replayed.sim.gaitDrive=expectedBrain.sim.gaitDrive;assert.deepEqual(replayed,expectedBrain);
       }finally{e.dispose();}
     });
+    await t.test('invalid imported action signals leave the current physical and neural state intact',async()=>{
+      const circuit=JSON.parse(read('../../shared/assets/Brain/circuit.json'));
+      const e=new Experiment({mj,template,session,Tensor:ort.Tensor,circuit},defaultScene());
+      try{
+        await e.step({'duck-1':new Uint8Array(96*64*4).fill(100)});
+        const before=e.checkpoint(),recording=JSON.parse(JSON.stringify(e.export()));
+        for(const causes of [null,[null]]){
+          const invalid=structuredClone(recording);invalid.events[0].causes=causes;
+          assert.throws(()=>e.import(invalid),/Invalid recorded action/);
+          assert.deepEqual(e.checkpoint(),before);
+        }
+      }finally{e.dispose();}
+    });
     await t.test('live prop paths preserve the brain and clock, replay exactly, and stop when dragged',async()=>{
       const circuit=JSON.parse(read('../../shared/assets/Brain/circuit.json'));
       const e=new Experiment({mj,template,session,Tensor:ort.Tensor,circuit},defaultScene());

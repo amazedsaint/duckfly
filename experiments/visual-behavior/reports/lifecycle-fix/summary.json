@@ -1,0 +1,34 @@
+{
+  "format": "duckfly-sparse-lifecycle-repair",
+  "date": "2026-09-11T02:50:01.172Z",
+  "oldRuntimeSha256": "df8556796dd5245a620de6363577d661bded285428ad89133932faa40993aa05",
+  "newRuntimeSha256": "4b6a415aab4fde01602e2bf97fc86d652ce249914921c9dcfef79633a378056b",
+  "sourceHashes": {
+    "shared/vision/sparse-runtime.js": "4b6a415aab4fde01602e2bf97fc86d652ce249914921c9dcfef79633a378056b",
+    "experiments/visual-behavior/sparse-lifecycle.test.mjs": "c0eee79f11f7bcdd40a7aa2123b84ba95d22a4b43b0045ec40dd89b7ce483d53",
+    "web/tests/flyvis.test.mjs": "34c5276d65376da4335dd44ed50cf9bd9680ee8c81d24a77299158102a02c291",
+    "experiments/visual-behavior/spatial.test.mjs": "821598664dfecb6d44a025e437e9a378aeb55b8414d5aaa32845761d1d737417",
+    "experiments/visual-behavior/neural-flow-v2.test.mjs": "70b82156d7ffb5a25a7e3c34a3dce4d581a48decb13625aca44b54cf5a1e7fb2"
+  },
+  "wasmSha256": "7225b966d087253f204f50f1ec1fc85cb76286466d8e94b8af3e6a911a81f9b0",
+  "wasmUnchanged": true,
+  "neuralMapFlowV2Sha256": "89105dc151642c43b246df793d6e1fd7255ac762a23deb8bf8de6289176f2a4b",
+  "flowV2Unchanged": true,
+  "originalFailureRetained": "../capacity-v1/summary.json",
+  "tests": {
+    "passed": 14,
+    "failed": 0,
+    "logSha256": "edce258bca778839e5c595fb21252423d94ab5e21fb98780f617c30c22e0235d",
+    "command": "node --test web/tests/flyvis.test.mjs experiments/visual-behavior/spatial.test.mjs experiments/visual-behavior/neural-flow-v2.test.mjs experiments/visual-behavior/sparse-lifecycle.test.mjs"
+  },
+  "gates": {
+    "originalOracle": true,
+    "spatialExtraction": true,
+    "independentEyes": true,
+    "disposedEyePointerReuse": true,
+    "releasedAllocations": true,
+    "disposedModel": true,
+    "performanceRerun": false,
+    "bodyPromoted": false
+  }
+}

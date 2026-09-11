@@ -1,3 +1,6 @@
+import {updateConnectionActivity} from './lab/connection-controls.js';
+import { actionInspectorMarkup, mountActionInspector } from "./lab/action-inspector.js";
+import { changedRecording, validateRecordedEvents } from "./lab/recorded-events.js";
 import { mountPropControls } from "./lab/prop-controls.js";
 import { mountSceneSetup } from "./lab/scene-setup.js";
 import { mountMappingControls } from "./lab/mapping-controls.js";
@@ -9,6 +12,7 @@ import { workspaceShell } from "./lab/workspace-ui.js";
 import { mountLaunchPage } from "./lab/launch-page.js";
 import { mountGuidedLab } from "./lab/guided-ui.js";
 import { SCENARIOS } from "./lab/scenarios.js";
+import { SETUP_MODES } from "./lab/scene-setup-draft.js";
 import "./style.css";
 import "./workspace.css";
 import "./launch-page.css";
@@ -67,13 +71,15 @@ try {
 }
 $("#app").innerHTML =
   workspaceShell(W, H) +
-  `<dialog id="room-dialog"><div class="dialog-top"><strong>Collaborative experiment</strong><button data-close="room-dialog" aria-label="Close collaboration">✕</button></div><p id="room-status">Pair one collaborator. The host runs the shared world; both people can edit props and controllers.</p><div class="pair"><button id="room-host">Create invitation</button><button id="room-join">Join with invitation</button></div><label>Invitation or reply<textarea id="room-input" rows="3" spellcheck="false" placeholder="Paste a pairing code"></textarea></label><button id="room-accept">Accept collaborator reply</button><label>Your pairing code<textarea id="room-output" rows="3" readonly spellcheck="false"></textarea></label><button id="room-copy">Copy pairing code</button><button id="room-leave">Leave room</button><details><summary>Connection settings</summary><p class="hint">Direct WebRTC connection. If your networks require a relay, supply a TURN server. Pair again after a disconnect. Webcam frames are not shared.</p><label>TURN server<input id="turn-url" placeholder="turn:your-server:3478"></label><div class="pair"><label>Username<input id="turn-user" autocomplete="off"></label><label>Password<input id="turn-password" type="password" autocomplete="off"></label></div></details></dialog><dialog id="job-dialog"><div class="dialog-top"><strong id="job-title">Experiment batch</strong><button id="cancel-job">Cancel</button></div><p id="job-progress">Preparing isolated trials</p><progress id="job-meter" max="1" value="0"></progress><div id="job-results"></div><button id="save-report" hidden>Save report</button><button id="close-job" hidden>Close</button></dialog><dialog id="event-dialog"><div class="dialog-top"><strong>Causal inspector</strong><button data-close="event-dialog" aria-label="Close causal inspector">✕</button></div><p id="event-time"></p><div id="event-content"></div><label>Recorded event <input id="event-index" type="range" min="0" max="0" value="0"></label></dialog>
-<dialog id="about-dialog"><div class="dialog-top"><strong>About DuckFly</strong><button data-close="about-dialog" aria-label="Close about">✕</button></div><h2>A small circuit in a physical world.</h2><p>Camera pixels become sensory signals for DesktopFly’s 668-neuron FlyWire circuit. Neural activity selects movement intent, and Microduck’s pretrained policy controls the joints. MuJoCo and BAM calculate the physical response.</p><p>The sensory adapters are modeling assumptions. This is not a complete fly nervous system, and the connectome has not learned biped balance. Each duck has independent neural state in a shared physical arena.</p><p>Webcam access is optional. Camera frames stay on this device; exported recordings include the low-resolution frames used by the experiment.</p><p><a href="https://github.com/DenisSergeevitch/desktop-fly" target="_blank" rel="noreferrer">DesktopFly</a> · <a href="https://github.com/pollen-robotics/microduck_rl" target="_blank" rel="noreferrer">Microduck RL</a></p><p class="hint">FlyWire data is CC BY-NC 4.0. <a href="/assets/THIRD_PARTY_NOTICES.md" target="_blank">Source and license notices</a>.</p></dialog>`;
+  `<dialog id="room-dialog"><div class="dialog-top"><strong>Shared scene</strong><button data-close="room-dialog" aria-label="Close collaboration">✕</button></div><p id="room-status">Invite one person to edit the scene with you. Your device runs the simulation; both of you can change objects and duck settings.</p><div class="pair"><button id="room-host">Create invitation</button><button id="room-join">Join with invitation</button></div><label>Invitation or reply<textarea id="room-input" rows="3" spellcheck="false" placeholder="Paste a pairing code"></textarea></label><button id="room-accept">Accept collaborator reply</button><label>Your pairing code<textarea id="room-output" rows="3" readonly spellcheck="false"></textarea></label><button id="room-copy">Copy pairing code</button><button id="room-leave">Leave room</button><details><summary>Connection settings</summary><p class="hint">Direct WebRTC connection. If your networks require a relay, supply a TURN server. Pair again after a disconnect. Webcam frames are not shared.</p><label>TURN server<input id="turn-url" placeholder="turn:your-server:3478"></label><div class="pair"><label>Username<input id="turn-user" autocomplete="off"></label><label>Password<input id="turn-password" type="password" autocomplete="off"></label></div></details></dialog><dialog id="job-dialog"><div class="dialog-top"><strong id="job-title">Batch tests</strong><button id="cancel-job">Cancel</button></div><p id="job-progress">Preparing test scenes…</p><progress id="job-meter" max="1" value="0"></progress><div id="job-results"></div><button id="save-report" hidden>Save report</button><button id="close-job" hidden>Close</button></dialog>${actionInspectorMarkup()}
+<dialog id="about-dialog"><div class="dialog-top"><strong>About DuckFly</strong><button data-close="about-dialog" aria-label="Close about">✕</button></div><h2>How DuckFly works</h2><p>DuckFly connects DesktopFly’s 668-neuron FlyWire circuit to a simulated Microduck robot. A vision adapter turns camera images into inputs for the circuit. You choose which signals trigger actions; Microduck’s trained controllers move the joints in a MuJoCo simulation.</p><p>The fly circuit is a selected subset of neurons. Vision adapters and action mappings are experimental models; the robot’s balance comes from its trained controller. Each duck has an independent circuit in the shared scene.</p><p>Webcam access is optional. Camera frames stay on this device; exported recordings include the low-resolution frames used by the experiment.</p><p><a href="https://github.com/DenisSergeevitch/desktop-fly" target="_blank" rel="noreferrer">DesktopFly</a> · <a href="https://github.com/pollen-robotics/microduck_rl" target="_blank" rel="noreferrer">Microduck RL</a></p><p class="hint">FlyWire data is CC BY-NC 4.0. <a href="/assets/THIRD_PARTY_NOTICES.md" target="_blank">Source and license notices</a>.</p></dialog>`;
 let lastReport,
   room,
   jobBusy = false,
   lastRoomSent = 0,
   remoteSceneKey,
+  remoteRecordingScope,
+  wasGuest = false,
   pendingPropMove;
 const worker = new Worker(new URL("./lab/lab.worker.js", import.meta.url), {
   type: "module",
@@ -105,7 +111,7 @@ const send = (type, extra = {}) => {
   worker.postMessage({ type, ...extra });
 };
 let setupSession, pendingSetupSelection;
-const launchPage = mountLaunchPage({enterPlayground:showHome,startScenario:()=>chooseScenario('target')});
+const launchPage = mountLaunchPage({enterPlayground:showHome,startScenario:chooseScenario});
 launchPage.setVisible(true);
 document.body.classList.add('launch-active');
 const physicalSceneKey = value => JSON.stringify({...value, version:undefined, ducks:value.ducks.map(({id,spawn}) => ({id,spawn}))});
@@ -142,7 +148,7 @@ const sceneSetup = mountSceneSetup({
     showExperiment();
     renderScene();renderInspector();
     if (shouldRun) send('pause',{value:false});
-    notify(rebuild ? 'Your scene is ready. Select a duck to watch its brain, or drag an object.' : 'Connections updated in this run. The scene clock and physical state were kept.');
+    notify(rebuild ? 'Scene ready. Select a duck to inspect its brain.' : 'Settings applied. The scene keeps its current position and time.');
     return true;
   },
   onClose: () => {
@@ -193,7 +199,7 @@ const workspaceLayout = mountWorkspaceLayout({onResize: () => {
   drawEye();
 }});
 if (window.duckflyHost)
-  $("#platform").textContent = "Mac · on-device playground";
+  $("#platform").textContent = "Mac · Robot behavior studio";
 function persistScene() {
   localStorage.setItem("duckfly.scene.v1", JSON.stringify(scene));
   window.webkit?.messageHandlers?.scene?.postMessage(scene);
@@ -345,19 +351,19 @@ function renderScene() {
         s.title === scene.name ||
         (s.id === "empty" && scene.name === "Open arena"),
     )?.guide ??
-    "Click a duck to watch its brain. Drag props to change what it sees.";
+    "Select a duck to inspect its brain. Drag objects to change its view.";
   $("#scene-name").value = scene.name;
   $("#arena-title").textContent = scene.name;
   $("#object-count").textContent =
     scene.ducks.length + scene.props.length + scene.fields.length;
   $("#scene-tree").innerHTML = [
     ["Ducks", scene.ducks],
-    ["Props", scene.props],
+    ["Objects", scene.props],
     ["Sensory fields", scene.fields],
   ]
     .map(
       ([label, items]) =>
-        `<div class="tree-group">${label}</div>${items.map((o) => `<button class="tree-item" data-object="${o.id}" aria-pressed="${o.id === selected}"><span>${scene.ducks.includes(o) ? "◈" : o.kind === "light" ? "☀" : o.kind === "odor" ? "◌" : "◇"}</span><span>${escapeHTML(o.name ?? o.kind)}</span><small>${escapeHTML(o.mode ?? o.kind)}</small></button>`).join("")}`,
+        `<div class="tree-group">${label}</div>${items.map((o) => `<button class="tree-item" data-object="${o.id}" aria-pressed="${o.id === selected}"><span>${scene.ducks.includes(o) ? "◈" : o.kind === "light" ? "☀" : o.kind === "odor" ? "◌" : "◇"}</span><span>${escapeHTML(o.name === 'target' ? 'Beacon' : o.name ?? ({odor:'Scent field',light:'Light field'}[o.kind]??o.kind))}</span><small>${escapeHTML(SETUP_MODES.find(([id])=>id===o.mode)?.[1] ?? ({target:'Beacon',wall:'Wall',ball:'Ball',block:'Block',light:'Light field',odor:'Scent field'}[o.kind]??o.kind))}</small></button>`).join("")}`,
     )
     .join("");
   $("#scene-objects").innerHTML = [...scene.ducks, ...scene.props]
@@ -407,31 +413,31 @@ function renderInspector() {
   $("#duck-inspector").hidden = false;
   let html = "";
   if (duck) {
-    html = `<label>Controller<select id="controller">${options(
+    html = `<label>Input mode<select id="controller">${options(
       [
-        ["target", "Follow target"],
-        ["flock", "Follow companions"],
-        ["brain", "Fly brain pulses"],
-        ["reactive", "Reactive comparison"],
-        ["reflex", "Motion reflex comparison"],
-        ["manual", "Manual"],
-        ["light", "Light seeking"],
-        ["odor", "Odor seeking"],
+        ["target", "Follow a beacon"],
+        ["flock", "Follow other ducks"],
+        ["brain", "Brain stimulation"],
+        ["reactive", "Compare: camera rules"],
+        ["reflex", "Compare: motion reflex"],
+        ["manual", "Manual control"],
+        ["light", "Seek brightness"],
+        ["odor", "Follow a scent"],
       ],
       o.mode,
-    )}</select></label><label>Visual model<select id="vision-model">${options(
+    )}</select></label><label>Vision adapter<select id="vision-model">${options(
       [
-        ["motion-opponency-v1", "Motion opponency (experimental)"],
-        ["marker-v1", "Original marker baseline"],
+        ["motion-opponency-v1", "Motion detection · experimental"],
+        ["marker-v1", "Color tracking"],
       ],
       o.visionModel,
-    )}</select></label><label>Research stop loop<select id="temporal-loop">${options([["off","Off"],["timer","Temporal adapter + GF timer"],["hold","Temporal adapter + wait until clear"]],o.temporal)}</select></label><label>Vision source<select id="source">${options(
+    )}</select></label><label>Experimental stop response<select id="temporal-loop">${options([["off","Off"],["timer","Image sequence + timed stop"],["hold","Image sequence + wait until clear"]],o.temporal)}</select></label><label>Camera input<select id="source">${options(
       [
-        ["eyes", "Duck-eye camera"],
-        ["webcam", "Mac / device webcam"],
+        ["eyes", "Duck camera"],
+        ["webcam", "Device camera"],
       ],
       o.source,
-    )}</select></label>${o.source === "webcam" ? '<p class="hint">Show a magenta object to follow. Expanding image motion can trigger loom. Frames stay on this device.</p>' : ""}<div class="pair"><label>Eyes<select id="eyes">${options(
+    )}</select></label>${o.source === "webcam" ? '<p class="hint">Show a pink object for the duck to track. An object growing in the image can trigger the approach response. Frames stay on this device.</p>' : ""}<div class="pair"><label>Eyes<select id="eyes">${options(
       [
         ["both", "Both eyes"],
         [
@@ -445,7 +451,7 @@ function renderInspector() {
         ["none", "Both covered"],
       ],
       o.eye,
-    )}</select></label><label>Silence<select id="silence">${options(
+    )}</select></label><label>Disable a pathway<select id="silence">${options(
       [
         ["none", "None"],
         ["output", "All output"],
@@ -458,11 +464,11 @@ function renderInspector() {
         ["lplc2", "LPLC2 bridge"],
       ],
       o.silence,
-    )}</select></label></div><label class="check"><input id="active-look" type="checkbox" ${o.activeLook ? "checked" : ""}>Active head looking</label><label class="check"><input id="head-stabilization" type="checkbox" ${o.headStabilization ? "checked" : ""}>Stabilize head yaw</label><label>GF input gain<input id="gf-gain" type="number" min="1" max="12" step=".5" value="${o.gfGain}"></label><p class="hint">Gain is an experimental parameter. Flyvis reference validation is separate from this compact motion baseline.</p><label class="check"><input id="flow-steer" type="checkbox" ${o.flowSteer ? "checked" : ""}>Steer using optical flow</label><label class="check"><input id="feedback" type="checkbox" ${o.feedback ? "checked" : ""}>Motion feedback</label>${o.mode === "manual" ? '<div class="pulses"><button data-manual="walk">↑ Walk</button><button data-manual="stop">■ Stop</button><button data-manual="left">↰ Left</button><button data-manual="right">↱ Right</button></div>' : ""}<details><summary>Starting pose</summary><div class="pair">${numeric("spawn.0", "X (m)", o.spawn[0])}${numeric("spawn.1", "Y (m)", o.spawn[1])}${numeric("spawn.2", "Yaw (rad)", o.spawn[2])}</div><button id="apply-object">Apply and reset</button></details>`;
+    )}</select></label></div><label class="check"><input id="active-look" type="checkbox" ${o.activeLook ? "checked" : ""}>Track the beacon</label><label class="check"><input id="head-stabilization" type="checkbox" ${o.headStabilization ? "checked" : ""}>Stabilize head rotation</label><label>GF input gain<input id="gf-gain" type="number" min="1" max="12" step=".5" value="${o.gfGain}"></label><p class="hint">Gain scales the stop-reflex input. The full Flyvis model is available separately in the vision test bench.</p><label class="check"><input id="flow-steer" type="checkbox" ${o.flowSteer ? "checked" : ""}>Steer using optical flow</label><label class="check"><input id="feedback" type="checkbox" ${o.feedback ? "checked" : ""}>Body feedback</label>${o.mode === "manual" ? '<div class="pulses"><button data-manual="walk">↑ Walk</button><button data-manual="stop">■ Stop</button><button data-manual="left">↰ Left</button><button data-manual="right">↱ Right</button></div>' : ""}<details><summary>Starting pose</summary><div class="pair">${numeric("spawn.0", "X (m)", o.spawn[0])}${numeric("spawn.1", "Y (m)", o.spawn[1])}${numeric("spawn.2", "Yaw (rad)", o.spawn[2])}</div><button id="apply-object">Apply & restart</button></details>`;
   } else if (scene.props.includes(o)) {
-    html = `<label>Name<input id="object-name" value="${escapeHTML(o.name)}" maxlength="80"></label><div class="pair">${o.position.map((v, i) => numeric("position." + i, ["X (m)", "Y (m)", "Z (m)"][i], v)).join("")}${numeric("yaw", "Yaw (rad)", o.yaw)}</div><details><summary>Physical shape</summary><div class="pair">${o.size.map((v, i) => numeric("size." + i, ["Width / diameter", "Depth", "Height"][i], v)).join("")}${numeric("mass", "Mass (kg)", o.mass)}${numeric("friction", "Friction", o.friction)}</div><label class="check"><input id="movable" type="checkbox" ${o.movable ? "checked" : ""}>Free physical body</label><label>Color<input id="object-color" type="color" value="${o.color}"></label></details><details><summary>Animated motion (m/s)</summary><p class="hint">For fixed props. Free bodies move through physics.</p><div class="pair">${o.motion.map((v, i) => numeric("motion." + i, ["X speed", "Y speed", "Z speed"][i], v)).join("")}</div></details><button id="move-prop">Move in current run</button><button id="apply-object" class="primary">Apply and reset</button>`;
+    html = `<label>Name<input id="object-name" value="${escapeHTML(o.name)}" maxlength="80"></label><div class="pair">${o.position.map((v, i) => numeric("position." + i, ["X (m)", "Y (m)", "Z (m)"][i], v)).join("")}${numeric("yaw", "Yaw (rad)", o.yaw)}</div><details><summary>Physical shape</summary><div class="pair">${o.size.map((v, i) => numeric("size." + i, ["Width / diameter", "Depth", "Height"][i], v)).join("")}${numeric("mass", "Mass (kg)", o.mass)}${numeric("friction", "Friction", o.friction)}</div><label class="check"><input id="movable" type="checkbox" ${o.movable ? "checked" : ""}>Respond to physics</label><label>Color<input id="object-color" type="color" value="${o.color}"></label></details><details><summary>Animated motion (m/s)</summary><p class="hint">Sets a path for fixed objects. Movable objects respond to gravity and collisions.</p><div class="pair">${o.motion.map((v, i) => numeric("motion." + i, ["X speed", "Y speed", "Z speed"][i], v)).join("")}</div></details><button id="move-prop">Move object</button><button id="apply-object" class="primary">Apply & restart</button>`;
   } else {
-    html = `<p class="hint">${o.kind === "odor" ? "A modeled scalar gradient sampled near the head." : "A physical scene light; camera brightness drives the modeled adapter."}</p><div class="pair">${o.position.map((v, i) => numeric("position." + i, ["X (m)", "Y (m)"][i], v)).join("")}${numeric("strength", "Strength", o.strength)}${numeric("radius", "Radius (m)", o.radius)}</div><button id="apply-object" class="primary">Apply and reset</button>`;
+    html = `<p class="hint">${o.kind === "odor" ? "A simulated scent field measured near the duck’s head." : "Lights the scene. Camera brightness supplies input to the vision adapter."}</p><div class="pair">${o.position.map((v, i) => numeric("position." + i, ["X (m)", "Y (m)"][i], v)).join("")}${numeric("strength", "Strength", o.strength)}${numeric("radius", "Radius (m)", o.radius)}</div><button id="apply-object" class="primary">Apply & restart</button>`;
   }
   $("#object-editor").innerHTML = html;
   const patch = (value) => {
@@ -638,7 +644,7 @@ function update(data) {
   $("#metrics").textContent =
     `${s.speed.toFixed(2)} m/s · ${s.distance.toFixed(2)} m · ${data.body.collisionCount} contacts`;
   $("#inspect-event").title = s.fallen
-    ? "Duck fell. Try Help stand in Experiment controls."
+    ? "Duck fell. Select Stand up in Experiment controls."
     : n?.event.includes("stop reflex")
       ? n.event
       : (a?.input?.reason ?? "Paused at starting state");
@@ -708,6 +714,7 @@ function update(data) {
     events.set(data.event.tick, data.event);
     if (events.size > 1000) events.delete(events.keys().next().value);
   }
+  updateConnectionActivity(document.querySelector('#brain-mapping-panel'),data.agents[connectedDuck]?.connections);
   drawEye();
   window.duckflyTelemetry = {
     ready,
@@ -736,11 +743,17 @@ function update(data) {
     collisionCount: data.body.collisionCount,
     history: data.history,
     branch: data.branch,
+    recordingId: data.recordingId,
     scene,
   };
 }
 const events = new Map();
+const actionInspector = mountActionInspector({
+  getEvents: () => events.values(), getScene: () => scene, getDuck: () => connectedDuck,
+  requestEvidence: message => worker.postMessage(message), isGuest: () => room?.role === 'guest',
+});
 worker.onmessage = ({ data }) => {
+  if (data.type === 'action-evidence') { actionInspector.receive(data); return; }
   if(data.type==='prop-behavior-applied'){
     scene=data.scene;if(arena)arena.definition=scene;
     persistScene();renderScene();renderInspector();updatePropControls(scene,state,selected);
@@ -760,7 +773,7 @@ worker.onmessage = ({ data }) => {
   if (data.type === "ready") {
     ready = true;
     launchPage.setReady(true);
-    $("#home-status").textContent = "Ready to explore · runs on your device";
+    $("#home-status").textContent = "Ready · Runs on your device";
     scene = data.scene;
     arena.setScene(scene);
     if (!current()) selected = scene.ducks[0].id;
@@ -772,6 +785,7 @@ worker.onmessage = ({ data }) => {
       .forEach((el) => (el.disabled = false));
   }
   if (data.type === "scene") {
+    actionInspector.reset();
     scene = data.scene;
     if(pendingSetupSelection){
       if(scene.ducks.some(duck=>duck.id===pendingSetupSelection))selected=connectedDuck=pendingSetupSelection;
@@ -980,7 +994,7 @@ function addObject(kind, profile) {
     });
   if(profile){
     const prop=next.props.find(p=>p.id===id);
-    Object.assign(prop,propProfile(profile),{name:profile==='patrol'?'Patrol wall':profile==='orbit'?'Orbiting beacon':'Pushable ball'});
+    Object.assign(prop,propProfile(profile),{name:profile==='patrol'?'Moving wall':profile==='orbit'?'Orbiting beacon':'Pushable ball'});
     if(profile==='patrol'){prop.position=[.8,0,.17];prop.size=[.07,.25,.34];}
     if(profile==='orbit')prop.position=[.9,0,.13];
   }
@@ -1012,17 +1026,17 @@ $("#remove").onclick = () =>
 $("#save").onclick = () => download("duckfly-scene.json", validateScene(scene));
 $("#share").onclick = async () => {
   const url = new URL(
-    window.duckflyHost ? "https://duckfly.vercel.app/" : location.href,
+    window.duckflyHost ? "https://makeduckfly.com/" : location.href,
   );
   url.hash = "scene=" + encodeScene(scene);
   try {
     await navigator.clipboard.writeText(url.href);
-    notify("Scene link copied. It includes the arena and seed.");
+    notify("Scene link copied. It includes your layout and connections.");
   } catch {
     if (!window.duckflyHost) {
       history.replaceState(null, "", url);
-      notify("Scene saved in the address bar. Copy its URL to share.");
-    } else notify("Clipboard unavailable. Use Save to share the scene file.");
+      notify("Copy the URL from the address bar to share this scene.");
+    } else notify("Clipboard unavailable. Choose Save scene to share a file.");
   }
 };
 $("#open").onclick = () => $("#file").click();
@@ -1047,7 +1061,7 @@ $("#export").onclick = () => send("export");
 $("#branch").onclick = () => {
   send("branch");
   notify(
-    "Future inputs will use the current scene. Change a controller or add a stimulus, then run.",
+    "New branch started. Change a setting or send a signal, then select Run.",
   );
 };
 $("#rewind").onchange = (e) => {
@@ -1056,8 +1070,8 @@ $("#rewind").onchange = (e) => {
 };
 function stimulate(kind) {
   send("stimulus", { id: connectedDuck, kind });
-  if(paused)notify('Pulse queued for the connected duck. Use Run or Step to advance the brain and body.');
-  else if(state?.agents[connectedDuck]?.input?.gate)notify('Pulse sent. The vision gate still blocks forward movement; bring the cue into view or use the direct brain controller.');
+  if(paused)notify('Signal queued. Select Run or Step to apply it to this duck.');
+  else if(state?.agents[connectedDuck]?.input?.gate)notify('Signal sent. Walking is waiting for a visible beacon. Bring it into view or select Brain stimulation as the input mode.');
 }
 for (const el of document.querySelectorAll("[data-stimulus]"))
   el.onclick = () => stimulate(el.dataset.stimulus);
@@ -1084,7 +1098,7 @@ function stopWebcam() {
   if (video) video.srcObject = null;
   $("#webcam").textContent = "Use my camera";
   $("#webcam").classList.remove("active-camera");
-  notify("Webcam stopped");
+  notify("Device camera stopped. Duck camera restored.");
 }
 $("#webcam").onclick = async () => {
   if (stream) {
@@ -1102,7 +1116,7 @@ $("#webcam").onclick = async () => {
     video.srcObject = stream;
     await video.play();
     webcamCapture = new WebcamCapture(video);
-    $("#webcam").textContent = "Stop webcam";
+    $("#webcam").textContent = "Stop camera";
     $("#webcam").classList.add("active-camera");
     stream
       .getVideoTracks()[0]
@@ -1126,25 +1140,6 @@ $("#about").onclick = () => $("#about-dialog").showModal();
 document
   .querySelectorAll("[data-close]")
   .forEach((el) => (el.onclick = () => $("#" + el.dataset.close).close()));
-function showEvent(index) {
-  const event = [...events.values()].sort((a, b) => a.tick - b.tick)[index];
-  if (!event) return;
-  $("#event-time").textContent =
-    `${event.time.toFixed(2)} s · tick ${event.tick} · branch ${event.branch}`;
-  $("#event-content").innerHTML = event.causes
-    .map(
-      (c) =>
-        `<section><h3>${escapeHTML(scene.ducks.find((d) => d.id === c.id)?.name ?? c.id)}</h3><p>${escapeHTML(c.input.reason)}</p><table><tbody><tr><td>Vision</td><td>target ${c.vision?.target.visible ? "seen" : "absent"}, bearing ${(c.vision?.target.bearing ?? 0).toFixed(2)}</td></tr><tr><td>Sensory input</td><td>forward ${c.input.forward.toFixed(3)}, turn ${c.input.turn.toFixed(3)}</td></tr><tr><td>Loom left / right</td><td>${c.input.loomL.toFixed(2)} / ${c.input.loomR.toFixed(2)}</td></tr><tr><td>Neural rates</td><td>DNp09 ${c.neural.forward.toFixed(1)} Hz, DNa ${c.neural.left.toFixed(1)} / ${c.neural.right.toFixed(1)} Hz</td></tr><tr><td>Neural intent</td><td>${c.neural.vx.toFixed(2)} m/s, ${c.neural.yaw.toFixed(2)} rad/s</td></tr><tr><td>Command source</td><td>${escapeHTML(c.provenance?.forward ?? "Legacy recording")}<br>${escapeHTML(c.provenance?.head ?? "Legacy head adapter")}</td></tr><tr><td>Capture</td><td>${escapeHTML(c.vision?.capture?.sourceId ?? "Legacy")} · frame ${c.vision?.capture?.frameId ?? "?"} · ${c.vision?.capture?.captureTime?.toFixed(3) ?? "?"} s capture clock</td></tr><tr><td>Body policy</td><td>${escapeHTML(c.command.policy??"walking")}${c.skill?" · "+escapeHTML(c.skill.message):""}</td></tr><tr><td>Body command</td><td>${c.command.vx.toFixed(2)} m/s, ${c.command.yaw.toFixed(2)} rad/s</td></tr></tbody></table></section>`,
-    )
-    .join("");
-}
-$("#inspect-event").onclick = () => {
-  $("#event-index").max = Math.max(0, events.size - 1);
-  $("#event-index").value = events.size - 1;
-  showEvent(events.size - 1);
-  $("#event-dialog").showModal();
-};
-$("#event-index").oninput = (e) => showEvent(+e.target.value);
 document.addEventListener("keydown", (e) => {
   if (e.defaultPrevented || document.querySelector("dialog[open]")) return;
   if (e.key === "Escape" && !$("#tools-panel").hidden) {
@@ -1217,11 +1212,11 @@ function beginJob(type) {
     scene.ducks.find((d) => d.id === connectedDuck) ?? scene.ducks[0];
   $("#job-title").textContent =
     type === "learn"
-      ? "Learn sensory adapter"
+      ? "Train sensory adapter"
       : type === "loom-compare"
         ? "Matched looming trials"
         : "Matched controller comparison";
-  $("#job-progress").textContent = "Preparing isolated trials";
+  $("#job-progress").textContent = "Preparing test scenes…";
   $("#job-results").innerHTML = "";
   $("#job-meter").value = 0;
   $("#cancel-job").hidden = false;
@@ -1247,6 +1242,12 @@ $("#save-report").onclick = () =>
 
 room = new ExperimentRoom({
   onStatus: (info) => {
+    const guest = info.role === 'guest';
+    if (guest !== wasGuest) {
+      events.clear(); actionInspector.reset();
+      remoteSceneKey = undefined; remoteRecordingScope = undefined;
+      wasGuest = guest;
+    }
     $("#room-status").textContent = info.message;
     $("#room-button").textContent =
       info.role === "local" ? "Collaborate" : `Room · ${info.role}`;
@@ -1284,6 +1285,10 @@ room = new ExperimentRoom({
     )
       throw Error("Invalid shared state");
     const next = validateScene(data.scene);
+    if (!Number.isSafeInteger(data.tick) || data.tick < 0 || !Number.isSafeInteger(data.branch) || data.branch < 0 ||
+      (data.recordingId != null && (typeof data.recordingId !== 'string' || data.recordingId.length > 80)))
+      throw Error('Invalid shared recording identity');
+    if (data.event) validateRecordedEvents([data.event],{duckIds:next.ducks.map(duck=>duck.id),maximumTick:data.tick});
     for (const d of data.body.ducks)
       if (
         !Array.isArray(d.poses) ||
@@ -1292,6 +1297,9 @@ room = new ExperimentRoom({
       )
         throw Error("Invalid shared body pose");
     const key = JSON.stringify(next);
+    const scope = {authority:room.room,recordingId:data.recordingId??null,sceneKey:key,tick:data.tick,branch:data.branch};
+    if (changedRecording(remoteRecordingScope,scope)) { events.clear(); actionInspector.reset(); }
+    remoteRecordingScope = scope;
     if (key !== remoteSceneKey) {
       scene = next;
       remoteSceneKey = key;
@@ -1332,7 +1340,7 @@ $("#room-button").onclick = () => $("#room-dialog").showModal();
 $("#room-host").onclick = async () => {
   try {
     $("#room-output").value = "";
-    $("#room-status").textContent = "Gathering connection candidates…";
+    $("#room-status").textContent = "Preparing the invitation…";
     $("#room-output").value = await room.invite(iceServers());
     $("#room-status").textContent =
       "Send this invitation. Paste the collaborator reply here, then accept it.";
@@ -1381,7 +1389,7 @@ $("#room-leave").onclick = () => {
 
 $("#home-button").onclick = showHome;
 $("#show-launch").onclick = showLaunch;
-$("#new-scene").onclick = event => openSetup({...defaultScene('empty'),name:'Your own playground'},false,event.currentTarget);
+$("#new-scene").onclick = event => openSetup({...defaultScene('empty'),name:'Blank scene'},false,event.currentTarget);
 $("#back-home").onclick = showHome;
 $("#continue-scene").onclick = showExperiment;
 for (const tile of document.querySelectorAll("[data-scenario]"))

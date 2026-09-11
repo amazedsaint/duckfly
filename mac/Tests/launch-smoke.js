@@ -103,7 +103,7 @@ try {
   stage = 'beacon quick start cancellation'; reportAcceptanceStage(stage);
   $('#launch-beacon').focus(); $('#launch-beacon').click();
   await wait(() => $('#scene-setup')?.open);
-  check($('#setup-title').textContent === 'Follow the beacon', 'Launch quick start opened the wrong experiment');
+  check($('#setup-title').textContent === 'Build a visual follower', 'Launch quick start opened the wrong experiment');
   check(physicalState() === initial, 'Opening quick start replaced the experiment before review');
   $('[data-setup-action="cancel"]').click();
   await wait(() => !$('#scene-setup').open && visible($('#launch-page')));
@@ -112,7 +112,7 @@ try {
   await wait(() => document.activeElement === $('#launch-beacon'));
   $('#new-scene').click();
   await wait(() => $('#scene-setup').open);
-  check($('#setup-title').textContent === 'Your own playground', 'Global New scene is unavailable from the introduction');
+  check($('#setup-title').textContent === 'Blank scene', 'Global New scene is unavailable from the introduction');
   $('[data-setup-action="cancel"]').click();
   await wait(() => !$('#scene-setup').open && visible($('#launch-page')));
   check(physicalState() === initial, 'Cancelling a new scene changed the launch experiment');
@@ -122,12 +122,12 @@ try {
   $('#launch-enter').click();
   await wait(() => $('#launch-page').hidden && visible($('#scene-catalog')));
   check(physicalState() === initial && $('#experiment-page').hidden, 'Opening the gallery ran or replaced the experiment');
-  check(document.querySelectorAll('#scene-catalog [data-scenario]').length === 11, 'Gallery entry lost experiment tiles');
+  check(document.querySelectorAll('#scene-catalog [data-scenario]').length === 15, 'Gallery entry lost experiment tiles');
   await launchScenario('target');
   await wait(() => !$('#experiment-page').hidden && !t().paused && t().tick >= 100);
   check($('#home-page').hidden && $('#launch-page').hidden, 'Reviewed scene launch left the introduction on the stage');
   check(t().ducks[0].distance > .01, 'Quickly reviewed beacon scene did not produce actual physical movement');
-  checks.push({check:'Open playground reveals the existing gallery; reviewed launch runs the actual neural and physical experiment', tick:t().tick, distance:t().ducks[0].distance});
+  checks.push({check:'Open studio reveals the existing gallery; reviewed launch runs the actual neural and physical experiment', tick:t().tick, distance:t().ducks[0].distance});
 
   stage = 'reopen introduction without losing the running scene'; reportAcceptanceStage(stage);
   await openIntro();

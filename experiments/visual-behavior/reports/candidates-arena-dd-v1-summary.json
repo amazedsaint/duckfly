@@ -1,0 +1,16 @@
+{
+  "probe": "actual-arena-dd-transfer-v1",
+  "movies": 66,
+  "frames": 2046,
+  "sourceSha256": {
+    "arena-dd-browser.mjs": "e2644435e70b2799e8409b871efeaa2a17517b0aaed8d61e3f362c81c3282394",
+    "arena-dd-server.mjs": "19b9a2dba31d4fcfd191bd52731dbd2c941c0a5dd58e10f0326c501bdec74e20",
+    "web/src/arena.js": "a748a1a94dcbff4fd8e14be8d86adf37ba2538e9d64467a635c747f413c4f968",
+    "web/src/lab/lab-arena.js": "6f0c6d92345292fdd1cd21d080c30f40d69f86d38f398de058fefa7c08157ac7",
+    "web/src/lab/lab-world.js": "c22693ff00dfc328117380d4569703c95cd2168d0728e1bdd320fa6977a5c775",
+    "web/src/lab/scene.js": "32375c1243da009e6f5522f26b3e144319d5b0469a6f2b55e8e48da4898a82ca",
+    "shared/vision/frame.js": "3c567834690372886d23c53f92414947d77de25252d8f454c9496491f5f368a2"
+  },
+  "artifactSha256": "b1ee44c1b41e64dcbc553473adf143cfd234fa86dc6a0c213114a34b26718781",
+  "interpretation": "Actual LabArena render with posed prop and camera motion; no body-controller or behavioral-usefulness test. Colors, angular size, distance and direction varied by fixed cohort recipe."
+}

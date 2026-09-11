@@ -4,7 +4,7 @@ import { mountTemplate } from './lab-world.js';
 import { TemporalDecoder } from '../../../shared/vision/temporal/decoder.js';
 export async function loadLabRuntime(base,progress=()=>{}){
   const url=path=>new URL(path,base).href;
-  progress('Loading physics and walking policy');
+  progress('Loading physics and robot movement…');
   const {default:load}=await import(/* @vite-ignore */ url('runtime/mujoco.js'));
   const [mj,compressed,circuit,policy]=await Promise.all([load({locateFile:name=>url(`runtime/${name}`)}),
     fetchBytes(url('assets/Simulation/lab-template.json.gz')),fetch(url('assets/Brain/circuit.json')).then(r=>r.json()),fetchBytes(url('assets/Policies/alpha_walking.onnx'))]);

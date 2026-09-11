@@ -1,0 +1,25 @@
+{
+  "format": "duckfly-spatial-evidence-replay",
+  "version": 1,
+  "passed": true,
+  "exact": true,
+  "sourceSha256": "121705c3ccb3e92067ea5641047d219f6b76366a72780dca4ceeafce5c85c733",
+  "summarySha256": "aa0d414abdb374a21fba42c0a9cfc5c50a43b4dd0fa20cb3980b43c95cb76958",
+  "samples": 415296,
+  "checked": [
+    "calibration-edge-0--1-forward",
+    "heldout-edge-1000--1-forward",
+    "heldout-edge-1000--1-reverse",
+    "heldout-local-flash-1000--1--1",
+    "heldout-local-flash-1000--1-1",
+    "heldout-edge-1000-1-forward",
+    "heldout-edge-1000-1-reverse",
+    "heldout-local-flash-1000-1--1",
+    "heldout-local-flash-1000-1-1",
+    "heldout-blank-1000-1-forward",
+    "heldout-flash-1000-1-forward",
+    "heldout-flicker-1000-1-forward"
+  ],
+  "coverage": "calibration exemplar plus all families and paired conditions from held-out seed 1000",
+  "limitation": "Default replay covers selected trials; extraction/index equality was checked for every retained snapshot during the original run."
+}

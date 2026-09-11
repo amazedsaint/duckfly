@@ -1,0 +1,35 @@
+{
+  "scope": "Research proposal only; no implementation or deployment",
+  "baselineCommit": "dc41aa17ce83999bb56efed1f92ae8842eda70ec",
+  "inspectedAt": "2026-09-11T01:55:07.583101+00:00",
+  "files": [
+    {
+      "path": "web/src/brain.js",
+      "sha256": "0ad9fdaecf21e893fd97867635b6278df8bb1827fd472504c1313beb5c200f5a"
+    },
+    {
+      "path": "web/src/lab/brain-mapping.js",
+      "sha256": "dba0fbc4e2ee9ca2504e947016fcffc2d340fa0db3b9824c35a5012b30e8f882"
+    },
+    {
+      "path": "web/src/lab/vision.js",
+      "sha256": "6252146d6aa3ab3b4ecce9cd1dcae385b46bbeb84ef548c1577189ca4c5819dc"
+    },
+    {
+      "path": "web/src/lab/flyvis.worker.js",
+      "sha256": "20e5726c0017618a97ae7aaa94bb9173c1b44e890f48caccc66895fcd5c454ca"
+    },
+    {
+      "path": "shared/assets/Brain/circuit.json",
+      "sha256": "da53640e4dc7071c26892870ec5b28984c4cfc74c1c44d3a3cde0a2913579d0f"
+    },
+    {
+      "path": "shared/vision/models/flyvis-000/manifest.json",
+      "sha256": "33e007097fc3c539ebd817a297be38dfca113ab42a3fc6b24052575f0d403218"
+    },
+    {
+      "path": "shared/vision/temporal/README.md",
+      "sha256": "c633a5bec701acddee4bc3d4bf1da7baab42af766e5cee2a495b162805188cd0"
+    }
+  ]
+}

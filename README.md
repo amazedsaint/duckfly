@@ -1,127 +1,101 @@
 # DuckFly
 
-**Web app:** [duckfly.vercel.app](https://duckfly.vercel.app) · Vercel organization: `contextmind`.
+[Open DuckFly](https://makeduckfly.com) · [GitHub](https://github.com/amazedsaint/duckfly)
 
-The [animated welcome page](docs/implementation/launch-page/README.md) introduces the duck and fly with original illustrated characters. Open the playground to browse scenes, or use **Try the beacon** to go straight into guided setup. **More → Welcome page** brings it back at any time.
+Connect a simulated fly circuit to a Microduck robot. Map **13 available signals to 10 robot actions** in the setup wizard or **Brain → duck** editor, then inspect the live activity and resulting movement.
 
-The same colors carry into the [compact studio and setup wizard](docs/implementation/studio-theme/README.md). One contextual inspector holds the active settings, docks beside the stage on wide windows, and becomes a drawer on smaller screens. Focus mode restores your previous panel when you leave it; the connected fly brain remains visible.
+The app runs on your device, in a browser or a standalone Mac app. Each duck has its own 668-neuron circuit. Scenes have no time limit.
 
-[What we built, what the experiments found, and the next plan](docs/experiments/playground/README.md). New guided scenes: Stop, wait, go; Find it again; Brain switchboard; Bump and recover. The temporal stop adapter is explicitly experimental and remains off in earlier presets.
+## Try a scene
 
-The [scene and feedback audit](docs/experiments/scene-audit/README.md) makes every scene open-ended. It adds visible movement-block reasons and controls for the brain/body connection. Props can follow motion paths or behave as physical bodies.
+Choose **Open studio** to browse the scene gallery, or **Try a connection** to start with a visual follower. The setup wizard lets you add ducks and arrange objects, then review their connections before starting.
 
-The [visual setup wizard](docs/implementation/scene-setup/README.md) lets users map brain signals to actions, add independent ducks, and arrange object physics before launching. The same settings remain editable on the stage.
+- **Build a visual follower:** connect walking-pathway activity to movement, or assign a different action.
+- **Look without chasing:** use circuit activity to track a beacon with the head.
+- **Reverse the steering:** give two ducks opposite mappings and compare their responses.
+- **Trigger a kick:** connect a signal to the robot’s trained kick controller.
 
-The [immersive workspace](docs/implementation/immersive-ui/README.md) adds Focus mode, collapsible controls, and a compact live brain monitor in both the web and Mac apps.
+The studio keeps the selected duck’s camera and fly circuit visible. Drag objects to change its view. Use **Brain → duck** to edit connections while the scene runs, or **Objects & physics** to configure movement paths and physical properties. **Why?** shows the recorded inputs behind an action, including the exact camera frame when available.
 
-The [brain and body experiments](experiments/embodied/RESULTS.md) add **See it, kick it** and **Help stand**. Recovery passed 15/16 simulated fall setups; the visual kick is gated by measured forward-neuron activity. The same study rejected unhelpful pursuit candidates and kept full Flyvis in its separate bench.
+Signals are labeled by source. Fly-circuit activity comes from simulated neurons; camera rules and body feedback are separate inputs. The robot’s trained controllers handle joint movement and balance. The full Flyvis model is available in a separate vision test bench and does not drive the live duck.
 
-An experiment workspace coupling a selected FlyWire neural circuit to a simulated Microduck robot. Camera pixels become sensory input; circuit activity selects movement intent; Microduck's pretrained walking policy controls the joints. MuJoCo and BAM calculate the physical response.
+## Run locally
+
+Requires Node.js 24 and npm. No API keys are needed to run the app.
+
+```sh
+git clone https://github.com/amazedsaint/duckfly.git
+cd duckfly
+npm ci --prefix web
+npm run dev --prefix web
+```
+
+Open the local URL printed by Vite, usually `http://127.0.0.1:5173`.
+
+```sh
+npm test --prefix web
+npm run build --prefix web
+npm run preview --prefix web
+```
+
+The build prepares the shared models and copies the required WebAssembly runtimes into `web/public/`. These generated copies and `web/dist/` are ignored by Git.
+
+## Build the Mac app
+
+On an Apple Silicon Mac with Xcode Command Line Tools installed:
+
+```sh
+npm ci --prefix web
+./mac/scripts/build.sh
+open mac/build/DuckFly.app
+```
+
+The package contains its own runtime assets and works without the deployed website or a separate Python installation. It is a local development build; see [Mac packaging](mac/README.md) for distribution details.
 
 ## Repository layout
 
 | Folder | Contents |
 | --- | --- |
-| `mac/` | Native AppKit/WebKit host, standalone app packaging and native acceptance checks; retained SwiftUI/RealityKit reference implementation |
-| `web/` | Shared experiment UI, camera encoder, neural/physics worker, scene editor and browser checks |
-| `shared/` | Robot assets and common visual models, retinal maps, WASM kernel and reference fixtures |
-| `research/fly-vision/` | Pinned Python oracle, verified checkpoint export and numerical parity tools |
-| `experiments/vision/` | Synthetic falsifiers and retained matched-trial reports |
-| `docs/` | Research, deployment records and experiment acceptance evidence |
+| `mac/` | Native host, app packaging and Mac acceptance checks |
+| `web/` | Studio UI, browser runtime and app tests |
+| `shared/` | Robot assets, common vision models and reference fixtures |
+| `experiments/` | Experiment runners and retained research results |
+| `research/` | Pinned reference implementations and numerical validation tools |
+| `docs/` | Design notes, research proposals and acceptance records |
 
-Both apps run the same experiment workspace. The Mac package includes all runtime assets; it does not require the deployed website or a separately installed Python runtime.
+The web and Mac apps use the same studio and simulation. Keep shared assets at the repository root when building either app.
 
-## Run
+## GitHub and Vercel
 
-```sh
-npm ci --prefix web
-npm run dev --prefix web
-```
+The public repository is `amazedsaint/duckfly`. The Vercel project is `contextmind/duckfly`, with `makeduckfly.com` as the public app domain.
 
-Open http://localhost:5173. To build and preview production output:
+Vercel builds from the repository root using [`vercel.json`](vercel.json):
 
-```sh
-npm run build --prefix web
-npm run preview --prefix web
-```
+| Setting | Value |
+| --- | --- |
+| Root directory | Repository root |
+| Install command | `npm ci --prefix web` |
+| Build command | `npm run build --prefix web` |
+| Output directory | `web/dist` |
+| Production branch | `main` |
 
-For the standalone Apple Silicon Mac app, with Xcode Command Line Tools installed:
+Pushes to `main` deploy to production. Other branches receive preview deployments through the Vercel GitHub integration. GitHub Actions runs the app tests and production build on pushes and pull requests.
 
-```sh
-./mac/scripts/build.sh
-open mac/build/DuckFly.app
-```
+Keep credentials in your local environment or Vercel settings. `.env*` files and `.vercel/` are excluded from Git. Neither the Mac app nor the browser needs a Vercel token to run.
 
-Node 22.12+ is required for development. The resulting Mac app can be copied to `~/Applications`. See [Mac packaging](mac/README.md) and [browser runtime](web/README.md).
+## Experiment notes
 
-## Conduct an experiment
+The repository retains failed trials alongside passing results. A working demonstration does not establish biological accuracy or performance on a physical robot.
 
-Choose **Open playground** on the welcome page, then select a scenario tile. Each tile opens a visual setup wizard. Choose the ducks, map brain signals to body actions, then arrange objects and their physics on a draggable top-down map. Review the complete scene before starting it. Cancelling leaves the previous experiment intact. **Follow the beacon** uses camera input to follow a magenta target; **Out of sight** lets you block that view with a wall. **Follow the flock** gives every duck its own circuit in the same physical world.
+- [Visual triggers and action mappings](docs/research/visual-behavior-proposal/selected-connections.md)
+- [Brain and body experiments](experiments/embodied/RESULTS.md)
+- [Vision and feedback experiments](docs/experiments/playground/README.md)
+- [Scene interaction audit](docs/experiments/scene-audit/README.md)
 
-Use **Edit setup** to revisit every wizard choice. **Brain → duck** opens live controls for the selected duck: forward neurons can request walking, a visual kick, or no forward action; turning can follow, reverse, or stay disconnected. Settings-only changes preserve the clock and physical state. The review explains when a change requires rebuilding the world. **Objects & physics** and **Experiment** open collapsible panels over the stage so the arena keeps its space.
+Webcam input is optional. Frames stay on the device unless included in an exported recording. Collaboration shares scene edits and decision signals; camera images remain with the host.
 
-The brain dock stays visible beside the scene, or below it in a compact window. Click a duck in the arena or its object chip to watch its eye view and neural activity. Selecting a prop keeps the same duck connected. **Cover eyes** is a one-click reversible intervention. The **Why?** button explains the latest visual input and resulting body command. Manual and reactive controllers are labeled as bypassing circuit control.
+## Sources and licenses
 
-The live monitor separates **Brain request** from **Body command** and shows measured speed. A firing circuit can request walking while the visual gate blocks it. A tiny beacon now reports its detected pixel count. Use **Bring beacon ahead** to recover a lost cue, or **Reveal beacon** to move an occluding wall. These are explicit scene edits, not target coordinates supplied to the controller.
+DuckFly builds on [DesktopFly](https://github.com/DenisSergeevitch/desktop-fly) and [Microduck RL](https://github.com/pollen-robotics/microduck_rl). Physics uses MuJoCo with BAM actuator models. The reference vision bench uses [Flyvis](https://github.com/TuragaLab/flyvis).
 
-Every scene has **Experiment controls**, including independent **Body commands** and **Feedback** switches for the watched duck. **Command strength** scales delivered forward and turn commands from 0% to 100%; it does not change the neural request. Feedback returns measured speed and gait phase to the fly circuit. The walking policy continues to control balance. **Step** advances 0.1 seconds and pauses. Pulses sent while paused remain queued until Run or Step. Every open scene runs without a time limit. Switching browser tabs no longer automatically pauses it. Timed windows remain inside explicit comparison tools; the browser may throttle background work.
-
-**Select a prop → Behavior & physics** offers a light or heavy pushable body, a slippery surface, and bounded motion paths. Back-and-forth and circular motion apply without restarting the duck; their dotted guide appears only in the main scene. Changing weight or switching between a fixed prop and a free physical body uses **Apply physics & restart**. The Add object menu also offers ready-made moving props. Reset preserves your added objects and physics; assigning custom behavior replaces the preset object script.
-
-Drag props to reposition them, or select one and use the directional buttons below the arena. A running experiment resumes when the drag ends. **Add object** offers ducks and common props; adding one restarts the scene. New ducks connect to the brain dock immediately. **Advanced** holds exact object settings and advanced experiment controls. Shape changes use **Apply and reset**; position edits use **Move in current run**.
-
-**Advanced → Recordings & replay** retains the bounded timeline. Rewind to replay recorded input or change a cue and branch. **More → Save scene** exports the scene and seed. **Export recording** also includes physical/neural state and low-resolution frames. **More → Open file** accepts scenes, recordings and adapter reports. Returning to **Scenarios** pauses the local world; **Continue your scene** returns without restarting it.
-
-Under **Advanced → Experiment tools**, compare controllers on matched target trials or search sensory-adapter weights. Learning uses held-out placements and retains the original weights if the promotion gate fails. These bounded experiments do not establish biological validity or general superiority.
-
-**Use my camera** requests access and connects the camera to the watched duck immediately. Frames stay on the device unless you export a recording. **Stop webcam** releases the camera and returns connected ducks to their own eye cameras.
-
-**More → Collaborate** pairs a host with one guest through manually exchanged invitation/reply codes. The host owns the physics clock; both can edit the scene. Restricted networks may require a TURN relay configured in the connection settings. No shared room directory or hosted relay is included. See the retained [acceptance ledger](docs/implementation/experiment-workspace.md) for measured coverage and remaining checks.
-
-## Deploy and verify
-
-```sh
-npm test --prefix web
-mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test
-mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-setup
-mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-playground
-mac/build/DuckFly.app/Contents/MacOS/DuckFly --self-test-scenarios
-npx vercel deploy --prod --scope contextmind
-```
-
-Deploy from the repository root. `vercel.json` installs `web/` dependencies and publishes `web/dist`; it does not build the native executable. Runtime simulation needs no API key or backend. The website continues running after its assets have loaded, but has no service worker for offline reloads.
-
-## Vision laboratory
-
-Open **Advanced → Experiment tools → Retinal stimulus bench** to compare the compact motion
-baseline with the full Flyvis reference. The viewer shows a calibrated image and
-its 721 retinal samples; Flyvis runs all 45,669 modeled cells locally and displays
-T4/T5 activity. The full reference has not been promoted to body control.
-
-The established marker controller remains the default after the new pathway failed
-its physical promotion gate. Choose **Retinal motion lab** to try the candidate.
-The compact experimental pathway detects ON/OFF expansion and injects modeled
-LPLC2 current without also driving LC4. It has an explicit GF gain control and
-upstream interventions. Its neural-to-body calibration remains sensitive to gain.
-The original marker model is available for comparison and old recordings.
-
-The **Retinal motion lab** preset uses separate left/right views with explicit geometry. This
-is a bounded retinal window, not a complete anatomical reconstruction of fly eyes.
-Optional head yaw stabilization is a separate engineered controller. Decoded webcam
-frames carry their capture clock; duplicated/frozen frames cannot renew freshness.
-Pause/resume requires a new camera observation and discards flow across the gap.
-Webcam angular calibration is explicitly unknown until measured.
-
-See [validation and limitations](docs/implementation/vision-v2/implementation.md)
-and the [reference reproduction instructions](research/fly-vision/README.md).
-
-The [temporal vision study](experiments/temporal/README.md) trains a small decoder on
-recorded walking-camera sequences and tests a GF-triggered stop/resume loop against
-matched controls. It includes an interactive retinal replay and retained experimental
-evidence. Research candidates are separate from the app's default controllers.
-
-## Sources and scope
-
-Based on [DesktopFly](https://github.com/DenisSergeevitch/desktop-fly) and [Microduck RL](https://github.com/pollen-robotics/microduck_rl). Original DuckFly code is Apache-2.0. DesktopFly code is MIT. Included FlyWire-derived data is **CC BY-NC 4.0**, requiring attribution and noncommercial use. See [third-party notices](THIRD_PARTY_NOTICES.md).
-
-This uses a selected 668-neuron circuit. Sensory tuning, social drives and the fly-to-duck adapter are modeling assumptions. The walking policy was trained separately; the connectome has not learned biped balance. Simulator results do not establish performance on a physical robot.
+Code and bundled assets retain their respective licenses. The root [Apache-2.0 license](LICENSE) does not replace third-party terms. In particular, the included FlyWire circuit data is **CC BY-NC 4.0**. See [third-party notices](THIRD_PARTY_NOTICES.md) for source revisions, attribution and model provenance.

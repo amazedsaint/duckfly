@@ -1,0 +1,64 @@
+{
+  "format": "duckfly-spatial-bench-browser",
+  "passed": true,
+  "receipts": [
+    {
+      "check": "real packaged Flyvis spatial response and body isolation",
+      "format": "duckfly-flyvis-response",
+      "version": 2,
+      "frames": 31,
+      "types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "negatives": 83001,
+      "positives": 95807,
+      "maximumError": 0,
+      "timing": {
+        "median": 31.299999952316284,
+        "p95": 31.899999856948853,
+        "scope": "Neural integration only; excludes capture, readout serialization and rendering"
+      },
+      "bridge": false,
+      "simulatedGF": false,
+      "baselineSeconds": 1
+    },
+    {
+      "check": "recorded frame and cell inspection",
+      "text": "T5b location 210 \u00b7 axial (-5, -5) \u00b7 -17.3\u00b0 azimuth, -10.0\u00b0 elevation. Raw -0.0206 \u00b7 baseline -0.0344 \u00b7 change 0.0138.",
+      "expected": "0.0138",
+      "follow": false,
+      "time": "0.32 s input \u00b7 frame 9/31"
+    },
+    {
+      "check": "mobile spatial maps fit viewport",
+      "width": 364,
+      "overflow": 0
+    },
+    {
+      "check": "cancellation and compact GF comparison",
+      "spatialHidden": true,
+      "stopped": true
+    },
+    {
+      "check": "corrupt reference rejected with no successful trace"
+    }
+  ],
+  "errors": [],
+  "sources": {
+    "web/src/lab/vision-bench.js": "2a92118f8f88416a2c5225e41bb4d13da276b9358e777abac6285cd7bb51c309",
+    "web/src/lab/flyvis.worker.js": "3363b23100fa91123910819797511b2f3308d8d5f5dccbfd246d2b081c866258",
+    "web/src/lab/flyvis-runtime.js": "3a1b1ffc260de4ba72b7471dadc1535785e600b7096092f7e6db4c80291e0672",
+    "web/src/lab/spatial-response-view.js": "ccbca742a843acb1deaf2917e171e549f5dd3bf8aafe134ca3d69cd6981b239f",
+    "web/src/lab/spatial-response.css": "3e277300ed1dadadf2c34ac162ffb070434519aed5e9f3565da545532978d8f0",
+    "shared/vision/readouts/spatial.js": "568714f756f812c4e9505641ece06af25a29f743600f8006ef179bfd4d0962cf",
+    "experiments/visual-behavior/bench-browser.js": "aa0eea9fa2c4be0fe679e702e7292163f26c0422cebac12ba9e34777e1e37eb7"
+  },
+  "evidence": "bench-browser.log; screenshots in output/playwright/spatial-bench-{desktop,mobile}.png"
+}

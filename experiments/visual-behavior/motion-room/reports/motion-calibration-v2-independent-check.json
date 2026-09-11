@@ -1,0 +1,16 @@
+{
+  "floorExact": true,
+  "trainingRows": 385,
+  "heldoutRows": 650,
+  "trainingMovies": 9,
+  "heldoutMovies": 13,
+  "flyvis": {
+    "trainingOnlyCoefficientsExact": true,
+    "heldoutScoresExact": true
+  },
+  "conventional": {
+    "trainingOnlyCoefficientsExact": true,
+    "heldoutScoresExact": true
+  },
+  "sourceSha256": "64e6e100760e17e8bb3d4cae38212c2a00c4c574dfde16816bc17a6982679ff8"
+}

@@ -33,6 +33,7 @@ export class Brain {
     const s=this.sim;
     if(kind==='walk') { s.stimulate(s.fwd,.12,3000); this.event='DNp09 · walk stimulus'; }
     if(kind==='left'||kind==='right') { s.stimulate(kind==='left'?s.dnaL:s.dnaR,.12,1500); this.event=`DNa ${kind} · turn stimulus`; }
+    if(kind==='backward') { s.stimulate(s.mdn,.12,1500); this.event='MDN · retreat stimulus'; }
     if(kind==='loom') { this.loomUntil=s.simMs+400; this.event='Loom · visual stimulus'; }
     this.eventUntil=s.simMs+3200;
   }
@@ -61,7 +62,7 @@ export class Brain {
     const vx=this.walking&&!stopped?.3:0;
     const yaw=stopped?0:clamp((difference-this.baseline)*.04,-.65,.65);
     if(s.simMs>this.eventUntil) this.event=this.silenced?'Output silenced':this.walking?'Neural walking drive':'Circuit at rest';
-    return {neuralTime:s.simMs/1000,forward:s.rateFwd,left:s.rateDNaL,right:s.rateDNaR,loom:s.rateLoom,population:s.ratePop,
+    return {neuralTime:s.simMs/1000,forward:s.rateFwd,left:s.rateDNaL,right:s.rateDNaR,loom:s.rateLoom,backward:s.rateMDN,population:s.ratePop,
       spikeCount:s.totalSpikes,fired:this.bus.popAll().map(e=>e.neuron),vx,yaw,event:this.event,
       gfHeld:s.simMs<this.escapeUntil,feedback:{enabled:this.feedback,drive:s.gaitDrive,phase:s.gaitPhase}};
   }

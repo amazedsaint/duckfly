@@ -6,6 +6,7 @@ import loadMujoco from '@mujoco/mujoco';
 import * as ort from 'onnxruntime-web/wasm';
 import {defaultScene,validateScene,encodeScene,decodeScene} from '../src/lab/scene.js';
 import {normalizeBrainMapping,patchBrainMapping,brainMappingEnabled,brainMappingSummary,mapBrainCommand,automaticKickEnabled} from '../src/lab/brain-mapping.js';
+import {newConnection} from '../src/lab/trigger-actions.js';
 import {Experiment} from '../src/lab/experiment.js';
 import {mountTemplate} from '../src/lab/lab-world.js';
 import {TemporalDecoder} from '../../shared/vision/temporal/decoder.js';
@@ -65,6 +66,41 @@ test('actual brain, policy and physics respect per-duck wiring and safety, inclu
   const blank=new Uint8Array(96*64*4).fill(100),pink=blank.slice();
   for(let y=20;y<38;y++)for(let x=30;x<48;x++)pink.set([240,40,130,255],(y*96+x)*4);
   try{
+    await t.test('a neuron can request a different action, with physical movement, per-duck isolation and exact replay',async()=>{
+      const scene=defaultScene('empty');
+      scene.ducks[0].connections={enabled:true,rules:[newConnection('forward','left')]};
+      scene.ducks.push({...scene.ducks[0],id:'duck-2',name:'Walker',spawn:[0,1,0],connections:{enabled:true,rules:[newConnection('forward','walk')]}});
+      const e=new Experiment(runtime,scene),frames={'duck-1':blank,'duck-2':blank};
+      try{
+        e.stimulus('duck-1','walk');e.stimulus('duck-2','walk');let triggered=0;
+        for(let i=0;i<150;i++){
+          const state=await e.step(frames);
+          if(state.agents['duck-1'].neural.forward>=6){
+            triggered++;assert.equal(state.body.ducks[0].command[0],.3);assert.equal(state.body.ducks[0].command[1],.65);
+            assert.equal(state.body.ducks[1].command[0],.3);
+            assert.equal(state.event.causes[0].connections.signals[0].source,'Fly circuit');
+          }
+        }
+        assert.ok(triggered>30);assert.ok(Math.abs(e.state().body.ducks[0].heading)>.15,JSON.stringify(e.state().body.ducks.map(d=>({heading:d.heading,distance:d.distance,fallen:d.fallen}))));
+        assert.ok(e.state().body.ducks[1].distance>.1);
+        const recording=JSON.parse(JSON.stringify(e.export()));for(let i=0;i<8;i++)await e.step(frames);const expected=e.checkpoint();
+        e.import(recording);for(let i=0;i<8;i++)await e.step(frames);assert.deepEqual(e.checkpoint(),expected);
+        e.updateDuck('duck-1',{silence:'forward'});for(let i=0;i<100;i++)await e.step(frames);
+        assert.equal(e.state().body.ducks[0].command[1],0,'Silencing the actual source must remove its mapped action');
+        e.updateDuck('duck-2',{motorEnabled:false});assert.deepEqual((await e.step(frames)).body.ducks[1].command,[0,0]);
+      }finally{e.dispose();}
+    });
+    await t.test('a custom neural skill connection executes the actual kick policy once per activation',async()=>{
+      const e=new Experiment(runtime,defaultScene('trigger-kick')),frames={'duck-1':pink};let kicks=0;
+      try{
+        for(let i=0;i<160;i++){
+          const state=await e.step(frames);
+          if(state.event.causes[0].command.policy==='kick'){kicks++;assert.equal(e.world.robots[0].session,kickSession);}
+        }
+        assert.equal(kicks,25);assert.equal(e.state().body.ducks[0].fallen,false);
+        assert.equal(e.agents.get('duck-1').skills.source,'connection');
+      }finally{e.dispose();}
+    });
     await t.test('one duck can turn in reverse while another walks; mapped recordings replay exactly',async()=>{
       const scene=defaultScene('empty');
       scene.ducks[0].mapping={forward:'off',turn:'reverse'};

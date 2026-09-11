@@ -1,0 +1,44 @@
+{
+  "format": "duckfly-action-inspector-acceptance",
+  "receipts": [
+    {
+      "check": "recorded action inspection and stereo preserve paused body state",
+      "latest": {
+        "tick": 102,
+        "text": "2.04 s after step · tick 102 · branch 0",
+        "status": "eyes:duck-1 · frame 100 · 2.000 s (simulation) · age at decision 0.000 s"
+      },
+      "earliest": "0.02 s after step · tick 1 · branch 0"
+    },
+    {
+      "check": "mobile recorded inspector",
+      "width": 364,
+      "overflow": 0
+    },
+    {
+      "check": "exact exported frame comparison",
+      "equal": true,
+      "comparedValues": 24576,
+      "frameId": 100
+    },
+    {
+      "check": "running world continues while recorded action remains selected",
+      "paused": false,
+      "time": 2.359999999999972,
+      "selection": "102"
+    }
+  ],
+  "pageErrors": [],
+  "recordedAt": "2026-09-11T02:58:12.040Z",
+  "rawLogSha256": "42c96be532305d0f3f2239c3e3c5c54e1735511726652d08e0f49bcd9b86079d",
+  "sourceSha256": {
+    "experiments/visual-behavior/action-browser.js": "958a9b91e5f7e93fa6abf8a2b4c9c122e42bd54b264ebd11983dda5050c1ba9a",
+    "web/src/main.js": "90d1774229aa3b090a40858fd4ce371f1715048314aca88d4d9ffefe89786d41",
+    "web/src/lab/lab.worker.js": "95002e4450160b7f25de0103d7932eaa90fd7c653e1ad9ba9f2f7dc53fb4f4e2",
+    "web/src/lab/experiment.js": "8724b611cf03d448ae379ac5616ad4d4c220ba13af53402c61332051eefa5721",
+    "web/src/lab/action-inspector.js": "aa777f67978e7d60e6da04daed2d620a270e137b79cc106dcb17f36b83dbef2e",
+    "web/src/lab/action-inspector.css": "da6f0f341f25b48bd58e1bdfac9dd2afc93561642681ae2c025f5702f96a80e0",
+    "web/src/lab/action-evidence.js": "cd32823d38f81e083e260fa4f2956d65bc4fe3a052fc95e343caa1b44eb0de34",
+    "web/src/lab/recorded-events.js": "59512f15aab710682bd8d7932260f14283ca2ecb847049748dfde732b2c52d78"
+  }
+}

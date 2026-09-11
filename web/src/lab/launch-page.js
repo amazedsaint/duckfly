@@ -1,3 +1,5 @@
+import { TRIGGERS, ACTIONS } from './trigger-actions.js';
+
 const arrow = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const spark = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m14 2-9 12h6l-1 8 9-12h-6l1-8Z" fill="currentColor" stroke="currentColor" stroke-linejoin="round"/></svg>';
 const pause = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 4v12M14 4v12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>';
@@ -6,15 +8,16 @@ const play = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="m6 3 11 7-11 
 /** The launch artwork is deliberately separate from the running simulation. */
 export function launchPageMarkup() {
   return `<section id="launch-page" class="launch-page launch-is-still" data-motion="paused" aria-labelledby="launch-title" tabindex="-1" hidden>
-    <div class="launch-topline"><span class="launch-edition"><span aria-hidden="true">✳</span> A playground for curious minds</span><button id="launch-motion" type="button">${pause}<span>Pause motion</span></button></div>
+    <div class="launch-topline"><span class="launch-edition"><span aria-hidden="true">✳</span> A studio for robot behavior</span><button id="launch-motion" type="button">${pause}<span>Pause animation</span></button></div>
     <div class="launch-hero">
       <div class="launch-copy">
-        <p class="launch-kicker"><span class="launch-live-dot" aria-hidden="true"></span> SMALL ROBOT. BIG WHAT IF.</p>
+        <p class="launch-kicker"><span class="launch-live-dot" aria-hidden="true"></span> CONNECT A FLY CIRCUIT TO A ROBOT</p>
         <h1 id="launch-title" class="launch-title" aria-label="DuckFly"><span>DUCK</span><span>FLY<span class="launch-title-star" aria-hidden="true">✳</span></span></h1>
-        <h2>Tiny brain.<br>Wild ideas.</h2>
-        <p class="launch-description">Give a robot duck a fly’s neural circuit. Change what it sees and watch what happens next.</p>
-        <div class="launch-actions"><button id="launch-enter" type="button">Open playground ${arrow}</button><button id="launch-beacon" type="button" disabled>Try the beacon <span aria-hidden="true">↗</span></button></div>
-        <p id="launch-status" class="launch-status" role="status">Preparing your experiments…</p>
+        <h2>Fly signals.<br>Robot actions.</h2>
+        <p class="launch-description">Map <strong>${TRIGGERS.length} available signals</strong> to <strong>${ACTIONS.length} robot actions</strong> and see how your duck responds.</p>
+        <p class="launch-mapping-note">Build connections in the setup wizard or the <strong>Brain → duck</strong> editor, with live activity and explanations.</p>
+        <div class="launch-actions"><button id="launch-enter" type="button">Open studio ${arrow}</button><button id="launch-beacon" type="button" disabled>Try a connection <span aria-hidden="true">↗</span></button></div>
+        <p id="launch-status" class="launch-status" role="status">Loading the simulator…</p>
       </div>
       <figure class="launch-art" aria-label="Animated robot duck and fly illustration">
         <div class="launch-art-disc" aria-hidden="true"></div>
@@ -28,12 +31,12 @@ export function launchPageMarkup() {
         <span class="launch-art-label launch-duck-label">a duck’s world <span aria-hidden="true">↗</span></span>
         <span class="launch-art-star launch-art-star-one" aria-hidden="true">✳</span><span class="launch-art-star launch-art-star-two" aria-hidden="true">✦</span>
         <div class="launch-spark-control"><button id="launch-spark" type="button">${spark} Send a spark</button><span id="launch-spark-status" role="status">Make the illustration react</span></div>
-        <figcaption>Illustration here. Live vision &amp; physics in the playground.</figcaption>
+        <figcaption>Animated illustration · Open the studio to run the simulation.</figcaption>
       </figure>
     </div>
-    <div class="launch-tape" aria-hidden="true"><span>FOLLOW YOUR CURIOSITY</span><span>✳</span><span>MAKE A LITTLE TROUBLE</span><span>✳</span><span>FOLLOW YOUR CURIOSITY</span><span>✳</span></div>
+    <div class="launch-tape" aria-hidden="true"><span>${TRIGGERS.length} SIGNALS → ${ACTIONS.length} ACTIONS</span><span>✳</span><span>YOUR CONNECTIONS. LIVE FEEDBACK.</span><span>✳</span><span>${TRIGGERS.length} SIGNALS → ${ACTIONS.length} ACTIONS</span><span>✳</span></div>
     <section class="launch-connection" aria-labelledby="launch-connection-title">
-      <div class="launch-connection-copy"><p class="launch-kicker">MEET THE CONNECTION</p><h2 id="launch-connection-title">A small signal.<br>A real reaction.</h2><p>Inside each experiment, the duck’s camera feeds a modeled vision adapter. A 668-neuron fly circuit sends commands to the duck’s movement policy.</p></div>
+      <div class="launch-connection-copy"><p class="launch-kicker">SEE WHAT DRIVES EACH ACTION</p><h2 id="launch-connection-title">Change a connection.<br>Watch the response.</h2><p>Connect walking activity to a head turn, or use a visible beacon to trigger a kick. The editor shows each signal’s value and whether its action is active or blocked.</p><p class="launch-source-note">Signals come from a simulated 668-neuron fly circuit or from vision and body feedback. Each source is labeled in the editor.</p></div>
       <div class="launch-connection-demo" aria-label="Duck camera to modeled vision to fly circuit to duck movement">
         <div class="launch-camera-node"><svg viewBox="0 0 80 64" fill="none" aria-hidden="true"><path d="M6 32s12-23 34-23 34 23 34 23-12 23-34 23S6 32 6 32Z" stroke="currentColor" stroke-width="4"/><circle cx="40" cy="32" r="12" fill="currentColor"/><circle cx="44" cy="28" r="4" fill="#fff7df"/></svg><strong>See</strong><span>Duck camera</span></div>
         <span class="launch-node-arrow" aria-hidden="true">→</span>
@@ -43,7 +46,7 @@ export function launchPageMarkup() {
         <span class="launch-feedback-label">Movement changes the next view <span aria-hidden="true">↶</span></span>
       </div>
     </section>
-    <footer class="launch-footer"><span>Built for experiments, big and small.</span><span>Runs on your device · No account needed</span></footer>
+    <footer class="launch-footer"><span>Open scenes. No time limits.</span><span>Runs on your device · No account needed</span></footer>
   </section>`;
 }
 
@@ -66,13 +69,13 @@ export function mountLaunchPage({ enterPlayground, startScenario }) {
     const stopped = paused || !visible || document.hidden;
     root.classList.toggle("launch-is-still", stopped);
     root.dataset.motion = stopped ? "paused" : "playing";
-    motionButton.innerHTML = `${paused ? play : pause}<span>${paused ? "Play motion" : "Pause motion"}</span>`;
+    motionButton.innerHTML = `${paused ? play : pause}<span>${paused ? "Play animation" : "Pause animation"}</span>`;
     motionButton.setAttribute("aria-label", paused ? "Play illustration motion" : "Pause illustration motion");
     motionButton.setAttribute("aria-pressed", String(paused));
   }
 
   root.querySelector("#launch-enter").addEventListener("click", () => enterPlayground());
-  beaconButton.addEventListener("click", () => { if (ready) startScenario("target"); });
+  beaconButton.addEventListener("click", () => { if (ready) startScenario("cue-workshop"); });
   motionButton.addEventListener("click", () => {
     paused = !paused;
     storedMotion = paused ? "paused" : "playing";
@@ -85,7 +88,7 @@ export function mountLaunchPage({ enterPlayground, startScenario }) {
     // Restart only this short, decorative response. It never stimulates a real circuit.
     void root.offsetWidth;
     root.classList.add("launch-sparking");
-    sparkStatus.textContent = "Spark sent. Your duck has an idea!";
+    sparkStatus.textContent = "Spark sent · illustration only";
     sparkTimer = setTimeout(() => {
       root.classList.remove("launch-sparking");
       sparkStatus.textContent = "Make the illustration react";
@@ -113,13 +116,13 @@ export function mountLaunchPage({ enterPlayground, startScenario }) {
       ready = Boolean(value);
       beaconButton.disabled = !ready;
       root.querySelector("#launch-status").textContent = ready
-        ? "Your playground is ready. No account needed."
-        : "Preparing your experiments…";
+        ? "Ready to start · No account needed"
+        : "Loading the simulator…";
     },
     setError(message) {
       ready = false;
       beaconButton.disabled = true;
-      root.querySelector('#launch-status').textContent = `Experiments could not load. ${message} Reload to try again.`;
+      root.querySelector('#launch-status').textContent = `The simulator could not load. ${message} Reload to try again.`;
     },
   };
 }

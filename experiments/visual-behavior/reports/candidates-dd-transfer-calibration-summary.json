@@ -1,0 +1,224 @@
+{
+  "split": "calibration",
+  "sources": {
+    "ddmodel-transfer.py": "ff33904f445a2b1b7470dfc76191f33a6dbfcd7b5c910161d83d536279e4783d",
+    "ddmodel-equations.py": "b186ae62e58879eeb762152e6ee92101c7888a7edd0a1aa05ad2a9b591e3d41b"
+  },
+  "threshold": 0.0007153802979611501,
+  "groups": {
+    "small-pass/original": {
+      "movies": 8,
+      "responses": 8,
+      "scores": [
+        0.0029590090157809,
+        0.0030814912010271337,
+        0.0018752780489859377,
+        0.0023150979376917254,
+        0.0018513768293630952,
+        0.0012939569928998162,
+        0.003088002934188102,
+        0.0024806899145630758
+      ]
+    },
+    "small-pass/frozen": {
+      "movies": 8,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        3.6230749110730983e-07,
+        0.0,
+        0.0
+      ]
+    },
+    "small-step/original": {
+      "movies": 8,
+      "responses": 8,
+      "scores": [
+        0.0015750248434276786,
+        0.0029409610379881957,
+        0.002162999631201419,
+        0.0017971532397569358,
+        0.001683389175378554,
+        0.0007490598704435415,
+        0.0011462463565311378,
+        0.002469214968553959
+      ]
+    },
+    "small-step/frozen": {
+      "movies": 8,
+      "responses": 0,
+      "scores": [
+        3.410747439999077e-06,
+        0.0,
+        0.0,
+        2.8446806437223754e-06,
+        0.0,
+        0.0,
+        6.4227978355534425e-06,
+        0.0
+      ]
+    },
+    "large-bar/original": {
+      "movies": 8,
+      "responses": 0,
+      "scores": [
+        0.0,
+        1.2779173433006743e-05,
+        5.518851596516305e-06,
+        5.0306902558844146e-05,
+        1.119194344537546e-06,
+        3.0095690745689936e-08,
+        0.0,
+        6.0466621220788115e-05
+      ]
+    },
+    "large-bar/frozen": {
+      "movies": 8,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "stationary-flicker/original": {
+      "movies": 8,
+      "responses": 1,
+      "scores": [
+        0.00018948060779421416,
+        0.0006012560905671038,
+        0.0004892673661919789,
+        0.0004911021800414724,
+        0.00039218904807278526,
+        0.00071538029796115,
+        0.0004351513019413272,
+        0.0007585240888636768
+      ]
+    },
+    "stationary-flicker/frozen": {
+      "movies": 8,
+      "responses": 0,
+      "scores": [
+        6.432776646958857e-06,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "global-flash/original": {
+      "movies": 8,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "global-flash/frozen": {
+      "movies": 8,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "background-rotation/original": {
+      "movies": 8,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "background-rotation/frozen": {
+      "movies": 8,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "textured-small-pass/original": {
+      "movies": 8,
+      "responses": 8,
+      "scores": [
+        0.0025445006436903253,
+        0.0023805768911213596,
+        0.0011619463286307392,
+        0.002503002640424532,
+        0.0022159465464120513,
+        0.0029783738348354914,
+        0.002699081405430968,
+        0.0025439432305036547
+      ]
+    },
+    "textured-small-pass/frozen": {
+      "movies": 8,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "calibrationPass": true,
+  "sampling": "14x14 at5deg centers[-32.5,32.5], actual75deg pinhole, causal25Hz or native capture hold to180Hz",
+  "conditioningSeconds": 4,
+  "baselineWindow": [
+    3.2,
+    4.24
+  ],
+  "observedWindow": [
+    4.24,
+    5.8
+  ],
+  "originalCodeParityReport": "85d4e966f7ff5eb339067967ae0d7890e6352df7eb1ab1d27fcf9337704fc946",
+  "elapsedSeconds": 7.675502582918853,
+  "productionPromotion": false,
+  "biologicalLC11": false,
+  "flyvisInputs": false,
+  "physicalUsefulness": false,
+  "tracesSha256": "ae031700bdaf0afca8120d492a23d9bbbf233c113f9e6cf2389139e9db6db094"
+}

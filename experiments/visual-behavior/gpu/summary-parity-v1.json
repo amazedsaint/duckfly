@@ -1,0 +1,518 @@
+{
+  "experiment": "full-flyvis-webgpu-v1",
+  "stage": "parity",
+  "createdAt": "2026-09-11T02:58:23.647Z",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+  "secureContext": true,
+  "absoluteTolerance": 0.00002,
+  "relativeTolerance": 0.00002,
+  "comparisons": [
+    {
+      "label": "neutral/step-1",
+      "elements": 45669,
+      "maxAbsolute": 2.384185791015625e-7,
+      "maxScaledError": 0.0038823939027159047,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 9538,
+      "pass": true
+    },
+    {
+      "label": "neutral/step-20",
+      "elements": 45669,
+      "maxAbsolute": 7.152557373046875e-7,
+      "maxScaledError": 0.016918620562641585,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 29743,
+      "pass": true
+    },
+    {
+      "label": "neutral/step-100",
+      "elements": 45669,
+      "maxAbsolute": 0.0000011920928955078125,
+      "maxScaledError": 0.016038157547031598,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 33441,
+      "pass": true
+    },
+    {
+      "label": "neutral/step-300",
+      "elements": 45669,
+      "maxAbsolute": 0.0000011920928955078125,
+      "maxScaledError": 0.01874899175680535,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 34227,
+      "pass": true
+    },
+    {
+      "label": "black/step-1",
+      "elements": 45669,
+      "maxAbsolute": 2.384185791015625e-7,
+      "maxScaledError": 0.0038823939027159047,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 7971,
+      "pass": true
+    },
+    {
+      "label": "black/step-20",
+      "elements": 45669,
+      "maxAbsolute": 4.76837158203125e-7,
+      "maxScaledError": 0.006863251229173978,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 21150,
+      "pass": true
+    },
+    {
+      "label": "black/step-100",
+      "elements": 45669,
+      "maxAbsolute": 3.5762786865234375e-7,
+      "maxScaledError": 0.01221132131136891,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 23141,
+      "pass": true
+    },
+    {
+      "label": "black/step-300",
+      "elements": 45669,
+      "maxAbsolute": 3.5762786865234375e-7,
+      "maxScaledError": 0.011509603568457951,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 24304,
+      "pass": true
+    },
+    {
+      "label": "white/step-1",
+      "elements": 45669,
+      "maxAbsolute": 2.384185791015625e-7,
+      "maxScaledError": 0.0038823939027159047,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 7943,
+      "pass": true
+    },
+    {
+      "label": "white/step-20",
+      "elements": 45669,
+      "maxAbsolute": 9.5367431640625e-7,
+      "maxScaledError": 0.010379283227458878,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 25576,
+      "pass": true
+    },
+    {
+      "label": "white/step-100",
+      "elements": 45669,
+      "maxAbsolute": 9.5367431640625e-7,
+      "maxScaledError": 0.016663853039172744,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 26304,
+      "pass": true
+    },
+    {
+      "label": "white/step-300",
+      "elements": 45669,
+      "maxAbsolute": 9.5367431640625e-7,
+      "maxScaledError": 0.015427744023218521,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 25231,
+      "pass": true
+    },
+    {
+      "label": "on-bar/step-1",
+      "elements": 45669,
+      "maxAbsolute": 2.384185791015625e-7,
+      "maxScaledError": 0.0038823939027159047,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 9538,
+      "pass": true
+    },
+    {
+      "label": "on-bar/step-20",
+      "elements": 45669,
+      "maxAbsolute": 7.152557373046875e-7,
+      "maxScaledError": 0.016918620562641585,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 29743,
+      "pass": true
+    },
+    {
+      "label": "on-bar/step-100",
+      "elements": 45669,
+      "maxAbsolute": 0.0000011920928955078125,
+      "maxScaledError": 0.01610744814619557,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 32438,
+      "pass": true
+    },
+    {
+      "label": "on-bar/step-300",
+      "elements": 45669,
+      "maxAbsolute": 0.0000011920928955078125,
+      "maxScaledError": 0.013480848660487916,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 30960,
+      "pass": true
+    },
+    {
+      "label": "off-bar/step-1",
+      "elements": 45669,
+      "maxAbsolute": 2.384185791015625e-7,
+      "maxScaledError": 0.0038823939027159047,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 9538,
+      "pass": true
+    },
+    {
+      "label": "off-bar/step-20",
+      "elements": 45669,
+      "maxAbsolute": 7.152557373046875e-7,
+      "maxScaledError": 0.016918620562641585,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 29743,
+      "pass": true
+    },
+    {
+      "label": "off-bar/step-100",
+      "elements": 45669,
+      "maxAbsolute": 0.0000011920928955078125,
+      "maxScaledError": 0.015498577137627301,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 32448,
+      "pass": true
+    },
+    {
+      "label": "off-bar/step-300",
+      "elements": 45669,
+      "maxAbsolute": 9.5367431640625e-7,
+      "maxScaledError": 0.015982908699415006,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 31494,
+      "pass": true
+    },
+    {
+      "label": "flicker/step-1",
+      "elements": 45669,
+      "maxAbsolute": 2.384185791015625e-7,
+      "maxScaledError": 0.0038823939027159047,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 9538,
+      "pass": true
+    },
+    {
+      "label": "flicker/step-20",
+      "elements": 45669,
+      "maxAbsolute": 7.152557373046875e-7,
+      "maxScaledError": 0.016918620562641585,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 29743,
+      "pass": true
+    },
+    {
+      "label": "flicker/step-100",
+      "elements": 45669,
+      "maxAbsolute": 0.0000011920928955078125,
+      "maxScaledError": 0.01672081490777561,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 30387,
+      "pass": true
+    },
+    {
+      "label": "flicker/step-300",
+      "elements": 45669,
+      "maxAbsolute": 5.960464477539062e-7,
+      "maxScaledError": 0.012754743185226307,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 29578,
+      "pass": true
+    },
+    {
+      "label": "checker/step-1",
+      "elements": 45669,
+      "maxAbsolute": 2.384185791015625e-7,
+      "maxScaledError": 0.0038823939027159047,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 8073,
+      "pass": true
+    },
+    {
+      "label": "checker/step-20",
+      "elements": 45669,
+      "maxAbsolute": 7.152557373046875e-7,
+      "maxScaledError": 0.010778250473520877,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 24040,
+      "pass": true
+    },
+    {
+      "label": "checker/step-100",
+      "elements": 45669,
+      "maxAbsolute": 9.5367431640625e-7,
+      "maxScaledError": 0.011912492485411647,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 23858,
+      "pass": true
+    },
+    {
+      "label": "checker/step-300",
+      "elements": 45669,
+      "maxAbsolute": 9.5367431640625e-7,
+      "maxScaledError": 0.01718664490122997,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 24378,
+      "pass": true
+    },
+    {
+      "label": "noise/step-1",
+      "elements": 45669,
+      "maxAbsolute": 2.384185791015625e-7,
+      "maxScaledError": 0.0038823939027159047,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 8093,
+      "pass": true
+    },
+    {
+      "label": "noise/step-20",
+      "elements": 45669,
+      "maxAbsolute": 4.76837158203125e-7,
+      "maxScaledError": 0.010095133404229018,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 22069,
+      "pass": true
+    },
+    {
+      "label": "noise/step-100",
+      "elements": 45669,
+      "maxAbsolute": 0.000001430511474609375,
+      "maxScaledError": 0.012793568690077589,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 24771,
+      "pass": true
+    },
+    {
+      "label": "noise/step-300",
+      "elements": 45669,
+      "maxAbsolute": 7.152557373046875e-7,
+      "maxScaledError": 0.018629577016944197,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 26678,
+      "pass": true
+    },
+    {
+      "label": "arena-dd-v1-target-pass-3/step-1",
+      "elements": 45669,
+      "maxAbsolute": 2.384185791015625e-7,
+      "maxScaledError": 0.0038823939027159047,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 8117,
+      "pass": true
+    },
+    {
+      "label": "arena-dd-v1-target-pass-3/step-20",
+      "elements": 45669,
+      "maxAbsolute": 7.152557373046875e-7,
+      "maxScaledError": 0.01096772444373237,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 21623,
+      "pass": true
+    },
+    {
+      "label": "arena-dd-v1-target-pass-3/step-100",
+      "elements": 45669,
+      "maxAbsolute": 9.5367431640625e-7,
+      "maxScaledError": 0.017390256379936814,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 25838,
+      "pass": true
+    },
+    {
+      "label": "arena-dd-v1-target-pass-3/step-300",
+      "elements": 45669,
+      "maxAbsolute": 0.000001430511474609375,
+      "maxScaledError": 0.0199898155336376,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 30153,
+      "pass": true
+    },
+    {
+      "label": "arena-dd-v1-stationary-flicker-3/step-1",
+      "elements": 45669,
+      "maxAbsolute": 2.384185791015625e-7,
+      "maxScaledError": 0.0038823939027159047,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 8117,
+      "pass": true
+    },
+    {
+      "label": "arena-dd-v1-stationary-flicker-3/step-20",
+      "elements": 45669,
+      "maxAbsolute": 7.152557373046875e-7,
+      "maxScaledError": 0.01096772444373237,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 21623,
+      "pass": true
+    },
+    {
+      "label": "arena-dd-v1-stationary-flicker-3/step-100",
+      "elements": 45669,
+      "maxAbsolute": 9.5367431640625e-7,
+      "maxScaledError": 0.017390256379936814,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 25838,
+      "pass": true
+    },
+    {
+      "label": "arena-dd-v1-stationary-flicker-3/step-300",
+      "elements": 45669,
+      "maxAbsolute": 0.000001430511474609375,
+      "maxScaledError": 0.015226926152201972,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 30026,
+      "pass": true
+    },
+    {
+      "label": "two-independent-eyes",
+      "elements": 91338,
+      "maxAbsolute": 7.152557373046875e-7,
+      "maxScaledError": 0.01639906697740057,
+      "violations": 0,
+      "nonFinite": 0,
+      "bitDifferences": 58508,
+      "pass": true
+    }
+  ],
+  "ownership": {
+    "checkpointExact": true,
+    "returnedSnapshotIndependent": true,
+    "overlapRejected": true,
+    "callerInputCopied": true,
+    "otherGroupUntouched": true,
+    "freshInitialization": true,
+    "pairedMatchesIndependent": true,
+    "disposedRejected": true
+  },
+  "benchmark": [],
+  "productionPromotion": false,
+  "supported": true,
+  "adapter": {
+    "vendor": "apple",
+    "architecture": "metal-3",
+    "device": "",
+    "description": "",
+    "isFallbackAdapter": false,
+    "backend": null,
+    "type": null
+  },
+  "features": [
+    "depth32float-stencil8",
+    "rg11b10ufloat-renderable",
+    "texture-formats-tier1",
+    "bgra8unorm-storage",
+    "texture-compression-bc",
+    "dual-source-blending",
+    "core-features-and-limits",
+    "float32-filterable",
+    "indirect-first-instance",
+    "texture-compression-astc-sliced-3d",
+    "float32-blendable",
+    "subgroup-size-control",
+    "texture-compression-astc",
+    "texture-compression-etc2",
+    "depth-clip-control",
+    "texture-compression-bc-sliced-3d",
+    "clip-distances",
+    "timestamp-query",
+    "texture-formats-tier2",
+    "shader-f16",
+    "primitive-index",
+    "texture-component-swizzle",
+    "subgroups"
+  ],
+  "limits": {
+    "maxStorageBuffersPerShaderStage": 10,
+    "maxStorageBufferBindingSize": 4294967292,
+    "maxBufferSize": 4294967292
+  },
+  "setupMilliseconds": 64.60000014305115,
+  "csr": {
+    "maximumDegree": 208,
+    "offsetsSha256": "07701638a5be40d41026db8a2d28cffad6f420a83f5524d58a2c2bc1dc191172",
+    "sourceSha256": "0a47c777ab13ec094b06b440198c33febadd2aa8e402077dab80fbf23e041f7e",
+    "weightSha256": "5e11ac47bdfd93f6466cd5176e093d81e83e066373fb5816c153d0ed2020b47e",
+    "originalEdgeSha256": "aaaad59b074e422210f62482c64d326563e0955f710b904840fa642b9db26d3f",
+    "stableOriginalOrderVerified": true
+  },
+  "compilationMessages": [],
+  "parityPass": true,
+  "ownershipPass": true,
+  "errors": [],
+  "hardwareBenchmarkValid": false,
+  "elapsedMilliseconds": 6747.900000095367,
+  "serverMetadata": {
+    "modelHashes": {
+      "manifestFile": "33e007097fc3c539ebd817a297be38dfca113ab42a3fc6b24052575f0d403218",
+      "wasm": "7225b966d087253f204f50f1ec1fc85cb76286466d8e94b8af3e6a911a81f9b0",
+      "arrays": {
+        "source": "d1bb5f8eda28fb7c3b7088c4b07af6fc21726e488aedc74c277a4aa976b768b6",
+        "target": "a5521e8e79887ed525e2991d898119d95f46216bbee1f25b4b2dc93a2141fa33",
+        "weight": "f5c0636c6f9fca9d289d8a7b0e2d00d4aa0bd19cdc37df1ca28afa800c1b03bf",
+        "bias": "d276601573420bf787a81ffa8c81f2da3499a20df2bb858f6082c2e449ff564f",
+        "timeConstant": "1651e91b8f2554de0e48a8e5bdb56828ddd3cad3cb34d1b494652897d76279b8",
+        "inputIndex": "0961dec8bde58d7023f81666fcdad6451d570d328e030cd140fd7a96d9963119",
+        "steadyState": "ec82da2a80d617cc5cc81e6588624737da4bb75c212a1797acda3a8c9995cd73"
+      },
+      "sparseRuntime": "4b6a415aab4fde01602e2bf97fc86d652ce249914921c9dcfef79633a378056b",
+      "spatialReadout": "568714f756f812c4e9505641ece06af25a29f743600f8006ef179bfd4d0962cf",
+      "retina": "12391b582bbe53d5fe65dc908fa931b54cda3f8d59418e15ca35b336b8052fa8"
+    },
+    "sourceHashes": {
+      "browser-run.mjs": "3340d07beebfe8bb8ce32543d43d3a0dd386c793b328f66e82d31300fb0ed516",
+      "gpu-model.mjs": "be6831d4b0dee86e67b1a93469fd7d01f9765de6b70a3108f0de2ec3e0e779a7",
+      "csr.mjs": "81f30df3fc30950e004266ad86e899264f53287b941e0faf96f24b8acb65fcbc",
+      "step.wgsl": "54f604392dd21aa11a77b9992cc56c5702e323c35e9504a7010268f80d107c31",
+      "PLAN.md": "458d1ba45bc9c39e329307c7f5268dc985e2474d6c3fde129b5c2b2503ee962b",
+      "server.mjs": "15fb697832073d8be360739ad94ea99db0380b1734197383af16b47add0bab02"
+    },
+    "arenaArtifactSha256": "b1ee44c1b41e64dcbc553473adf143cfd234fa86dc6a0c213114a34b26718781",
+    "arenaInputSha256": "dd483b935853ede919c21d7858b35f8fb555a663061037bc1cf717ff281a2e7b",
+    "hostCPU": "Apple M2 Max"
+  },
+  "fullEvidenceSha256": "463619d0f7ace7c6c6ccd1b648e116f9d23e62ff804e6d234c7594c5795c1629"
+}

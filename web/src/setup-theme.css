@@ -79,6 +79,10 @@
 }
 
 .scene-setup .setup-form { background: var(--setup-paper); scrollbar-color: #979b8c transparent; }
+.scene-setup .hint { color: var(--setup-muted); }
+.scene-setup .connection-source { color: #37584b; }
+.scene-setup .connection-live { color: #5b675e; }
+.scene-setup .connection-live.is-active { color: #006b58; }
 .scene-setup :is(.setup-help, .setup-mode-help, .setup-count-line, .setup-footer-hint),
 .scene-setup .setup-step-heading > p:last-child,
 .scene-setup .setup-entity small,

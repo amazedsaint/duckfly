@@ -1,0 +1,498 @@
+{
+  "sourceArtifactSha256": "b1ee44c1b41e64dcbc553473adf143cfd234fa86dc6a0c213114a34b26718781",
+  "sourceHashes": {
+    "ddmodel-transfer.py": "ff33904f445a2b1b7470dfc76191f33a6dbfcd7b5c910161d83d536279e4783d",
+    "ddmodel-equations.py": "b186ae62e58879eeb762152e6ee92101c7888a7edd0a1aa05ad2a9b591e3d41b"
+  },
+  "threshold": 0.0007153802979611501,
+  "analysisSha256": "1a2ed9c0c6ef226fbc5d61385617c8f2f04b7e3d1f75d0b80ea9a3c0a235bee1",
+  "groups": {
+    "target-pass/original": {
+      "movies": 6,
+      "responses": 5,
+      "scores": [
+        0.001455005677967045,
+        0.0006452691458394864,
+        0.0015852613689734776,
+        0.001737366268085241,
+        0.002166074363054364,
+        0.0020340203188031376
+      ],
+      "delays": [
+        0.39888888888888907,
+        0.4377777777777778,
+        0.39333333333333353,
+        0.2766666666666664,
+        0.4322222222222223
+      ]
+    },
+    "target-pass/frozen": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delays": []
+    },
+    "target-pass/reversed": {
+      "movies": 6,
+      "responses": 5,
+      "scores": [
+        0.001884662633146278,
+        0.0006822160047522617,
+        0.001953511282381603,
+        0.0015777867323398215,
+        0.0016911215892100088,
+        0.0018703640879390478
+      ],
+      "delays": [
+        0.08777777777777729,
+        0.14333333333333353,
+        0.09888888888888836,
+        0.09333333333333282,
+        0.13222222222222157
+      ]
+    },
+    "small-step/original": {
+      "movies": 6,
+      "responses": 4,
+      "scores": [
+        9.27229744497215e-05,
+        0.0007449989416801755,
+        0.0007962031908967665,
+        0.0010975591462929377,
+        0.0016288223930932327,
+        0.0007130292882787374
+      ],
+      "delays": [
+        0.387777777777778,
+        0.33222222222222175,
+        0.2655555555555553,
+        0.16555555555555568
+      ]
+    },
+    "small-step/frozen": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delays": []
+    },
+    "small-step/reversed": {
+      "movies": 6,
+      "responses": 4,
+      "scores": [
+        0.00015859483794089985,
+        0.0007418917115299287,
+        0.0008224138918014657,
+        0.0011326203494882484,
+        0.0016439330412105304,
+        0.0006465779265597857
+      ],
+      "delays": [
+        1.1433333333333335,
+        1.0711111111111107,
+        1.0155555555555553,
+        0.9211111111111112
+      ]
+    },
+    "large-bar/original": {
+      "movies": 6,
+      "responses": 4,
+      "scores": [
+        5.892682315213815e-06,
+        0.001746529949539514,
+        0.0033577260933027923,
+        0.0,
+        0.002603330559032047,
+        0.001998305743219593
+      ],
+      "delays": [
+        0.28222222222222193,
+        0.23777777777777764,
+        0.24333333333333318,
+        0.35999999999999943
+      ]
+    },
+    "large-bar/frozen": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delays": []
+    },
+    "large-bar/reversed": {
+      "movies": 6,
+      "responses": 4,
+      "scores": [
+        0.0,
+        0.001198834403306845,
+        0.0034776491859764645,
+        0.0,
+        0.002633456403927622,
+        0.002115678283496877
+      ],
+      "delays": [
+        0.1711111111111112,
+        0.06555555555555515,
+        0.07111111111111068,
+        0.08777777777777729
+      ]
+    },
+    "stationary-flicker/original": {
+      "movies": 6,
+      "responses": 1,
+      "scores": [
+        0.0,
+        6.599425034665225e-05,
+        0.0,
+        0.0017882253198984945,
+        0.0,
+        0.00044892162941515673
+      ],
+      "delays": [
+        0.3266666666666662
+      ]
+    },
+    "stationary-flicker/frozen": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delays": []
+    },
+    "stationary-flicker/reversed": {
+      "movies": 6,
+      "responses": 1,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0015204774753509271,
+        0.0,
+        1.61944206956822e-05
+      ],
+      "delays": [
+        0.07666666666666622
+      ]
+    },
+    "local-dimming/original": {
+      "movies": 6,
+      "responses": 1,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0007720826330889945,
+        0.0,
+        0.0004372731621274667
+      ],
+      "delays": [
+        1.137777777777778
+      ]
+    },
+    "local-dimming/frozen": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delays": []
+    },
+    "local-dimming/reversed": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.00020013124997517848,
+        0.0,
+        2.134043609601602e-05
+      ],
+      "delays": []
+    },
+    "global-dimming/original": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delays": []
+    },
+    "global-dimming/frozen": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delays": []
+    },
+    "global-dimming/reversed": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delays": []
+    },
+    "camera-pan-empty/original": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delays": []
+    },
+    "camera-pan-empty/frozen": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delays": []
+    },
+    "camera-pan-empty/reversed": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delays": []
+    },
+    "camera-pan-static-target/original": {
+      "movies": 6,
+      "responses": 1,
+      "scores": [
+        3.356037741326021e-05,
+        0.0,
+        0.00040951479168039825,
+        7.585791461363398e-06,
+        0.0013459306513372007,
+        0.00021228763006926233
+      ],
+      "delays": [
+        0.3822222222222216
+      ]
+    },
+    "camera-pan-static-target/frozen": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delays": []
+    },
+    "camera-pan-static-target/reversed": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0002771269950402809,
+        0.0,
+        0.00047162860309614803,
+        0.0
+      ],
+      "delays": []
+    },
+    "target-pass-camera-pan/original": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        9.690605805825988e-05,
+        0.0,
+        0.0,
+        0.0,
+        0.00023466039513479715,
+        0.0
+      ],
+      "delays": []
+    },
+    "target-pass-camera-pan/frozen": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delays": []
+    },
+    "target-pass-camera-pan/reversed": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0002747268690414152,
+        0.0,
+        0.0,
+        0.0,
+        5.797182266021559e-05,
+        0.0
+      ],
+      "delays": []
+    },
+    "target-pass-clutter/original": {
+      "movies": 6,
+      "responses": 5,
+      "scores": [
+        0.0011700491066151987,
+        0.00027436843894497774,
+        0.0010594506565959729,
+        0.000883231305188258,
+        0.0021661792737966883,
+        0.0016582942973113995
+      ],
+      "delays": [
+        0.5655555555555551,
+        0.5155555555555553,
+        0.637777777777778,
+        0.28222222222222193,
+        0.4488888888888889
+      ]
+    },
+    "target-pass-clutter/frozen": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delays": []
+    },
+    "target-pass-clutter/reversed": {
+      "movies": 6,
+      "responses": 4,
+      "scores": [
+        0.0013269797900353087,
+        0.0002984719420264976,
+        0.001282137574459926,
+        0.0006063913710448207,
+        0.0016764296003509327,
+        0.0015571137697611222
+      ],
+      "delays": [
+        0.14888888888888907,
+        0.1988888888888889,
+        0.08777777777777729,
+        0.16555555555555568
+      ]
+    },
+    "static-target/original": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delays": []
+    },
+    "static-target/frozen": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delays": []
+    },
+    "static-target/reversed": {
+      "movies": 6,
+      "responses": 0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delays": []
+    }
+  },
+  "elapsedSeconds": 14.0607326249592,
+  "biologicalLC11": false,
+  "flyvisInputs": false,
+  "physicalUsefulness": false,
+  "productionPromotion": false,
+  "limitation": "Posed camera and scene objects; frozen threshold transferred without recalibration. Camera motion may move a static target on retina; report separately from empty scene rotation.",
+  "traceArtifactSha256": "259b568032f881092509e903818c6318bbf3de607c2a850d691b020a234fa84f"
+}

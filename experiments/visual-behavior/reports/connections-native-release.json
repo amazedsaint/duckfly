@@ -1,0 +1,397 @@
+{
+  "receipts": [
+    {
+      "connections": [
+        {
+          "paused": true,
+          "skill": null,
+          "signals": [
+            {
+              "matched": true,
+              "active": true,
+              "action": "stop",
+              "id": "connection-1",
+              "source": "Fly circuit",
+              "blocked": null,
+              "value": 108.699844179854,
+              "trigger": "forward",
+              "threshold": 6
+            },
+            {
+              "matched": true,
+              "action": "steer",
+              "active": true,
+              "id": "connection-2",
+              "source": "Fly circuit",
+              "blocked": null,
+              "value": 108.699844179854,
+              "trigger": "forward",
+              "threshold": 6
+            },
+            {
+              "source": "Camera rule",
+              "action": "look-cue",
+              "active": true,
+              "id": "connection-3",
+              "matched": true,
+              "blocked": null,
+              "value": 1,
+              "trigger": "seen",
+              "threshold": 1
+            }
+          ],
+          "model": "duckfly-trigger-actions-v1",
+          "gate": null,
+          "idle": false,
+          "requests": [
+            {
+              "matched": true,
+              "active": true,
+              "action": "stop",
+              "id": "connection-1",
+              "source": "Fly circuit",
+              "blocked": null,
+              "value": 108.699844179854,
+              "trigger": "forward",
+              "threshold": 6
+            },
+            {
+              "matched": true,
+              "action": "steer",
+              "active": true,
+              "id": "connection-2",
+              "source": "Fly circuit",
+              "blocked": null,
+              "value": 108.699844179854,
+              "trigger": "forward",
+              "threshold": 6
+            },
+            {
+              "source": "Camera rule",
+              "action": "look-cue",
+              "active": true,
+              "id": "connection-3",
+              "matched": true,
+              "blocked": null,
+              "value": 1,
+              "trigger": "seen",
+              "threshold": 1
+            }
+          ],
+          "command": {
+            "yaw": 0,
+            "head": [
+              0,
+              0,
+              0.028421052631578934,
+              0
+            ],
+            "vx": 0
+          }
+        }
+      ],
+      "id": "cue-workshop",
+      "time": 3.2199999999999536,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "fallen": false,
+          "distance": 0.3935461667568657,
+          "command": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "connections": [
+        {
+          "paused": false,
+          "skill": null,
+          "signals": [
+            {
+              "source": "Fly circuit",
+              "active": true,
+              "action": "look-cue",
+              "matched": true,
+              "id": "connection-1",
+              "blocked": null,
+              "value": 113.3875832664384,
+              "trigger": "forward",
+              "threshold": 6
+            },
+            {
+              "action": "look-left",
+              "active": false,
+              "source": "Camera rule",
+              "matched": false,
+              "id": "connection-2",
+              "blocked": null,
+              "value": 0,
+              "trigger": "lost",
+              "threshold": 1
+            }
+          ],
+          "model": "duckfly-trigger-actions-v1",
+          "gate": null,
+          "idle": false,
+          "requests": [
+            {
+              "source": "Fly circuit",
+              "active": true,
+              "action": "look-cue",
+              "matched": true,
+              "id": "connection-1",
+              "blocked": null,
+              "value": 113.3875832664384,
+              "trigger": "forward",
+              "threshold": 6
+            }
+          ],
+          "command": {
+            "yaw": 0,
+            "head": [
+              0,
+              0,
+              0.05526315789473685,
+              0
+            ],
+            "vx": 0
+          }
+        }
+      ],
+      "id": "lookout",
+      "ducks": [
+        {
+          "id": "duck-1",
+          "fallen": false,
+          "command": [
+            0,
+            0
+          ],
+          "distance": 0.004390184246222103
+        }
+      ],
+      "time": 2.259999999999974
+    },
+    {
+      "connections": [
+        {
+          "paused": false,
+          "skill": null,
+          "signals": [
+            {
+              "active": false,
+              "matched": false,
+              "action": "left",
+              "id": "connection-1",
+              "source": "Fly circuit",
+              "blocked": null,
+              "value": 0.3103607728305988,
+              "trigger": "left",
+              "threshold": 6
+            },
+            {
+              "active": false,
+              "action": "right",
+              "matched": false,
+              "id": "connection-2",
+              "source": "Fly circuit",
+              "blocked": null,
+              "value": -0.3103607728305988,
+              "trigger": "right",
+              "threshold": 6
+            }
+          ],
+          "model": "duckfly-trigger-actions-v1",
+          "gate": null,
+          "idle": true,
+          "requests": [],
+          "command": {
+            "yaw": 0,
+            "head": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "vx": 0
+          }
+        },
+        {
+          "paused": false,
+          "skill": null,
+          "signals": [
+            {
+              "source": "Fly circuit",
+              "matched": false,
+              "action": "right",
+              "id": "connection-1",
+              "active": false,
+              "blocked": null,
+              "value": -73.19572487884759,
+              "trigger": "left",
+              "threshold": 6
+            },
+            {
+              "active": true,
+              "action": "left",
+              "source": "Fly circuit",
+              "id": "connection-2",
+              "matched": true,
+              "limited": "Forward held: Target absent",
+              "blocked": null,
+              "value": 73.19572487884759,
+              "trigger": "right",
+              "threshold": 6
+            }
+          ],
+          "model": "duckfly-trigger-actions-v1",
+          "gate": null,
+          "idle": false,
+          "requests": [
+            {
+              "active": true,
+              "action": "left",
+              "source": "Fly circuit",
+              "id": "connection-2",
+              "matched": true,
+              "limited": "Forward held: Target absent",
+              "blocked": null,
+              "value": 73.19572487884759,
+              "trigger": "right",
+              "threshold": 6
+            }
+          ],
+          "command": {
+            "head": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "yaw": 0.325,
+            "vx": 0
+          }
+        }
+      ],
+      "id": "crossed-wires",
+      "ducks": [
+        {
+          "id": "duck-1",
+          "fallen": false,
+          "distance": 0.25468341051642623,
+          "command": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "duck-2",
+          "fallen": false,
+          "command": [
+            0,
+            0.325
+          ],
+          "distance": 0.311819684066719
+        }
+      ],
+      "time": 2.3199999999999728
+    },
+    {
+      "connections": [
+        {
+          "paused": false,
+          "skill": null,
+          "signals": [
+            {
+              "source": "Fly circuit",
+              "action": "kick",
+              "matched": true,
+              "id": "connection-1",
+              "active": true,
+              "blocked": null,
+              "value": 107.88160408649497,
+              "trigger": "forward",
+              "threshold": 6
+            }
+          ],
+          "model": "duckfly-trigger-actions-v1",
+          "gate": null,
+          "idle": false,
+          "requests": [
+            {
+              "source": "Fly circuit",
+              "action": "kick",
+              "matched": true,
+              "id": "connection-1",
+              "active": true,
+              "blocked": null,
+              "value": 107.88160408649497,
+              "trigger": "forward",
+              "threshold": 6
+            }
+          ],
+          "command": {
+            "yaw": 0,
+            "head": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "vx": 0
+          }
+        }
+      ],
+      "id": "trigger-kick",
+      "time": 0.7400000000000005,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "fallen": false,
+          "command": [
+            0,
+            0
+          ],
+          "distance": 0.010670503445233029
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "format": "duckfly-native-trigger-connections",
+  "recordedAt": "2026-09-11T11:11:24.294Z",
+  "sourceSha256": {
+    "web/src/brain.js": "5f219fc3861e6c396fbe6224e4b8ded79af55b1105d26fb052cbb3f577d3b1d6",
+    "web/src/main.js": "2f3008fa99f604e1e41aa94144fb978dc2badad804f8c5661bd8b6df25160a7d",
+    "web/src/lab/trigger-actions.js": "1aa75dc6434c13c86f6b3f84a444439cd744d5593e29358d79a8c5bd0c6a77dc",
+    "web/src/lab/connection-controls.js": "3eaadeb72edf524296ebaa1dad5ef2daac9e26cff01b07e98fc5aee82c3cdeb8",
+    "web/src/lab/connection-controls.css": "2d06a48ff0c70da0b3d6e4bd8d9f9dc5e814f9b05f3eea2ba1d6d6581e57b262",
+    "web/src/lab/connection-scenes.js": "4ece0cb58ce1722dc94691dfabae8fc2eba448b3d77e90a430f622b9fed89bf0",
+    "web/src/lab/experiment.js": "02f0c59a18ae63426bef1f70bb31129fc9f6306b5eb9358452c46fc2c85a0b67",
+    "web/src/lab/scene.js": "eb566f0c91d59716db3c8f9a1b63d706bc1940b8f2b635de20a0840bd9a2a86b",
+    "web/src/lab/scene-setup.js": "82350d62747e08da4ef197fa7c164dd295c2fdbfdd8f42f6a65a36232bd5b1e8",
+    "web/src/lab/mapping-controls.js": "1d42fe09ee71071ed0e824d0e9d790fc244142514637511479afbb38b969859b",
+    "web/src/lab/brain-mapping.js": "41afdac4548e4df96bd6a5bdc53b5e90237eacb231cefceb7dc7bb4c9973d953",
+    "web/src/lab/body-skills.js": "dd045becafba81dd2ea3cbb26ab6549250f150abdd441f4daa9eacbefc746a60",
+    "web/src/lab/scenarios.js": "be4cd642ee739f2e6dadf3cc27fdbabd629563ab9448d464e4dadeb86e54949a",
+    "web/src/lab/guided-ui.js": "b8b74d164e708d3da13257ec580cbc775b7f509d45ee6f20997ad92886fcbd8f",
+    "web/src/lab/workspace-ui.js": "52ba05f81dc1fb66e33531e35dd027f17fd796d0ea29330ccab7bbab3fd9cd12",
+    "web/src/lab/action-inspector.js": "6dd9c43476a8b79c66546fefa9bb51204dd83a09f73d30fec91f83eb3408fcc4",
+    "web/src/lab/action-evidence.js": "cd32823d38f81e083e260fa4f2956d65bc4fe3a052fc95e343caa1b44eb0de34",
+    "web/src/lab/recorded-events.js": "e2c2fefd901aeea9b92f516ce3fc6297d020f0382b04851f252a63495ef250b4"
+  },
+  "logSha256": "b8abc64f3951b1d36bb13c9c3adb08d426caab3dd953ee7d1b9713f975a9e0e6",
+  "bundleSha256": {
+    "MacOS/DuckFly": "c66349fa9f9f2ea109d0c0d4dd766b8ac382885cc11b13dfcac2a42880447928",
+    "Resources/ConnectionsSmoke.js": "cd38ca657dfc40a14ee2b733732efadc8d523b4da9b60f3593ef0553f05fa254",
+    "Resources/SetupHelpers.js": "798062d0e738e9b3f7b3b8454b339a9a83d110b5b98c64037288385750eb81b0",
+    "Resources/Web/assets/flyvis.worker-78m1cLdn.js": "a8f0e95cf4be5a4d8b2dddd2606096b44cd69ccf7d07af045e5c5595232316fc",
+    "Resources/Web/assets/index-BAiH8Jso.css": "73114e4cf8cb7f25e5085472fb2e506bc6f498f6ca3b37f2faf94423c6ebf88d",
+    "Resources/Web/assets/index-C52IdKFF.js": "6ca671199a181838cf292902f20c7bab44f87ba1cc936e502714f7bf449b16ac",
+    "Resources/Web/assets/lab.worker-BOIdshM_.js": "415c8d1f0a2be5d48a2479983c320f5d2ad0f5601b871a1a4f520836315e45ef",
+    "Resources/Web/assets/no-pose-C0bo0SAe.js": "6cce70ed9ae234d78bb787ad29ef80ec6487536249f45434c15e412285e85146"
+  }
+}

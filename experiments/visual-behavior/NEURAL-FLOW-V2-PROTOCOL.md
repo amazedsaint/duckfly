@@ -1,0 +1,13 @@
+# Neural-map motion, candidate 2
+
+Candidate 1 rejected sustained control confounds but failed its grating direction gate. The calibration-only diagnosis exposed the aperture problem: a horizontal 18-degree grating moving at 60 degrees/s produced vx≈61.7 and an unsupported vy≈118.1, even with an almost rank-one spatial tensor. A separate analytic plane-wave check bounded two-axis derivative orientation bias to about 1–7.5 degrees across the tested wavelengths, so derivative bias alone cannot explain the failed direction gate.
+
+Candidate 2 retains common-mode temporal removal and replaces the derivative/solver in a separate module. It uses symmetric fourth-order differences along all three axes of the hex grid. If the minor spatial-tensor eigenvalue is less than 5% of the major eigenvalue, the decoder returns only the observed normal-flow component. It exposes `observedRank`, `tangentObserved`, `normalAxis` and the eigenvalue ratio. The minimum-norm velocity does **not** assert that the physical tangent velocity is zero. A body/yaw readout must account for that missing information or use a suitable two-dimensional texture.
+
+The 16 calibration movies and confidence rule remain unchanged. The held-out set is freshly generated with seeds **6000–6029**, and intermediate directions shift to 11.25+45k degrees. Contrasts, phases and rates are newly seeded. The nine movie families, 286-trial count, rendering, one-second conditioning and sampling remain as in candidate 1. None of the candidate 1 held-out trials enters calibration.
+
+All gates from `NEURAL-FLOW-PROTOCOL.md` remain fixed: ≥90% valid direction trials per moving family with ≥50% frame availability and ≤30-degree median-vector error; ≤35% median relative speed error; ≤5% stationary trials containing two consecutive available >3-degree/s frames. Isolated false frames are reported separately. Gradient confidence is one quarter of the calibration tenth percentile; temporal explained fraction remains 0.2. The maximum reported speed is 360 degrees/s.
+
+The direction/speed claim in the grating/edge assay concerns the deliberately generated **normal motion** of those patterns. It cannot validate arbitrary tangential motion. Additional analytic tests explicitly construct two physically different motions with indistinguishable stripe movies and require the same rank-one observation, rather than a fabricated tangent estimate.
+
+Spatial-mean and temporal-history ablations, exact replay and immutable source/model hashes remain required. No body promotion follows a synthetic pass; a separately preregistered actual-renderer and physical comparison is still required. Candidate 1 and its failed overall admission remain retained.

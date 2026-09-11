@@ -1,0 +1,491 @@
+{
+  "format": "duckfly-neural-map-flow-study",
+  "version": 1,
+  "startedAt": "2026-09-11T02:22:53.212Z",
+  "finishedAt": "2026-09-11T02:26:52.369Z",
+  "elapsedSeconds": 239.156908459,
+  "sourceHashes": {
+    "run-neural-flow.mjs": "f1a3438e5fd5cc64778d31c53e8a0a9e9981eb88ab80cdab858ad420c5e34932",
+    "neural-flow-stimuli.mjs": "d7873ecb23c5169ade1224570d1497dc9abf7bbf886584ea89df4341b36252fa",
+    "NEURAL-FLOW-PROTOCOL.md": "a434c3c90e36c95b130f76e965c8f94eab70d709d338f756bd79a112760276c8",
+    "load-model.mjs": "13daf664b0413b7e8402b32ac78e7b92eeb981568e4faa51d6471d7aede083b1",
+    "neuralMapFlow": "67a871405c1ef7c23c7ead18774a88633073cd2f5a850d81a37b25c7728344c1"
+  },
+  "modelHashes": {
+    "manifestFile": "33e007097fc3c539ebd817a297be38dfca113ab42a3fc6b24052575f0d403218",
+    "wasm": "7225b966d087253f204f50f1ec1fc85cb76286466d8e94b8af3e6a911a81f9b0",
+    "arrays": {
+      "source": "d1bb5f8eda28fb7c3b7088c4b07af6fc21726e488aedc74c277a4aa976b768b6",
+      "target": "a5521e8e79887ed525e2991d898119d95f46216bbee1f25b4b2dc93a2141fa33",
+      "weight": "f5c0636c6f9fca9d289d8a7b0e2d00d4aa0bd19cdc37df1ca28afa800c1b03bf",
+      "bias": "d276601573420bf787a81ffa8c81f2da3499a20df2bb858f6082c2e449ff564f",
+      "timeConstant": "1651e91b8f2554de0e48a8e5bdb56828ddd3cad3cb34d1b494652897d76279b8",
+      "inputIndex": "0961dec8bde58d7023f81666fcdad6451d570d328e030cd140fd7a96d9963119",
+      "steadyState": "ec82da2a80d617cc5cc81e6588624737da4bb75c212a1797acda3a8c9995cd73"
+    },
+    "sparseRuntime": "df8556796dd5245a620de6363577d661bded285428ad89133932faa40993aa05",
+    "spatialReadout": "568714f756f812c4e9505641ece06af25a29f743600f8006ef179bfd4d0962cf",
+    "retina": "12391b582bbe53d5fe65dc908fa931b54cda3f8d59418e15ca35b336b8052fa8"
+  },
+  "model": {
+    "id": "flyvis-000",
+    "sourceCommit": "92b3845cc426dd309a1a0e1b3890156c42e14021",
+    "checkpoint": "flow/0000/000/best_chkpt",
+    "checkpointSha256": "d8a57a022aa18ca338599be713af9db29b89cde4b00098ffe42b78f0d583e46a",
+    "loadedCheckpointSha256": "d0e42857e738d0315897c2d50fde9eb3fb1a3fb1f071d55dfc13d53d72bccc3f",
+    "manifestCanonicalSha256": "826051cb1333da60ca5aea40664427390ec7fe545e4d81671e755ba1460b4f58",
+    "wasmSha256": "7225b966d087253f204f50f1ec1fc85cb76286466d8e94b8af3e6a911a81f9b0",
+    "integrationDt": 0.002,
+    "units": "model continuous activity; not spikes or calcium"
+  },
+  "counts": {
+    "trials": 286,
+    "calibration": 16,
+    "heldout": 270,
+    "heldoutSeeds": 30,
+    "conditionedStates": 99,
+    "frames": 8580
+  },
+  "thresholds": {
+    "minimumGradient": 0.004952571198970306,
+    "minimumExplained": 0.2,
+    "maximumSpeed": 360,
+    "falseTurnDegreesPerSecond": 3
+  },
+  "moving": [
+    {
+      "family": "grating",
+      "correct": 23,
+      "n": 30,
+      "rate": 0.7666666666666667,
+      "medianRelativeSpeedError": 0.1628423106982442,
+      "medianDirectionErrorDegrees": 16.38027999056635,
+      "medianAvailability": 1,
+      "passed": false
+    },
+    {
+      "family": "edge-on",
+      "correct": 28,
+      "n": 30,
+      "rate": 0.9333333333333333,
+      "medianRelativeSpeedError": 0.07786307861724916,
+      "medianDirectionErrorDegrees": 15.763266156469172,
+      "medianAvailability": 1,
+      "passed": true
+    },
+    {
+      "family": "edge-off",
+      "correct": 30,
+      "n": 30,
+      "rate": 1,
+      "medianRelativeSpeedError": 0.06276182017769878,
+      "medianDirectionErrorDegrees": 13.210601328534494,
+      "medianAvailability": 1,
+      "passed": true
+    }
+  ],
+  "confounds": [
+    {
+      "family": "blank",
+      "falseTrials": 0,
+      "n": 30,
+      "rate": 0,
+      "falseFrames": 0,
+      "analyzedFrames": 750,
+      "passed": true
+    },
+    {
+      "family": "flash",
+      "falseTrials": 0,
+      "n": 30,
+      "rate": 0,
+      "falseFrames": 15,
+      "analyzedFrames": 750,
+      "passed": true
+    },
+    {
+      "family": "flicker",
+      "falseTrials": 0,
+      "n": 30,
+      "rate": 0,
+      "falseFrames": 48,
+      "analyzedFrames": 750,
+      "passed": true
+    },
+    {
+      "family": "static-grating",
+      "falseTrials": 0,
+      "n": 30,
+      "rate": 0,
+      "falseFrames": 0,
+      "analyzedFrames": 750,
+      "passed": true
+    },
+    {
+      "family": "counterphase",
+      "falseTrials": 0,
+      "n": 30,
+      "rate": 0,
+      "falseFrames": 0,
+      "analyzedFrames": 750,
+      "passed": true
+    },
+    {
+      "family": "illumination",
+      "falseTrials": 0,
+      "n": 30,
+      "rate": 0,
+      "falseFrames": 0,
+      "analyzedFrames": 750,
+      "passed": true
+    }
+  ],
+  "ablations": [
+    {
+      "id": "grating-4000",
+      "frameId": 12,
+      "original": {
+        "available": true,
+        "reason": "spatial-temporal-fit",
+        "velocity": {
+          "x": 45.04502509213684,
+          "y": 108.61770034007677
+        },
+        "speed": 117.58766564873186,
+        "direction": 67.47564559737918,
+        "rawVelocity": {
+          "x": 45.04502509213684,
+          "y": 108.61770034007677
+        },
+        "rawSpeed": 117.58766564873186,
+        "rawDirection": 67.47564559737918,
+        "explained": 0.9819248771331692,
+        "aperture": 0.998594533455244,
+        "gradientRms": 0.09607918653588128,
+        "temporalRms": 8.259015770833832,
+        "commonModeTemporalRms": 0.5737655863623483,
+        "samples": 2168,
+        "dt": 0.020000000000000018,
+        "units": "image degrees per neural second",
+        "interpretation": "Minimum-norm neural response-pattern motion. A single oriented pattern does not reveal tangent motion. No body or HS/VS mapping is implied."
+      },
+      "spatialMean": {
+        "available": false,
+        "reason": "insufficient-spatial-signal",
+        "velocity": null,
+        "speed": null,
+        "direction": null,
+        "dt": 0.020000000000000018,
+        "gradientRms": 0,
+        "temporalRms": 1.9577893481433687e-16,
+        "commonModeTemporalRms": 0.2788266536300833,
+        "samples": 2168
+      },
+      "frozenHistory": {
+        "available": false,
+        "reason": "temporal-change-not-explained-by-motion",
+        "velocity": null,
+        "speed": null,
+        "direction": null,
+        "rawVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "rawSpeed": 0,
+        "rawDirection": 0,
+        "explained": 0,
+        "aperture": 0.9984766708918278,
+        "gradientRms": 0.09726610678406017,
+        "temporalRms": 0,
+        "commonModeTemporalRms": 0,
+        "samples": 2168,
+        "dt": 0.020000000000000018,
+        "units": "image degrees per neural second",
+        "interpretation": "Minimum-norm neural response-pattern motion. A single oriented pattern does not reveal tangent motion. No body or HS/VS mapping is implied."
+      },
+      "passed": true
+    },
+    {
+      "id": "edge-on-4000",
+      "frameId": 12,
+      "original": {
+        "available": true,
+        "reason": "spatial-temporal-fit",
+        "velocity": {
+          "x": 51.199513886574,
+          "y": 79.47003494169674
+        },
+        "speed": 94.5350552750459,
+        "direction": 57.207860193992644,
+        "rawVelocity": {
+          "x": 51.199513886574,
+          "y": 79.47003494169674
+        },
+        "rawSpeed": 94.5350552750459,
+        "rawDirection": 57.207860193992644,
+        "explained": 0.911108624220147,
+        "aperture": 0.9455244186810853,
+        "gradientRms": 0.01818207880239841,
+        "temporalRms": 1.4847332006638698,
+        "commonModeTemporalRms": 0.38114506678707405,
+        "samples": 2168,
+        "dt": 0.020000000000000018,
+        "units": "image degrees per neural second",
+        "interpretation": "Minimum-norm neural response-pattern motion. A single oriented pattern does not reveal tangent motion. No body or HS/VS mapping is implied."
+      },
+      "spatialMean": {
+        "available": false,
+        "reason": "insufficient-spatial-signal",
+        "velocity": null,
+        "speed": null,
+        "direction": null,
+        "dt": 0.020000000000000018,
+        "gradientRms": 0,
+        "temporalRms": 7.029978925644866e-17,
+        "commonModeTemporalRms": 0.0991008632541139,
+        "samples": 2168
+      },
+      "frozenHistory": {
+        "available": false,
+        "reason": "temporal-change-not-explained-by-motion",
+        "velocity": null,
+        "speed": null,
+        "direction": null,
+        "rawVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "rawSpeed": 0,
+        "rawDirection": 0,
+        "explained": 0,
+        "aperture": 0.9509596240944677,
+        "gradientRms": 0.01958036572082193,
+        "temporalRms": 0,
+        "commonModeTemporalRms": 0,
+        "samples": 2168,
+        "dt": 0.020000000000000018,
+        "units": "image degrees per neural second",
+        "interpretation": "Minimum-norm neural response-pattern motion. A single oriented pattern does not reveal tangent motion. No body or HS/VS mapping is implied."
+      },
+      "passed": true
+    },
+    {
+      "id": "edge-off-4000",
+      "frameId": 12,
+      "original": {
+        "available": true,
+        "reason": "spatial-temporal-fit",
+        "velocity": {
+          "x": 67.01225783850717,
+          "y": 35.33469569345858
+        },
+        "speed": 75.75739845298205,
+        "direction": 27.8021008522673,
+        "rawVelocity": {
+          "x": 67.01225783850717,
+          "y": 35.33469569345858
+        },
+        "rawSpeed": 75.75739845298205,
+        "rawDirection": 27.8021008522673,
+        "explained": 0.8825486815579848,
+        "aperture": 0.9671789719989361,
+        "gradientRms": 0.02112017085939546,
+        "temporalRms": 1.6851378360693172,
+        "commonModeTemporalRms": 0.4894206879365668,
+        "samples": 2168,
+        "dt": 0.020000000000000018,
+        "units": "image degrees per neural second",
+        "interpretation": "Minimum-norm neural response-pattern motion. A single oriented pattern does not reveal tangent motion. No body or HS/VS mapping is implied."
+      },
+      "spatialMean": {
+        "available": false,
+        "reason": "insufficient-spatial-signal",
+        "velocity": null,
+        "speed": null,
+        "direction": null,
+        "dt": 0.020000000000000018,
+        "gradientRms": 0,
+        "temporalRms": 1.0211503928279263e-16,
+        "commonModeTemporalRms": 0.1421422358583191,
+        "samples": 2168
+      },
+      "frozenHistory": {
+        "available": false,
+        "reason": "temporal-change-not-explained-by-motion",
+        "velocity": null,
+        "speed": null,
+        "direction": null,
+        "rawVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "rawSpeed": 0,
+        "rawDirection": 0,
+        "explained": 0,
+        "aperture": 0.9714428775550237,
+        "gradientRms": 0.022640315151086703,
+        "temporalRms": 0,
+        "commonModeTemporalRms": 0,
+        "samples": 2168,
+        "dt": 0.020000000000000018,
+        "units": "image degrees per neural second",
+        "interpretation": "Minimum-norm neural response-pattern motion. A single oriented pattern does not reveal tangent motion. No body or HS/VS mapping is implied."
+      },
+      "passed": true
+    }
+  ],
+  "timing": {
+    "neuralIntervalMs": {
+      "count": 8580,
+      "median": 16.231499999994412,
+      "p95": 17.52008300000307,
+      "max": 59.55133299998124
+    },
+    "extractionMs": {
+      "count": 8580,
+      "median": 0.830999999991036,
+      "p95": 1.070832999997947,
+      "max": 49.021332999982405
+    },
+    "decoderMs": {
+      "count": 8294,
+      "median": 0.17283300001872703,
+      "p95": 0.23254200000155834,
+      "max": 11.097999999998137
+    },
+    "conditioningMs": {
+      "count": 99,
+      "median": 830.4170000000013,
+      "p95": 906.9651250000024,
+      "max": 929.7891249999811
+    }
+  },
+  "gates": {
+    "moving": false,
+    "confounds": true,
+    "ablations": true,
+    "rendererAdmission": false,
+    "bodyPromoted": false,
+    "generatorCoverage": false
+  },
+  "interpretation": "Engineered motion equation applied to real signed neural maps. Synthetic evidence; no HS/VS reconstruction or demonstrated body improvement. Every held-out failure retained.",
+  "evidence": {
+    "inputs.f32.gz": {
+      "sha256": "8a6a47f1cad1a917be5698b79218213648db96e6b1a26be19b0c27f9e234bfa6",
+      "bytes": 6605115
+    },
+    "trials.json.gz": {
+      "sha256": "62f8b38e5ef47ab0f00c66f55202283f810e3e9966ddc3c1ce8e699f4ce35a2c",
+      "bytes": 768972
+    },
+    "metadata.json": {
+      "sha256": "1bd9230ea01456c6d1d29af1fd7cdafcac0a11cf3a62e8ad7c26df328efe5350",
+      "bytes": 937787
+    },
+    "calibration.json": {
+      "sha256": "287792571b3c9bb8aa7774de38fc0758c24b880dc6ae14ed9e9b08a13716c845",
+      "bytes": 537241
+    },
+    "summary.pre-coverage.json": {
+      "sha256": "c352490022b3f25d0108b12e1bdef0ac6bec2610f5140d54c0638fd3ba31ed0b",
+      "bytes": 12667
+    }
+  },
+  "generatorCoverage": {
+    "format": "duckfly-neural-flow-coverage",
+    "version": 1,
+    "parameters": {
+      "wavelength": {
+        "declaredInterval": [
+          11,
+          19
+        ],
+        "actualInterval": [
+          17.290221450850368,
+          17.380133613944054
+        ],
+        "occupiedBins": 1,
+        "totalBins": 8,
+        "fractionOfDeclaredSpan": 0.011239020386710763,
+        "passed": false
+      },
+      "speed": {
+        "declaredInterval": [
+          72,
+          108
+        ],
+        "actualInterval": [
+          72.0239476673305,
+          107.94263867195696
+        ],
+        "occupiedBins": 8,
+        "totalBins": 8,
+        "fractionOfDeclaredSpan": 0.9977414167951792,
+        "passed": true
+      },
+      "contrast": {
+        "declaredInterval": [
+          0.4,
+          0.8
+        ],
+        "actualInterval": [
+          0.40881586549803617,
+          0.7909488084726036
+        ],
+        "occupiedBins": 8,
+        "totalBins": 8,
+        "fractionOfDeclaredSpan": 0.9553323574364186,
+        "passed": true
+      },
+      "phase": {
+        "declaredInterval": [
+          0,
+          6.283185307179586
+        ],
+        "actualInterval": [
+          0.18511184303985553,
+          6.235716463808867
+        ],
+        "occupiedBins": 8,
+        "totalBins": 8,
+        "fractionOfDeclaredSpan": 0.9629836340900509,
+        "passed": true
+      }
+    },
+    "angles": [
+      22.5,
+      67.5,
+      112.5,
+      157.5,
+      202.5,
+      247.5,
+      292.5,
+      337.5
+    ],
+    "disjointCalibrationAngles": true,
+    "uniqueSeeds": 30,
+    "familyCounts": {
+      "grating": 30,
+      "edge-on": 30,
+      "edge-off": 30,
+      "blank": 30,
+      "flash": 30,
+      "flicker": 30,
+      "static-grating": 30,
+      "counterphase": 30,
+      "illumination": 30
+    },
+    "passed": false,
+    "interpretation": "Generator coverage admission only; neither physiology nor control validation. Actual ranges are reported instead of inferring breadth from PRNG formulas."
+  },
+  "coverageAnnotation": {
+    "addedAt": "2026-09-11T02:37:32.851Z",
+    "addedAfterExecution": true,
+    "sourceSha256": "3b67032b2e20462f387db5242671d87c0e0b8881e02797b2f07fa9fe2dbe89d7",
+    "checkerSha256": "321f64c866121fc9de04381332bcbd31b58646abd950211172ad2aba7052ef98",
+    "originalSummary": "summary.pre-coverage.json",
+    "originalSummarySha256": "c352490022b3f25d0108b12e1bdef0ac6bec2610f5140d54c0638fd3ba31ed0b",
+    "admissionBeforeCoverageAudit": false,
+    "finding": "Adjacent LCG seeds covered only a narrow first-draw wavelength interval. Original measured outcomes remain intact. Broad-frequency admission requires a separately identified stratified confirmation."
+  }
+}

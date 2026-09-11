@@ -2,12 +2,12 @@ import { validateScene, COLORS } from './scene.js';
 import { propProfile } from './prop-behavior.js';
 
 export const SETUP_MODES = [
-  ['target', 'Follow a beacon', 'The duck-eye image excites fly neurons, which request movement toward a pink beacon.'],
-  ['flock', 'Follow other ducks', 'Each duck has its own brain and follows the blue body markings of its companions.'],
-  ['brain', 'Brain stimulation', 'Use the live brain controls to stimulate the circuit. Some research scenes supply a preset input.'],
+  ['target', 'Follow a beacon', 'A pink beacon in the camera image supplies input to the fly circuit.'],
+  ['flock', 'Follow other ducks', 'Blue markings on other ducks supply input to this duck’s fly circuit.'],
+  ['brain', 'Brain stimulation', 'Send signals directly with the brain controls. Some scene presets also supply a continuous input.'],
   ['light', 'Seek brightness', 'Brightness in the eye image supplies the neural input.'],
   ['odor', 'Follow a scent', 'A simulated scent field supplies the neural input instead of a visual target.'],
-  ['manual', 'Manual control', 'You issue movement commands directly. The fly connections below are saved but bypassed.'],
+  ['manual', 'Manual control', 'You issue movement commands directly. Your connections are saved but inactive in this mode.'],
   ['reactive', 'Compare: camera rules', 'A simple image rule controls movement directly, bypassing the fly circuit.'],
   ['reflex', 'Compare: motion reflex', 'Image motion controls movement directly, bypassing the fly circuit.'],
 ];
@@ -99,7 +99,7 @@ export function setupWarnings(scene, original) {
   if (original.lab?.scripted && scene.lab?.id === 'stop-go' && !scene.lab.scripted) warnings.push('Your object settings replace the preset encounter path. Its brain input and stop-loop condition are preserved.');
   if (scene.ducks.some(d => d.mode === 'target') && !scene.props.some(p => p.kind === 'target')) warnings.push('Beacon-following ducks need a visible pink cue. Add a beacon or choose another behavior.');
   if (scene.ducks.some(d => d.mode === 'flock') && scene.ducks.length < 2) warnings.push('Following companions needs another duck.');
-  if (scene.ducks.some(d => d.source === 'webcam')) warnings.push('Webcam vision needs camera access after launch. The duck follows what that camera sees, not the arena preview.');
-  if (scene.ducks.some(d => d.eye === 'none' || d.silence !== 'none' || !d.motorEnabled || !d.motorGain)) warnings.push('This scene includes a covered eye, a neural intervention, or a disconnected body. Check the advanced brain settings if the duck stays still.');
+  if (scene.ducks.some(d => d.source === 'webcam')) warnings.push('Webcam vision needs camera access after launch. The camera image replaces the duck’s simulated view.');
+  if (scene.ducks.some(d => d.eye === 'none' || d.silence !== 'none' || !d.motorEnabled || !d.motorGain)) warnings.push('Some vision or movement pathways are disabled. Check Advanced settings if the duck stays still.');
   return warnings;
 }

@@ -9,6 +9,8 @@ import { TemporalLoop } from '../../../shared/vision/temporal/loop.js';
 import { scheduledMotion, labInput } from './guided-labs.js';
 import { BodySkills } from './body-skills.js';
 import { patchBrainMapping, mapBrainCommand, automaticKickEnabled } from './brain-mapping.js';
+import { validateRecordedEvents } from './recorded-events.js';
+import { TriggerActions } from './trigger-actions.js';
 const MAX_DUCK_EDITS=2000;
 
 export class Experiment {
@@ -18,7 +20,7 @@ export class Experiment {
     for(const p of next.props)if(p.behavior)p.behavior.startedAt=0;
     const world=new LabWorld(r.mj,r.template,r.session,r.Tensor,next,r.skillSessions);
     this.world?.dispose();this.world=world;this.scene=next;this.tick=0;this.replaying=false;this.recordedUntilTick=0;this.cost=0;this.forceFrames=false;
-    this.agents=new Map(next.ducks.map(d=>[d.id,{brain:new Brain(r.circuit,`${next.seed}/${d.id}`),skills:new BodySkills(),eyes:new VisualSystem(),webcam:new VisualSystem(),adapter:new SensoryAdapter(d.adapter),vision:null,neural:null,input:null}]));
+    this.agents=new Map(next.ducks.map(d=>[d.id,{brain:new Brain(r.circuit,`${next.seed}/${d.id}`),skills:new BodySkills(),connections:new TriggerActions(),connectionStatus:null,eyes:new VisualSystem(),webcam:new VisualSystem(),adapter:new SensoryAdapter(d.adapter),vision:null,neural:null,input:null}]));
     this.history=[];this.events=[];this.frameTape.clear();this.duckEdits=[];this.editCursor=0;this.nextEditSequence=1;this.scores={};this.branchNumber=0;this.preparedTick=-1;
     this.applySettings();this.remember();
   }
@@ -37,6 +39,8 @@ export class Experiment {
     if(this.duckEdits.length>MAX_DUCK_EDITS){this.history=[this.checkpoint()];this.duckEdits=[];this.trimBefore(this.tick);}
   }
   applyDuckScene(next,id){
+    const previous=this.scene.ducks.find(d=>d.id===id),updated=next.ducks.find(d=>d.id===id);
+    if(previous&&['source','mode','eye'].some(key=>previous[key]!==updated[key])||previous?.connections?.enabled!==updated?.connections?.enabled)this.agents.get(id)?.connections.reset();
     this.scene=next;this.applySettings();
     const a=this.agents.get(id),d=this.scene.ducks.find(d=>d.id===id);
     if(a?.temporal&&(d.eye!=='both'||d.source!=='eyes'))a.temporal.invalidate(this.tick*.02);
@@ -127,20 +131,32 @@ export class Experiment {
       command=mapBrainCommand(command,d,provenance);
       if(d.mode==='manual'){provenance.forward=provenance.yaw='Manual override';command={vx:d.manual[0],yaw:d.manual[1],head:input.head};}
       if(d.mode==='reactive'||d.mode==='reflex'){provenance.forward=provenance.yaw='Reactive camera rule';command={vx:(d.mode==='reactive'?input.gate:!input.fresh)||input.loomL+input.loomR>.2?0:.3,yaw:d.mode==='reflex'?0:clamp((a.vision?.target.bearing??0)*.7,-.65,.65),head:input.head};}
+      const connected=!['manual','reactive','reflex'].includes(d.mode)?a.connections.step(d.connections,{duck:d,neural,input,body,vision:a.vision,time:state.time}):null;
+      a.connectionStatus=connected;
+      if(connected){
+        command=connected.command;
+        provenance.forward=provenance.yaw=connected.gate??(connected.paused?'Mapped pause':connected.idle?'Connections idle':connected.requests.map(r=>r.trigger+' → '+r.action).join(' · '));
+        provenance.head='User trigger connections';
+      }
       if(a.temporal){command=a.temporal.motor(command,body,state.time,gfEvent);if(a.temporal.feedback.state.held)provenance.forward=provenance.yaw='Experimental GF hazard hold';}
       if(d.silence==='output'){provenance.forward=provenance.yaw='Output intervention';command={...command,vx:0,yaw:0};}
       if(!d.motorEnabled){provenance.forward=provenance.yaw='Body command connection off';command={...command,vx:0,yaw:0};}
       else if(d.motorGain!==1){provenance.gain=d.motorGain;command={...command,vx:command.vx*d.motorGain,yaw:command.yaw*d.motorGain};
         if(d.motorGain===0)provenance.forward=provenance.yaw='Body command strength is zero';}
-      const kickOnSight=automaticKickEnabled(d,this.scene.version);
+      const kickOnSight=!connected&&automaticKickEnabled(d,this.scene.version);
       const skillEnabled=d.motorEnabled&&d.motorGain>0&&d.silence!=='output'&&(this.scene.version<6||!a.temporal?.feedback.state.held);
+      const connectionSkillEnabled=!!connected&&!connected.gate&&!connected.paused&&skillEnabled;
+      if(connected?.skill&&connectionSkillEnabled&&this.runtime.skillSessions?.[connected.skill.kind==='recover'?'standing':'kick']){
+        if(a.skills.request(connected.skill.kind,body)){a.skills.source='connection';a.skills.connectionId=connected.skill.connection;}
+      }
+      if(a.skills.source==='connection'&&(!connectionSkillEnabled||!d.connections?.rules.some(r=>r.id===a.skills.connectionId&&r.enabled&&r.action===(a.skills.phase==='recover'?'recover':'kick')))){a.skills.reset();}
       const skill=a.skills.step(body,neural,{...input,targetVisible:!!a.vision?.target.visible},{enabled:skillEnabled&&(this.scene.version<6||a.skills.source!=='vision'||kickOnSight),kickOnSight});
       if(skill.active||kickOnSight&&skillEnabled){
         command={vx:0,yaw:0,head:[0,0,0,0],policy:skill.policy,clearFall:!!skill.clearFall};
         provenance.forward=provenance.yaw=skill.active?a.skills.message:neural.gfHeld?'GF stop reflex active':!input.fresh?'Visual kick waits for a fresh image':!a.skills.armed?'Hide and reveal the cue to kick again':'Visual kick experiment · waiting for a neural response';
       }
       commands[d.id]=command;
-      causes.push({id:d.id,provenance,input:structuredClone(input),vision:structuredClone(a.vision),neural:structuredClone(neural),command:structuredClone(command),gfEvent,skill:a.skills.checkpoint(),temporal:a.temporal?.status(state.time)??null});
+      causes.push({id:d.id,provenance,input:structuredClone(input),vision:structuredClone(a.vision),neural:structuredClone(neural),command:structuredClone(command),gfEvent,skill:a.skills.checkpoint(),temporal:a.temporal?.status(state.time)??null,connections:structuredClone(connected)});
     }
     const next=await this.world.step(commands);this.cost=next.cost;this.tick++;
     if(!this.replaying)this.recordedUntilTick=this.tick;
@@ -166,14 +182,14 @@ export class Experiment {
     return this.state();
   }
   state(){return {body:this.world.state(this.cost??0),tick:this.tick,scene:this.scene,branch:this.branchNumber,replaying:this.replaying,
-    agents:Object.fromEntries([...this.agents].map(([id,a])=>[id,{vision:a.vision,input:a.input,neural:a.neural,skill:a.skills.checkpoint(),temporal:a.temporal?.status(this.tick*.02)??null}])),
+    agents:Object.fromEntries([...this.agents].map(([id,a])=>[id,{vision:a.vision,input:a.input,neural:a.neural,connections:a.connectionStatus,skill:a.skills.checkpoint(),temporal:a.temporal?.status(this.tick*.02)??null}])),
     scores:this.scores,history:this.history.map(h=>({tick:h.tick,time:h.tick*.02})),event:this.events.findLast(e=>e.tick<=this.tick)??null};}
   recordingView(){
     const tick=[...this.frameTape.keys()].filter(t=>t<this.tick).sort((a,b)=>b-a)[0];
     return {frames:tick===undefined?{}:this.frameTape.get(tick),events:this.events.filter(e=>e.tick<=this.tick)};
   }
   checkpoint(){return {version:5,editCursor:this.editCursor,scene:structuredClone(this.scene),tick:this.tick,branch:this.branchNumber,forceFrames:this.forceFrames,world:this.world.checkpoint(),scores:structuredClone(this.scores),
-    agents:Object.fromEntries([...this.agents].map(([id,a])=>[id,{brain:a.brain.checkpoint(),skills:a.skills.checkpoint(),eyes:a.eyes.checkpoint(),webcam:a.webcam.checkpoint(),adapter:a.adapter.checkpoint(),vision:structuredClone(a.vision),input:structuredClone(a.input),neural:structuredClone(a.neural),temporal:a.temporal?.checkpoint()??null}]))};}
+    agents:Object.fromEntries([...this.agents].map(([id,a])=>[id,{brain:a.brain.checkpoint(),skills:a.skills.checkpoint(),connections:a.connections.checkpoint(),eyes:a.eyes.checkpoint(),webcam:a.webcam.checkpoint(),adapter:a.adapter.checkpoint(),vision:structuredClone(a.vision),input:structuredClone(a.input),neural:structuredClone(a.neural),temporal:a.temporal?.checkpoint()??null}]))};}
   trimFrames(){
     // Forced captures can be more frequent than the regular cadence. Keep a
     // complete replay window below the recording format's frame-count bound.
@@ -200,7 +216,7 @@ export class Experiment {
     for(const p of this.world.props)Object.assign(p,structuredClone(scene.props.find(s=>s.id===p.id)));
     this.world.restore(checkpoint.world);this.tick=checkpoint.tick;this.editCursor=checkpoint.editCursor??0;this.branchNumber=checkpoint.branch;this.forceFrames=checkpoint.forceFrames===true;this.scores=structuredClone(checkpoint.scores);
     this.preparedTick=-1;this.applySettings();
-    for(const [id,a] of this.agents){const s=checkpoint.agents[id];a.brain.restore(s.brain);a.skills.restore(s.skills);a.eyes.restore(s.eyes);a.webcam.restore(s.webcam);a.adapter.restore(s.adapter);a.vision=structuredClone(s.vision);a.input=structuredClone(s.input);a.neural=structuredClone(s.neural);if(a.temporal)a.temporal.restore(s.temporal);}
+    for(const [id,a] of this.agents){const s=checkpoint.agents[id];a.brain.restore(s.brain);a.skills.restore(s.skills);a.connections.restore(s.connections);a.connectionStatus=null;a.eyes.restore(s.eyes);a.webcam.restore(s.webcam);a.adapter.restore(s.adapter);a.vision=structuredClone(s.vision);a.input=structuredClone(s.input);a.neural=structuredClone(s.neural);if(a.temporal)a.temporal.restore(s.temporal);}
     this.replaying=true;this.replayUntil=this.recordedUntilTick;return this.state();
   }
   rewind(tick){const checkpoint=this.history.find(h=>h.tick===tick);if(!checkpoint)throw Error('That checkpoint is no longer retained');return this.restore(checkpoint);}
@@ -210,6 +226,7 @@ export class Experiment {
   }
   import(recording){
     if(recording.format!=='duckfly-recording'||![1,2,3,4,5].includes(recording.version)||!Array.isArray(recording.history)||recording.history.length>121||!Array.isArray(recording.frames)||recording.frames.length>610)throw Error('Invalid recording');
+    const events=validateRecordedEvents(recording.events??[],{duckIds:recording.checkpoint?.scene?.ducks?.map(d=>d.id),maximumTick:recording.recordedUntilTick??recording.checkpoint?.tick});
     const edits=recording.version===5?recording.duckEdits:[];
     if(!Array.isArray(edits)||edits.length>MAX_DUCK_EDITS)throw Error('Invalid duck edit timeline');
     let lastSequence=0,lastTick=-1;
@@ -218,7 +235,7 @@ export class Experiment {
       validateScene({...recording.checkpoint.scene,ducks:recording.checkpoint.scene.ducks.map(d=>d.id===edit.id?patchBrainMapping(d,edit.patch):d)});
       lastSequence=edit.sequence;lastTick=edit.tick;
     }
-    this.configure(recording.checkpoint.scene);this.recordedUntilTick=recording.recordedUntilTick??recording.checkpoint.tick;this.restore(recording.checkpoint);this.history=recording.history;this.events=recording.events??[];
+    this.configure(recording.checkpoint.scene);this.recordedUntilTick=recording.recordedUntilTick??recording.checkpoint.tick;this.restore(recording.checkpoint);this.history=recording.history;this.events=structuredClone(events);
     this.duckEdits=structuredClone(edits);this.nextEditSequence=Math.max(this.editCursor,lastSequence,...this.history.map(h=>h.editCursor??0))+1;
     this.frameTape=new Map(recording.frames.map(([tick,frames])=>[tick,Object.fromEntries(Object.entries(frames).map(([id,value])=>{
       return [id,deserializeFrame(value)];

@@ -1,0 +1,313 @@
+{
+  "format": "duckfly-trigger-connections-browser",
+  "receipts": [
+    {
+      "id": "cue-workshop",
+      "time": 3.579999999999946,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "distance": 0.23260787572711542,
+          "fallen": false,
+          "command": [
+            0.3,
+            0.34408716364029757
+          ]
+        }
+      ],
+      "rules": [
+        [
+          {
+            "id": "connection-1",
+            "trigger": "forward",
+            "action": "walk",
+            "threshold": 9,
+            "strength": 1,
+            "hold": 0,
+            "enabled": true
+          },
+          {
+            "id": "connection-2",
+            "trigger": "forward",
+            "action": "steer",
+            "threshold": 6,
+            "strength": 0.8,
+            "hold": 0,
+            "enabled": true
+          },
+          {
+            "id": "connection-3",
+            "trigger": "seen",
+            "action": "look-cue",
+            "threshold": 1,
+            "strength": 1,
+            "hold": 0,
+            "enabled": true
+          }
+        ]
+      ],
+      "recordedSignals": [
+        [
+          {
+            "id": "connection-1",
+            "trigger": "forward",
+            "source": "Fly circuit",
+            "action": "walk",
+            "value": 107.20650692502147,
+            "threshold": 9,
+            "matched": true,
+            "active": true,
+            "blocked": null
+          },
+          {
+            "id": "connection-2",
+            "trigger": "forward",
+            "source": "Fly circuit",
+            "action": "steer",
+            "value": 107.20650692502147,
+            "threshold": 6,
+            "matched": true,
+            "active": true,
+            "blocked": null
+          },
+          {
+            "id": "connection-3",
+            "trigger": "seen",
+            "source": "Camera rule",
+            "action": "look-cue",
+            "value": 1,
+            "threshold": 1,
+            "matched": true,
+            "active": true,
+            "blocked": null
+          }
+        ]
+      ]
+    },
+    {
+      "id": "lookout",
+      "time": 2.0399999999999787,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "distance": 0.004129858283350013,
+          "fallen": false,
+          "command": [
+            0,
+            0
+          ]
+        }
+      ],
+      "rules": [
+        [
+          {
+            "id": "connection-1",
+            "trigger": "forward",
+            "action": "look-cue",
+            "threshold": 6,
+            "strength": 1,
+            "hold": 0,
+            "enabled": true
+          },
+          {
+            "id": "connection-2",
+            "trigger": "lost",
+            "action": "look-left",
+            "threshold": 1,
+            "strength": 0.7,
+            "hold": 0,
+            "enabled": true
+          }
+        ]
+      ],
+      "recordedSignals": [
+        [
+          {
+            "id": "connection-1",
+            "trigger": "forward",
+            "source": "Fly circuit",
+            "action": "look-cue",
+            "value": 113.63595307599026,
+            "threshold": 6,
+            "matched": true,
+            "active": true,
+            "blocked": null
+          },
+          {
+            "id": "connection-2",
+            "trigger": "lost",
+            "source": "Camera rule",
+            "action": "look-left",
+            "value": 0,
+            "threshold": 1,
+            "matched": false,
+            "active": false,
+            "blocked": null
+          }
+        ]
+      ]
+    },
+    {
+      "id": "crossed-wires",
+      "time": 2.0399999999999787,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "distance": 0.25278594296598933,
+          "fallen": false,
+          "command": [
+            0.3,
+            0.325
+          ]
+        },
+        {
+          "id": "duck-2",
+          "distance": 0.28453623776259235,
+          "fallen": false,
+          "command": [
+            0,
+            0.325
+          ]
+        }
+      ],
+      "rules": [
+        [
+          {
+            "id": "connection-1",
+            "trigger": "left",
+            "action": "left",
+            "threshold": 6,
+            "strength": 0.5,
+            "hold": 0,
+            "enabled": true
+          },
+          {
+            "id": "connection-2",
+            "trigger": "right",
+            "action": "right",
+            "threshold": 6,
+            "strength": 0.5,
+            "hold": 0,
+            "enabled": true
+          }
+        ],
+        [
+          {
+            "id": "connection-1",
+            "trigger": "left",
+            "action": "right",
+            "threshold": 6,
+            "strength": 0.5,
+            "hold": 0,
+            "enabled": true
+          },
+          {
+            "id": "connection-2",
+            "trigger": "right",
+            "action": "left",
+            "threshold": 6,
+            "strength": 0.5,
+            "hold": 0,
+            "enabled": true
+          }
+        ]
+      ],
+      "recordedSignals": [
+        [
+          {
+            "id": "connection-1",
+            "trigger": "left",
+            "source": "Fly circuit",
+            "action": "left",
+            "value": 9.688417626814594,
+            "threshold": 6,
+            "matched": true,
+            "active": true,
+            "blocked": null
+          },
+          {
+            "id": "connection-2",
+            "trigger": "right",
+            "source": "Fly circuit",
+            "action": "right",
+            "value": -9.688417626814594,
+            "threshold": 6,
+            "matched": false,
+            "active": false,
+            "blocked": null
+          }
+        ],
+        [
+          {
+            "id": "connection-1",
+            "trigger": "left",
+            "source": "Fly circuit",
+            "action": "right",
+            "value": -92.25100924073865,
+            "threshold": 6,
+            "matched": false,
+            "active": false,
+            "blocked": null
+          },
+          {
+            "id": "connection-2",
+            "trigger": "right",
+            "source": "Fly circuit",
+            "action": "left",
+            "value": 92.25100924073865,
+            "threshold": 6,
+            "matched": true,
+            "active": true,
+            "blocked": null,
+            "limited": "Forward held: Target absent"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "trigger-kick",
+      "time": 0.7200000000000005,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "distance": 0.007155206951944237,
+          "fallen": false,
+          "command": [
+            0,
+            0
+          ]
+        }
+      ],
+      "rules": [
+        [
+          {
+            "id": "connection-1",
+            "trigger": "forward",
+            "action": "kick",
+            "threshold": 6,
+            "strength": 1,
+            "hold": 0,
+            "enabled": true
+          }
+        ]
+      ],
+      "recordedSignals": [
+        [
+          {
+            "id": "connection-1",
+            "trigger": "forward",
+            "source": "Fly circuit",
+            "action": "kick",
+            "value": 109.62774670810329,
+            "threshold": 6,
+            "matched": true,
+            "active": true,
+            "blocked": null
+          }
+        ]
+      ]
+    }
+  ],
+  "errors": [],
+  "passed": true
+}
