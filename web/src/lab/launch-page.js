@@ -18,6 +18,10 @@ export function launchPageMarkup() {
         <p class="launch-mapping-note">Build connections in the setup wizard or the <strong>Brain → duck</strong> editor, with live activity and explanations.</p>
         <div class="launch-actions"><button id="launch-enter" type="button">Open studio ${arrow}</button><button id="launch-beacon" type="button" disabled>Try a connection <span aria-hidden="true">↗</span></button></div>
         <p id="launch-status" class="launch-status" role="status">Loading the simulator…</p>
+        <nav class="launch-links" aria-label="Project links">
+          <a href="https://x.com/amazedsaint" target="_blank" rel="noopener noreferrer">@amazedsaint on X <span aria-hidden="true">↗</span></a>
+          <a href="https://github.com/amazedsaint/duckfly" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        </nav>
       </div>
       <figure class="launch-art" aria-label="Animated robot duck and fly illustration">
         <div class="launch-art-disc" aria-hidden="true"></div>
