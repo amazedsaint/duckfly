@@ -4,7 +4,7 @@
 .launch-page button:focus-visible, .launch-page a:focus-visible { outline: 3px solid #9b2dad; outline-offset: 5px; }
 .launch-page button:disabled { opacity: .5; }
 .launch-page svg { display: block; }
-.launch-topline { display: flex; align-items: center; justify-content: space-between; gap: 12px; max-width: 1360px; margin: auto; padding: 20px 54px 0; }
+.launch-topline { position: relative; z-index: 6; display: grid; grid-template-columns: minmax(0,1fr) auto auto; align-items: center; gap: 12px; max-width: 1360px; margin: auto; padding: 20px 54px 0; }
 .launch-edition { display: flex; align-items: center; gap: 9px; font-size: 11px; font-weight: 700; letter-spacing: .4px; }
 .launch-edition > span { color: #c64b7c; font-size: 26px; }
 .launch-page #launch-motion { display: flex; align-items: center; gap: 7px; background: transparent; border: 1px solid #22252450; border-radius: 99px; padding: 6px 11px; font-size: 10px; min-height: 32px; }
@@ -30,7 +30,7 @@
 .launch-page #launch-beacon { display: flex; gap: 7px; align-items: center; background: transparent; border: 0; border-bottom: 1px solid var(--launch-ink); border-radius: 0; padding: 8px 0 5px; font-size: 12px; min-height: 37px; }
 .launch-page #launch-beacon:hover:enabled { color: #9f2a53; border-color: #9f2a53; }
 .launch-status { color: #62624f; font-size: 10px; line-height: 1.5; margin: 17px 0 0; min-height: 15px; }
-.launch-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; grid-column: 1/-1; }
+.launch-links { display: flex; flex-wrap: wrap; gap: 10px; grid-column: 2; grid-row: 1; }
 .launch-links a { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 8px 12px; border: 1px solid #22252450; border-radius: 99px; background: #fffdf3; color: var(--launch-ink); font-size: 11px; font-weight: 700; text-decoration: none; }
 .launch-links a:hover { background: var(--launch-cyan); border-color: var(--launch-ink); color: var(--launch-ink); }
 .launch-links a > span { font-size: 14px; line-height: 1; }
@@ -120,7 +120,8 @@ body.launch-active .topbar .app-menu .menu-content { color: #e4ece5; }
   .launch-connection-demo { padding-inline: 15px; }
 }
 @media (max-width: 760px) {
-  .launch-topline { padding: 16px 22px 0; }
+  .launch-topline { grid-template-columns: minmax(0,1fr) auto; padding: 16px 22px 0; }
+  .launch-links { grid-column: 1/-1; justify-content: flex-end; }
   .launch-edition { font-size: 9px; letter-spacing: 0; gap: 6px; }
   .launch-edition > span { font-size: 22px; }
   .launch-hero { grid-template-columns: 1fr; padding: 29px 28px 30px; gap: 12px; max-width: 560px; }

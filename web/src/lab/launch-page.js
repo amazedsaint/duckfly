@@ -8,7 +8,14 @@ const play = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="m6 3 11 7-11 
 /** The launch artwork is deliberately separate from the running simulation. */
 export function launchPageMarkup() {
   return `<section id="launch-page" class="launch-page launch-is-still" data-motion="paused" aria-labelledby="launch-title" tabindex="-1" hidden>
-    <div class="launch-topline"><span class="launch-edition"><span aria-hidden="true">✳</span> A studio for robot behavior</span><button id="launch-motion" type="button">${pause}<span>Pause animation</span></button></div>
+    <div class="launch-topline">
+      <span class="launch-edition"><span aria-hidden="true">✳</span> A studio for robot behavior</span>
+      <nav class="launch-links" aria-label="Project links">
+        <a href="https://x.com/amazedsaint" target="_blank" rel="noopener noreferrer">@amazedsaint on X <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/amazedsaint/duckfly" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+      <button id="launch-motion" type="button">${pause}<span>Pause animation</span></button>
+    </div>
     <div class="launch-hero">
       <div class="launch-copy">
         <p class="launch-kicker"><span class="launch-live-dot" aria-hidden="true"></span> CONNECT A FLY CIRCUIT TO A ROBOT</p>
@@ -18,10 +25,6 @@ export function launchPageMarkup() {
         <p class="launch-mapping-note">Build connections in the setup wizard or the <strong>Brain → duck</strong> editor, with live activity and explanations.</p>
         <div class="launch-actions"><button id="launch-enter" type="button">Open studio ${arrow}</button><button id="launch-beacon" type="button" disabled>Try a connection <span aria-hidden="true">↗</span></button></div>
         <p id="launch-status" class="launch-status" role="status">Loading the simulator…</p>
-        <nav class="launch-links" aria-label="Project links">
-          <a href="https://x.com/amazedsaint" target="_blank" rel="noopener noreferrer">@amazedsaint on X <span aria-hidden="true">↗</span></a>
-          <a href="https://github.com/amazedsaint/duckfly" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-        </nav>
       </div>
       <figure class="launch-art" aria-label="Animated robot duck and fly illustration">
         <div class="launch-art-disc" aria-hidden="true"></div>
