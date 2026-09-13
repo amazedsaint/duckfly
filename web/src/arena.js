@@ -7,8 +7,10 @@ export class Arena {
     this.host = host;
     this.follow = true;
     this.target = new THREE.Vector3(0, 0.12, 0);
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    const phone = matchMedia('(pointer: coarse)').matches && Math.min(screen.width, screen.height) < 768;
+    // Limit the phone's display buffer, not the calibrated eye render targets.
+    this.renderer = new THREE.WebGLRenderer({ antialias: !phone, alpha: true });
+    this.renderer.setPixelRatio(Math.min(devicePixelRatio, phone ? 1.5 : 2));
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFShadowMap;
     this.renderer.setClearColor(0xdce4df);

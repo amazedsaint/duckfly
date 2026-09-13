@@ -1,0 +1,61 @@
+{"data":{"launch":"http:\/\/127.0.0.1:5196\/?ar=1"},"time":1789251111.984592}
+{"data":{"type":"features","data":{"ua":"Mozilla\/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit\/605.1.15 (KHTML, like Gecko) Mobile\/15E148","wasm":"object","isolated":false,"shared":"undefined","decompress":"function"}},"time":1789251112.627233}
+{"data":{"type":"worker-created","data":"http:\/\/127.0.0.1:5196\/assets\/lab.worker-gKJ-E8XA.js"},"time":1789251112.73314}
+{"time":1789251112.7627029,"data":{"type":"fetch","data":"\/assets\/scene.json.gz"}}
+{"time":1789251112.7630439,"data":{"type":"fetch","data":"\/assets\/Brain\/circuit.json"}}
+{"data":{"type":"response","data":{"status":200,"url":"\/assets\/scene.json.gz"}},"time":1789251112.7808619}
+{"time":1789251112.782681,"data":{"type":"response","data":{"url":"\/assets\/Brain\/circuit.json","status":200}}}
+{"time":1789251112.782861,"data":{"type":"worker-message","data":{"type":"loading","message":"Loading the physics engine…"}}}
+{"time":1789251113.406374,"data":{"type":"worker-message","data":{"message":"Downloading fly circuit · 0.4 MB","type":"loading"}}}
+{"data":{"type":"worker-message","data":{"type":"loading","message":"Downloading robot physics · 0.4 MB"}},"time":1789251113.4155741}
+{"data":{"type":"worker-message","data":{"type":"loading","message":"Downloading walking controller · 0.0 MB"}},"time":1789251113.415967}
+{"time":1789251113.494679,"data":{"type":"worker-message","data":{"message":"Preparing robot physics…","type":"loading"}}}
+{"data":{"type":"worker-message","data":{"type":"loading","message":"Starting the walking controller…"}},"time":1789251113.6170421}
+{"time":1789251114.0114222,"data":{"type":"worker-message","data":{"type":"loading","message":"Loading the balance controller…"}}}
+{"data":{"type":"worker-message","data":{"type":"loading","message":"Downloading balance controller · 0.1 MB"}},"time":1789251114.0362539}
+{"data":{"type":"worker-message","data":{"type":"loading","message":"Loading the kick controller…"}},"time":1789251114.0704751}
+{"data":{"type":"worker-message","data":{"type":"loading","message":"Downloading kick controller · 0.0 MB"}},"time":1789251114.074873}
+{"data":{"type":"worker-message","data":{"type":"loading","message":"Connecting vision to the fly circuit…"}},"time":1789251114.1347342}
+{"time":1789251114.3191009,"data":{"type":"worker-message","data":{"type":"loading","message":"Building the scene…"}}}
+{"time":1789251114.627486,"data":{"type":"status","data":{"ready":false,"home":"Building the scene…","loading":"Building the scene…","launch":"Building the scene…","bridge":false}}}
+{"time":1789251114.9943581,"data":{"type":"worker-message","data":{"type":"ready"}}}
+{"data":{"type":"status","data":{"launch":"Ready to start · No account needed","loading":"Building the scene…","home":"Ready · Runs on your device","ready":true,"bridge":false}},"time":1789251116.627789}
+{"data":{"type":"status","data":{"launch":"Ready to start · No account needed","loading":"Building the scene…","home":"Ready · Runs on your device","ready":true,"bridge":false}},"time":1789251118.627902}
+{"data":{"type":"status","data":{"bridge":false,"home":"Ready · Runs on your device","loading":"Building the scene…","ready":true,"launch":"Ready to start · No account needed"}},"time":1789251120.6283178}
+{"time":1789251122.6284208,"data":{"type":"status","data":{"bridge":false,"home":"Ready · Runs on your device","loading":"Building the scene…","ready":true,"launch":"Ready to start · No account needed"}}}
+{"data":{"type":"status","data":{"ready":true,"loading":"Building the scene…","home":"Ready · Runs on your device","bridge":false,"launch":"Ready to start · No account needed"}},"time":1789251124.6293201}
+{"time":1789251126.6294899,"data":{"type":"status","data":{"bridge":false,"loading":"Building the scene…","home":"Ready · Runs on your device","launch":"Ready to start · No account needed","ready":true}}}
+{"data":{"type":"error","data":{"message":"TypeError: Argument 1 ('shader') to WebGL2RenderingContext.shaderSource must be an instance of WebGLShader","line":4209,"file":"http:\/\/127.0.0.1:5196\/assets\/main-K7kneHFu.js","stack":"shaderSource@[native code]\nVl@http:\/\/127.0.0.1:5196\/assets\/main-K7kneHFu.js:4209:9803\nSu@http:\/\/127.0.0.1:5196\/assets\/main-K7kneHFu.js:4253:30\nb@http:\/\/127.0.0.1:5196\/assets\/main-K7kneHFu.js:4260:12165\nlt@http:\/\/127.0.0.1:5196\/assets\/main-K7kneHFu.js:4311:39179\npt@http:\/\/127.0.0.1:5196\/assets\/main-K7kneHFu.js:4311:43363\n@http:\/\/127.0.0.1:5196\/assets\/main-K7kneHFu.js:4311:29478\nb@http:\/\/127.0.0.1:5196\/assets\/main-K7kneHFu.js:4287:6459\nb@http:\/\/127.0.0.1:5196\/assets\/main-K7kneHFu.js:4287:6563\nb@http:\/\/127.0.0.1:5196\/assets\/main-K7kneHFu.js:4287:6563\n@http:\/\/127.0.0.1:5196\/assets\/main-K7kneHFu.js:4287:3790\n@http:\/\/127.0.0.1:5196\/assets\/main-K7kneHFu.js:4311:33924\n@http:\/\/127.0.0.1:5196\/assets\/main-K7kneHFu.js:4395:46799\net@http:\/\/127.0.0.1:5196\/assets\/main-K7kneHFu.js:4311:32305\ni@http:\/\/127.0.0.1:5196\/assets\/main-K7kneHFu.js:96:40927"}},"time":1789251128.411305}
+{"data":{"type":"status","data":{"launch":"Ready to start · No account needed","home":"Ready · Runs on your device","loading":"Building the scene…","ready":true,"bridge":false}},"time":1789251128.7074151}
+{"data":{"type":"status","data":{"bridge":false,"loading":"Building the scene…","home":"Ready · Runs on your device","ready":true,"launch":"Ready to start · No account needed"}},"time":1789251130.707634}
+{"data":{"type":"status","data":{"launch":"Ready to start · No account needed","home":"Ready · Runs on your device","loading":"Building the scene…","bridge":false,"ready":true}},"time":1789251132.7079091}
+{"data":{"type":"status","data":{"bridge":false,"loading":"Building the scene…","home":"Ready · Runs on your device","launch":"Ready to start · No account needed","ready":true}},"time":1789251134.7081041}
+{"time":1789251136.878226,"data":{"type":"status","data":{"bridge":false,"loading":"Building the scene…","home":"Ready · Runs on your device","launch":"Ready to start · No account needed","ready":true}}}
+{"data":{"type":"status","data":{"launch":"Ready to start · No account needed","home":"Ready · Runs on your device","loading":"Building the scene…","bridge":false,"ready":true}},"time":1789251138.8779302}
+{"time":1789251745.2880549,"data":{"type":"status","data":{"launch":"Ready to start · No account needed","loading":"Building the scene…","home":"Ready · Runs on your device","ready":true,"bridge":false}}}
+{"time":1789251747.289665,"data":{"type":"status","data":{"bridge":false,"loading":"Building the scene…","home":"Ready · Runs on your device","ready":true,"launch":"Ready to start · No account needed"}}}
+{"time":1789251749.291147,"data":{"type":"status","data":{"launch":"Ready to start · No account needed","home":"Ready · Runs on your device","loading":"Building the scene…","bridge":false,"ready":true}}}
+{"data":{"type":"status","data":{"bridge":false,"loading":"Building the scene…","home":"Ready · Runs on your device","ready":true,"launch":"Ready to start · No account needed"}},"time":1789251751.2912741}
+{"time":1789251754.4897652,"data":{"type":"status","data":{"bridge":false,"loading":"Building the scene…","home":"Ready · Runs on your device","ready":true,"launch":"Ready to start · No account needed"}}}
+{"data":{"type":"status","data":{"bridge":false,"loading":"Building the scene…","home":"Ready · Runs on your device","launch":"Ready to start · No account needed","ready":true}},"time":1789251755.3469748}
+{"time":1789251757.402447,"data":{"type":"status","data":{"launch":"Ready to start · No account needed","home":"Ready · Runs on your device","loading":"Building the scene…","bridge":false,"ready":true}}}
+{"data":{"type":"status","data":{"launch":"Ready to start · No account needed","home":"Ready · Runs on your device","loading":"Building the scene…","bridge":false,"ready":true}},"time":1789251759.299814}
+{"data":{"type":"status","data":{"bridge":false,"loading":"Building the scene…","home":"Ready · Runs on your device","launch":"Ready to start · No account needed","ready":true}},"time":1789251761.301115}
+{"time":1789251763.302314,"data":{"type":"status","data":{"ready":true,"loading":"Building the scene…","home":"Ready · Runs on your device","launch":"Ready to start · No account needed","bridge":false}}}
+{"time":1789251765.3258538,"data":{"type":"status","data":{"bridge":false,"home":"Ready · Runs on your device","loading":"Building the scene…","launch":"Ready to start · No account needed","ready":true}}}
+{"data":{"type":"status","data":{"launch":"Ready to start · No account needed","loading":"Building the scene…","home":"Ready · Runs on your device","bridge":false,"ready":true}},"time":1789251767.30006}
+{"data":{"type":"status","data":{"bridge":false,"home":"Ready · Runs on your device","loading":"Building the scene…","ready":true,"launch":"Ready to start · No account needed"}},"time":1789251769.2998981}
+{"data":{"type":"status","data":{"ready":true,"home":"Ready · Runs on your device","loading":"Building the scene…","launch":"Ready to start · No account needed","bridge":false}},"time":1789251771.30059}
+{"time":1789251773.302551,"data":{"type":"status","data":{"ready":true,"loading":"Building the scene…","home":"Ready · Runs on your device","bridge":false,"launch":"Ready to start · No account needed"}}}
+{"time":1789251775.3019481,"data":{"type":"status","data":{"bridge":false,"home":"Ready · Runs on your device","loading":"Building the scene…","ready":true,"launch":"Ready to start · No account needed"}}}
+{"time":1789251777.300684,"data":{"type":"status","data":{"bridge":false,"home":"Ready · Runs on your device","loading":"Building the scene…","launch":"Ready to start · No account needed","ready":true}}}
+{"time":1789251779.302443,"data":{"type":"status","data":{"ready":true,"loading":"Building the scene…","home":"Ready · Runs on your device","bridge":false,"launch":"Ready to start · No account needed"}}}
+{"time":1789251781.304456,"data":{"type":"status","data":{"bridge":false,"home":"Ready · Runs on your device","loading":"Building the scene…","ready":true,"launch":"Ready to start · No account needed"}}}
+{"time":1789251783.3045111,"data":{"type":"status","data":{"launch":"Ready to start · No account needed","loading":"Building the scene…","home":"Ready · Runs on your device","ready":true,"bridge":false}}}
+{"data":{"type":"status","data":{"launch":"Ready to start · No account needed","home":"Ready · Runs on your device","loading":"Building the scene…","bridge":false,"ready":true}},"time":1789251785.322706}
+{"data":{"type":"status","data":{"bridge":false,"home":"Ready · Runs on your device","loading":"Building the scene…","ready":true,"launch":"Ready to start · No account needed"}},"time":1789251787.3064661}
+{"data":{"type":"status","data":{"ready":true,"loading":"Building the scene…","home":"Ready · Runs on your device","launch":"Ready to start · No account needed","bridge":false}},"time":1789251789.3080711}
+{"data":{"type":"status","data":{"launch":"Ready to start · No account needed","home":"Ready · Runs on your device","loading":"Building the scene…","ready":true,"bridge":false}},"time":1789251791.3083181}
+{"time":1789252397.711117,"data":{"type":"status","data":{"ready":true,"home":"Ready · Runs on your device","loading":"Building the scene…","launch":"Ready to start · No account needed","bridge":false}}}
+{"data":{"type":"status","data":{"launch":"Ready to start · No account needed","loading":"Building the scene…","home":"Ready · Runs on your device","bridge":false,"ready":true}},"time":1789252399.8702779}
+{"time":1789252401.87093,"data":{"type":"status","data":{"ready":true,"loading":"Building the scene…","home":"Ready · Runs on your device","launch":"Ready to start · No account needed","bridge":false}}}

@@ -1,0 +1,177 @@
+{
+  "format": "duckfly-camera-ar-acceptance",
+  "passed": true,
+  "video": "synthetic canvas stream; no device camera used",
+  "checks": [
+    {
+      "name": "camera preview runs the real neural and physical simulation",
+      "distance": 0.4679838583534907
+    },
+    {
+      "name": "place a ball, change its weight, add an independent duck and select its brain",
+      "scene": {
+        "version": 10,
+        "name": "AR playground",
+        "seed": "ar-playground-v1",
+        "lab": null,
+        "ducks": [
+          {
+            "id": "duck-1",
+            "name": "Duck 1",
+            "spawn": [
+              0.3276086756428551,
+              0.014322417685682638,
+              -0.04275071420859289
+            ],
+            "mode": "target",
+            "source": "eyes",
+            "visionModel": "marker-v1",
+            "gfGain": 6,
+            "headStabilization": false,
+            "temporal": "off",
+            "activeLook": false,
+            "flowSteer": false,
+            "feedback": true,
+            "kickOnSight": false,
+            "mapping": {
+              "forward": "walk",
+              "turn": "follow"
+            },
+            "senses": {
+              "antennae": "both",
+              "air": true,
+              "touch": true
+            },
+            "motorEnabled": true,
+            "motorGain": 1,
+            "adapter": {
+              "forward": 0.12,
+              "turn": 0.18,
+              "flow": 0.08,
+              "field": 0.12
+            },
+            "eye": "both",
+            "silence": "none",
+            "manual": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "duck-2",
+            "name": "Duck 2",
+            "spawn": [
+              -0.3898408964791453,
+              1.269133061338552,
+              0
+            ],
+            "mode": "target",
+            "source": "eyes",
+            "visionModel": "marker-v1",
+            "gfGain": 6,
+            "headStabilization": false,
+            "temporal": "off",
+            "activeLook": false,
+            "flowSteer": false,
+            "feedback": true,
+            "kickOnSight": false,
+            "mapping": {
+              "forward": "walk",
+              "turn": "follow"
+            },
+            "senses": {
+              "antennae": "both",
+              "air": true,
+              "touch": true
+            },
+            "motorEnabled": true,
+            "motorGain": 1,
+            "adapter": {
+              "forward": 0.12,
+              "turn": 0.18,
+              "flow": 0.08,
+              "field": 0.12
+            },
+            "eye": "both",
+            "silence": "none",
+            "manual": [
+              0,
+              0
+            ]
+          }
+        ],
+        "props": [
+          {
+            "id": "target-1",
+            "name": "Beacon",
+            "kind": "target",
+            "position": [
+              0.9,
+              0,
+              0.13
+            ],
+            "size": [
+              0.07,
+              0.07,
+              0.07
+            ],
+            "yaw": 0,
+            "mass": 0.08,
+            "friction": 0.8,
+            "movable": false,
+            "color": "#ee4581",
+            "motion": [
+              0,
+              0,
+              0
+            ],
+            "behavior": null
+          },
+          {
+            "id": "ball-1",
+            "name": "Ball",
+            "kind": "ball",
+            "position": [
+              -0.41378155135983596,
+              0.45989158825553744,
+              0.06
+            ],
+            "size": [
+              0.12,
+              0.12,
+              0.12
+            ],
+            "yaw": 0,
+            "mass": 1,
+            "friction": 0.8,
+            "movable": true,
+            "color": "#6d7cec",
+            "motion": [
+              0,
+              0,
+              0
+            ],
+            "behavior": null
+          }
+        ],
+        "fields": [],
+        "challenge": {
+          "duration": 30,
+          "subject": "ducks",
+          "goal": [
+            1,
+            0
+          ],
+          "radius": 0.12
+        },
+        "presentation": {
+          "view": "ar"
+        }
+      }
+    },
+    {
+      "name": "exit stops every camera track; permission refusal preserves the studio"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,22 @@
+name: DuckFlyProbe
+options:
+  bundleIdPrefix: com.duckfly.diagnostics
+targets:
+  DuckFlyProbe:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources: [ProbeApp.swift]
+    info:
+      path: Info.plist
+      properties:
+        CFBundleDisplayName: DuckFly Probe
+        UILaunchScreen: {}
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+        NSCameraUsageDescription: Test DuckFly camera mode.
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.duckfly.diagnostics.probe
+        CODE_SIGNING_ALLOWED: NO
+        SWIFT_VERSION: "5.0"

@@ -1,12 +1,12 @@
 async page => {
  const errors=[],checks=[],check=(ok,message)=>{if(!ok)throw Error(message);};page.on('pageerror',e=>errors.push(e.message));
- await page.goto('http://127.0.0.1:5195/');await page.setViewportSize({width:390,height:844});
+ const origin=await page.evaluate(()=>location.origin);await page.goto(origin+'/');await page.setViewportSize({width:390,height:844});
  await page.waitForFunction(()=>window.duckflyTelemetry?.ready);
  await page.evaluate(()=>{
   const canvas=document.createElement('canvas');canvas.width=640;canvas.height=960;const ctx=canvas.getContext('2d');
   const paint=()=>{ctx.fillStyle='#c3b99a';ctx.fillRect(0,0,640,960);ctx.fillStyle='#eff0df';ctx.fillRect(0,0,640,460);ctx.fillStyle='#a0b9a3';ctx.fillRect(45,220,210,230);ctx.fillStyle='#777363';for(let x=0;x<800;x+=160)ctx.fillRect(x,460,2,500);for(let y=470;y<960;y+=140)ctx.fillRect(0,y,640,2);};paint();
   window.testCameraPaint=setInterval(paint,100);window.testCameraStreams=[];
-  Object.defineProperty(navigator.mediaDevices,'getUserMedia',{configurable:true,value:async()=>{const stream=canvas.captureStream(10);window.testCameraStreams.push(stream);return stream;}});
+  Object.defineProperty(Object.getPrototypeOf(navigator.mediaDevices),'getUserMedia',{configurable:true,value:async()=>{const stream=canvas.captureStream(10);window.testCameraStreams.push(stream);return stream;}});
  });
  await page.locator('#launch-enter').click();await page.locator('#new-ar-scene').click();await page.locator('#ar-camera').click();
  await page.waitForFunction(()=>document.querySelector('#ar-view').dataset.tracking==='true');
@@ -46,7 +46,7 @@ async page => {
  check(await page.locator('#arena > canvas').count()===1&&await page.locator('#brain-panel #brain-plot').count()===1,'Stage or monitor was not restored');
  await page.evaluate(()=>clearInterval(window.testCameraPaint));
  await page.setViewportSize({width:390,height:844});
- await page.evaluate(()=>Object.defineProperty(navigator.mediaDevices,'getUserMedia',{configurable:true,value:async()=>{throw new DOMException('Denied','NotAllowedError');}}));
+ await page.evaluate(()=>Object.defineProperty(Object.getPrototypeOf(navigator.mediaDevices),'getUserMedia',{configurable:true,value:async()=>{throw new DOMException('Denied','NotAllowedError');}}));
  await page.locator('#view-ar').click();await page.locator('#ar-camera').click();
  await page.waitForFunction(()=>document.querySelector('#ar-dialog').open&&document.querySelector('#ar-support').textContent.includes('permission was declined'));
  check(await page.locator('#arena > canvas').count()===1,'Camera refusal stranded the renderer');

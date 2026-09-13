@@ -1,0 +1,11 @@
+{
+  "result": {
+    "failure": "worker-error",
+    "loading": "Loading the robot model\u2026",
+    "home": "Simulation worker failed",
+    "errorScreen": false,
+    "retry": false,
+    "visibleLoading": true
+  },
+  "errors": []
+}

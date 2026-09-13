@@ -65,8 +65,9 @@ export class ARView {
     if(generation!==this.probeGeneration)return support;
     this.support=support;
     const text=this.dialog.querySelector('#ar-support');text.textContent=message??this.support.reason;
-    this.dialog.querySelector('#ar-start').disabled=!this.support.xr;
-    this.dialog.querySelector('#ar-camera').disabled=!this.support.camera;
+    const surface=this.dialog.querySelector('#ar-start'),camera=this.dialog.querySelector('#ar-camera');
+    surface.disabled=!this.support.xr;surface.hidden=!this.support.xr;
+    camera.disabled=!this.support.camera;camera.classList.toggle('primary',!this.support.xr);
     this.dialog.dataset.xr=String(this.support.xr);return this.support;
   }
   open(message=null) {

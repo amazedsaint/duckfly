@@ -43,11 +43,21 @@ export class LabArena extends Arena {
     this.motionPath = new THREE.Line(new THREE.BufferGeometry(),new THREE.LineDashedMaterial({color:0x437fac,dashSize:.025,gapSize:.02,transparent:true,opacity:.8}));
     this.motionPath.layers.set(1);this.motionPath.visible=false;this.scene.add(this.motionPath);
     this.installPropDragging();
+    this.renderer.domElement.addEventListener('webglcontextlost', () => this.onGraphicsLost?.());
+    this.renderer.domElement.addEventListener('webglcontextrestored', () => this.onGraphicsRestored?.());
     this.renderer.setAnimationLoop((time,frame) => {
-      if(this.ar?.render(time,frame))return;
-      if (!this.host.clientWidth || !this.host.clientHeight) return;
-      this.controls.update();
-      this.renderer.render(this.scene, this.camera);
+      try {
+        if(this.ar?.render(time,frame))return;
+        if (!this.host.clientWidth || !this.host.clientHeight) return;
+        this.controls.update();
+        this.renderer.render(this.scene, this.camera);
+      } catch (error) {
+        // A phone can lose its graphics context while shaders are compiling,
+        // before the contextlost event reaches JS. Let the restore handler run.
+        if (this.renderer.getContext().isContextLost()) return;
+        this.renderer.setAnimationLoop(null);
+        this.onGraphicsError?.(error);
+      }
     });
   }
   installPropDragging() {

@@ -1,0 +1,189 @@
+{
+  "format": "duckfly-mobile-startup",
+  "origin": "http://127.0.0.1:5196",
+  "passed": true,
+  "results": [
+    {
+      "name": "worker download failure and reload",
+      "failure": {
+        "status": "error",
+        "stage": "Downloading the robot\u2026",
+        "history": [
+          {
+            "ms": 93,
+            "stage": "Opening DuckFly\u2026"
+          },
+          {
+            "ms": 236,
+            "stage": "Downloading the robot\u2026"
+          }
+        ],
+        "support": {
+          "wasmSIMD": true,
+          "workers": true,
+          "webgl2": true,
+          "structuredClone": true
+        },
+        "error": "Simulation worker failed"
+      },
+      "recovered": true
+    },
+    {
+      "name": "unsupported browser stops before large downloads",
+      "status": "error",
+      "error": "Missing browser features: wasmSIMD",
+      "downloads": [
+        "http://127.0.0.1:5196/assets/index-C6_bfESO.js",
+        "http://127.0.0.1:5196/duck.svg"
+      ]
+    },
+    {
+      "name": "main script import failure",
+      "status": "error"
+    },
+    {
+      "name": "failed scene download",
+      "error": "Robot appearance could not download (HTTP 503)."
+    },
+    {
+      "name": "gzip fallback and mobile scene",
+      "initial": {
+        "startup": {
+          "status": "ready",
+          "stage": "Building the scene\u2026",
+          "history": [
+            {
+              "ms": 10,
+              "stage": "Opening DuckFly\u2026"
+            },
+            {
+              "ms": 107,
+              "stage": "Downloading the robot\u2026"
+            },
+            {
+              "ms": 137,
+              "stage": "Downloading robot appearance \u00b7 2.0 MB"
+            },
+            {
+              "ms": 138,
+              "stage": "Downloading fly circuit \u00b7 0.2 MB"
+            },
+            {
+              "ms": 159,
+              "stage": "Loading the physics engine\u2026"
+            },
+            {
+              "ms": 190,
+              "stage": "Preparing the 3D view\u2026"
+            },
+            {
+              "ms": 653,
+              "stage": "Downloading robot physics \u00b7 0.2 MB"
+            },
+            {
+              "ms": 653,
+              "stage": "Downloading fly circuit \u00b7 0.1 MB"
+            },
+            {
+              "ms": 653,
+              "stage": "Downloading walking controller \u00b7 0.1 MB"
+            },
+            {
+              "ms": 653,
+              "stage": "Preparing robot physics\u2026"
+            },
+            {
+              "ms": 653,
+              "stage": "Starting the walking controller\u2026"
+            },
+            {
+              "ms": 742,
+              "stage": "Loading the balance controller\u2026"
+            },
+            {
+              "ms": 744,
+              "stage": "Downloading balance controller \u00b7 0.0 MB"
+            },
+            {
+              "ms": 750,
+              "stage": "Loading the kick controller\u2026"
+            },
+            {
+              "ms": 752,
+              "stage": "Downloading kick controller \u00b7 0.0 MB"
+            },
+            {
+              "ms": 757,
+              "stage": "Connecting vision to the fly circuit\u2026"
+            },
+            {
+              "ms": 774,
+              "stage": "Building the scene\u2026"
+            }
+          ],
+          "support": {
+            "wasmSIMD": true,
+            "workers": true,
+            "webgl2": true,
+            "structuredClone": true
+          },
+          "readyMs": 1287
+        },
+        "ua": "Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.8010.12 Mobile Safari/537.36",
+        "displayRatio": 1.4986737400530503,
+        "hiddenArtwork": [],
+        "surfaceHidden": true,
+        "cameraPrimary": true
+      },
+      "scene": {
+        "tick": 102,
+        "distance": 0.29234247944476044,
+        "fallen": false,
+        "input": {
+          "forward": 0.12,
+          "turn": 0.006947368421052633,
+          "loomL": 0,
+          "loomR": 0,
+          "loomPathway": "both",
+          "head": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "headReason": "Neutral head",
+          "fresh": true,
+          "age": 0.019999999999979146,
+          "senses": {
+            "model": "duckfly-sensors-v1",
+            "time": 2.019999999999979,
+            "scent": {
+              "available": true,
+              "antennae": "both",
+              "left": 0,
+              "right": 0,
+              "strength": 0,
+              "contrast": 0,
+              "detected": false
+            },
+            "air": {
+              "available": true,
+              "strength": 0
+            },
+            "touch": {
+              "available": true,
+              "active": false,
+              "objects": []
+            }
+          },
+          "air": 0,
+          "brainFresh": true,
+          "gateReason": "None",
+          "gate": false,
+          "reason": "Target visible through camera"
+        }
+      }
+    }
+  ],
+  "errors": []
+}

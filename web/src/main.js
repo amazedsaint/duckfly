@@ -23,7 +23,8 @@ import "./launch-page.css";
 import "./studio-theme.css";
 import "./workspace-panels.css";
 import "./setup-theme.css";
-import { fetchBytes } from "./assets.js";
+import { fetchJSON } from "./assets.js";
+import { progressStartup, completeStartup, failStartup } from './startup.js';
 import { BrainPlot, trace } from "./plots.js";
 import { LabArena } from "./lab/lab-arena.js";
 import { ExperimentRoom } from "./lab/room.js";
@@ -122,6 +123,16 @@ let setupSession, pendingSetupSelection;
 const launchPage = mountLaunchPage({enterPlayground:showHome,startScenario:chooseScenario});
 launchPage.setVisible(true);
 document.body.classList.add('launch-active');
+document.getElementById('boot-fallback')?.remove();
+const startupDownload = new AbortController();
+window.addEventListener('duckfly-startup-error', () => {
+  startupDownload.abort();
+  worker.terminate();
+  arView?.stop();
+  stream?.getTracks().forEach(track => track.stop());
+  arena?.renderer.setAnimationLoop(null);
+});
+$('#loading-retry').onclick = () => location.reload();
 const physicalSceneKey = value => JSON.stringify({...value, version:undefined, ducks:value.ducks.map(({id,spawn}) => ({id,spawn}))});
 const sceneSetup = mountSceneSetup({
   requiresRestart: draft => physicalSceneKey(validateScene(draft)) !== physicalSceneKey(setupSession.original),
@@ -813,8 +824,7 @@ worker.onmessage = ({ data }) => {
     persistScene();renderScene();renderInspector();updatePropControls(scene,state,selected);
   }
   if (data.type === "loading") {
-    $("#loading-detail").textContent = data.message;
-    $("#home-status").textContent = data.message;
+    progressStartup(data.message);
   }
   if (data.type === "error") {
     notify(data.message);
@@ -822,9 +832,11 @@ worker.onmessage = ({ data }) => {
     if (!ready) {
       $("#home-status").textContent = data.message;
       launchPage.setError(data.message);
+      failStartup(new Error(data.message));
     }
   }
   if (data.type === "ready") {
+    if (window.duckflyStartup?.status === 'error') return;
     ready = true;
     launchPage.setReady(true);
     $("#home-status").textContent = "Ready · Runs on your device";
@@ -838,6 +850,7 @@ worker.onmessage = ({ data }) => {
       .querySelectorAll("[data-control]")
       .forEach((el) => (el.disabled = false));
     if(pendingLinkedAR){pendingLinkedAR=false;arView.open();}
+    completeStartup();
   }
   if (data.type === "scene") {
     actionInspector.reset();
@@ -875,16 +888,22 @@ worker.onmessage = ({ data }) => {
   }
   if (data.type === "capture-reset") webcamCapture?.reset();
   if (data.type === "vision-request") {
-    arena.updateLab(data.body);
-    const frames = arena.captureEyes(data.time, Math.round(data.time * 50));
-    const webcam = webcamCapture?.frame(data.time);
-    if (webcam) frames.webcam = webcam;
-    lastPixels = structuredClone(frames);
-    drawEye();
-    worker.postMessage(
-      { type: "frames", ticket: data.ticket, frames },
-      packetBuffers(frames),
-    );
+    try {
+      if (arena.renderer.getContext().isContextLost()) throw Error('The duck camera is waiting for the 3D view to recover.');
+      arena.updateLab(data.body);
+      const frames = arena.captureEyes(data.time, Math.round(data.time * 50));
+      const webcam = webcamCapture?.frame(data.time);
+      if (webcam) frames.webcam = webcam;
+      lastPixels = structuredClone(frames);
+      drawEye();
+      worker.postMessage(
+        { type: "frames", ticket: data.ticket, frames },
+        packetBuffers(frames),
+      );
+    } catch (error) {
+      // Reject this frame instead of feeding an empty GPU buffer to the brain.
+      worker.postMessage({type: 'frames-error', ticket: data.ticket, message: error.message});
+    }
   }
   if (data.type === "job-progress") {
     $("#job-progress").textContent = data.label;
@@ -940,18 +959,52 @@ worker.onerror = (e) => {
   if (!ready) {
     $('#home-status').textContent = message;
     launchPage.setError(message);
+    failStartup(new Error(message));
   }
 };
 async function load() {
   try {
-    const [bytes, circuit] = await Promise.all([
-      fetchBytes("/assets/scene.json.gz"),
-      fetch("/assets/Brain/circuit.json").then((r) => r.json()),
+    progressStartup('Downloading the robot…');
+    // Download the runtime alongside the view. The worker still waits for
+    // init before creating a world or sending any frames to the renderer.
+    send('preload', {base: new URL('/', location.href).href});
+    const options = {onProgress: progressStartup, signal: startupDownload.signal};
+    const [appearance, circuit] = await Promise.all([
+      fetchJSON('/assets/scene.json.gz', {...options, label: 'Robot appearance'}),
+      fetchJSON('/assets/Brain/circuit.json', {...options, label: 'Fly circuit'}),
     ]);
+    if (startupDownload.signal.aborted) return;
+    progressStartup('Preparing the 3D view…');
     arena = new LabArena(
       $("#arena"),
-      JSON.parse(new TextDecoder().decode(bytes)),
+      appearance,
     );
+    let graphicsTimer;
+    const graphicsFailure = error => {
+      clearTimeout(graphicsTimer);
+      error.code = 'GRAPHICS_UNAVAILABLE';
+      failStartup(error);
+    };
+    arena.onGraphicsError = graphicsFailure;
+    arena.onGraphicsLost = () => {
+      if (!ready) { graphicsFailure(new Error('The 3D view lost its graphics context while loading.')); return; }
+      send('pause', {value: true});
+      arView?.stop();
+      $('#loading').hidden = false;
+      $('#loading strong').textContent = 'Restoring the 3D view';
+      $('#loading-detail').textContent = 'Your scene is paused while the browser restores graphics.';
+      $('#loading-retry').hidden = false;
+      clearTimeout(graphicsTimer);
+      graphicsTimer = setTimeout(() => graphicsFailure(new Error('The browser could not restore the 3D view.')), 20000);
+    };
+    arena.onGraphicsRestored = () => {
+      clearTimeout(graphicsTimer);
+      if (!ready || window.duckflyStartup?.status === 'error') return;
+      $('#loading').hidden = true;
+      $('#loading strong').textContent = 'Loading scene';
+      $('#loading-retry').hidden = true;
+      notify('The 3D view is back. Press Run to continue.');
+    };
     arView=new ARView(arena,{
       pause:value=>send('pause',{value}),isPaused:()=>pendingPause?.value??paused,
       step:()=>send('step'),reset:()=>send('reset'),
@@ -1025,6 +1078,7 @@ async function load() {
     $("#home-status").textContent = e.message;
     launchPage.setError(e.message);
     notify(e.message);
+    failStartup(e);
   }
 }
 load();

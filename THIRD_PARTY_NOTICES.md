@@ -37,6 +37,10 @@ The retained reference application contains a Python Build Standalone interprete
 
 The browser and standalone Mac workspace bundle `@mujoco/mujoco` 3.10.0 (Apache-2.0), `onnxruntime-web` 1.24.3 (MIT), and Three.js 0.186.0 (MIT). Their versions and transitive dependencies are locked in `web/package-lock.json`. Runtime license files are served under `/assets/licenses/`.
 
+The gzip compatibility fallback uses fflate 0.8.2 (MIT), by Arjun Barrett.
+Its license is retained at `shared/licenses/fflate-LICENSE` and served with
+the other runtime licenses. Source: https://github.com/101arrowz/fflate
+
 ## Flyvis reference visual model
 
 The optional retinal bench includes the full early-vision model from

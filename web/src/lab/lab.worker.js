@@ -12,7 +12,9 @@ function schedule(){clearTimeout(timer);if(!paused)timer=setTimeout(tick,0);}
 async function requestFrames(){
   return new Promise((resolve,reject)=>{
     const id=++ticket,timeout=setTimeout(()=>{frameWait=null;reject(Error('Camera rendering timed out. Resume to retry.'));},15000);
-    frameWait={id,resolve:frames=>{clearTimeout(timeout);frameWait=null;resolve(frames);}};
+    frameWait={id,
+      resolve:frames=>{clearTimeout(timeout);frameWait=null;resolve(frames);},
+      reject:error=>{clearTimeout(timeout);frameWait=null;reject(error);}};
     send({type:'vision-request',ticket:id,body:experiment.world.state(),time:experiment.tick*.02});
   });
 }
@@ -34,6 +36,7 @@ self.onmessage=({data})=>{
   }
   if(data.type==='cancel-job'){cancelled=true;return;}
   if(data.type==='frames'){if(frameWait?.id===data.ticket)frameWait.resolve(data.frames);return;}
+  if(data.type==='frames-error'){if(frameWait?.id===data.ticket)frameWait.reject(Error(data.message));return;}
   queue.push(data);drain();
 };
 async function drain(){
@@ -41,7 +44,13 @@ async function drain(){
   while(queue.length){const msg=queue.shift();clearTimeout(timer);
     while(running)await new Promise(r=>setTimeout(r,1));clearTimeout(timer);
     try{
-      if(msg.type==='init'){runtime=await loadLabRuntime(msg.base,message=>send({type:'loading',message}));experiment=new Experiment(runtime,msg.scene);recordingId=crypto.randomUUID();send({type:'ready',scene:experiment.scene});}
+      if(msg.type==='preload'||msg.type==='init'){
+        runtime??=await loadLabRuntime(msg.base,message=>send({type:'loading',message}));
+        if(msg.type==='init'){
+          send({type:'loading',message:'Building the scene…'});
+          experiment=new Experiment(runtime,msg.scene);recordingId=crypto.randomUUID();send({type:'ready',scene:experiment.scene});
+        }
+      }
       if(!experiment)continue;
       if(msg.type==='pause'){if(paused&&!msg.value&&!experiment.replaying){experiment.resetLiveInput();send({type:'capture-reset'});}paused=msg.value;pauseRequestId=msg.pauseRequestId??null;}
       if(msg.type==='scene'){experiment.configure(msg.scene);recordingId=crypto.randomUUID();paused=true;send({type:'scene',scene:experiment.scene});}

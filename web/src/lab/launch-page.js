@@ -32,8 +32,8 @@ export function launchPageMarkup() {
         <div class="launch-art-dots" aria-hidden="true"></div>
         <svg class="launch-signal" viewBox="0 0 600 620" fill="none" aria-hidden="true"><path class="launch-signal-shadow" d="M467 120c75 59 21 125-51 113s-44-74-2-46c64 42 5 144-110 168"/><path class="launch-signal-wire" d="M467 120c75 59 21 125-51 113s-44-74-2-46c64 42 5 144-110 168"/><path class="launch-signal-tip" d="m315 337-14 20 25 5"/></svg>
         <div class="launch-duck-shadow" data-launch-animation aria-hidden="true"></div>
-        <div class="launch-duck" data-launch-animation><img src="/launch/duck-hero.png" alt="A colorful little robot duck with mechanical legs" width="1024" height="1024" fetchpriority="high" decoding="async"></div>
-        <div class="launch-fly" data-launch-animation><img src="/launch/fly-hero.png" alt="A fly with bright eyes and translucent wings" width="1024" height="1024" fetchpriority="high" decoding="async"></div>
+        <div class="launch-duck" data-launch-animation><img src="/launch/duck-hero.png" alt="A colorful little robot duck with mechanical legs" width="1024" height="1024" loading="lazy" decoding="async"></div>
+        <div class="launch-fly" data-launch-animation><img src="/launch/fly-hero.png" alt="A fly with bright eyes and translucent wings" width="1024" height="1024" loading="lazy" decoding="async"></div>
         <span class="launch-art-label launch-fly-label">a fly’s circuit <span aria-hidden="true">↗</span></span>
         <span class="launch-art-label launch-duck-label">a duck’s world <span aria-hidden="true">↗</span></span>
         <span class="launch-art-star launch-art-star-one" aria-hidden="true">✳</span><span class="launch-art-star launch-art-star-two" aria-hidden="true">✦</span>

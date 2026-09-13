@@ -1,0 +1,14 @@
+{
+  "format": "duckfly-graphics-recovery",
+  "passed": true,
+  "origin": "http://127.0.0.1:5196",
+  "paused": {
+    "tick": 0,
+    "rejectedFrames": 1
+  },
+  "resumed": {
+    "tick": 53,
+    "fallen": false
+  },
+  "errors": []
+}

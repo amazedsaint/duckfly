@@ -1,0 +1,507 @@
+{
+  "format": "duckfly-direct-scene-acceptance",
+  "origin": "http://127.0.0.1:5196",
+  "checks": [
+    {
+      "id": "scent",
+      "entry": "direct",
+      "tick": 252,
+      "scene": "Follow a scent",
+      "duckCount": 1,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            0.48943907831537536,
+            0.1267186915491436,
+            0.116873159700682
+          ],
+          "distance": 0.7398897901826617,
+          "fallen": false,
+          "command": [
+            0,
+            0
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    },
+    {
+      "id": "air",
+      "entry": "direct",
+      "tick": 252,
+      "scene": "Feel the air",
+      "duckCount": 1,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            0.3051932528539371,
+            0.03076389687561925,
+            0.11619695098088317
+          ],
+          "distance": 0.482337040667335,
+          "fallen": false,
+          "command": [
+            0,
+            0
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    },
+    {
+      "id": "touch",
+      "entry": "direct",
+      "tick": 252,
+      "scene": "Touch and pause",
+      "duckCount": 1,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            0.44895487820277935,
+            0.006332541200686031,
+            0.11641720659375578
+          ],
+          "distance": 0.7014654112962199,
+          "fallen": false,
+          "command": [
+            0,
+            0
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    },
+    {
+      "id": "cue-workshop",
+      "entry": "direct",
+      "tick": 252,
+      "scene": "Build a visual follower",
+      "duckCount": 1,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            0.5448182225934782,
+            0.0865644579301487,
+            0.11742576932432969
+          ],
+          "distance": 0.794782710981154,
+          "fallen": false,
+          "command": [
+            0.3,
+            0.49729438796416653
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    },
+    {
+      "id": "lookout",
+      "entry": "direct",
+      "tick": 252,
+      "scene": "Look without chasing",
+      "duckCount": 1,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            0.002215599821986411,
+            0.00016590887796905085,
+            0.11653418093531852
+          ],
+          "distance": 0.005309595316451641,
+          "fallen": false,
+          "command": [
+            0,
+            0
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    },
+    {
+      "id": "crossed-wires",
+      "entry": "direct",
+      "tick": 252,
+      "scene": "Reverse the steering",
+      "duckCount": 2,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            0.14833918020855494,
+            -0.3205387659314074,
+            0.11571010148582658
+          ],
+          "distance": 0.2608121846659911,
+          "fallen": false,
+          "command": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "duck-2",
+          "position": [
+            0.3451237559688345,
+            0.4274854819397569,
+            0.11632265929544514
+          ],
+          "distance": 0.6525229896286923,
+          "fallen": false,
+          "command": [
+            0,
+            0
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    },
+    {
+      "id": "trigger-kick",
+      "entry": "direct",
+      "tick": 252,
+      "scene": "Trigger a kick",
+      "duckCount": 1,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            0.026499313945171996,
+            0.017115004159788415,
+            0.1163784427241841
+          ],
+          "distance": 0.06242238619699076,
+          "fallen": false,
+          "command": [
+            0,
+            0
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    },
+    {
+      "id": "target",
+      "entry": "direct",
+      "tick": 252,
+      "scene": "Follow the beacon",
+      "duckCount": 1,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            0.5371112304030977,
+            -0.017232760974603273,
+            0.1193326168117059
+          ],
+          "distance": 0.7707890443538257,
+          "fallen": false,
+          "command": [
+            0.3,
+            0.2227066866585219
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    },
+    {
+      "id": "stop-go",
+      "entry": "direct",
+      "tick": 252,
+      "scene": "Stop, wait, go",
+      "duckCount": 1,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            0.011462679859494911,
+            0.0018470100066306891,
+            0.11418666013644437
+          ],
+          "distance": 0.01419455900085424,
+          "fallen": false,
+          "command": [
+            0.3,
+            0.2657427511896634
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    },
+    {
+      "id": "gaze",
+      "entry": "direct",
+      "tick": 251,
+      "scene": "Find it again",
+      "duckCount": 1,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            0.5010641559901671,
+            0.22704179944620162,
+            0.1182212865655251
+          ],
+          "distance": 0.8020789166979776,
+          "fallen": false,
+          "command": [
+            0.3,
+            0.13908218188918003
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    },
+    {
+      "id": "switchboard",
+      "entry": "direct",
+      "tick": 252,
+      "scene": "Brain switchboard",
+      "duckCount": 1,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            0.5575328609960992,
+            0.12790954436030516,
+            0.11473453833941165
+          ],
+          "distance": 0.8174248016066441,
+          "fallen": false,
+          "command": [
+            0.3,
+            0.1597846903009879
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    },
+    {
+      "id": "recovery",
+      "entry": "direct",
+      "tick": 252,
+      "scene": "Bump and recover",
+      "duckCount": 1,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            0.5664079011423314,
+            0.010092345616711256,
+            0.1196237344527204
+          ],
+          "distance": 0.8076330907874767,
+          "fallen": false,
+          "command": [
+            0.3,
+            0.2824687584875195
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    },
+    {
+      "id": "kick",
+      "entry": "direct",
+      "tick": 251,
+      "scene": "See it, kick it",
+      "duckCount": 1,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            0.026550910941326052,
+            0.017027793235894307,
+            0.11635167801981104
+          ],
+          "distance": 0.06232105508005926,
+          "fallen": false,
+          "command": [
+            0,
+            0
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    },
+    {
+      "id": "occlusion",
+      "entry": "direct",
+      "tick": 252,
+      "scene": "Out of sight",
+      "duckCount": 1,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            0.0021708162061441667,
+            0.0004923139123289628,
+            0.11641259008804984
+          ],
+          "distance": 0.006075043094695535,
+          "fallen": false,
+          "command": [
+            0,
+            0.10408067620675908
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    },
+    {
+      "id": "flock",
+      "entry": "direct",
+      "tick": 253,
+      "scene": "Follow the flock",
+      "duckCount": 3,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            0.5396264909286825,
+            -0.014057879265160323,
+            0.11824101848539803
+          ],
+          "distance": 0.7748252431737516,
+          "fallen": false,
+          "command": [
+            0.3,
+            0.3313160609482927
+          ]
+        },
+        {
+          "id": "duck-2",
+          "position": [
+            0.23592269859198517,
+            -0.02960132373914007,
+            0.11613562976575793
+          ],
+          "distance": 0.8363799945434842,
+          "fallen": false,
+          "command": [
+            0.3,
+            0.12918093838645373
+          ]
+        },
+        {
+          "id": "duck-3",
+          "position": [
+            -0.08982614825534736,
+            0.011305360677660671,
+            0.1210778260684235
+          ],
+          "distance": 0.8274923634134,
+          "fallen": false,
+          "command": [
+            0.3,
+            0.11048842988785679
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    },
+    {
+      "id": "loom",
+      "entry": "direct",
+      "tick": 251,
+      "scene": "Approaching threat",
+      "duckCount": 1,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            -0.10728207926188711,
+            0.010174303247100005,
+            0.11866556710299644
+          ],
+          "distance": 0.18286080873789393,
+          "fallen": false,
+          "command": [
+            0,
+            0
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    },
+    {
+      "id": "vision",
+      "entry": "direct",
+      "tick": 251,
+      "scene": "Retinal motion lab",
+      "duckCount": 1,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            0.5831305419551903,
+            0.0031986242327545957,
+            0.11791563066145229
+          ],
+          "distance": 0.8095281255584601,
+          "fallen": false,
+          "command": [
+            0.3,
+            -0.2350851956425531
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    },
+    {
+      "id": "empty",
+      "entry": "wizard",
+      "tick": 252,
+      "scene": "Open arena",
+      "duckCount": 1,
+      "ducks": [
+        {
+          "id": "duck-1",
+          "position": [
+            0.03565710902567306,
+            -0.003807788343490783,
+            0.11556742942359878
+          ],
+          "distance": 0.0979415872694582,
+          "fallen": false,
+          "command": [
+            0,
+            0.004019709829306787
+          ]
+        }
+      ],
+      "brainVisible": true,
+      "eyeVisible": true
+    }
+  ],
+  "customize": true,
+  "filtered": [
+    "scent",
+    "air",
+    "touch",
+    "vision"
+  ],
+  "errors": [],
+  "passed": true
+}
